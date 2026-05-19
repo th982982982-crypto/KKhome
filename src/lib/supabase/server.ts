@@ -2,8 +2,10 @@ import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
 function getConfig() {
+  const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+  const url = rawUrl.replace(/\/(rest|auth|storage)\/v\d.*$/, '').replace(/\/$/, '')
   return {
-    url: process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    url,
     anonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY!,
   }
