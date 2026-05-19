@@ -46,27 +46,26 @@ export function parseSheetRows(headers: string[], rows: string[][]): SheetRow[] 
 }
 
 export async function fetchCatalogSheet(): Promise<{ headers: string[]; rows: string[][] }> {
-  const spreadsheetId = process.env.GOOGLE_SHEET_CATALOG_ID
-  const apiKey = process.env.GOOGLE_SHEETS_API_KEY
+  const scriptUrl = process.env.APPS_SCRIPT_URL
 
-  if (!spreadsheetId || !apiKey) {
-    throw new Error('Missing GOOGLE_SHEET_CATALOG_ID or GOOGLE_SHEETS_API_KEY')
+  if (!scriptUrl) {
+    throw new Error('Missing APPS_SCRIPT_URL')
   }
 
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/A1:Z1000?key=${apiKey}`
-  const res = await fetch(url, { next: { revalidate: 0 } })
+  const res = await fetch(scriptUrl, { next: { revalidate: 0 } })
 
   if (!res.ok) {
-    const text = await res.text()
-    throw new Error(`Google Sheets API error: ${res.status} - ${text}`)
+    throw new Error(`Apps Script error: ${res.status}`)
   }
 
-  const data = await res.json()
-  const values: string[][] = data.values ?? []
+  const data: Record<string, string>[] = await res.json()
 
-  if (values.length < 2) return { headers: [], rows: [] }
+  if (!data.length) return { headers: [], rows: [] }
 
-  return { headers: values[0], rows: values.slice(1) }
+  const headers = Object.keys(data[0])
+  const rows = data.map(row => headers.map(h => String(row[h] ?? '')))
+
+  return { headers, rows }
 }
 
 function slugify(text: string): string {
