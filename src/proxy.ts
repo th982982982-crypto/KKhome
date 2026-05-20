@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
   const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
@@ -29,17 +29,14 @@ export async function middleware(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
   const { pathname } = request.nextUrl
 
-  // Protect /dashboard routes
   if (pathname.startsWith('/dashboard') && !user) {
     return NextResponse.redirect(new URL('/login?redirect=' + pathname, request.url))
   }
 
-  // Protect /admin routes - full check done in page
   if (pathname.startsWith('/admin') && !user) {
     return NextResponse.redirect(new URL('/login?redirect=' + pathname, request.url))
   }
 
-  // Redirect logged-in users away from auth pages
   if ((pathname === '/login' || pathname === '/register') && user) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
