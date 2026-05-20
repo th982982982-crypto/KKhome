@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/server'
 import { Package, ShoppingBag, FileSpreadsheet, Users, ArrowRight, TrendingUp, Clock } from 'lucide-react'
 import { formatCurrency } from '@/lib/format'
 
 export default async function AdminPage() {
-  const supabase = await createClient()
+  const supabase = createAdminClient()
 
   const [
     { count: templateCount },
