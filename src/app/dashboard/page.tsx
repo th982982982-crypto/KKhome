@@ -37,10 +37,10 @@ export default async function DashboardPage() {
   const orders = ordersData ?? []
 
   const bank = {
-    name: process.env.NEXT_PUBLIC_BANK_NAME || 'Vietcombank',
-    account: process.env.NEXT_PUBLIC_BANK_ACCOUNT || '1234567890',
-    owner: process.env.NEXT_PUBLIC_BANK_OWNER || 'NGUYEN THI NGAN',
-    code: process.env.NEXT_PUBLIC_BANK_CODE || 'VCB',
+    name: process.env.NEXT_PUBLIC_BANK_NAME || 'ACB',
+    account: process.env.NEXT_PUBLIC_BANK_ACCOUNT || '4465436',
+    owner: process.env.NEXT_PUBLIC_BANK_OWNER || 'HO KINH DOANH KKHOME',
+    code: process.env.NEXT_PUBLIC_BANK_CODE || 'ACB',
   }
 
   return (

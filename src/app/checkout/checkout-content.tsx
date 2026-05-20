@@ -13,10 +13,10 @@ import { toast } from 'sonner'
 import { Copy, CheckCircle2, ArrowLeft, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
-const BANK_NAME = process.env.NEXT_PUBLIC_BANK_NAME || 'Vietcombank'
-const BANK_ACCOUNT = process.env.NEXT_PUBLIC_BANK_ACCOUNT || '1234567890'
-const BANK_OWNER = process.env.NEXT_PUBLIC_BANK_OWNER || 'NGUYEN THI NGAN'
-const BANK_CODE = process.env.NEXT_PUBLIC_BANK_CODE || 'VCB'
+const BANK_NAME = process.env.NEXT_PUBLIC_BANK_NAME || 'ACB'
+const BANK_ACCOUNT = process.env.NEXT_PUBLIC_BANK_ACCOUNT || '4465436'
+const BANK_OWNER = process.env.NEXT_PUBLIC_BANK_OWNER || 'HO KINH DOANH KKHOME'
+const BANK_CODE = process.env.NEXT_PUBLIC_BANK_CODE || 'ACB'
 
 function buildVietQrUrl(amount: number, orderCode: string): string {
   const addInfo = encodeURIComponent(orderCode)
