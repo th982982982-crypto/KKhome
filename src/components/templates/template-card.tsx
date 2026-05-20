@@ -6,7 +6,7 @@ import { formatCurrency } from '@/lib/format'
 import { getEffectivePrice, type PromotionWithTemplates } from '@/lib/supabase/types'
 import type { Template } from '@/lib/supabase/types'
 import { ShoppingCart, Eye, CheckCircle2 } from 'lucide-react'
-import { CountdownTimer } from '@/components/ui/countdown-timer'
+import { CountdownCard } from '@/components/ui/countdown-timer'
 import { useCartStore } from '@/lib/cart-store'
 import { toast } from 'sonner'
 
@@ -153,11 +153,7 @@ export function TemplateCard({ template, onViewDetail, isPurchased, activePromot
             </button>
           )}
         </div>
-        {activePromo && !isPurchased && (
-          <div className="mt-2 pt-2 border-t border-gray-50 dark:border-gray-800">
-            <CountdownTimer endAt={activePromo.end_at} className="text-xs text-red-500 dark:text-red-400 font-semibold" />
-          </div>
-        )}
+        {activePromo && !isPurchased && <CountdownCard endAt={activePromo.end_at} />}
       </div>
     </div>
   )

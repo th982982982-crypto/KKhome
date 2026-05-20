@@ -8,7 +8,7 @@ import { formatCurrency, getYouTubeEmbedUrl } from '@/lib/format'
 import { getEffectivePrice, type PromotionWithTemplates } from '@/lib/supabase/types'
 import type { Template } from '@/lib/supabase/types'
 import { ShoppingCart, X, Tag, PlayCircle, ExternalLink, CheckCircle2, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react'
-import { CountdownTimer } from '@/components/ui/countdown-timer'
+import { CountdownModal } from '@/components/ui/countdown-timer'
 import { useCartStore } from '@/lib/cart-store'
 import { toast } from 'sonner'
 
@@ -186,9 +186,9 @@ export function TemplateModal({ template, open, onClose, isPurchased = false, ac
               {template.tags && template.tags.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-3">
                   {template.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary" className="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full font-normal">
-                      <Tag className="w-2.5 h-2.5 mr-1" />{tag}
-                    </Badge>
+                    <span key={tag} className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                      <Tag className="w-3 h-3" />{tag}
+                    </span>
                   ))}
                 </div>
               )}
@@ -206,11 +206,7 @@ export function TemplateModal({ template, open, onClose, isPurchased = false, ac
                   </span>
                 )}
               </div>
-              {activePromo && !isPurchased && (
-                <div className="mb-4">
-                  <CountdownTimer endAt={activePromo.end_at} className="text-sm text-red-500 dark:text-red-400 font-semibold" />
-                </div>
-              )}
+              {activePromo && !isPurchased && <CountdownModal endAt={activePromo.end_at} />}
 
               {isPurchased && template.google_sheet_copy_url ? (
                 <a
