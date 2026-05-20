@@ -56,7 +56,8 @@ export interface Database {
         Row: {
           id: string
           order_code: string
-          user_id: string
+          user_id: string | null
+          email: string | null
           items: Json
           total_amount: number
           status: 'pending' | 'confirmed' | 'cancelled'

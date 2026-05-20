@@ -23,6 +23,10 @@ function buildVietQrUrl(amount: number, orderCode: string): string {
   return `https://img.vietqr.io/image/${BANK_CODE}-${BANK_ACCOUNT}-compact2.png?amount=${amount}&addInfo=${addInfo}&accountName=${encodeURIComponent(BANK_OWNER)}`
 }
 
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+}
+
 export function CheckoutContent() {
   const { items, total, clearCart } = useCartStore()
   const router = useRouter()
@@ -30,6 +34,15 @@ export function CheckoutContent() {
   const [orderTotal, setOrderTotal] = useState<number>(0)
   const [loading, setLoading] = useState(false)
   const [note, setNote] = useState('')
+  const [email, setEmail] = useState('')
+  const [emailTouched, setEmailTouched] = useState(false)
+
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      if (user?.email) setEmail(user.email)
+    })
+  }, [])
 
   useEffect(() => {
     if (items.length === 0 && !orderCode) {
@@ -40,15 +53,14 @@ export function CheckoutContent() {
 
   async function handleCreateOrder() {
     if (!items.length) return
-    setLoading(true)
-    const supabase = createClient()
-    const { data: { user } } = await supabase.auth.getUser()
 
-    if (!user) {
-      router.push('/login?redirect=/checkout')
+    setEmailTouched(true)
+    if (!isValidEmail(email)) {
+      toast.error('Vui lòng nhập địa chỉ email hợp lệ')
       return
     }
 
+    setLoading(true)
     const submitTotal = total()
     const res = await fetch('/api/checkout', {
       method: 'POST',
@@ -57,6 +69,7 @@ export function CheckoutContent() {
         items: items.map((i) => ({ type: i.type, id: i.id, name: i.name, price: i.sale_price })),
         total: submitTotal,
         note,
+        email,
       }),
     })
 
@@ -183,7 +196,25 @@ export function CheckoutContent() {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6 space-y-4">
+            <div className="space-y-1.5">
+              <Label htmlFor="email">
+                Email nhận hàng <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="example@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onBlur={() => setEmailTouched(true)}
+                className={emailTouched && !isValidEmail(email) ? 'border-red-400 focus-visible:ring-red-400' : ''}
+              />
+              {emailTouched && !isValidEmail(email) && (
+                <p className="text-xs text-red-500">Vui lòng nhập email hợp lệ</p>
+              )}
+              <p className="text-xs text-gray-400 dark:text-gray-500">Admin sẽ liên hệ qua email này sau khi xác nhận thanh toán.</p>
+            </div>
             <div className="space-y-1.5">
               <Label htmlFor="note">Ghi chú (không bắt buộc)</Label>
               <Input

@@ -1,9 +1,9 @@
-import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/server'
 import { OrdersTable } from '@/components/admin/orders-table'
 import { ShoppingBag } from 'lucide-react'
 
 export default async function AdminOrdersPage() {
-  const supabase = await createClient()
+  const supabase = createAdminClient()
   const { data: orders } = await supabase
     .from('orders')
     .select('*, profiles(full_name)')

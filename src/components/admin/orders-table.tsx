@@ -100,7 +100,8 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
                     <p className="text-xs text-gray-400 dark:text-gray-500">{new Date(order.created_at).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
                   </td>
                   <td className="px-4 py-3 text-gray-700 dark:text-gray-200">
-                    {order.profiles?.full_name || 'Ẩn danh'}
+                    <p>{order.profiles?.full_name || 'Khách vãng lai'}</p>
+                    {order.email && <p className="text-xs text-gray-400 dark:text-gray-500">{order.email}</p>}
                   </td>
                   <td className="px-4 py-3 hidden md:table-cell">
                     <div className="space-y-0.5">
