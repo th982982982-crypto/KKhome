@@ -48,7 +48,13 @@ export default async function AdminPage() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Link href="/admin/templates">
+            <div className="bg-white rounded-xl border border-black p-6 hover:shadow-sm transition-shadow">
+              <h2 className="font-semibold text-gray-900 mb-1">📊 Quản lý Templates</h2>
+              <p className="text-sm text-gray-500">Thêm, sửa, xóa templates trực tiếp trên web</p>
+            </div>
+          </Link>
           <Link href="/admin/orders">
             <div className="bg-white rounded-xl border border-gray-100 p-6 hover:shadow-sm transition-shadow">
               <h2 className="font-semibold text-gray-900 mb-1">Xác nhận đơn hàng</h2>

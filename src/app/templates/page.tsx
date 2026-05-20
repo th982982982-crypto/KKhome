@@ -2,26 +2,8 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
 import { TemplateSection } from '@/components/templates/template-section'
-import { fetchCatalogSheet, parseSheetRows, transformToTemplate } from '@/lib/google-sheets'
-import type { Template } from '@/lib/supabase/types'
 
-export const revalidate = 60
-
-async function getTemplates(): Promise<Template[]> {
-  try {
-    const { headers, rows } = await fetchCatalogSheet()
-    const sheetRows = parseSheetRows(headers, rows)
-    return sheetRows
-      .map((row) => {
-        const t = transformToTemplate(row)
-        return { ...t, id: t.slug, created_at: '' } as Template
-      })
-      .filter((t) => t.is_published)
-      .sort((a, b) => a.sort_order - b.sort_order)
-  } catch {
-    return []
-  }
-}
+export const revalidate = 0
 
 export default async function TemplatesPage(props: {
   searchParams: Promise<{ category?: string }>
@@ -38,7 +20,11 @@ export default async function TemplatesPage(props: {
     profile = data
   }
 
-  const allTemplates = await getTemplates()
+  const { data: allTemplates = [] } = await supabase
+    .from('templates')
+    .select('*')
+    .eq('is_published', true)
+    .order('sort_order', { ascending: true })
   const categories = Array.from(new Set(allTemplates.map((t) => t.category).filter(Boolean) as string[]))
   const templates = selectedCategory
     ? allTemplates.filter((t) => t.category === selectedCategory)
