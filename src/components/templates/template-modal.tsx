@@ -181,17 +181,21 @@ export function TemplateModal({ template, open, onClose, isPurchased = false, ac
           <div className="lg:w-[45%] flex flex-col overflow-y-auto pb-24 lg:pb-0 bg-white dark:bg-gray-900">
             {/* Header */}
             <div className="p-6 pb-4 border-b border-gray-100 dark:border-gray-800">
-              <h2 className="text-xl font-black text-gray-900 dark:text-gray-50 leading-tight pr-14 tracking-tight">{template.name}</h2>
-
-              {template.tags && template.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mt-3">
-                  {template.tags.map((tag) => (
-                    <span key={tag} className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-                      <Tag className="w-3 h-3" />{tag}
-                    </span>
-                  ))}
+              <div className="flex items-start gap-3">
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-xl font-black text-gray-900 dark:text-gray-50 leading-tight tracking-tight">{template.name}</h2>
+                  {template.tags && template.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mt-3">
+                      {template.tags.map((tag) => (
+                        <span key={tag} className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                          <Tag className="w-3 h-3" />{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              )}
+                <div className="w-9 h-9 shrink-0" />
+              </div>
             </div>
 
             {/* Price + CTA (desktop only — mobile uses sticky bar) */}
