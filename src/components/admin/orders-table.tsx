@@ -91,7 +91,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
               <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Ghi chú</th>
               <th className="text-right px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Số tiền</th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Trạng thái</th>
-              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Hành động</th>
+              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap sticky right-0 bg-gray-50 dark:bg-gray-900/60 shadow-[-8px_0_12px_-8px_rgba(0,0,0,0.1)]">Hành động</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
@@ -99,7 +99,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
               const items = order.items as { type: string; id: string; name: string; price: number }[]
               const skus = items.map(item => skuMap[item.id]).filter(Boolean)
               return (
-                <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                <tr key={order.id} className="group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                   <td className="px-4 py-3 whitespace-nowrap">
                     <p className="font-mono font-bold text-gray-900 dark:text-gray-50 text-xs">{order.order_code}</p>
                     <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
@@ -160,7 +160,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                       {order.status === 'confirmed' ? 'Đã xác nhận' : order.status === 'cancelled' ? 'Đã hủy' : 'Chờ xác nhận'}
                     </Badge>
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap">
+                  <td className="px-4 py-3 whitespace-nowrap sticky right-0 bg-white dark:bg-gray-900 group-hover:bg-gray-50 dark:group-hover:bg-gray-800/50 shadow-[-8px_0_12px_-8px_rgba(0,0,0,0.1)]">
                     {order.status === 'pending' ? (
                       <div className="flex items-center justify-center gap-1.5">
                         <Button
