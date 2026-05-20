@@ -2,10 +2,9 @@
 
 import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { formatCurrency } from '@/lib/format'
 import type { Template } from '@/lib/supabase/types'
-import { ShoppingCart, Eye } from 'lucide-react'
+import { ShoppingCart, Eye, CheckCircle2 } from 'lucide-react'
 import { useCartStore } from '@/lib/cart-store'
 import { toast } from 'sonner'
 
@@ -20,7 +19,12 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
   const cartItems = useCartStore((s) => s.items)
   const inCart = cartItems.some((i) => i.id === template.id)
 
-  function handleAddToCart() {
+  const discount = template.original_price && template.sale_price && template.original_price > template.sale_price
+    ? Math.round((1 - template.sale_price / template.original_price) * 100)
+    : null
+
+  function handleAddToCart(e: React.MouseEvent) {
+    e.stopPropagation()
     addItem({
       type: 'template',
       id: template.id,
@@ -33,87 +37,103 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
   }
 
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200">
-      <div
-        className="relative aspect-[4/3] overflow-hidden bg-gray-50 cursor-pointer"
-        onClick={() => onViewDetail?.(template)}
-      >
+    <div
+      className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+      onClick={() => onViewDetail?.(template)}
+    >
+      {/* Image */}
+      <div className="relative aspect-[4/3] overflow-hidden bg-gray-50">
         {template.thumbnail_url ? (
           <Image
             src={template.thumbnail_url}
             alt={template.name}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-            <span className="text-gray-400 text-4xl">📊</span>
+            <span className="text-gray-300 text-5xl">📊</span>
           </div>
         )}
 
-        {isPurchased && (
-          <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
-            Đã mua
-          </div>
-        )}
+        {/* Overlay on hover */}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
 
-        {template.original_price && template.sale_price && template.original_price > template.sale_price && (
-          <div className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium">
-            -{Math.round((1 - template.sale_price / template.original_price) * 100)}%
+        {/* Badges */}
+        <div className="absolute top-3 left-3 flex gap-1.5">
+          {isPurchased && (
+            <span className="flex items-center gap-1 bg-green-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">
+              <CheckCircle2 className="w-3 h-3" /> Đã mua
+            </span>
+          )}
+          {discount && !isPurchased && (
+            <span className="bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-sm">
+              -{discount}%
+            </span>
+          )}
+        </div>
+
+        {template.category && (
+          <div className="absolute top-3 right-3">
+            <span className="bg-black/50 backdrop-blur-sm text-white text-xs px-2.5 py-1 rounded-full">
+              {template.category}
+            </span>
           </div>
         )}
       </div>
 
+      {/* Content */}
       <div className="p-4">
-        <h3
-          className="font-semibold text-gray-900 text-sm leading-tight mb-1 cursor-pointer hover:text-gray-600 line-clamp-2"
-          onClick={() => onViewDetail?.(template)}
-        >
+        <h3 className="font-semibold text-gray-900 text-sm leading-snug mb-2 line-clamp-2 group-hover:text-black">
           {template.name}
         </h3>
 
         {template.tags && template.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-3">
-            {template.tags.slice(0, 3).map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs py-0 px-2">
+            {template.tags.slice(0, 2).map((tag) => (
+              <Badge key={tag} variant="secondary" className="text-xs py-0 px-2 bg-gray-100 text-gray-500 font-normal rounded-full">
                 {tag}
               </Badge>
             ))}
+            {template.tags.length > 2 && (
+              <Badge variant="secondary" className="text-xs py-0 px-2 bg-gray-100 text-gray-400 font-normal rounded-full">
+                +{template.tags.length - 2}
+              </Badge>
+            )}
           </div>
         )}
 
-        <div className="flex items-center justify-between">
-          <div>
+        <div className="flex items-center justify-between gap-2 pt-1 border-t border-gray-50">
+          <div className="flex items-baseline gap-1.5">
             <span className="font-bold text-gray-900 text-base">
               {template.sale_price ? formatCurrency(template.sale_price) : 'Liên hệ'}
             </span>
             {template.original_price && template.original_price > (template.sale_price ?? 0) && (
-              <span className="text-gray-400 text-xs line-through ml-2">
-                {formatCurrency(template.original_price)}
-              </span>
+              <span className="text-gray-400 text-xs line-through">{formatCurrency(template.original_price)}</span>
             )}
           </div>
 
           {isPurchased ? (
-            <Button
-              size="sm"
-              variant="outline"
-              className="text-xs h-8"
-              onClick={() => onViewDetail?.(template)}
+            <button
+              onClick={(e) => { e.stopPropagation(); onViewDetail?.(template) }}
+              className="flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 active:scale-95 transition-all"
             >
-              <Eye className="w-3 h-3 mr-1" />Xem
-            </Button>
+              <Eye className="w-3.5 h-3.5" /> Xem
+            </button>
           ) : (
-            <Button
-              size="sm"
-              className="text-xs h-8 bg-black text-white hover:bg-gray-800 active:scale-95 transition-transform"
+            <button
               onClick={inCart ? undefined : handleAddToCart}
               disabled={inCart}
+              className={`flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-lg active:scale-95 transition-all
+                ${inCart
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                  : 'bg-black text-white hover:bg-gray-800 shadow-sm'
+                }`}
             >
-              <ShoppingCart className="w-3 h-3 mr-1" />
+              <ShoppingCart className="w-3.5 h-3.5" />
               {inCart ? 'Trong giỏ' : 'Thêm giỏ'}
-            </Button>
+            </button>
           )}
         </div>
       </div>
