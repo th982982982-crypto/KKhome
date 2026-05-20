@@ -105,7 +105,7 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-500 dark:text-gray-400">{rows.length} templates • Nhấn <kbd className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 px-1.5 py-0.5 rounded text-xs">Lưu</kbd> sau khi chỉnh sửa mỗi dòng</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">{rows.length} templates • Tự động lưu khi click ra ngoài dòng</p>
         <button
           onClick={addRow}
           className="flex items-center gap-2 bg-black dark:bg-white text-white dark:text-gray-900 px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-800 dark:hover:bg-gray-100 active:scale-95 transition-all"
@@ -134,6 +134,11 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
               <tr
                 key={row.id || `new-${index}`}
                 className={`border-b border-gray-100 dark:border-gray-800 last:border-b-0 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors ${row._dirty ? 'bg-yellow-50/40 dark:bg-amber-950/20' : ''}`}
+                onBlur={(e) => {
+                  if (!rows[index]._dirty || rows[index]._saving) return
+                  if (e.currentTarget.contains(e.relatedTarget as Node)) return
+                  saveRow(index)
+                }}
               >
                 {COLS.map(col => (
                   <td key={col.key} className={`${col.width} px-2 py-1.5 border-r border-gray-100 dark:border-gray-800 last:border-r-0`}>
