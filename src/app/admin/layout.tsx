@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { AdminShell } from '@/components/admin/admin-shell'
 
 export const revalidate = 0
@@ -16,7 +16,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     .single()
   if (!profile?.is_admin) redirect('/dashboard')
 
-  const { count: pendingCount } = await supabase
+  const admin = createAdminClient()
+  const { count: pendingCount } = await admin
     .from('orders')
     .select('*', { count: 'exact', head: true })
     .eq('status', 'pending')
