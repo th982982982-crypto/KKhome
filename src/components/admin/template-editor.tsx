@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react'
 import { toast } from 'sonner'
 import { Plus, Trash2, Save, Loader2, Eye, EyeOff } from 'lucide-react'
 import type { Template } from '@/lib/supabase/types'
+import { ImageUpload } from '@/components/ui/image-upload'
 
 type Row = Partial<Template> & { _isNew?: boolean; _saving?: boolean; _dirty?: boolean }
 
@@ -14,7 +15,6 @@ const COLS = [
   { key: 'sale_price', label: 'Giá bán', width: 'w-28', type: 'number' },
   { key: 'original_price', label: 'Giá gốc', width: 'w-28', type: 'number' },
   { key: 'description', label: 'Mô tả', width: 'w-56', type: 'text' },
-  { key: 'thumbnail_url', label: 'Link ảnh', width: 'w-48', type: 'text' },
   { key: 'google_sheet_embed_url', label: 'Link embed', width: 'w-48', type: 'text' },
   { key: 'google_sheet_copy_url', label: 'Link copy', width: 'w-48', type: 'text' },
   { key: 'tutorial_video_url', label: 'Link video', width: 'w-48', type: 'text' },
@@ -119,6 +119,7 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
                   {col.label}
                 </th>
               ))}
+              <th className="w-36 px-3 py-2.5 text-left text-xs font-semibold text-gray-600 whitespace-nowrap border-r border-gray-100">Ảnh (dán/kéo thả)</th>
               <th className="w-24 px-3 py-2.5 text-center text-xs font-semibold text-gray-600 whitespace-nowrap">Hiển thị</th>
               <th className="w-24 px-3 py-2.5 text-center text-xs font-semibold text-gray-600 whitespace-nowrap">Thao tác</th>
             </tr>
@@ -140,6 +141,13 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
                     />
                   </td>
                 ))}
+                <td className="w-36 px-2 py-1.5 border-r border-gray-100">
+                  <ImageUpload
+                    value={row.thumbnail_url}
+                    onChange={(url) => updateRow(index, 'thumbnail_url', url)}
+                    onClear={() => updateRow(index, 'thumbnail_url', '')}
+                  />
+                </td>
                 <td className="w-24 px-3 py-1.5 text-center">
                   <button
                     onClick={() => updateRow(index, 'is_published', !row.is_published)}
