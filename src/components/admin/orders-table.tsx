@@ -80,15 +80,15 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
 
       <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
         <div className="overflow-x-auto">
-        <table className="w-full text-sm min-w-[900px]">
+        <table className="w-full text-sm min-w-[1100px]">
           <thead className="bg-gray-50 dark:bg-gray-900/60 border-b border-gray-100 dark:border-gray-800">
             <tr>
               <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Mã đơn</th>
               <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Khách hàng</th>
               <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Gmail</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 hidden md:table-cell whitespace-nowrap">Sản phẩm</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 hidden lg:table-cell whitespace-nowrap">SKU</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 hidden lg:table-cell whitespace-nowrap">Ghi chú</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Sản phẩm</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">SKU</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Ghi chú</th>
               <th className="text-right px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Số tiền</th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Trạng thái</th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Hành động</th>
@@ -100,17 +100,19 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
               const skus = items.map(item => skuMap[item.id]).filter(Boolean)
               return (
                 <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-                  <td className="px-4 py-3">
-                    <p className="font-mono font-bold text-gray-900 dark:text-gray-50">{order.order_code}</p>
-                    <p className="text-xs text-gray-400 dark:text-gray-500">{new Date(order.created_at).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+                  <td className="px-4 py-3 whitespace-nowrap">
+                    <p className="font-mono font-bold text-gray-900 dark:text-gray-50 text-xs">{order.order_code}</p>
+                    <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
+                      {new Date(order.created_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                    </p>
                   </td>
-                  <td className="px-4 py-3 text-gray-700 dark:text-gray-200">
-                    <p>{order.profiles?.full_name || 'Khách vãng lai'}</p>
+                  <td className="px-4 py-3 whitespace-nowrap">
+                    <span className="text-sm text-gray-700 dark:text-gray-200">{order.profiles?.full_name || 'Khách vãng lai'}</span>
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-3 whitespace-nowrap">
                     {order.email ? (
-                      <div className="flex items-center gap-1.5 min-w-0">
-                        <span className="text-sm text-gray-700 dark:text-gray-200 truncate max-w-[180px]">{order.email}</span>
+                      <div className="flex items-center gap-1">
+                        <span className="text-sm text-gray-700 dark:text-gray-200">{order.email}</span>
                         <button
                           onClick={() => { navigator.clipboard.writeText(order.email!); toast.success('Đã copy email') }}
                           className="shrink-0 p-1 rounded text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
@@ -123,47 +125,47 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                       <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
                     )}
                   </td>
-                  <td className="px-4 py-3 hidden md:table-cell">
+                  <td className="px-4 py-3 max-w-[220px]">
                     <div className="space-y-0.5">
                       {items.map((item, i) => (
-                        <p key={i} className="text-gray-600 dark:text-gray-300 truncate max-w-48">{item.name}</p>
+                        <p key={i} className="text-sm text-gray-600 dark:text-gray-300 truncate" title={item.name}>{item.name}</p>
                       ))}
                     </div>
                   </td>
-                  <td className="px-4 py-3 hidden lg:table-cell">
+                  <td className="px-4 py-3 whitespace-nowrap">
                     {skus.length > 0 ? (
-                      <div className="space-y-0.5">
+                      <div className="flex flex-wrap gap-1">
                         {skus.map((sku, i) => (
-                          <p key={i} className="font-mono text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 px-1.5 py-0.5 rounded w-fit">{sku}</p>
+                          <span key={i} className="font-mono text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 px-1.5 py-0.5 rounded">{sku}</span>
                         ))}
                       </div>
                     ) : (
                       <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
                     )}
                   </td>
-                  <td className="px-4 py-3 hidden lg:table-cell">
+                  <td className="px-4 py-3 max-w-[130px]">
                     {order.bank_transfer_note ? (
-                      <p className="text-sm text-gray-600 dark:text-gray-300 max-w-[140px] truncate" title={order.bank_transfer_note}>{order.bank_transfer_note}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300 truncate" title={order.bank_transfer_note}>{order.bank_transfer_note}</p>
                     ) : (
                       <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
                     )}
                   </td>
-                  <td className="px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50">
+                  <td className="px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap">
                     {formatCurrency(order.total_amount)}
                   </td>
-                  <td className="px-4 py-3 text-center">
+                  <td className="px-4 py-3 text-center whitespace-nowrap">
                     <Badge
                       variant={order.status === 'confirmed' ? 'default' : order.status === 'cancelled' ? 'destructive' : 'secondary'}
                     >
                       {order.status === 'confirmed' ? 'Đã xác nhận' : order.status === 'cancelled' ? 'Đã hủy' : 'Chờ xác nhận'}
                     </Badge>
                   </td>
-                  <td className="px-4 py-3 text-center">
+                  <td className="px-4 py-3 whitespace-nowrap">
                     {order.status === 'pending' ? (
                       <div className="flex items-center justify-center gap-1.5">
                         <Button
                           size="sm"
-                          className="bg-green-600 hover:bg-green-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white h-8 text-xs"
+                          className="bg-green-600 hover:bg-green-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white h-8 px-3 text-xs whitespace-nowrap"
                           onClick={() => handleAction(order.id, 'confirm')}
                           disabled={loadingId === order.id}
                         >
@@ -173,7 +175,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                         <Button
                           size="sm"
                           variant="outline"
-                          className="h-8 text-xs border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 dark:bg-transparent"
+                          className="h-8 px-3 text-xs whitespace-nowrap border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 dark:bg-transparent"
                           onClick={() => handleAction(order.id, 'cancel')}
                           disabled={loadingId === order.id}
                         >
@@ -182,7 +184,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                         </Button>
                       </div>
                     ) : order.status === 'confirmed' ? (
-                      <span className="text-xs text-green-600 dark:text-emerald-400 font-medium">✓ Đã cấp quyền</span>
+                      <span className="text-xs text-green-600 dark:text-emerald-400 font-medium whitespace-nowrap">✓ Đã cấp quyền</span>
                     ) : (
                       <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
                     )}
