@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useTransition } from 'react'
 import type { Template } from '@/lib/supabase/types'
+import type { PromotionWithTemplates } from '@/lib/supabase/types'
 import { TemplateCard } from './template-card'
 import { TemplateModal } from './template-modal'
 import { Search, ArrowDownUp, X, LayoutGrid, SlidersHorizontal, Tag, DollarSign, Sparkles } from 'lucide-react'
@@ -13,6 +14,7 @@ interface TemplateExplorerProps {
   templates: Template[]
   categories: string[]
   purchasedIds?: string[]
+  activePromotions?: PromotionWithTemplates[]
 }
 
 const PRICE_RANGES: Array<{ key: string; label: string; min: number; max: number }> = [
@@ -23,7 +25,7 @@ const PRICE_RANGES: Array<{ key: string; label: string; min: number; max: number
   { key: 'over-500', label: 'Trên 500.000 đ', min: 500_000, max: Infinity },
 ]
 
-export function TemplateExplorer({ templates, categories, purchasedIds = [] }: TemplateExplorerProps) {
+export function TemplateExplorer({ templates, categories, purchasedIds = [], activePromotions = [] }: TemplateExplorerProps) {
   const [selected, setSelected] = useState<Template | null>(null)
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState<string>('')
@@ -310,6 +312,7 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
                 template={t}
                 isPurchased={purchasedIds.includes(t.id)}
                 onViewDetail={setSelected}
+                activePromotions={activePromotions}
               />
             ))}
           </div>
@@ -372,6 +375,7 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
         open={!!selected}
         onClose={() => setSelected(null)}
         isPurchased={selected ? purchasedIds.includes(selected.id) : false}
+        activePromotions={activePromotions}
       />
     </div>
   )

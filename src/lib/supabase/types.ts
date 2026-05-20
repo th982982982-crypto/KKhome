@@ -119,3 +119,32 @@ export interface OrderItem {
   name: string
   price: number
 }
+
+export interface Promotion {
+  id: string
+  name: string
+  discount_type: 'percent' | 'fixed'
+  discount_value: number
+  start_at: string
+  end_at: string
+  apply_to: 'all' | 'selected'
+  is_active: boolean
+  created_at: string
+}
+
+export interface PromotionWithTemplates extends Promotion {
+  template_ids: string[]
+}
+
+export function getEffectivePrice(salePrice: number, templateId: string, activePromotions: PromotionWithTemplates[]): number {
+  let best = salePrice
+  for (const promo of activePromotions) {
+    if (promo.apply_to === 'all' || promo.template_ids.includes(templateId)) {
+      const discounted = promo.discount_type === 'percent'
+        ? Math.round(salePrice * (1 - promo.discount_value / 100))
+        : Math.max(0, salePrice - promo.discount_value)
+      if (discounted < best) best = discounted
+    }
+  }
+  return best
+}

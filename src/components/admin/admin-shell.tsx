@@ -18,6 +18,7 @@ import {
   ExternalLink,
   Menu,
   X,
+  Tag,
 } from 'lucide-react'
 
 interface AdminShellProps {
@@ -30,6 +31,7 @@ const NAV = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/admin/templates', label: 'Templates', icon: FileSpreadsheet },
   { href: '/admin/orders', label: 'Đơn hàng', icon: ShoppingBag, badgeKey: 'pending' as const },
+  { href: '/admin/promotions', label: 'Khuyến mãi', icon: Tag },
   { href: '/admin/sync', label: 'Đồng bộ Sheets', icon: RefreshCw },
 ]
 

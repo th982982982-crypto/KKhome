@@ -3,8 +3,10 @@
 import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
 import { formatCurrency } from '@/lib/format'
+import { getEffectivePrice, type PromotionWithTemplates } from '@/lib/supabase/types'
 import type { Template } from '@/lib/supabase/types'
 import { ShoppingCart, Eye, CheckCircle2 } from 'lucide-react'
+import { CountdownTimer } from '@/components/ui/countdown-timer'
 import { useCartStore } from '@/lib/cart-store'
 import { toast } from 'sonner'
 
@@ -12,9 +14,10 @@ interface TemplateCardProps {
   template: Template
   onViewDetail?: (template: Template) => void
   isPurchased?: boolean
+  activePromotions?: PromotionWithTemplates[]
 }
 
-export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCardProps) {
+export function TemplateCard({ template, onViewDetail, isPurchased, activePromotions = [] }: TemplateCardProps) {
   const addItem = useCartStore((s) => s.addItem)
   const cartItems = useCartStore((s) => s.items)
   const inCart = cartItems.some((i) => i.id === template.id)
@@ -22,6 +25,17 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
   const discount = template.original_price && template.sale_price && template.original_price > template.sale_price
     ? Math.round((1 - template.sale_price / template.original_price) * 100)
     : null
+
+  const effectivePrice = template.sale_price
+    ? getEffectivePrice(template.sale_price, template.id, activePromotions)
+    : null
+  const promoDiscount = template.sale_price && effectivePrice !== null && effectivePrice < template.sale_price
+    ? Math.round((1 - effectivePrice / template.sale_price) * 100)
+    : null
+  // Find the matching active promo for countdown
+  const activePromo = activePromotions.find(p =>
+    p.apply_to === 'all' || p.template_ids.includes(template.id)
+  )
 
   function handleAddToCart(e: React.MouseEvent) {
     e.stopPropagation()
@@ -68,9 +82,9 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
               <CheckCircle2 className="w-3 h-3" /> Đã mua
             </span>
           )}
-          {discount && !isPurchased && (
+          {(promoDiscount || discount) && !isPurchased && (
             <span className="bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-sm">
-              -{discount}%
+              -{promoDiscount ?? discount}%
             </span>
           )}
         </div>
@@ -108,10 +122,12 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
         <div className="flex items-center justify-between gap-2 pt-1 border-t border-gray-50 dark:border-gray-800">
           <div className="flex items-baseline gap-1.5">
             <span className="font-bold text-gray-900 dark:text-gray-50 text-base">
-              {template.sale_price ? formatCurrency(template.sale_price) : 'Liên hệ'}
+              {effectivePrice !== null ? formatCurrency(effectivePrice) : 'Liên hệ'}
             </span>
-            {template.original_price && template.original_price > (template.sale_price ?? 0) && (
-              <span className="text-gray-400 dark:text-gray-500 text-xs line-through">{formatCurrency(template.original_price)}</span>
+            {(promoDiscount || (template.original_price && template.original_price > (template.sale_price ?? 0))) && (
+              <span className="text-gray-400 dark:text-gray-500 text-xs line-through">
+                {formatCurrency(promoDiscount ? template.sale_price! : template.original_price!)}
+              </span>
             )}
           </div>
 
@@ -137,6 +153,11 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
             </button>
           )}
         </div>
+        {activePromo && !isPurchased && (
+          <div className="mt-2 pt-2 border-t border-gray-50 dark:border-gray-800">
+            <CountdownTimer endAt={activePromo.end_at} className="text-xs text-red-500 dark:text-red-400 font-semibold" />
+          </div>
+        )}
       </div>
     </div>
   )

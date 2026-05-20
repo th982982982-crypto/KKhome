@@ -5,8 +5,10 @@ import { useState, useEffect } from 'react'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { Badge } from '@/components/ui/badge'
 import { formatCurrency, getYouTubeEmbedUrl } from '@/lib/format'
+import { getEffectivePrice, type PromotionWithTemplates } from '@/lib/supabase/types'
 import type { Template } from '@/lib/supabase/types'
 import { ShoppingCart, X, Tag, PlayCircle, ExternalLink, CheckCircle2, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react'
+import { CountdownTimer } from '@/components/ui/countdown-timer'
 import { useCartStore } from '@/lib/cart-store'
 import { toast } from 'sonner'
 
@@ -15,9 +17,10 @@ interface TemplateModalProps {
   open: boolean
   onClose: () => void
   isPurchased?: boolean
+  activePromotions?: PromotionWithTemplates[]
 }
 
-export function TemplateModal({ template, open, onClose, isPurchased = false }: TemplateModalProps) {
+export function TemplateModal({ template, open, onClose, isPurchased = false, activePromotions = [] }: TemplateModalProps) {
   const addItem = useCartStore((s) => s.addItem)
   const cartItems = useCartStore((s) => s.items)
   const inCart = template ? cartItems.some((i) => i.id === template.id) : false
@@ -57,6 +60,16 @@ export function TemplateModal({ template, open, onClose, isPurchased = false }: 
   const discount = template.original_price && template.sale_price && template.original_price > template.sale_price
     ? Math.round((1 - template.sale_price / template.original_price) * 100)
     : null
+
+  const effectivePrice = template.sale_price
+    ? getEffectivePrice(template.sale_price, template.id, activePromotions)
+    : null
+  const promoDiscount = template.sale_price && effectivePrice !== null && effectivePrice < template.sale_price
+    ? Math.round((1 - effectivePrice / template.sale_price) * 100)
+    : null
+  const activePromo = activePromotions.find(p =>
+    p.apply_to === 'all' || p.template_ids.includes(template.id)
+  )
 
   const benefits = [
     'Quyền truy cập trực tiếp trên web',
@@ -102,9 +115,9 @@ export function TemplateModal({ template, open, onClose, isPurchased = false }: 
                   <span className="inline-flex items-center gap-1 bg-emerald-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md">
                     <CheckCircle2 className="w-3 h-3" /> Đã sở hữu
                   </span>
-                ) : discount ? (
+                ) : (promoDiscount || discount) ? (
                   <span className="bg-red-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md">
-                    -{discount}%
+                    -{promoDiscount ?? discount}%
                   </span>
                 ) : null}
               </div>
@@ -183,14 +196,21 @@ export function TemplateModal({ template, open, onClose, isPurchased = false }: 
 
             {/* Price + CTA (desktop only — mobile uses sticky bar) */}
             <div className="p-6 pb-4 hidden lg:block">
-              <div className="flex items-baseline gap-3 mb-4">
+              <div className="flex items-baseline gap-3 mb-2">
                 <span className="text-3xl font-black text-gray-900 dark:text-gray-50">
-                  {template.sale_price ? formatCurrency(template.sale_price) : 'Liên hệ'}
+                  {effectivePrice !== null ? formatCurrency(effectivePrice) : 'Liên hệ'}
                 </span>
-                {template.original_price && template.original_price > (template.sale_price ?? 0) && (
-                  <span className="text-gray-400 dark:text-gray-500 line-through text-base">{formatCurrency(template.original_price)}</span>
+                {(promoDiscount || (template.original_price && template.original_price > (template.sale_price ?? 0))) && (
+                  <span className="text-gray-400 dark:text-gray-500 line-through text-base">
+                    {formatCurrency(promoDiscount ? template.sale_price! : template.original_price!)}
+                  </span>
                 )}
               </div>
+              {activePromo && !isPurchased && (
+                <div className="mb-4">
+                  <CountdownTimer endAt={activePromo.end_at} className="text-sm text-red-500 dark:text-red-400 font-semibold" />
+                </div>
+              )}
 
               {isPurchased && template.google_sheet_copy_url ? (
                 <a
@@ -272,10 +292,12 @@ export function TemplateModal({ template, open, onClose, isPurchased = false }: 
         <div className="lg:hidden absolute bottom-0 left-0 right-0 z-20 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-t border-gray-100 dark:border-gray-800 p-3 flex items-center gap-3">
           <div className="flex flex-col">
             <span className="text-lg font-black text-gray-900 dark:text-gray-50 leading-tight">
-              {template.sale_price ? formatCurrency(template.sale_price) : 'Liên hệ'}
+              {effectivePrice !== null ? formatCurrency(effectivePrice) : 'Liên hệ'}
             </span>
-            {template.original_price && template.original_price > (template.sale_price ?? 0) && (
-              <span className="text-gray-400 dark:text-gray-500 line-through text-xs">{formatCurrency(template.original_price)}</span>
+            {(promoDiscount || (template.original_price && template.original_price > (template.sale_price ?? 0))) && (
+              <span className="text-gray-400 dark:text-gray-500 line-through text-xs">
+                {formatCurrency(promoDiscount ? template.sale_price! : template.original_price!)}
+              </span>
             )}
           </div>
           {isPurchased && template.google_sheet_copy_url ? (
