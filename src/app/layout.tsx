@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Template Store - Google Sheets Templates",
+  title: "KKhome - Google Sheets Templates",
   description: "Kho Google Sheets Templates chuyên nghiệp cho doanh nghiệp",
 };
 

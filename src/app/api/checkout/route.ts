@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server'
-import { createAdminClient } from '@/lib/supabase/server'
+import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { generateOrderCode } from '@/lib/format'
 
 export async function POST(req: Request) {
-  const supabase = await createAdminClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const sessionClient = await createClient()
+  const { data: { user } } = await sessionClient.auth.getUser()
 
   if (!user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -12,13 +12,14 @@ export async function POST(req: Request) {
 
   const { items, total, note } = await req.json()
 
-  if (!items?.length || !total) {
+  if (!items?.length || typeof total !== 'number' || total <= 0) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
   }
 
+  const admin = createAdminClient()
   const order_code = generateOrderCode()
 
-  const { data: order, error } = await supabase
+  const { data: order, error } = await admin
     .from('orders')
     .insert({
       order_code,

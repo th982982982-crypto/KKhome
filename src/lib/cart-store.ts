@@ -6,7 +6,7 @@ import type { CartItem } from './supabase/types'
 
 interface CartStore {
   items: CartItem[]
-  addItem: (item: CartItem) => void
+  addItem: (item: CartItem) => boolean
   removeItem: (id: string) => void
   clearCart: () => void
   total: () => number
@@ -17,8 +17,9 @@ export const useCartStore = create<CartStore>()(
     (set, get) => ({
       items: [],
       addItem: (item) => {
-        const exists = get().items.find((i) => i.id === item.id)
-        if (!exists) set((state) => ({ items: [...state.items, item] }))
+        if (get().items.find((i) => i.id === item.id)) return false
+        set((state) => ({ items: [...state.items, item] }))
+        return true
       },
       removeItem: (id) =>
         set((state) => ({ items: state.items.filter((i) => i.id !== id) })),

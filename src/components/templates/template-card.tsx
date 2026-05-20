@@ -25,7 +25,7 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
 
   function handleAddToCart(e: React.MouseEvent) {
     e.stopPropagation()
-    addItem({
+    const added = addItem({
       type: 'template',
       id: template.id,
       name: template.name,
@@ -33,7 +33,8 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
       original_price: template.original_price,
       thumbnail_url: template.thumbnail_url,
     })
-    toast.success('Đã thêm vào giỏ hàng')
+    if (added) toast.success('Đã thêm vào giỏ hàng')
+    else toast.info('Đã có trong giỏ hàng')
   }
 
   return (

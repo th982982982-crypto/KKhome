@@ -1,21 +1,12 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/require-admin'
 
 export async function POST(req: Request) {
-  const supabase = await createAdminClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const adminUser = await requireAdmin()
+  if (!adminUser) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 
-  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-
-  // Verify admin
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .single()
-
-  if (!profile?.is_admin) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
-
+  const supabase = createAdminClient()
   const { order_id } = await req.json()
 
   const { data: order, error: orderError } = await supabase
@@ -29,13 +20,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Order not found or already processed' }, { status: 404 })
   }
 
-  // Update order status
   await supabase
     .from('orders')
-    .update({ status: 'confirmed', confirmed_at: new Date().toISOString(), confirmed_by: user.id })
+    .update({ status: 'confirmed', confirmed_at: new Date().toISOString(), confirmed_by: adminUser.id })
     .eq('id', order_id)
 
-  // Create user_purchases for each item
   const items = order.items as { type: string; id: string; name: string; price: number }[]
   const purchases = items.map((item) => ({
     user_id: order.user_id,

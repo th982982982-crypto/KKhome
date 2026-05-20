@@ -26,7 +26,7 @@ export function PackageCard({ package: pkg }: { package: PackageWithTemplates })
     .filter(Boolean) as string[] ?? []
 
   function handleAddToCart() {
-    addItem({
+    const added = addItem({
       type: 'package',
       id: pkg.id,
       name: pkg.name,
@@ -34,7 +34,8 @@ export function PackageCard({ package: pkg }: { package: PackageWithTemplates })
       original_price: pkg.original_price,
       thumbnail_url: null,
     })
-    toast.success('Đã thêm gói vào giỏ hàng')
+    if (added) toast.success('Đã thêm gói vào giỏ hàng')
+    else toast.info('Đã có trong giỏ hàng')
   }
 
   const discount = pkg.original_price && pkg.original_price > pkg.sale_price

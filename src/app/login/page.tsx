@@ -7,7 +7,10 @@ import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { PasswordInput } from '@/components/ui/password-input'
+import { AuthShell } from '@/components/auth/auth-shell'
 import { toast } from 'sonner'
+import { Loader2 } from 'lucide-react'
 
 function LoginForm() {
   const [email, setEmail] = useState('')
@@ -24,11 +27,11 @@ function LoginForm() {
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) {
       toast.error(error.message === 'Invalid login credentials' ? 'Email hoặc mật khẩu không đúng' : error.message)
+      setLoading(false)
     } else {
       router.push(redirect)
       router.refresh()
     }
-    setLoading(false)
   }
 
   return (
@@ -39,10 +42,10 @@ function LoginForm() {
       </div>
       <div className="space-y-1.5">
         <Label htmlFor="password">Mật khẩu</Label>
-        <Input id="password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <PasswordInput id="password" placeholder="••••••••" value={password} onChange={setPassword} required />
       </div>
       <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800 h-11 rounded-xl font-semibold" disabled={loading}>
-        {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
+        {loading ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Đang đăng nhập...</> : 'Đăng nhập'}
       </Button>
     </form>
   )
@@ -50,22 +53,21 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-sm">
-        <div className="text-center mb-8">
-          <Link href="/" className="text-2xl font-bold text-gray-900">Template Store</Link>
-          <p className="text-gray-500 mt-2 text-sm">Đăng nhập để xem templates đã mua</p>
-        </div>
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-          <Suspense fallback={<div className="h-40 flex items-center justify-center text-gray-400 text-sm">Đang tải...</div>}>
-            <LoginForm />
-          </Suspense>
-          <p className="text-center text-sm text-gray-500 mt-6">
-            Chưa có tài khoản?{' '}
-            <Link href="/register" className="text-gray-900 font-semibold hover:underline">Đăng ký</Link>
-          </p>
-        </div>
-      </div>
-    </div>
+    <AuthShell
+      title="Chào mừng trở lại"
+      subtitle="Đăng nhập để truy cập templates đã mua"
+      panelTitle={'Templates Google Sheets\nchuyên nghiệp.'}
+      panelSubtitle="Khám phá kho templates được thiết kế dành riêng cho doanh nghiệp Việt — chấm công, kế toán, kho hàng và nhiều hơn nữa."
+      footer={
+        <>
+          Chưa có tài khoản?{' '}
+          <Link href="/register" className="text-gray-900 font-semibold hover:underline">Đăng ký miễn phí</Link>
+        </>
+      }
+    >
+      <Suspense fallback={<div className="h-40 flex items-center justify-center text-gray-400 text-sm">Đang tải...</div>}>
+        <LoginForm />
+      </Suspense>
+    </AuthShell>
   )
 }

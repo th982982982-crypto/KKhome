@@ -1,14 +1,6 @@
-import { createAdminClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
-
-async function requireAdmin() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return null
-  const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single()
-  return profile?.is_admin ? user : null
-}
+import { createAdminClient } from '@/lib/supabase/server'
+import { requireAdmin } from '@/lib/require-admin'
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const user = await requireAdmin()
@@ -16,7 +8,7 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
 
   const { id } = await params
   const body = await req.json()
-  const supabase = await createAdminClient()
+  const supabase = createAdminClient()
 
   const { data, error } = await supabase
     .from('templates')
@@ -34,7 +26,7 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const { id } = await params
-  const supabase = await createAdminClient()
+  const supabase = createAdminClient()
 
   const { error } = await supabase.from('templates').delete().eq('id', id)
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })

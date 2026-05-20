@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
+import { SiteFooter } from '@/components/layout/site-footer'
 import { PackageCard } from '@/components/packages/package-card'
 
 export default async function PackagesPage() {
@@ -19,10 +20,10 @@ export default async function PackagesPage() {
     .order('sort_order', { ascending: true })
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar user={user} isAdmin={profile?.is_admin} />
 
-      <div className="max-w-6xl mx-auto px-4 py-16">
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold text-gray-900 mb-3">Chọn gói phù hợp</h1>
           <p className="text-gray-500">Mua theo gói để tiết kiệm hơn và truy cập nhiều templates hơn</p>
@@ -40,7 +41,8 @@ export default async function PackagesPage() {
             <p>Chưa có gói nào. Vui lòng quay lại sau.</p>
           </div>
         )}
-      </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }

@@ -7,7 +7,10 @@ import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { PasswordInput } from '@/components/ui/password-input'
+import { AuthShell } from '@/components/auth/auth-shell'
 import { toast } from 'sonner'
+import { Loader2 } from 'lucide-react'
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('')
@@ -32,6 +35,7 @@ export default function RegisterPage() {
 
     if (error) {
       toast.error(error.message)
+      setLoading(false)
     } else if (data.user && !data.session) {
       toast.success('Kiểm tra email để xác nhận tài khoản!')
       router.push('/login')
@@ -39,69 +43,41 @@ export default function RegisterPage() {
       router.push('/dashboard')
       router.refresh()
     }
-    setLoading(false)
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-sm">
-        <div className="text-center mb-8">
-          <Link href="/" className="text-2xl font-bold text-gray-900">Template Store</Link>
-          <p className="text-gray-500 mt-2 text-sm">Tạo tài khoản để bắt đầu mua templates</p>
+    <AuthShell
+      title="Tạo tài khoản"
+      subtitle="Đăng ký trong 30 giây để mua templates"
+      panelTitle={'Tham gia 500+\nkhách hàng tin dùng.'}
+      panelSubtitle="Tạo tài khoản miễn phí, mua template một lần và dùng mãi mãi với cập nhật khi pháp luật thay đổi."
+      footer={
+        <>
+          Đã có tài khoản?{' '}
+          <Link href="/login" className="text-gray-900 font-semibold hover:underline">Đăng nhập</Link>
+        </>
+      }
+    >
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-1.5">
+          <Label htmlFor="fullName">Họ và tên</Label>
+          <Input id="fullName" placeholder="Nguyễn Văn A" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
         </div>
-
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-1.5">
-              <Label htmlFor="fullName">Họ và tên</Label>
-              <Input
-                id="fullName"
-                placeholder="Nguyễn Văn A"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="email@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label htmlFor="password">Mật khẩu</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Ít nhất 6 ký tự"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-
-            <Button
-              type="submit"
-              className="w-full bg-black text-white hover:bg-gray-800 h-11 rounded-xl font-semibold"
-              disabled={loading}
-            >
-              {loading ? 'Đang đăng ký...' : 'Đăng ký'}
-            </Button>
-          </form>
-
-          <p className="text-center text-sm text-gray-500 mt-6">
-            Đã có tài khoản?{' '}
-            <Link href="/login" className="text-gray-900 font-semibold hover:underline">
-              Đăng nhập
-            </Link>
-          </p>
+        <div className="space-y-1.5">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" type="email" placeholder="email@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
-      </div>
-    </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="password">Mật khẩu</Label>
+          <PasswordInput id="password" placeholder="Ít nhất 6 ký tự" value={password} onChange={setPassword} required />
+        </div>
+        <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800 h-11 rounded-xl font-semibold" disabled={loading}>
+          {loading ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Đang đăng ký...</> : 'Tạo tài khoản'}
+        </Button>
+        <p className="text-xs text-gray-400 text-center">
+          Bằng việc đăng ký, bạn đồng ý với điều khoản sử dụng của chúng tôi.
+        </p>
+      </form>
+    </AuthShell>
   )
 }

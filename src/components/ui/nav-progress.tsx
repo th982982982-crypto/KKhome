@@ -33,10 +33,11 @@ export function NavProgress() {
   if (!visible) return null
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[9999] h-0.5 bg-gray-200 overflow-hidden">
+    <div className="fixed top-0 left-0 right-0 z-[9999] h-[2px] overflow-hidden pointer-events-none">
+      <div className="absolute inset-y-0 left-0 right-0 bg-gradient-to-r from-transparent via-indigo-200/40 to-transparent" />
       <div
-        className="absolute inset-y-0 w-1/2 bg-black"
-        style={{ animation: 'nav-progress 1s linear infinite' }}
+        className="absolute inset-y-0 w-1/2 bg-gradient-to-r from-indigo-500 via-violet-500 to-pink-500 shadow-[0_0_8px_rgba(99,102,241,0.6)]"
+        style={{ animation: 'nav-progress 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite' }}
       />
     </div>
   )

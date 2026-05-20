@@ -2,8 +2,10 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { Button } from '@/components/ui/button'
 import { Navbar } from '@/components/layout/navbar'
+import { SiteFooter } from '@/components/layout/site-footer'
 import { TemplateSection } from '@/components/templates/template-section'
-import { ArrowRight, Star, Shield, Zap } from 'lucide-react'
+import { getUserPurchasedTemplateIds } from '@/lib/access-control'
+import { ArrowRight, Sparkles, Shield, Zap, PlayCircle, Star } from 'lucide-react'
 export const revalidate = 0
 
 export default async function HomePage() {
@@ -12,72 +14,104 @@ export default async function HomePage() {
   const { data: { user } } = await supabase.auth.getUser()
 
   let profile = null
+  let purchasedIds: string[] = []
   if (user) {
     const { data } = await supabase.from('profiles').select('*').eq('id', user.id).single()
     profile = data
+    purchasedIds = await getUserPurchasedTemplateIds(user.id)
   }
 
-  const { data: featuredTemplates = [] } = await supabase
+  const { data: templatesData } = await supabase
     .from('templates')
     .select('*')
     .eq('is_published', true)
     .order('sort_order', { ascending: true })
-    .limit(6)
+    .limit(8)
+  const featuredTemplates = templatesData ?? []
 
-  const { data: packages } = await supabase
+  const { data: packagesData } = await supabase
     .from('packages')
     .select('*')
     .eq('is_active', true)
     .order('sort_order', { ascending: true })
     .limit(3)
+  const packages = packagesData ?? []
+
+  const { count: templateCount } = await supabase
+    .from('templates')
+    .select('*', { count: 'exact', head: true })
+    .eq('is_published', true)
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar user={user} isAdmin={profile?.is_admin} />
 
+      <main className="flex-1">
       {/* Hero */}
-      <section className="relative bg-black text-white py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-sm mb-6">
-            <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
-            <span>Google Sheets Templates chuyên nghiệp</span>
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(99,102,241,0.25),transparent_40%),radial-gradient(circle_at_80%_60%,rgba(236,72,153,0.15),transparent_40%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-[size:48px_48px] opacity-20" />
+
+        <div className="relative max-w-6xl mx-auto px-4 py-20 sm:py-28 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur ring-1 ring-white/10 rounded-full px-4 py-1.5 text-xs sm:text-sm mb-6">
+            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+            <span className="text-white/80">Google Sheets Templates chuyên nghiệp cho doanh nghiệp Việt</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-6">
-            Template Google Sheets<br />
-            <span className="text-gray-400">cho mọi nhu cầu doanh nghiệp</span>
+
+          <h1 className="text-4xl sm:text-6xl font-black leading-[1.05] tracking-tight mb-6">
+            Mua template,<br />
+            <span className="bg-gradient-to-r from-indigo-300 via-violet-300 to-pink-300 bg-clip-text text-transparent">
+              dùng ngay lập tức.
+            </span>
           </h1>
-          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-            Chấm công, tính lương, quản lý nội dung, pháp luật doanh nghiệp — tất cả đã có sẵn,
-            thiết kế đẹp và có video hướng dẫn cụ thể.
+
+          <p className="text-white/70 text-base sm:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+            Chấm công, tính lương, quản lý kho, pháp luật doanh nghiệp — mỗi template
+            đều có video hướng dẫn chi tiết và xem trực tiếp trên web sau khi mua.
           </p>
+
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/templates">
-              <Button size="lg" className="bg-white text-black hover:bg-gray-100 h-12 px-8 rounded-xl font-semibold">
-                Xem tất cả templates <ArrowRight className="w-4 h-4 ml-2" />
+              <Button size="lg" className="bg-white text-black hover:bg-white/90 h-12 px-8 rounded-xl font-semibold shadow-2xl shadow-white/10">
+                Khám phá templates <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
             <Link href="/packages">
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 h-12 px-8 rounded-xl font-semibold">
-                Xem gói mua
+              <Button size="lg" className="bg-white/10 text-white hover:bg-white/15 border border-white/20 backdrop-blur h-12 px-8 rounded-xl font-semibold">
+                <PlayCircle className="w-4 h-4 mr-2" /> Xem gói mua
               </Button>
             </Link>
+          </div>
+
+          {/* Social proof */}
+          <div className="mt-12 grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+            {[
+              { n: `${templateCount ?? '20'}+`, l: 'Templates' },
+              { n: '500+', l: 'Khách hàng' },
+              { n: '4.9★', l: 'Đánh giá' },
+            ].map((s) => (
+              <div key={s.l} className="text-center">
+                <div className="text-2xl sm:text-3xl font-black bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">{s.n}</div>
+                <div className="text-xs text-white/50 mt-1">{s.l}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Features */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <section className="py-16 px-4 bg-white border-b border-gray-100">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[
-            { icon: <Zap className="w-5 h-5" />, title: 'Dùng ngay tức thì', desc: 'Xem template ngay trên web sau khi mua, không cần tải hay cài đặt.' },
-            { icon: <Star className="w-5 h-5" />, title: 'Video hướng dẫn cụ thể', desc: 'Mỗi template có video hướng dẫn chi tiết từng bước sử dụng.' },
-            { icon: <Shield className="w-5 h-5" />, title: 'Cập nhật miễn phí', desc: 'Mua một lần, nhận cập nhật mãi mãi khi pháp luật thay đổi.' },
+            { icon: <Zap className="w-5 h-5" />, title: 'Dùng ngay tức thì', desc: 'Xem template ngay trên web sau khi mua, không cần tải hay cài đặt.', color: 'from-amber-100 to-orange-50' },
+            { icon: <PlayCircle className="w-5 h-5" />, title: 'Video hướng dẫn chi tiết', desc: 'Mỗi template có video hướng dẫn từng bước sử dụng.', color: 'from-violet-100 to-indigo-50' },
+            { icon: <Shield className="w-5 h-5" />, title: 'Cập nhật miễn phí', desc: 'Mua một lần, nhận cập nhật mãi mãi khi pháp luật thay đổi.', color: 'from-emerald-100 to-teal-50' },
           ].map((f) => (
-            <div key={f.title} className="text-center">
-              <div className="w-12 h-12 bg-black text-white rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <div key={f.title} className="rounded-2xl border border-gray-100 p-6 hover:border-gray-200 hover:shadow-md transition-all">
+              <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${f.color} flex items-center justify-center mb-4 text-gray-900`}>
                 {f.icon}
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">{f.title}</h3>
+              <h3 className="font-bold text-gray-900 mb-1.5">{f.title}</h3>
               <p className="text-sm text-gray-500 leading-relaxed">{f.desc}</p>
             </div>
           ))}
@@ -85,40 +119,52 @@ export default async function HomePage() {
       </section>
 
       {/* Featured Templates */}
-      {featuredTemplates && featuredTemplates.length > 0 && (
-        <section className="py-16 px-4">
+      {featuredTemplates.length > 0 && (
+        <section className="py-16 px-4 bg-gray-50">
           <div className="max-w-7xl mx-auto">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold text-gray-900">Templates nổi bật</h2>
-              <Link href="/templates">
+            <div className="flex items-end justify-between mb-8 gap-4">
+              <div>
+                <div className="text-sm font-medium text-indigo-600 mb-1">Templates nổi bật</div>
+                <h2 className="text-3xl font-black text-gray-900 tracking-tight">Phổ biến nhất tuần này</h2>
+              </div>
+              <Link href="/templates" className="hidden sm:block">
                 <Button variant="ghost" size="sm" className="text-gray-600">
                   Xem tất cả <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
               </Link>
             </div>
-            <TemplateSection templates={featuredTemplates} />
+            <TemplateSection templates={featuredTemplates} purchasedIds={purchasedIds} />
+            <div className="text-center mt-8 sm:hidden">
+              <Link href="/templates">
+                <Button variant="outline">Xem tất cả templates <ArrowRight className="w-4 h-4 ml-1" /></Button>
+              </Link>
+            </div>
           </div>
         </section>
       )}
 
       {/* Packages CTA */}
-      {packages && packages.length > 0 && (
-        <section className="py-16 px-4 bg-black text-white">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Tiết kiệm hơn với gói mua</h2>
-            <p className="text-gray-400 mb-8">Mua theo gói để truy cập nhiều templates hơn với giá tốt hơn.</p>
+      {packages.length > 0 && (
+        <section className="py-20 px-4 bg-gradient-to-br from-slate-950 to-indigo-950 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.15),transparent_60%)]" />
+          <div className="relative max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-3 py-1 text-xs mb-4">
+              <Star className="w-3 h-3 text-amber-300 fill-amber-300" />
+              <span>Tiết kiệm tới 40%</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black mb-4 tracking-tight">Mua theo gói, tiết kiệm hơn</h2>
+            <p className="text-white/70 mb-8 max-w-xl mx-auto">Gói bundle gồm nhiều templates cùng lĩnh vực — giá tốt hơn mua lẻ, dùng ngay không giới hạn.</p>
             <Link href="/packages">
-              <Button size="lg" className="bg-white text-black hover:bg-gray-100 h-12 px-8 rounded-xl font-semibold">
-                Xem các gói <ArrowRight className="w-4 h-4 ml-2" />
+              <Button size="lg" className="bg-white text-black hover:bg-white/90 h-12 px-8 rounded-xl font-semibold">
+                Xem các gói mua <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
           </div>
         </section>
       )}
+      </main>
 
-      <footer className="py-8 px-4 border-t text-center text-sm text-gray-400">
-        <p>© 2025 Template Store. Mọi quyền được bảo lưu.</p>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

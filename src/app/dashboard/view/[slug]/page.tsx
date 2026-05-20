@@ -2,6 +2,7 @@ import { redirect, notFound } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { userCanViewTemplate } from '@/lib/access-control'
 import { Navbar } from '@/components/layout/navbar'
+import { SiteFooter } from '@/components/layout/site-footer'
 import { getYouTubeEmbedUrl } from '@/lib/format'
 import Link from 'next/link'
 import { ArrowLeft, ExternalLink } from 'lucide-react'
@@ -33,10 +34,10 @@ export default async function ViewTemplatePage({ params }: { params: Promise<{ s
   const videoUrl = template.tutorial_video_url ? getYouTubeEmbedUrl(template.tutorial_video_url) : null
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <Navbar user={user} isAdmin={profile?.is_admin} />
 
-      <div className="max-w-7xl mx-auto px-4 py-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-6">
         <div className="flex items-center gap-3 mb-6">
           <Link href="/dashboard" className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900">
             <ArrowLeft className="w-4 h-4" /> Quay lại
@@ -92,7 +93,8 @@ export default async function ViewTemplatePage({ params }: { params: Promise<{ s
             </div>
           </div>
         )}
-      </div>
+      </main>
+      <SiteFooter />
     </div>
   )
 }
