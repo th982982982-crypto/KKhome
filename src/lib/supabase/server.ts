@@ -1,4 +1,5 @@
 import { createServerClient } from '@supabase/ssr'
+import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { cookies } from 'next/headers'
 
 function getConfig() {
@@ -27,18 +28,9 @@ export async function createClient() {
   })
 }
 
-export async function createAdminClient() {
-  const cookieStore = await cookies()
+export function createAdminClient() {
   const { url, serviceKey } = getConfig()
-
-  return createServerClient(url, serviceKey, {
-    cookies: {
-      getAll() { return cookieStore.getAll() },
-      setAll(cookiesToSet) {
-        try {
-          cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options))
-        } catch { /* ignore in Server Components */ }
-      },
-    },
+  return createSupabaseClient(url, serviceKey, {
+    auth: { autoRefreshToken: false, persistSession: false },
   })
 }
