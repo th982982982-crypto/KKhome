@@ -1,16 +1,17 @@
 'use client'
 
 import { useState } from 'react'
-import type { Template } from '@/lib/supabase/types'
+import type { Template, PromotionWithTemplates } from '@/lib/supabase/types'
 import { TemplateCard } from './template-card'
 import { TemplateModal } from './template-modal'
 
 interface TemplateSectionProps {
   templates: Template[]
   purchasedIds?: string[]
+  activePromotions?: PromotionWithTemplates[]
 }
 
-export function TemplateSection({ templates, purchasedIds = [] }: TemplateSectionProps) {
+export function TemplateSection({ templates, purchasedIds = [], activePromotions = [] }: TemplateSectionProps) {
   const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null)
 
   return (
@@ -22,6 +23,7 @@ export function TemplateSection({ templates, purchasedIds = [] }: TemplateSectio
             template={t}
             isPurchased={purchasedIds.includes(t.id)}
             onViewDetail={setSelectedTemplate}
+            activePromotions={activePromotions}
           />
         ))}
       </div>
@@ -31,6 +33,7 @@ export function TemplateSection({ templates, purchasedIds = [] }: TemplateSectio
         open={!!selectedTemplate}
         onClose={() => setSelectedTemplate(null)}
         isPurchased={selectedTemplate ? purchasedIds.includes(selectedTemplate.id) : false}
+        activePromotions={activePromotions}
       />
     </>
   )

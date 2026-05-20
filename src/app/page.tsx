@@ -1,15 +1,17 @@
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { Button } from '@/components/ui/button'
 import { Navbar } from '@/components/layout/navbar'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { TemplateSection } from '@/components/templates/template-section'
 import { getUserPurchasedTemplateIds } from '@/lib/access-control'
 import { ArrowRight, Sparkles, Shield, Zap, PlayCircle, Star } from 'lucide-react'
+import type { PromotionWithTemplates } from '@/lib/supabase/types'
 export const revalidate = 0
 
 export default async function HomePage() {
   const supabase = await createClient()
+  const admin = createAdminClient()
 
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -21,26 +23,27 @@ export default async function HomePage() {
     purchasedIds = await getUserPurchasedTemplateIds(user.id)
   }
 
-  const { data: templatesData } = await supabase
-    .from('templates')
-    .select('*')
-    .eq('is_published', true)
-    .order('sort_order', { ascending: true })
-    .limit(8)
-  const featuredTemplates = templatesData ?? []
+  const now = new Date().toISOString()
+  const [
+    { data: templatesData },
+    { data: packagesData },
+    { count: templateCount },
+    { data: promoData },
+  ] = await Promise.all([
+    admin.from('templates').select('*').eq('is_published', true).order('sort_order', { ascending: true }).limit(8),
+    admin.from('packages').select('*').eq('is_active', true).order('sort_order', { ascending: true }).limit(3),
+    admin.from('templates').select('*', { count: 'exact', head: true }).eq('is_published', true),
+    admin.from('promotions').select('*, promotion_templates(template_id)').eq('is_active', true).lte('start_at', now).gte('end_at', now),
+  ])
 
-  const { data: packagesData } = await supabase
-    .from('packages')
-    .select('*')
-    .eq('is_active', true)
-    .order('sort_order', { ascending: true })
-    .limit(3)
+  const featuredTemplates = templatesData ?? []
   const packages = packagesData ?? []
 
-  const { count: templateCount } = await supabase
-    .from('templates')
-    .select('*', { count: 'exact', head: true })
-    .eq('is_published', true)
+  const activePromotions: PromotionWithTemplates[] = (promoData ?? []).map((p) => ({
+    ...p,
+    template_ids: (p.promotion_templates ?? []).map((pt: { template_id: string }) => pt.template_id),
+    promotion_templates: undefined,
+  }))
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950">
@@ -133,7 +136,7 @@ export default async function HomePage() {
                 </Button>
               </Link>
             </div>
-            <TemplateSection templates={featuredTemplates} purchasedIds={purchasedIds} />
+            <TemplateSection templates={featuredTemplates} purchasedIds={purchasedIds} activePromotions={activePromotions} />
             <div className="text-center mt-8 sm:hidden">
               <Link href="/templates">
                 <Button variant="outline">Xem tất cả templates <ArrowRight className="w-4 h-4 ml-1" /></Button>
