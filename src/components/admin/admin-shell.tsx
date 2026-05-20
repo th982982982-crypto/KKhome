@@ -19,6 +19,7 @@ import {
   Menu,
   X,
   Tag,
+  Settings,
 } from 'lucide-react'
 
 interface AdminShellProps {
@@ -33,6 +34,7 @@ const NAV = [
   { href: '/admin/orders', label: 'Đơn hàng', icon: ShoppingBag, badgeKey: 'pending' as const },
   { href: '/admin/promotions', label: 'Khuyến mãi', icon: Tag },
   { href: '/admin/sync', label: 'Đồng bộ Sheets', icon: RefreshCw },
+  { href: '/admin/settings', label: 'Cài đặt', icon: Settings },
 ]
 
 export function AdminShell({ children, user, pendingCount = 0 }: AdminShellProps) {

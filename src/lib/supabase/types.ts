@@ -136,6 +136,21 @@ export interface PromotionWithTemplates extends Promotion {
   template_ids: string[]
 }
 
+export interface SiteSettings {
+  id: string
+  brand_name: string
+  brand_description: string
+  contact_hours: string | null
+  contact_phone: string | null
+  contact_email: string | null
+  contact_address: string | null
+  facebook_url: string | null
+  zalo_url: string | null
+  youtube_url: string | null
+  copyright_text: string | null
+  updated_at: string
+}
+
 export function getEffectivePrice(salePrice: number, templateId: string, activePromotions: PromotionWithTemplates[]): number {
   let best = salePrice
   for (const promo of activePromotions) {
