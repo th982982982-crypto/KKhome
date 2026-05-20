@@ -147,4 +147,10 @@
     background-color: rgb(209 213 219);
     border-radius: 9999px;
   }
+  .dark .scrollbar-thin {
+    scrollbar-color: rgb(55 65 81) transparent;
+  }
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(55 65 81);
+  }
 }

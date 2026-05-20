@@ -85,12 +85,12 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
             placeholder="Tìm template..."
             value={query}
             onChange={(e) => setFilter(() => setQuery(e.target.value))}
-            className="w-full h-10 pl-10 pr-9 rounded-xl border border-gray-200 bg-gray-50 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 focus:bg-white"
+            className="w-full h-10 pl-10 pr-9 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 focus:bg-white dark:focus:bg-gray-900"
           />
           {query && (
             <button
               onClick={() => setFilter(() => setQuery(''))}
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md text-gray-400 hover:text-gray-700 hover:bg-gray-100"
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
               aria-label="Xóa"
             >
               <X className="w-3.5 h-3.5" />
@@ -101,7 +101,7 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
 
       {/* Categories */}
       <div>
-        <h3 className="flex items-center gap-2 text-xs font-bold text-gray-900 uppercase tracking-wider mb-3">
+        <h3 className="flex items-center gap-2 text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-3">
           <Tag className="w-3.5 h-3.5 text-indigo-500" /> Danh mục
         </h3>
         <ul className="space-y-1">
@@ -109,11 +109,11 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
             <button
               onClick={() => setFilter(() => setCategory(''))}
               className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all flex items-center justify-between ${
-                !category ? 'bg-gray-900 text-white font-semibold' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                !category ? 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 font-semibold' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50'
               }`}
             >
               <span>Tất cả</span>
-              <span className={`text-xs ${!category ? 'text-white/70' : 'text-gray-400'}`}>{templates.length}</span>
+              <span className={`text-xs ${!category ? 'text-white/70 dark:text-gray-700' : 'text-gray-400 dark:text-gray-500'}`}>{templates.length}</span>
             </button>
           </li>
           {categories.map((cat) => {
@@ -124,11 +124,11 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
                 <button
                   onClick={() => setFilter(() => setCategory(active ? '' : cat))}
                   className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all flex items-center justify-between ${
-                    active ? 'bg-gray-900 text-white font-semibold' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                    active ? 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 font-semibold' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50'
                   }`}
                 >
                   <span className="truncate">{cat}</span>
-                  <span className={`text-xs ml-2 shrink-0 ${active ? 'text-white/70' : 'text-gray-400'}`}>{count}</span>
+                  <span className={`text-xs ml-2 shrink-0 ${active ? 'text-white/70 dark:text-gray-700' : 'text-gray-400 dark:text-gray-500'}`}>{count}</span>
                 </button>
               </li>
             )
@@ -138,7 +138,7 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
 
       {/* Price range */}
       <div>
-        <h3 className="flex items-center gap-2 text-xs font-bold text-gray-900 uppercase tracking-wider mb-3">
+        <h3 className="flex items-center gap-2 text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-3">
           <DollarSign className="w-3.5 h-3.5 text-emerald-500" /> Khoảng giá
         </h3>
         <ul className="space-y-1">
@@ -148,8 +148,8 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
                 onClick={() => setFilter(() => setPriceKey(range.key))}
                 className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
                   priceKey === range.key
-                    ? 'bg-indigo-50 text-indigo-700 font-semibold ring-1 ring-indigo-200'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                    ? 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 font-semibold ring-1 ring-indigo-200 dark:ring-indigo-800'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50'
                 }`}
               >
                 {range.label}
@@ -161,7 +161,7 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
 
       {/* Sort */}
       <div>
-        <h3 className="flex items-center gap-2 text-xs font-bold text-gray-900 uppercase tracking-wider mb-3">
+        <h3 className="flex items-center gap-2 text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-3">
           <ArrowDownUp className="w-3.5 h-3.5 text-amber-500" /> Sắp xếp
         </h3>
         <ul className="space-y-1">
@@ -173,7 +173,7 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
           ] as Array<{ key: SortKey; label: string }>).map((opt) => (
             <li key={opt.key}>
               <label className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm cursor-pointer transition-all ${
-                sort === opt.key ? 'bg-amber-50 text-amber-700 font-semibold ring-1 ring-amber-200' : 'text-gray-600 hover:bg-gray-100'
+                sort === opt.key ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 font-semibold ring-1 ring-amber-200 dark:ring-amber-800' : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}>
                 <input
                   type="radio"
@@ -193,7 +193,7 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
       {activeFilterCount > 0 && (
         <button
           onClick={clearAll}
-          className="w-full text-sm font-semibold text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 px-3 py-2 rounded-lg transition-colors"
+          className="w-full text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 px-3 py-2 rounded-lg transition-colors"
         >
           Xóa tất cả bộ lọc ({activeFilterCount})
         </button>
@@ -206,12 +206,12 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
       {/* Sidebar (desktop) */}
       <aside className="hidden lg:block">
         <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto pr-2 scrollbar-thin">
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-            <div className="flex items-center gap-2 pb-4 mb-4 border-b border-gray-100">
-              <SlidersHorizontal className="w-4 h-4 text-gray-700" />
-              <h2 className="font-bold text-gray-900">Bộ lọc</h2>
+          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm dark:shadow-black/40 p-5">
+            <div className="flex items-center gap-2 pb-4 mb-4 border-b border-gray-100 dark:border-gray-800">
+              <SlidersHorizontal className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+              <h2 className="font-bold text-gray-900 dark:text-gray-50">Bộ lọc</h2>
               {activeFilterCount > 0 && (
-                <span className="ml-auto text-xs font-bold bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full">
+                <span className="ml-auto text-xs font-bold bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 px-2 py-0.5 rounded-full">
                   {activeFilterCount}
                 </span>
               )}
@@ -233,12 +233,12 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
               placeholder="Tìm template theo tên, mô tả, tag..."
               value={query}
               onChange={(e) => setFilter(() => setQuery(e.target.value))}
-              className="w-full h-10 pl-10 pr-9 rounded-xl border border-gray-200 bg-white text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500"
+              className="w-full h-10 pl-10 pr-9 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-sm text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500"
             />
             {query && (
               <button
                 onClick={() => setFilter(() => setQuery(''))}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md text-gray-400 hover:text-gray-700 hover:bg-gray-100"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
                 aria-label="Xóa tìm kiếm"
               >
                 <X className="w-3.5 h-3.5" />
@@ -249,7 +249,7 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
           {/* Mobile filter trigger */}
           <button
             onClick={() => setDrawerOpen(true)}
-            className="lg:hidden flex items-center gap-2 h-10 px-4 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-700 active:scale-95"
+            className="lg:hidden flex items-center gap-2 h-10 px-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-sm font-semibold text-gray-700 dark:text-gray-200 active:scale-95"
           >
             <SlidersHorizontal className="w-4 h-4" />
             Bộ lọc
@@ -258,8 +258,8 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
             )}
           </button>
 
-          <p className="ml-auto text-sm text-gray-500 whitespace-nowrap">
-            <span className="font-bold text-gray-900">{filtered.length}</span> kết quả
+          <p className="ml-auto text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
+            <span className="font-bold text-gray-900 dark:text-gray-50">{filtered.length}</span> kết quả
           </p>
         </div>
 
@@ -267,33 +267,33 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
         {activeFilterCount > 0 && (
           <div className="flex flex-wrap gap-2 mb-6">
             {query && (
-              <span className="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1.5 rounded-full">
+              <span className="inline-flex items-center gap-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-xs font-medium px-3 py-1.5 rounded-full">
                 Từ khóa: <span className="font-semibold">"{query}"</span>
-                <button onClick={() => setFilter(() => setQuery(''))} className="hover:text-red-600">
+                <button onClick={() => setFilter(() => setQuery(''))} className="hover:text-red-600 dark:hover:text-red-400">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {category && (
-              <span className="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1.5 rounded-full">
+              <span className="inline-flex items-center gap-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-xs font-medium px-3 py-1.5 rounded-full">
                 {category}
-                <button onClick={() => setFilter(() => setCategory(''))} className="hover:text-red-600">
+                <button onClick={() => setFilter(() => setCategory(''))} className="hover:text-red-600 dark:hover:text-red-400">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {priceKey !== 'all' && (
-              <span className="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1.5 rounded-full">
+              <span className="inline-flex items-center gap-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-xs font-medium px-3 py-1.5 rounded-full">
                 {priceRange.label}
-                <button onClick={() => setFilter(() => setPriceKey('all'))} className="hover:text-red-600">
+                <button onClick={() => setFilter(() => setPriceKey('all'))} className="hover:text-red-600 dark:hover:text-red-400">
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
             {sort !== 'default' && (
-              <span className="inline-flex items-center gap-1.5 bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1.5 rounded-full">
+              <span className="inline-flex items-center gap-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 text-xs font-medium px-3 py-1.5 rounded-full">
                 {sort === 'newest' ? 'Mới nhất' : sort === 'price-asc' ? 'Giá thấp → cao' : 'Giá cao → thấp'}
-                <button onClick={() => setFilter(() => setSort('default'))} className="hover:text-red-600">
+                <button onClick={() => setFilter(() => setSort('default'))} className="hover:text-red-600 dark:hover:text-red-400">
                   <X className="w-3 h-3" />
                 </button>
               </span>
@@ -314,15 +314,15 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 px-4 bg-white rounded-2xl border border-dashed border-gray-200">
-            <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center mb-4">
-              <LayoutGrid className="w-7 h-7 text-gray-400" />
+          <div className="text-center py-20 px-4 bg-white dark:bg-gray-900 rounded-2xl border border-dashed border-gray-200 dark:border-gray-700">
+            <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center mb-4">
+              <LayoutGrid className="w-7 h-7 text-gray-400 dark:text-gray-500" />
             </div>
-            <h3 className="font-bold text-gray-900 mb-1">Không tìm thấy template phù hợp</h3>
-            <p className="text-sm text-gray-500 mb-5">Thử bỏ bớt bộ lọc hoặc đổi từ khóa tìm kiếm</p>
+            <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-1">Không tìm thấy template phù hợp</h3>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-5">Thử bỏ bớt bộ lọc hoặc đổi từ khóa tìm kiếm</p>
             <button
               onClick={clearAll}
-              className="text-sm font-semibold text-indigo-600 hover:text-indigo-700 underline"
+              className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 underline"
             >
               Xóa tất cả bộ lọc
             </button>
@@ -334,30 +334,30 @@ export function TemplateExplorer({ templates, categories, purchasedIds = [] }: T
       {drawerOpen && (
         <div className="lg:hidden fixed inset-0 z-50">
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setDrawerOpen(false)} />
-          <div className="absolute top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl flex flex-col">
-            <div className="h-14 flex items-center justify-between px-4 border-b border-gray-100">
+          <div className="absolute top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-white dark:bg-gray-900 shadow-2xl flex flex-col">
+            <div className="h-14 flex items-center justify-between px-4 border-b border-gray-100 dark:border-gray-800">
               <div className="flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-gray-700" />
-                <span className="font-bold text-gray-900">Bộ lọc</span>
+                <SlidersHorizontal className="w-4 h-4 text-gray-700 dark:text-gray-300" />
+                <span className="font-bold text-gray-900 dark:text-gray-50">Bộ lọc</span>
                 {activeFilterCount > 0 && (
-                  <span className="text-xs font-bold bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full">
+                  <span className="text-xs font-bold bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 px-2 py-0.5 rounded-full">
                     {activeFilterCount}
                   </span>
                 )}
               </div>
               <button
                 onClick={() => setDrawerOpen(false)}
-                className="p-2 -mr-2 rounded-lg hover:bg-gray-100"
+                className="p-2 -mr-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
                 aria-label="Đóng"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
             <div className="flex-1 overflow-y-auto p-4">{sidebar}</div>
-            <div className="p-4 border-t border-gray-100">
+            <div className="p-4 border-t border-gray-100 dark:border-gray-800">
               <button
                 onClick={() => setDrawerOpen(false)}
-                className="w-full h-11 rounded-xl bg-black text-white font-semibold flex items-center justify-center gap-2 active:scale-95"
+                className="w-full h-11 rounded-xl bg-black dark:bg-white text-white dark:text-gray-900 font-semibold flex items-center justify-center gap-2 active:scale-95"
               >
                 <Sparkles className="w-4 h-4" />
                 Xem {filtered.length} kết quả

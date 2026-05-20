@@ -20,13 +20,13 @@ export default async function PackagesPage() {
     .order('sort_order', { ascending: true })
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950">
       <Navbar user={user} isAdmin={profile?.is_admin} />
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-16">
         <div className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">Chọn gói phù hợp</h1>
-          <p className="text-gray-500">Mua theo gói để tiết kiệm hơn và truy cập nhiều templates hơn</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50 mb-3">Chọn gói phù hợp</h1>
+          <p className="text-gray-500 dark:text-gray-400">Mua theo gói để tiết kiệm hơn và truy cập nhiều templates hơn</p>
         </div>
 
         {packages && packages.length > 0 ? (

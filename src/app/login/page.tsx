@@ -46,18 +46,18 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {pendingEmail && (
-        <div className="flex gap-2.5 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-sm">
-          <MailCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-          <div className="text-emerald-900">
+        <div className="flex gap-2.5 p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-sm">
+          <MailCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+          <div className="text-emerald-900 dark:text-emerald-200">
             <p className="font-semibold mb-0.5">Kiểm tra email của bạn</p>
-            <p className="text-xs text-emerald-700">Chúng tôi đã gửi link xác nhận đến <span className="font-semibold">{pendingEmail}</span>. Bấm link để kích hoạt rồi quay lại đăng nhập.</p>
+            <p className="text-xs text-emerald-700 dark:text-emerald-300">Chúng tôi đã gửi link xác nhận đến <span className="font-semibold">{pendingEmail}</span>. Bấm link để kích hoạt rồi quay lại đăng nhập.</p>
           </div>
         </div>
       )}
       {errorMsg && !pendingEmail && (
-        <div className="flex gap-2.5 p-3 rounded-xl bg-red-50 border border-red-200 text-sm">
-          <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
-          <p className="text-red-900">{errorMsg === 'missing-code' ? 'Link xác nhận không hợp lệ. Vui lòng đăng ký lại.' : errorMsg}</p>
+        <div className="flex gap-2.5 p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-sm">
+          <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
+          <p className="text-red-900 dark:text-red-200">{errorMsg === 'missing-code' ? 'Link xác nhận không hợp lệ. Vui lòng đăng ký lại.' : errorMsg}</p>
         </div>
       )}
       <div className="space-y-1.5">
@@ -68,7 +68,7 @@ function LoginForm() {
         <Label htmlFor="password">Mật khẩu</Label>
         <PasswordInput id="password" placeholder="••••••••" value={password} onChange={setPassword} required />
       </div>
-      <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800 h-11 rounded-xl font-semibold" disabled={loading}>
+      <Button type="submit" className="w-full bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl font-semibold" disabled={loading}>
         {loading ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Đang đăng nhập...</> : 'Đăng nhập'}
       </Button>
     </form>
@@ -85,7 +85,7 @@ export default function LoginPage() {
       footer={
         <>
           Chưa có tài khoản?{' '}
-          <Link href="/register" className="text-gray-900 font-semibold hover:underline">Đăng ký miễn phí</Link>
+          <Link href="/register" className="text-gray-900 dark:text-gray-50 font-semibold hover:underline">Đăng ký miễn phí</Link>
         </>
       }
     >

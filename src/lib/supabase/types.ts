@@ -14,6 +14,7 @@ export interface Database {
           description: string | null
           category: string | null
           thumbnail_url: string | null
+          gallery_urls: string[]
           google_sheet_embed_url: string | null
           google_sheet_copy_url: string | null
           tutorial_video_url: string | null

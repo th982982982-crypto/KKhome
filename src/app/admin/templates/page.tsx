@@ -13,16 +13,16 @@ export default async function AdminTemplatesPage() {
   return (
     <div className="px-4 sm:px-6 lg:px-10 py-8">
       <div className="flex items-center gap-4 mb-6">
-        <Link href="/admin" className="text-gray-400 hover:text-gray-600 p-2 -m-2 rounded-lg hover:bg-gray-100 transition-colors">
+        <Link href="/admin" className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 p-2 -m-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
           <ArrowLeft className="w-5 h-5" />
         </Link>
         <div className="flex-1">
-          <div className="flex items-center gap-2 text-gray-400 text-sm mb-1">
+          <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500 text-sm mb-1">
             <FileSpreadsheet className="w-4 h-4" />
             <span>Templates</span>
           </div>
-          <h1 className="text-3xl font-black text-gray-900 tracking-tight">Quản lý Templates</h1>
-          <p className="text-sm text-gray-500 mt-1">Nhập và chỉnh sửa trực tiếp trên bảng</p>
+          <h1 className="text-3xl font-black text-gray-900 dark:text-gray-50 tracking-tight">Quản lý Templates</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Nhập và chỉnh sửa trực tiếp trên bảng</p>
         </div>
       </div>
 

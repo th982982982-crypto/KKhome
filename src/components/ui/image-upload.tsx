@@ -87,7 +87,7 @@ export function ImageUpload({ value, onChange, onClear }: ImageUploadProps) {
   return (
     <div className="space-y-2">
       {value ? (
-        <div className="relative group rounded-xl overflow-hidden border border-gray-200 aspect-[4/3] bg-gray-50">
+        <div className="relative group rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 aspect-[4/3] bg-gray-50 dark:bg-gray-800">
           <Image src={value} alt="thumbnail" fill className="object-cover" />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
             <button
@@ -114,24 +114,24 @@ export function ImageUpload({ value, onChange, onClear }: ImageUploadProps) {
           onDrop={handleDrop}
           onClick={() => !uploading && inputRef.current?.click()}
           className={`aspect-[4/3] rounded-xl border-2 border-dashed flex flex-col items-center justify-center gap-2 cursor-pointer transition-colors
-            ${dragging ? 'border-black bg-gray-50' : 'border-gray-200 hover:border-gray-400 hover:bg-gray-50'}
+            ${dragging ? 'border-black dark:border-white bg-gray-50 dark:bg-gray-800' : 'border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800/60'}
             ${uploading ? 'cursor-not-allowed opacity-60' : ''}`}
         >
           {uploading ? (
             <>
-              <Loader2 className="w-6 h-6 text-gray-400 animate-spin" />
-              <p className="text-xs text-gray-400">Đang tải lên...</p>
+              <Loader2 className="w-6 h-6 text-gray-400 dark:text-gray-500 animate-spin" />
+              <p className="text-xs text-gray-400 dark:text-gray-500">Đang tải lên...</p>
             </>
           ) : dragging ? (
             <>
-              <Upload className="w-6 h-6 text-black" />
-              <p className="text-xs text-black font-medium">Thả ảnh vào đây</p>
+              <Upload className="w-6 h-6 text-black dark:text-white" />
+              <p className="text-xs text-black dark:text-white font-medium">Thả ảnh vào đây</p>
             </>
           ) : (
             <>
-              <ImageIcon className="w-6 h-6 text-gray-300" />
-              <p className="text-xs text-gray-400 text-center px-2">
-                Kéo thả, dán <kbd className="bg-gray-100 px-1 rounded text-gray-500">Ctrl+V</kbd>, hoặc click
+              <ImageIcon className="w-6 h-6 text-gray-300 dark:text-gray-600" />
+              <p className="text-xs text-gray-400 dark:text-gray-500 text-center px-2">
+                Kéo thả, dán <kbd className="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-500 dark:text-gray-400">Ctrl+V</kbd>, hoặc click
               </p>
             </>
           )}

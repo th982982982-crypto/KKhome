@@ -44,19 +44,19 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950">
       <Navbar user={user} isAdmin={profile?.is_admin} />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-10">
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-3 py-1 text-xs text-gray-500 mb-3">
+          <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 text-xs text-gray-500 dark:text-gray-400 mb-3">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>Bảng điều khiển cá nhân</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-gray-50 tracking-tight">
             Xin chào, {profile?.full_name || user.email?.split('@')[0]}!
           </h1>
-          <p className="text-gray-500 mt-1">Quản lý templates đã mua và đơn hàng của bạn</p>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">Quản lý templates đã mua và đơn hàng của bạn</p>
         </div>
 
         <DashboardTabs

@@ -43,7 +43,7 @@ export default async function HomePage() {
     .eq('is_published', true)
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950">
       <Navbar user={user} isAdmin={profile?.is_admin} />
 
       <main className="flex-1">
@@ -100,19 +100,19 @@ export default async function HomePage() {
       </section>
 
       {/* Features */}
-      <section className="py-16 px-4 bg-white border-b border-gray-100">
+      <section className="py-16 px-4 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800">
         <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[
             { icon: <Zap className="w-5 h-5" />, title: 'Dùng ngay tức thì', desc: 'Xem template ngay trên web sau khi mua, không cần tải hay cài đặt.', color: 'from-amber-100 to-orange-50' },
             { icon: <PlayCircle className="w-5 h-5" />, title: 'Video hướng dẫn chi tiết', desc: 'Mỗi template có video hướng dẫn từng bước sử dụng.', color: 'from-violet-100 to-indigo-50' },
             { icon: <Shield className="w-5 h-5" />, title: 'Cập nhật miễn phí', desc: 'Mua một lần, nhận cập nhật mãi mãi khi pháp luật thay đổi.', color: 'from-emerald-100 to-teal-50' },
           ].map((f) => (
-            <div key={f.title} className="rounded-2xl border border-gray-100 p-6 hover:border-gray-200 hover:shadow-md transition-all">
+            <div key={f.title} className="rounded-2xl border border-gray-100 dark:border-gray-800 dark:bg-gray-900/40 p-6 hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-md dark:hover:shadow-black/40 transition-all">
               <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${f.color} flex items-center justify-center mb-4 text-gray-900`}>
                 {f.icon}
               </div>
-              <h3 className="font-bold text-gray-900 mb-1.5">{f.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{f.desc}</p>
+              <h3 className="font-bold text-gray-900 dark:text-gray-50 mb-1.5">{f.title}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{f.desc}</p>
             </div>
           ))}
         </div>
@@ -120,15 +120,15 @@ export default async function HomePage() {
 
       {/* Featured Templates */}
       {featuredTemplates.length > 0 && (
-        <section className="py-16 px-4 bg-gray-50">
+        <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900/40">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-end justify-between mb-8 gap-4">
               <div>
-                <div className="text-sm font-medium text-indigo-600 mb-1">Templates nổi bật</div>
-                <h2 className="text-3xl font-black text-gray-900 tracking-tight">Phổ biến nhất tuần này</h2>
+                <div className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">Templates nổi bật</div>
+                <h2 className="text-3xl font-black text-gray-900 dark:text-gray-50 tracking-tight">Phổ biến nhất tuần này</h2>
               </div>
               <Link href="/templates" className="hidden sm:block">
-                <Button variant="ghost" size="sm" className="text-gray-600">
+                <Button variant="ghost" size="sm" className="text-gray-600 dark:text-gray-300">
                   Xem tất cả <ArrowRight className="w-4 h-4 ml-1" />
                 </Button>
               </Link>

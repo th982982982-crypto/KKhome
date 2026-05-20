@@ -80,18 +80,18 @@ export function CheckoutContent() {
     const qrUrl = buildVietQrUrl(orderTotal, orderCode)
     return (
       <div className="max-w-4xl mx-auto px-4 py-10">
-        <div className="bg-white rounded-3xl border border-gray-100 overflow-hidden">
-          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 text-center border-b border-green-100">
-            <div className="w-14 h-14 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-3">
-              <CheckCircle2 className="w-8 h-8 text-green-600" />
+        <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden">
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-emerald-950/40 dark:to-emerald-900/40 p-8 text-center border-b border-green-100 dark:border-emerald-800">
+            <div className="w-14 h-14 mx-auto rounded-full bg-green-100 dark:bg-emerald-900/60 flex items-center justify-center mb-3">
+              <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400" />
             </div>
-            <h2 className="text-2xl font-black text-gray-900">Đơn hàng đã tạo thành công!</h2>
-            <p className="text-gray-600 mt-1">Chuyển khoản theo thông tin bên dưới — bạn sẽ nhận templates sau khi admin xác nhận.</p>
+            <h2 className="text-2xl font-black text-gray-900 dark:text-gray-50">Đơn hàng đã tạo thành công!</h2>
+            <p className="text-gray-600 dark:text-gray-300 mt-1">Chuyển khoản theo thông tin bên dưới — bạn sẽ nhận templates sau khi admin xác nhận.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 p-8">
             <div className="flex flex-col items-center justify-center">
-              <div className="bg-white border-4 border-dashed border-gray-200 rounded-3xl p-4">
+              <div className="bg-white border-4 border-dashed border-gray-200 dark:border-gray-700 rounded-3xl p-4">
                 <Image
                   src={qrUrl}
                   alt="VietQR code"
@@ -101,7 +101,7 @@ export function CheckoutContent() {
                   unoptimized
                 />
               </div>
-              <p className="text-xs text-gray-500 mt-3 text-center">Quét mã QR bằng app ngân hàng của bạn</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center">Quét mã QR bằng app ngân hàng của bạn</p>
             </div>
 
             <div className="space-y-3">
@@ -112,16 +112,16 @@ export function CheckoutContent() {
                 { label: 'Số tiền', value: formatCurrency(orderTotal), copy: true, highlight: true },
                 { label: 'Nội dung CK', value: orderCode, copy: true, highlight: true },
               ].map((row) => (
-                <div key={row.label} className="flex items-center justify-between gap-3 py-3 border-b border-gray-100 last:border-0">
-                  <span className="text-sm text-gray-500 shrink-0">{row.label}</span>
+                <div key={row.label} className="flex items-center justify-between gap-3 py-3 border-b border-gray-100 dark:border-gray-800 last:border-0">
+                  <span className="text-sm text-gray-500 dark:text-gray-400 shrink-0">{row.label}</span>
                   <div className="flex items-center gap-2 min-w-0">
-                    <span className={`text-sm font-semibold truncate ${row.highlight ? 'text-blue-600 text-base' : 'text-gray-900'}`}>
+                    <span className={`text-sm font-semibold truncate ${row.highlight ? 'text-blue-600 dark:text-blue-400 text-base' : 'text-gray-900 dark:text-gray-100'}`}>
                       {row.value}
                     </span>
                     {row.copy && (
                       <button
                         onClick={() => copyToClipboard(row.value, row.label)}
-                        className="p-1.5 rounded-md text-gray-400 hover:text-gray-700 hover:bg-gray-100 shrink-0 transition-colors"
+                        className="p-1.5 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 shrink-0 transition-colors"
                         aria-label={`Copy ${row.label}`}
                       >
                         <Copy className="w-3.5 h-3.5" />
@@ -131,12 +131,12 @@ export function CheckoutContent() {
                 </div>
               ))}
 
-              <div className="rounded-xl bg-amber-50 border border-amber-200 p-3 text-xs text-amber-800 mt-2">
+              <div className="rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 p-3 text-xs text-amber-800 dark:text-amber-200 mt-2">
                 ⚠️ Nội dung CK phải đúng <strong>{orderCode}</strong> để được xác nhận tự động.
               </div>
 
               <Button
-                className="w-full bg-black text-white hover:bg-gray-800 h-11 rounded-xl mt-3"
+                className="w-full bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl mt-3"
                 onClick={() => router.push('/dashboard')}
               >
                 Xem đơn hàng của tôi <ArrowRight className="w-4 h-4 ml-2" />
@@ -151,22 +151,22 @@ export function CheckoutContent() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
       <div className="mb-8">
-        <Link href="/cart" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 mb-3 transition-colors">
+        <Link href="/cart" className="inline-flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50 mb-3 transition-colors">
           <ArrowLeft className="w-4 h-4" /> Quay lại giỏ hàng
         </Link>
-        <h1 className="text-3xl font-black text-gray-900 tracking-tight">Thanh toán</h1>
+        <h1 className="text-3xl font-black text-gray-900 dark:text-gray-50 tracking-tight">Thanh toán</h1>
       </div>
 
       <div className="grid lg:grid-cols-[1fr_400px] gap-6">
         <div className="space-y-4">
-          <div className="bg-white rounded-2xl border border-gray-100 p-6">
-            <h2 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+            <h2 className="font-bold text-gray-900 dark:text-gray-50 mb-4 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-500" /> Đơn hàng ({items.length} sản phẩm)
             </h2>
             <div className="space-y-3">
               {items.map((item) => (
                 <div key={item.id} className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-100 to-gray-50 overflow-hidden shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-700 overflow-hidden shrink-0">
                     {item.thumbnail_url ? (
                       <Image src={item.thumbnail_url} alt={item.name} width={48} height={48} className="object-cover w-full h-full" />
                     ) : (
@@ -174,16 +174,16 @@ export function CheckoutContent() {
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">{item.name}</p>
-                    <p className="text-xs text-gray-500">{item.type === 'package' ? 'Gói bundle' : 'Template lẻ'}</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">{item.name}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{item.type === 'package' ? 'Gói bundle' : 'Template lẻ'}</p>
                   </div>
-                  <span className="text-sm font-bold text-gray-900 shrink-0">{formatCurrency(item.sale_price)}</span>
+                  <span className="text-sm font-bold text-gray-900 dark:text-gray-50 shrink-0">{formatCurrency(item.sale_price)}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-100 p-6">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="space-y-1.5">
               <Label htmlFor="note">Ghi chú (không bắt buộc)</Label>
               <Input
@@ -195,30 +195,30 @@ export function CheckoutContent() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-blue-100 bg-blue-50/50 p-4 flex gap-3">
-            <ShieldCheck className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-            <div className="text-sm text-blue-900">
+          <div className="rounded-2xl border border-blue-100 dark:border-blue-900 bg-blue-50/50 dark:bg-blue-950/30 p-4 flex gap-3">
+            <ShieldCheck className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+            <div className="text-sm text-blue-900 dark:text-blue-200">
               <p className="font-semibold mb-0.5">Thanh toán an toàn</p>
-              <p className="text-blue-800/80">Chuyển khoản ngân hàng, được admin xác nhận trong vòng vài phút trong giờ làm việc.</p>
+              <p className="text-blue-800/80 dark:text-blue-300/80">Chuyển khoản ngân hàng, được admin xác nhận trong vòng vài phút trong giờ làm việc.</p>
             </div>
           </div>
         </div>
 
         <aside className="lg:sticky lg:top-24 self-start">
           <div className="bg-white rounded-2xl border border-gray-100 p-6 space-y-4">
-            <h2 className="font-bold text-gray-900">Tổng cộng</h2>
-            <div className="border-t border-dashed border-gray-200 pt-3 flex justify-between items-baseline">
-              <span className="text-gray-500">Số tiền cần trả</span>
-              <span className="text-2xl font-black text-gray-900">{formatCurrency(total())}</span>
+            <h2 className="font-bold text-gray-900 dark:text-gray-50">Tổng cộng</h2>
+            <div className="border-t border-dashed border-gray-200 dark:border-gray-700 pt-3 flex justify-between items-baseline">
+              <span className="text-gray-500 dark:text-gray-400">Số tiền cần trả</span>
+              <span className="text-2xl font-black text-gray-900 dark:text-gray-50">{formatCurrency(total())}</span>
             </div>
             <Button
-              className="w-full bg-black text-white hover:bg-gray-800 h-12 rounded-xl font-semibold text-base"
+              className="w-full bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-12 rounded-xl font-semibold text-base"
               onClick={handleCreateOrder}
               disabled={loading || items.length === 0}
             >
               {loading ? 'Đang tạo đơn...' : 'Tạo đơn & xem thông tin CK'}
             </Button>
-            <p className="text-xs text-gray-400 text-center">
+            <p className="text-xs text-gray-400 dark:text-gray-500 text-center">
               Bạn sẽ nhận được mã đơn hàng và mã QR thanh toán ở bước tiếp theo
             </p>
           </div>

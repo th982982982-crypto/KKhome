@@ -57,8 +57,8 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
   return (
     <div className="space-y-4">
       {pending.length > 0 && (
-        <div className="bg-yellow-50 border border-yellow-100 rounded-xl p-4">
-          <p className="text-sm font-semibold text-yellow-800">⏳ {pending.length} đơn chờ xác nhận</p>
+        <div className="bg-yellow-50 dark:bg-amber-950/40 border border-yellow-100 dark:border-amber-800 rounded-xl p-4">
+          <p className="text-sm font-semibold text-yellow-800 dark:text-amber-200">⏳ {pending.length} đơn chờ xác nhận</p>
         </div>
       )}
 
@@ -69,8 +69,8 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
             onClick={() => setFilter(tab.key)}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all active:scale-95
               ${filter === tab.key
-                ? 'bg-black text-white shadow-sm'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                ? 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 shadow-sm'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
           >
             {tab.label} ({counts[tab.key]})
@@ -78,38 +78,38 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
         ))}
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-gray-50 border-b border-gray-100">
+          <thead className="bg-gray-50 dark:bg-gray-900/60 border-b border-gray-100 dark:border-gray-800">
             <tr>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600">Mã đơn</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600">Khách hàng</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 hidden md:table-cell">Sản phẩm</th>
-              <th className="text-right px-4 py-3 font-semibold text-gray-600">Số tiền</th>
-              <th className="text-center px-4 py-3 font-semibold text-gray-600">Trạng thái</th>
-              <th className="text-center px-4 py-3 font-semibold text-gray-600">Hành động</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300">Mã đơn</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300">Khách hàng</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 hidden md:table-cell">Sản phẩm</th>
+              <th className="text-right px-4 py-3 font-semibold text-gray-600 dark:text-gray-300">Số tiền</th>
+              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300">Trạng thái</th>
+              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300">Hành động</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-50">
+          <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
             {filtered.map((order) => {
               const items = order.items as { type: string; name: string; price: number }[]
               return (
-                <tr key={order.id} className="hover:bg-gray-50 transition-colors">
+                <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                   <td className="px-4 py-3">
-                    <p className="font-mono font-bold text-gray-900">{order.order_code}</p>
-                    <p className="text-xs text-gray-400">{new Date(order.created_at).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
+                    <p className="font-mono font-bold text-gray-900 dark:text-gray-50">{order.order_code}</p>
+                    <p className="text-xs text-gray-400 dark:text-gray-500">{new Date(order.created_at).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
                   </td>
-                  <td className="px-4 py-3 text-gray-700">
+                  <td className="px-4 py-3 text-gray-700 dark:text-gray-200">
                     {order.profiles?.full_name || 'Ẩn danh'}
                   </td>
                   <td className="px-4 py-3 hidden md:table-cell">
                     <div className="space-y-0.5">
                       {items.map((item, i) => (
-                        <p key={i} className="text-gray-600 truncate max-w-48">{item.name}</p>
+                        <p key={i} className="text-gray-600 dark:text-gray-300 truncate max-w-48">{item.name}</p>
                       ))}
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-right font-semibold text-gray-900">
+                  <td className="px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50">
                     {formatCurrency(order.total_amount)}
                   </td>
                   <td className="px-4 py-3 text-center">
@@ -124,7 +124,7 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
                       <div className="flex items-center justify-center gap-1.5">
                         <Button
                           size="sm"
-                          className="bg-green-600 hover:bg-green-700 text-white h-8 text-xs"
+                          className="bg-green-600 hover:bg-green-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white h-8 text-xs"
                           onClick={() => handleAction(order.id, 'confirm')}
                           disabled={loadingId === order.id}
                         >
@@ -134,7 +134,7 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
                         <Button
                           size="sm"
                           variant="outline"
-                          className="h-8 text-xs border-red-200 text-red-600 hover:bg-red-50"
+                          className="h-8 text-xs border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 dark:bg-transparent"
                           onClick={() => handleAction(order.id, 'cancel')}
                           disabled={loadingId === order.id}
                         >
@@ -143,9 +143,9 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
                         </Button>
                       </div>
                     ) : order.status === 'confirmed' ? (
-                      <span className="text-xs text-green-600 font-medium">✓ Đã cấp quyền</span>
+                      <span className="text-xs text-green-600 dark:text-emerald-400 font-medium">✓ Đã cấp quyền</span>
                     ) : (
-                      <span className="text-xs text-gray-400">—</span>
+                      <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
                     )}
                   </td>
                 </tr>
@@ -155,7 +155,7 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
         </table>
 
         {filtered.length === 0 && (
-          <div className="text-center py-12 text-gray-400">
+          <div className="text-center py-12 text-gray-400 dark:text-gray-500">
             <p>Không có đơn hàng nào trong mục này</p>
           </div>
         )}

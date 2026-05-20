@@ -43,47 +43,47 @@ export function PackageCard({ package: pkg }: { package: PackageWithTemplates })
     : 0
 
   return (
-    <div className="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-black transition-colors duration-200 flex flex-col">
+    <div className="bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-2xl p-6 hover:border-black dark:hover:border-white transition-colors duration-200 flex flex-col">
       {discount > 0 && (
         <Badge className="self-start mb-3 bg-red-500 text-white">Tiết kiệm {discount}%</Badge>
       )}
 
-      <h3 className="text-xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
+      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-2">{pkg.name}</h3>
 
       {pkg.description && (
-        <p className="text-sm text-gray-500 mb-4 leading-relaxed">{pkg.description}</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">{pkg.description}</p>
       )}
 
       <div className="mb-6">
         <div className="flex items-baseline gap-2">
-          <span className="text-3xl font-bold text-gray-900">{formatCurrency(pkg.sale_price)}</span>
+          <span className="text-3xl font-bold text-gray-900 dark:text-gray-50">{formatCurrency(pkg.sale_price)}</span>
           {pkg.original_price && pkg.original_price > pkg.sale_price && (
-            <span className="text-gray-400 line-through text-sm">{formatCurrency(pkg.original_price)}</span>
+            <span className="text-gray-400 dark:text-gray-500 line-through text-sm">{formatCurrency(pkg.original_price)}</span>
           )}
         </div>
       </div>
 
       <div className="flex-1 space-y-2 mb-6">
         {features.map((feature, i) => (
-          <div key={i} className="flex items-start gap-2 text-sm text-gray-700">
+          <div key={i} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-200">
             <Check className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
             <span>{feature}</span>
           </div>
         ))}
 
         {templateNames.length > 0 && (
-          <div className="mt-4 pt-4 border-t">
-            <p className="text-xs text-gray-500 font-semibold uppercase mb-2">
+          <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+            <p className="text-xs text-gray-500 dark:text-gray-400 font-semibold uppercase mb-2">
               Bao gồm {templateNames.length} templates:
             </p>
             <div className="space-y-1">
               {templateNames.slice(0, 5).map((name, i) => (
-                <div key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                <div key={i} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                   <span className="text-green-500">✓</span> {name}
                 </div>
               ))}
               {templateNames.length > 5 && (
-                <p className="text-xs text-gray-400 mt-1">+{templateNames.length - 5} templates khác</p>
+                <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">+{templateNames.length - 5} templates khác</p>
               )}
             </div>
           </div>
@@ -91,7 +91,7 @@ export function PackageCard({ package: pkg }: { package: PackageWithTemplates })
       </div>
 
       <Button
-        className="w-full bg-black text-white hover:bg-gray-800 h-11 rounded-xl font-semibold"
+        className="w-full bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl font-semibold"
         onClick={inCart ? undefined : handleAddToCart}
         disabled={inCart}
       >

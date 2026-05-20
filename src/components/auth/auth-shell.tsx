@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ReactNode } from 'react'
 import { Sparkles, Shield, Zap, PlayCircle } from 'lucide-react'
 
@@ -15,19 +16,19 @@ export function AuthShell({ title, subtitle, panelTitle, panelSubtitle, children
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-2">
       {/* Left: form */}
-      <div className="flex items-center justify-center px-4 py-12 lg:py-0 bg-white">
+      <div className="flex items-center justify-center px-4 py-12 lg:py-0 bg-white dark:bg-gray-950">
         <div className="w-full max-w-sm">
-          <Link href="/" className="inline-flex items-center gap-2 font-bold text-lg text-gray-900 mb-10">
-            <div className="w-8 h-8 bg-gradient-to-br from-slate-900 to-indigo-900 rounded-lg flex items-center justify-center text-white text-xs font-bold">KK</div>
+          <Link href="/" className="inline-flex items-center gap-2 font-bold text-lg text-gray-900 dark:text-gray-50 mb-10">
+            <Image src="/logo.png" alt="KKhome" width={40} height={40} className="w-10 h-10 object-contain" priority />
             KKhome
           </Link>
 
-          <h1 className="text-3xl font-black text-gray-900 tracking-tight">{title}</h1>
-          <p className="text-gray-500 mt-1.5 mb-8 text-sm">{subtitle}</p>
+          <h1 className="text-3xl font-black text-gray-900 dark:text-gray-50 tracking-tight">{title}</h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1.5 mb-8 text-sm">{subtitle}</p>
 
           {children}
 
-          <div className="mt-6 text-center text-sm text-gray-500">{footer}</div>
+          <div className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">{footer}</div>
         </div>
       </div>
 

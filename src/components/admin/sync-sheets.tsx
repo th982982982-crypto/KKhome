@@ -60,11 +60,11 @@ export function SyncSheets() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h2 className="font-semibold text-gray-900 mb-4">Cấu hình</h2>
-        <div className="bg-gray-50 rounded-xl p-4 text-sm space-y-1">
-          <p><span className="text-gray-500">Sheet ID:</span> <span className="font-mono">{process.env.NEXT_PUBLIC_SHEET_CATALOG_ID || '(chưa cấu hình trong .env)'}</span></p>
-          <p className="text-gray-500 text-xs mt-2">Cài đặt trong .env: GOOGLE_SHEET_CATALOG_ID và GOOGLE_SHEETS_API_KEY</p>
+      <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+        <h2 className="font-semibold text-gray-900 dark:text-gray-50 mb-4">Cấu hình</h2>
+        <div className="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-4 text-sm space-y-1">
+          <p><span className="text-gray-500 dark:text-gray-400">Sheet ID:</span> <span className="font-mono text-gray-900 dark:text-gray-100">{process.env.NEXT_PUBLIC_SHEET_CATALOG_ID || '(chưa cấu hình trong .env)'}</span></p>
+          <p className="text-gray-500 dark:text-gray-400 text-xs mt-2">Cài đặt trong .env: GOOGLE_SHEET_CATALOG_ID và GOOGLE_SHEETS_API_KEY</p>
         </div>
 
         <div className="flex gap-3 mt-4">
@@ -72,13 +72,13 @@ export function SyncSheets() {
             variant="outline"
             onClick={handlePreview}
             disabled={loading}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 dark:border-gray-700 dark:bg-transparent dark:text-gray-200 dark:hover:bg-gray-800"
           >
             <Eye className="w-4 h-4" />
             Xem trước mapping
           </Button>
           <Button
-            className="bg-black text-white hover:bg-gray-800 flex items-center gap-2"
+            className="bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 flex items-center gap-2"
             onClick={handleSync}
             disabled={loading}
           >
@@ -89,37 +89,37 @@ export function SyncSheets() {
       </div>
 
       {synced !== null && (
-        <div className="bg-green-50 border border-green-100 rounded-xl p-4 text-green-800 text-sm">
+        <div className="bg-green-50 dark:bg-emerald-950/40 border border-green-100 dark:border-emerald-800 rounded-xl p-4 text-green-800 dark:text-emerald-200 text-sm">
           ✅ Đã đồng bộ thành công <strong>{synced}</strong> templates từ Google Sheets.
         </div>
       )}
 
       {preview && (
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h2 className="font-semibold text-gray-900 mb-1">Kết quả phát hiện cột</h2>
-          <p className="text-sm text-gray-500 mb-4">
-            Tổng: <strong>{preview.total}</strong> dòng dữ liệu | Đã khớp <strong>{Object.keys(preview.mapping).length}</strong>/{preview.headers.length} cột
+        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <h2 className="font-semibold text-gray-900 dark:text-gray-50 mb-1">Kết quả phát hiện cột</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+            Tổng: <strong className="text-gray-900 dark:text-gray-100">{preview.total}</strong> dòng dữ liệu | Đã khớp <strong className="text-gray-900 dark:text-gray-100">{Object.keys(preview.mapping).length}</strong>/{preview.headers.length} cột
           </p>
 
           <div className="overflow-x-auto mb-4">
             <table className="text-xs w-full">
               <thead>
-                <tr className="bg-gray-50">
-                  <th className="text-left px-3 py-2 font-semibold text-gray-600 rounded-l-lg">Cột trong Sheet</th>
-                  <th className="text-left px-3 py-2 text-gray-400">→</th>
-                  <th className="text-left px-3 py-2 font-semibold text-gray-600 rounded-r-lg">Trường DB</th>
+                <tr className="bg-gray-50 dark:bg-gray-800/60">
+                  <th className="text-left px-3 py-2 font-semibold text-gray-600 dark:text-gray-300 rounded-l-lg">Cột trong Sheet</th>
+                  <th className="text-left px-3 py-2 text-gray-400 dark:text-gray-500">→</th>
+                  <th className="text-left px-3 py-2 font-semibold text-gray-600 dark:text-gray-300 rounded-r-lg">Trường DB</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-50">
+              <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
                 {preview.headers.map((header, i) => (
                   <tr key={i}>
-                    <td className="px-3 py-2 font-mono text-gray-700">{header}</td>
-                    <td className="px-3 py-2 text-gray-300"><ArrowRight className="w-3 h-3" /></td>
+                    <td className="px-3 py-2 font-mono text-gray-700 dark:text-gray-200">{header}</td>
+                    <td className="px-3 py-2 text-gray-300 dark:text-gray-600"><ArrowRight className="w-3 h-3" /></td>
                     <td className="px-3 py-2">
                       {preview.mapping[i] ? (
-                        <span className="text-green-600 font-medium">{fieldNames[preview.mapping[i]] || preview.mapping[i]}</span>
+                        <span className="text-green-600 dark:text-emerald-400 font-medium">{fieldNames[preview.mapping[i]] || preview.mapping[i]}</span>
                       ) : (
-                        <span className="text-gray-300 italic">bỏ qua</span>
+                        <span className="text-gray-300 dark:text-gray-600 italic">bỏ qua</span>
                       )}
                     </td>
                   </tr>
@@ -130,13 +130,13 @@ export function SyncSheets() {
 
           {preview.preview.length > 0 && (
             <div>
-              <p className="text-sm font-semibold text-gray-700 mb-2">3 dòng đầu:</p>
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">3 dòng đầu:</p>
               <div className="space-y-2">
                 {preview.preview.map((row, i) => (
-                  <div key={i} className="bg-gray-50 rounded-lg p-3 text-xs text-gray-700">
+                  <div key={i} className="bg-gray-50 dark:bg-gray-800/60 rounded-lg p-3 text-xs text-gray-700 dark:text-gray-200">
                     <strong>{row.name as string}</strong>
-                    {row.sale_price && <span className="ml-2 text-green-600">{Number(row.sale_price).toLocaleString('vi-VN')}đ</span>}
-                    {row.category && <span className="ml-2 text-gray-400">[{row.category as string}]</span>}
+                    {row.sale_price && <span className="ml-2 text-green-600 dark:text-emerald-400">{Number(row.sale_price).toLocaleString('vi-VN')}đ</span>}
+                    {row.category && <span className="ml-2 text-gray-400 dark:text-gray-500">[{row.category as string}]</span>}
                   </div>
                 ))}
               </div>
@@ -144,7 +144,7 @@ export function SyncSheets() {
           )}
 
           <Button
-            className="mt-4 bg-black text-white hover:bg-gray-800"
+            className="mt-4 bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100"
             onClick={handleSync}
             disabled={loading}
           >

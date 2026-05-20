@@ -98,7 +98,7 @@ export default function RegisterPage() {
             Sai email?{' '}
             <button
               onClick={() => setSubmittedEmail(null)}
-              className="text-gray-900 font-semibold hover:underline"
+              className="text-gray-900 dark:text-gray-50 font-semibold hover:underline"
             >
               Đăng ký lại
             </button>
@@ -107,30 +107,30 @@ export default function RegisterPage() {
       >
         <div className="space-y-5">
           <div className="flex items-center justify-center">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 flex items-center justify-center ring-1 ring-emerald-200">
-              <MailCheck className="w-8 h-8 text-emerald-600" />
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-emerald-950/40 flex items-center justify-center ring-1 ring-emerald-200 dark:ring-emerald-800">
+              <MailCheck className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
             </div>
           </div>
 
           <div className="text-center">
-            <p className="text-sm text-gray-600 mb-1">Đã gửi link xác nhận đến</p>
-            <p className="font-bold text-gray-900 text-base break-all">{submittedEmail}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">Đã gửi link xác nhận đến</p>
+            <p className="font-bold text-gray-900 dark:text-gray-50 text-base break-all">{submittedEmail}</p>
           </div>
 
-          <div className="rounded-xl bg-gray-50 border border-gray-100 p-4 space-y-3">
-            <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">3 bước đơn giản</p>
-            <ol className="space-y-2.5 text-sm text-gray-700">
+          <div className="rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-4 space-y-3">
+            <p className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">3 bước đơn giản</p>
+            <ol className="space-y-2.5 text-sm text-gray-700 dark:text-gray-200">
               <li className="flex gap-2.5">
-                <span className="w-5 h-5 rounded-full bg-gray-900 text-white text-[11px] font-bold flex items-center justify-center shrink-0">1</span>
+                <span className="w-5 h-5 rounded-full bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-[11px] font-bold flex items-center justify-center shrink-0">1</span>
                 <span>Mở hộp thư email vừa nhập</span>
               </li>
               <li className="flex gap-2.5">
-                <span className="w-5 h-5 rounded-full bg-gray-900 text-white text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
+                <span className="w-5 h-5 rounded-full bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
                 <span>Bấm vào nút <span className="font-semibold">"Xác nhận tài khoản"</span> trong email</span>
               </li>
               <li className="flex gap-2.5">
                 <span className="w-5 h-5 rounded-full bg-emerald-600 text-white text-[11px] font-bold flex items-center justify-center shrink-0">3</span>
-                <span><span className="font-semibold text-emerald-700">Tự động đăng nhập</span> và vào dashboard ngay</span>
+                <span><span className="font-semibold text-emerald-700 dark:text-emerald-400">Tự động đăng nhập</span> và vào dashboard ngay</span>
               </li>
             </ol>
           </div>
@@ -139,18 +139,18 @@ export default function RegisterPage() {
             href={mailHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full h-11 rounded-xl bg-black text-white font-semibold text-sm flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors active:scale-95"
+            className="w-full h-11 rounded-xl bg-black dark:bg-white text-white dark:text-gray-900 font-semibold text-sm flex items-center justify-center gap-2 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors active:scale-95"
           >
             <ExternalLink className="w-4 h-4" />
             Mở hộp thư
           </a>
 
-          <div className="text-center text-xs text-gray-500">
+          <div className="text-center text-xs text-gray-500 dark:text-gray-400">
             Chưa nhận được email? Kiểm tra thư mục spam hoặc{' '}
             <button
               onClick={handleResend}
               disabled={resending}
-              className="text-gray-900 font-semibold hover:underline disabled:opacity-50 inline-flex items-center gap-1"
+              className="text-gray-900 dark:text-gray-50 font-semibold hover:underline disabled:opacity-50 inline-flex items-center gap-1"
             >
               {resending ? <Loader2 className="w-3 h-3 animate-spin" /> : <RotateCw className="w-3 h-3" />}
               gửi lại
@@ -170,7 +170,7 @@ export default function RegisterPage() {
       footer={
         <>
           Đã có tài khoản?{' '}
-          <Link href="/login" className="text-gray-900 font-semibold hover:underline">Đăng nhập</Link>
+          <Link href="/login" className="text-gray-900 dark:text-gray-50 font-semibold hover:underline">Đăng nhập</Link>
         </>
       }
     >
@@ -187,10 +187,10 @@ export default function RegisterPage() {
           <Label htmlFor="password">Mật khẩu</Label>
           <PasswordInput id="password" placeholder="Ít nhất 6 ký tự" value={password} onChange={setPassword} required />
         </div>
-        <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800 h-11 rounded-xl font-semibold" disabled={loading}>
+        <Button type="submit" className="w-full bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl font-semibold" disabled={loading}>
           {loading ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Đang đăng ký...</> : 'Tạo tài khoản'}
         </Button>
-        <p className="text-xs text-gray-400 text-center">
+        <p className="text-xs text-gray-400 dark:text-gray-500 text-center">
           Bằng việc đăng ký, bạn đồng ý với điều khoản sử dụng của chúng tôi.
         </p>
       </form>

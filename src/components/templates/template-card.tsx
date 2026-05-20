@@ -39,11 +39,11 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
 
   return (
     <div
-      className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+      className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm dark:shadow-black/40 hover:shadow-xl dark:hover:shadow-black/60 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
       onClick={() => onViewDetail?.(template)}
     >
       {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-gray-50">
+      <div className="relative aspect-[4/3] overflow-hidden bg-gray-50 dark:bg-gray-800">
         {template.thumbnail_url ? (
           <Image
             src={template.thumbnail_url}
@@ -53,8 +53,8 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-            <span className="text-gray-300 text-5xl">📊</span>
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700">
+            <span className="text-gray-300 dark:text-gray-600 text-5xl">📊</span>
           </div>
         )}
 
@@ -86,39 +86,39 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-semibold text-gray-900 text-sm leading-snug mb-2 line-clamp-2 group-hover:text-black">
+        <h3 className="font-semibold text-gray-900 dark:text-gray-50 text-sm leading-snug mb-2 line-clamp-2 group-hover:text-black dark:group-hover:text-white">
           {template.name}
         </h3>
 
         {template.tags && template.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-3">
             {template.tags.slice(0, 2).map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-xs py-0 px-2 bg-gray-100 text-gray-500 font-normal rounded-full">
+              <Badge key={tag} variant="secondary" className="text-xs py-0 px-2 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 font-normal rounded-full">
                 {tag}
               </Badge>
             ))}
             {template.tags.length > 2 && (
-              <Badge variant="secondary" className="text-xs py-0 px-2 bg-gray-100 text-gray-400 font-normal rounded-full">
+              <Badge variant="secondary" className="text-xs py-0 px-2 bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 font-normal rounded-full">
                 +{template.tags.length - 2}
               </Badge>
             )}
           </div>
         )}
 
-        <div className="flex items-center justify-between gap-2 pt-1 border-t border-gray-50">
+        <div className="flex items-center justify-between gap-2 pt-1 border-t border-gray-50 dark:border-gray-800">
           <div className="flex items-baseline gap-1.5">
-            <span className="font-bold text-gray-900 text-base">
+            <span className="font-bold text-gray-900 dark:text-gray-50 text-base">
               {template.sale_price ? formatCurrency(template.sale_price) : 'Liên hệ'}
             </span>
             {template.original_price && template.original_price > (template.sale_price ?? 0) && (
-              <span className="text-gray-400 text-xs line-through">{formatCurrency(template.original_price)}</span>
+              <span className="text-gray-400 dark:text-gray-500 text-xs line-through">{formatCurrency(template.original_price)}</span>
             )}
           </div>
 
           {isPurchased ? (
             <button
               onClick={(e) => { e.stopPropagation(); onViewDetail?.(template) }}
-              className="flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 active:scale-95 transition-all"
+              className="flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 active:scale-95 transition-all"
             >
               <Eye className="w-3.5 h-3.5" /> Xem
             </button>
@@ -128,8 +128,8 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
               disabled={inCart}
               className={`flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-lg active:scale-95 transition-all
                 ${inCart
-                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                  : 'bg-black text-white hover:bg-gray-800 shadow-sm'
+                  ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 cursor-not-allowed'
+                  : 'bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 shadow-sm'
                 }`}
             >
               <ShoppingCart className="w-3.5 h-3.5" />
