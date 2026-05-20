@@ -1,11 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { ShoppingCart, User, LogOut, LayoutDashboard, Settings } from 'lucide-react'
+import { ShoppingCart, User, LogOut, LayoutDashboard, Settings, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useCartStore } from '@/lib/cart-store'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,8 +23,10 @@ interface NavbarProps {
 export function Navbar({ user, isAdmin }: NavbarProps) {
   const cartCount = useCartStore((s) => s.items.length)
   const router = useRouter()
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
 
   async function handleLogout() {
+    setIsLoggingOut(true)
     const supabase = createClient()
     await supabase.auth.signOut()
     router.push('/')
@@ -76,8 +79,11 @@ export function Navbar({ user, isAdmin }: NavbarProps) {
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout} className="text-red-600">
-                    <LogOut className="w-4 h-4 mr-2" />Đăng xuất
+                  <DropdownMenuItem onClick={handleLogout} disabled={isLoggingOut} className="text-red-600">
+                    {isLoggingOut
+                      ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Đang đăng xuất...</>
+                      : <><LogOut className="w-4 h-4 mr-2" />Đăng xuất</>
+                    }
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

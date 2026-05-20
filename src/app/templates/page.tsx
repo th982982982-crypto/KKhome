@@ -1,8 +1,34 @@
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
 import { TemplateSection } from '@/components/templates/template-section'
+import { fetchCatalogSheet, parseSheetRows, transformToTemplate } from '@/lib/google-sheets'
+import type { Template } from '@/lib/supabase/types'
 
-export default async function TemplatesPage() {
+export const revalidate = 60
+
+async function getTemplates(): Promise<Template[]> {
+  try {
+    const { headers, rows } = await fetchCatalogSheet()
+    const sheetRows = parseSheetRows(headers, rows)
+    return sheetRows
+      .map((row) => {
+        const t = transformToTemplate(row)
+        return { ...t, id: t.slug, created_at: '' } as Template
+      })
+      .filter((t) => t.is_published)
+      .sort((a, b) => a.sort_order - b.sort_order)
+  } catch {
+    return []
+  }
+}
+
+export default async function TemplatesPage(props: {
+  searchParams: Promise<{ category?: string }>
+}) {
+  const searchParams = await props.searchParams
+  const selectedCategory = searchParams.category || ''
+
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -12,13 +38,11 @@ export default async function TemplatesPage() {
     profile = data
   }
 
-  const { data: templates } = await supabase
-    .from('templates')
-    .select('*')
-    .eq('is_published', true)
-    .order('sort_order', { ascending: true })
-
-  const categories = Array.from(new Set(templates?.map((t) => t.category).filter(Boolean) as string[]))
+  const allTemplates = await getTemplates()
+  const categories = Array.from(new Set(allTemplates.map((t) => t.category).filter(Boolean) as string[]))
+  const templates = selectedCategory
+    ? allTemplates.filter((t) => t.category === selectedCategory)
+    : allTemplates
 
   return (
     <div className="min-h-screen bg-white">
@@ -27,26 +51,34 @@ export default async function TemplatesPage() {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Tất cả Templates</h1>
-          <p className="text-gray-500">{templates?.length ?? 0} templates hiện có</p>
+          <p className="text-gray-500">{templates.length} templates hiện có</p>
         </div>
 
         {categories.length > 1 && (
           <div className="flex flex-wrap gap-2 mb-8">
-            <span className="px-4 py-1.5 rounded-full bg-black text-white text-sm font-medium cursor-pointer">
+            <Link
+              href="/templates"
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                !selectedCategory ? 'bg-black text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
               Tất cả
-            </span>
+            </Link>
             {categories.map((cat) => (
-              <span
+              <Link
                 key={cat}
-                className="px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 text-sm font-medium cursor-pointer hover:bg-gray-200 transition-colors"
+                href={`/templates?category=${encodeURIComponent(cat)}`}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                  selectedCategory === cat ? 'bg-black text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
               >
                 {cat}
-              </span>
+              </Link>
             ))}
           </div>
         )}
 
-        {templates && templates.length > 0 ? (
+        {templates.length > 0 ? (
           <TemplateSection templates={templates} />
         ) : (
           <div className="text-center py-20 text-gray-400">

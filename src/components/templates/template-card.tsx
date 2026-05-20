@@ -107,7 +107,7 @@ export function TemplateCard({ template, onViewDetail, isPurchased }: TemplateCa
           ) : (
             <Button
               size="sm"
-              className="text-xs h-8 bg-black text-white hover:bg-gray-800"
+              className="text-xs h-8 bg-black text-white hover:bg-gray-800 active:scale-95 transition-transform"
               onClick={inCart ? undefined : handleAddToCart}
               disabled={inCart}
             >

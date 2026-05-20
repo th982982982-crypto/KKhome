@@ -4,6 +4,27 @@ import { Button } from '@/components/ui/button'
 import { Navbar } from '@/components/layout/navbar'
 import { TemplateSection } from '@/components/templates/template-section'
 import { ArrowRight, Star, Shield, Zap } from 'lucide-react'
+import { fetchCatalogSheet, parseSheetRows, transformToTemplate } from '@/lib/google-sheets'
+import type { Template } from '@/lib/supabase/types'
+
+export const revalidate = 60
+
+async function getFeaturedTemplates(): Promise<Template[]> {
+  try {
+    const { headers, rows } = await fetchCatalogSheet()
+    const sheetRows = parseSheetRows(headers, rows)
+    return sheetRows
+      .map((row) => {
+        const t = transformToTemplate(row)
+        return { ...t, id: t.slug, created_at: '' } as Template
+      })
+      .filter((t) => t.is_published)
+      .sort((a, b) => a.sort_order - b.sort_order)
+      .slice(0, 6)
+  } catch {
+    return []
+  }
+}
 
 export default async function HomePage() {
   const supabase = await createClient()
@@ -16,12 +37,7 @@ export default async function HomePage() {
     profile = data
   }
 
-  const { data: featuredTemplates } = await supabase
-    .from('templates')
-    .select('*')
-    .eq('is_published', true)
-    .order('sort_order', { ascending: true })
-    .limit(6)
+  const featuredTemplates = await getFeaturedTemplates()
 
   const { data: packages } = await supabase
     .from('packages')
@@ -84,7 +100,7 @@ export default async function HomePage() {
       </section>
 
       {/* Featured Templates */}
-      {featuredTemplates && featuredTemplates.length > 0 && (
+      {featuredTemplates.length > 0 && (
         <section className="py-16 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between mb-8">

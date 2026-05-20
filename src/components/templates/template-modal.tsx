@@ -103,7 +103,7 @@ export function TemplateModal({ template, open, onClose }: TemplateModalProps) {
               </div>
 
               <Button
-                className="w-full bg-black text-white hover:bg-gray-800 h-12 text-sm font-semibold rounded-xl"
+                className="w-full bg-black text-white hover:bg-gray-800 active:scale-95 transition-transform h-12 text-sm font-semibold rounded-xl"
                 onClick={inCart ? undefined : handleAddToCart}
                 disabled={inCart}
               >
