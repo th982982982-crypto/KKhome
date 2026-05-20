@@ -39,7 +39,14 @@ export default function RegisterPage() {
     })
 
     if (error) {
-      toast.error(error.message)
+      const lower = error.message.toLowerCase()
+      const isDup = lower.includes('already registered') || lower.includes('already exists') || lower.includes('user already')
+      toast.error(isDup ? 'Email này đã được đăng ký. Hãy đăng nhập.' : error.message)
+      if (isDup) router.push(`/login?email=${encodeURIComponent(email)}`)
+      setLoading(false)
+    } else if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+      toast.error('Email này đã được đăng ký. Hãy đăng nhập.')
+      router.push(`/login?email=${encodeURIComponent(email)}`)
       setLoading(false)
     } else if (data.user && !data.session) {
       setSubmittedEmail(email)

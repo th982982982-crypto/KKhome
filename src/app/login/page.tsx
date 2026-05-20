@@ -15,9 +15,10 @@ import { Loader2, MailCheck, AlertCircle } from 'lucide-react'
 function LoginForm() {
   const searchParams = useSearchParams()
   const pendingEmail = searchParams.get('pending')
+  const prefillEmail = searchParams.get('email')
   const errorMsg = searchParams.get('error')
 
-  const [email, setEmail] = useState(pendingEmail ?? '')
+  const [email, setEmail] = useState(pendingEmail ?? prefillEmail ?? '')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
