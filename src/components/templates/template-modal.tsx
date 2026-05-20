@@ -181,7 +181,7 @@ export function TemplateModal({ template, open, onClose, isPurchased = false, ac
           <div className="lg:w-[45%] flex flex-col overflow-y-auto pb-24 lg:pb-0 bg-white dark:bg-gray-900">
             {/* Header */}
             <div className="p-6 pb-4 border-b border-gray-100 dark:border-gray-800">
-              <h2 className="text-xl font-black text-gray-900 dark:text-gray-50 leading-tight pr-6 tracking-tight">{template.name}</h2>
+              <h2 className="text-xl font-black text-gray-900 dark:text-gray-50 leading-tight pr-14 tracking-tight">{template.name}</h2>
 
               {template.tags && template.tags.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-3">
