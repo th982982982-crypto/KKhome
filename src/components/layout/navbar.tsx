@@ -22,6 +22,7 @@ interface NavbarProps {
 
 export function Navbar({ user, isAdmin }: NavbarProps) {
   const cartCount = useCartStore((s) => s.items.length)
+  const clearCart = useCartStore((s) => s.clearCart)
   const router = useRouter()
   const [isLoggingOut, setIsLoggingOut] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -30,6 +31,7 @@ export function Navbar({ user, isAdmin }: NavbarProps) {
     setIsLoggingOut(true)
     const supabase = createClient()
     await supabase.auth.signOut()
+    clearCart()
     router.push('/')
     router.refresh()
   }

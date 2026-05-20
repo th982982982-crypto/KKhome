@@ -4,6 +4,7 @@ import { ReactNode, useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { useCartStore } from '@/lib/cart-store'
 import {
   LayoutDashboard,
   FileSpreadsheet,
@@ -42,6 +43,7 @@ export function AdminShell({ children, user, pendingCount = 0 }: AdminShellProps
     setLoggingOut(true)
     const supabase = createClient()
     await supabase.auth.signOut()
+    useCartStore.getState().clearCart()
     router.push('/')
     router.refresh()
   }

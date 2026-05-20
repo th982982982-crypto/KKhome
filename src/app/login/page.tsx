@@ -10,14 +10,17 @@ import { Label } from '@/components/ui/label'
 import { PasswordInput } from '@/components/ui/password-input'
 import { AuthShell } from '@/components/auth/auth-shell'
 import { toast } from 'sonner'
-import { Loader2 } from 'lucide-react'
+import { Loader2, MailCheck, AlertCircle } from 'lucide-react'
 
 function LoginForm() {
-  const [email, setEmail] = useState('')
+  const searchParams = useSearchParams()
+  const pendingEmail = searchParams.get('pending')
+  const errorMsg = searchParams.get('error')
+
+  const [email, setEmail] = useState(pendingEmail ?? '')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
-  const searchParams = useSearchParams()
   const redirect = searchParams.get('redirect') || '/dashboard'
 
   async function handleSubmit(e: React.FormEvent) {
@@ -26,7 +29,12 @@ function LoginForm() {
     const supabase = createClient()
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) {
-      toast.error(error.message === 'Invalid login credentials' ? 'Email hoặc mật khẩu không đúng' : error.message)
+      const msg = error.message === 'Invalid login credentials'
+        ? 'Email hoặc mật khẩu không đúng'
+        : error.message === 'Email not confirmed'
+          ? 'Email chưa được xác nhận — vui lòng kiểm tra hộp thư'
+          : error.message
+      toast.error(msg)
       setLoading(false)
     } else {
       router.push(redirect)
@@ -36,6 +44,21 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {pendingEmail && (
+        <div className="flex gap-2.5 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-sm">
+          <MailCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+          <div className="text-emerald-900">
+            <p className="font-semibold mb-0.5">Kiểm tra email của bạn</p>
+            <p className="text-xs text-emerald-700">Chúng tôi đã gửi link xác nhận đến <span className="font-semibold">{pendingEmail}</span>. Bấm link để kích hoạt rồi quay lại đăng nhập.</p>
+          </div>
+        </div>
+      )}
+      {errorMsg && !pendingEmail && (
+        <div className="flex gap-2.5 p-3 rounded-xl bg-red-50 border border-red-200 text-sm">
+          <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+          <p className="text-red-900">{errorMsg === 'missing-code' ? 'Link xác nhận không hợp lệ. Vui lòng đăng ký lại.' : errorMsg}</p>
+        </div>
+      )}
       <div className="space-y-1.5">
         <Label htmlFor="email">Email</Label>
         <Input id="email" type="email" placeholder="email@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
