@@ -79,7 +79,8 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
       </div>
 
       <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+        <table className="w-full text-sm min-w-[900px]">
           <thead className="bg-gray-50 dark:bg-gray-900/60 border-b border-gray-100 dark:border-gray-800">
             <tr>
               <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Mã đơn</th>
@@ -191,6 +192,8 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
             })}
           </tbody>
         </table>
+
+        </div>
 
         {filtered.length === 0 && (
           <div className="text-center py-12 text-gray-400 dark:text-gray-500">
