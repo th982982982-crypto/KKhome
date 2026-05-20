@@ -5,14 +5,14 @@ import { formatCurrency } from '@/lib/format'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { toast } from 'sonner'
-import { Check, X } from 'lucide-react'
+import { Check, X, Copy } from 'lucide-react'
 import type { Order } from '@/lib/supabase/types'
 
 interface OrderWithProfile extends Order {
   profiles?: { full_name: string | null } | null
 }
 
-export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfile[] }) {
+export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: OrderWithProfile[]; skuMap?: Record<string, string> }) {
   const [orders, setOrders] = useState(initialOrders)
   const [loadingId, setLoadingId] = useState<string | null>(null)
   const [filter, setFilter] = useState<'all' | 'pending' | 'confirmed' | 'cancelled'>('all')
@@ -82,17 +82,21 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
         <table className="w-full text-sm">
           <thead className="bg-gray-50 dark:bg-gray-900/60 border-b border-gray-100 dark:border-gray-800">
             <tr>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300">Mã đơn</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300">Khách hàng</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 hidden md:table-cell">Sản phẩm</th>
-              <th className="text-right px-4 py-3 font-semibold text-gray-600 dark:text-gray-300">Số tiền</th>
-              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300">Trạng thái</th>
-              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300">Hành động</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Mã đơn</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Khách hàng</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Gmail</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 hidden md:table-cell whitespace-nowrap">Sản phẩm</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 hidden lg:table-cell whitespace-nowrap">SKU</th>
+              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 hidden lg:table-cell whitespace-nowrap">Ghi chú</th>
+              <th className="text-right px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Số tiền</th>
+              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Trạng thái</th>
+              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Hành động</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
             {filtered.map((order) => {
-              const items = order.items as { type: string; name: string; price: number }[]
+              const items = order.items as { type: string; id: string; name: string; price: number }[]
+              const skus = items.map(item => skuMap[item.id]).filter(Boolean)
               return (
                 <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
                   <td className="px-4 py-3">
@@ -101,7 +105,22 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
                   </td>
                   <td className="px-4 py-3 text-gray-700 dark:text-gray-200">
                     <p>{order.profiles?.full_name || 'Khách vãng lai'}</p>
-                    {order.email && <p className="text-xs text-gray-400 dark:text-gray-500">{order.email}</p>}
+                  </td>
+                  <td className="px-4 py-3">
+                    {order.email ? (
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <span className="text-sm text-gray-700 dark:text-gray-200 truncate max-w-[180px]">{order.email}</span>
+                        <button
+                          onClick={() => { navigator.clipboard.writeText(order.email!); toast.success('Đã copy email') }}
+                          className="shrink-0 p-1 rounded text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                          title="Copy email"
+                        >
+                          <Copy className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    ) : (
+                      <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
+                    )}
                   </td>
                   <td className="px-4 py-3 hidden md:table-cell">
                     <div className="space-y-0.5">
@@ -109,6 +128,24 @@ export function OrdersTable({ orders: initialOrders }: { orders: OrderWithProfil
                         <p key={i} className="text-gray-600 dark:text-gray-300 truncate max-w-48">{item.name}</p>
                       ))}
                     </div>
+                  </td>
+                  <td className="px-4 py-3 hidden lg:table-cell">
+                    {skus.length > 0 ? (
+                      <div className="space-y-0.5">
+                        {skus.map((sku, i) => (
+                          <p key={i} className="font-mono text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 px-1.5 py-0.5 rounded w-fit">{sku}</p>
+                        ))}
+                      </div>
+                    ) : (
+                      <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
+                    )}
+                  </td>
+                  <td className="px-4 py-3 hidden lg:table-cell">
+                    {order.bank_transfer_note ? (
+                      <p className="text-sm text-gray-600 dark:text-gray-300 max-w-[140px] truncate" title={order.bank_transfer_note}>{order.bank_transfer_note}</p>
+                    ) : (
+                      <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
+                    )}
                   </td>
                   <td className="px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50">
                     {formatCurrency(order.total_amount)}

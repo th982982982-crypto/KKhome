@@ -12,6 +12,7 @@ type Row = Partial<Template> & { _isNew?: boolean; _saving?: boolean; _dirty?: b
 const COLS = [
   { key: 'sort_order', label: 'STT', width: 'w-14', type: 'number' },
   { key: 'name', label: 'Tên template', width: 'w-52', type: 'text', required: true },
+  { key: 'sku', label: 'SKU', width: 'w-28', type: 'text' },
   { key: 'category', label: 'Danh mục', width: 'w-32', type: 'text' },
   { key: 'sale_price', label: 'Giá bán', width: 'w-28', type: 'number' },
   { key: 'original_price', label: 'Giá gốc', width: 'w-28', type: 'number' },
@@ -33,7 +34,7 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
     setRows(prev => [...prev, {
       _isNew: true, _dirty: true,
       is_published: true, sort_order: prev.length + 1,
-      name: '', category: '', description: '',
+      name: '', sku: null, category: '', description: '',
       sale_price: null, original_price: null,
       thumbnail_url: null, gallery_urls: [], google_sheet_embed_url: null,
       google_sheet_copy_url: null, tutorial_video_url: null, tags: null,
@@ -48,6 +49,7 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
 
     const payload = {
       name: row.name,
+      sku: row.sku || null,
       category: row.category || null,
       description: row.description || null,
       sale_price: row.sale_price ? Number(row.sale_price) : null,

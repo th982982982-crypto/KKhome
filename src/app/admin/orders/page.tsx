@@ -4,10 +4,15 @@ import { ShoppingBag } from 'lucide-react'
 
 export default async function AdminOrdersPage() {
   const supabase = createAdminClient()
-  const { data: orders } = await supabase
-    .from('orders')
-    .select('*, profiles(full_name)')
-    .order('created_at', { ascending: false })
+  const [{ data: orders }, { data: templates }] = await Promise.all([
+    supabase.from('orders').select('*, profiles(full_name)').order('created_at', { ascending: false }),
+    supabase.from('templates').select('id, sku, name'),
+  ])
+
+  const skuMap: Record<string, string> = {}
+  for (const t of templates ?? []) {
+    if (t.sku) skuMap[t.id] = t.sku
+  }
 
   const list = orders ?? []
   const pending = list.filter((o) => o.status === 'pending').length
@@ -30,7 +35,7 @@ export default async function AdminOrdersPage() {
         </div>
       </div>
 
-      <OrdersTable orders={list} />
+      <OrdersTable orders={list} skuMap={skuMap} />
     </div>
   )
 }

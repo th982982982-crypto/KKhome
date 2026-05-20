@@ -11,6 +11,7 @@ export interface Database {
           id: string
           slug: string
           name: string
+          sku: string | null
           description: string | null
           category: string | null
           thumbnail_url: string | null
