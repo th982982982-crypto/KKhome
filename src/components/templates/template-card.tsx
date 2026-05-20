@@ -43,8 +43,8 @@ export function TemplateCard({ template, onViewDetail, isPurchased, activePromot
       type: 'template',
       id: template.id,
       name: template.name,
-      sale_price: template.sale_price ?? 0,
-      original_price: template.original_price,
+      sale_price: effectivePrice ?? template.sale_price ?? 0,
+      original_price: promoDiscount ? template.sale_price : template.original_price,
       thumbnail_url: template.thumbnail_url,
     })
     if (added) toast.success('Đã thêm vào giỏ hàng')
