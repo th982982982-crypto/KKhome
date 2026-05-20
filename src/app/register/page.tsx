@@ -44,11 +44,19 @@ export default function RegisterPage() {
       toast.error(isDup ? 'Email này đã được đăng ký. Hãy đăng nhập.' : error.message)
       if (isDup) router.push(`/login?email=${encodeURIComponent(email)}`)
       setLoading(false)
-    } else if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+      return
+    }
+
+    const obscuredDup = !data.user && !data.session
+    const identitiesEmptyDup = data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0
+    if (obscuredDup || identitiesEmptyDup) {
       toast.error('Email này đã được đăng ký. Hãy đăng nhập.')
       router.push(`/login?email=${encodeURIComponent(email)}`)
       setLoading(false)
-    } else if (data.user && !data.session) {
+      return
+    }
+
+    if (data.user && !data.session) {
       setSubmittedEmail(email)
       setLoading(false)
     } else {
