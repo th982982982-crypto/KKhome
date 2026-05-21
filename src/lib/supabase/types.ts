@@ -63,6 +63,7 @@ export interface Database {
           total_amount: number
           status: 'pending' | 'confirmed' | 'cancelled'
           bank_transfer_note: string | null
+          cancel_note: string | null
           confirmed_at: string | null
           confirmed_by: string | null
           created_at: string
@@ -103,6 +104,17 @@ export type Package = Database['public']['Tables']['packages']['Row']
 export type Order = Database['public']['Tables']['orders']['Row']
 export type UserPurchase = Database['public']['Tables']['user_purchases']['Row']
 export type Profile = Database['public']['Tables']['profiles']['Row']
+
+export interface BankTransaction {
+  id: string
+  order_code: string
+  amount: number
+  transaction_content: string | null
+  email_subject: string | null
+  transaction_at: string | null
+  matched_order_id: string | null
+  created_at: string
+}
 
 export interface CartItem {
   type: 'template' | 'package'

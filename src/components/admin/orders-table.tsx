@@ -6,6 +6,13 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { toast } from 'sonner'
 import { Check, X, Copy } from 'lucide-react'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '@/components/ui/dialog'
 import type { Order } from '@/lib/supabase/types'
 
 interface OrderWithProfile extends Order {
@@ -16,26 +23,44 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
   const [orders, setOrders] = useState(initialOrders)
   const [loadingId, setLoadingId] = useState<string | null>(null)
   const [filter, setFilter] = useState<'all' | 'pending' | 'confirmed' | 'cancelled'>('all')
+  const [cancelTarget, setCancelTarget] = useState<{ id: string; code: string } | null>(null)
+  const [cancelNote, setCancelNote] = useState('')
 
-  async function handleAction(orderId: string, action: 'confirm' | 'cancel') {
-    if (action === 'cancel' && !confirm('Hủy đơn này?')) return
+  async function handleConfirm(orderId: string) {
     setLoadingId(orderId)
-    const endpoint = action === 'confirm' ? '/api/admin/confirm-order' : '/api/admin/cancel-order'
-    const res = await fetch(endpoint, {
+    const res = await fetch('/api/admin/confirm-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ order_id: orderId }),
     })
     const data = await res.json()
-
     if (data.success) {
-      const newStatus = action === 'confirm' ? 'confirmed' : 'cancelled'
-      setOrders((prev) => prev.map((o) => o.id === orderId ? { ...o, status: newStatus as Order['status'] } : o))
-      toast.success(action === 'confirm' ? 'Đã xác nhận đơn hàng' : 'Đã hủy đơn hàng')
+      setOrders((prev) => prev.map((o) => o.id === orderId ? { ...o, status: 'confirmed' as Order['status'] } : o))
+      toast.success('Đã xác nhận đơn hàng')
     } else {
       toast.error(data.error || 'Có lỗi xảy ra')
     }
     setLoadingId(null)
+  }
+
+  async function handleCancelConfirm() {
+    if (!cancelTarget) return
+    setLoadingId(cancelTarget.id)
+    const res = await fetch('/api/admin/cancel-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ order_id: cancelTarget.id, cancel_note: cancelNote }),
+    })
+    const data = await res.json()
+    if (data.success) {
+      setOrders((prev) => prev.map((o) => o.id === cancelTarget.id ? { ...o, status: 'cancelled' as Order['status'], cancel_note: cancelNote || null } : o))
+      toast.success('Đã hủy đơn hàng')
+    } else {
+      toast.error(data.error || 'Có lỗi xảy ra')
+    }
+    setLoadingId(null)
+    setCancelTarget(null)
+    setCancelNote('')
   }
 
   const filtered = filter === 'all' ? orders : orders.filter((o) => o.status === filter)
@@ -56,6 +81,41 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
 
   return (
     <div className="space-y-4">
+      {/* Cancel confirmation modal */}
+      <Dialog open={!!cancelTarget} onOpenChange={(open) => { if (!open) { setCancelTarget(null); setCancelNote('') } }}>
+        <DialogContent showCloseButton={false}>
+          <DialogHeader>
+            <DialogTitle>Hủy đơn {cancelTarget?.code}</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-2">
+            <label className="text-sm text-gray-600 dark:text-gray-300">Lý do hủy <span className="text-gray-400">(không bắt buộc)</span></label>
+            <textarea
+              className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"
+              rows={3}
+              placeholder="Ví dụ: Sai số tiền, khách không chuyển khoản..."
+              value={cancelNote}
+              onChange={(e) => setCancelNote(e.target.value)}
+            />
+          </div>
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => { setCancelTarget(null); setCancelNote('') }}
+              disabled={!!loadingId}
+            >
+              Quay lại
+            </Button>
+            <Button
+              className="bg-red-600 hover:bg-red-700 text-white"
+              onClick={handleCancelConfirm}
+              disabled={!!loadingId}
+            >
+              Xác nhận hủy
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       {pending.length > 0 && (
         <div className="bg-yellow-50 dark:bg-amber-950/40 border border-yellow-100 dark:border-amber-800 rounded-xl p-4">
           <p className="text-sm font-semibold text-yellow-800 dark:text-amber-200">⏳ {pending.length} đơn chờ xác nhận</p>
@@ -149,6 +209,9 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                     ) : (
                       <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
                     )}
+                    {order.status === 'cancelled' && order.cancel_note && (
+                      <p className="text-xs text-red-500 dark:text-red-400 truncate mt-0.5" title={order.cancel_note}>Lý do: {order.cancel_note}</p>
+                    )}
                   </td>
                   <td className="px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap">
                     {formatCurrency(order.total_amount)}
@@ -166,7 +229,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                         <Button
                           size="sm"
                           className="bg-green-600 hover:bg-green-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white h-8 px-3 text-xs whitespace-nowrap"
-                          onClick={() => handleAction(order.id, 'confirm')}
+                          onClick={() => handleConfirm(order.id)}
                           disabled={loadingId === order.id}
                         >
                           <Check className="w-3.5 h-3.5 mr-1" />
@@ -176,7 +239,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                           size="sm"
                           variant="outline"
                           className="h-8 px-3 text-xs whitespace-nowrap border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 dark:bg-transparent"
-                          onClick={() => handleAction(order.id, 'cancel')}
+                          onClick={() => { setCancelTarget({ id: order.id, code: order.order_code }); setCancelNote('') }}
                           disabled={loadingId === order.id}
                         >
                           <X className="w-3.5 h-3.5 mr-1" />

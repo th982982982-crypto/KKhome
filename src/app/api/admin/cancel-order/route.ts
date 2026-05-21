@@ -7,11 +7,11 @@ export async function POST(req: Request) {
   if (!adminUser) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
 
   const supabase = createAdminClient()
-  const { order_id } = await req.json()
+  const { order_id, cancel_note } = await req.json()
 
   const { data: order, error } = await supabase
     .from('orders')
-    .update({ status: 'cancelled' })
+    .update({ status: 'cancelled', cancel_note: cancel_note || null })
     .eq('id', order_id)
     .eq('status', 'pending')
     .select()

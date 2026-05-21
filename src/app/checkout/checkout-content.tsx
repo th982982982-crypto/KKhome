@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -10,13 +10,15 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
-import { Copy, CheckCircle2, ArrowLeft, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react'
+import { Copy, CheckCircle2, ArrowLeft, ArrowRight, ShieldCheck, Sparkles, Clock, XCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import type { RealtimeChannel } from '@supabase/supabase-js'
 
 const BANK_NAME = process.env.NEXT_PUBLIC_BANK_NAME || 'ACB'
 const BANK_ACCOUNT = process.env.NEXT_PUBLIC_BANK_ACCOUNT || '4465436'
 const BANK_OWNER = process.env.NEXT_PUBLIC_BANK_OWNER || 'HO KINH DOANH KKHOME'
 const BANK_CODE = process.env.NEXT_PUBLIC_BANK_CODE || 'ACB'
+const PAYMENT_WINDOW_SECONDS = 10 * 60
 
 function buildVietQrUrl(amount: number, orderCode: string): string {
   const addInfo = encodeURIComponent(orderCode)
@@ -27,15 +29,26 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
+function formatCountdown(seconds: number) {
+  const m = Math.floor(seconds / 60).toString().padStart(2, '0')
+  const s = (seconds % 60).toString().padStart(2, '0')
+  return `${m}:${s}`
+}
+
 export function CheckoutContent() {
   const { items, total, clearCart } = useCartStore()
   const router = useRouter()
   const [orderCode, setOrderCode] = useState<string | null>(null)
+  const [orderId, setOrderId] = useState<string | null>(null)
   const [orderTotal, setOrderTotal] = useState<number>(0)
   const [loading, setLoading] = useState(false)
   const [note, setNote] = useState('')
   const [email, setEmail] = useState('')
   const [emailTouched, setEmailTouched] = useState(false)
+  const [countdown, setCountdown] = useState(PAYMENT_WINDOW_SECONDS)
+  const [orderStatus, setOrderStatus] = useState<'pending' | 'confirmed' | 'cancelled'>('pending')
+  const [cancelNote, setCancelNote] = useState<string | null>(null)
+  const channelRef = useRef<RealtimeChannel | null>(null)
 
   useEffect(() => {
     const supabase = createClient()
@@ -50,6 +63,45 @@ export function CheckoutContent() {
       return () => clearTimeout(t)
     }
   }, [items, orderCode, router])
+
+  // Countdown timer
+  useEffect(() => {
+    if (!orderCode || orderStatus !== 'pending') return
+    if (countdown <= 0) return
+
+    const interval = setInterval(() => {
+      setCountdown((c) => {
+        if (c <= 1) { clearInterval(interval); return 0 }
+        return c - 1
+      })
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [orderCode, orderStatus])
+
+  // Realtime subscription for order status
+  useEffect(() => {
+    if (!orderId) return
+    const supabase = createClient()
+
+    const channel = supabase
+      .channel(`order-status-${orderId}`)
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'orders', filter: `id=eq.${orderId}` },
+        (payload) => {
+          const newStatus = payload.new.status as 'pending' | 'confirmed' | 'cancelled'
+          setOrderStatus(newStatus)
+          if (payload.new.cancel_note) setCancelNote(payload.new.cancel_note as string)
+        }
+      )
+      .subscribe()
+
+    channelRef.current = channel
+
+    return () => {
+      supabase.removeChannel(channel)
+    }
+  }, [orderId])
 
   async function handleCreateOrder() {
     if (!items.length) return
@@ -76,7 +128,10 @@ export function CheckoutContent() {
     const data = await res.json()
     if (data.order_code) {
       setOrderCode(data.order_code)
+      setOrderId(data.order_id)
       setOrderTotal(submitTotal)
+      setCountdown(PAYMENT_WINDOW_SECONDS)
+      setOrderStatus('pending')
       clearCart()
     } else {
       toast.error(data.error || 'Có lỗi xảy ra. Vui lòng thử lại.')
@@ -89,8 +144,79 @@ export function CheckoutContent() {
     toast.success(`Đã copy ${label}`)
   }
 
+  function handleCreateNew() {
+    router.push('/cart')
+  }
+
   if (orderCode) {
     const qrUrl = buildVietQrUrl(orderTotal, orderCode)
+    const isExpired = countdown === 0 && orderStatus === 'pending'
+
+    // Payment confirmed
+    if (orderStatus === 'confirmed') {
+      return (
+        <div className="max-w-lg mx-auto px-4 py-16 text-center">
+          <div className="w-20 h-20 mx-auto rounded-full bg-green-100 dark:bg-emerald-900/60 flex items-center justify-center mb-6">
+            <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
+          </div>
+          <h2 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">Thanh toán thành công!</h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-2">
+            Chúng tôi đã chia sẻ templates về email <strong>{email}</strong> của bạn ở chế độ xem.
+          </p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">Kiểm tra Google Drive — file đã được chia sẻ với bạn.</p>
+          <Button
+            className="bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl px-8"
+            onClick={() => router.push('/dashboard')}
+          >
+            Xem đơn hàng của tôi <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </div>
+      )
+    }
+
+    // Order cancelled
+    if (orderStatus === 'cancelled') {
+      return (
+        <div className="max-w-lg mx-auto px-4 py-16 text-center">
+          <div className="w-20 h-20 mx-auto rounded-full bg-red-100 dark:bg-red-900/40 flex items-center justify-center mb-6">
+            <XCircle className="w-10 h-10 text-red-600 dark:text-red-400" />
+          </div>
+          <h2 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">Đơn hàng đã bị hủy</h2>
+          {cancelNote && (
+            <p className="text-gray-600 dark:text-gray-300 mb-2">Lý do: <span className="font-medium">{cancelNote}</span></p>
+          )}
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">Vui lòng liên hệ admin nếu có thắc mắc.</p>
+          <Button
+            className="bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl px-8"
+            onClick={handleCreateNew}
+          >
+            Tạo đơn mới
+          </Button>
+        </div>
+      )
+    }
+
+    // QR expired
+    if (isExpired) {
+      return (
+        <div className="max-w-lg mx-auto px-4 py-16 text-center">
+          <div className="w-20 h-20 mx-auto rounded-full bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mb-6">
+            <Clock className="w-10 h-10 text-amber-600 dark:text-amber-400" />
+          </div>
+          <h2 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">Mã QR đã hết hiệu lực</h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-2">Đã quá 10 phút kể từ khi tạo đơn <strong>{orderCode}</strong>.</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">Nếu bạn đã chuyển khoản, vui lòng liên hệ admin để xác nhận thủ công.</p>
+          <Button
+            className="bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl px-8"
+            onClick={handleCreateNew}
+          >
+            Tạo đơn mới
+          </Button>
+        </div>
+      )
+    }
+
+    // Active payment window
     return (
       <div className="max-w-4xl mx-auto px-4 py-10">
         <div className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden">
@@ -99,7 +225,14 @@ export function CheckoutContent() {
               <CheckCircle2 className="w-8 h-8 text-green-600 dark:text-green-400" />
             </div>
             <h2 className="text-2xl font-black text-gray-900 dark:text-gray-50">Đơn hàng đã tạo thành công!</h2>
-            <p className="text-gray-600 dark:text-gray-300 mt-1">Chuyển khoản theo thông tin bên dưới — bạn sẽ nhận templates sau khi admin xác nhận.</p>
+            <p className="text-gray-600 dark:text-gray-300 mt-1">Chuyển khoản theo thông tin bên dưới — hệ thống sẽ tự xác nhận khi nhận được tiền.</p>
+
+            {/* Countdown */}
+            <div className={`inline-flex items-center gap-2 mt-4 px-5 py-2.5 rounded-full font-mono font-bold text-xl ${countdown < 120 ? 'bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400' : 'bg-white/70 dark:bg-gray-800/70 text-gray-700 dark:text-gray-200'}`}>
+              <Clock className="w-5 h-5" />
+              {formatCountdown(countdown)}
+            </div>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">Mã QR còn hiệu lực trong {formatCountdown(countdown)}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 p-8">
@@ -213,7 +346,7 @@ export function CheckoutContent() {
               {emailTouched && !isValidEmail(email) && (
                 <p className="text-xs text-red-500">Vui lòng nhập email hợp lệ</p>
               )}
-              <p className="text-xs text-gray-400 dark:text-gray-500">Admin sẽ liên hệ qua email này sau khi xác nhận thanh toán.</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500">Template Drive sẽ được chia sẻ về email này sau khi xác nhận thanh toán.</p>
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="note">Ghi chú (không bắt buộc)</Label>
@@ -229,8 +362,8 @@ export function CheckoutContent() {
           <div className="rounded-2xl border border-blue-100 dark:border-blue-900 bg-blue-50/50 dark:bg-blue-950/30 p-4 flex gap-3">
             <ShieldCheck className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
             <div className="text-sm text-blue-900 dark:text-blue-200">
-              <p className="font-semibold mb-0.5">Thanh toán an toàn</p>
-              <p className="text-blue-800/80 dark:text-blue-300/80">Chuyển khoản ngân hàng, được admin xác nhận trong vòng vài phút trong giờ làm việc.</p>
+              <p className="font-semibold mb-0.5">Thanh toán tự động</p>
+              <p className="text-blue-800/80 dark:text-blue-300/80">Hệ thống tự nhận diện thanh toán và chia sẻ templates ngay lập tức sau khi nhận được tiền.</p>
             </div>
           </div>
         </div>
