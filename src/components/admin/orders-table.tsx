@@ -177,9 +177,10 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                 <th className={`${thBase} text-left`}>Sản phẩm</th>
                 <th className={`${thBase} text-left`}>SKU</th>
                 <th className={`${thBase} text-left`}>Ghi chú</th>
-                <th className={`${thBase} text-right ${thSticky} right-[370px] w-[110px]`}>Số tiền</th>
-                <th className={`${thBase} text-center ${thSticky} right-[230px] w-[140px]`}>Trạng thái</th>
-                <th className={`${thBase} text-center ${thSticky} right-0 w-[230px]`}>Hành động</th>
+                <th className={`${thBase} text-right ${thSticky} right-[430px] w-[110px]`}>Số tiền</th>
+                <th className={`${thBase} text-center ${thSticky} right-[290px] w-[140px]`}>Trạng thái</th>
+                <th className={`${thBase} text-center ${thSticky} right-[180px] w-[110px]`}>Cấp Drive</th>
+                <th className={`${thBase} text-center ${thSticky} right-0 w-[180px]`}>Hành động</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-gray-700/60">
@@ -245,18 +246,31 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                       )}
                     </td>
                     {/* Số tiền — sticky column */}
-                    <td className={`px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap sticky right-[370px] w-[110px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
+                    <td className={`px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap sticky right-[430px] w-[110px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
                       {formatCurrency(order.total_amount)}
                     </td>
                     {/* Trạng thái — sticky column */}
-                    <td className={`px-4 py-3 text-center whitespace-nowrap sticky right-[230px] w-[140px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
+                    <td className={`px-4 py-3 text-center whitespace-nowrap sticky right-[290px] w-[140px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
                       <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${statusStyle[order.status]}`}>
                         {order.status === 'confirmed' && <CircleDollarSign className="w-3.5 h-3.5" />}
                         {statusLabel[order.status]}
                       </span>
                     </td>
-                    {/* Hành động — sticky column (gồm checkbox Cấp Drive + nút) */}
-                    <td className={`px-4 py-3 whitespace-nowrap sticky right-0 w-[230px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.10)]`}>
+                    {/* Cấp Drive — sticky column (chỉ hiện checkbox cho confirmed) */}
+                    <td className={`px-4 py-3 text-center whitespace-nowrap sticky right-[180px] w-[110px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
+                      {order.status === 'confirmed' ? (
+                        <input
+                          type="checkbox"
+                          checked={order.drive_shared}
+                          onChange={() => toggleDriveShared(order.id, !order.drive_shared)}
+                          className="w-4 h-4 cursor-pointer accent-blue-600"
+                        />
+                      ) : (
+                        <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
+                      )}
+                    </td>
+                    {/* Hành động — sticky column */}
+                    <td className={`px-4 py-3 whitespace-nowrap sticky right-0 w-[180px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.10)]`}>
                       {order.status === 'pending' ? (
                         <div className="flex items-center justify-center gap-1.5">
                           <Button
@@ -280,16 +294,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                           </Button>
                         </div>
                       ) : order.status === 'confirmed' ? (
-                        <div className="flex items-center justify-center gap-2">
-                          <label className="flex items-center gap-1.5 cursor-pointer text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap select-none">
-                            <input
-                              type="checkbox"
-                              checked={order.drive_shared}
-                              onChange={() => toggleDriveShared(order.id, !order.drive_shared)}
-                              className="w-3.5 h-3.5 cursor-pointer accent-blue-600"
-                            />
-                            Cấp Drive
-                          </label>
+                        <div className="flex items-center justify-center">
                           <Button
                             size="sm"
                             variant="outline"
