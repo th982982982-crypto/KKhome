@@ -20,6 +20,7 @@ import {
   X,
   Tag,
   Settings,
+  KeyRound,
 } from 'lucide-react'
 
 interface AdminShellProps {
@@ -33,6 +34,7 @@ const NAV = [
   { href: '/admin/templates', label: 'Templates', icon: FileSpreadsheet },
   { href: '/admin/orders', label: 'Đơn hàng', icon: ShoppingBag, badgeKey: 'pending' as const },
   { href: '/admin/promotions', label: 'Khuyến mãi', icon: Tag },
+  { href: '/admin/licenses', label: 'Licenses', icon: KeyRound },
   { href: '/admin/sync', label: 'Đồng bộ Sheets', icon: RefreshCw },
   { href: '/admin/settings', label: 'Cài đặt', icon: Settings },
 ]

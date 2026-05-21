@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
-import { Copy, CheckCircle2, ArrowLeft, ArrowRight, ShieldCheck, Sparkles, Clock, XCircle } from 'lucide-react'
+import { Copy, CheckCircle2, ArrowLeft, ArrowRight, ShieldCheck, Sparkles, Clock, XCircle, ExternalLink, KeyRound } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import type { RealtimeChannel } from '@supabase/supabase-js'
 
@@ -81,6 +81,7 @@ export function CheckoutContent() {
   const [countdown, setCountdown] = useState(PAYMENT_WINDOW_SECONDS)
   const [orderStatus, setOrderStatus] = useState<'pending' | 'confirmed' | 'cancelled'>('pending')
   const [cancelNote, setCancelNote] = useState<string | null>(null)
+  const [licenses, setLicenses] = useState<{ id: string; license_key: string; template_name: string; copy_url: string | null; status: string }[]>([])
   const channelRef = useRef<RealtimeChannel | null>(null)
 
   // Restore pending order from localStorage on mount
@@ -141,6 +142,9 @@ export function CheckoutContent() {
         if (data && data.status !== 'pending') {
           setOrderStatus(data.status as 'confirmed' | 'cancelled')
           if (data.cancel_note) setCancelNote(data.cancel_note as string)
+          if (data.status === 'confirmed') {
+            fetch(`/api/licenses?order_id=${orderId}`).then(r => r.json()).then(setLicenses).catch(() => {})
+          }
           clearPendingOrder()
         }
       })
@@ -154,6 +158,9 @@ export function CheckoutContent() {
           const newStatus = payload.new.status as 'pending' | 'confirmed' | 'cancelled'
           setOrderStatus(newStatus)
           if (payload.new.cancel_note) setCancelNote(payload.new.cancel_note as string)
+          if (newStatus === 'confirmed') {
+            fetch(`/api/licenses?order_id=${orderId}`).then(r => r.json()).then(setLicenses).catch(() => {})
+          }
           if (newStatus !== 'pending') clearPendingOrder()
         }
       )
@@ -226,21 +233,64 @@ export function CheckoutContent() {
     // Payment confirmed
     if (orderStatus === 'confirmed') {
       return (
-        <div className="max-w-lg mx-auto px-4 py-16 text-center">
-          <div className="w-20 h-20 mx-auto rounded-full bg-green-100 dark:bg-emerald-900/60 flex items-center justify-center mb-6">
-            <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
+        <div className="max-w-2xl mx-auto px-4 py-12">
+          <div className="text-center mb-8">
+            <div className="w-20 h-20 mx-auto rounded-full bg-green-100 dark:bg-emerald-900/60 flex items-center justify-center mb-6">
+              <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
+            </div>
+            <h2 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">Thanh toán thành công!</h2>
+            <p className="text-gray-600 dark:text-gray-300">Dưới đây là license key và link để copy template về Google Drive của bạn.</p>
           </div>
-          <h2 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">Thanh toán thành công!</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-2">
-            Chúng tôi đã chia sẻ templates về email <strong>{email}</strong> của bạn ở chế độ xem.
-          </p>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-8">Kiểm tra Google Drive — file đã được chia sẻ với bạn.</p>
-          <Button
-            className="bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl px-8"
-            onClick={() => router.push('/dashboard')}
-          >
-            Xem đơn hàng của tôi <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
+
+          {licenses.length > 0 && (
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden mb-6">
+              <div className="px-5 py-4 border-b border-gray-100 dark:border-gray-800 flex items-center gap-2">
+                <KeyRound className="w-4 h-4 text-indigo-500" />
+                <span className="font-semibold text-gray-900 dark:text-gray-50 text-sm">License Keys của bạn</span>
+              </div>
+              <div className="divide-y divide-gray-50 dark:divide-gray-800">
+                {licenses.map((lic) => (
+                  <div key={lic.id} className="px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-3">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-gray-700 dark:text-gray-200 truncate">{lic.template_name}</p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <code className="font-mono text-base font-bold text-indigo-600 dark:text-indigo-400">{lic.license_key}</code>
+                        <button
+                          onClick={() => { navigator.clipboard.writeText(lic.license_key); toast.success('Đã copy license key') }}
+                          className="p-1 rounded text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        >
+                          <Copy className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                    {lic.copy_url && (
+                      <a
+                        href={lic.copy_url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 text-sm font-semibold hover:bg-indigo-100 dark:hover:bg-indigo-900/60 transition-colors whitespace-nowrap"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        Copy về Drive
+                      </a>
+                    )}
+                  </div>
+                ))}
+              </div>
+              <div className="px-5 py-3 bg-amber-50 dark:bg-amber-950/30 border-t border-amber-100 dark:border-amber-900/40">
+                <p className="text-xs text-amber-700 dark:text-amber-300 font-medium">Hướng dẫn: Nhấn "Copy về Drive" → mở file → menu <strong>KKHome</strong> → <strong>Kích hoạt License</strong> → nhập key bên trên</p>
+              </div>
+            </div>
+          )}
+
+          <div className="text-center">
+            <Button
+              className="bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl px-8"
+              onClick={() => router.push('/dashboard')}
+            >
+              Xem đơn hàng của tôi <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
         </div>
       )
     }
