@@ -104,7 +104,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
     { key: 'cancelled', label: 'Đã hủy' },
   ]
 
-  const thSticky = 'sticky bg-slate-100 dark:bg-gray-800/80 shadow-[-6px_0_10px_-6px_rgba(0,0,0,0.12)]'
+  const thSticky = 'sticky bg-slate-100 dark:bg-gray-800/80 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.10)]'
   const thBase = 'text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap'
 
   return (
@@ -178,8 +178,8 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                 <th className={thBase}>SKU</th>
                 <th className={thBase}>Ghi chú</th>
                 <th className={`${thBase} text-right`}>Số tiền</th>
-                <th className={`${thBase} text-center`}>Trạng thái</th>
-                <th className={`${thBase} text-center ${thSticky} right-[170px]`}>Cấp Drive</th>
+                <th className={`${thBase} text-center ${thSticky} right-[250px] w-[140px]`}>Trạng thái</th>
+                <th className={`${thBase} text-center ${thSticky} right-[170px] w-[80px]`}>Cấp Drive</th>
                 <th className={`${thBase} text-center ${thSticky} right-0`}>Hành động</th>
               </tr>
             </thead>
@@ -248,13 +248,14 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                     <td className="px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap">
                       {formatCurrency(order.total_amount)}
                     </td>
-                    <td className="px-4 py-3 text-center whitespace-nowrap">
+                    {/* Trạng thái — sticky column */}
+                    <td className={`px-4 py-3 text-center whitespace-nowrap sticky right-[250px] w-[140px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
                       <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${statusStyle[order.status]}`}>
                         {statusLabel[order.status]}
                       </span>
                     </td>
                     {/* Cấp Drive — sticky column */}
-                    <td className={`px-4 py-3 text-center whitespace-nowrap sticky right-[170px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-6px_0_10px_-6px_rgba(0,0,0,0.10)]`}>
+                    <td className={`px-4 py-3 text-center whitespace-nowrap sticky right-[170px] w-[80px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
                       {order.status === 'confirmed' ? (
                         <input
                           type="checkbox"
@@ -268,7 +269,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                       )}
                     </td>
                     {/* Hành động — sticky column */}
-                    <td className={`px-4 py-3 whitespace-nowrap sticky right-0 min-w-[170px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-6px_0_10px_-6px_rgba(0,0,0,0.12)]`}>
+                    <td className={`px-4 py-3 whitespace-nowrap sticky right-0 min-w-[170px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.10)]`}>
                       {order.status === 'pending' ? (
                         <div className="flex items-center justify-center gap-1.5">
                           <Button
