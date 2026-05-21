@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -12,7 +12,6 @@ import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
 import { Copy, CheckCircle2, ArrowLeft, ArrowRight, ShieldCheck, Sparkles, Clock, XCircle, ExternalLink, KeyRound } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
-import type { RealtimeChannel } from '@supabase/supabase-js'
 
 const BANK_NAME = process.env.NEXT_PUBLIC_BANK_NAME || 'ACB'
 const BANK_ACCOUNT = process.env.NEXT_PUBLIC_BANK_ACCOUNT || '4465436'
@@ -82,7 +81,6 @@ export function CheckoutContent() {
   const [orderStatus, setOrderStatus] = useState<'pending' | 'confirmed' | 'cancelled'>('pending')
   const [cancelNote, setCancelNote] = useState<string | null>(null)
   const [licenses, setLicenses] = useState<{ id: string; license_key: string; template_name: string; copy_url: string | null; status: string }[]>([])
-  const channelRef = useRef<RealtimeChannel | null>(null)
 
   // Restore pending order from localStorage on mount
   useEffect(() => {
@@ -127,51 +125,31 @@ export function CheckoutContent() {
     return () => clearInterval(interval)
   }, [orderCode, orderStatus])
 
-  // Realtime subscription + initial status check
+  // Poll order status mỗi 5 giây (bypass RLS — dùng API thay Supabase client trực tiếp)
   useEffect(() => {
-    if (!orderId) return
-    const supabase = createClient()
+    if (!orderId || orderStatus !== 'pending') return
 
-    // Check current status immediately (handle race condition)
-    supabase
-      .from('orders')
-      .select('status, cancel_note')
-      .eq('id', orderId)
-      .single()
-      .then(({ data }) => {
-        if (data && data.status !== 'pending') {
-          setOrderStatus(data.status as 'confirmed' | 'cancelled')
-          if (data.cancel_note) setCancelNote(data.cancel_note as string)
-          if (data.status === 'confirmed') {
-            fetch(`/api/licenses?order_id=${orderId}`).then(r => r.json()).then(setLicenses).catch(() => {})
-          }
-          clearPendingOrder()
+    async function checkStatus() {
+      const res = await fetch(`/api/order-status?order_id=${orderId}`).catch(() => null)
+      if (!res?.ok) return
+      const data = await res.json()
+      if (data.status && data.status !== 'pending') {
+        setOrderStatus(data.status as 'confirmed' | 'cancelled')
+        if (data.cancel_note) setCancelNote(data.cancel_note as string)
+        if (data.status === 'confirmed') {
+          fetch(`/api/licenses?order_id=${orderId}`).then(r => r.json()).then(setLicenses).catch(() => {})
         }
-      })
-
-    const channel = supabase
-      .channel(`order-status-${orderId}`)
-      .on(
-        'postgres_changes',
-        { event: 'UPDATE', schema: 'public', table: 'orders', filter: `id=eq.${orderId}` },
-        (payload) => {
-          const newStatus = payload.new.status as 'pending' | 'confirmed' | 'cancelled'
-          setOrderStatus(newStatus)
-          if (payload.new.cancel_note) setCancelNote(payload.new.cancel_note as string)
-          if (newStatus === 'confirmed') {
-            fetch(`/api/licenses?order_id=${orderId}`).then(r => r.json()).then(setLicenses).catch(() => {})
-          }
-          if (newStatus !== 'pending') clearPendingOrder()
-        }
-      )
-      .subscribe()
-
-    channelRef.current = channel
-
-    return () => {
-      supabase.removeChannel(channel)
+        clearPendingOrder()
+      }
     }
-  }, [orderId])
+
+    // Kiểm tra ngay lập tức
+    checkStatus()
+
+    // Poll mỗi 5 giây
+    const interval = setInterval(checkStatus, 5000)
+    return () => clearInterval(interval)
+  }, [orderId, orderStatus])
 
   async function handleCreateOrder() {
     if (!items.length) return
