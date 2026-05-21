@@ -19,7 +19,7 @@ export default async function AdminOrdersPage() {
   const confirmed = list.filter((o) => o.status === 'confirmed').length
 
   return (
-    <div className="px-4 sm:px-6 lg:px-10 py-8 max-w-7xl mx-auto">
+    <div className="px-4 sm:px-6 lg:px-10 py-8 w-full">
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500 text-sm mb-1.5">

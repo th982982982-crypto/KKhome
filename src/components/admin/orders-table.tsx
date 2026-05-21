@@ -105,7 +105,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
   ]
 
   const thSticky = 'sticky bg-slate-100 dark:bg-gray-800/80 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.10)]'
-  const thBase = 'text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap'
+  const thBase = 'px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap'
 
   return (
     <div className="space-y-4">
@@ -168,16 +168,16 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
 
       <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full text-sm min-w-[1400px]">
+          <table className="w-full text-sm min-w-[1300px]">
             <thead className="bg-slate-100 dark:bg-gray-800/80 border-b border-gray-200 dark:border-gray-700">
               <tr>
-                <th className={thBase}>Mã đơn</th>
-                <th className={thBase}>Khách hàng</th>
-                <th className={thBase}>Gmail</th>
-                <th className={thBase}>Sản phẩm</th>
-                <th className={thBase}>SKU</th>
-                <th className={thBase}>Ghi chú</th>
-                <th className={thBase}>Trạng thái</th>
+                <th className={`${thBase} text-left`}>Mã đơn</th>
+                <th className={`${thBase} text-center`}>Trạng thái</th>
+                <th className={`${thBase} text-left`}>Khách hàng</th>
+                <th className={`${thBase} text-left`}>Gmail</th>
+                <th className={`${thBase} text-left`}>Sản phẩm</th>
+                <th className={`${thBase} text-left`}>SKU</th>
+                <th className={`${thBase} text-left`}>Ghi chú</th>
                 <th className={`${thBase} text-right ${thSticky} right-[230px] w-[110px]`}>Số tiền</th>
                 <th className={`${thBase} text-center ${thSticky} right-0 w-[230px]`}>Hành động</th>
               </tr>
@@ -196,6 +196,12 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                       <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
                         {new Date(order.created_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                       </p>
+                    </td>
+                    <td className="px-4 py-3 text-center whitespace-nowrap">
+                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${statusStyle[order.status]}`}>
+                        {order.status === 'confirmed' && <CircleDollarSign className="w-3.5 h-3.5" />}
+                        {statusLabel[order.status]}
+                      </span>
                     </td>
                     <td className="px-4 py-3 whitespace-nowrap">
                       <span className="text-sm text-gray-700 dark:text-gray-200">{order.profiles?.full_name || 'Khách vãng lai'}</span>
@@ -243,12 +249,6 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                       {order.status === 'cancelled' && order.cancel_note && (
                         <p className="text-xs text-red-500 dark:text-red-400 truncate mt-0.5" title={order.cancel_note}>Lý do: {order.cancel_note}</p>
                       )}
-                    </td>
-                    <td className="px-4 py-3 text-center whitespace-nowrap">
-                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${statusStyle[order.status]}`}>
-                        {order.status === 'confirmed' && <CircleDollarSign className="w-3.5 h-3.5" />}
-                        {statusLabel[order.status]}
-                      </span>
                     </td>
                     {/* Số tiền — sticky column */}
                     <td className={`px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap sticky right-[230px] w-[110px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
