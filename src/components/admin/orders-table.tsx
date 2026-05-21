@@ -5,7 +5,7 @@ import { formatCurrency } from '@/lib/format'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { toast } from 'sonner'
-import { Check, X, Copy } from 'lucide-react'
+import { Check, X, Copy, Share2 } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -22,6 +22,7 @@ interface OrderWithProfile extends Order {
 export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: OrderWithProfile[]; skuMap?: Record<string, string> }) {
   const [orders, setOrders] = useState(initialOrders)
   const [loadingId, setLoadingId] = useState<string | null>(null)
+  const [sharingId, setSharingId] = useState<string | null>(null)
   const [filter, setFilter] = useState<'all' | 'pending' | 'confirmed' | 'cancelled'>('all')
   const [cancelTarget, setCancelTarget] = useState<{ id: string; code: string } | null>(null)
   const [cancelNote, setCancelNote] = useState('')
@@ -41,6 +42,22 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
       toast.error(data.error || 'Có lỗi xảy ra')
     }
     setLoadingId(null)
+  }
+
+  async function handleShareDrive(orderId: string) {
+    setSharingId(orderId)
+    const res = await fetch('/api/admin/share-drive', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ order_id: orderId }),
+    })
+    const data = await res.json()
+    if (data.success) {
+      toast.success('Đã cấp quyền Drive cho khách hàng')
+    } else {
+      toast.error(data.error || 'Cấp quyền thất bại')
+    }
+    setSharingId(null)
   }
 
   async function handleCancelConfirm() {
@@ -247,7 +264,16 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                         </Button>
                       </div>
                     ) : order.status === 'confirmed' ? (
-                      <span className="text-xs text-green-600 dark:text-emerald-400 font-medium whitespace-nowrap">✓ Đã cấp quyền</span>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="h-8 px-3 text-xs whitespace-nowrap border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 dark:bg-transparent"
+                        onClick={() => handleShareDrive(order.id)}
+                        disabled={sharingId === order.id}
+                      >
+                        <Share2 className="w-3.5 h-3.5 mr-1" />
+                        {sharingId === order.id ? 'Đang cấp...' : 'Cấp quyền Drive'}
+                      </Button>
                     ) : (
                       <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
                     )}

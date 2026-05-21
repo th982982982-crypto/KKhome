@@ -130,29 +130,8 @@ function confirmOrderAndShare(SUPABASE_URL, SUPABASE_KEY, order) {
     }
   }
 
-  if (templateIds.length > 0) {
-    // Lấy cả embed_url và copy_url
-    var templates = supabaseGet(SUPABASE_URL, SUPABASE_KEY,
-      '/templates?id=in.(' + templateIds.join(',') + ')&select=id,name,google_sheet_embed_url,google_sheet_copy_url'
-    );
-
-    if (templates) {
-      templates.forEach(function(t) {
-        // Ưu tiên embed_url, fallback sang copy_url
-        var fileId = extractDriveFileId(t.google_sheet_embed_url) || extractDriveFileId(t.google_sheet_copy_url);
-        if (!fileId) {
-          Logger.log('No file ID for: ' + t.name);
-          return;
-        }
-        try {
-          DriveApp.getFileById(fileId).addViewer(order.email);
-          Logger.log('Shared ' + t.name + ' (' + fileId + ') with ' + order.email);
-        } catch(e) {
-          Logger.log('Share error for ' + t.name + ': ' + e.message);
-        }
-      });
-    }
-  }
+  // Drive sharing tạm tắt — bật lại khi quota Google reset
+  // if (templateIds.length > 0) { ... }
 
   // Cập nhật matched_order_id
   supabasePatch(SUPABASE_URL, SUPABASE_KEY,
@@ -174,7 +153,7 @@ function doPost(e) {
     var fileIds = payload.fileIds || [];
 
     fileIds.forEach(function(id) {
-      try { DriveApp.getFileById(id).addViewer(email); } catch(err) {
+      try { shareDriveFile(id, email); } catch(err) {
         Logger.log('doPost share error: ' + err.message);
       }
     });
@@ -186,6 +165,41 @@ function doPost(e) {
     return ContentService
       .createTextOutput(JSON.stringify({ ok: false, error: e.message }))
       .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// ------------------------------------------------------------
+// Dùng Drive API v3 với sendNotificationEmail=false để tránh
+// sharingRateLimitExceeded (email notification tốn quota nhiều nhất)
+// ------------------------------------------------------------
+function shareDriveFile(fileId, email) {
+  var token = ScriptApp.getOAuthToken();
+  var url = 'https://www.googleapis.com/drive/v3/files/' + fileId +
+            '/permissions?sendNotificationEmail=false';
+  var res = UrlFetchApp.fetch(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + token,
+      'Content-Type': 'application/json'
+    },
+    payload: JSON.stringify({ role: 'reader', type: 'user', emailAddress: email }),
+    muteHttpExceptions: true
+  });
+  var code = res.getResponseCode();
+  if (code >= 400) {
+    throw new Error('Drive API ' + code + ': ' + res.getContentText());
+  }
+}
+
+// Test hàm cấp quyền (chạy từ editor để kiểm tra)
+function testShareDriveFile() {
+  var testEmail = '5merchdtv@gmail.com';
+  var testFileId = '14dxu__QNYDfLDny4TC11Q7khokFy_2tTSwYrVTzJmXM';
+  try {
+    shareDriveFile(testFileId, testEmail);
+    Logger.log('SUCCESS: shared with ' + testEmail);
+  } catch(e) {
+    Logger.log('ERROR: ' + e.message);
   }
 }
 
