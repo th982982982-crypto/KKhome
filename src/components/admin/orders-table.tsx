@@ -188,9 +188,9 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                 const skus = items.map(item => skuMap[item.id]).filter(Boolean)
                 const rowBg = index % 2 === 0
                   ? 'bg-white dark:bg-gray-900'
-                  : 'bg-slate-50/80 dark:bg-gray-800/25'
+                  : 'bg-slate-50 dark:bg-gray-800/90'
                 return (
-                  <tr key={order.id} className={`group transition-colors hover:bg-blue-50/40 dark:hover:bg-slate-700/30 ${rowBg}`}>
+                  <tr key={order.id} className={`group transition-colors hover:bg-blue-50 dark:hover:bg-slate-800 ${rowBg}`}>
                     <td className="px-4 py-3 whitespace-nowrap">
                       <p className="font-mono font-bold text-gray-900 dark:text-gray-50 text-xs">{order.order_code}</p>
                       <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
@@ -251,11 +251,11 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                       </span>
                     </td>
                     {/* Số tiền — sticky column */}
-                    <td className={`px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap sticky right-[230px] w-[110px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
+                    <td className={`px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap sticky right-[230px] w-[110px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
                       {formatCurrency(order.total_amount)}
                     </td>
                     {/* Hành động — sticky column (gồm checkbox Cấp Drive + nút) */}
-                    <td className={`px-4 py-3 whitespace-nowrap sticky right-0 w-[230px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.10)]`}>
+                    <td className={`px-4 py-3 whitespace-nowrap sticky right-0 w-[230px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.10)]`}>
                       {order.status === 'pending' ? (
                         <div className="flex items-center justify-center gap-1.5">
                           <Button
