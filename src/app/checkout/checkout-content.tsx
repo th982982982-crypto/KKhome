@@ -19,6 +19,39 @@ const BANK_ACCOUNT = process.env.NEXT_PUBLIC_BANK_ACCOUNT || '4465436'
 const BANK_OWNER = process.env.NEXT_PUBLIC_BANK_OWNER || 'HO KINH DOANH KKHOME'
 const BANK_CODE = process.env.NEXT_PUBLIC_BANK_CODE || 'ACB'
 const PAYMENT_WINDOW_SECONDS = 10 * 60
+const STORAGE_KEY = 'kkhome_pending_order'
+
+interface PendingOrder {
+  orderCode: string
+  orderId: string
+  orderTotal: number
+  email: string
+  createdAt: number // timestamp ms
+}
+
+function savePendingOrder(data: PendingOrder) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+}
+
+function loadPendingOrder(): PendingOrder | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (!raw) return null
+    const data = JSON.parse(raw) as PendingOrder
+    // Bỏ qua nếu đã quá 10 phút
+    if (Date.now() - data.createdAt > PAYMENT_WINDOW_SECONDS * 1000) {
+      localStorage.removeItem(STORAGE_KEY)
+      return null
+    }
+    return data
+  } catch {
+    return null
+  }
+}
+
+function clearPendingOrder() {
+  localStorage.removeItem(STORAGE_KEY)
+}
 
 function buildVietQrUrl(amount: number, orderCode: string): string {
   const addInfo = encodeURIComponent(orderCode)
@@ -50,15 +83,30 @@ export function CheckoutContent() {
   const [cancelNote, setCancelNote] = useState<string | null>(null)
   const channelRef = useRef<RealtimeChannel | null>(null)
 
+  // Restore pending order from localStorage on mount
+  useEffect(() => {
+    const saved = loadPendingOrder()
+    if (saved) {
+      setOrderCode(saved.orderCode)
+      setOrderId(saved.orderId)
+      setOrderTotal(saved.orderTotal)
+      setEmail(saved.email)
+      const elapsed = Math.floor((Date.now() - saved.createdAt) / 1000)
+      setCountdown(Math.max(0, PAYMENT_WINDOW_SECONDS - elapsed))
+    }
+  }, [])
+
   useEffect(() => {
     const supabase = createClient()
     supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user?.email) setEmail(user.email)
+      if (user?.email) setEmail((prev) => prev || user.email || '')
     })
   }, [])
 
   useEffect(() => {
     if (items.length === 0 && !orderCode) {
+      const saved = loadPendingOrder()
+      if (saved) return // có order đang chờ, không redirect
       const t = setTimeout(() => router.push('/cart'), 200)
       return () => clearTimeout(t)
     }
@@ -93,6 +141,7 @@ export function CheckoutContent() {
         if (data && data.status !== 'pending') {
           setOrderStatus(data.status as 'confirmed' | 'cancelled')
           if (data.cancel_note) setCancelNote(data.cancel_note as string)
+          clearPendingOrder()
         }
       })
 
@@ -105,6 +154,7 @@ export function CheckoutContent() {
           const newStatus = payload.new.status as 'pending' | 'confirmed' | 'cancelled'
           setOrderStatus(newStatus)
           if (payload.new.cancel_note) setCancelNote(payload.new.cancel_note as string)
+          if (newStatus !== 'pending') clearPendingOrder()
         }
       )
       .subscribe()
@@ -145,6 +195,13 @@ export function CheckoutContent() {
       setOrderTotal(submitTotal)
       setCountdown(PAYMENT_WINDOW_SECONDS)
       setOrderStatus('pending')
+      savePendingOrder({
+        orderCode: data.order_code,
+        orderId: data.order_id,
+        orderTotal: submitTotal,
+        email,
+        createdAt: Date.now(),
+      })
       clearCart()
     } else {
       toast.error(data.error || 'Có lỗi xảy ra. Vui lòng thử lại.')
@@ -158,6 +215,7 @@ export function CheckoutContent() {
   }
 
   function handleCreateNew() {
+    clearPendingOrder()
     router.push('/cart')
   }
 
