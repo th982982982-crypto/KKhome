@@ -172,13 +172,13 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
             <thead className="bg-slate-100 dark:bg-gray-800/80 border-b border-gray-200 dark:border-gray-700">
               <tr>
                 <th className={`${thBase} text-left`}>Mã đơn</th>
-                <th className={`${thBase} text-center`}>Trạng thái</th>
                 <th className={`${thBase} text-left`}>Khách hàng</th>
                 <th className={`${thBase} text-left`}>Gmail</th>
                 <th className={`${thBase} text-left`}>Sản phẩm</th>
                 <th className={`${thBase} text-left`}>SKU</th>
                 <th className={`${thBase} text-left`}>Ghi chú</th>
-                <th className={`${thBase} text-right ${thSticky} right-[230px] w-[110px]`}>Số tiền</th>
+                <th className={`${thBase} text-right ${thSticky} right-[370px] w-[110px]`}>Số tiền</th>
+                <th className={`${thBase} text-center ${thSticky} right-[230px] w-[140px]`}>Trạng thái</th>
                 <th className={`${thBase} text-center ${thSticky} right-0 w-[230px]`}>Hành động</th>
               </tr>
             </thead>
@@ -196,12 +196,6 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                       <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
                         {new Date(order.created_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                       </p>
-                    </td>
-                    <td className="px-4 py-3 text-center whitespace-nowrap">
-                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${statusStyle[order.status]}`}>
-                        {order.status === 'confirmed' && <CircleDollarSign className="w-3.5 h-3.5" />}
-                        {statusLabel[order.status]}
-                      </span>
                     </td>
                     <td className="px-4 py-3 whitespace-nowrap">
                       <span className="text-sm text-gray-700 dark:text-gray-200">{order.profiles?.full_name || 'Khách vãng lai'}</span>
@@ -251,8 +245,15 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                       )}
                     </td>
                     {/* Số tiền — sticky column */}
-                    <td className={`px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap sticky right-[230px] w-[110px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
+                    <td className={`px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap sticky right-[370px] w-[110px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
                       {formatCurrency(order.total_amount)}
+                    </td>
+                    {/* Trạng thái — sticky column */}
+                    <td className={`px-4 py-3 text-center whitespace-nowrap sticky right-[230px] w-[140px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
+                      <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${statusStyle[order.status]}`}>
+                        {order.status === 'confirmed' && <CircleDollarSign className="w-3.5 h-3.5" />}
+                        {statusLabel[order.status]}
+                      </span>
                     </td>
                     {/* Hành động — sticky column (gồm checkbox Cấp Drive + nút) */}
                     <td className={`px-4 py-3 whitespace-nowrap sticky right-0 w-[230px] ${rowBg} group-hover:bg-blue-50 dark:group-hover:bg-slate-800 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.10)]`}>
