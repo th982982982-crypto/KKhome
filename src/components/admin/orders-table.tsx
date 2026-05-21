@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { formatCurrency } from '@/lib/format'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { toast } from 'sonner'
 import { Check, X, Copy } from 'lucide-react'
 import {
@@ -17,6 +16,18 @@ import type { Order } from '@/lib/supabase/types'
 
 interface OrderWithProfile extends Order {
   profiles?: { full_name: string | null } | null
+}
+
+const statusStyle: Record<Order['status'], string> = {
+  pending: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300',
+  confirmed: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300',
+  cancelled: 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400',
+}
+
+const statusLabel: Record<Order['status'], string> = {
+  pending: 'Chờ xác nhận',
+  confirmed: 'Đã xác nhận',
+  cancelled: 'Đã hủy',
 }
 
 export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: OrderWithProfile[]; skuMap?: Record<string, string> }) {
@@ -93,6 +104,9 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
     { key: 'cancelled', label: 'Đã hủy' },
   ]
 
+  const thSticky = 'sticky bg-slate-100 dark:bg-gray-800/80 shadow-[-6px_0_10px_-6px_rgba(0,0,0,0.12)]'
+  const thBase = 'text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap'
+
   return (
     <div className="space-y-4">
       {/* Cancel confirmation modal */}
@@ -131,8 +145,8 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
       </Dialog>
 
       {pending.length > 0 && (
-        <div className="bg-yellow-50 dark:bg-amber-950/40 border border-yellow-100 dark:border-amber-800 rounded-xl p-4">
-          <p className="text-sm font-semibold text-yellow-800 dark:text-amber-200">⏳ {pending.length} đơn chờ xác nhận</p>
+        <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-xl p-4">
+          <p className="text-sm font-semibold text-amber-800 dark:text-amber-200">⏳ {pending.length} đơn chờ xác nhận</p>
         </div>
       )}
 
@@ -152,146 +166,153 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
         ))}
       </div>
 
-      <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
-        <table className="w-full text-sm min-w-[1300px]">
-          <thead className="bg-gray-50 dark:bg-gray-900/60 border-b border-gray-100 dark:border-gray-800">
-            <tr>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Mã đơn</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Khách hàng</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Gmail</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Sản phẩm</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">SKU</th>
-              <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Ghi chú</th>
-              <th className="text-right px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Số tiền</th>
-              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Trạng thái</th>
-              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap sticky right-0 bg-gray-50 dark:bg-gray-900/60 shadow-[-8px_0_12px_-8px_rgba(0,0,0,0.1)]">Hành động</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
-            {filtered.map((order) => {
-              const items = order.items as { type: string; id: string; name: string; price: number }[]
-              const skus = items.map(item => skuMap[item.id]).filter(Boolean)
-              return (
-                <tr key={order.id} className="group hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-                  <td className="px-4 py-3 whitespace-nowrap">
-                    <p className="font-mono font-bold text-gray-900 dark:text-gray-50 text-xs">{order.order_code}</p>
-                    <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
-                      {new Date(order.created_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
-                    </p>
-                  </td>
-                  <td className="px-4 py-3 whitespace-nowrap">
-                    <span className="text-sm text-gray-700 dark:text-gray-200">{order.profiles?.full_name || 'Khách vãng lai'}</span>
-                  </td>
-                  <td className="px-4 py-3 whitespace-nowrap">
-                    {order.email ? (
-                      <div className="flex items-center gap-1">
-                        <span className="text-sm text-gray-700 dark:text-gray-200">{order.email}</span>
-                        <button
-                          onClick={() => { navigator.clipboard.writeText(order.email!); toast.success('Đã copy email') }}
-                          className="shrink-0 p-1 rounded text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                          title="Copy email"
-                        >
-                          <Copy className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    ) : (
-                      <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
-                    )}
-                  </td>
-                  <td className="px-4 py-3 max-w-[220px]">
-                    <div className="space-y-0.5">
-                      {items.map((item, i) => (
-                        <p key={i} className="text-sm text-gray-600 dark:text-gray-300 truncate" title={item.name}>{item.name}</p>
-                      ))}
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 whitespace-nowrap">
-                    {skus.length > 0 ? (
-                      <div className="flex flex-wrap gap-1">
-                        {skus.map((sku, i) => (
-                          <span key={i} className="font-mono text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 px-1.5 py-0.5 rounded">{sku}</span>
+          <table className="w-full text-sm min-w-[1400px]">
+            <thead className="bg-slate-100 dark:bg-gray-800/80 border-b border-gray-200 dark:border-gray-700">
+              <tr>
+                <th className={thBase}>Mã đơn</th>
+                <th className={thBase}>Khách hàng</th>
+                <th className={thBase}>Gmail</th>
+                <th className={thBase}>Sản phẩm</th>
+                <th className={thBase}>SKU</th>
+                <th className={thBase}>Ghi chú</th>
+                <th className={`${thBase} text-right`}>Số tiền</th>
+                <th className={`${thBase} text-center`}>Trạng thái</th>
+                <th className={`${thBase} text-center ${thSticky} right-[170px]`}>Cấp Drive</th>
+                <th className={`${thBase} text-center ${thSticky} right-0`}>Hành động</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200 dark:divide-gray-700/60">
+              {filtered.map((order, index) => {
+                const items = order.items as { type: string; id: string; name: string; price: number }[]
+                const skus = items.map(item => skuMap[item.id]).filter(Boolean)
+                const rowBg = index % 2 === 0
+                  ? 'bg-white dark:bg-gray-900'
+                  : 'bg-slate-50/80 dark:bg-gray-800/25'
+                return (
+                  <tr key={order.id} className={`group transition-colors hover:bg-blue-50/40 dark:hover:bg-slate-700/30 ${rowBg}`}>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <p className="font-mono font-bold text-gray-900 dark:text-gray-50 text-xs">{order.order_code}</p>
+                      <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">
+                        {new Date(order.created_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                      </p>
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      <span className="text-sm text-gray-700 dark:text-gray-200">{order.profiles?.full_name || 'Khách vãng lai'}</span>
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {order.email ? (
+                        <div className="flex items-center gap-1">
+                          <span className="text-sm text-gray-700 dark:text-gray-200">{order.email}</span>
+                          <button
+                            onClick={() => { navigator.clipboard.writeText(order.email!); toast.success('Đã copy email') }}
+                            className="shrink-0 p-1 rounded text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                            title="Copy email"
+                          >
+                            <Copy className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      ) : (
+                        <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 max-w-[220px]">
+                      <div className="space-y-0.5">
+                        {items.map((item, i) => (
+                          <p key={i} className="text-sm text-gray-600 dark:text-gray-300 truncate" title={item.name}>{item.name}</p>
                         ))}
                       </div>
-                    ) : (
-                      <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
-                    )}
-                  </td>
-                  <td className="px-4 py-3 max-w-[130px]">
-                    {order.bank_transfer_note ? (
-                      <p className="text-sm text-gray-600 dark:text-gray-300 truncate" title={order.bank_transfer_note}>{order.bank_transfer_note}</p>
-                    ) : (
-                      <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
-                    )}
-                    {order.status === 'cancelled' && order.cancel_note && (
-                      <p className="text-xs text-red-500 dark:text-red-400 truncate mt-0.5" title={order.cancel_note}>Lý do: {order.cancel_note}</p>
-                    )}
-                  </td>
-                  <td className="px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap">
-                    {formatCurrency(order.total_amount)}
-                  </td>
-                  <td className="px-4 py-3 text-center whitespace-nowrap">
-                    <Badge
-                      variant={order.status === 'confirmed' ? 'default' : order.status === 'cancelled' ? 'destructive' : 'secondary'}
-                    >
-                      {order.status === 'confirmed' ? 'Đã xác nhận' : order.status === 'cancelled' ? 'Đã hủy' : 'Chờ xác nhận'}
-                    </Badge>
-                  </td>
-                  <td className="px-4 py-3 whitespace-nowrap sticky right-0 bg-white dark:bg-gray-900 group-hover:bg-gray-50 dark:group-hover:bg-gray-800/50 shadow-[-8px_0_12px_-8px_rgba(0,0,0,0.1)]">
-                    {order.status === 'pending' ? (
-                      <div className="flex items-center justify-center gap-1.5">
-                        <Button
-                          size="sm"
-                          className="bg-green-600 hover:bg-green-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white h-8 px-3 text-xs whitespace-nowrap"
-                          onClick={() => handleConfirm(order.id)}
-                          disabled={loadingId === order.id}
-                        >
-                          <Check className="w-3.5 h-3.5 mr-1" />
-                          Xác nhận
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="h-8 px-3 text-xs whitespace-nowrap border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 dark:bg-transparent"
-                          onClick={() => { setCancelTarget({ id: order.id, code: order.order_code }); setCancelNote('') }}
-                          disabled={loadingId === order.id}
-                        >
-                          <X className="w-3.5 h-3.5 mr-1" />
-                          Hủy
-                        </Button>
-                      </div>
-                    ) : order.status === 'confirmed' ? (
-                      <div className="flex items-center justify-center gap-2">
-                        <label className="flex items-center gap-1.5 cursor-pointer text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap select-none">
-                          <input
-                            type="checkbox"
-                            checked={order.drive_shared}
-                            onChange={() => toggleDriveShared(order.id, !order.drive_shared)}
-                            className="w-3.5 h-3.5 cursor-pointer accent-blue-600"
-                          />
-                          Đã cấp Drive
-                        </label>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="h-8 px-3 text-xs whitespace-nowrap border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 dark:bg-transparent"
-                          onClick={() => { setCancelTarget({ id: order.id, code: order.order_code }); setCancelNote('') }}
-                          disabled={loadingId === order.id}
-                        >
-                          <X className="w-3.5 h-3.5 mr-1" />
-                          Hủy
-                        </Button>
-                      </div>
-                    ) : (
-                      <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
-                    )}
-                  </td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-
+                    </td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {skus.length > 0 ? (
+                        <div className="flex flex-wrap gap-1">
+                          {skus.map((sku, i) => (
+                            <span key={i} className="font-mono text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 px-1.5 py-0.5 rounded">{sku}</span>
+                          ))}
+                        </div>
+                      ) : (
+                        <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 max-w-[130px]">
+                      {order.bank_transfer_note ? (
+                        <p className="text-sm text-gray-600 dark:text-gray-300 truncate" title={order.bank_transfer_note}>{order.bank_transfer_note}</p>
+                      ) : (
+                        <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
+                      )}
+                      {order.status === 'cancelled' && order.cancel_note && (
+                        <p className="text-xs text-red-500 dark:text-red-400 truncate mt-0.5" title={order.cancel_note}>Lý do: {order.cancel_note}</p>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap">
+                      {formatCurrency(order.total_amount)}
+                    </td>
+                    <td className="px-4 py-3 text-center whitespace-nowrap">
+                      <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${statusStyle[order.status]}`}>
+                        {statusLabel[order.status]}
+                      </span>
+                    </td>
+                    {/* Cấp Drive — sticky column */}
+                    <td className={`px-4 py-3 text-center whitespace-nowrap sticky right-[170px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-6px_0_10px_-6px_rgba(0,0,0,0.10)]`}>
+                      {order.status === 'confirmed' ? (
+                        <input
+                          type="checkbox"
+                          checked={order.drive_shared}
+                          onChange={() => toggleDriveShared(order.id, !order.drive_shared)}
+                          className="w-4 h-4 cursor-pointer accent-blue-600 rounded"
+                          title={order.drive_shared ? 'Đã cấp Drive' : 'Chưa cấp Drive'}
+                        />
+                      ) : (
+                        <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
+                      )}
+                    </td>
+                    {/* Hành động — sticky column */}
+                    <td className={`px-4 py-3 whitespace-nowrap sticky right-0 min-w-[170px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-6px_0_10px_-6px_rgba(0,0,0,0.12)]`}>
+                      {order.status === 'pending' ? (
+                        <div className="flex items-center justify-center gap-1.5">
+                          <Button
+                            size="sm"
+                            className="bg-green-600 hover:bg-green-700 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white h-8 px-3 text-xs whitespace-nowrap"
+                            onClick={() => handleConfirm(order.id)}
+                            disabled={loadingId === order.id}
+                          >
+                            <Check className="w-3.5 h-3.5 mr-1" />
+                            Xác nhận
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="h-8 px-3 text-xs whitespace-nowrap border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 dark:bg-transparent"
+                            onClick={() => { setCancelTarget({ id: order.id, code: order.order_code }); setCancelNote('') }}
+                            disabled={loadingId === order.id}
+                          >
+                            <X className="w-3.5 h-3.5 mr-1" />
+                            Hủy
+                          </Button>
+                        </div>
+                      ) : order.status === 'confirmed' ? (
+                        <div className="flex items-center justify-center">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="h-8 px-3 text-xs whitespace-nowrap border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 dark:bg-transparent"
+                            onClick={() => { setCancelTarget({ id: order.id, code: order.order_code }); setCancelNote('') }}
+                            disabled={loadingId === order.id}
+                          >
+                            <X className="w-3.5 h-3.5 mr-1" />
+                            Hủy
+                          </Button>
+                        </div>
+                      ) : (
+                        <span className="text-xs text-gray-400 dark:text-gray-500 flex justify-center">—</span>
+                      )}
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
         </div>
 
         {filtered.length === 0 && (
