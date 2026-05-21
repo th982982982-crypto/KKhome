@@ -105,17 +105,6 @@ export type Order = Database['public']['Tables']['orders']['Row']
 export type UserPurchase = Database['public']['Tables']['user_purchases']['Row']
 export type Profile = Database['public']['Tables']['profiles']['Row']
 
-export interface License {
-  id: string
-  license_key: string
-  email: string
-  user_id: string | null
-  template_id: string | null
-  order_id: string | null
-  status: 'active' | 'suspended' | 'revoked'
-  created_at: string
-}
-
 export interface BankTransaction {
   id: string
   order_code: string
