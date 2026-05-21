@@ -5,7 +5,7 @@ import { formatCurrency } from '@/lib/format'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { toast } from 'sonner'
-import { Check, X, Copy, Share2 } from 'lucide-react'
+import { Check, X, Copy } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -22,7 +22,6 @@ interface OrderWithProfile extends Order {
 export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: OrderWithProfile[]; skuMap?: Record<string, string> }) {
   const [orders, setOrders] = useState(initialOrders)
   const [loadingId, setLoadingId] = useState<string | null>(null)
-  const [sharingId, setSharingId] = useState<string | null>(null)
   const [filter, setFilter] = useState<'all' | 'pending' | 'confirmed' | 'cancelled'>('all')
   const [cancelTarget, setCancelTarget] = useState<{ id: string; code: string } | null>(null)
   const [cancelNote, setCancelNote] = useState('')
@@ -44,20 +43,18 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
     setLoadingId(null)
   }
 
-  async function handleShareDrive(orderId: string) {
-    setSharingId(orderId)
-    const res = await fetch('/api/admin/share-drive', {
+  async function toggleDriveShared(orderId: string, value: boolean) {
+    setOrders(prev => prev.map(o => o.id === orderId ? { ...o, drive_shared: value } : o))
+    const res = await fetch('/api/admin/toggle-drive-shared', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ order_id: orderId }),
+      body: JSON.stringify({ order_id: orderId, drive_shared: value }),
     })
     const data = await res.json()
-    if (data.success) {
-      toast.success('Đã cấp quyền Drive cho khách hàng')
-    } else {
-      toast.error(data.error || 'Cấp quyền thất bại')
+    if (!data.success) {
+      setOrders(prev => prev.map(o => o.id === orderId ? { ...o, drive_shared: !value } : o))
+      toast.error(data.error || 'Có lỗi xảy ra')
     }
-    setSharingId(null)
   }
 
   async function handleCancelConfirm() {
@@ -157,7 +154,7 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
 
       <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
         <div className="overflow-x-auto">
-        <table className="w-full text-sm min-w-[1100px]">
+        <table className="w-full text-sm min-w-[1300px]">
           <thead className="bg-gray-50 dark:bg-gray-900/60 border-b border-gray-100 dark:border-gray-800">
             <tr>
               <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-300 whitespace-nowrap">Mã đơn</th>
@@ -264,16 +261,27 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                         </Button>
                       </div>
                     ) : order.status === 'confirmed' ? (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="h-8 px-3 text-xs whitespace-nowrap border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 dark:bg-transparent"
-                        onClick={() => handleShareDrive(order.id)}
-                        disabled={sharingId === order.id}
-                      >
-                        <Share2 className="w-3.5 h-3.5 mr-1" />
-                        {sharingId === order.id ? 'Đang cấp...' : 'Cấp quyền Drive'}
-                      </Button>
+                      <div className="flex items-center justify-center gap-2">
+                        <label className="flex items-center gap-1.5 cursor-pointer text-xs text-gray-600 dark:text-gray-300 whitespace-nowrap select-none">
+                          <input
+                            type="checkbox"
+                            checked={order.drive_shared}
+                            onChange={() => toggleDriveShared(order.id, !order.drive_shared)}
+                            className="w-3.5 h-3.5 cursor-pointer accent-blue-600"
+                          />
+                          Đã cấp Drive
+                        </label>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="h-8 px-3 text-xs whitespace-nowrap border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 dark:bg-transparent"
+                          onClick={() => { setCancelTarget({ id: order.id, code: order.order_code }); setCancelNote('') }}
+                          disabled={loadingId === order.id}
+                        >
+                          <X className="w-3.5 h-3.5 mr-1" />
+                          Hủy
+                        </Button>
+                      </div>
                     ) : (
                       <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
                     )}

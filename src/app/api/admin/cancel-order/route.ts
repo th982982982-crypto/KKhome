@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     .from('orders')
     .update({ status: 'cancelled', cancel_note: cancel_note || null })
     .eq('id', order_id)
-    .eq('status', 'pending')
+    .in('status', ['pending', 'confirmed'])
     .select()
     .single()
 
