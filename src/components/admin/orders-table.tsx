@@ -177,8 +177,8 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                 <th className={thBase}>Sản phẩm</th>
                 <th className={thBase}>SKU</th>
                 <th className={thBase}>Ghi chú</th>
-                <th className={`${thBase} text-right`}>Số tiền</th>
-                <th className={`${thBase} text-center ${thSticky} right-[250px] w-[140px]`}>Trạng thái</th>
+                <th className={thBase}>Trạng thái</th>
+                <th className={`${thBase} text-right ${thSticky} right-[250px] w-[110px]`}>Số tiền</th>
                 <th className={`${thBase} text-center ${thSticky} right-[170px] w-[80px]`}>Cấp Drive</th>
                 <th className={`${thBase} text-center ${thSticky} right-0`}>Hành động</th>
               </tr>
@@ -245,14 +245,14 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                         <p className="text-xs text-red-500 dark:text-red-400 truncate mt-0.5" title={order.cancel_note}>Lý do: {order.cancel_note}</p>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap">
-                      {formatCurrency(order.total_amount)}
-                    </td>
-                    {/* Trạng thái — sticky column */}
-                    <td className={`px-4 py-3 text-center whitespace-nowrap sticky right-[250px] w-[140px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
+                    <td className="px-4 py-3 text-center whitespace-nowrap">
                       <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold ${statusStyle[order.status]}`}>
                         {statusLabel[order.status]}
                       </span>
+                    </td>
+                    {/* Số tiền — sticky column */}
+                    <td className={`px-4 py-3 text-right font-semibold text-gray-900 dark:text-gray-50 whitespace-nowrap sticky right-[250px] w-[110px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
+                      {formatCurrency(order.total_amount)}
                     </td>
                     {/* Cấp Drive — sticky column */}
                     <td className={`px-4 py-3 text-center whitespace-nowrap sticky right-[170px] w-[80px] ${rowBg} group-hover:bg-blue-50/40 dark:group-hover:bg-slate-700/30 shadow-[-4px_0_8px_-4px_rgba(0,0,0,0.08)]`}>
