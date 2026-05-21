@@ -78,10 +78,23 @@ export function CheckoutContent() {
     return () => clearInterval(interval)
   }, [orderCode, orderStatus])
 
-  // Realtime subscription for order status
+  // Realtime subscription + initial status check
   useEffect(() => {
     if (!orderId) return
     const supabase = createClient()
+
+    // Check current status immediately (handle race condition)
+    supabase
+      .from('orders')
+      .select('status, cancel_note')
+      .eq('id', orderId)
+      .single()
+      .then(({ data }) => {
+        if (data && data.status !== 'pending') {
+          setOrderStatus(data.status as 'confirmed' | 'cancelled')
+          if (data.cancel_note) setCancelNote(data.cancel_note as string)
+        }
+      })
 
     const channel = supabase
       .channel(`order-status-${orderId}`)
