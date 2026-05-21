@@ -1,6 +1,5 @@
 // ============================================================
-// ACB Mail Scanner + Drive Auto-Share
-// Deploy lên Google Apps Script, cùng account với Google Drive
+// ACB Mail Scanner — tự động xác nhận đơn hàng
 // Script Properties cần set:
 //   SUPABASE_URL  = https://jmrsyjurwcjjfjntreyq.supabase.co
 //   SUPABASE_KEY  = <service_role_key>
@@ -51,11 +50,10 @@ function scanACBMails() {
         return;
       }
 
-      // Insert hoặc cập nhật bank_transaction
+      // Insert bank_transaction nếu chưa có
       var txContent = body.match(/Nội dung giao dịch[:\s]+([^\n]+)/i);
       var transactionContent = txContent ? txContent[1].trim() : '';
 
-      // Kiểm tra đã có record chưa (có thể chưa match)
       var existingTx = supabaseGet(SUPABASE_URL, SUPABASE_KEY,
         '/bank_transactions?order_code=eq.' + orderCode + '&amount=eq.' + amount + '&select=id'
       );
@@ -80,16 +78,16 @@ function scanACBMails() {
       Logger.log('Matching orders: ' + (orders ? orders.length : 0));
 
       if (orders && orders.length > 0) {
-        confirmOrderAndShare(SUPABASE_URL, SUPABASE_KEY, orders[0]);
+        confirmOrder(SUPABASE_URL, SUPABASE_KEY, orders[0]);
       }
     });
   });
 }
 
 // ------------------------------------------------------------
-// 2. Xác nhận đơn + tạo user_purchases + share Drive
+// 2. Xác nhận đơn + tạo user_purchases
 // ------------------------------------------------------------
-function confirmOrderAndShare(SUPABASE_URL, SUPABASE_KEY, order) {
+function confirmOrder(SUPABASE_URL, SUPABASE_KEY, order) {
   var now = new Date().toISOString();
 
   // Update order → confirmed
@@ -112,106 +110,18 @@ function confirmOrderAndShare(SUPABASE_URL, SUPABASE_KEY, order) {
   });
   supabasePost(SUPABASE_URL, SUPABASE_KEY, '/user_purchases', purchases);
 
-  // Lấy tất cả template IDs
-  var templateIds = items
-    .filter(function(i) { return i.type === 'template'; })
-    .map(function(i) { return i.id; });
-
-  var packageIds = items
-    .filter(function(i) { return i.type === 'package'; })
-    .map(function(i) { return i.id; });
-
-  if (packageIds.length > 0) {
-    var pkgTemplates = supabaseGet(SUPABASE_URL, SUPABASE_KEY,
-      '/package_templates?package_id=in.(' + packageIds.join(',') + ')&select=template_id'
-    );
-    if (pkgTemplates) {
-      pkgTemplates.forEach(function(pt) { templateIds.push(pt.template_id); });
-    }
-  }
-
-  // Drive sharing tạm tắt — bật lại khi quota Google reset
-  // if (templateIds.length > 0) { ... }
-
   // Cập nhật matched_order_id
   supabasePatch(SUPABASE_URL, SUPABASE_KEY,
     '/bank_transactions?order_code=eq.' + order.order_code + '&amount=eq.' + order.total_amount,
     { matched_order_id: order.id }
   );
 
-  Logger.log('Order ' + order.order_code + ' confirmed and Drive shared to ' + order.email);
-}
-
-// ------------------------------------------------------------
-// 3. HTTP endpoint — manual confirm cũng share Drive
-// POST body: { email: string, fileIds: string[] }
-// ------------------------------------------------------------
-function doPost(e) {
-  try {
-    var payload = JSON.parse(e.postData.contents);
-    var email = payload.email;
-    var fileIds = payload.fileIds || [];
-
-    fileIds.forEach(function(id) {
-      try { shareDriveFile(id, email); } catch(err) {
-        Logger.log('doPost share error: ' + err.message);
-      }
-    });
-
-    return ContentService
-      .createTextOutput(JSON.stringify({ ok: true }))
-      .setMimeType(ContentService.MimeType.JSON);
-  } catch(e) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ ok: false, error: e.message }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
-
-// ------------------------------------------------------------
-// Dùng Drive API v3 với sendNotificationEmail=false để tránh
-// sharingRateLimitExceeded (email notification tốn quota nhiều nhất)
-// ------------------------------------------------------------
-function shareDriveFile(fileId, email) {
-  var token = ScriptApp.getOAuthToken();
-  var url = 'https://www.googleapis.com/drive/v3/files/' + fileId +
-            '/permissions?sendNotificationEmail=false';
-  var res = UrlFetchApp.fetch(url, {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Bearer ' + token,
-      'Content-Type': 'application/json'
-    },
-    payload: JSON.stringify({ role: 'reader', type: 'user', emailAddress: email }),
-    muteHttpExceptions: true
-  });
-  var code = res.getResponseCode();
-  if (code >= 400) {
-    throw new Error('Drive API ' + code + ': ' + res.getContentText());
-  }
-}
-
-// Test hàm cấp quyền (chạy từ editor để kiểm tra)
-function testShareDriveFile() {
-  var testEmail = '5merchdtv@gmail.com';
-  var testFileId = '14dxu__QNYDfLDny4TC11Q7khokFy_2tTSwYrVTzJmXM';
-  try {
-    shareDriveFile(testFileId, testEmail);
-    Logger.log('SUCCESS: shared with ' + testEmail);
-  } catch(e) {
-    Logger.log('ERROR: ' + e.message);
-  }
+  Logger.log('Order ' + order.order_code + ' done');
 }
 
 // ------------------------------------------------------------
 // Helpers
 // ------------------------------------------------------------
-function extractDriveFileId(url) {
-  if (!url) return null;
-  var m = url.match(/\/d\/([a-zA-Z0-9-_]+)/);
-  return m ? m[1] : null;
-}
-
 function supabaseGet(SUPABASE_URL, SUPABASE_KEY, path) {
   var res = UrlFetchApp.fetch(SUPABASE_URL + '/rest/v1' + path, {
     method: 'GET',
@@ -264,7 +174,7 @@ function supabasePatch(SUPABASE_URL, SUPABASE_KEY, path, body) {
 }
 
 // ------------------------------------------------------------
-// Setup: chạy hàm này 1 lần để tạo trigger tự động
+// Setup: chạy 1 lần để tạo trigger tự động
 // ------------------------------------------------------------
 function setupTrigger() {
   ScriptApp.getProjectTriggers().forEach(function(t) {
