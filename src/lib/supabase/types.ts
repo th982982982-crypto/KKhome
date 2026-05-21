@@ -66,6 +66,7 @@ export interface Database {
           cancel_note: string | null
           confirmed_at: string | null
           confirmed_by: string | null
+          drive_shared: boolean
           created_at: string
         }
         Insert: Omit<Database['public']['Tables']['orders']['Row'], 'id' | 'created_at'>
