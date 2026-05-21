@@ -1,84 +1,106 @@
 // ============================================================
 // ACB Mail Scanner + Drive Auto-Share
 // Deploy lên Google Apps Script, cùng account với Google Drive
-// Cần set Script Properties:
+// Script Properties cần set:
 //   SUPABASE_URL  = https://jmrsyjurwcjjfjntreyq.supabase.co
 //   SUPABASE_KEY  = <service_role_key>
 // ============================================================
 
-var SUPABASE_URL = PropertiesService.getScriptProperties().getProperty('SUPABASE_URL');
-var SUPABASE_KEY = PropertiesService.getScriptProperties().getProperty('SUPABASE_KEY');
-
 // ------------------------------------------------------------
-// 1. Hàm chính — đặt trigger chạy mỗi 1 phút
+// 1. Hàm chính — trigger mỗi 1 phút
 // ------------------------------------------------------------
 function scanACBMails() {
-  var threads = GmailApp.search('from:mailalert@acb.com.vn is:unread', 0, 20);
+  var SUPABASE_URL = PropertiesService.getScriptProperties().getProperty('SUPABASE_URL');
+  var SUPABASE_KEY = PropertiesService.getScriptProperties().getProperty('SUPABASE_KEY');
+
+  Logger.log('scanACBMails started');
+
+  var threads = GmailApp.search('from:mailalert@acb.com.vn newer_than:2d', 0, 20);
+  Logger.log('Found ' + threads.length + ' threads');
 
   threads.forEach(function(thread) {
-    var msg = thread.getMessages()[0];
-    var body = msg.getPlainBody();
-    var subject = msg.getSubject();
-    var date = msg.getDate();
+    var messages = thread.getMessages();
 
-    // Parse amount: "Ghi có +2,000.00 VND"
-    var amountMatch = body.match(/Ghi có \+([0-9,]+(?:\.[0-9]+)?)\s*VND/i);
-    // Parse order code: DHxxxxxx pattern
-    var codeMatch = body.match(/\b(DH\d{6,})\b/);
+    messages.forEach(function(msg) {
+      var body = msg.getPlainBody();
+      var subject = msg.getSubject();
+      var date = msg.getDate();
 
-    if (!amountMatch || !codeMatch) {
-      thread.markRead();
-      return;
-    }
+      Logger.log('Processing: ' + subject);
 
-    var amount = parseFloat(amountMatch[1].replace(/,/g, ''));
-    var orderCode = codeMatch[1];
-    var txContent = body.match(/Nội dung giao dịch[:\s]+([^\n]+)/i);
-    var transactionContent = txContent ? txContent[1].trim() : '';
+      var amountMatch = body.match(/\+([0-9,.]+)\s*VND/i);
+      var codeMatch = body.match(/\b(DH\d{6,})\b/);
 
-    // Tránh insert trùng: kiểm tra đã có chưa
-    var existing = supabaseGet('/bank_transactions?order_code=eq.' + orderCode + '&amount=eq.' + amount + '&select=id');
-    if (existing && existing.length > 0) {
-      thread.markRead();
-      return;
-    }
+      Logger.log('Amount match: ' + (amountMatch ? amountMatch[1] : 'null'));
+      Logger.log('Code match: ' + (codeMatch ? codeMatch[1] : 'null'));
 
-    // Lưu vào bank_transactions
-    supabasePost('/bank_transactions', {
-      order_code: orderCode,
-      amount: amount,
-      transaction_content: transactionContent,
-      email_subject: subject,
-      transaction_at: date.toISOString()
+      if (!amountMatch || !codeMatch) {
+        Logger.log('No match, skipping');
+        return;
+      }
+
+      var amount = parseFloat(amountMatch[1].replace(/,/g, ''));
+      var orderCode = codeMatch[1];
+
+      // Chỉ skip nếu đã confirm thành công (matched_order_id không null)
+      var existing = supabaseGet(SUPABASE_URL, SUPABASE_KEY,
+        '/bank_transactions?order_code=eq.' + orderCode + '&amount=eq.' + amount + '&matched_order_id=not.is.null&select=id'
+      );
+      if (existing && existing.length > 0) {
+        Logger.log('Already confirmed: ' + orderCode);
+        return;
+      }
+
+      // Insert hoặc cập nhật bank_transaction
+      var txContent = body.match(/Nội dung giao dịch[:\s]+([^\n]+)/i);
+      var transactionContent = txContent ? txContent[1].trim() : '';
+
+      // Kiểm tra đã có record chưa (có thể chưa match)
+      var existingTx = supabaseGet(SUPABASE_URL, SUPABASE_KEY,
+        '/bank_transactions?order_code=eq.' + orderCode + '&amount=eq.' + amount + '&select=id'
+      );
+
+      if (!existingTx || existingTx.length === 0) {
+        supabasePost(SUPABASE_URL, SUPABASE_KEY, '/bank_transactions', {
+          order_code: orderCode,
+          amount: amount,
+          transaction_content: transactionContent,
+          email_subject: subject,
+          transaction_at: date.toISOString()
+        });
+        Logger.log('Inserted bank_transaction: ' + orderCode + ' / ' + amount);
+      } else {
+        Logger.log('Re-trying confirmation for: ' + orderCode);
+      }
+
+      // Tìm đơn khớp và confirm
+      var orders = supabaseGet(SUPABASE_URL, SUPABASE_KEY,
+        '/orders?order_code=eq.' + orderCode + '&total_amount=eq.' + amount + '&status=eq.pending&select=*'
+      );
+      Logger.log('Matching orders: ' + (orders ? orders.length : 0));
+
+      if (orders && orders.length > 0) {
+        confirmOrderAndShare(SUPABASE_URL, SUPABASE_KEY, orders[0]);
+      }
     });
-
-    // Tìm đơn khớp
-    var orders = supabaseGet(
-      '/orders?order_code=eq.' + orderCode + '&total_amount=eq.' + amount + '&status=eq.pending&select=*'
-    );
-
-    if (orders && orders.length > 0) {
-      confirmOrderAndShare(orders[0]);
-    }
-
-    thread.markRead();
   });
 }
 
 // ------------------------------------------------------------
 // 2. Xác nhận đơn + tạo user_purchases + share Drive
 // ------------------------------------------------------------
-function confirmOrderAndShare(order) {
+function confirmOrderAndShare(SUPABASE_URL, SUPABASE_KEY, order) {
   var now = new Date().toISOString();
 
   // Update order → confirmed
-  supabasePatch('/orders?id=eq.' + order.id, {
+  supabasePatch(SUPABASE_URL, SUPABASE_KEY, '/orders?id=eq.' + order.id, {
     status: 'confirmed',
     confirmed_at: now
   });
+  Logger.log('Order confirmed: ' + order.order_code);
 
   // Tạo user_purchases
-  var items = order.items; // JSON array
+  var items = order.items;
   var purchases = items.map(function(item) {
     return {
       user_id: order.user_id,
@@ -88,9 +110,9 @@ function confirmOrderAndShare(order) {
       order_id: order.id
     };
   });
-  supabasePost('/user_purchases', purchases);
+  supabasePost(SUPABASE_URL, SUPABASE_KEY, '/user_purchases', purchases);
 
-  // Lấy tất cả template IDs (bao gồm từ package)
+  // Lấy tất cả template IDs
   var templateIds = items
     .filter(function(i) { return i.type === 'template'; })
     .map(function(i) { return i.id; });
@@ -100,7 +122,7 @@ function confirmOrderAndShare(order) {
     .map(function(i) { return i.id; });
 
   if (packageIds.length > 0) {
-    var pkgTemplates = supabaseGet(
+    var pkgTemplates = supabaseGet(SUPABASE_URL, SUPABASE_KEY,
       '/package_templates?package_id=in.(' + packageIds.join(',') + ')&select=template_id'
     );
     if (pkgTemplates) {
@@ -108,31 +130,35 @@ function confirmOrderAndShare(order) {
     }
   }
 
-  if (templateIds.length === 0) return;
+  if (templateIds.length > 0) {
+    // Lấy cả embed_url và copy_url
+    var templates = supabaseGet(SUPABASE_URL, SUPABASE_KEY,
+      '/templates?id=in.(' + templateIds.join(',') + ')&select=id,name,google_sheet_embed_url,google_sheet_copy_url'
+    );
 
-  // Lấy embed URLs của templates
-  var templates = supabaseGet(
-    '/templates?id=in.(' + templateIds.join(',') + ')&select=id,name,google_sheet_embed_url'
-  );
-
-  if (!templates) return;
-
-  // Share từng file Drive với email khách
-  templates.forEach(function(t) {
-    var fileId = extractDriveFileId(t.google_sheet_embed_url);
-    if (!fileId) return;
-    try {
-      DriveApp.getFileById(fileId).addViewer(order.email);
-      Logger.log('Shared ' + t.name + ' with ' + order.email);
-    } catch(e) {
-      Logger.log('Share error for ' + t.name + ': ' + e.message);
+    if (templates) {
+      templates.forEach(function(t) {
+        // Ưu tiên embed_url, fallback sang copy_url
+        var fileId = extractDriveFileId(t.google_sheet_embed_url) || extractDriveFileId(t.google_sheet_copy_url);
+        if (!fileId) {
+          Logger.log('No file ID for: ' + t.name);
+          return;
+        }
+        try {
+          DriveApp.getFileById(fileId).addViewer(order.email);
+          Logger.log('Shared ' + t.name + ' (' + fileId + ') with ' + order.email);
+        } catch(e) {
+          Logger.log('Share error for ' + t.name + ': ' + e.message);
+        }
+      });
     }
-  });
+  }
 
-  // Cập nhật matched_order_id trong bank_transactions
-  supabasePatch('/bank_transactions?order_code=eq.' + order.order_code + '&amount=eq.' + order.total_amount, {
-    matched_order_id: order.id
-  });
+  // Cập nhật matched_order_id
+  supabasePatch(SUPABASE_URL, SUPABASE_KEY,
+    '/bank_transactions?order_code=eq.' + order.order_code + '&amount=eq.' + order.total_amount,
+    { matched_order_id: order.id }
+  );
 
   Logger.log('Order ' + order.order_code + ' confirmed and Drive shared to ' + order.email);
 }
@@ -148,7 +174,9 @@ function doPost(e) {
     var fileIds = payload.fileIds || [];
 
     fileIds.forEach(function(id) {
-      try { DriveApp.getFileById(id).addViewer(email); } catch(err) {}
+      try { DriveApp.getFileById(id).addViewer(email); } catch(err) {
+        Logger.log('doPost share error: ' + err.message);
+      }
     });
 
     return ContentService
@@ -170,7 +198,7 @@ function extractDriveFileId(url) {
   return m ? m[1] : null;
 }
 
-function supabaseGet(path) {
+function supabaseGet(SUPABASE_URL, SUPABASE_KEY, path) {
   var res = UrlFetchApp.fetch(SUPABASE_URL + '/rest/v1' + path, {
     method: 'GET',
     headers: {
@@ -180,12 +208,15 @@ function supabaseGet(path) {
     },
     muteHttpExceptions: true
   });
-  if (res.getResponseCode() !== 200) return null;
+  if (res.getResponseCode() !== 200) {
+    Logger.log('GET error ' + res.getResponseCode() + ': ' + res.getContentText());
+    return null;
+  }
   return JSON.parse(res.getContentText());
 }
 
-function supabasePost(path, body) {
-  UrlFetchApp.fetch(SUPABASE_URL + '/rest/v1' + path, {
+function supabasePost(SUPABASE_URL, SUPABASE_KEY, path, body) {
+  var res = UrlFetchApp.fetch(SUPABASE_URL + '/rest/v1' + path, {
     method: 'POST',
     headers: {
       'apikey': SUPABASE_KEY,
@@ -196,10 +227,13 @@ function supabasePost(path, body) {
     payload: JSON.stringify(body),
     muteHttpExceptions: true
   });
+  if (res.getResponseCode() >= 400) {
+    Logger.log('POST error ' + res.getResponseCode() + ': ' + res.getContentText());
+  }
 }
 
-function supabasePatch(path, body) {
-  UrlFetchApp.fetch(SUPABASE_URL + '/rest/v1' + path, {
+function supabasePatch(SUPABASE_URL, SUPABASE_KEY, path, body) {
+  var res = UrlFetchApp.fetch(SUPABASE_URL + '/rest/v1' + path, {
     method: 'PATCH',
     headers: {
       'apikey': SUPABASE_KEY,
@@ -210,19 +244,20 @@ function supabasePatch(path, body) {
     payload: JSON.stringify(body),
     muteHttpExceptions: true
   });
+  if (res.getResponseCode() >= 400) {
+    Logger.log('PATCH error ' + res.getResponseCode() + ': ' + res.getContentText());
+  }
 }
 
 // ------------------------------------------------------------
 // Setup: chạy hàm này 1 lần để tạo trigger tự động
 // ------------------------------------------------------------
 function setupTrigger() {
-  // Xóa trigger cũ nếu có
   ScriptApp.getProjectTriggers().forEach(function(t) {
     if (t.getHandlerFunction() === 'scanACBMails') {
       ScriptApp.deleteTrigger(t);
     }
   });
-  // Tạo trigger mới: mỗi 1 phút
   ScriptApp.newTrigger('scanACBMails')
     .timeBased()
     .everyMinutes(1)
