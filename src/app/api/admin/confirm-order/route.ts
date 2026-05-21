@@ -65,12 +65,13 @@ export async function POST(req: Request) {
     if (allTemplateIds.length > 0) {
       const { data: templates } = await supabase
         .from('templates')
-        .select('id, name, google_sheet_embed_url')
+        .select('id, name, google_sheet_embed_url, google_sheet_copy_url')
         .in('id', allTemplateIds)
 
       const fileIds = (templates ?? [])
         .map((t) => {
-          const m = t.google_sheet_embed_url?.match(/\/d\/([a-zA-Z0-9-_]+)/)
+          const url = t.google_sheet_embed_url || t.google_sheet_copy_url
+          const m = url?.match(/\/d\/([a-zA-Z0-9-_]+)/)
           return m ? m[1] : null
         })
         .filter(Boolean) as string[]
