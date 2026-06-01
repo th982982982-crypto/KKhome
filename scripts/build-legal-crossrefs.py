@@ -63,7 +63,7 @@ def patch_json_app(slug, dark, escaper, nav, before_func):
         c=c.replace("h+='<p>'+t+'</p>';", "h+='<p>'+autolink(t)+'</p>';")
         c=c.replace("  document.getElementById('av').innerHTML=h;",
                     "  h+=renderRefs(id);\n  document.getElementById('av').innerHTML=h;", 1)
-    elif slug=='tt133':
+    elif slug in ('tt133','nd320','tt20'):
         c=c.replace("+renderContent(a.content||[],q)+'</div>';",
                     "+renderContent(a.content||[],q)+'</div>'+renderRefs(id);")
         c=c.replace("return h||'<p style=\"color:var(--mut)\">(Mục này không có nội dung văn bản.)</p>';",
@@ -120,6 +120,8 @@ print("Injecting cross-references...")
 patch_json_app('tt58',  dark=False, escaper='e',   nav='show',        before_func='function show(')
 patch_json_app('tt152', dark=False, escaper='e',   nav='show',        before_func='function show(')
 patch_json_app('tt133', dark=True,  escaper='e',   nav='show',        before_func='function renderContent')
+patch_json_app('nd320', dark=False, escaper='e',   nav='show',        before_func='function renderContent')
+patch_json_app('tt20',  dark=False, escaper='e',   nav='show',        before_func='function renderContent')
 patch_json_app('tt99',  dark=True,  escaper='esc', nav='showSection', before_func='function showSection(')
 patch_luat67()
 print("Done.")
