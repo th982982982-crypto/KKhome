@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   full_name text,
   phone text,
   is_admin boolean NOT NULL DEFAULT false,
+  can_view_legal boolean NOT NULL DEFAULT false,
   created_at timestamptz NOT NULL DEFAULT now()
 );
 

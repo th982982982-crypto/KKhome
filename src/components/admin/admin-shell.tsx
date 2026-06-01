@@ -20,6 +20,7 @@ import {
   X,
   Tag,
   Settings,
+  Scale,
 } from 'lucide-react'
 
 interface AdminShellProps {
@@ -34,6 +35,7 @@ const NAV = [
   { href: '/admin/orders', label: 'Đơn hàng', icon: ShoppingBag, badgeKey: 'pending' as const },
   { href: '/admin/promotions', label: 'Khuyến mãi', icon: Tag },
   { href: '/admin/sync', label: 'Đồng bộ Sheets', icon: RefreshCw },
+  { href: '/admin/legal', label: 'Pháp luật', icon: Scale },
   { href: '/admin/settings', label: 'Cài đặt', icon: Settings },
 ]
 
