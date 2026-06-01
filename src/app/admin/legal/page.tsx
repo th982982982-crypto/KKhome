@@ -8,10 +8,7 @@ export default async function AdminLegalPage() {
   const admin = createAdminClient()
 
   const [{ data: profiles }, { data: authData }] = await Promise.all([
-    admin
-      .from('profiles')
-      .select('id, full_name, is_admin, can_view_legal')
-      .order('created_at', { ascending: false }),
+    admin.from('profiles').select('id, full_name, is_admin'),
     admin.auth.admin.listUsers({ perPage: 1000 }),
   ])
 
@@ -22,7 +19,7 @@ export default async function AdminLegalPage() {
       email: u.email ?? '',
       full_name: profile?.full_name ?? null,
       is_admin: profile?.is_admin ?? false,
-      can_view_legal: profile?.can_view_legal ?? false,
+      can_view_legal: !!(u.user_metadata?.can_view_legal),
     }
   })
 

@@ -45,7 +45,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={profile?.is_admin || profile?.can_view_legal} />
+      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={profile?.is_admin || !!user.user_metadata?.can_view_legal} />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-10">
         <div className="mb-8">

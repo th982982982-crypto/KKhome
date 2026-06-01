@@ -47,7 +47,7 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={profile?.is_admin || profile?.can_view_legal} />
+      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={profile?.is_admin || !!user?.user_metadata?.can_view_legal} />
 
       <main className="flex-1">
       {/* Hero */}

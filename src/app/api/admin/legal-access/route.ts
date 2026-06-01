@@ -14,10 +14,9 @@ export async function PATCH(req: Request) {
   }
 
   const supabase = createAdminClient()
-  const { error } = await supabase
-    .from('profiles')
-    .update({ can_view_legal })
-    .eq('id', user_id)
+  const { error } = await supabase.auth.admin.updateUserById(user_id, {
+    user_metadata: { can_view_legal },
+  })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
   return NextResponse.json({ success: true })

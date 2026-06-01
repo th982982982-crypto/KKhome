@@ -91,7 +91,6 @@ export interface Database {
           full_name: string | null
           phone: string | null
           is_admin: boolean
-          can_view_legal: boolean
           created_at: string
         }
         Insert: Omit<Database['public']['Tables']['profiles']['Row'], 'created_at'>

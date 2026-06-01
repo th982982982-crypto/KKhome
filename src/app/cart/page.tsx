@@ -11,9 +11,9 @@ export default async function CartPage() {
   let isAdmin = false
   let canViewLegal = false
   if (user) {
-    const { data: profile } = await supabase.from('profiles').select('is_admin, can_view_legal').eq('id', user.id).single()
+    const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single()
     isAdmin = !!profile?.is_admin
-    canViewLegal = !!profile?.is_admin || !!profile?.can_view_legal
+    canViewLegal = !!profile?.is_admin || !!user?.user_metadata?.can_view_legal
   }
 
   return (
