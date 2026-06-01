@@ -46,11 +46,11 @@ export async function GET(req: Request) {
 
   // 1. Supabase Storage override (admin đã upload phiên bản mới)
   const supabaseUrl = await getSupabaseOverrideUrl(file, type)
-  if (supabaseUrl) return NextResponse.redirect(supabaseUrl)
+  if (supabaseUrl) return NextResponse.json({ url: supabaseUrl })
 
   // 2. Google Drive qua Apps Script
   const driveUrl = await getDriveUrl(file, type)
-  if (driveUrl) return NextResponse.redirect(driveUrl)
+  if (driveUrl) return NextResponse.json({ url: driveUrl })
 
-  return new NextResponse('File not found', { status: 404 })
+  return NextResponse.json({ error: 'File not found' }, { status: 404 })
 }

@@ -249,5 +249,41 @@ document.getElementById('menubtn').onclick=()=>document.getElementById('side').c
 document.getElementById('navsearch').oninput=e=>buildNav(e.target.value);
 buildNav();renderForms();renderTK();renderHome();showSection('s0');
 </script>
+
+<style>
+@keyframes tt-spin{to{transform:rotate(360deg)}}
+.dlbtn.loading{opacity:.65;pointer-events:none;cursor:not-allowed}
+.dlbtn .tt-spinner{display:inline-block;width:13px;height:13px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:tt-spin .7s linear infinite;vertical-align:middle;margin-right:4px}
+</style>
+<script>
+document.addEventListener('click',async function(e){
+  var btn=e.target.closest('a.dlbtn');
+  if(!btn||btn.classList.contains('loading'))return;
+  e.preventDefault();
+  var orig=btn.innerHTML;
+  var href=btn.href;
+  btn.classList.add('loading');
+  btn.innerHTML='<span class="tt-spinner"></span>Đang tải...';
+  try{
+    var res=await fetch(href,{credentials:'include'});
+    var data=await res.json();
+    if(data.url){
+      var a=document.createElement('a');
+      a.href=data.url;
+      a.target='_blank';
+      a.rel='noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } else {
+      alert('Không tìm thấy file. Vui lòng thử lại.');
+    }
+  }catch(err){
+    alert('Lỗi tải file. Vui lòng thử lại.');
+  }finally{
+    setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('loading');},1500);
+  }
+});
+</script>
 </body>
 </html>
