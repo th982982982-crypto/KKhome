@@ -6,7 +6,7 @@ import { X, ArrowRight, FileText } from 'lucide-react'
 interface CrossRefPanelProps {
   doc: LegalDoc
   allDocs: LegalDoc[]
-  onNavigate: (slug: string) => void
+  onNavigate: (slug: string, anchor?: string) => void
   onClose: () => void
 }
 
@@ -35,7 +35,7 @@ export function CrossRefPanel({ doc, allDocs, onNavigate, onClose }: CrossRefPan
           return (
             <button
               key={i}
-              onClick={() => onNavigate(ref.targetSlug)}
+              onClick={() => onNavigate(ref.targetSlug, ref.targetAnchor)}
               className="w-full text-left p-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/20 transition-all group"
             >
               <div className="flex items-start gap-2.5">
@@ -44,7 +44,7 @@ export function CrossRefPanel({ doc, allDocs, onNavigate, onClose }: CrossRefPan
                   <p className="text-xs font-bold text-gray-900 dark:text-gray-50">{ref.label}</p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-snug">{ref.description}</p>
                   <p className="text-xs text-blue-600 dark:text-blue-400 mt-1.5 font-semibold flex items-center gap-1">
-                    Xem {target.shortTitle}
+                    {ref.targetAnchor ? 'Nhảy đến ' : 'Xem '}{target.shortTitle}
                     <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </p>
                 </div>

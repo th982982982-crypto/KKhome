@@ -9,13 +9,15 @@ import { Scale, CalendarDays } from 'lucide-react'
 interface LegalViewerProps {
   currentSlug: string
   allDocs: LegalDoc[]
+  anchor?: string
 }
 
-export function LegalViewer({ currentSlug, allDocs }: LegalViewerProps) {
+export function LegalViewer({ currentSlug, allDocs, anchor }: LegalViewerProps) {
   const router = useRouter()
   const [showCrossRef, setShowCrossRef] = useState(false)
 
   const currentDoc = allDocs.find((d) => d.slug === currentSlug)!
+  const iframeSrc = `/api/legal/${currentSlug}${anchor ? '#' + anchor : ''}`
 
   return (
     <div className="flex flex-col" style={{ height: 'calc(100vh - 64px)' }}>
@@ -73,8 +75,8 @@ export function LegalViewer({ currentSlug, allDocs }: LegalViewerProps) {
       <div className="flex flex-1 min-h-0">
         <div className="flex-1 relative min-w-0">
           <iframe
-            key={currentSlug}
-            src={`/api/legal/${currentSlug}`}
+            key={iframeSrc}
+            src={iframeSrc}
             className="w-full h-full border-0"
             title={currentDoc.title}
             style={{
@@ -88,8 +90,9 @@ export function LegalViewer({ currentSlug, allDocs }: LegalViewerProps) {
           <CrossRefPanel
             doc={currentDoc}
             allDocs={allDocs}
-            onNavigate={(slug) => {
-              router.push(`/legal/${slug}`)
+            onNavigate={(slug, anchor) => {
+              const url = anchor ? `/legal/${slug}?anchor=${anchor}` : `/legal/${slug}`
+              router.push(url)
               setShowCrossRef(false)
             }}
             onClose={() => setShowCrossRef(false)}

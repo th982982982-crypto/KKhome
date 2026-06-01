@@ -4,6 +4,7 @@ export interface CrossRef {
   targetSlug: string
   label: string
   description: string
+  targetAnchor?: string  // ID của điều khoản cụ thể trong tài liệu đích
 }
 
 export interface LegalDoc {
@@ -27,12 +28,12 @@ export const LEGAL_DOCS: LegalDoc[] = [
     filePath: path.join(process.cwd(), 'src/legal-docs/luat-67/index.html'),
     theme: 'light',
     crossRefs: [
-      { targetSlug: 'tt99', label: 'Điều 9 — Chi phí được trừ', description: 'Hướng dẫn hạch toán chi phí được trừ tại TT99' },
-      { targetSlug: 'tt99', label: 'Điều 10 — Thuế suất TNDN 20%', description: 'Bút toán thuế TNDN phải nộp (TK 3334) tại TT99' },
-      { targetSlug: 'tt133', label: 'Điều 10 — Thuế suất 17% cho SME', description: 'DN nhỏ vừa áp dụng TT133 + thuế suất 17% Luật 67' },
-      { targetSlug: 'tt58', label: 'Điều 10 — Thuế suất 15% cho DNSN', description: 'DN siêu nhỏ áp dụng TT58 + thuế suất 15% Luật 67' },
-      { targetSlug: 'tt152', label: 'Điều 2, 11 — Hộ kinh doanh nộp thuế', description: 'HKD áp dụng TT152 + tính thuế theo % doanh thu (Điều 11)' },
-      { targetSlug: 'tt99', label: 'Điều 12–14 — Ưu đãi thuế', description: 'Hạch toán thu nhập được miễn/giảm thuế tại TT99' },
+      { targetSlug: 'tt99', label: 'Điều 9 — Chi phí được trừ → hạch toán TK 642', description: 'Xem TK 642 Chi phí QLDN trong TT99', targetAnchor: 's98' },
+      { targetSlug: 'tt99', label: 'Điều 10 — Thuế suất 20% → hạch toán TK 821', description: 'Xem TK 821 Chi phí thuế TNDN (TT99)', targetAnchor: 's101' },
+      { targetSlug: 'tt133', label: 'Điều 10 — Thuế suất 17% SME → TK 821 TT133', description: 'DN SME: xem TK 821 trong TT133', targetAnchor: 'tt133_67' },
+      { targetSlug: 'tt58', label: 'Điều 10 — Thuế suất 15% DNSN → TT58 Điều 5', description: 'DN siêu nhỏ: xem Điều 5 TT58 về phương pháp nộp thuế', targetAnchor: 'tt58_5' },
+      { targetSlug: 'tt152', label: 'Điều 2, 11 — Hộ kinh doanh nộp thuế', description: 'HKD: xem phạm vi và đối tượng áp dụng TT152', targetAnchor: 'tt152_1' },
+      { targetSlug: 'tt99', label: 'Điều 12–14 — Ưu đãi thuế → TK 333 TT99', description: 'Hạch toán thuế phải nộp nhà nước (TK 333)', targetAnchor: 's67' },
     ],
   },
   {
@@ -44,10 +45,11 @@ export const LEGAL_DOCS: LegalDoc[] = [
     filePath: path.join(process.cwd(), 'src/legal-docs/tt99/index.html'),
     theme: 'dark',
     crossRefs: [
-      { targetSlug: 'luat-67', label: 'Nghĩa vụ thuế → Luật 67', description: 'Điều 1 TT99: nghĩa vụ thuế xác định theo Luật 67/2025/QH15' },
-      { targetSlug: 'luat-67', label: 'Thuế suất TNDN 20%/15%/10%', description: 'Xem Điều 10 Luật 67 về các mức thuế suất áp dụng' },
-      { targetSlug: 'tt133', label: 'TT99 bổ sung TT133 (SME)', description: 'DN nhỏ vừa có thể chuyển từ TT133 sang TT99 khi tăng quy mô' },
-      { targetSlug: 'tt58', label: 'DNSN vượt ngưỡng → TT99', description: 'Khi DN siêu nhỏ vượt tiêu chí → chuyển sang TT99' },
+      { targetSlug: 'luat-67', label: 'Điều 1 TT99 → Luật thuế (Điều 2 đối tượng)', description: 'Nghĩa vụ thuế xác định theo Luật 67/2025/QH15', targetAnchor: 'taxpayer' },
+      { targetSlug: 'luat-67', label: 'TK 821 → Điều 10 thuế suất TNDN', description: 'Xem Điều 10 Luật 67: thuế suất 20%/17%/15%/10%', targetAnchor: 'rates' },
+      { targetSlug: 'luat-67', label: 'TK 642 → Điều 9 chi phí được trừ', description: 'Xem Điều 9 Luật 67 về điều kiện chi phí hợp lệ', targetAnchor: 'expenses' },
+      { targetSlug: 'luat-67', label: 'TK 333 → Điều 12–14 ưu đãi thuế', description: 'Xem ưu đãi thuế TNDN khi hạch toán TK 333', targetAnchor: 'incentive-rates' },
+      { targetSlug: 'tt133', label: 'TT99 bổ sung TT133 — xem TT133 Điều 1', description: 'DN SME chuyển từ TT133 sang TT99', targetAnchor: 'tt133_1' },
     ],
   },
   {
@@ -59,10 +61,10 @@ export const LEGAL_DOCS: LegalDoc[] = [
     filePath: path.join(process.cwd(), 'src/legal-docs/tt133/index.html'),
     theme: 'light',
     crossRefs: [
-      { targetSlug: 'tt99', label: 'Chuyển sang TT99 khi tăng quy mô', description: 'TT99 thay thế TT200/2014 và bổ sung TT133 cho DN vừa lớn' },
-      { targetSlug: 'tt58', label: 'DNSN trong nhóm SME → TT58', description: 'DN siêu nhỏ dưới ngưỡng SME áp dụng TT58 thay TT133' },
-      { targetSlug: 'luat-67', label: 'Thuế suất TNDN 17% cho SME', description: 'Điều 10 Luật 67: DN nhỏ vừa (3–50 tỷ) áp thuế suất 17%' },
-      { targetSlug: 'luat-67', label: 'Chi phí được trừ (Điều 9)', description: 'Điều kiện chi phí hợp lệ khi hạch toán theo TT133' },
+      { targetSlug: 'luat-67', label: 'TK 821 → Điều 10 thuế suất 17% SME', description: 'DN nhỏ vừa (3–50 tỷ): thuế suất 17% theo Luật 67', targetAnchor: 'rates' },
+      { targetSlug: 'luat-67', label: 'TK 642 → Điều 9 chi phí được trừ', description: 'Điều kiện chi phí QLDN được trừ khi tính thuế', targetAnchor: 'expenses' },
+      { targetSlug: 'tt99', label: 'Tăng quy mô → chuyển sang TT99', description: 'DN vừa lớn: TT99 thay thế TT133 về kế toán', targetAnchor: 's0' },
+      { targetSlug: 'tt58', label: 'DN siêu nhỏ → xem TT58 Điều 2', description: 'DNSN dưới ngưỡng SME: áp dụng TT58 thay TT133', targetAnchor: 'tt58_2' },
     ],
   },
   {
@@ -74,11 +76,11 @@ export const LEGAL_DOCS: LegalDoc[] = [
     filePath: path.join(process.cwd(), 'src/legal-docs/tt58/index.html'),
     theme: 'light',
     crossRefs: [
-      { targetSlug: 'tt133', label: 'Nâng cấp → TT133 khi tăng quy mô', description: 'DNSN tăng quy mô lên SME → chuyển sang TT133' },
-      { targetSlug: 'tt99', label: 'DNSN vượt ngưỡng → TT99', description: 'Khi vượt tiêu chí siêu nhỏ lên DN lớn hơn → áp dụng TT99' },
-      { targetSlug: 'luat-67', label: 'Thuế TNDN 15% (Điều 10)', description: 'DNSN có doanh thu ≤3 tỷ → thuế suất 15% theo Luật 67' },
-      { targetSlug: 'luat-67', label: 'Tính thuế theo % doanh thu (Điều 11)', description: 'DNSN nộp thuế % DT → xem Điều 11 Luật 67' },
-      { targetSlug: 'tt152', label: 'HKD thành lập DNSN → TT58', description: 'Hộ kinh doanh chuyển thành DN siêu nhỏ → áp dụng TT58' },
+      { targetSlug: 'luat-67', label: 'Điều 5 → Thuế suất 15% (Điều 10 Luật 67)', description: 'DNSN ≤3 tỷ: thuế suất 15% theo Luật 67', targetAnchor: 'rates' },
+      { targetSlug: 'luat-67', label: 'Điều 5–6 → Tính thuế theo % DT (Điều 11)', description: 'DNSN nộp thuế % doanh thu: xem Điều 11 Luật 67', targetAnchor: 'method' },
+      { targetSlug: 'tt133', label: 'Tăng quy mô → chuyển sang TT133 Điều 1', description: 'DNSN tăng lên SME: xem phạm vi TT133', targetAnchor: 'tt133_1' },
+      { targetSlug: 'tt99', label: 'Vượt ngưỡng siêu nhỏ → TT99', description: 'Khi vượt tiêu chí DNSN → chuyển sang TT99', targetAnchor: 's0' },
+      { targetSlug: 'tt152', label: 'HKD thành lập DNSN → Điều 1 TT58', description: 'Hộ KD thành lập DN siêu nhỏ: xem phạm vi TT58', targetAnchor: 'tt58_1' },
     ],
   },
   {
@@ -90,9 +92,10 @@ export const LEGAL_DOCS: LegalDoc[] = [
     filePath: path.join(process.cwd(), 'src/legal-docs/tt152/index.html'),
     theme: 'light',
     crossRefs: [
-      { targetSlug: 'luat-67', label: 'HKD nộp thuế TNDN (Điều 2, 11)', description: 'Điều 2 Luật 67: HKD trong đối tượng nộp thuế; Điều 11: tính thuế %' },
-      { targetSlug: 'tt58', label: 'Thành lập DN siêu nhỏ → TT58', description: 'Khi HKD thành lập DN siêu nhỏ → chuyển sang áp dụng TT58' },
-      { targetSlug: 'tt133', label: 'Thành lập DN nhỏ vừa → TT133', description: 'Khi HKD thành lập DN đủ điều kiện SME → áp dụng TT133' },
+      { targetSlug: 'luat-67', label: 'Điều 1 TT152 → Điều 2 đối tượng nộp thuế', description: 'HKD trong đối tượng nộp thuế: xem Điều 2 Luật 67', targetAnchor: 'taxpayer' },
+      { targetSlug: 'luat-67', label: 'Điều 4–6 → Điều 11 tính thuế theo % DT', description: 'HKD tính thuế theo % doanh thu: xem Điều 11 Luật 67', targetAnchor: 'method' },
+      { targetSlug: 'tt58', label: 'HKD thành lập DN siêu nhỏ → TT58 Điều 1', description: 'Khi HKD thành lập DN: chuyển sang TT58', targetAnchor: 'tt58_1' },
+      { targetSlug: 'tt133', label: 'HKD thành lập DN nhỏ vừa → TT133 Điều 1', description: 'Khi HKD thành lập DN đủ tiêu chí SME: xem TT133', targetAnchor: 'tt133_1' },
     ],
   },
   // Thêm văn bản mới: bổ sung object và đặt file HTML vào src/legal-docs/[slug]/index.html

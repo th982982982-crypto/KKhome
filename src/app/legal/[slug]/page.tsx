@@ -8,12 +8,14 @@ export function generateStaticParams() {
 
 export default async function LegalDocPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>
+  searchParams: Promise<{ anchor?: string }>
 }) {
-  const { slug } = await params
+  const [{ slug }, { anchor }] = await Promise.all([params, searchParams])
   const doc = getDocBySlug(slug)
   if (!doc) notFound()
 
-  return <LegalViewer currentSlug={slug} allDocs={LEGAL_DOCS} />
+  return <LegalViewer currentSlug={slug} allDocs={LEGAL_DOCS} anchor={anchor} />
 }

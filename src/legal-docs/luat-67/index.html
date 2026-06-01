@@ -1481,5 +1481,16 @@ function scrollToEl(id) {
   }
 }
 </script>
+<script>
+(function(){
+  var h=(window.location.hash||'').slice(1);
+  if(!h)return;
+  function go(){
+    try{ if(typeof showSection==='function')showSection(h); }catch(e){}
+  }
+  if(document.readyState==='complete'||document.readyState==='interactive')setTimeout(go,150);
+  else window.addEventListener('DOMContentLoaded',function(){setTimeout(go,150)});
+})();
+</script>
 </body>
 </html>
