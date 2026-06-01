@@ -262,22 +262,20 @@ document.addEventListener('click',async function(e){
   e.preventDefault();
   var orig=btn.innerHTML;
   var href=btn.href;
+  var fname=decodeURIComponent((href.match(/file=([^&]+)/)||[])[1]||'download');
+  var etype=(href.match(/type=([^&]+)/)||[])[1]||'word';
+  if(etype==='excel')fname=fname.replace(/\.docx$/,'.xlsx');
   btn.classList.add('loading');
   btn.innerHTML='<span class="tt-spinner"></span>Đang tải...';
   try{
     var res=await fetch(href,{credentials:'include'});
-    var data=await res.json();
-    if(data.url){
-      var a=document.createElement('a');
-      a.href=data.url;
-      a.target='_blank';
-      a.rel='noopener noreferrer';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    } else {
-      alert('Không tìm thấy file. Vui lòng thử lại.');
-    }
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    var blob=await res.blob();
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;a.download=fname;
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},2000);
   }catch(err){
     alert('Lỗi tải file. Vui lòng thử lại.');
   }finally{

@@ -4,6 +4,11 @@ import { createAdminClient } from '@/lib/supabase/server'
 
 const LEGAL_SCRIPT_URL = process.env.LEGAL_FORMS_SCRIPT_URL
 
+const MIME: Record<string, string> = {
+  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+}
+
 async function getDriveUrl(filename: string, type: 'word' | 'excel'): Promise<string | null> {
   if (!LEGAL_SCRIPT_URL) return null
   const url = `${LEGAL_SCRIPT_URL}?action=get_form_url&file=${encodeURIComponent(filename)}&type=${type}`
@@ -23,8 +28,7 @@ async function getSupabaseOverrideUrl(filename: string, type: 'word' | 'excel'):
     const folder = type === 'word' ? 'word' : 'excel'
     const targetFile = type === 'excel' ? filename.replace(/\.docx$/, '.xlsx') : filename
     const { data: list } = await admin.storage.from('legal-forms').list(folder, {
-      search: targetFile,
-      limit: 1,
+      search: targetFile, limit: 1,
     })
     if (!list?.length) return null
     const { data } = admin.storage.from('legal-forms').getPublicUrl(`${folder}/${targetFile}`)
@@ -41,16 +45,27 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
   const file = searchParams.get('file')
   const type = (searchParams.get('type') ?? 'word') as 'word' | 'excel'
+  if (!file) return new NextResponse('Missing file', { status: 400 })
 
-  if (!file) return new NextResponse('Missing file param', { status: 400 })
+  const targetFile = type === 'excel' ? file.replace(/\.docx$/, '.xlsx') : file
+  const ext = targetFile.split('.').pop() ?? 'docx'
 
-  // 1. Supabase Storage override (admin đã upload phiên bản mới)
+  // 1. Supabase Storage override
   const supabaseUrl = await getSupabaseOverrideUrl(file, type)
-  if (supabaseUrl) return NextResponse.json({ url: supabaseUrl })
-
   // 2. Google Drive qua Apps Script
-  const driveUrl = await getDriveUrl(file, type)
-  if (driveUrl) return NextResponse.json({ url: driveUrl })
+  const sourceUrl = supabaseUrl ?? await getDriveUrl(file, type)
 
-  return NextResponse.json({ error: 'File not found' }, { status: 404 })
+  if (!sourceUrl) return new NextResponse('File not found', { status: 404 })
+
+  // Proxy file qua server — tránh mọi vấn đề CORS/sandbox của browser
+  const fileRes = await fetch(sourceUrl, { redirect: 'follow' })
+  if (!fileRes.ok) return new NextResponse('Upstream error', { status: 502 })
+
+  return new NextResponse(fileRes.body, {
+    headers: {
+      'Content-Type': MIME[ext] ?? 'application/octet-stream',
+      'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(targetFile)}`,
+      'Cache-Control': 'private, max-age=300',
+    },
+  })
 }
