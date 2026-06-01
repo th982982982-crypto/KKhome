@@ -59,7 +59,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
     description: 'Chế độ kế toán cho DN nhỏ và vừa, hiệu lực 01/01/2017. Gồm 93 điều: hệ thống TK, BCTC, chứng từ, sổ sách.',
     effectiveDate: '2017-01-01',
     filePath: path.join(process.cwd(), 'src/legal-docs/tt133/index.html'),
-    theme: 'light',
+    theme: 'dark',
     crossRefs: [
       { targetSlug: 'luat-67', label: 'TK 821 → Điều 10 thuế suất 17% SME', description: 'DN nhỏ vừa (3–50 tỷ): thuế suất 17% theo Luật 67', targetAnchor: 'rates' },
       { targetSlug: 'luat-67', label: 'TK 642 → Điều 9 chi phí được trừ', description: 'Điều kiện chi phí QLDN được trừ khi tính thuế', targetAnchor: 'expenses' },
