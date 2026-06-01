@@ -9,9 +9,10 @@ const MIME: Record<string, string> = {
   xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
 }
 
-async function getDriveUrl(filename: string, type: 'word' | 'excel'): Promise<string | null> {
+// doc='tt99' (mặc định) dùng folder gốc; các thông tư khác truyền doc=tt133|tt58|tt152
+async function getDriveUrl(file: string, type: 'word' | 'excel', doc: string): Promise<string | null> {
   if (!LEGAL_SCRIPT_URL) return null
-  const url = `${LEGAL_SCRIPT_URL}?action=get_form_url&file=${encodeURIComponent(filename)}&type=${type}`
+  const url = `${LEGAL_SCRIPT_URL}?action=get_form_url&file=${encodeURIComponent(file)}&type=${type}&doc=${encodeURIComponent(doc)}`
   try {
     const res = await fetch(url, { cache: 'no-store' })
     if (!res.ok) return null
@@ -22,11 +23,12 @@ async function getDriveUrl(filename: string, type: 'word' | 'excel'): Promise<st
   }
 }
 
-async function getSupabaseOverrideUrl(filename: string, type: 'word' | 'excel'): Promise<string | null> {
+async function getSupabaseOverrideUrl(targetFile: string, type: 'word' | 'excel', doc: string): Promise<string | null> {
   try {
     const admin = createAdminClient()
-    const folder = type === 'word' ? 'word' : 'excel'
-    const targetFile = type === 'excel' ? filename.replace(/\.docx$/, '.xlsx') : filename
+    // TT99 giữ folder gốc word/excel; thông tư khác namespace theo doc
+    const sub = type === 'word' ? 'word' : 'excel'
+    const folder = doc === 'tt99' ? sub : `${doc}/${sub}`
     const { data: list } = await admin.storage.from('legal-forms').list(folder, {
       search: targetFile, limit: 1,
     })
@@ -45,26 +47,33 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
   const file = searchParams.get('file')
   const type = (searchParams.get('type') ?? 'word') as 'word' | 'excel'
+  const doc = searchParams.get('doc') ?? 'tt99'
   if (!file) return new NextResponse('Missing file', { status: 400 })
 
-  const targetFile = type === 'excel' ? file.replace(/\.docx$/, '.xlsx') : file
-  const ext = targetFile.split('.').pop() ?? 'docx'
+  const ext = type === 'excel' ? 'xlsx' : 'docx'
+  // Nếu file đã có đuôi (.docx của TT99) thì đổi sang .xlsx khi cần; nếu là mã (S1-DNSN) thì gắn đuôi
+  let downloadName: string
+  if (/\.(docx|xlsx)$/i.test(file)) {
+    downloadName = type === 'excel' ? file.replace(/\.docx$/i, '.xlsx') : file
+  } else {
+    downloadName = `${file}.${ext}`
+  }
 
-  // 1. Supabase Storage override
-  const supabaseUrl = await getSupabaseOverrideUrl(file, type)
+  // 1. Supabase Storage override (admin upload đè)
+  const supabaseUrl = await getSupabaseOverrideUrl(downloadName, type, doc)
   // 2. Google Drive qua Apps Script
-  const sourceUrl = supabaseUrl ?? await getDriveUrl(file, type)
+  const sourceUrl = supabaseUrl ?? await getDriveUrl(file, type, doc)
 
   if (!sourceUrl) return new NextResponse('File not found', { status: 404 })
 
-  // Proxy file qua server — tránh mọi vấn đề CORS/sandbox của browser
+  // Proxy file qua server — tránh CORS/sandbox của browser
   const fileRes = await fetch(sourceUrl, { redirect: 'follow' })
   if (!fileRes.ok) return new NextResponse('Upstream error', { status: 502 })
 
   return new NextResponse(fileRes.body, {
     headers: {
       'Content-Type': MIME[ext] ?? 'application/octet-stream',
-      'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(targetFile)}`,
+      'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(downloadName)}`,
       'Cache-Control': 'private, max-age=300',
     },
   })

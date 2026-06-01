@@ -53,6 +53,9 @@ mark{background:#fef9c3;border-radius:2px;padding:0 2px}
 .dl-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:11.5px;font-weight:600;border:none;cursor:pointer;background:#e0e7ff;color:#3730a3;text-decoration:none;flex-shrink:0}
 .dl-btn:hover{background:#c7d2fe}
 .dl-btn.loading{opacity:.6;pointer-events:none}
+.dl-grp{display:inline-flex;gap:6px;flex-shrink:0}
+.dl-x{background:#dcfce7;color:#166534}
+.dl-x:hover{background:#bbf7d0}
 .dl-btn .sp{display:inline-block;width:11px;height:11px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:middle;margin-right:3px}
 @keyframes sp{to{transform:rotate(360deg)}}
 /* TK TAB */
@@ -131,26 +134,42 @@ function tab(t,btn){
 function buildForms(){
   var h='';
   if(!D.forms||!D.forms.length){
-    h='<div class="no-tk"><p>Không có biểu mẫu riêng.<br>Tải tài liệu gốc để xem biểu mẫu trong phụ lục.</p></div>';
+    h='<div class="no-tk"><p>Không có biểu mẫu riêng.</p></div>';
     document.getElementById('s-forms').innerHTML=h;return;
   }
-  h+='<div style="background:#fffbeb;border:1px solid #fed7aa;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12.5px;color:#92400e">⚠️ Biểu mẫu đính kèm trong tài liệu gốc. Tải tài liệu đầy đủ để xem mẫu in sẵn.</div>';
+  h+='<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12.5px;color:#1e40af">📥 '+D.forms.length+' biểu mẫu — tải bản Word (.docx) hoặc Excel (.xlsx) để sử dụng.</div>';
   var pl='';
   D.forms.forEach(function(f){
     if(f.pl&&f.pl!==pl){h+='<div class="ns" style="margin:10px 0 6px">'+e(f.pl)+'</div>';pl=f.pl}
     h+='<div class="form-row"><span class="form-code">'+e(f.code)+'</span><span class="form-title">'+e(f.title)+'</span>';
-    h+='<a class="dl-btn" href="/api/legal/doc/'+D.meta.slug+'" download onclick="dlStart(this)">⬇ Tải tài liệu</a>';
+    h+='<span class="dl-grp"><a class="dl-btn" data-doc="'+D.meta.slug+'" data-file="'+e(f.code)+'" data-type="word">⬇ Word</a><a class="dl-btn dl-x" data-doc="'+D.meta.slug+'" data-file="'+e(f.code)+'" data-type="excel">⬇ Excel</a></span>';
     if(f.note){h+='<span class="form-note">'+e(f.note)+'</span>'}
     h+='</div>';
   });
   document.getElementById('s-forms').innerHTML=h;
 }
-function dlStart(btn){
-  btn.classList.add('loading');
+document.addEventListener('click',async function(ev){
+  var btn=ev.target.closest('a.dl-btn');
+  if(!btn||btn.classList.contains('loading'))return;
+  ev.preventDefault();
+  var doc=btn.getAttribute('data-doc'),file=btn.getAttribute('data-file'),type=btn.getAttribute('data-type');
   var orig=btn.innerHTML;
-  btn.innerHTML='<span class="sp"></span>Đang tải...';
-  setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('loading')},2500);
-}
+  btn.classList.add('loading');btn.innerHTML='<span class="sp"></span>...';
+  try{
+    var url='/api/legal/forms?doc='+encodeURIComponent(doc)+'&file='+encodeURIComponent(file)+'&type='+type;
+    var res=await fetch(url,{credentials:'include'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    var blob=await res.blob();
+    var ext=type==='excel'?'.xlsx':'.docx';
+    var a=document.createElement('a');var u=URL.createObjectURL(blob);
+    a.href=u;a.download=file+ext;document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(u)},2000);
+  }catch(err){
+    alert('Chưa có file biểu mẫu này hoặc lỗi tải. Vui lòng thử lại sau.');
+  }finally{
+    setTimeout(function(){btn.innerHTML=orig;btn.classList.remove('loading')},800);
+  }
+});
 function buildTK(){
   var el=document.getElementById('s-tk');
   if(!D.accounts||!D.accounts.length){
