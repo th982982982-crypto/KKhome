@@ -2,32 +2,32 @@ import { NextResponse } from 'next/server'
 import { checkLegalAccess } from '@/lib/legal/check-legal-access'
 import { createAdminClient } from '@/lib/supabase/server'
 
-const DRIVE_API_KEY = process.env.GOOGLE_DRIVE_API_KEY
-const WORD_FOLDER_ID = process.env.LEGAL_FORMS_WORD_FOLDER_ID
-const EXCEL_FOLDER_ID = process.env.LEGAL_FORMS_EXCEL_FOLDER_ID
+const LEGAL_SCRIPT_URL = process.env.LEGAL_FORMS_SCRIPT_URL
 
-async function getDriveFileId(filename: string, folderId: string): Promise<string | null> {
-  if (!DRIVE_API_KEY || !folderId) return null
-  const q = encodeURIComponent(`name='${filename}' and '${folderId}' in parents and trashed=false`)
-  const url = `https://www.googleapis.com/drive/v3/files?q=${q}&fields=files(id,name)&key=${DRIVE_API_KEY}`
-  const res = await fetch(url)
-  if (!res.ok) return null
-  const data = await res.json()
-  return data.files?.[0]?.id ?? null
+async function getDriveUrl(filename: string, type: 'word' | 'excel'): Promise<string | null> {
+  if (!LEGAL_SCRIPT_URL) return null
+  const url = `${LEGAL_SCRIPT_URL}?action=get_form_url&file=${encodeURIComponent(filename)}&type=${type}`
+  try {
+    const res = await fetch(url, { cache: 'no-store' })
+    if (!res.ok) return null
+    const data = await res.json()
+    return data.url ?? null
+  } catch {
+    return null
+  }
 }
 
 async function getSupabaseOverrideUrl(filename: string, type: 'word' | 'excel'): Promise<string | null> {
   try {
     const admin = createAdminClient()
-    const bucket = 'legal-forms'
-    const path = type === 'word' ? `word/${filename}` : `excel/${filename.replace(/\.docx$/, '.xlsx')}`
-    const { data } = admin.storage.from(bucket).getPublicUrl(path)
-    // Verify the file exists by trying to get its metadata
-    const { error } = await admin.storage.from(bucket).list(type === 'word' ? 'word' : 'excel', {
-      search: type === 'word' ? filename : filename.replace(/\.docx$/, '.xlsx'),
+    const folder = type === 'word' ? 'word' : 'excel'
+    const targetFile = type === 'excel' ? filename.replace(/\.docx$/, '.xlsx') : filename
+    const { data: list } = await admin.storage.from('legal-forms').list(folder, {
+      search: targetFile,
       limit: 1,
     })
-    if (error) return null
+    if (!list?.length) return null
+    const { data } = admin.storage.from('legal-forms').getPublicUrl(`${folder}/${targetFile}`)
     return data?.publicUrl ?? null
   } catch {
     return null
@@ -44,23 +44,13 @@ export async function GET(req: Request) {
 
   if (!file) return new NextResponse('Missing file param', { status: 400 })
 
-  const targetFile = type === 'excel' ? file.replace(/\.docx$/, '.xlsx') : file
-
-  // 1. Kiểm tra Supabase Storage trước (admin đã upload override)
+  // 1. Supabase Storage override (admin đã upload phiên bản mới)
   const supabaseUrl = await getSupabaseOverrideUrl(file, type)
-  if (supabaseUrl) {
-    return NextResponse.redirect(supabaseUrl)
-  }
+  if (supabaseUrl) return NextResponse.redirect(supabaseUrl)
 
-  // 2. Fallback: tìm trên Google Drive
-  const folderId = type === 'excel' ? EXCEL_FOLDER_ID : WORD_FOLDER_ID
-  if (folderId && DRIVE_API_KEY) {
-    const fileId = await getDriveFileId(targetFile, folderId)
-    if (fileId) {
-      const driveUrl = `https://drive.google.com/uc?export=download&id=${fileId}`
-      return NextResponse.redirect(driveUrl)
-    }
-  }
+  // 2. Google Drive qua Apps Script
+  const driveUrl = await getDriveUrl(file, type)
+  if (driveUrl) return NextResponse.redirect(driveUrl)
 
-  return new NextResponse(`File not found: ${targetFile}`, { status: 404 })
+  return new NextResponse('File not found', { status: 404 })
 }
