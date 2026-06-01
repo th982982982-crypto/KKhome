@@ -82,7 +82,7 @@ export function LegalViewer({ currentSlug, allDocs, anchor }: LegalViewerProps) 
             style={{
               backgroundColor: currentDoc.theme === 'dark' ? '#0e1220' : '#f0f4f8',
             }}
-            sandbox="allow-scripts allow-same-origin allow-downloads allow-popups"
+            sandbox="allow-scripts allow-same-origin allow-downloads allow-popups allow-top-navigation-by-user-activation"
           />
         </div>
 
