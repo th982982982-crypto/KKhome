@@ -107,8 +107,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 <script>
 const D=JSON.parse(document.getElementById('DATA').textContent);
 const esc=s=>(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-const href=f=>encodeURI("Biểu mẫu TT99/"+f);
-const hrefX=f=>encodeURI("Biểu mẫu TT99 (Excel)/"+f.replace(/\.docx$/,".xlsx"));
+const href=f=>"/api/legal/forms?file="+encodeURIComponent(f)+"&type=word";
+const hrefX=f=>"/api/legal/forms?file="+encodeURIComponent(f)+"&type=excel";
 
 function renderTable(rows){
  if(!rows||!rows.length)return '';

@@ -1,10 +1,16 @@
 import { createAdminClient } from '@/lib/supabase/server'
 import { LegalAccessManager } from '@/components/admin/legal-access-manager'
-import { Scale } from 'lucide-react'
+import { FormsManager } from '@/components/admin/legal-forms/forms-manager'
+import { Scale, Users, FileDown } from 'lucide-react'
 
 export const revalidate = 0
 
-export default async function AdminLegalPage() {
+export default async function AdminLegalPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string }>
+}) {
+  const { tab = 'access' } = await searchParams
   const admin = createAdminClient()
 
   const [{ data: profiles }, { data: authData }] = await Promise.all([
@@ -25,20 +31,54 @@ export default async function AdminLegalPage() {
 
   return (
     <div className="px-4 sm:px-6 lg:px-10 py-8">
-      <div className="mb-8">
+      <div className="mb-6">
         <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500 text-sm mb-1.5">
           <Scale className="w-4 h-4" />
           <span>Văn bản pháp luật</span>
         </div>
         <h1 className="text-3xl font-black text-gray-900 dark:text-gray-50 tracking-tight">
-          Phân quyền Tra cứu Pháp luật
+          Quản lý Pháp luật
         </h1>
-        <p className="text-gray-500 dark:text-gray-400 mt-1">
-          Cấp hoặc thu hồi quyền xem văn bản pháp luật cho từng người dùng
-        </p>
       </div>
 
-      <LegalAccessManager users={users} />
+      {/* Tabs */}
+      <div className="flex gap-1 border-b border-gray-200 dark:border-gray-800 mb-6">
+        {[
+          { key: 'access', label: 'Phân quyền', icon: Users },
+          { key: 'forms', label: 'Biểu mẫu TT99', icon: FileDown },
+        ].map(({ key, label, icon: Icon }) => (
+          <a
+            key={key}
+            href={`?tab=${key}`}
+            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-semibold border-b-2 transition-colors ${
+              tab === key
+                ? 'border-blue-600 text-blue-700 dark:text-blue-400'
+                : 'border-transparent text-gray-500 hover:text-gray-800 dark:hover:text-gray-200'
+            }`}
+          >
+            <Icon className="w-4 h-4" />
+            {label}
+          </a>
+        ))}
+      </div>
+
+      {tab === 'access' && (
+        <>
+          <p className="text-gray-500 dark:text-gray-400 mb-6">
+            Cấp hoặc thu hồi quyền xem văn bản pháp luật cho từng người dùng
+          </p>
+          <LegalAccessManager users={users} />
+        </>
+      )}
+
+      {tab === 'forms' && (
+        <>
+          <p className="text-gray-500 dark:text-gray-400 mb-6">
+            Upload phiên bản mới của biểu mẫu TT99 (sẽ ghi đè link tải của người dùng)
+          </p>
+          <FormsManager />
+        </>
+      )}
     </div>
   )
 }
