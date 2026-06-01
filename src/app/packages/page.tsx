@@ -21,7 +21,7 @@ export default async function PackagesPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} />
+      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={profile?.is_admin || profile?.can_view_legal} />
 
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 py-16">
         <div className="text-center mb-12">
