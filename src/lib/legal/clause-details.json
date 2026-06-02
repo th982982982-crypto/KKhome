@@ -1,0 +1,2768 @@
+{
+  "luat-67": {
+    "dieu-3": [
+      {
+        "match": "Thu nhập từ chuyển nhượng vốn, chuyển nhượng quyền góp vốn",
+        "title": "Điều 3.2.a — Thu nhập từ chuyển nhượng vốn, chứng khoán",
+        "summary": "Thu nhập tính thuế = giá chuyển nhượng − giá mua của phần vốn/chứng khoán chuyển nhượng − chi phí chuyển nhượng. Khoản thu nhập (lãi/lỗ) này được tổng hợp vào thu nhập chịu thuế trong kỳ; doanh nghiệp hạch toán phần lãi vào <strong>TK 711 – Thu nhập khác</strong> (hoặc TK 515 nếu là hoạt động tài chính) và phần lỗ vào <strong>TK 811 – Chi phí khác</strong>.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_13",
+            "label": "NĐ 320 Điều 13 — Thu nhập từ chuyển nhượng vốn (cách xác định)"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_14",
+            "label": "NĐ 320 Điều 14 — Thu nhập từ đầu tư chứng khoán"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s99",
+            "label": "TT 99 — Hạch toán TK 711 Thu nhập khác"
+          }
+        ]
+      },
+      {
+        "match": "Thu nhập từ chuyển nhượng bất động sản",
+        "title": "Điều 3.2.b — Thu nhập từ chuyển nhượng bất động sản",
+        "summary": "Áp dụng cho thu nhập chuyển nhượng BĐS, trừ doanh nghiệp kinh doanh BĐS. Doanh thu, chi phí được trừ và cách xác định thu nhập chịu thuế của hoạt động này được quy định chi tiết tại NĐ 320. Thu nhập từ chuyển nhượng BĐS phải xác định riêng, lỗ của hoạt động này được bù trừ theo quy định tại Điều 7.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_15",
+            "label": "NĐ 320 Điều 15 — Thu nhập từ chuyển nhượng bất động sản"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_17",
+            "label": "NĐ 320 Điều 17 — Doanh thu, chi phí được trừ hoạt động chuyển nhượng BĐS"
+          }
+        ]
+      },
+      {
+        "match": "Thu nhập từ chuyển nhượng dự án đầu tư, chuyển nhượng quyền tham gia dự án đầu tư",
+        "title": "Điều 3.2.c — Chuyển nhượng dự án đầu tư, quyền thăm dò khoáng sản",
+        "summary": "Thu nhập từ chuyển nhượng dự án đầu tư, quyền tham gia dự án, quyền thăm dò/khai thác/chế biến khoáng sản. Lưu ý: thu nhập từ chuyển nhượng dự án thăm dò, khai thác, chế biến khoáng sản phải <strong>xác định riêng để kê khai nộp thuế, không được bù trừ lỗ/lãi</strong> với hoạt động SXKD (theo khoản 4 Điều này và Điều 7).",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-7",
+            "label": "Luật 67 Điều 7 — Xác định thu nhập tính thuế (bù trừ lỗ lãi)"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_3",
+            "label": "NĐ 320 Điều 3 — Thu nhập chịu thuế"
+          }
+        ]
+      },
+      {
+        "match": "Thu nhập từ chuyển nhượng, cho thuê, thanh lý tài sản",
+        "title": "Điều 3.2.d — Chuyển nhượng, cho thuê, thanh lý tài sản",
+        "summary": "Thu nhập từ chuyển nhượng, cho thuê, thanh lý tài sản (kể cả giấy tờ có giá, trừ BĐS). Phần lãi thanh lý/nhượng bán tài sản cố định được ghi nhận là thu nhập khác và hạch toán vào <strong>TK 711</strong>; chi phí và giá trị còn lại ghi vào TK 811.",
+        "links": [
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s99",
+            "label": "TT 99 — Hạch toán TK 711 Thu nhập khác"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s100",
+            "label": "TT 99 — Hạch toán TK 811 Chi phí khác"
+          }
+        ]
+      },
+      {
+        "match": "Thu nhập từ quyền sử dụng, quyền sở hữu tài sản",
+        "title": "Điều 3.2.đ — Quyền sử dụng, sở hữu tài sản, SHTT, chuyển giao công nghệ",
+        "summary": "Bao gồm thu nhập từ quyền sở hữu trí tuệ, chuyển giao công nghệ. Lưu ý ngoại lệ: thu nhập từ chuyển giao công nghệ thuộc lĩnh vực ưu tiên cho tổ chức/cá nhân ở địa bàn đặc biệt khó khăn được <strong>miễn thuế</strong> theo Điều 4; ở địa bàn khó khăn được <strong>giảm 50%</strong> theo Điều 15.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-4",
+            "label": "Luật 67 Điều 4 — Thu nhập được miễn thuế (chuyển giao công nghệ ưu tiên)"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-15",
+            "label": "Luật 67 Điều 15 — Giảm 50% thuế chuyển giao công nghệ (địa bàn khó khăn)"
+          }
+        ]
+      },
+      {
+        "match": "Thu nhập từ lãi tiền gửi, lãi cho vay vốn",
+        "title": "Điều 3.2.e — Lãi tiền gửi, lãi cho vay, bán ngoại tệ",
+        "summary": "Thu nhập từ lãi tiền gửi, lãi cho vay vốn, bán ngoại tệ (trừ hoạt động tín dụng của tổ chức tín dụng) là thu nhập chịu thuế. Doanh nghiệp hạch toán vào <strong>TK 515 – Doanh thu hoạt động tài chính</strong>.",
+        "links": [
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s89",
+            "label": "TT 99 — Hạch toán TK 515 Doanh thu hoạt động tài chính"
+          }
+        ]
+      },
+      {
+        "match": "Khoản trích trước vào chi phí nhưng không sử dụng hoặc sử dụng không hết",
+        "title": "Điều 3.2.g — Hoàn nhập trích trước, nợ khó đòi đã xóa, nợ không xác định chủ",
+        "summary": "Các khoản: trích trước không dùng hết mà không điều chỉnh giảm chi phí; nợ khó đòi đã xóa nay đòi được; nợ phải trả không xác định được chủ nợ; thu nhập SXKD năm trước bị bỏ sót nay phát hiện — đều tính là thu nhập khác chịu thuế, hạch toán vào <strong>TK 711</strong>.",
+        "links": [
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s99",
+            "label": "TT 99 — Hạch toán TK 711 Thu nhập khác"
+          }
+        ]
+      },
+      {
+        "match": "Các khoản thu nhập khác, trừ các khoản thu nhập được miễn thuế",
+        "title": "Điều 3.2.o — Thu nhập khác (điều khoản quét) & ranh giới miễn thuế",
+        "summary": "Điều khoản quét: mọi khoản thu nhập khác đều chịu thuế, <strong>trừ</strong> các khoản được miễn thuế liệt kê tại Điều 4. Khi gặp một khoản thu nhập khác, hãy đối chiếu danh mục miễn thuế tại Điều 4 trước khi đưa vào thu nhập chịu thuế.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-4",
+            "label": "Luật 67 Điều 4 — Thu nhập được miễn thuế"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_4",
+            "label": "NĐ 320 Điều 4 — Thu nhập được miễn thuế (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "dieu-4": [
+      {
+        "match": "Thu nhập từ hoạt động đánh bắt hải sản",
+        "title": "Điều 4.1 — Miễn thuế nông nghiệp, lâm/ngư nghiệp, HTX",
+        "summary": "Miễn thuế: trồng trọt, chăn nuôi, nuôi trồng/chế biến nông – thủy sản ở địa bàn đặc biệt khó khăn; thu nhập của HTX, liên hiệp HTX từ nông – lâm – ngư nghiệp và sản xuất muối; thu nhập từ đánh bắt hải sản. NĐ 320 Điều 4 chi tiết hóa danh mục miễn thuế.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_4",
+            "label": "NĐ 320 Điều 4 — Thu nhập được miễn thuế (chi tiết)"
+          }
+        ]
+      },
+      {
+        "match": "Thu nhập từ việc thực hiện hợp đồng nghiên cứu khoa học, phát triển công nghệ",
+        "title": "Điều 4.4 — Miễn thuế hoạt động KHCN, đổi mới sáng tạo (tối đa 3 năm)",
+        "summary": "Miễn thuế thu nhập từ hợp đồng nghiên cứu khoa học, phát triển công nghệ, đổi mới sáng tạo, chuyển đổi số; bán sản phẩm công nghệ mới lần đầu áp dụng tại VN; sản phẩm sản xuất thử nghiệm. <strong>Miễn tối đa không quá 03 năm.</strong> Gắn với chính sách Quỹ phát triển KHCN (Điều 22 NĐ 320).",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_4",
+            "label": "NĐ 320 Điều 4 — Thu nhập được miễn thuế"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_22",
+            "label": "NĐ 320 Điều 22 — Quỹ phát triển KHCN"
+          }
+        ]
+      },
+      {
+        "match": "Thu nhập từ chuyển nhượng chứng chỉ giảm phát thải, chuyển nhượng tín chỉ các-bon",
+        "title": "Điều 4.10 — Miễn thuế tín chỉ các-bon, trái phiếu xanh",
+        "summary": "Miễn thuế: thu nhập từ chuyển nhượng chứng chỉ giảm phát thải/tín chỉ các-bon lần đầu sau khi phát hành; lãi trái phiếu xanh; chuyển nhượng trái phiếu xanh lần đầu. Chính sách ưu đãi mới khuyến khích tài chính xanh.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_4",
+            "label": "NĐ 320 Điều 4 — Thu nhập được miễn thuế (chi tiết)"
+          }
+        ]
+      },
+      {
+        "match": "Thu nhập (bao gồm cả lãi tiền gửi ngân hàng, lãi trái phiếu Chính phủ",
+        "title": "Điều 4.11 — Miễn thuế thu nhập từ thực hiện nhiệm vụ Nhà nước giao",
+        "summary": "Miễn thuế thu nhập (kể cả lãi tiền gửi, lãi trái phiếu Chính phủ, tín phiếu kho bạc) của: Ngân hàng Phát triển VN (tín dụng đầu tư/xuất khẩu), Ngân hàng Chính sách xã hội, công ty quản lý tài sản của tổ chức tín dụng, các quỹ tài chính nhà nước hoạt động không vì lợi nhuận.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_4",
+            "label": "NĐ 320 Điều 4 — Thu nhập được miễn thuế (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "dieu-7": [
+      {
+        "match": "Doanh nghiệp có nhiều hoạt động sản xuất, kinh doanh trong kỳ tính thuế thì thu nhập chịu thuế",
+        "title": "Điều 7.3 — Bù trừ lãi/lỗ giữa các hoạt động",
+        "summary": "DN nhiều hoạt động: tổng hợp thu nhập tất cả hoạt động; hoạt động bị lỗ được bù trừ vào thu nhập của hoạt động có lãi do DN tự chọn — <strong>trừ</strong> chuyển nhượng BĐS, chuyển nhượng dự án đầu tư, quyền tham gia dự án (không bù trừ với thu nhập đang hưởng ưu đãi).",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_6",
+            "label": "NĐ 320 Điều 6 — Thu nhập chịu thuế và bù trừ trong kỳ"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_7",
+            "label": "NĐ 320 Điều 7 — Xác định lỗ và chuyển lỗ"
+          }
+        ]
+      },
+      {
+        "match": "Thu nhập chịu thuế từ hoạt động chuyển nhượng dự án đầu tư thăm dò, khai thác, chế biến khoáng sản",
+        "title": "Điều 7.4 — Tách riêng thu nhập chuyển nhượng dự án khoáng sản",
+        "summary": "Thu nhập từ chuyển nhượng dự án/quyền thăm dò, khai thác, chế biến khoáng sản phải <strong>xác định riêng để kê khai nộp thuế, không được bù trừ lỗ/lãi</strong> với hoạt động SXKD trong kỳ. Liên quan trực tiếp Điều 3.2.c.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (điểm 2.c)"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_7",
+            "label": "NĐ 320 Điều 7 — Xác định lỗ và chuyển lỗ"
+          }
+        ]
+      }
+    ],
+    "dieu-9": [
+      {
+        "match": "Khoản chi thực tế phát sinh liên quan đến hoạt động sản xuất, kinh doanh",
+        "title": "Điều 9.1.a — Điều kiện chi được trừ",
+        "summary": "Một khoản chi được trừ khi: (1) thực tế phát sinh, liên quan đến SXKD; (2) có đủ hóa đơn, chứng từ và thanh toán không dùng tiền mặt (điểm c). NĐ 320 Điều 9 quy định chi tiết các khoản chi được trừ; chi phí quản lý doanh nghiệp hạch toán vào <strong>TK 642</strong>.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_9",
+            "label": "NĐ 320 Điều 9 — Các khoản chi được trừ (chi tiết)"
+          },
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_3",
+            "label": "TT 20 Điều 3 — Hồ sơ, chứng từ của khoản chi được trừ"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s98",
+            "label": "TT 99 — Hạch toán TK 642 Chi phí QLDN"
+          }
+        ]
+      },
+      {
+        "match": "Các khoản chi có đủ hoá đơn, chứng từ thanh toán không dùng tiền mặt",
+        "title": "Điều 9.1.c — Yêu cầu hóa đơn & thanh toán không dùng tiền mặt",
+        "summary": "Mọi khoản chi muốn được trừ phải có đủ hóa đơn, chứng từ và thanh toán không dùng tiền mặt (trừ trường hợp đặc thù do Chính phủ quy định). TT 20 hướng dẫn hồ sơ cụ thể của các khoản chi tại điểm b, c khoản 1 Điều 9.",
+        "links": [
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_3",
+            "label": "TT 20 Điều 3 — Hồ sơ khoản chi được trừ"
+          }
+        ]
+      },
+      {
+        "match": "Các khoản chi không được trừ khi xác định thu nhập chịu thuế bao gồm",
+        "title": "Điều 9.2 — Các khoản chi KHÔNG được trừ",
+        "summary": "Danh mục chi không được trừ: tiền phạt vi phạm hành chính, chi vượt mức khống chế, trích lập dự phòng sai, khấu hao vượt mức, lương chủ DNTN/chủ công ty TNHH MTV, lãi vay tương ứng vốn điều lệ thiếu, thuế TNDN... NĐ 320 Điều 10 liệt kê chi tiết.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_10",
+            "label": "NĐ 320 Điều 10 — Các khoản chi không được trừ (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "dieu-10": [
+      {
+        "match": "Thuế suất thuế thu nhập doanh nghiệp là 20%",
+        "title": "Điều 10.1 — Thuế suất phổ thông 20%",
+        "summary": "Thuế suất phổ thông là 20%, trừ các mức ưu đãi và mức riêng (15%/17% theo quy mô doanh thu, 25–50% dầu khí/tài nguyên quý hiếm). Chi phí thuế TNDN hạch toán vào <strong>TK 821</strong>.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_11",
+            "label": "NĐ 320 Điều 11 — Thuế suất (chi tiết)"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s101",
+            "label": "TT 99 — Hạch toán TK 821 Chi phí thuế TNDN"
+          }
+        ]
+      },
+      {
+        "match": "Thuế suất 15% áp dụng đối với doanh nghiệp có tổng doanh thu năm không quá 03 tỷ",
+        "title": "Điều 10.2 — Thuế suất 15% (doanh thu ≤ 3 tỷ/năm)",
+        "summary": "DN có tổng doanh thu năm không quá 3 tỷ đồng áp dụng thuế suất 15%. Căn cứ là tổng doanh thu của kỳ tính thuế trước liền kề. Đây thường là DN siêu nhỏ áp dụng chế độ kế toán theo TT 58.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_11",
+            "label": "NĐ 320 Điều 11 — Thuế suất (điều kiện 15%/17%)"
+          },
+          {
+            "targetSlug": "tt58",
+            "targetAnchor": "tt58_2",
+            "label": "TT 58 Điều 2 — Đối tượng DN siêu nhỏ"
+          }
+        ]
+      },
+      {
+        "match": "Thuế suất 17% áp dụng đối với doanh nghiệp có tổng doanh thu năm từ trên 03 tỷ",
+        "title": "Điều 10.3 — Thuế suất 17% (doanh thu trên 3 đến 50 tỷ/năm)",
+        "summary": "DN có tổng doanh thu năm trên 3 tỷ đến không quá 50 tỷ đồng áp dụng thuế suất 17%. Đây thường là DN nhỏ và vừa áp dụng chế độ kế toán theo TT 133.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_11",
+            "label": "NĐ 320 Điều 11 — Thuế suất (điều kiện 15%/17%)"
+          },
+          {
+            "targetSlug": "tt133",
+            "targetAnchor": "tt133_2",
+            "label": "TT 133 Điều 2 — Đối tượng DN nhỏ và vừa"
+          }
+        ]
+      }
+    ],
+    "dieu-11": [
+      {
+        "match": "Chính phủ quy định số thuế thu nhập doanh nghiệp phải nộp tính theo tỷ lệ % trên doanh thu",
+        "title": "Điều 11.2 — Tính thuế theo tỷ lệ % trên doanh thu",
+        "summary": "Áp dụng cho: DN nước ngoài kinh doanh tại VN; DN doanh thu ≤ 3 tỷ xác định được doanh thu nhưng không xác định được chi phí; HTX, đơn vị sự nghiệp hạch toán được doanh thu nhưng không xác định được chi phí. Đây là cơ sở để hộ kinh doanh và DN siêu nhỏ nộp thuế theo % doanh thu (TT 152, TT 58).",
+        "links": [
+          {
+            "targetSlug": "tt58",
+            "targetAnchor": "tt58_5",
+            "label": "TT 58 Điều 5 — DN siêu nhỏ nộp thuế theo % doanh thu"
+          },
+          {
+            "targetSlug": "tt152",
+            "targetAnchor": "tt152_6",
+            "label": "TT 152 Điều 6 — Hộ KD nộp thuế theo % doanh thu"
+          }
+        ]
+      }
+    ],
+    "dieu-13": [
+      {
+        "match": "Áp dụng thuế suất 10% trong 15 năm đối với",
+        "title": "Điều 13.1 — Thuế suất ưu đãi 10% trong 15 năm",
+        "summary": "Áp dụng cho dự án đầu tư mới thuộc ngành nghề/địa bàn ưu đãi (công nghệ cao, phần mềm, bán dẫn, năng lượng tái tạo, khu kinh tế, địa bàn đặc biệt khó khăn...). Thời gian ưu đãi tính từ năm đầu có doanh thu. Mức và điều kiện chi tiết tại NĐ 320 Điều 19.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_19",
+            "label": "NĐ 320 Điều 19 — Thuế suất ưu đãi (chi tiết)"
+          },
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_4",
+            "label": "TT 20 Điều 4 — Hồ sơ hưởng ưu đãi thuế"
+          }
+        ]
+      },
+      {
+        "match": "Áp dụng thuế suất 17% trong thời gian 10 năm đối với",
+        "title": "Điều 13.4 — Thuế suất ưu đãi 17% trong 10 năm",
+        "summary": "Áp dụng cho dự án đầu tư mới thuộc một số ngành nghề ưu đãi và địa bàn khó khăn, hoặc tại khu kinh tế không thuộc địa bàn đặc biệt khó khăn. Điều kiện và danh mục ngành nghề chi tiết tại NĐ 320 Điều 19 và Điều 12 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_19",
+            "label": "NĐ 320 Điều 19 — Thuế suất ưu đãi (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "dieu-14": [
+      {
+        "match": "Miễn thuế tối đa 04 năm và giảm 50% số thuế phải nộp tối đa không quá 09 năm",
+        "title": "Điều 14.1 — Miễn 4 năm, giảm 50% trong 9 năm tiếp theo",
+        "summary": "Mức ưu đãi cao nhất: miễn thuế tối đa 4 năm và giảm 50% trong tối đa 9 năm tiếp theo, áp dụng cho thu nhập của dự án hưởng thuế suất 10%/15 năm (khoản 1 Điều 13). Thời gian miễn/giảm tính từ năm đầu có thu nhập chịu thuế. Chi tiết tại NĐ 320 Điều 20.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_20",
+            "label": "NĐ 320 Điều 20 — Miễn thuế, giảm thuế (chi tiết)"
+          },
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_4",
+            "label": "TT 20 Điều 4 — Hồ sơ hưởng ưu đãi thuế"
+          }
+        ]
+      },
+      {
+        "match": "Ưu đãi thuế đối với dự án đầu tư mở rộng",
+        "title": "Điều 14.5 — Ưu đãi thuế cho đầu tư mở rộng",
+        "summary": "DN mở rộng quy mô/nâng công suất/đổi mới công nghệ thuộc ngành nghề, địa bàn ưu đãi: phần thu nhập tăng thêm được hưởng ưu đãi theo dự án đang hoạt động cho thời gian còn lại. Phải đáp ứng tiêu chí về nguyên giá TSCĐ hoặc công suất (khoản 6). Không áp dụng cho mở rộng do M&A.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_20",
+            "label": "NĐ 320 Điều 20 — Miễn thuế, giảm thuế"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_21",
+            "label": "NĐ 320 Điều 21 — Các trường hợp miễn, giảm thuế khác"
+          }
+        ]
+      }
+    ],
+    "dieu-15": [
+      {
+        "match": "Doanh nghiệp quy định tại khoản 2, khoản 3 Điều 10 của Luật này thành lập mới từ hộ kinh doanh",
+        "title": "Điều 15.4 — Miễn thuế 2 năm cho DN thành lập từ hộ kinh doanh",
+        "summary": "DN nhỏ/siêu nhỏ (thuộc diện thuế suất 15%/17%) thành lập mới từ hộ kinh doanh được <strong>miễn thuế TNDN 02 năm liên tục</strong> kể từ khi có thu nhập chịu thuế. Chính sách khuyến khích hộ kinh doanh chuyển đổi lên doanh nghiệp.",
+        "links": [
+          {
+            "targetSlug": "tt152",
+            "targetAnchor": "tt152_1",
+            "label": "TT 152 Điều 1 — Kế toán hộ kinh doanh (trước khi chuyển đổi)"
+          },
+          {
+            "targetSlug": "tt58",
+            "targetAnchor": "tt58_1",
+            "label": "TT 58 Điều 1 — Kế toán DN siêu nhỏ (sau khi thành lập DN)"
+          }
+        ]
+      }
+    ],
+    "dieu-2": [
+      {
+        "match": "Người nộp thuế thu nhập doanh nghiệp là tổ chức hoạt động sản xuất, kinh doanh",
+        "title": "Điều 2.1 — Người nộp thuế TNDN",
+        "summary": "Người nộp thuế là tổ chức SXKD hàng hóa, dịch vụ có thu nhập chịu thuế: doanh nghiệp trong nước, DN nước ngoài (có/không có cơ sở thường trú tại VN), HTX, đơn vị sự nghiệp và tổ chức khác. Chi tiết tại NĐ 320 Điều 2.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_2",
+            "label": "NĐ 320 Điều 2 — Người nộp thuế (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "dieu-5": [
+      {
+        "match": "Kỳ tính thuế thu nhập doanh nghiệp được xác định theo năm dương lịch hoặc năm tài chính",
+        "title": "Điều 5.1 — Kỳ tính thuế",
+        "summary": "Kỳ tính thuế theo năm dương lịch hoặc năm tài chính do DN lựa chọn; nếu chọn năm tài chính khác năm dương lịch phải thông báo cơ quan thuế. Thu nhập tính thuế xác định theo từng kỳ (Điều 7).",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-7",
+            "label": "Luật 67 Điều 7 — Xác định thu nhập tính thuế"
+          }
+        ]
+      }
+    ],
+    "dieu-6": [
+      {
+        "match": "Căn cứ tính thuế là thu nhập tính thuế và thuế suất",
+        "title": "Điều 6 — Căn cứ tính thuế",
+        "summary": "Căn cứ tính thuế = thu nhập tính thuế × thuế suất. Thu nhập tính thuế xác định theo Điều 7; thuế suất theo Điều 10. Chi tiết tại NĐ 320 Điều 5.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-7",
+            "label": "Luật 67 Điều 7 — Xác định thu nhập tính thuế"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_5",
+            "label": "NĐ 320 Điều 5 — Căn cứ tính thuế"
+          }
+        ]
+      }
+    ],
+    "dieu-8": [
+      {
+        "match": "Doanh thu để tính thu nhập chịu thuế là toàn bộ tiền bán hàng, tiền gia công",
+        "title": "Điều 8 — Doanh thu",
+        "summary": "Doanh thu để tính thu nhập chịu thuế là toàn bộ tiền bán hàng, gia công, cung ứng dịch vụ (kể cả trợ giá, phụ thu) không phân biệt đã thu tiền hay chưa. Thời điểm xác định doanh thu một số trường hợp xem TT 20 Điều 5; hạch toán TK 511.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_8",
+            "label": "NĐ 320 Điều 8 — Doanh thu (chi tiết)"
+          },
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_5",
+            "label": "TT 20 Điều 5 — Thời điểm xác định doanh thu"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s88",
+            "label": "TT 99 — Hạch toán TK 511 Doanh thu"
+          }
+        ]
+      }
+    ],
+    "dieu-12": [
+      {
+        "match": "Ngành, nghề ưu đãi thuế thu nhập doanh nghiệp bao gồm",
+        "title": "Điều 12.2 — Ngành nghề ưu đãi thuế",
+        "summary": "Danh mục ngành nghề ưu đãi: công nghệ cao, phần mềm/an toàn thông tin/chip bán dẫn/AI, công nghiệp hỗ trợ, năng lượng tái tạo, bảo vệ môi trường, hạ tầng quan trọng... Mức ưu đãi tương ứng tại Điều 13, 14. Chi tiết nguyên tắc tại NĐ 320 Điều 18.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-13",
+            "label": "Luật 67 Điều 13 — Thuế suất ưu đãi"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_18",
+            "label": "NĐ 320 Điều 18 — Nguyên tắc, đối tượng ưu đãi"
+          }
+        ]
+      },
+      {
+        "match": "Địa bàn ưu đãi thuế thu nhập doanh nghiệp do Chính phủ quy định, bao gồm",
+        "title": "Điều 12.3 — Địa bàn ưu đãi thuế",
+        "summary": "Địa bàn ưu đãi gồm địa bàn có điều kiện KT-XH khó khăn/đặc biệt khó khăn, khu kinh tế, khu công nghệ cao. Mức ưu đãi kết hợp với ngành nghề tại Điều 13, 14. Điều kiện áp dụng tại NĐ 320 Điều 23.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_18",
+            "label": "NĐ 320 Điều 18 — Nguyên tắc, đối tượng ưu đãi"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_23",
+            "label": "NĐ 320 Điều 23 — Điều kiện áp dụng ưu đãi"
+          }
+        ]
+      }
+    ],
+    "dieu-16": [
+      {
+        "match": "Doanh nghiệp có lỗ được chuyển lỗ sang năm sau",
+        "title": "Điều 16.1 — Chuyển lỗ (tối đa 5 năm)",
+        "summary": "DN có lỗ được chuyển lỗ sang năm sau, trừ vào thu nhập chịu thuế, thời gian chuyển lỗ liên tục không quá 5 năm kể từ năm tiếp theo năm phát sinh lỗ. Cách xác định và chuyển lỗ chi tiết tại NĐ 320 Điều 7; lỗ tạm thời theo dõi qua TK 243.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_7",
+            "label": "NĐ 320 Điều 7 — Xác định lỗ và chuyển lỗ"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s63",
+            "label": "TT 99 — TK 243 Tài sản thuế TN hoãn lại"
+          }
+        ]
+      },
+      {
+        "match": "Doanh nghiệp có lỗ từ hoạt động chuyển nhượng dự án thăm dò, khai thác khoáng sản",
+        "title": "Điều 16.2 — Lỗ chuyển nhượng dự án khoáng sản (tách riêng)",
+        "summary": "Lỗ từ chuyển nhượng dự án/quyền thăm dò, khai thác khoáng sản phải theo dõi và bù trừ riêng, không bù trừ với thu nhập SXKD. Liên quan Điều 3.2.c và Điều 7.4.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-7",
+            "label": "Luật 67 Điều 7 — Tách riêng thu nhập khoáng sản"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (điểm 2.c)"
+          }
+        ]
+      }
+    ]
+  },
+  "nd320": {
+    "nd320_2": [
+      {
+        "match": "Người nộp thuế theo quy định tại khoản 1",
+        "title": "NĐ 320 Điều 2 — Người nộp thuế (chi tiết Luật 67 Điều 2)",
+        "summary": "Chi tiết hóa đối tượng người nộp thuế TNDN: doanh nghiệp trong nước, DN nước ngoài có/không có cơ sở thường trú tại VN, HTX, đơn vị sự nghiệp, tổ chức khác có hoạt động SXKD có thu nhập.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-2",
+            "label": "Luật 67 Điều 2 — Người nộp thuế"
+          }
+        ]
+      }
+    ],
+    "nd320_3": [
+      {
+        "match": "Thu nhập để xác định thu nhập chịu thuế bao gồm thu nhập từ hoạt động sản xuất",
+        "title": "NĐ 320 Điều 3 — Thu nhập chịu thuế (chi tiết Luật 67 Điều 3)",
+        "summary": "Cụ thể hóa thu nhập chịu thuế = thu nhập từ SXKD + thu nhập khác. Là cơ sở chi tiết cho Điều 3 Luật 67 (đặc biệt các loại thu nhập khác tại khoản 2).",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế"
+          }
+        ]
+      }
+    ],
+    "nd320_4": [
+      {
+        "match": "Thu nhập được miễn thuế thực hiện theo quy định tại",
+        "title": "NĐ 320 Điều 4 — Thu nhập được miễn thuế (chi tiết Luật 67 Điều 4)",
+        "summary": "Chi tiết hóa danh mục thu nhập miễn thuế: nông – lâm – ngư nghiệp, KHCN, chuyển giao công nghệ, tín chỉ các-bon/trái phiếu xanh, thu nhập thực hiện nhiệm vụ Nhà nước giao...",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-4",
+            "label": "Luật 67 Điều 4 — Thu nhập được miễn thuế"
+          }
+        ]
+      }
+    ],
+    "nd320_5": [
+      {
+        "match": "Căn cứ tính thuế là thu nhập tính thuế trong kỳ tính thuế và thuế suất",
+        "title": "NĐ 320 Điều 5 — Căn cứ tính thuế",
+        "summary": "Căn cứ tính thuế = thu nhập tính thuế × thuế suất. Thu nhập tính thuế = thu nhập chịu thuế − thu nhập miễn thuế − lỗ kết chuyển. Xem cách bù trừ và chuyển lỗ tại Điều 6, 7 NĐ.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-7",
+            "label": "Luật 67 Điều 7 — Xác định thu nhập tính thuế"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_7",
+            "label": "NĐ 320 Điều 7 — Xác định lỗ và chuyển lỗ"
+          }
+        ]
+      }
+    ],
+    "nd320_7": [
+      {
+        "match": "Lỗ phát sinh trong kỳ tính thuế là số chênh lệch âm về thu nhập tính thuế",
+        "title": "NĐ 320 Điều 7 — Xác định lỗ và chuyển lỗ",
+        "summary": "Quy định cách xác định lỗ và chuyển lỗ liên tục không quá 5 năm. Lưu ý các hoạt động phải tách riêng (chuyển nhượng BĐS, dự án khoáng sản) khi bù trừ lỗ/lãi theo Điều 7 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-7",
+            "label": "Luật 67 Điều 7 — Xác định thu nhập tính thuế (bù trừ lỗ)"
+          }
+        ]
+      }
+    ],
+    "nd320_8": [
+      {
+        "match": "Doanh thu để tính thu nhập chịu thuế thực hiện theo quy định tại",
+        "title": "NĐ 320 Điều 8 — Doanh thu",
+        "summary": "Doanh thu để tính thu nhập chịu thuế và thời điểm xác định doanh thu. Một số trường hợp đặc thù về thời điểm xác định doanh thu được hướng dẫn thêm tại TT 20 Điều 5.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-8",
+            "label": "Luật 67 Điều 8 — Doanh thu"
+          },
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_5",
+            "label": "TT 20 Điều 5 — Thời điểm xác định doanh thu (một số trường hợp)"
+          }
+        ]
+      }
+    ],
+    "nd320_9": [
+      {
+        "match": "Trừ các khoản chi không được trừ quy định tại",
+        "title": "NĐ 320 Điều 9 — Chi tiết Luật 67 Điều 9 (chi được trừ)",
+        "summary": "Quy định chi tiết các khoản chi được trừ khi xác định thu nhập chịu thuế, cụ thể hóa điều kiện tại Điều 9 Luật 67. Đối chiếu với Điều 10 về các khoản chi không được trừ.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-9",
+            "label": "Luật 67 Điều 9 — Chi được trừ và không được trừ"
+          },
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_3",
+            "label": "TT 20 Điều 3 — Hồ sơ khoản chi được trừ"
+          }
+        ]
+      }
+    ],
+    "nd320_10": [
+      {
+        "match": "Các khoản chi không được trừ khi xác định thu nhập chịu thuế thực hiện theo quy định tại",
+        "title": "NĐ 320 Điều 10 — Chi tiết Luật 67 Điều 9.2 (chi không được trừ)",
+        "summary": "Liệt kê chi tiết các khoản chi không được trừ theo khoản 2 Điều 9 Luật 67: chi vượt mức khống chế, trích lập dự phòng sai, khấu hao vượt mức, lãi vay tương ứng vốn điều lệ thiếu, các loại thuế không được tính vào chi phí...",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-9",
+            "label": "Luật 67 Điều 9 — Chi không được trừ (khoản 2)"
+          }
+        ]
+      }
+    ],
+    "nd320_11": [
+      {
+        "match": "Thuế suất thuế thu nhập doanh nghiệp là 20%",
+        "title": "NĐ 320 Điều 11 — Chi tiết Luật 67 Điều 10 (thuế suất)",
+        "summary": "Chi tiết hóa thuế suất 20% và điều kiện áp dụng thuế suất 15%/17% theo quy mô doanh thu tại Điều 10 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s101",
+            "label": "TT 99 — Hạch toán TK 821"
+          }
+        ]
+      }
+    ],
+    "nd320_13": [
+      {
+        "match": "Thu nhập từ chuyển nhượng vốn của doanh nghiệp là thu nhập có được từ chuyển nhượng",
+        "title": "NĐ 320 Điều 13 — Căn cứ Luật 67 Điều 3.2.a",
+        "summary": "Điều này chi tiết hóa cách xác định thu nhập chịu thuế từ chuyển nhượng vốn quy định tại Điều 3 khoản 2 điểm a Luật 67. Thu nhập = giá chuyển nhượng − giá mua phần vốn − chi phí chuyển nhượng.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (điểm 2.a)"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s99",
+            "label": "TT 99 — Hạch toán TK 711"
+          }
+        ]
+      }
+    ],
+    "nd320_14": [
+      {
+        "match": "Thu nhập từ chuyển nhượng chứng khoán của doanh nghiệp là thu nhập có được từ việc chuyển nhượng cổ phiếu",
+        "title": "NĐ 320 Điều 14 — Thu nhập từ đầu tư chứng khoán (Luật 67 Điều 3.2.a)",
+        "summary": "Chi tiết hóa thu nhập từ chuyển nhượng cổ phiếu, trái phiếu, chứng chỉ quỹ và chứng khoán khác. Bổ sung cho Điều 13 về chuyển nhượng vốn.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (điểm 2.a)"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_13",
+            "label": "NĐ 320 Điều 13 — Thu nhập từ chuyển nhượng vốn"
+          }
+        ]
+      }
+    ],
+    "nd320_15": [
+      {
+        "match": "Thu nhập từ hoạt động chuyển nhượng bất động sản bao gồm",
+        "title": "NĐ 320 Điều 15 — Căn cứ Luật 67 Điều 3.2.b",
+        "summary": "Chi tiết hóa thu nhập chuyển nhượng BĐS tại Điều 3.2.b Luật 67. Xem thêm Điều 17 về doanh thu và chi phí được trừ của hoạt động này.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (điểm 2.b)"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_17",
+            "label": "NĐ 320 Điều 17 — Doanh thu, chi phí chuyển nhượng BĐS"
+          }
+        ]
+      }
+    ],
+    "nd320_17": [
+      {
+        "match": "Doanh thu từ hoạt động chuyển nhượng bất động sản",
+        "title": "NĐ 320 Điều 17 — Doanh thu, chi phí chuyển nhượng BĐS",
+        "summary": "Xác định doanh thu và chi phí được trừ riêng cho hoạt động chuyển nhượng BĐS — phải hạch toán riêng, không bù trừ với hoạt động SXKD khác.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_15",
+            "label": "NĐ 320 Điều 15 — Thu nhập chuyển nhượng BĐS"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (điểm 2.b)"
+          }
+        ]
+      }
+    ],
+    "nd320_19": [
+      {
+        "match": "Áp dụng thuế suất 10% trong 15 năm đối với",
+        "title": "NĐ 320 Điều 19 — Thuế suất ưu đãi (chi tiết Luật 67 Điều 13)",
+        "summary": "Chi tiết danh mục ngành nghề/địa bàn được hưởng thuế suất ưu đãi 10%, 15%, 17% và thời gian áp dụng. Cụ thể hóa Điều 13 Luật 67. Hồ sơ hưởng ưu đãi xem TT 20 Điều 4.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-13",
+            "label": "Luật 67 Điều 13 — Thuế suất ưu đãi"
+          },
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_4",
+            "label": "TT 20 Điều 4 — Hồ sơ hưởng ưu đãi thuế"
+          }
+        ]
+      }
+    ],
+    "nd320_20": [
+      {
+        "match": "Miễn thuế 04 năm và giảm 50% số thuế phải nộp trong 09 năm tiếp theo",
+        "title": "NĐ 320 Điều 20 — Miễn thuế, giảm thuế (chi tiết Luật 67 Điều 14)",
+        "summary": "Chi tiết mức và thời gian miễn/giảm thuế (miễn 4 năm + giảm 50% trong 9 năm; miễn 2 năm + giảm 50% trong 4 năm...) tương ứng từng nhóm dự án. Cụ thể hóa Điều 14 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-14",
+            "label": "Luật 67 Điều 14 — Miễn thuế, giảm thuế"
+          },
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_4",
+            "label": "TT 20 Điều 4 — Hồ sơ hưởng ưu đãi thuế"
+          }
+        ]
+      }
+    ],
+    "nd320_22": [
+      {
+        "match": "Việc trích lập Quỹ phát triển khoa học và công nghệ của doanh nghiệp được thực hiện theo quy định tại",
+        "title": "NĐ 320 Điều 22 — Quỹ phát triển KHCN của doanh nghiệp",
+        "summary": "Quy định việc trích lập, quản lý, sử dụng Quỹ phát triển KHCN. Khoản trích lập được tính vào chi phí được trừ; nếu sử dụng không đúng/không hết bị truy thu. Xử lý TSCĐ hình thành từ Quỹ và mẫu báo cáo xem TT 20 Điều 9.",
+        "links": [
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_9",
+            "label": "TT 20 Điều 9 — Nghĩa vụ thuế & báo cáo Quỹ KHCN"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-4",
+            "label": "Luật 67 Điều 4 — Miễn thuế hoạt động KHCN"
+          }
+        ]
+      }
+    ],
+    "nd320_1": [
+      {
+        "match": "Quy định chi tiết một số điều của Luật Thuế thu nhập doanh nghiệp, bao gồm",
+        "title": "NĐ 320 Điều 1 — Phạm vi điều chỉnh",
+        "summary": "NĐ 320 quy định chi tiết thi hành Luật Thuế TNDN 67/2025 (người nộp thuế, thu nhập chịu thuế/miễn thuế, chi được trừ, thuế suất, ưu đãi...). Thủ tục/hồ sơ hướng dẫn thêm tại TT 20.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-1",
+            "label": "Luật 67 — Phạm vi điều chỉnh"
+          },
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_1",
+            "label": "TT 20 Điều 1 — Phạm vi hướng dẫn"
+          }
+        ]
+      }
+    ],
+    "nd320_6": [
+      {
+        "match": "Doanh nghiệp có nhiều hoạt động sản xuất, kinh doanh trong kỳ tính thuế thì thu nhập chịu thuế",
+        "title": "NĐ 320 Điều 6 — Bù trừ thu nhập chịu thuế trong kỳ",
+        "summary": "Chi tiết cách tổng hợp và bù trừ lãi/lỗ giữa các hoạt động trong kỳ; tách riêng các hoạt động chuyển nhượng BĐS, dự án đầu tư, khoáng sản. Cụ thể hóa Điều 7 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-7",
+            "label": "Luật 67 Điều 7 — Xác định thu nhập tính thuế"
+          }
+        ]
+      }
+    ],
+    "nd320_12": [
+      {
+        "match": "Số thuế thu nhập doanh nghiệp phải nộp trong kỳ tính thuế được tính bằng thu nhập tính thuế",
+        "title": "NĐ 320 Điều 12 — Phương pháp tính thuế",
+        "summary": "Số thuế phải nộp = thu nhập tính thuế × thuế suất; quy định riêng cho DN nước ngoài và trường hợp tính theo % doanh thu. Cụ thể hóa Điều 11 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-11",
+            "label": "Luật 67 Điều 11 — Phương pháp tính thuế"
+          }
+        ]
+      }
+    ],
+    "nd320_16": [
+      {
+        "match": "Căn cứ tính thuế thu nhập từ chuyển nhượng bất động sản là thu nhập tính thuế và thuế suất",
+        "title": "NĐ 320 Điều 16 — Căn cứ tính thuế chuyển nhượng BĐS",
+        "summary": "Thu nhập từ chuyển nhượng BĐS tính riêng × thuế suất 20%. Doanh thu, chi phí được trừ xem Điều 17. Liên quan Điều 3.2.b Luật 67.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_15",
+            "label": "NĐ 320 Điều 15 — Thu nhập chuyển nhượng BĐS"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_17",
+            "label": "NĐ 320 Điều 17 — Doanh thu, chi phí chuyển nhượng BĐS"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (điểm 2.b)"
+          }
+        ]
+      }
+    ],
+    "nd320_18": [
+      {
+        "match": "Doanh nghiệp được hưởng ưu đãi thuế thu nhập doanh nghiệp theo ngành, nghề ưu đãi thuế",
+        "title": "NĐ 320 Điều 18 — Nguyên tắc, đối tượng áp dụng ưu đãi",
+        "summary": "Nguyên tắc áp dụng ưu đãi theo ngành nghề và địa bàn; trường hợp nhiều mức ưu đãi được chọn mức có lợi nhất. Cụ thể hóa Điều 12 Luật 67; mức ưu đãi tại Điều 19, 20.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-12",
+            "label": "Luật 67 Điều 12 — Nguyên tắc, đối tượng ưu đãi"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_19",
+            "label": "NĐ 320 Điều 19 — Thuế suất ưu đãi"
+          }
+        ]
+      }
+    ],
+    "nd320_21": [
+      {
+        "match": "Doanh nghiệp sản xuất, xây dựng, vận tải",
+        "title": "NĐ 320 Điều 21 — Các trường hợp miễn, giảm thuế khác",
+        "summary": "Giảm thuế cho DN sử dụng nhiều lao động nữ/người dân tộc thiểu số; giảm 50% cho chuyển giao công nghệ ở địa bàn khó khăn; miễn 2 năm cho DN thành lập từ hộ kinh doanh... Cụ thể hóa Điều 15 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-15",
+            "label": "Luật 67 Điều 15 — Các trường hợp miễn, giảm thuế khác"
+          }
+        ]
+      }
+    ],
+    "nd320_23": [
+      {
+        "match": "Điều kiện áp dụng ưu đãi thuế thu nhập doanh nghiệp thực hiện theo quy định tại",
+        "title": "NĐ 320 Điều 23 — Điều kiện áp dụng ưu đãi",
+        "summary": "Điều kiện hưởng ưu đãi: hạch toán riêng thu nhập ưu đãi, thực hiện chế độ kế toán – hóa đơn – chứng từ, nộp thuế theo kê khai. Cụ thể hóa Điều 18 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-12",
+            "label": "Luật 67 Điều 12 — Nguyên tắc, đối tượng ưu đãi"
+          },
+          {
+            "targetSlug": "tt20",
+            "targetAnchor": "tt20_4",
+            "label": "TT 20 Điều 4 — Hồ sơ hưởng ưu đãi"
+          }
+        ]
+      }
+    ],
+    "nd320_24": [
+      {
+        "match": "Nghị định này có hiệu lực thi hành kể từ ngày ký ban hành",
+        "title": "NĐ 320 Điều 24 — Hiệu lực thi hành",
+        "summary": "NĐ 320/2025 có hiệu lực thi hành và áp dụng từ kỳ tính thuế TNDN năm 2025, đồng bộ với Luật 67/2025 (hiệu lực 01/10/2025).",
+        "links": [
+          {
+            "label": "Áp dụng từ kỳ tính thuế TNDN năm 2025",
+            "note": ""
+          }
+        ]
+      }
+    ],
+    "nd320_25": [
+      {
+        "match": "Doanh nghiệp có dự án đầu tư mới trước ngày Luật Thuế thu nhập doanh nghiệp có hiệu lực còn",
+        "title": "NĐ 320 Điều 25 — Điều khoản chuyển tiếp",
+        "summary": "DN đang hưởng ưu đãi theo luật cũ được tiếp tục hưởng cho thời gian còn lại; trường hợp ưu đãi mới có lợi hơn được chuyển sang áp dụng phần thời gian còn lại. Đối chiếu mức ưu đãi tại Điều 13, 14 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-13",
+            "label": "Luật 67 Điều 13 — Thuế suất ưu đãi"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-14",
+            "label": "Luật 67 Điều 14 — Miễn thuế, giảm thuế"
+          }
+        ]
+      }
+    ]
+  },
+  "tt20": {
+    "tt20_3": [
+      {
+        "match": "Các khoản chi được tính vào chi phí được trừ quy định tại điểm b và điểm c khoản 1",
+        "title": "TT 20 Điều 3 — Hồ sơ chi được trừ (Luật 67 Điều 9)",
+        "summary": "Hướng dẫn hồ sơ, chứng từ của các khoản chi được trừ quy định tại điểm b, c khoản 1 Điều 9 Luật 67 và NĐ 320 Điều 9.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-9",
+            "label": "Luật 67 Điều 9 — Chi được trừ"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_9",
+            "label": "NĐ 320 Điều 9 — Chi được trừ (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "tt20_4": [
+      {
+        "match": "Thủ tục, hồ sơ được hưởng miễn thuế, giảm thuế, thuế suất ưu đãi",
+        "title": "TT 20 Điều 4 — Hồ sơ hưởng ưu đãi thuế",
+        "summary": "Hướng dẫn thủ tục, hồ sơ hưởng miễn thuế, giảm thuế, thuế suất ưu đãi theo các Điều 4, 13, 14, 15 Luật 67. DN tự xác định và kê khai ưu đãi.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-13",
+            "label": "Luật 67 Điều 13 — Thuế suất ưu đãi"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-14",
+            "label": "Luật 67 Điều 14 — Miễn thuế, giảm thuế"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_19",
+            "label": "NĐ 320 Điều 19 — Thuế suất ưu đãi"
+          }
+        ]
+      }
+    ],
+    "tt20_5": [
+      {
+        "match": "Thời điểm xác định doanh thu tính thuế thu nhập doanh nghiệp trong một số trường hợp",
+        "title": "TT 20 Điều 5 — Thời điểm xác định doanh thu (trường hợp đặc thù)",
+        "summary": "Hướng dẫn thời điểm xác định doanh thu tính thuế cho một số trường hợp theo điểm c khoản 2 Điều 8 và khoản 3 Điều 12 NĐ 320.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_8",
+            "label": "NĐ 320 Điều 8 — Doanh thu"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-8",
+            "label": "Luật 67 Điều 8 — Doanh thu"
+          }
+        ]
+      }
+    ],
+    "tt20_9": [
+      {
+        "match": "Trường hợp tài sản cố định đã được hình thành từ nguồn Quỹ phát triển khoa học và công nghệ",
+        "title": "TT 20 Điều 9 — Nghĩa vụ thuế & báo cáo Quỹ KHCN",
+        "summary": "Xử lý nghĩa vụ thuế khi TSCĐ hình thành từ Quỹ KHCN (chưa hết hao mòn) được chuyển sang phục vụ SXKD; ban hành mẫu Báo cáo trích lập, sử dụng Quỹ theo khoản 4 Điều 22 NĐ 320.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_22",
+            "label": "NĐ 320 Điều 22 — Quỹ phát triển KHCN"
+          }
+        ]
+      }
+    ],
+    "tt20_1": [
+      {
+        "match": "Thông tư này quy định về",
+        "title": "TT 20 Điều 1 — Phạm vi điều chỉnh",
+        "summary": "TT 20 hướng dẫn hồ sơ chi được trừ, hồ sơ ưu đãi, thời điểm xác định doanh thu, nghĩa vụ thuế đầu tư ra/vào VN và Quỹ KHCN theo Luật 67 và NĐ 320.",
+        "links": [
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_1",
+            "label": "NĐ 320 Điều 1 — Phạm vi điều chỉnh"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-9",
+            "label": "Luật 67 Điều 9 — Chi được trừ"
+          }
+        ]
+      }
+    ],
+    "tt20_2": [
+      {
+        "match": "Thông tư này áp dụng đối với các tổ chức, cá nhân có liên quan đến phạm vi điều chỉnh",
+        "title": "TT 20 Điều 2 — Đối tượng áp dụng",
+        "summary": "Áp dụng cho các tổ chức, cá nhân có liên quan đến phạm vi điều chỉnh — về cơ bản là người nộp thuế TNDN theo Điều 2 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-2",
+            "label": "Luật 67 Điều 2 — Người nộp thuế"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_1",
+            "label": "NĐ 320 Điều 1 — Phạm vi & đối tượng"
+          }
+        ]
+      }
+    ],
+    "tt20_6": [
+      {
+        "match": "Hồ sơ kê khai và nộp thuế của doanh nghiệp Việt Nam đầu tư ra nước ngoài",
+        "title": "TT 20 Điều 6 — Thuế với thu nhập từ đầu tư ra nước ngoài",
+        "summary": "Hồ sơ kê khai, nộp thuế và khấu trừ thuế đã nộp ở nước ngoài đối với thu nhập từ dự án đầu tư tại nước ngoài. Liên quan Điều 3.4 Luật 67 (đầu tư nước ngoài) và NĐ 320 Điều 12.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (đầu tư nước ngoài)"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_12",
+            "label": "NĐ 320 Điều 12 — Phương pháp tính thuế"
+          }
+        ]
+      }
+    ],
+    "tt20_7": [
+      {
+        "match": "áp dụng đối với doanh nghiệp nước ngoài quy định tại các điểm b2, b3",
+        "title": "TT 20 Điều 7 — Thuế với DN nước ngoài kinh doanh tại VN",
+        "summary": "Hướng dẫn xác định và nộp thuế TNDN của DN nước ngoài kinh doanh tại VN (không có cơ sở thường trú đầy đủ), theo Điều 2, khoản 4 Điều 3 và Điều 12 NĐ 320.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-2",
+            "label": "Luật 67 Điều 2 — Người nộp thuế (DN nước ngoài)"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_2",
+            "label": "NĐ 320 Điều 2 — Người nộp thuế"
+          }
+        ]
+      }
+    ],
+    "tt20_8": [
+      {
+        "match": "Khi triển khai thực hiện dự án đầu tư mở rộng, doanh nghiệp có văn bản gửi cơ quan thuế",
+        "title": "TT 20 Điều 8 — Đăng ký vốn đầu tư dự án mở rộng",
+        "summary": "DN có văn bản đăng ký số vốn đầu tư mở rộng với cơ quan thuế để làm căn cứ hưởng ưu đãi đối với phần thu nhập tăng thêm. Liên quan Điều 14.5 Luật 67 (đầu tư mở rộng).",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-14",
+            "label": "Luật 67 Điều 14 — Ưu đãi đầu tư mở rộng"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_20",
+            "label": "NĐ 320 Điều 20 — Miễn thuế, giảm thuế"
+          }
+        ]
+      }
+    ],
+    "tt20_10": [
+      {
+        "match": "Thông tư này có hiệu lực thi hành từ ngày 12 tháng 3 năm 2026",
+        "title": "TT 20 Điều 10 — Hiệu lực thi hành",
+        "summary": "TT 20/2026 có hiệu lực từ 12/03/2026, áp dụng từ kỳ tính thuế TNDN năm 2025 (đồng bộ Luật 67 và NĐ 320).",
+        "links": [
+          {
+            "label": "Hiệu lực 12/03/2026, áp dụng từ kỳ tính thuế 2025",
+            "note": ""
+          }
+        ]
+      }
+    ]
+  },
+  "tt99": {
+    "s98": [
+      {
+        "match": "Tài khoản này dùng để phản ánh các chi phí quản lý chung của doanh nghiệp",
+        "title": "TK 642 — Chi phí quản lý doanh nghiệp (cơ sở pháp lý)",
+        "summary": "TK 642 phản ánh chi phí quản lý chung. Để được trừ khi tính thuế TNDN, các chi phí này phải đáp ứng điều kiện tại Điều 9 Luật 67 (thực tế phát sinh, có hóa đơn, thanh toán không dùng tiền mặt).",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-9",
+            "label": "Luật 67 Điều 9 — Điều kiện chi được trừ"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_9",
+            "label": "NĐ 320 Điều 9 — Chi được trừ (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "s99": [
+      {
+        "match": "Tài khoản này dùng để phản ánh các khoản thu nhập khác ngoài hoạt động sản xuất, kinh doanh",
+        "title": "TK 711 — Thu nhập khác (cơ sở pháp lý)",
+        "summary": "TK 711 phản ánh các khoản thu nhập khác — nhiều khoản trong đó là thu nhập chịu thuế TNDN theo Điều 3 khoản 2 Luật 67 (thanh lý tài sản, nợ khó đòi đòi được, hoàn nhập trích trước...).",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (thu nhập khác)"
+          }
+        ]
+      }
+    ],
+    "s100": [
+      {
+        "match": "Tài khoản này phản ánh những khoản chi phí phát sinh do các sự kiện hay các nghiệp vụ riêng biệt",
+        "title": "TK 811 — Chi phí khác (cơ sở pháp lý)",
+        "summary": "TK 811 phản ánh chi phí khác (giá trị còn lại khi thanh lý/nhượng bán TSCĐ, lỗ chuyển nhượng vốn...). Liên quan tới việc xác định thu nhập/lỗ từ các khoản thu nhập khác tại Điều 3 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (thu nhập khác)"
+          }
+        ]
+      }
+    ],
+    "s101": [
+      {
+        "match": "Tài khoản này dùng để phản ánh chi phí thuế thu nhập doanh nghiệp của doanh nghiệp",
+        "title": "TK 821 — Chi phí thuế TNDN (cơ sở pháp lý)",
+        "summary": "TK 821 phản ánh chi phí thuế TNDN. Mức thuế suất áp dụng (20%/17%/15%/ưu đãi) xác định theo Điều 10 Luật 67 và chi tiết tại NĐ 320 Điều 11.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_11",
+            "label": "NĐ 320 Điều 11 — Thuế suất (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "s89": [
+      {
+        "match": "Tài khoản này dùng để phản ánh doanh thu tiền lãi, cổ tức, lợi nhuận được chia",
+        "title": "TK 515 — Doanh thu hoạt động tài chính (cơ sở pháp lý)",
+        "summary": "TK 515 phản ánh lãi tiền gửi, lãi cho vay, cổ tức... Các khoản lãi tiền gửi/cho vay là thu nhập chịu thuế theo Điều 3 khoản 2 điểm e Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — Thu nhập chịu thuế (điểm 2.e lãi tiền gửi)"
+          }
+        ]
+      }
+    ],
+    "s67": [
+      {
+        "match": "Tài khoản này dùng để phản ánh số phải trả và tình hình thanh toán các khoản thuế",
+        "title": "TK 333 — Thuế và các khoản phải nộp Nhà nước (cơ sở pháp lý)",
+        "summary": "TK 333 (chi tiết 3334 – thuế TNDN) phản ánh số thuế TNDN phải nộp. Số thuế = thu nhập tính thuế × thuế suất; ưu đãi miễn/giảm làm giảm số phải nộp theo Điều 12–14 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-14",
+            "label": "Luật 67 Điều 14 — Miễn thuế, giảm thuế"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất"
+          }
+        ]
+      }
+    ],
+    "s63": [
+      {
+        "match": "Tài khoản này dùng để phản ánh giá trị hiện có và tình hình biến động tăng, giảm của tài sản thuế thu nhập",
+        "title": "TK 243 — Tài sản thuế thu nhập hoãn lại (cơ sở pháp lý)",
+        "summary": "TK 243 phản ánh tài sản thuế TNDN hoãn lại phát sinh từ chênh lệch tạm thời được khấu trừ và lỗ tính thuế chưa sử dụng được chuyển sang năm sau (Điều 7 Luật 67 về chuyển lỗ).",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-7",
+            "label": "Luật 67 Điều 7 — Xác định thu nhập tính thuế (chuyển lỗ)"
+          }
+        ]
+      }
+    ],
+    "s76": [
+      {
+        "match": "Tài khoản này dùng để phản ánh giá trị hiện có và tình hình biến động tăng, giảm thuế thu nhập hoãn lại phải trả",
+        "title": "TK 347 — Thuế thu nhập hoãn lại phải trả (cơ sở pháp lý)",
+        "summary": "TK 347 phản ánh thuế TNDN hoãn lại phải trả phát sinh từ chênh lệch tạm thời chịu thuế. Mức thuế suất dùng để xác định theo Điều 10 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất"
+          }
+        ]
+      }
+    ],
+    "s88": [
+      {
+        "match": "Tài khoản này dùng để phản ánh doanh thu bán hàng và cung cấp dịch vụ của doanh nghiệp",
+        "title": "TK 511 — Doanh thu bán hàng và cung cấp dịch vụ (cơ sở pháp lý)",
+        "summary": "TK 511 phản ánh doanh thu bán hàng, cung cấp dịch vụ — là cơ sở xác định 'Doanh thu' để tính thu nhập chịu thuế theo Điều 8 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-8",
+            "label": "Luật 67 Điều 8 — Doanh thu"
+          },
+          {
+            "targetSlug": "nd320",
+            "targetAnchor": "nd320_8",
+            "label": "NĐ 320 Điều 8 — Doanh thu (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "s87": [
+      {
+        "match": "Tài khoản này dùng để phản ánh kết quả kinh doanh (lãi, lỗ) sau thuế thu nhập doanh nghiệp",
+        "title": "TK 421 — Lợi nhuận sau thuế chưa phân phối (cơ sở pháp lý)",
+        "summary": "TK 421 phản ánh kết quả kinh doanh sau thuế. Số lỗ kế toán liên quan tới việc chuyển lỗ tính thuế theo Điều 16 Luật 67; thu nhập tính thuế xác định theo Điều 7.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-16",
+            "label": "Luật 67 Điều 16 — Chuyển lỗ"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-7",
+            "label": "Luật 67 Điều 7 — Xác định thu nhập tính thuế"
+          }
+        ]
+      }
+    ],
+    "s102": [
+      {
+        "match": "Tài khoản này dùng để xác định và phản ánh kết quả hoạt động kinh doanh",
+        "title": "TK 911 — Xác định kết quả kinh doanh (cơ sở pháp lý)",
+        "summary": "TK 911 kết chuyển doanh thu, chi phí để xác định kết quả kinh doanh — cơ sở để xác định thu nhập chịu thuế (doanh thu − chi phí được trừ + thu nhập khác) theo Điều 7 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-7",
+            "label": "Luật 67 Điều 7 — Xác định thu nhập tính thuế"
+          }
+        ]
+      }
+    ]
+  },
+  "tt133": {
+    "tt133_1": [
+      {
+        "match": "Thông tư này hướng dẫn nguyên tắc ghi sổ kế toán, lập và trình bày Báo cáo tài chính của doanh nghiệp nhỏ và vừa",
+        "title": "TT 133 Điều 1 — Phạm vi (DN nhỏ và vừa)",
+        "summary": "TT 133 áp dụng cho DN nhỏ và vừa (gồm cả DN siêu nhỏ). Khi tăng quy mô vượt ngưỡng SME, DN chuyển sang chế độ kế toán TT 99; thuế suất TNDN tương ứng 17% theo Điều 10.3 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất 17% SME"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s0",
+            "label": "TT 99 — Chế độ kế toán DN (khi tăng quy mô)"
+          }
+        ]
+      }
+    ],
+    "tt133_2": [
+      {
+        "match": "Thông tư này áp dụng đối với các doanh nghiệp nhỏ và vừa",
+        "title": "TT 133 Điều 2 — DN nhỏ và vừa (thuế suất 17%)",
+        "summary": "Đối tượng áp dụng TT 133 là DN nhỏ và vừa — thường có doanh thu trên 3 đến 50 tỷ/năm, áp dụng thuế suất 17% theo Điều 10.3 Luật 67. Khi vượt quy mô, chuyển sang chế độ kế toán TT 99.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất 17% SME"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s0",
+            "label": "TT 99 — Chế độ kế toán DN (khi tăng quy mô)"
+          }
+        ]
+      }
+    ],
+    "tt133_64": [
+      {
+        "match": "Tài khoản này dùng để phản ánh các khoản chi phí quản lý kinh doanh",
+        "title": "TT 133 — TK 642 Chi phí quản lý kinh doanh (SME)",
+        "summary": "Ở DN nhỏ và vừa, TK 642 gộp chi phí bán hàng và chi phí quản lý. Điều kiện được trừ khi tính thuế TNDN vẫn theo Điều 9 Luật 67 (tương tự TK 642 của TT 99).",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-9",
+            "label": "Luật 67 Điều 9 — Điều kiện chi được trừ"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s98",
+            "label": "TT 99 — TK 642 (DN thông thường)"
+          }
+        ]
+      }
+    ],
+    "tt133_67": [
+      {
+        "match": "Tài khoản này dùng để phản ánh chi phí thuế thu nhập doanh nghiệp của doanh nghiệp phát sinh trong năm",
+        "title": "TT 133 — TK 821 Chi phí thuế TNDN (SME)",
+        "summary": "TK 821 ở DN nhỏ và vừa phản ánh chi phí thuế TNDN. Thuế suất 17% (doanh thu 3–50 tỷ) hoặc 15% (≤3 tỷ) theo Điều 10 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất SME"
+          },
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s101",
+            "label": "TT 99 — TK 821 (DN thông thường)"
+          }
+        ]
+      }
+    ]
+  },
+  "tt58": {
+    "tt58_2": [
+      {
+        "match": "Đối tượng áp dụng Thông tư này là các doanh nghiệp siêu nhỏ",
+        "title": "TT 58 Điều 2 — DN siêu nhỏ (thuế suất 15%)",
+        "summary": "Đối tượng áp dụng TT 58 là DN siêu nhỏ — thường có doanh thu năm không quá 3 tỷ, áp dụng thuế suất 15% theo Điều 10.2 Luật 67. Khi tăng quy mô lên DN nhỏ/vừa, chuyển sang TT 133.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất 15% DN siêu nhỏ"
+          },
+          {
+            "targetSlug": "tt133",
+            "targetAnchor": "tt133_2",
+            "label": "TT 133 Điều 2 — DN nhỏ và vừa"
+          }
+        ]
+      }
+    ],
+    "tt58_5": [
+      {
+        "match": "Doanh nghiệp siêu nhỏ sử dụng hóa đơn và các chứng từ kế toán khác theo quy định của pháp luật",
+        "title": "TT 58 Điều 5 — DN siêu nhỏ nộp thuế theo % doanh thu",
+        "summary": "DN siêu nhỏ nộp thuế GTGT và TNDN theo tỷ lệ % trên doanh thu — kế toán đơn giản hóa, không bắt buộc hệ thống TK kép. Phương pháp % doanh thu căn cứ Điều 11 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-11",
+            "label": "Luật 67 Điều 11 — Tính thuế theo % doanh thu"
+          }
+        ]
+      }
+    ],
+    "tt58_6": [
+      {
+        "match": "Doanh nghiệp siêu nhỏ sử dụng hóa đơn, Bảng kê thu mua hàng hóa, dịch vụ không có hóa đơn",
+        "title": "TT 58 Điều 6 — DN siêu nhỏ nộp TNDN trên thu nhập tính thuế",
+        "summary": "Trường hợp DN siêu nhỏ nộp GTGT theo % doanh thu nhưng nộp TNDN trên thu nhập tính thuế (xác định được chi phí): áp dụng thuế suất 15% theo Điều 10.2 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất 15%"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-11",
+            "label": "Luật 67 Điều 11 — Phương pháp tính thuế"
+          }
+        ]
+      }
+    ],
+    "tt58_1": [
+      {
+        "match": "Thông tư này hướng dẫn về chứng từ kế toán, ghi sổ kế toán, lập và trình bày Báo cáo tài chính",
+        "title": "TT 58 Điều 1 — Phạm vi (kế toán DN siêu nhỏ)",
+        "summary": "TT 58 hướng dẫn chứng từ, ghi sổ, BCTC cho DN siêu nhỏ. Hộ kinh doanh thành lập DN siêu nhỏ được miễn thuế 2 năm (Điều 15 Luật 67); khi tăng quy mô chuyển sang TT 133.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-15",
+            "label": "Luật 67 Điều 15 — Miễn thuế 2 năm DN từ hộ KD"
+          },
+          {
+            "targetSlug": "tt133",
+            "targetAnchor": "tt133_1",
+            "label": "TT 133 Điều 1 — Kế toán DN nhỏ và vừa"
+          }
+        ]
+      }
+    ],
+    "tt58_3": [
+      {
+        "match": "Doanh nghiệp siêu nhỏ được bố trí người làm kế toán",
+        "title": "TT 58 Điều 3 — Tổ chức công tác kế toán (đơn giản hóa)",
+        "summary": "DN siêu nhỏ được bố trí người làm kế toán là người thân (cha mẹ, vợ/chồng, con...) và không bắt buộc bố trí kế toán trưởng — giảm gánh nặng tuân thủ cho DN siêu nhỏ.",
+        "links": [
+          {
+            "label": "Áp dụng cho DN siêu nhỏ — đơn giản hóa tổ chức kế toán",
+            "note": ""
+          }
+        ]
+      }
+    ],
+    "tt58_4": [
+      {
+        "match": "Doanh nghiệp siêu nhỏ căn cứ vào phương pháp nộp thuế giá trị gia tăng",
+        "title": "TT 58 Điều 4 — Áp dụng chế độ kế toán theo phương pháp nộp thuế",
+        "summary": "DN siêu nhỏ chọn chế độ kế toán tương ứng phương pháp nộp thuế GTGT/TNDN: theo % doanh thu (Điều 5) hoặc theo phương pháp khấu trừ + TNDN trên thu nhập tính thuế (Điều 7, 8). Phương pháp tính thuế căn cứ Điều 11 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "tt58",
+            "targetAnchor": "tt58_5",
+            "label": "TT 58 Điều 5 — Nộp thuế theo % doanh thu"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-11",
+            "label": "Luật 67 Điều 11 — Phương pháp tính thuế"
+          }
+        ]
+      }
+    ],
+    "tt58_7": [
+      {
+        "match": "Doanh nghiệp siêu nhỏ sử dụng hóa đơn, Bảng kê thu mua hàng hóa, dịch vụ không có hóa đơn",
+        "title": "TT 58 Điều 7 — Nộp GTGT khấu trừ, TNDN theo % doanh thu",
+        "summary": "Trường hợp DN siêu nhỏ nộp GTGT theo phương pháp khấu trừ và nộp TNDN theo tỷ lệ % trên doanh thu: chứng từ, sổ sách và cách ghi nhận tương ứng. Phương pháp % doanh thu căn cứ Điều 11 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-11",
+            "label": "Luật 67 Điều 11 — Tính thuế theo % doanh thu"
+          }
+        ]
+      }
+    ],
+    "tt58_8": [
+      {
+        "match": "Doanh nghiệp siêu nhỏ sử dụng hóa đơn, Bảng kê thu mua hàng hóa, dịch vụ không có hóa đơn và",
+        "title": "TT 58 Điều 8 — Nộp GTGT khấu trừ, TNDN trên thu nhập tính thuế",
+        "summary": "Trường hợp DN siêu nhỏ nộp GTGT khấu trừ và nộp TNDN trên thu nhập tính thuế (xác định được doanh thu, chi phí): áp dụng thuế suất 15% theo Điều 10.2 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-10",
+            "label": "Luật 67 Điều 10 — Thuế suất 15%"
+          }
+        ]
+      }
+    ],
+    "tt58_9": [
+      {
+        "match": "Danh mục sổ kế toán khác",
+        "title": "TT 58 Điều 9 — Danh mục sổ và chứng từ kế toán khác",
+        "summary": "Quy định danh mục sổ kế toán và chứng từ kế toán khác mà DN siêu nhỏ sử dụng ngoài các biểu mẫu bắt buộc — phục vụ ghi chép đơn giản, gọn nhẹ.",
+        "links": [
+          {
+            "label": "Biểu mẫu sổ/chứng từ áp dụng cho DN siêu nhỏ",
+            "note": ""
+          }
+        ]
+      }
+    ],
+    "tt58_10": [
+      {
+        "match": "Về trách nhiệm lập và nộp báo cáo tài chính",
+        "title": "TT 58 Điều 10 — Báo cáo tài chính DN siêu nhỏ",
+        "summary": "Trách nhiệm, kỳ lập và nơi nộp BCTC của DN siêu nhỏ (đơn giản hóa so với DN nhỏ và vừa theo TT 133).",
+        "links": [
+          {
+            "targetSlug": "tt133",
+            "targetAnchor": "tt133_1",
+            "label": "TT 133 — Chế độ kế toán DN nhỏ và vừa (so sánh)"
+          }
+        ]
+      }
+    ],
+    "tt58_11": [
+      {
+        "match": "Doanh nghiệp siêu nhỏ căn cứ vào số dư các tài khoản kế toán theo quy định tại Thông tư",
+        "title": "TT 58 Điều 11 — Chuyển số dư từ chế độ kế toán cũ",
+        "summary": "Hướng dẫn chuyển số dư tài khoản từ chế độ kế toán cũ (TT 132/2018) sang chế độ theo TT 58 khi chuyển đổi.",
+        "links": [
+          {
+            "label": "Thay thế TT 132/2018/TT-BTC",
+            "note": ""
+          }
+        ]
+      }
+    ],
+    "tt58_12": [
+      {
+        "match": "Thông tư này có hiệu lực thi hành kể từ ngày 01/7/2026",
+        "title": "TT 58 Điều 12 — Hiệu lực thi hành",
+        "summary": "TT 58/2026 có hiệu lực từ 01/7/2026, áp dụng cho năm tài chính bắt đầu từ/sau ngày này, thay thế TT 132/2018 về kế toán DN siêu nhỏ.",
+        "links": [
+          {
+            "label": "Hiệu lực 01/7/2026 — thay thế TT 132/2018",
+            "note": ""
+          }
+        ]
+      }
+    ]
+  },
+  "tt152": {
+    "tt152_1": [
+      {
+        "match": "Thông tư này hướng dẫn việc ghi sổ kế toán của các hộ kinh doanh, cá nhân kinh doanh",
+        "title": "TT 152 Điều 1 — Phạm vi (hộ, cá nhân kinh doanh)",
+        "summary": "TT 152 hướng dẫn ghi sổ kế toán cho hộ/cá nhân kinh doanh. Khi hộ kinh doanh thành lập doanh nghiệp được miễn thuế TNDN 2 năm (Điều 15 Luật 67) và chuyển sang chế độ kế toán DN (TT 58/TT 133).",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-15",
+            "label": "Luật 67 Điều 15 — Miễn thuế 2 năm cho DN từ hộ KD"
+          },
+          {
+            "targetSlug": "tt58",
+            "targetAnchor": "tt58_1",
+            "label": "TT 58 — Kế toán DN siêu nhỏ (sau chuyển đổi)"
+          }
+        ]
+      }
+    ],
+    "tt152_4": [
+      {
+        "match": "Trường hợp hộ kinh doanh, cá nhân kinh doanh thuộc đối tượng",
+        "title": "TT 152 Điều 4 — Hộ kinh doanh nộp thuế",
+        "summary": "Hướng dẫn ghi sổ và xác định nghĩa vụ thuế của hộ/cá nhân kinh doanh. Hộ kinh doanh thường nộp thuế theo tỷ lệ % trên doanh thu — đối chiếu phương pháp tính thuế tại Điều 11 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-11",
+            "label": "Luật 67 Điều 11 — Phương pháp tính thuế (% doanh thu)"
+          }
+        ]
+      }
+    ],
+    "tt152_6": [
+      {
+        "match": "Hóa đơn, Bảng kê mua hàng hóa, dịch vụ (đối với trường hợp hộ kinh doanh, cá nhân kinh doanh mua hàng hóa",
+        "title": "TT 152 Điều 6 — Hộ KD nộp thuế theo % doanh thu",
+        "summary": "Trường hợp hộ/cá nhân kinh doanh nộp GTGT theo % doanh thu và TNCN trên thu nhập tính thuế: chứng từ và cách ghi sổ tương ứng. Phương pháp % doanh thu căn cứ Điều 11 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-11",
+            "label": "Luật 67 Điều 11 — Tính thuế theo % doanh thu"
+          }
+        ]
+      }
+    ],
+    "tt152_2": [
+      {
+        "match": "Người đại diện hộ kinh doanh, cá nhân kinh doanh tự ghi chép sổ sách kế toán",
+        "title": "TT 152 Điều 2 — Tổ chức công tác kế toán (hộ KD)",
+        "summary": "Người đại diện hộ/cá nhân kinh doanh tự ghi chép hoặc bố trí người làm kế toán — đơn giản hóa tối đa, không bắt buộc kế toán trưởng.",
+        "links": [
+          {
+            "label": "Áp dụng cho hộ, cá nhân kinh doanh",
+            "note": ""
+          }
+        ]
+      }
+    ],
+    "tt152_3": [
+      {
+        "match": "Hộ kinh doanh, cá nhân kinh doanh được lựa chọn lưu trữ các tài liệu kế toán",
+        "title": "TT 152 Điều 3 — Sổ kế toán và lưu trữ tài liệu",
+        "summary": "Hộ/cá nhân kinh doanh được lựa chọn hình thức lưu trữ tài liệu kế toán (giấy hoặc điện tử) và thời hạn lưu trữ theo quy định.",
+        "links": [
+          {
+            "label": "Quy định lưu trữ tài liệu kế toán hộ KD",
+            "note": ""
+          }
+        ]
+      }
+    ],
+    "tt152_5": [
+      {
+        "match": "Chứng từ kế toán sử dụng là Hóa đơn và các chứng từ khác làm căn cứ để xác định",
+        "title": "TT 152 Điều 5 — Nộp thuế theo phương pháp khấu trừ/kê khai",
+        "summary": "Trường hợp hộ/cá nhân kinh doanh nộp thuế theo phương pháp kê khai: chứng từ, sổ sách làm căn cứ xác định doanh thu, chi phí và nghĩa vụ thuế. Phương pháp tính thuế đối chiếu Điều 11 Luật 67.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-11",
+            "label": "Luật 67 Điều 11 — Phương pháp tính thuế"
+          }
+        ]
+      }
+    ],
+    "tt152_7": [
+      {
+        "match": "Trường hợp hộ kinh doanh, cá nhân kinh doanh có hoạt động thuộc diện chịu các loại thuế khác",
+        "title": "TT 152 Điều 7 — Hoạt động chịu các loại thuế khác",
+        "summary": "Hướng dẫn ghi chép khi hộ/cá nhân kinh doanh có hoạt động chịu các loại thuế khác (tiêu thụ đặc biệt, tài nguyên, bảo vệ môi trường...).",
+        "links": [
+          {
+            "label": "Áp dụng khi phát sinh các sắc thuế khác",
+            "note": ""
+          }
+        ]
+      }
+    ],
+    "tt152_8": [
+      {
+        "match": "Thông tư này có hiệu lực thi hành kể từ ngày 01/01/2026",
+        "title": "TT 152 Điều 8 — Hiệu lực thi hành",
+        "summary": "TT 152/2025 có hiệu lực từ 01/01/2026, thay thế TT 88/2021 về kế toán hộ kinh doanh, cá nhân kinh doanh.",
+        "links": [
+          {
+            "label": "Hiệu lực 01/01/2026 — thay thế TT 88/2021",
+            "note": ""
+          }
+        ]
+      }
+    ]
+  },
+  "luat-48": {
+    "luat-48_3": [
+      {
+        "match": "Hàng hóa, dịch vụ sử dụng cho sản xuất, kinh doanh và tiêu dùng ở Việt Nam là đối tượng chịu thuế",
+        "title": "Điều 3 — Đối tượng chịu thuế GTGT",
+        "summary": "Hàng hóa, dịch vụ dùng cho SXKD và tiêu dùng ở Việt Nam (kể cả nhập khẩu) thuộc đối tượng chịu thuế GTGT, trừ các đối tượng không chịu thuế tại Điều 5. Chi tiết tại NĐ 181.",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_5",
+            "label": "Luật 48 Điều 5 — Đối tượng không chịu thuế"
+          },
+          {
+            "targetSlug": "nd181",
+            "targetAnchor": "nd181_4",
+            "label": "NĐ 181 Điều 4 — Đối tượng không chịu thuế (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "luat-48_4": [
+      {
+        "match": "Tổ chức, hộ, cá nhân sản xuất, kinh doanh hàng hóa, dịch vụ chịu thuế giá trị gia tăng",
+        "title": "Điều 4 — Người nộp thuế GTGT",
+        "summary": "Người nộp thuế gồm tổ chức/hộ/cá nhân SXKD, người nhập khẩu, người mua dịch vụ từ nhà cung cấp nước ngoài, nhà cung cấp nước ngoài và sàn TMĐT/nền tảng số. Chi tiết tại NĐ 181 Điều 3.",
+        "links": [
+          {
+            "targetSlug": "nd181",
+            "targetAnchor": "nd181_3",
+            "label": "NĐ 181 Điều 3 — Người nộp thuế (chi tiết)"
+          },
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108 — Quản lý kê khai, nộp thuế"
+          }
+        ]
+      }
+    ],
+    "luat-48_5": [
+      {
+        "match": "Sản phẩm cây trồng, rừng trồng, chăn nuôi, thủy sản nuôi trồng, đánh bắt chưa chế biến",
+        "title": "Điều 5 — Đối tượng không chịu thuế GTGT",
+        "summary": "Danh mục hàng hóa/dịch vụ không chịu thuế GTGT (nông sản chưa chế biến, dịch vụ y tế, giáo dục, tài chính...). Hồ sơ, thủ tục xác định chi tiết tại TT 69 Điều 3 và NĐ 181 Điều 4.",
+        "links": [
+          {
+            "targetSlug": "nd181",
+            "targetAnchor": "nd181_4",
+            "label": "NĐ 181 Điều 4 — Đối tượng không chịu thuế (chi tiết)"
+          },
+          {
+            "targetSlug": "tt69",
+            "targetAnchor": "tt69_3",
+            "label": "TT 69 Điều 3 — Hồ sơ xác định đối tượng không chịu thuế"
+          }
+        ]
+      }
+    ],
+    "luat-48_7": [
+      {
+        "match": "Giá tính thuế được quy định như sau",
+        "title": "Điều 7 — Giá tính thuế GTGT",
+        "summary": "Giá tính thuế là giá bán chưa có thuế GTGT (hàng nhập khẩu là giá nhập tại cửa khẩu + thuế nhập khẩu + thuế TTĐB + thuế BVMT). Chi tiết tại NĐ 181 Điều 5.",
+        "links": [
+          {
+            "targetSlug": "nd181",
+            "targetAnchor": "nd181_5",
+            "label": "NĐ 181 Điều 5 — Giá tính thuế (chi tiết)"
+          }
+        ]
+      }
+    ],
+    "luat-48_9": [
+      {
+        "match": "Mức thuế suất 0% áp dụng đối với hàng hóa, dịch vụ sau đây",
+        "title": "Điều 9 — Thuế suất GTGT (0%, 5%, 10%)",
+        "summary": "Ba mức thuế suất: 0% (xuất khẩu), 5% (nhóm thiết yếu), 10% (phổ thông). Hồ sơ, thủ tục áp dụng thuế suất 0% chi tiết tại TT 69 Điều 4.",
+        "links": [
+          {
+            "targetSlug": "tt69",
+            "targetAnchor": "tt69_4",
+            "label": "TT 69 Điều 4 — Hồ sơ áp dụng thuế suất 0%"
+          },
+          {
+            "targetSlug": "nd181",
+            "targetAnchor": "nd181_5",
+            "label": "NĐ 181 — Giá tính thuế & thuế suất"
+          }
+        ]
+      }
+    ],
+    "luat-48_11": [
+      {
+        "match": "Phương pháp khấu trừ thuế được quy định như sau",
+        "title": "Điều 11 — Phương pháp khấu trừ thuế",
+        "summary": "Số thuế GTGT phải nộp = thuế GTGT đầu ra − thuế GTGT đầu vào được khấu trừ. Áp dụng cho cơ sở thực hiện đầy đủ chế độ kế toán, hóa đơn, chứng từ. Xem điều kiện khấu trừ tại Điều 14.",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_14",
+            "label": "Luật 48 Điều 14 — Khấu trừ thuế GTGT đầu vào"
+          }
+        ]
+      }
+    ],
+    "luat-48_14": [
+      {
+        "match": "Cơ sở kinh doanh nộp thuế giá trị gia tăng theo phương pháp khấu trừ thuế được khấu trừ thuế giá",
+        "title": "Điều 14 — Khấu trừ thuế GTGT đầu vào",
+        "summary": "Điều kiện khấu trừ GTGT đầu vào: có hóa đơn GTGT hợp lệ, chứng từ thanh toán không dùng tiền mặt. <strong>Liên hệ TNDN:</strong> GTGT đầu vào đã khấu trừ thì không tính vào chi phí được trừ; hạch toán qua TK 133.",
+        "links": [
+          {
+            "targetSlug": "tt99",
+            "targetAnchor": "s38",
+            "label": "TT 99 — Hạch toán TK 133 Thuế GTGT được khấu trừ"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-9",
+            "label": "Luật 67 Điều 9 — Chi được trừ (GTGT đã khấu trừ không tính)"
+          }
+        ]
+      }
+    ],
+    "luat-48_15": [
+      {
+        "match": "Việc hoàn thuế đối với xuất khẩu được quy định như sau",
+        "title": "Điều 15 — Hoàn thuế GTGT",
+        "summary": "Các trường hợp hoàn thuế GTGT: xuất khẩu, dự án đầu tư, chuyển đổi sở hữu... Hồ sơ, thủ tục hoàn thuế theo Luật Quản lý thuế và NĐ 181.",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108 — Thủ tục hoàn thuế"
+          },
+          {
+            "targetSlug": "nd181",
+            "targetAnchor": "nd181_1",
+            "label": "NĐ 181/2025 — Hướng dẫn Luật GTGT"
+          }
+        ]
+      }
+    ],
+    "luat-48_16": [
+      {
+        "match": "Việc mua bán hàng hóa, dịch vụ phải có hóa đơn, chứng từ theo quy định của pháp luật",
+        "title": "Điều 16 — Hóa đơn, chứng từ",
+        "summary": "Mua bán hàng hóa, dịch vụ phải có hóa đơn, chứng từ. Là cơ sở để khấu trừ GTGT đầu vào (Điều 14) và là điều kiện chi được trừ khi tính thuế TNDN (Luật 67 Điều 9).",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_14",
+            "label": "Luật 48 Điều 14 — Khấu trừ GTGT đầu vào"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-9",
+            "label": "Luật 67 Điều 9 — Điều kiện chi được trừ (hóa đơn)"
+          }
+        ]
+      }
+    ]
+  },
+  "luat-109": {
+    "luat-109_2": [
+      {
+        "match": "Người nộp thuế thu nhập cá nhân là cá nhân cư trú có thu nhập chịu thuế quy định tại",
+        "title": "Điều 2 — Người nộp thuế TNCN",
+        "summary": "Người nộp thuế TNCN gồm cá nhân cư trú (chịu thuế với thu nhập toàn cầu) và cá nhân không cư trú (chịu thuế với thu nhập phát sinh tại VN). Quản lý, kê khai theo Luật QLT 108.",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108 — Quản lý thuế TNCN"
+          }
+        ]
+      }
+    ],
+    "luat-109_3": [
+      {
+        "match": "Thu nhập chịu thuế thu nhập cá nhân gồm các loại thu nhập sau đây",
+        "title": "Điều 3 — Thu nhập chịu thuế TNCN",
+        "summary": "10 loại thu nhập chịu thuế: tiền lương/công, kinh doanh, đầu tư vốn, chuyển nhượng vốn/BĐS, trúng thưởng, bản quyền, nhượng quyền, thừa kế, quà tặng — trừ thu nhập miễn thuế tại Điều 4.",
+        "links": [
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_4",
+            "label": "Luật 109 Điều 4 — Thu nhập được miễn thuế"
+          },
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_8",
+            "label": "Luật 109 Điều 8 — TNCN từ tiền lương"
+          }
+        ]
+      }
+    ],
+    "luat-109_4": [
+      {
+        "match": "Thu nhập từ chuyển nhượng, nhận thừa kế, quà tặng là bất động sản giữa vợ với chồng",
+        "title": "Điều 4 — Thu nhập được miễn thuế TNCN",
+        "summary": "Miễn thuế: chuyển nhượng/thừa kế/quà tặng BĐS giữa người thân ruột thịt, nhà ở duy nhất, lãi tiền gửi ngân hàng, thu nhập nông nghiệp của hộ trực tiếp sản xuất...",
+        "links": [
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_3",
+            "label": "Luật 109 Điều 3 — Thu nhập chịu thuế"
+          }
+        ]
+      }
+    ],
+    "luat-109_8": [
+      {
+        "match": "Thuế thu nhập cá nhân đối với thu nhập từ tiền lương, tiền công của cá nhân cư trú được xác định",
+        "title": "Điều 8 — TNCN từ tiền lương, tiền công",
+        "summary": "Thuế = thu nhập tính thuế × thuế suất (biểu lũy tiến Điều 9). Thu nhập tính thuế = thu nhập chịu thuế − các khoản giảm trừ (gia cảnh, BHXH bắt buộc, từ thiện). <strong>Liên hệ TNDN:</strong> tiền lương là chi phí được trừ của DN (Luật 67 Điều 9).",
+        "links": [
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_9",
+            "label": "Luật 109 Điều 9 — Biểu thuế lũy tiến"
+          },
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_10",
+            "label": "Luật 109 Điều 10 — Giảm trừ gia cảnh"
+          },
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-9",
+            "label": "Luật 67 Điều 9 — Tiền lương là chi phí được trừ"
+          }
+        ]
+      }
+    ],
+    "luat-109_9": [
+      {
+        "match": "Biểu thuế luỹ tiến từng phần áp dụng đối với thu nhập tính thuế quy định tại",
+        "title": "Điều 9 — Biểu thuế lũy tiến từng phần",
+        "summary": "Áp dụng cho thu nhập từ tiền lương, tiền công với các bậc thuế suất lũy tiến. Thu nhập tính thuế xác định sau khi trừ giảm trừ gia cảnh (Điều 10).",
+        "links": [
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_8",
+            "label": "Luật 109 Điều 8 — TNCN từ tiền lương"
+          },
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_10",
+            "label": "Luật 109 Điều 10 — Giảm trừ gia cảnh"
+          }
+        ]
+      }
+    ],
+    "luat-109_10": [
+      {
+        "match": "Giảm trừ gia cảnh là số tiền được trừ vào thu nhập chịu thuế trước khi tính thuế",
+        "title": "Điều 10 — Giảm trừ gia cảnh",
+        "summary": "Gồm giảm trừ cho bản thân người nộp thuế và cho mỗi người phụ thuộc. Trừ vào thu nhập từ tiền lương/kinh doanh trước khi áp biểu thuế lũy tiến (Điều 9).",
+        "links": [
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_9",
+            "label": "Luật 109 Điều 9 — Biểu thuế lũy tiến"
+          },
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_11",
+            "label": "Luật 109 Điều 11 — Giảm trừ đóng góp từ thiện"
+          }
+        ]
+      }
+    ],
+    "luat-109_11": [
+      {
+        "match": "Cá nhân cư trú được giảm trừ vào thu nhập chịu thuế trước khi tính thuế đối với thu nhập từ tiền lương",
+        "title": "Điều 11 — Giảm trừ đóng góp từ thiện, nhân đạo",
+        "summary": "Khoản đóng góp từ thiện, nhân đạo, khuyến học được trừ vào thu nhập chịu thuế từ tiền lương trước khi tính thuế (bổ sung cho giảm trừ gia cảnh Điều 10).",
+        "links": [
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_10",
+            "label": "Luật 109 Điều 10 — Giảm trừ gia cảnh"
+          }
+        ]
+      }
+    ],
+    "luat-109_13": [
+      {
+        "match": "Thuế thu nhập cá nhân đối với thu nhập từ chuyển nhượng vốn của cá nhân cư trú được xác định bằng",
+        "title": "Điều 13 — TNCN từ chuyển nhượng vốn",
+        "summary": "Thuế TNCN từ chuyển nhượng vốn của cá nhân cư trú = thu nhập tính thuế × thuế suất. <strong>Liên hệ TNDN:</strong> với doanh nghiệp, chuyển nhượng vốn áp dụng Luật 67 Điều 3.2.a.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-3",
+            "label": "Luật 67 Điều 3 — TN chuyển nhượng vốn (với DN)"
+          }
+        ]
+      }
+    ]
+  },
+  "luat-108": {
+    "luat-108_1": [
+      {
+        "match": "Luật này quy định việc quản lý các loại thuế, các khoản thu khác thuộc ngân sách nhà nước",
+        "title": "Điều 1 — Phạm vi (áp dụng cho mọi sắc thuế)",
+        "summary": "Luật Quản lý thuế áp dụng cho việc quản lý <strong>tất cả các loại thuế</strong> — TNDN, GTGT, TNCN... (đăng ký, kê khai, nộp, hoàn, thanh tra, cưỡng chế). Là khung thủ tục chung cho cả 3 chum thuế.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-1",
+            "label": "Luật 67 — Thuế TNDN"
+          },
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_1",
+            "label": "Luật 48 — Thuế GTGT"
+          },
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_1",
+            "label": "Luật 109 — Thuế TNCN"
+          }
+        ]
+      }
+    ],
+    "luat-108_5": [
+      {
+        "match": "Cơ quan thuế thực hiện quản lý thuế theo phân nhóm người nộp thuế",
+        "title": "Điều 5 — Nội dung quản lý thuế",
+        "summary": "Nội dung quản lý thuế: đăng ký, khai, tính, nộp, hoàn, miễn/giảm, khoanh nợ, xóa nợ, quản lý thông tin, hóa đơn, thanh tra/kiểm tra, cưỡng chế. Hướng dẫn hồ sơ thủ tục tại TT 18.",
+        "links": [
+          {
+            "targetSlug": "tt18",
+            "targetAnchor": "tt18_1",
+            "label": "TT 18/2026 — Hồ sơ, thủ tục quản lý thuế"
+          },
+          {
+            "targetSlug": "nd68",
+            "targetAnchor": "nd68_1",
+            "label": "NĐ 68/2026 — Chính sách & quản lý thuế"
+          }
+        ]
+      }
+    ],
+    "luat-108_16": [
+      {
+        "match": "Các trường hợp phải nộp tiền chậm nộp bao gồm",
+        "title": "Điều 16 — Tiền chậm nộp",
+        "summary": "Quy định các trường hợp và mức tính tiền chậm nộp tiền thuế. Áp dụng chung khi chậm nộp bất kỳ sắc thuế nào (TNDN, GTGT, TNCN).",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_17",
+            "label": "Luật 108 Điều 17 — Hoàn thành nghĩa vụ nộp thuế"
+          }
+        ]
+      }
+    ],
+    "luat-108_17": [
+      {
+        "match": "Hoàn thành nghĩa vụ nộp thuế trong trường hợp giải thể, phá sản, chấm dứt hoạt động",
+        "title": "Điều 17 — Hoàn thành nghĩa vụ nộp thuế",
+        "summary": "Thứ tự và trách nhiệm hoàn thành nghĩa vụ nộp thuế khi giải thể, phá sản, chấm dứt hoạt động. Liên quan quyết toán thuế TNDN khi chấm dứt hoạt động.",
+        "links": [
+          {
+            "targetSlug": "luat-67",
+            "targetAnchor": "dieu-5",
+            "label": "Luật 67 Điều 5 — Kỳ tính thuế (quyết toán)"
+          }
+        ]
+      }
+    ]
+  },
+  "nd181": {
+    "nd181_1": [
+      {
+        "match": "Nghị định này quy định chi tiết về người nộp thuế tại khoản 1, 4 và khoản 5",
+        "title": "NĐ 181 Điều 1 — Phạm vi (chi tiết Luật GTGT)",
+        "summary": "NĐ 181 quy định chi tiết thi hành Luật Thuế GTGT 48/2024 (người nộp thuế, đối tượng không chịu thuế, giá tính thuế, khấu trừ, hoàn thuế). Hồ sơ thủ tục hướng dẫn thêm tại TT 69.",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_1",
+            "label": "Luật 48/2024 — Luật Thuế GTGT"
+          },
+          {
+            "targetSlug": "tt69",
+            "targetAnchor": "tt69_1",
+            "label": "TT 69/2025 — Hướng dẫn chi tiết"
+          }
+        ]
+      }
+    ],
+    "nd181_3": [
+      {
+        "match": "Người nộp thuế thực hiện theo quy định tại",
+        "title": "NĐ 181 Điều 3 — Người nộp thuế (chi tiết Luật 48 Điều 4)",
+        "summary": "Chi tiết hóa người nộp thuế GTGT, đặc biệt nhà cung cấp nước ngoài và sàn TMĐT/nền tảng số. Cụ thể hóa Điều 4 Luật 48.",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_4",
+            "label": "Luật 48 Điều 4 — Người nộp thuế"
+          }
+        ]
+      }
+    ],
+    "nd181_4": [
+      {
+        "match": "Đối tượng không chịu thuế thực hiện theo quy định tại",
+        "title": "NĐ 181 Điều 4 — Đối tượng không chịu thuế (chi tiết Luật 48 Điều 5)",
+        "summary": "Chi tiết hóa danh mục đối tượng không chịu thuế GTGT. Hồ sơ, thủ tục xác định tại TT 69 Điều 3.",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_5",
+            "label": "Luật 48 Điều 5 — Đối tượng không chịu thuế"
+          },
+          {
+            "targetSlug": "tt69",
+            "targetAnchor": "tt69_3",
+            "label": "TT 69 Điều 3 — Hồ sơ xác định"
+          }
+        ]
+      }
+    ],
+    "nd181_5": [
+      {
+        "match": "Đối với hàng hóa, dịch vụ do cơ sở kinh doanh bán ra là giá bán chưa có thuế giá trị gia tăng",
+        "title": "NĐ 181 Điều 5 — Giá tính thuế (chi tiết Luật 48 Điều 7)",
+        "summary": "Chi tiết hóa giá tính thuế GTGT cho từng loại hàng hóa, dịch vụ. Cụ thể hóa Điều 7 Luật 48.",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_7",
+            "label": "Luật 48 Điều 7 — Giá tính thuế"
+          }
+        ]
+      }
+    ]
+  },
+  "nd68": {
+    "nd68_1": [
+      {
+        "match": "Nghị định này quy định về chính sách thuế: thuế giá trị gia tăng, thuế thu nhập cá nhân",
+        "title": "NĐ 68 Điều 1 — Phạm vi (chính sách & quản lý thuế hộ KD)",
+        "summary": "NĐ 68 quy định chính sách thuế GTGT, TNCN và quản lý thuế đối với hộ kinh doanh, cá nhân kinh doanh. Hồ sơ thủ tục hướng dẫn tại TT 18.",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108/2025"
+          },
+          {
+            "targetSlug": "tt18",
+            "targetAnchor": "tt18_1",
+            "label": "TT 18/2026 — Hồ sơ, thủ tục"
+          }
+        ]
+      }
+    ],
+    "nd68_2": [
+      {
+        "match": "Người nộp thuế là hộ kinh doanh, cá nhân kinh doanh",
+        "title": "NĐ 68 Điều 2 — Đối tượng (hộ, cá nhân kinh doanh)",
+        "summary": "Đối tượng áp dụng là hộ kinh doanh, cá nhân kinh doanh. Chế độ kế toán của nhóm này theo TT 152; khi thành lập DN siêu nhỏ chuyển sang TT 58.",
+        "links": [
+          {
+            "targetSlug": "tt152",
+            "targetAnchor": "tt152_1",
+            "label": "TT 152 — Kế toán hộ kinh doanh"
+          },
+          {
+            "targetSlug": "luat-109",
+            "targetAnchor": "luat-109_7",
+            "label": "Luật 109 — TNCN từ kinh doanh"
+          }
+        ]
+      }
+    ],
+    "nd68_3": [
+      {
+        "match": "Hộ kinh doanh, cá nhân kinh doanh có hoạt động sản xuất, kinh doanh có mức doanh thu năm từ 500",
+        "title": "NĐ 68 Điều 3 — Thuế GTGT của hộ kinh doanh",
+        "summary": "Hộ/cá nhân kinh doanh có doanh thu năm từ ngưỡng quy định nộp thuế GTGT theo tỷ lệ % trên doanh thu. Liên hệ ngưỡng doanh thu chịu thuế GTGT của Luật 48.",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_4",
+            "label": "Luật 48 Điều 4 — Người nộp thuế GTGT"
+          },
+          {
+            "targetSlug": "tt152",
+            "targetAnchor": "tt152_6",
+            "label": "TT 152 — Hộ KD nộp thuế theo % doanh thu"
+          }
+        ]
+      }
+    ]
+  },
+  "tt69": {
+    "tt69_1": [
+      {
+        "match": "Thông tư này quy định chi tiết về hồ sơ, thủ tục xác định đối tượng không chịu thuế giá trị gia tăng",
+        "title": "TT 69 Điều 1 — Phạm vi (hồ sơ, thủ tục GTGT)",
+        "summary": "TT 69 hướng dẫn hồ sơ, thủ tục xác định đối tượng không chịu thuế, áp dụng thuế suất 0%, hoàn thuế GTGT theo Luật 48 và NĐ 181.",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_1",
+            "label": "Luật 48/2024 — Luật Thuế GTGT"
+          },
+          {
+            "targetSlug": "nd181",
+            "targetAnchor": "nd181_1",
+            "label": "NĐ 181/2025 — Hướng dẫn Luật GTGT"
+          }
+        ]
+      }
+    ],
+    "tt69_3": [
+      {
+        "match": "Người nộp thuế căn cứ hàng hóa, dịch vụ quy định tại",
+        "title": "TT 69 Điều 3 — Hồ sơ xác định đối tượng không chịu thuế",
+        "summary": "Hồ sơ, thủ tục để xác định hàng hóa, dịch vụ thuộc đối tượng không chịu thuế GTGT theo Điều 5 Luật 48 và Điều 4 NĐ 181.",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_5",
+            "label": "Luật 48 Điều 5 — Đối tượng không chịu thuế"
+          },
+          {
+            "targetSlug": "nd181",
+            "targetAnchor": "nd181_4",
+            "label": "NĐ 181 Điều 4 — Đối tượng không chịu thuế"
+          }
+        ]
+      }
+    ],
+    "tt69_4": [
+      {
+        "match": "Người nộp thuế căn cứ hàng hóa, dịch vụ quy định tại",
+        "title": "TT 69 Điều 4 — Hồ sơ áp dụng thuế suất 0%",
+        "summary": "Hồ sơ, thủ tục áp dụng thuế suất GTGT 0% đối với hàng hóa, dịch vụ xuất khẩu theo khoản 1 Điều 9 Luật 48.",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_9",
+            "label": "Luật 48 Điều 9 — Thuế suất (0%)"
+          }
+        ]
+      }
+    ]
+  },
+  "tt18": {
+    "tt18_1": [
+      {
+        "match": "Thông tư này quy định chi tiết về hồ sơ, thủ tục thông báo doanh thu, kê khai thuế",
+        "title": "TT 18 Điều 1 — Phạm vi (hồ sơ, thủ tục quản lý thuế)",
+        "summary": "TT 18 hướng dẫn hồ sơ, thủ tục thông báo doanh thu, kê khai, nộp, hoàn thuế theo Luật Quản lý thuế 108 và NĐ 68.",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108/2025"
+          },
+          {
+            "targetSlug": "nd68",
+            "targetAnchor": "nd68_1",
+            "label": "NĐ 68/2026 — Chính sách & quản lý thuế"
+          }
+        ]
+      }
+    ],
+    "tt18_3": [
+      {
+        "match": "Hộ kinh doanh, cá nhân kinh doanh gửi Thông báo về việc thành lập địa điểm kinh doanh",
+        "title": "TT 18 Điều 3 — Thông báo địa điểm kinh doanh",
+        "summary": "Thủ tục thông báo thành lập/thay đổi địa điểm kinh doanh của hộ, cá nhân kinh doanh với cơ quan thuế.",
+        "links": [
+          {
+            "targetSlug": "nd68",
+            "targetAnchor": "nd68_2",
+            "label": "NĐ 68 Điều 2 — Đối tượng hộ kinh doanh"
+          }
+        ]
+      }
+    ]
+  },
+  "luat-66": {
+    "luat-66_2": [
+      {
+        "match": "Hàng hóa bao gồm",
+        "title": "Điều 2 — Đối tượng chịu thuế TTĐB",
+        "summary": "Hàng hóa chịu TTĐB: thuốc lá, rượu, bia, ô tô dưới 24 chỗ, xe máy phân khối lớn, tàu bay, du thuyền, xăng, điều hòa, bài lá, vàng mã... và dịch vụ: vũ trường, mát-xa, karaoke, casino, đặt cược, golf, xổ số. Chi tiết tại NĐ 360 Điều 3.",
+        "links": [
+          {
+            "targetSlug": "nd360",
+            "targetAnchor": "nd360_3",
+            "label": "NĐ 360 Điều 3 — Đối tượng chịu thuế (chi tiết)"
+          },
+          {
+            "targetSlug": "luat-66",
+            "targetAnchor": "luat-66_3",
+            "label": "Luật 66 Điều 3 — Đối tượng không chịu thuế"
+          }
+        ]
+      }
+    ],
+    "luat-66_3": [
+      {
+        "match": "Hàng hóa quy định tại khoản 1",
+        "title": "Điều 3 — Đối tượng không chịu thuế TTĐB",
+        "summary": "Một số hàng hóa không chịu TTĐB: hàng xuất khẩu, hàng tạm nhập tái xuất, hàng viện trợ nhân đạo, hàng quá cảnh... Hồ sơ xác định chi tiết tại TT 158 Điều 3.",
+        "links": [
+          {
+            "targetSlug": "nd360",
+            "targetAnchor": "nd360_4",
+            "label": "NĐ 360 Điều 4 — Đối tượng không chịu thuế"
+          },
+          {
+            "targetSlug": "tt158",
+            "targetAnchor": "tt158_3",
+            "label": "TT 158 Điều 3 — Hồ sơ xác định đối tượng không chịu thuế"
+          }
+        ]
+      }
+    ],
+    "luat-66_4": [
+      {
+        "match": "Người nộp thuế tiêu thụ đặc biệt là tổ chức, cá nhân sản xuất, gia công, nhập khẩu",
+        "title": "Điều 4 — Người nộp thuế TTĐB",
+        "summary": "Người nộp thuế TTĐB là tổ chức, cá nhân sản xuất, gia công, nhập khẩu hàng hóa và kinh doanh dịch vụ chịu thuế TTĐB. Việc kê khai, nộp thuế theo Luật Quản lý thuế.",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108 — Quản lý kê khai, nộp thuế TTĐB"
+          }
+        ]
+      }
+    ],
+    "luat-66_6": [
+      {
+        "match": "Giá tính thuế tiêu thụ đặc biệt đối với hàng hóa, dịch vụ là giá bán ra, giá cung ứng",
+        "title": "Điều 6 — Giá tính thuế TTĐB",
+        "summary": "Giá tính thuế TTĐB là giá bán ra/giá cung ứng dịch vụ chưa có thuế TTĐB, chưa có thuế GTGT và chưa có thuế BVMT. <strong>Liên hệ GTGT:</strong> giá tính thuế GTGT của hàng chịu TTĐB đã bao gồm cả thuế TTĐB (Luật 48 Điều 7).",
+        "links": [
+          {
+            "targetSlug": "nd360",
+            "targetAnchor": "nd360_5",
+            "label": "NĐ 360 Điều 5 — Giá tính thuế (chi tiết)"
+          },
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_7",
+            "label": "Luật 48 Điều 7 — Giá tính thuế GTGT (gồm TTĐB)"
+          }
+        ]
+      }
+    ],
+    "luat-66_8": [
+      {
+        "match": "Thuế suất và mức thuế tuyệt đối thuế tiêu thụ đặc biệt đối với hàng hóa, dịch vụ",
+        "title": "Điều 8 — Thuế suất & mức thuế tuyệt đối (Biểu thuế TTĐB)",
+        "summary": "Biểu thuế TTĐB quy định thuế suất % cho từng nhóm hàng hóa, dịch vụ; riêng thuốc lá áp dụng kết hợp thuế suất % và mức thuế tuyệt đối. Cách xác định và quy đổi chi tiết tại NĐ 360 Điều 6, 7.",
+        "links": [
+          {
+            "targetSlug": "nd360",
+            "targetAnchor": "nd360_6",
+            "label": "NĐ 360 Điều 6 — Xe ô tô xăng kết hợp điện"
+          },
+          {
+            "targetSlug": "nd360",
+            "targetAnchor": "nd360_7",
+            "label": "NĐ 360 Điều 7 — Quy đổi mức thuế tuyệt đối thuốc lá"
+          }
+        ]
+      }
+    ],
+    "luat-66_9": [
+      {
+        "match": "Người nộp thuế tiêu thụ đặc biệt được hoàn thuế đã nộp trong các trường hợp sau đây",
+        "title": "Điều 9 — Hoàn thuế, khấu trừ thuế TTĐB",
+        "summary": "Các trường hợp hoàn/khấu trừ TTĐB (hàng tạm nhập tái xuất, nguyên liệu đã nộp TTĐB dùng sản xuất hàng chịu TTĐB...). Hồ sơ hoàn thuế xăng sinh học chi tiết tại TT 158 Điều 4.",
+        "links": [
+          {
+            "targetSlug": "nd360",
+            "targetAnchor": "nd360_8",
+            "label": "NĐ 360 Điều 8 — Hoàn thuế, khấu trừ thuế"
+          },
+          {
+            "targetSlug": "tt158",
+            "targetAnchor": "tt158_4",
+            "label": "TT 158 Điều 4 — Hoàn thuế xăng sinh học"
+          }
+        ]
+      }
+    ]
+  },
+  "nd360": {
+    "nd360_3": [
+      {
+        "match": "Đối tượng chịu thuế tiêu thụ đặc biệt thực hiện theo quy định tại",
+        "title": "NĐ 360 Điều 3 — Đối tượng chịu thuế (chi tiết Luật 66 Điều 2)",
+        "summary": "Chi tiết hóa danh mục hàng hóa, dịch vụ chịu TTĐB và một số trường hợp đặc thù. Cụ thể hóa Điều 2 Luật 66.",
+        "links": [
+          {
+            "targetSlug": "luat-66",
+            "targetAnchor": "luat-66_2",
+            "label": "Luật 66 Điều 2 — Đối tượng chịu thuế"
+          }
+        ]
+      }
+    ],
+    "nd360_4": [
+      {
+        "match": "Đối tượng không chịu thuế tiêu thụ đặc biệt là hàng hóa, dịch vụ không quy định tại",
+        "title": "NĐ 360 Điều 4 — Đối tượng không chịu thuế (chi tiết Luật 66 Điều 3)",
+        "summary": "Chi tiết hóa các trường hợp không chịu TTĐB. Hồ sơ, thủ tục xác định tại TT 158 Điều 3.",
+        "links": [
+          {
+            "targetSlug": "luat-66",
+            "targetAnchor": "luat-66_3",
+            "label": "Luật 66 Điều 3 — Đối tượng không chịu thuế"
+          },
+          {
+            "targetSlug": "tt158",
+            "targetAnchor": "tt158_3",
+            "label": "TT 158 Điều 3 — Hồ sơ xác định"
+          }
+        ]
+      }
+    ],
+    "nd360_5": [
+      {
+        "match": "Giá tính thuế thực hiện theo quy định tại",
+        "title": "NĐ 360 Điều 5 — Giá tính thuế (chi tiết Luật 66 Điều 6)",
+        "summary": "Chi tiết hóa giá tính thuế TTĐB cho từng loại hàng hóa, dịch vụ (sản xuất, nhập khẩu, gia công, bán qua cơ sở liên kết...). Cụ thể hóa Điều 6 Luật 66.",
+        "links": [
+          {
+            "targetSlug": "luat-66",
+            "targetAnchor": "luat-66_6",
+            "label": "Luật 66 Điều 6 — Giá tính thuế"
+          }
+        ]
+      }
+    ],
+    "nd360_8": [
+      {
+        "match": "Việc hoàn thuế, khấu trừ thuế tiêu thụ đặc biệt thực hiện theo quy định tại",
+        "title": "NĐ 360 Điều 8 — Hoàn thuế, khấu trừ (chi tiết Luật 66 Điều 9)",
+        "summary": "Chi tiết điều kiện, thủ tục hoàn và khấu trừ TTĐB. Hồ sơ hoàn thuế xăng sinh học tại TT 158 Điều 4.",
+        "links": [
+          {
+            "targetSlug": "luat-66",
+            "targetAnchor": "luat-66_9",
+            "label": "Luật 66 Điều 9 — Hoàn thuế, khấu trừ"
+          },
+          {
+            "targetSlug": "tt158",
+            "targetAnchor": "tt158_4",
+            "label": "TT 158 Điều 4 — Hoàn thuế xăng sinh học"
+          }
+        ]
+      }
+    ]
+  },
+  "tt158": {
+    "tt158_3": [
+      {
+        "match": "Hồ sơ xác định đối tượng không chịu thuế tiêu thụ đặc biệt đối với hàng hóa",
+        "title": "TT 158 Điều 3 — Hồ sơ xác định đối tượng không chịu thuế",
+        "summary": "Quy định hồ sơ, chứng từ (hợp đồng, hóa đơn, chứng từ thanh toán không dùng tiền mặt...) để xác định hàng hóa thuộc đối tượng không chịu TTĐB theo Điều 3 Luật 66 và Điều 4 NĐ 360.",
+        "links": [
+          {
+            "targetSlug": "luat-66",
+            "targetAnchor": "luat-66_3",
+            "label": "Luật 66 Điều 3 — Đối tượng không chịu thuế"
+          },
+          {
+            "targetSlug": "nd360",
+            "targetAnchor": "nd360_4",
+            "label": "NĐ 360 Điều 4 — Đối tượng không chịu thuế"
+          }
+        ]
+      }
+    ],
+    "tt158_4": [
+      {
+        "match": "Đối với các doanh nghiệp được phép sản xuất xăng sinh học, hồ sơ đề nghị hoàn",
+        "title": "TT 158 Điều 4 — Hoàn thuế TTĐB đối với xăng sinh học",
+        "summary": "Hồ sơ, thủ tục hoàn thuế TTĐB cho doanh nghiệp sản xuất xăng sinh học (mẫu Giấy đề nghị hoàn trả thuế TTĐB). Xem tab Biểu mẫu để tải mẫu.",
+        "links": [
+          {
+            "targetSlug": "luat-66",
+            "targetAnchor": "luat-66_9",
+            "label": "Luật 66 Điều 9 — Hoàn thuế, khấu trừ"
+          },
+          {
+            "targetSlug": "nd360",
+            "targetAnchor": "nd360_8",
+            "label": "NĐ 360 Điều 8 — Hoàn thuế, khấu trừ"
+          }
+        ]
+      }
+    ]
+  },
+  "nd134": {
+    "nd134_2": [
+      {
+        "match": "Hàng hóa xuất khẩu, nhập khẩu qua cửa khẩu, biên giới Việt Nam",
+        "title": "Điều 2 — Đối tượng chịu thuế XNK",
+        "summary": "Hàng hóa XK, NK qua cửa khẩu/biên giới; hàng từ thị trường trong nước vào khu phi thuế quan và ngược lại. <strong>Liên hệ:</strong> hàng nhập khẩu thường đồng thời chịu thuế GTGT (giá tính GTGT gồm cả thuế NK — Luật 48 Đ7) và có thể chịu TTĐB (Luật 66 Đ6).",
+        "links": [
+          {
+            "targetSlug": "luat-48",
+            "targetAnchor": "luat-48_7",
+            "label": "Luật 48 Điều 7 — Giá tính thuế GTGT hàng NK (gồm thuế NK)"
+          },
+          {
+            "targetSlug": "luat-66",
+            "targetAnchor": "luat-66_6",
+            "label": "Luật 66 Điều 6 — Giá tính thuế TTĐB hàng NK"
+          }
+        ]
+      }
+    ],
+    "nd134_3": [
+      {
+        "match": "Thuế suất đối với hàng hóa xuất khẩu, nhập khẩu thực hiện theo quy định tại",
+        "title": "Điều 3 — Áp dụng thuế suất hàng XNK",
+        "summary": "Thuế suất XK/NK áp dụng theo Biểu thuế và các quy định của Luật Thuế XNK 107/2016 (ưu đãi, ưu đãi đặc biệt, thông thường). Trị giá hải quan và áp mã HS theo pháp luật hải quan.",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108 — Khai, nộp, ấn định thuế XNK"
+          }
+        ]
+      }
+    ],
+    "nd134_4": [
+      {
+        "match": "Thời hạn nộp thuế quy định tại",
+        "title": "Điều 4 — Thời hạn nộp thuế, bảo lãnh, đặt cọc",
+        "summary": "Thời hạn nộp thuế XNK, điều kiện bảo lãnh số thuế phải nộp và đặt cọc (hàng tạm nhập tái xuất). Thủ tục kê khai, nộp, cưỡng chế theo Luật Quản lý thuế.",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108 — Quản lý thuế"
+          }
+        ]
+      }
+    ],
+    "nd134_5": [
+      {
+        "match": "Hàng hóa của tổ chức, cá nhân nước ngoài được hưởng quyền ưu đãi, miễn trừ được miễn thuế",
+        "title": "Điều 5 — Miễn thuế hàng hưởng quyền ưu đãi, miễn trừ",
+        "summary": "Hàng hóa của tổ chức/cá nhân nước ngoài hưởng quyền ưu đãi, miễn trừ ngoại giao được miễn thuế XNK trong định lượng quy định. Một trong các trường hợp miễn thuế của NĐ 134.",
+        "links": [
+          {
+            "targetSlug": "nd18",
+            "targetAnchor": "nd18_1",
+            "label": "NĐ 18/2021 — Sửa đổi quy định miễn thuế"
+          }
+        ]
+      }
+    ],
+    "nd134_16": [
+      {
+        "match": "Hàng hóa nhập khẩu để phục vụ hoạt động dầu khí được miễn thuế nhập khẩu",
+        "title": "Điều 16 — Miễn thuế hàng NK phục vụ dầu khí",
+        "summary": "Hàng hóa nhập khẩu phục vụ trực tiếp hoạt động dầu khí (thiết bị, phương tiện, vật tư trong nước chưa sản xuất được) được miễn thuế nhập khẩu.",
+        "links": [
+          {
+            "targetSlug": "nd182",
+            "targetAnchor": "nd182_1",
+            "label": "NĐ 182/2025 — Sửa đổi một số quy định miễn thuế"
+          }
+        ]
+      }
+    ],
+    "nd134_19": [
+      {
+        "match": "Hàng hóa nhập khẩu để sử dụng trực tiếp cho nghiên cứu khoa học, phát triển công nghệ",
+        "title": "Điều 19 — Miễn thuế hàng NK cho KHCN",
+        "summary": "Hàng hóa nhập khẩu sử dụng trực tiếp cho nghiên cứu khoa học, phát triển công nghệ, đổi mới sáng tạo (máy móc, thiết bị, phụ tùng trong nước chưa sản xuất được) được miễn thuế nhập khẩu.",
+        "links": [
+          {
+            "targetSlug": "nd18",
+            "targetAnchor": "nd18_1",
+            "label": "NĐ 18/2021 — Sửa đổi quy định miễn thuế KHCN"
+          }
+        ]
+      }
+    ],
+    "nd134_33": [
+      {
+        "match": "Hàng hóa xuất khẩu đã nộp thuế xuất khẩu nhưng phải tái nhập được hoàn thuế xuất khẩu",
+        "title": "Điều 33 — Hoàn thuế hàng XK phải tái nhập",
+        "summary": "Hàng đã xuất khẩu, đã nộp thuế XK nhưng phải tái nhập được hoàn thuế XK và không phải nộp thuế NK. Thủ tục, hồ sơ hoàn thuế theo Luật Quản lý thuế.",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108 — Thủ tục hoàn thuế"
+          }
+        ]
+      }
+    ],
+    "nd134_36": [
+      {
+        "match": "Người nộp thuế đã nộp thuế nhập khẩu đối với hàng hóa nhập khẩu để sản xuất, kinh doanh",
+        "title": "Điều 36 — Hoàn thuế hàng NK để sản xuất đã xuất khẩu",
+        "summary": "Hàng nhập khẩu để sản xuất, kinh doanh nhưng đã đưa vào sản xuất hàng xuất khẩu và đã xuất khẩu được hoàn thuế nhập khẩu tương ứng. Liên quan hồ sơ hoàn thuế tại TT 06.",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108 — Thủ tục hoàn thuế"
+          },
+          {
+            "targetSlug": "tt06",
+            "targetAnchor": "tt06_12",
+            "label": "TT 06/2021 — Hồ sơ hoàn thuế"
+          }
+        ]
+      }
+    ],
+    "nd134_37": [
+      {
+        "match": "Người nộp thuế đã nộp thuế nhập khẩu, thuế xuất khẩu nhưng không có hàng hóa nhập khẩu",
+        "title": "Điều 37 — Hoàn thuế khi không có hàng XNK / NK ít hơn",
+        "summary": "Trường hợp đã nộp thuế nhưng không có hàng XNK hoặc số lượng thực tế ít hơn được hoàn thuế phần chênh lệch. Thủ tục theo Luật Quản lý thuế và TT 06.",
+        "links": [
+          {
+            "targetSlug": "tt06",
+            "targetAnchor": "tt06_12",
+            "label": "TT 06/2021 — Hồ sơ hoàn thuế"
+          }
+        ]
+      }
+    ]
+  },
+  "tt06": {
+    "tt06_1": [
+      {
+        "match": "Thông tư này hướng dẫn thi hành",
+        "title": "TT 06 Điều 1 — Phạm vi (quản lý thuế hàng XNK)",
+        "summary": "TT 06/2021 hướng dẫn thi hành một số điều của Luật Quản lý thuế về quản lý thuế đối với hàng hóa XNK (khai, nộp, ấn định, hoàn, miễn, giảm, xử lý nợ thuế).",
+        "links": [
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108 — Quản lý thuế"
+          },
+          {
+            "targetSlug": "nd134",
+            "targetAnchor": "nd134_1",
+            "label": "NĐ 134/2016 — Thuế XNK"
+          }
+        ]
+      }
+    ],
+    "tt06_12": [
+      {
+        "match": "Tiếp nhận, phản hồi thông tin hồ sơ hoàn thuế",
+        "title": "TT 06 Điều 12 — Hồ sơ, thủ tục hoàn thuế XNK",
+        "summary": "Hướng dẫn tiếp nhận, xử lý hồ sơ hoàn thuế/không thu thuế hàng hóa XNK. Áp dụng cho các trường hợp hoàn thuế tại NĐ 134 (Điều 33–37).",
+        "links": [
+          {
+            "targetSlug": "nd134",
+            "targetAnchor": "nd134_33",
+            "label": "NĐ 134 Điều 33–37 — Các trường hợp hoàn thuế"
+          },
+          {
+            "targetSlug": "luat-108",
+            "targetAnchor": "luat-108_1",
+            "label": "Luật QLT 108"
+          }
+        ]
+      }
+    ]
+  },
+  "nd18": {
+    "nd18_1": [
+      {
+        "match": "Sửa đổi, bổ sung khoản 1, bổ sung khoản 3",
+        "title": "NĐ 18/2021 — Sửa đổi, bổ sung NĐ 134/2016",
+        "summary": "NĐ 18/2021 sửa đổi, bổ sung nhiều điều của NĐ 134/2016 về miễn thuế, hoàn thuế XNK (hàng SX-XK, gia công, chế xuất...). Đọc kèm văn bản gốc NĐ 134.",
+        "links": [
+          {
+            "targetSlug": "nd134",
+            "targetAnchor": "nd134_1",
+            "label": "NĐ 134/2016 — Văn bản gốc (Thuế XNK)"
+          }
+        ]
+      }
+    ]
+  }
+}

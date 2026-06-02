@@ -1,0 +1,162 @@
+{
+  "tt18": [
+    {
+      "code": "01-TB-DDKD",
+      "title": "THÔNG BÁO",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "02-TB-DDKD",
+      "title": "THÔNG BÁO",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-TKN-CNKD",
+      "title": "THÔNG BÁO DOANH THU/TỜ KHAI THUẾ NĂM",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-CNKD",
+      "title": "TỜ KHAI THUẾ ĐỐI VỚI HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "02-CNKD-TNCN-QTT",
+      "title": "TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-BK-STK",
+      "title": "THÔNG BÁO SỐ TÀI KHOẢN/SỐ HIỆU VÍ ĐIỆN TỬ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-TCKT",
+      "title": "TỜ KHAI THUẾ CỦA TỔ CHỨC KHAI THAY",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-BK-KTHTKD",
+      "title": "BẢNG KÊ CHI TIẾT HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "02-BK-KTBDS",
+      "title": "BẢNG KÊ CHI TIẾT CÁ NHÂN CHO THUÊ BẤT ĐỘNG SẢN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-XSBHDC",
+      "title": "TỜ KHAI THUẾ THU NHẬP CÁ NHÂN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-BK-XSBHDC",
+      "title": "BẢNG KÊ CHI TIẾT CÁ NHÂN CÓ PHÁT SINH DOANH THUTỪ HOẠT ĐỘNG ĐẠI LÝ XỔ SỔ, ĐẠI LÝ BẢO HIỂM, BÁN HÀNG ĐA CẤP",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-BDS",
+      "title": "THÔNG BÁO DOANH THU/TỜ KHAI THUẾ ĐỐI VỚI HOẠT ĐỘNG CHO THUÊ BẤT ĐỘNG SẢN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-BK-BDS",
+      "title": "BẢNG KÊ CHI TIẾT BẤT ĐỘNG SẢN CHO THUÊ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-BK-HTK",
+      "title": "BẢNG KÊ HÀNG TỒN KHO, MÁY MÓC, THIẾT BỊ CỦA HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "",
+      "note": ""
+    }
+  ],
+  "tt69": [
+    {
+      "code": "PL1",
+      "title": "NHÓM HÀNG HÓA, DỊCH VỤ THUỘC ĐỐI TƯỢNG ÁP DỤNGTHEO TỶ LỆ % ĐỂ TÍNH THUẾ GIÁ TRỊ GIA TĂNG",
+      "pl": "Phụ lục I",
+      "note": ""
+    },
+    {
+      "code": "PL2",
+      "title": "CÁCH XÁC ĐỊNH SỐ THUẾ ĐƯỢC HOÀN ĐỐI VỚI HÀNG HÓA, DỊCH VỤ XUẤT KHẨU",
+      "pl": "Phụ lục II",
+      "note": ""
+    },
+    {
+      "code": "PL3",
+      "title": "Phụ lục III",
+      "pl": "Phụ lục III",
+      "note": ""
+    }
+  ],
+  "tt158": [
+    {
+      "code": "01a-DNHT",
+      "title": "GIẤY ĐỀ NGHỊ",
+      "pl": "",
+      "note": ""
+    }
+  ],
+  "nd181": [
+    {
+      "code": "PL1",
+      "title": "TÀI NGUYÊN, KHOÁNG SẢN KHAI THÁC CHƯA CHẾ BIẾN THÀNH SẢN PHẨM KHÁC",
+      "pl": "Phụ lục l",
+      "note": ""
+    },
+    {
+      "code": "PL2",
+      "title": "TÀI NGUYÊN, KHOÁNG SẢN KHAI THÁC ĐÃ CHẾ BIẾN THÀNH SẢN PHẨM KHÁC",
+      "pl": "Phụ lục II",
+      "note": ""
+    },
+    {
+      "code": "PL3",
+      "title": "BẢNG KÊ HÀNG HÓA BÁN CHO KHÁCH XUẤT CẢNH TẠI KHU VỰC CÁCH LY, CỬA HÀNG MIỄN THUẾ",
+      "pl": "Phụ lục III",
+      "note": ""
+    },
+    {
+      "code": "PL4",
+      "title": "Phụ lục IV",
+      "pl": "Phụ lục IV",
+      "note": ""
+    },
+    {
+      "code": "PL5",
+      "title": "XÁC ĐỊNH TỶ TRỌNG TRỊ GIÁ TÀI NGUYÊN, KHOÁNG SẢN VÀ CHI PHÍ NĂNG LƯỢNG TRÊN GIÁ THÀNH SẢN PHẨM",
+      "pl": "Phụ lục V",
+      "note": ""
+    }
+  ],
+  "nd144": [
+    {
+      "code": "PL1",
+      "title": "Phụ lục I",
+      "pl": "Phụ lục I",
+      "note": ""
+    },
+    {
+      "code": "PL2",
+      "title": "Phụ lục II",
+      "pl": "Phụ lục II",
+      "note": ""
+    }
+  ]
+}
