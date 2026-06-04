@@ -1,0 +1,458 @@
+{
+  "tt133": [
+    {
+      "code": "01-BH",
+      "title": "BẢNG THANH TOÁN HÀNG ĐẠI LÝ, KÝ GỬI"
+    },
+    {
+      "code": "01-TT",
+      "title": "PHIẾU THU"
+    },
+    {
+      "code": "01-VT",
+      "title": "PHIẾU NHẬP KHO"
+    },
+    {
+      "code": "01a-LĐTL",
+      "title": "BẢNG CHẤM CÔNG"
+    },
+    {
+      "code": "01b-LĐTL",
+      "title": "BẢNG CHẤM CÔNG LÀM THÊM GIỜ"
+    },
+    {
+      "code": "02-BH",
+      "title": "THẺ QUẦY HÀNG"
+    },
+    {
+      "code": "02-LĐTL",
+      "title": "BẢNG THANH TOÁN TIỀN LƯƠNG"
+    },
+    {
+      "code": "02-TT",
+      "title": "PHIẾU CHI"
+    },
+    {
+      "code": "02-VT",
+      "title": "PHIẾU XUẤT KHO"
+    },
+    {
+      "code": "03-LĐTL",
+      "title": "BẢNG THANH TOÁN TIỀN THƯỞNG"
+    },
+    {
+      "code": "03-TT",
+      "title": "GIẤY ĐỀ NGHỊ TẠM ỨNG"
+    },
+    {
+      "code": "03-VT",
+      "title": "BIÊN BẢN KIỂM NGHIỆM"
+    },
+    {
+      "code": "04-LĐTL",
+      "title": "GIẤY ĐI ĐƯỜNG"
+    },
+    {
+      "code": "04-TT",
+      "title": "GIẤY THANH TOÁN TIỀN TẠM ỨNG"
+    },
+    {
+      "code": "04-VT",
+      "title": "PHIẾU BÁO VẬT TƯ CÒN LẠI CUỐI KỲ"
+    },
+    {
+      "code": "05-LĐTL",
+      "title": "PHIẾU XÁC NHẬN SẢN PHẨM HOẶC CÔNG VIỆC HOÀN THÀNH"
+    },
+    {
+      "code": "05-TT",
+      "title": "GIẤY ĐỀ NGHỊ THANH TOÁN"
+    },
+    {
+      "code": "05-VT",
+      "title": "BIÊN BẢN KIỂM KÊ VẬT TƯ, CÔNG CỤ, SẢN PHẨM, HÀNG HÓA"
+    },
+    {
+      "code": "06-LĐTL",
+      "title": "BẢNG THANH TOÁN TIỀN LÀM THÊM GIỜ"
+    },
+    {
+      "code": "06-TT",
+      "title": "BIÊN LAI THU TIỀN"
+    },
+    {
+      "code": "06-VT",
+      "title": "BẢNG KÊ MUA HÀNG"
+    },
+    {
+      "code": "07-LĐTL",
+      "title": "BẢNG THANH TOÁN TIỀN THUÊ NGOÀI"
+    },
+    {
+      "code": "07-TT",
+      "title": "BẢNG KÊ VÀNG BẠC, KIM KHÍ QUÝ, ĐÁ QUÝ"
+    },
+    {
+      "code": "07-VT",
+      "title": "BẢNG PHÂN BỔ NGUYÊN LIỆU, VẬT LIỆU CÔNG CỤ, DỤNG CỤ"
+    },
+    {
+      "code": "08-LĐTL",
+      "title": "HỢP ĐỒNG GIAO KHOÁN"
+    },
+    {
+      "code": "08a-TT",
+      "title": "BẢNG KIỂM KÊ QUỸ"
+    },
+    {
+      "code": "08b-TT",
+      "title": "BẢNG KIỂM KÊ VÀNG BẠC, KIM KHÍ QUÝ, ĐÁ QUÝ"
+    },
+    {
+      "code": "09-LĐTL",
+      "title": "BIÊN BẢN THANH LÝ (NGHIỆM THU) HỢP ĐỒNG GIAO KHOÁN"
+    },
+    {
+      "code": "09-TT",
+      "title": "BẢNG KÊ CHI TIỀN"
+    },
+    {
+      "code": "10-LĐTL",
+      "title": "BẢNG KÊ TRÍCH NỘP CÁC KHOẢN THEO LƯƠNG"
+    },
+    {
+      "code": "11-LĐTL",
+      "title": "BẢNG PHÂN BỔ TIỀN LƯƠNG VÀ BẢO HIỂM XÃ HỘI"
+    },
+    {
+      "code": "B01-DNNKLT",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH"
+    },
+    {
+      "code": "B01-DNSN",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH"
+    },
+    {
+      "code": "B01a-DNN",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH"
+    },
+    {
+      "code": "B01b-DNN",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH"
+    },
+    {
+      "code": "B02-DNN",
+      "title": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH"
+    },
+    {
+      "code": "B02-DNSN",
+      "title": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH"
+    },
+    {
+      "code": "B03-DNN",
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ"
+    },
+    {
+      "code": "B09-DNN",
+      "title": "BẢN THUYẾT MINH BÁO CÁO TÀI CHÍNH"
+    },
+    {
+      "code": "B09-DNNKLT",
+      "title": "BẢN THUYẾT MINH BÁO CÁO TÀI CHÍNH"
+    },
+    {
+      "code": "B09-DNSN",
+      "title": "BẢN THUYẾT MINH BÁO CÁO TÀI CHÍNH"
+    },
+    {
+      "code": "F01-DNN",
+      "title": "BẢNG CÂN ĐỐI TÀI KHOẢN"
+    }
+  ],
+  "tt152": [
+    {
+      "code": "S1a-HKD",
+      "title": "SỔ DOANH THU BÁN HÀNG HÓA, DỊCH VỤ"
+    },
+    {
+      "code": "S2a-HKD",
+      "title": "SỔ DOANH THU BÁN HÀNG HÓA, DỊCH VỤ"
+    },
+    {
+      "code": "S2b-HKD",
+      "title": "SỔ DOANH THU BÁN HÀNG HÓA, DỊCH VỤ"
+    },
+    {
+      "code": "S2c-HKD",
+      "title": "SỔ CHI TIẾT DOANH THU, CHI PHÍ"
+    },
+    {
+      "code": "S2d-HKD",
+      "title": "SỔ CHI TIẾT VẬT LIỆU, DỤNG CỤ, SẢN PHẨM, HÀNG HÓA"
+    },
+    {
+      "code": "S2e-HKD",
+      "title": "SỔ CHI TIẾT TIỀN"
+    },
+    {
+      "code": "S3a-HKD",
+      "title": "SỔ THEO DÕI NGHĨA VỤ THUẾ KHÁC"
+    }
+  ],
+  "tt58": [
+    {
+      "code": "01-TT",
+      "title": "PHIẾU THU"
+    },
+    {
+      "code": "01-VT",
+      "title": "PHIẾU NHẬP KHO"
+    },
+    {
+      "code": "02-TT",
+      "title": "PHIẾU CHI"
+    },
+    {
+      "code": "02-VT",
+      "title": "PHIẾU XUẤT KHO"
+    },
+    {
+      "code": "B01-DNSN",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH"
+    },
+    {
+      "code": "B02-DNSN",
+      "title": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH"
+    },
+    {
+      "code": "S1-DNSN",
+      "title": "SỔ DOANH THU BÁN HÀNG HÓA, DỊCH VỤ"
+    },
+    {
+      "code": "S2a-DNSN",
+      "title": "SỐ DOANH THU BÁN HÀNG HÓA, DỊCH VỤ"
+    },
+    {
+      "code": "S2b-DNSN",
+      "title": "SỔ CHI TIẾT DOANH THU, CHI PHÍ"
+    },
+    {
+      "code": "S2c-DNSN",
+      "title": "SỔ CHI TIẾT VẬT LIỆU, DỤNG CỤ, SẢN PHẨM, HÀNG HÓA"
+    },
+    {
+      "code": "S2d-DNSN",
+      "title": "SỔ CHI TIẾT TIỀN"
+    },
+    {
+      "code": "S3a-DNSN",
+      "title": "SỔ DOANH THU BÁN HÀNG HÓA, DỊCH VỤ"
+    },
+    {
+      "code": "S3b-DNSN",
+      "title": "SỔ THEO DÕI NGHĨA VỤ THUẾ GTGT"
+    },
+    {
+      "code": "S4a-DNSN",
+      "title": "SỔ CHI TIẾT THANH TOÁN CÔNG NỢ"
+    },
+    {
+      "code": "S4b-DNSN",
+      "title": "SỔ TÀI SẢN CỐ ĐỊNH"
+    },
+    {
+      "code": "S4c-DNSN",
+      "title": "SỔ THEO DÕI NGHĨA VỤ THUẾ KHÁC"
+    },
+    {
+      "code": "S4d-DNSN",
+      "title": "SỔ THEO DÕI VỐN CHỦ SỞ HỮU"
+    }
+  ],
+  "tt18": [
+    {
+      "code": "01-BDS",
+      "title": "THÔNG BÁO DOANH THU/TỜ KHAI THUẾ ĐỐI VỚI HOẠT ĐỘNG CHO THUÊ BẤT ĐỘNG SẢN"
+    },
+    {
+      "code": "01-BK-BDS",
+      "title": "BẢNG KÊ CHI TIẾT BẤT ĐỘNG SẢN CHO THUÊ"
+    },
+    {
+      "code": "01-BK-HTK",
+      "title": "BẢNG KÊ HÀNG TỒN KHO, MÁY MÓC, THIẾT BỊ CỦA HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-BK-KTHTKD",
+      "title": "BẢNG KÊ CHI TIẾT HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-BK-STK",
+      "title": "THÔNG BÁO SỐ TÀI KHOẢN/SỐ HIỆU VÍ ĐIỆN TỬ"
+    },
+    {
+      "code": "01-BK-XSBHDC",
+      "title": "BẢNG KÊ CHI TIẾT CÁ NHÂN CÓ PHÁT SINH DOANH THUTỪ HOẠT ĐỘNG ĐẠI LÝ XỔ SỔ, ĐẠI LÝ BẢO HIỂM, BÁN HÀNG ĐA CẤP"
+    },
+    {
+      "code": "01-CNKD",
+      "title": "TỜ KHAI THUẾ ĐỐI VỚI HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-TB-DDKD",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TCKT",
+      "title": "TỜ KHAI THUẾ CỦA TỔ CHỨC KHAI THAY"
+    },
+    {
+      "code": "01-TKN-CNKD",
+      "title": "THÔNG BÁO DOANH THU/TỜ KHAI THUẾ NĂM"
+    },
+    {
+      "code": "01-XSBHDC",
+      "title": "TỜ KHAI THUẾ THU NHẬP CÁ NHÂN"
+    },
+    {
+      "code": "02-BK-KTBDS",
+      "title": "BẢNG KÊ CHI TIẾT CÁ NHÂN CHO THUÊ BẤT ĐỘNG SẢN"
+    },
+    {
+      "code": "02-CNKD-TNCN-QTT",
+      "title": "TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN"
+    },
+    {
+      "code": "02-TB-DDKD",
+      "title": "THÔNG BÁO"
+    }
+  ],
+  "tt69": [
+    {
+      "code": "PL1",
+      "title": "NHÓM HÀNG HÓA, DỊCH VỤ THUỘC ĐỐI TƯỢNG ÁP DỤNGTHEO TỶ LỆ % ĐỂ TÍNH THUẾ GIÁ TRỊ GIA TĂNG"
+    },
+    {
+      "code": "PL2",
+      "title": "CÁCH XÁC ĐỊNH SỐ THUẾ ĐƯỢC HOÀN ĐỐI VỚI HÀNG HÓA, DỊCH VỤ XUẤT KHẨU"
+    },
+    {
+      "code": "PL3",
+      "title": "Phụ lục III"
+    }
+  ],
+  "tt158": [
+    {
+      "code": "01a-DNHT",
+      "title": "GIẤY ĐỀ NGHỊ"
+    }
+  ],
+  "tt20": [
+    {
+      "code": "01-TNDN",
+      "title": "BIÊN BẢN XÁC NHẬN KHOẢN TÀI TRỢ"
+    },
+    {
+      "code": "02-TNDN",
+      "title": "BẢNG KÊ THU MUA HÀNG HÓA, DỊCH VỤ KHÔNG CÓ HÓA ĐƠN"
+    }
+  ],
+  "tt06": [
+    {
+      "code": "01-TXNK",
+      "title": "Thông báo tiền thuế, tiền chậm nộp, tiền phạt còn thiếu"
+    },
+    {
+      "code": "02-TXNK",
+      "title": "Công văn đề nghị gia hạn nộp tiền thuế, tiền chậm nộp, tiền phạt"
+    },
+    {
+      "code": "03-TXNK",
+      "title": "Công văn đề nghị hoàn thuế"
+    },
+    {
+      "code": "04-TXNK",
+      "title": "Thông báo tiếp nhận/không tiếp nhận hồ sơ/thu hồi số tiền thuế đã hoàn"
+    },
+    {
+      "code": "05-TXNK",
+      "title": "Thông báo bổ sung/chuyển loại hồ sơ"
+    },
+    {
+      "code": "06-TXNK",
+      "title": "Thông báo về việc không được miễn thuế/giảm thuế/hoàn thuế/không thu thuế/xử lý tiền thuế, tiền chậm nộp, tiền phạt nộp thừa/..."
+    },
+    {
+      "code": "07-TXNK",
+      "title": "Quyết định kiểm tra tại trụ sở người nộp thuế"
+    },
+    {
+      "code": "08-TXNK",
+      "title": "Biên bản công bố Quyết định kiểm tra"
+    },
+    {
+      "code": "09-TXNK",
+      "title": "Quyết định gia hạn thời hạn kiểm tra tại trụ sở người nộp thuế"
+    },
+    {
+      "code": "10-TXNK",
+      "title": "Biên bản kiểm tra tại trụ sở người nộp thuế"
+    },
+    {
+      "code": "11-TXNK",
+      "title": "Kết luận kiểm tra tại trụ sở người nộp thuế"
+    },
+    {
+      "code": "12-TXNK",
+      "title": "Biên bản làm việc về việc giải trình, bổ sung thông tin, tài liệu"
+    },
+    {
+      "code": "13-TXNK",
+      "title": "Quyết định hoàn thuế/không thu thuế đối với hàng hóa xuất khẩu, nhập khẩu"
+    },
+    {
+      "code": "14-TXNK",
+      "title": "Công văn đề nghị không thu thuế"
+    },
+    {
+      "code": "15-TXNK",
+      "title": "Công văn đề nghị giảm thuế xuất khẩu, nhập khẩu"
+    },
+    {
+      "code": "16-TXNK",
+      "title": "Công văn đề nghị xóa nợ tiền thuế, tiền chậm nộp, tiền phạt"
+    }
+  ],
+  "nd181": [
+    {
+      "code": "PL1",
+      "title": "TÀI NGUYÊN, KHOÁNG SẢN KHAI THÁC CHƯA CHẾ BIẾN THÀNH SẢN PHẨM KHÁC"
+    },
+    {
+      "code": "PL2",
+      "title": "TÀI NGUYÊN, KHOÁNG SẢN KHAI THÁC ĐÃ CHẾ BIẾN THÀNH SẢN PHẨM KHÁC"
+    },
+    {
+      "code": "PL3",
+      "title": "BẢNG KÊ HÀNG HÓA BÁN CHO KHÁCH XUẤT CẢNH TẠI KHU VỰC CÁCH LY, CỬA HÀNG MIỄN THUẾ"
+    },
+    {
+      "code": "PL4",
+      "title": "Phụ lục IV"
+    },
+    {
+      "code": "PL5",
+      "title": "XÁC ĐỊNH TỶ TRỌNG TRỊ GIÁ TÀI NGUYÊN, KHOÁNG SẢN VÀ CHI PHÍ NĂNG LƯỢNG TRÊN GIÁ THÀNH SẢN PHẨM"
+    }
+  ],
+  "nd144": [
+    {
+      "code": "PL1",
+      "title": "Phụ lục I"
+    },
+    {
+      "code": "PL2",
+      "title": "Phụ lục II"
+    }
+  ]
+}

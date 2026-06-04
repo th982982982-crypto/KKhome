@@ -68,14 +68,14 @@ export const DOCTYPE_BADGE: Record<DocType, string> = {
 type Taxon = { docType: DocType; categories: Category[]; hasForms?: boolean }
 export const DOC_TAXONOMY: Record<string, Taxon> = {
   // Chế độ kế toán
-  tt99: { docType: 'Thông tư', categories: ['Chế độ kế toán'] },
-  tt133: { docType: 'Thông tư', categories: ['Chế độ kế toán'] },
-  tt58: { docType: 'Thông tư', categories: ['Chế độ kế toán'] },
-  tt152: { docType: 'Thông tư', categories: ['Chế độ kế toán', 'HKD, CNKD'] },
+  tt99: { docType: 'Thông tư', categories: ['Chế độ kế toán'], hasForms: true },
+  tt133: { docType: 'Thông tư', categories: ['Chế độ kế toán'], hasForms: true },
+  tt58: { docType: 'Thông tư', categories: ['Chế độ kế toán'], hasForms: true },
+  tt152: { docType: 'Thông tư', categories: ['Chế độ kế toán', 'HKD, CNKD'], hasForms: true },
   // Thuế TNDN
   'luat-67': { docType: 'Luật', categories: ['Thuế TNDN'] },
   nd320: { docType: 'Nghị định', categories: ['Thuế TNDN'] },
-  tt20: { docType: 'Thông tư', categories: ['Thuế TNDN'] },
+  tt20: { docType: 'Thông tư', categories: ['Thuế TNDN'], hasForms: true },
   // Thuế GTGT
   'luat-48': { docType: 'Luật', categories: ['Thuế GTGT'] },
   'luat-149': { docType: 'Luật', categories: ['Thuế GTGT'] },
@@ -95,7 +95,7 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   nd18: { docType: 'Nghị định', categories: ['Thuế XNK'] },
   nd182: { docType: 'Nghị định', categories: ['Thuế XNK'] },
   tt39: { docType: 'Thông tư', categories: ['Thuế XNK'] },
-  tt06: { docType: 'Thông tư', categories: ['Thuế XNK'] },
+  tt06: { docType: 'Thông tư', categories: ['Thuế XNK'], hasForms: true },
   // Quản lý thuế
   'luat-108': { docType: 'Luật', categories: ['Quản lý thuế'] },
   'luat-38': { docType: 'Luật', categories: ['Quản lý thuế'] },

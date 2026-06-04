@@ -158,5 +158,117 @@
       "pl": "Phụ lục II",
       "note": ""
     }
+  ],
+  "tt20": [
+    {
+      "code": "01-TNDN",
+      "title": "BIÊN BẢN XÁC NHẬN KHOẢN TÀI TRỢ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "02-TNDN",
+      "title": "BẢNG KÊ THU MUA HÀNG HÓA, DỊCH VỤ KHÔNG CÓ HÓA ĐƠN",
+      "pl": "",
+      "note": ""
+    }
+  ],
+  "tt06": [
+    {
+      "code": "01-TXNK",
+      "title": "Thông báo tiền thuế, tiền chậm nộp, tiền phạt còn thiếu",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "02-TXNK",
+      "title": "Công văn đề nghị gia hạn nộp tiền thuế, tiền chậm nộp, tiền phạt",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "03-TXNK",
+      "title": "Công văn đề nghị hoàn thuế",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "04-TXNK",
+      "title": "Thông báo tiếp nhận/không tiếp nhận hồ sơ/thu hồi số tiền thuế đã hoàn",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "05-TXNK",
+      "title": "Thông báo bổ sung/chuyển loại hồ sơ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "06-TXNK",
+      "title": "Thông báo về việc không được miễn thuế/giảm thuế/hoàn thuế/không thu thuế/xử lý tiền thuế, tiền chậm nộp, tiền phạt nộp thừa/...",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "07-TXNK",
+      "title": "Quyết định kiểm tra tại trụ sở người nộp thuế",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "08-TXNK",
+      "title": "Biên bản công bố Quyết định kiểm tra",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "09-TXNK",
+      "title": "Quyết định gia hạn thời hạn kiểm tra tại trụ sở người nộp thuế",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "10-TXNK",
+      "title": "Biên bản kiểm tra tại trụ sở người nộp thuế",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "11-TXNK",
+      "title": "Kết luận kiểm tra tại trụ sở người nộp thuế",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "12-TXNK",
+      "title": "Biên bản làm việc về việc giải trình, bổ sung thông tin, tài liệu",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "13-TXNK",
+      "title": "Quyết định hoàn thuế/không thu thuế đối với hàng hóa xuất khẩu, nhập khẩu",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "14-TXNK",
+      "title": "Công văn đề nghị không thu thuế",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "15-TXNK",
+      "title": "Công văn đề nghị giảm thuế xuất khẩu, nhập khẩu",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "16-TXNK",
+      "title": "Công văn đề nghị xóa nợ tiền thuế, tiền chậm nộp, tiền phạt",
+      "pl": "",
+      "note": ""
+    }
   ]
 }

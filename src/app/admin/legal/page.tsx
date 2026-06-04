@@ -45,7 +45,7 @@ export default async function AdminLegalPage({
       <div className="flex gap-1 border-b border-gray-200 dark:border-gray-800 mb-6">
         {[
           { key: 'access', label: 'Phân quyền', icon: Users },
-          { key: 'forms', label: 'Biểu mẫu TT99', icon: FileDown },
+          { key: 'forms', label: 'Biểu mẫu', icon: FileDown },
         ].map(({ key, label, icon: Icon }) => (
           <a
             key={key}
@@ -74,7 +74,7 @@ export default async function AdminLegalPage({
       {tab === 'forms' && (
         <>
           <p className="text-gray-500 dark:text-gray-400 mb-6">
-            Upload phiên bản mới của biểu mẫu TT99 (sẽ ghi đè link tải của người dùng)
+            Quản lý biểu mẫu của tất cả văn bản — chọn văn bản rồi upload phiên bản mới (sẽ ghi đè link tải của người dùng)
           </p>
           <FormsManager />
         </>
