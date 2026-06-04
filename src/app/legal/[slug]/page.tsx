@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { LEGAL_DOCS, getDocBySlug } from '@/lib/legal/registry'
+import { buildCatalog } from '@/lib/legal/catalog'
 import { LegalViewer } from '@/components/legal/legal-viewer'
 
 export function generateStaticParams() {
@@ -17,5 +18,7 @@ export default async function LegalDocPage({
   const doc = getDocBySlug(slug)
   if (!doc) notFound()
 
-  return <LegalViewer currentSlug={slug} allDocs={LEGAL_DOCS} anchor={anchor} />
+  const catalog = buildCatalog(LEGAL_DOCS)
+
+  return <LegalViewer currentSlug={slug} allDocs={LEGAL_DOCS} catalog={catalog} anchor={anchor} />
 }
