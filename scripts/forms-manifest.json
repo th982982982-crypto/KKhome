@@ -270,5 +270,517 @@
       "pl": "",
       "note": ""
     }
+  ],
+  "tt133": [
+    {
+      "code": "B01a-DNN",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "B01b-DNN",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "B01-DNNKLT",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "B02-DNN",
+      "title": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "B03-DNN",
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "B03-DNN-2",
+      "title": "BÁO CÁO LƯU CHUYỂN TIỀN TỆ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "B09-DNN",
+      "title": "BẢN THUYẾT MINH BÁO CÁO TÀI CHÍNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "B09-DNNKLT",
+      "title": "BẢN THUYẾT MINH BÁO CÁO TÀI CHÍNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "B01-DNSN",
+      "title": "BÁO CÁO TÌNH HÌNH TÀI CHÍNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "B02-DNSN",
+      "title": "BÁO CÁO KẾT QUẢ HOẠT ĐỘNG KINH DOANH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "B09-DNSN",
+      "title": "BẢN THUYẾT MINH BÁO CÁO TÀI CHÍNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "F01-DNN",
+      "title": "BẢNG CÂN ĐỐI TÀI KHOẢN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01a-LDTL",
+      "title": "BẢNG CHẤM CÔNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01b-LDTL",
+      "title": "BẢNG CHẤM CÔNG LÀM THÊM GIỜ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "02-LDTL",
+      "title": "BẢNG THANH TOÁN TIỀN LƯƠNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "03-LDTL",
+      "title": "BẢNG THANH TOÁN TIỀN THƯỞNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "04-LDTL",
+      "title": "GIẤY ĐI ĐƯỜNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "05-LDTL",
+      "title": "PHIẾU XÁC NHẬN SẢN PHẨM HOẶC CÔNG VIỆC HOÀN THÀNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "06-LDTL",
+      "title": "BẢNG THANH TOÁN TIỀN LÀM THÊM GIỜ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "07-LDTL",
+      "title": "07-LDTL",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "08-LDTL",
+      "title": "HỢP ĐỒNG GIAO KHOÁN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "09-LDTL",
+      "title": "BIÊN BẢN THANH LÝ (NGHIỆM THU) HỢP ĐỒNG GIAO KHOÁN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "10-LDTL",
+      "title": "BẢNG KÊ TRÍCH NỘP CÁC KHOẢN THEO LƯƠNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "11-LDTL",
+      "title": "BẢNG PHÂN BỔ TIỀN LƯƠNG VÀ BẢO HIỂM XÃ HỘI",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-VT",
+      "title": "PHIẾU NHẬP KHO",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "02-VT",
+      "title": "PHIẾU XUẤT KHO",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "03-VT",
+      "title": "BIÊN BẢN KIỂM NGHIỆM",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "04-VT",
+      "title": "PHIẾU BÁO VẬT TƯ CÒN LẠI CUỐI KỲ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "05-VT",
+      "title": "BIÊN BẢN KIỂM KÊ VẬT TƯ, CÔNG CỤ, SẢN PHẨM, HÀNG HÓA",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "06-VT",
+      "title": "BẢNG KÊ MUA HÀNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "07-VT",
+      "title": "BẢNG PHÂN BỔ NGUYÊN LIỆU, VẬT LIỆU CÔNG CỤ, DỤNG CỤ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-BH",
+      "title": "BẢNG THANH TOÁN HÀNG ĐẠI LÝ, KÝ GỬI",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "02-BH",
+      "title": "THẺ QUẦY HÀNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-TT",
+      "title": "PHIẾU THU",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "02-TT",
+      "title": "PHIẾU CHI",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "03-TT",
+      "title": "GIẤY ĐỀ NGHỊ TẠM ỨNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "04-TT",
+      "title": "GIẤY THANH TOÁN TIỀN TẠM ỨNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "05-TT",
+      "title": "GIẤY ĐỀ NGHỊ THANH TOÁN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "06-TT",
+      "title": "BIÊN LAI THU TIỀN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "07-TT",
+      "title": "BẢNG KÊ VÀNG BẠC, KIM KHÍ QUÝ, ĐÁ QUÝ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "08a-TT",
+      "title": "08a-TT",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "08b-TT",
+      "title": "BẢNG KIỂM KÊ VÀNG BẠC, KIM KHÍ QUÝ, ĐÁ QUÝ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "09-TT",
+      "title": "BẢNG KÊ CHI TIỀN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "01-TSCD",
+      "title": "BIÊN BẢN GIAO NHẬN TSCĐ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "02-TSCD",
+      "title": "BIÊN BẢN THANH LÝ TSCĐ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "03-TSCD",
+      "title": "BIÊN BẢN BÀN GIAO TSCĐ SỬA CHỮA LỚN HOÀN THÀNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "04-TSCD",
+      "title": "BIÊN BẢN ĐÁNH GIÁ LẠI TSCĐ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "05-TSCD",
+      "title": "BIÊN BẢN KIỂM KÊ TÀI SẢN CỐ ĐỊNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "06-TSCD",
+      "title": "BẢNG TÍNH VÀ PHÂN BỔ KHẤU HAO TSCĐ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S01-DNN",
+      "title": "NHẬT KÝ - SỔ CÁI",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S02a-DNN",
+      "title": "CHỨNG TỪ GHI SỔ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S02b-DNN",
+      "title": "SỐ ĐĂNG KÝ CHỨNG TỪ GHI SỔ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S02c1-DNN",
+      "title": "SỔ CÁI",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S02c2-DNN",
+      "title": "SỔ CÁI",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S03a-DNN",
+      "title": "SỔ NHẬT KÝ CHUNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S03a1-DNN",
+      "title": "SỔ NHẬT KÝ THU TIỀN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S03a2-DNN",
+      "title": "SỔ NHẬT KÝ CHI TIỀN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S03a3-DNN",
+      "title": "SỔ NHẬT KÝ MUA HÀNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S03a4-DNN",
+      "title": "SỔ NHẬT KÝ BÁN HÀNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S03b-DNN",
+      "title": "SỔ CÁI",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S04a-DNN",
+      "title": "SỔ QUỸ TIỀN MẶT",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S04b-DNN",
+      "title": "SỔ KẾ TOÁN CHI TIẾT QUỸ TIỀN MẶT",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S05-DNN",
+      "title": "SỔ TIỀN GỬI NGÂN HÀNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S06-DNN",
+      "title": "SỔ CHI TIẾT VẬT LIỆU, DỤNG CỤ (SẢN PHẨM, HÀNG HÓA)",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S07-DNN",
+      "title": "BẢNG TỔNG HỢP CHI TIẾT",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S08-DNN",
+      "title": "THẺ KHO (SỔ KHO)",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S09-DNN",
+      "title": "SỔ TÀI SẢN CỐ ĐỊNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S10-DNN",
+      "title": "SỔ THEO DÕI TSCĐ VÀ CÔNG CỤ, DỤNG CỤ TẠI NƠI SỬ DỤNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S11-DNN",
+      "title": "THẺ TÀI SẢN CỐ ĐỊNH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S12-DNN",
+      "title": "SỔ CHI TIẾT THANH TOÁN VỚI NGƯỜI MUA (NGƯỜI BÁN)",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S13-DNN",
+      "title": "SỔ CHI TIẾT THANH TOÁN VỚI NGƯỜI MUA (NGƯỜI BÁN) BẰNG NGOẠI TỆ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S14-DNN",
+      "title": "SỔ THEO DÕI THANH TOÁN BẰNG NGOẠI TỆ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S15-DNN",
+      "title": "SỔ CHI TIẾT TIỀN VAY",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S16-DNN",
+      "title": "SỔ CHI TIẾT BÁN HÀNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S17-DNN",
+      "title": "SỔ CHI PHÍ SẢN XUẤT, KINH DOANH",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S18-DNN",
+      "title": "THẺ TÍNH GIÁ THÀNH SẢN PHẨM, DỊCH VỤ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S19-DNN",
+      "title": "SỔ CHI TIẾT CÁC TÀI KHOẢN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S20-DNN",
+      "title": "SỔ CHI TIẾT PHÁT HÀNH CỔ PHIẾU",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S21-DNN",
+      "title": "SỔ CHI TIẾT CỔ PHIẾU QUỸ",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S22-DNN",
+      "title": "SỔ CHI TIẾT ĐẦU TƯ CHỨNG KHOÁN",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S23-DNN",
+      "title": "SỔ THEO DÕI CHI TIẾT VỐN GÓP CỦA CHỦ SỞ HỮU (TK 411)",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S24-DNN",
+      "title": "SỔ CHI PHÍ ĐẦU TƯ XÂY DỰNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S25-DNN",
+      "title": "SỔ THEO DÕI THUẾ GIÁ TRỊ GIA TĂNG",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S26-DNN",
+      "title": "SỔ CHI TIẾT THUẾ GIÁ TRỊ GIA TĂNG ĐƯỢC HOÀN LẠI",
+      "pl": "",
+      "note": ""
+    },
+    {
+      "code": "S27-DNN",
+      "title": "SỔ CHI TIẾT THUẾ GIÁ TRỊ GIA TĂNG ĐƯỢC MIỄN GIẢM",
+      "pl": "",
+      "note": ""
+    }
   ]
 }

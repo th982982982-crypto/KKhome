@@ -28,6 +28,8 @@ FORM_DOCS = {
  'tt20' : {'src': 'Thông-tư-20-2026-TT-BTC/Thông-tư-20-2026-TT-BTC.docx', 'short': 'TT20', 'mode': 'template'},
  # TT06: mẫu giấy xx/TXNK trong Phụ lục I (bỏ Phụ lục II = chỉ tiêu thông tin điện tử)
  'tt06' : {'src': 'scripts/.doc-cache/Thông-tư-06-2021-TT-BTC.docx', 'short': 'TT06', 'mode': 'mau-start', 'code_filter': r'TXNK', 'title_list': True},
+ # TT133: trích đầy đủ chứng từ + BCTC + TSCĐ + sổ kế toán (template 'Ban hành theo')
+ 'tt133': {'src': 'scripts/.doc-cache/Thông-tư-133-2016-TT-BTC.docx', 'short': 'TT133', 'mode': 'template'},
 }
 
 P, TBL = qn('w:p'), qn('w:tbl')
@@ -72,12 +74,22 @@ def detect_forms(blocks, want='auto', code_filter=None):
     pl_heads = [i for i, c in enumerate(blocks) if c.tag == P and PL.match(btext(c))]
 
     if want == 'template':
-        # Mẫu nằm ở cuối VB: block MỞ ĐẦU bằng 'Mẫu số …' và có 'kèm theo'
+        # Mẫu = block MỞ ĐẦU 'Mẫu số <mã>(Kèm theo|Ban hành …)'. Mã lấy tới dấu '(' hoặc hết dòng,
+        # hỗ trợ tiền tố chữ (B01a-DNN, S02c1-DNN) và dấu '-' có khoảng trắng (01a - LĐTL).
+        TPL = re.compile(r'^\s*M[aẫ]u\s*s[ốo]\s*[:\.]?\s*(.+?)\s*(?:\(|$)')
         for i, c in enumerate(blocks):
             t = btext(c)
-            m = MAU.search(t)
-            if m and MAU_START.match(t) and 'kèm theo' in t.lower():
-                anchors.append((i, norm_code(m.group(1)), 'mau'))
+            low = t.lower()
+            if not ('kèm theo' in low or 'ban hành' in low):
+                continue
+            m = TPL.match(t)
+            if not m:
+                continue
+            raw = m.group(1).strip()
+            # raw phải giống mã: có chữ số, ngắn (loại câu văn 'Mẫu số quy định tại…')
+            if len(raw) > 30 or not re.search(r'[0-9]', raw) or not re.match(r'^[0-9A-Za-zĐ]', raw):
+                continue
+            anchors.append((i, norm_code(raw), 'mau'))
         mode = 'template'
     elif want == 'mau-start':
         # Mẫu trong các PHỤ LỤC: block MỞ ĐẦU bằng 'Mẫu số <code>' (không cần 'kèm theo')
