@@ -1,0 +1,74 @@
+[
+  {
+    "id": "nd70-amends-nd123",
+    "updatedAt": "2025-03-20",
+    "effectiveDate": "2025-06-01",
+    "summary": "Sửa đổi, bổ sung một số điều về hóa đơn điện tử, hóa đơn bán hàng",
+    "original":   { "slug": "nd123", "title": "NĐ 123/2020", "anchor": null },
+    "amendment":  { "slug": "nd70",  "title": "NĐ 70/2025",  "anchor": null }
+  },
+  {
+    "id": "nd182-amends-nd134",
+    "updatedAt": "2025-07-01",
+    "effectiveDate": "2025-07-01",
+    "summary": "Sửa đổi, bổ sung một số điều về thuế xuất khẩu, nhập khẩu",
+    "original":   { "slug": "nd134", "title": "NĐ 134/2016", "anchor": null },
+    "amendment":  { "slug": "nd182", "title": "NĐ 182/2025", "anchor": null }
+  },
+  {
+    "id": "nd144-amends-ndthue",
+    "updatedAt": "2026-06-20",
+    "effectiveDate": "2026-06-20",
+    "summary": "Sửa đổi, bổ sung một số Nghị định về thuế GTGT, TNDN, TNCN",
+    "original":   { "slug": "nd181", "title": "NĐ 181/2025", "anchor": null },
+    "amendment":  { "slug": "nd144", "title": "NĐ 144/2026", "anchor": null }
+  },
+  {
+    "id": "nd359-amends-ndthue",
+    "updatedAt": "2026-01-01",
+    "effectiveDate": "2026-01-01",
+    "summary": "Sửa đổi, bổ sung một số Nghị định về thuế",
+    "original":   { "slug": "nd181", "title": "NĐ 181/2025", "anchor": null },
+    "amendment":  { "slug": "nd359", "title": "NĐ 359/2025", "anchor": null }
+  },
+  {
+    "id": "luat149-amends-luat48",
+    "updatedAt": "2026-01-01",
+    "effectiveDate": "2026-01-01",
+    "summary": "Sửa đổi, bổ sung một số điều Luật Thuế GTGT",
+    "original":   { "slug": "luat-48",  "title": "Luật 48/2024",  "anchor": null },
+    "amendment":  { "slug": "luat-149", "title": "Luật 149/2025", "anchor": null }
+  },
+  {
+    "id": "luat09-amends-luat109",
+    "updatedAt": "2026-01-01",
+    "effectiveDate": "2026-01-01",
+    "summary": "Sửa đổi, bổ sung một số điều Luật Thuế TNCN và Luật Thuế GTGT",
+    "original":   { "slug": "luat-109", "title": "Luật 109/2025", "anchor": null },
+    "amendment":  { "slug": "luat-09",  "title": "Luật 09/2026",  "anchor": null }
+  },
+  {
+    "id": "nd18-amends-nd134",
+    "updatedAt": "2021-04-25",
+    "effectiveDate": "2021-04-25",
+    "summary": "Sửa đổi, bổ sung một số điều về thuế xuất nhập khẩu",
+    "original":   { "slug": "nd134", "title": "NĐ 134/2016", "anchor": null },
+    "amendment":  { "slug": "nd18",  "title": "NĐ 18/2021",  "anchor": null }
+  },
+  {
+    "id": "qd505-amends-qd595",
+    "updatedAt": "2020-03-27",
+    "effectiveDate": "2020-03-27",
+    "summary": "Sửa đổi, bổ sung Quy trình thu BHXH, BHYT, BHTN, TNLĐ-BNN",
+    "original":   { "slug": "qd595", "title": "QĐ 595/BHXH", "anchor": null },
+    "amendment":  { "slug": "qd505", "title": "QĐ 505/BHXH", "anchor": null }
+  },
+  {
+    "id": "nd105-replaces-nd191",
+    "updatedAt": "2026-05-16",
+    "effectiveDate": "2026-05-16",
+    "summary": "Thay thế toàn bộ NĐ 191/2013 về tài chính công đoàn",
+    "original":   { "slug": "nd191", "title": "NĐ 191/2013", "anchor": null },
+    "amendment":  { "slug": "nd105", "title": "NĐ 105/2026", "anchor": null }
+  }
+]

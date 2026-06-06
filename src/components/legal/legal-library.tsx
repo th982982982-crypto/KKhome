@@ -11,6 +11,7 @@ import {
   type CatalogDoc, type DocType,
 } from '@/lib/legal/catalog'
 import { LegalDocCard } from './legal-doc-card'
+import { LegalAmendments } from './legal-amendments'
 
 const CATEGORY_ICON: Record<string, LucideIcon> = {
   'Chế độ kế toán': BookOpen,
@@ -103,6 +104,9 @@ export function LegalLibrary({ catalog }: { catalog: CatalogDoc[] }) {
           )
         })}
       </div>
+
+      {/* Amendment feed */}
+      <LegalAmendments />
 
       {/* Search + filters */}
       <div className="sticky top-16 z-30 -mx-4 sm:mx-0 px-4 sm:px-0 py-3 mb-6 bg-gray-50/80 dark:bg-gray-950/80 backdrop-blur-md">
