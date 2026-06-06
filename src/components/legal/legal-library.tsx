@@ -7,7 +7,7 @@ import {
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import {
-  CATEGORY_META, CATEGORY_ORDER, DOCTYPE_ORDER, computeStats, groupByCategory,
+  CATEGORY_META, CATEGORY_ORDER, DOCTYPE_ORDER, REGISTRY_UPDATED_AT, computeStats, groupByCategory,
   type CatalogDoc, type DocType,
 } from '@/lib/legal/catalog'
 import { LegalDocCard } from './legal-doc-card'
@@ -68,7 +68,7 @@ export function LegalLibrary({ catalog }: { catalog: CatalogDoc[] }) {
     { label: 'Nghị định', value: stats.byDocType['Nghị định'] ?? 0, icon: Landmark, gradient: 'from-sky-100 to-cyan-50 dark:from-sky-950/50 dark:to-cyan-950/30', iconColor: 'text-sky-600 dark:text-sky-400' },
     { label: 'Thông tư', value: stats.byDocType['Thông tư'] ?? 0, icon: BookOpen, gradient: 'from-violet-100 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/30', iconColor: 'text-violet-600 dark:text-violet-400' },
     { label: 'Có biểu mẫu', value: stats.withForms, icon: FileText, gradient: 'from-pink-100 to-rose-50 dark:from-pink-950/50 dark:to-rose-950/30', iconColor: 'text-pink-600 dark:text-pink-400' },
-    { label: 'Mới nhất', value: formatDate(stats.latestEffectiveDate), icon: CalendarDays, gradient: 'from-amber-100 to-orange-50 dark:from-amber-950/50 dark:to-orange-950/30', iconColor: 'text-amber-600 dark:text-amber-400' },
+    { label: 'Cập nhật', value: formatDate(REGISTRY_UPDATED_AT), icon: CalendarDays, gradient: 'from-amber-100 to-orange-50 dark:from-amber-950/50 dark:to-orange-950/30', iconColor: 'text-amber-600 dark:text-amber-400' },
   ]
 
   return (

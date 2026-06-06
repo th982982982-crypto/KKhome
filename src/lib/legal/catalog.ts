@@ -3,6 +3,9 @@
 // catalog.ts chỉ chứa taxonomy + helper thuần để client (lọc, nhóm, thống kê) dùng được.
 import type { LegalDoc } from './registry'
 
+// Cập nhật mỗi khi thêm/sửa văn bản mới vào registry
+export const REGISTRY_UPDATED_AT = '2026-06-06'
+
 export type DocType =
   | 'Luật'
   | 'Nghị định'
