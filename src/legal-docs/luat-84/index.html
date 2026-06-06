@@ -1,0 +1,152 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Luật 84/2015 — An toàn, vệ sinh lao động</title>
+<style>
+:root{--pr:#1e40af;--pr2:#0ea5e9;--bg:#f0f4f8;--card:#fff;--tx:#1e293b;--mu:#64748b;--bd:#e2e8f0;--sw:300px}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--tx);font-size:14px}
+.tb{position:fixed;top:0;left:0;right:0;height:56px;background:linear-gradient(90deg,#1e3a8a,#0ea5e9);display:flex;align-items:center;gap:14px;padding:0 16px;z-index:90;color:#fff}
+.tb-logo{font-weight:800;font-size:15px;line-height:1.1}.tb-logo small{display:block;font-weight:500;font-size:11px;opacity:.85}
+.tb-search{flex:1;max-width:340px;display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);border-radius:8px;padding:6px 10px}
+.tb-search input{flex:1;border:0;background:transparent;color:#fff;outline:none;font-size:13px}.tb-search input::placeholder{color:rgba(255,255,255,.7)}
+.tabs{display:flex;gap:6px;margin-left:auto}.tab{border:0;background:rgba(255,255,255,.14);color:#fff;padding:6px 12px;border-radius:8px;cursor:pointer;font-size:13px}
+.tab.on{background:#fff;color:#1e3a8a;font-weight:700}
+.wrap{display:flex;padding-top:56px;min-height:100vh}
+.sb{width:var(--sw);position:fixed;top:56px;bottom:0;left:0;overflow-y:auto;background:#fff;border-right:1px solid var(--bd);padding:8px 0}
+.ns{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:#1e40af;padding:10px 14px 4px;position:sticky;top:0;background:#fff}
+.nm{font-size:11px;font-style:italic;color:var(--mu);padding:4px 16px}
+.ni{display:flex;align-items:flex-start;gap:7px;font-size:12.5px;padding:6px 14px;cursor:pointer;border-left:3px solid transparent;color:#334155}
+.ni:hover{background:#f1f5f9}.ni.on{background:#eff6ff;border-left-color:#1e40af;color:#1e3a8a;font-weight:700}
+.ni .dot{width:6px;height:6px;border-radius:50%;background:#94a3b8;margin-top:5px;flex:none}.ni.on .dot{background:#1e40af}
+.main{margin-left:var(--sw);flex:1;padding:22px 28px;max-width:920px}
+.sec{display:none}.sec.on{display:block}
+.bc{font-size:11.5px;color:var(--mu);margin-bottom:8px}
+.at{font-size:20px;font-weight:800;color:#1e3a8a;margin:0 0 14px}
+.ac{font-size:14px;line-height:1.78}.ac p{margin:0 0 10px}
+.ct{border-collapse:collapse;width:100%;margin:10px 0;font-size:13px}
+.ct th,.ct td{border:1px solid var(--bd);padding:6px 9px;text-align:left;vertical-align:top}.ct th{background:#eff6ff;font-weight:700}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin:16px 0}
+.sc{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:14px}.sc b{font-size:22px;color:#1e40af;display:block}.sc span{font-size:12px;color:var(--mu)}
+.db{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 14px;margin:14px 0;font-size:13.5px;line-height:1.7}
+.tag{display:inline-block;font-size:11px;background:#dbeafe;color:#1e40af;border-radius:14px;padding:3px 10px;margin:3px 4px 0 0}
+.hint{color:var(--mu);font-style:italic;padding:40px 8px}
+h1.ht{font-size:22px;color:#1e3a8a;margin:0 0 6px}
+.form-row{display:flex;align-items:center;gap:10px;padding:9px 4px;border-bottom:1px solid var(--bd);flex-wrap:wrap}
+.form-code{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;color:#1e40af;background:#eff6ff;border-radius:6px;padding:2px 8px;min-width:96px;text-align:center}
+.form-title{flex:1;font-size:13.5px;min-width:200px}
+.form-note{font-size:11.5px;color:var(--mu);font-style:italic;width:100%}
+.dl-grp{display:flex;gap:6px}
+.dl-btn{font-size:12px;border:1px solid #c7d2fe;background:#eef2ff;color:#3730a3;border-radius:7px;padding:4px 10px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.dl-btn.dl-x{border-color:#bbf7d0;background:#ecfdf5;color:#047857}
+.dl-btn:hover{filter:brightness(.97)}.dl-btn.loading{opacity:.6;pointer-events:none}
+.sp{display:inline-block;width:10px;height:10px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .6s linear infinite;vertical-align:-1px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style></head>
+<body>
+<div class="tb">
+  <div class="tb-logo">Luật 84/2015<small>An toàn, vệ sinh lao động</small></div>
+  <div class="tb-search">🔍<input id="q" placeholder="Tìm điều khoản..." oninput="search(this.value)"></div>
+  <div class="tabs">
+    <button class="tab on" id="tab-main" onclick="tab('main',this)">📖 Nội dung</button>
+
+    <button class="tab" id="tab-home" onclick="tab('home',this)">🏛️ Tổng quan</button>
+  </div>
+</div>
+<div class="wrap">
+  <div class="sb" id="sb"></div>
+  <div class="main">
+    <div class="sec on" id="s-main"><div id="av" class="hint">← Chọn điều khoản từ danh sách bên trái</div></div>
+
+    <div class="sec" id="s-home"></div>
+  </div>
+</div>
+<script id="LD" type="application/json">{"meta":{"title":"Luật 84/2015/QH13 — Luật An toàn, vệ sinh lao động","shortCode":"Luật 84/2015","subtitle":"An toàn, vệ sinh lao động","slug":"luat-84","effectiveDate":"01/07/2016","scope":"","description":"An toàn, vệ sinh lao động","related":[]},"outline":[]}</script>
+<script>
+var D=JSON.parse(document.getElementById('LD').textContent);
+var cur=null;
+function e(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function fmtPara(t){
+  var x=e(t).replace(/\n/g,'<br>');
+  // đậm tiền tố "1." / "a)" / "Điều N."
+  x=x.replace(/^(\d+\.|[a-zđ]\)|Điều\s+\d+\.)/,'<strong>$1</strong>');
+  return x;
+}
+function renderContent(content,q){
+  var h='';
+  (content||[]).forEach(function(b){
+    if(b.k==='tbl'){
+      h+='<table class="ct">';
+      (b.rows||[]).forEach(function(r,ri){
+        h+='<tr>';
+        r.forEach(function(c){var tag=ri===0?'th':'td';h+='<'+tag+'>'+e(c).replace(/\n/g,'<br>')+'</'+tag+'>';});
+        h+='</tr>';
+      });
+      h+='</table>';
+    } else {
+      h+='<p>'+fmtPara(b.t||'')+'</p>';
+    }
+  });
+  return h;
+}
+function buildSb(filter){
+  filter=(filter||'').toLowerCase().trim();
+  var sb=document.getElementById('sb'),h='',lastC='',lastM='';
+  (D.outline||[]).forEach(function(a){
+    if(filter){
+      var hay=((a.title||'')+' '+(a.content||[]).map(function(b){return b.t||''}).join(' ')).toLowerCase();
+      if(hay.indexOf(filter)<0)return;
+    }
+    if((a.chuong||'')!==lastC){lastC=a.chuong||'';lastM='';if(lastC)h+='<div class="ns">'+e(lastC)+'</div>';}
+    if((a.muc||'')!==lastM){lastM=a.muc||'';if(lastM)h+='<div class="nm">'+e(lastM)+'</div>';}
+    h+='<div class="ni'+(a.id===cur?' on':'')+'" data-id="'+a.id+'" onclick="show(\''+a.id+'\')"><span class="dot"></span><span>'+e(a.code)+(a.shortTitle?'. '+e(a.shortTitle):'')+'</span></div>';
+  });
+  sb.innerHTML=h||'<div class="hint" style="padding:14px">Không có kết quả.</div>';
+}
+function show(id){
+  var a=null,o=D.outline||[];
+  for(var i=0;i<o.length;i++){if(o[i].id===id){a=o[i];break;}}
+  if(!a)return;
+  cur=id;
+  tab('main',document.getElementById('tab-main'));
+  buildSb(document.getElementById('q').value);
+  var bc=[a.chuong,a.muc,a.code].filter(Boolean).map(e).join(' › ');
+  var h='<div class="bc">'+bc+'</div><div class="at">'+e(a.title)+'</div>';
+  h+='<div class="ac">'+applyDetails(id,autolink(renderContent(a.content,'')))+'</div>';
+  h+=renderRefs(id);
+  document.getElementById('av').className='';
+  document.getElementById('av').innerHTML=h;
+  var n=document.querySelector('.ni[data-id="'+id+'"]');if(n)n.scrollIntoView({block:'nearest'});
+  if(history.replaceState)history.replaceState(null,'','#'+id);
+}
+function search(v){buildSb(v);}
+function tab(t,btn){
+  document.querySelectorAll('.sec').forEach(function(s){s.classList.remove('on')});
+  document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on')});
+  document.getElementById('s-'+t).classList.add('on');
+  if(btn)btn.classList.add('on');
+  if(t==='home')buildHome();
+  if(t==='forms'&&typeof buildForms==='function')buildForms();
+}
+function buildHome(){
+  var m=D.meta||{},o=D.outline||[];
+  var chs={};o.forEach(function(a){if(a.chuong)chs[a.chuong]=1});
+  var h='<h1 class="ht">'+e(m.title||'')+'</h1>';
+  if(m.scope)h+='<p style="color:#475569">'+e(m.scope)+'</p>';
+  h+='<div class="hgrid">';
+  h+='<div class="sc"><b>'+o.length+'</b><span>Điều</span></div>';
+  h+='<div class="sc"><b>'+Object.keys(chs).length+'</b><span>Chương</span></div>';
+  if(m.effectiveDate)h+='<div class="sc"><b style="font-size:15px">'+e(m.effectiveDate)+'</b><span>Hiệu lực</span></div>';
+  h+='</div>';
+  if(m.description)h+='<div class="db">'+e(m.description)+'</div>';
+  if(m.related&&m.related.length){h+='<div style="margin-top:10px">';m.related.forEach(function(r){h+='<span class="tag">'+e(r)+'</span>'});h+='</div>';}
+  document.getElementById('s-home').innerHTML=h;
+}
+
+function initHash(){
+  var id=(location.hash||'').replace('#','');
+  var ok=(D.outline||[]).some(function(a){return a.id===id});
+  buildSb('');
+  if(ok)show(id);else if((D.outline||[]).length)show(D.outline[0].id);
+}
+initHash();
+</script>
+</body></html>

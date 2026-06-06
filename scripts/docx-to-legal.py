@@ -54,6 +54,36 @@ DOCS = {
               'Thông tư 06/2021/TT-BTC — Hướng dẫn thi hành về quản lý thuế đối với hàng hóa XNK'),
  'tt39'    : ('Thông-tư-39-2018-TT-BTC.docx', 'TT 39/2018', 'Sửa đổi TT 38/2015 (thủ tục hải quan)',
               'Thông tư 39/2018/TT-BTC — Sửa đổi, bổ sung TT 38/2015 về thủ tục hải quan'),
+ # ----- Chum Lao động / BHXH / Công đoàn -----
+ 'blld-45' : ('Bộ-luật-45-2019-QH14.docx', 'BLLD 45/2019', 'Bộ Luật Lao động',
+              'Bộ luật 45/2019/QH14 — Bộ Luật Lao động'),
+ 'luat-84' : ('Luật-84-2015-QH13.doc', 'Luật 84/2015', 'An toàn, vệ sinh lao động',
+              'Luật 84/2015/QH13 — Luật An toàn, vệ sinh lao động'),
+ 'luat-74' : ('Luật-74-2025-QH15.docx', 'Luật 74/2025', 'Việc làm',
+              'Luật 74/2025/QH15 — Luật Việc làm'),
+ 'luat-41' : ('Luật-41-2024-QH15.docx', 'Luật 41/2024', 'Bảo hiểm xã hội',
+              'Luật 41/2024/QH15 — Luật Bảo hiểm xã hội'),
+ 'luat-25' : ('Luật-25-2008-QH12.doc', 'Luật 25/2008', 'Bảo hiểm y tế',
+              'Luật 25/2008/QH12 — Luật Bảo hiểm y tế'),
+ 'luat-50' : ('Luật-50-2024-QH15.docx', 'Luật 50/2024', 'Công đoàn',
+              'Luật 50/2024/QH15 — Luật Công đoàn'),
+ 'nd293'   : ('Nghị-định-293-2025-NĐ-CP.docx', 'NĐ 293/2025', 'Lương tối thiểu vùng',
+              'Nghị định 293/2025/NĐ-CP — Mức lương tối thiểu đối với người lao động'),
+ 'nd145'   : ('Nghị-định-145-2020-NĐ-CP.docx', 'NĐ 145/2020', 'Hướng dẫn Bộ Luật Lao động',
+              'Nghị định 145/2020/NĐ-CP — Hướng dẫn thi hành Bộ luật Lao động về điều kiện LĐ'),
+ 'nd191'   : ('Nghị-định-191-2013-NĐ-CP.doc', 'NĐ 191/2013', 'Tài chính công đoàn (cũ)',
+              'Nghị định 191/2013/NĐ-CP — Quy định chi tiết về tài chính công đoàn'),
+ 'nd105'   : ('Nghị-định-105-2026-NĐ-CP.docx', 'NĐ 105/2026', 'Tài chính công đoàn',
+              'Nghị định 105/2026/NĐ-CP — Hướng dẫn thi hành Luật Công đoàn về tài chính công đoàn'),
+ 'qd595'   : ('Quyết-định-595-QĐ-BHXH.doc', 'QĐ 595/BHXH', 'Quy trình thu BHXH, BHYT, BHTN',
+              'Quyết định 595/QĐ-BHXH — Ban hành Quy trình thu BHXH, BHYT, BHTN, TNLĐ-BNN'),
+ 'qd505'   : ('Quyết-định-505-QĐ-BHXH.docx', 'QĐ 505/BHXH', 'Sửa đổi Quy trình thu BHXH',
+              'Quyết định 505/QĐ-BHXH — Sửa đổi, bổ sung Quy trình thu BHXH, BHYT, BHTN'),
+ # ----- Chum Hóa đơn / Chứng từ -----
+ 'nd123'   : ('Nghị-định-123-2020-NĐ-CP.docx', 'NĐ 123/2020', 'Hóa đơn, chứng từ',
+              'Nghị định 123/2020/NĐ-CP — Quy định về hóa đơn, chứng từ'),
+ 'nd70'    : ('Nghị-định-70-2025-NĐ-CP.docx', 'NĐ 70/2025', 'Sửa đổi NĐ 123/2020 về hóa đơn',
+              'Nghị định 70/2025/NĐ-CP — Sửa đổi, bổ sung NĐ 123/2020 về hóa đơn, chứng từ'),
 }
 
 # Ngày hiệu lực chuẩn (override khi parser không bắt được)
@@ -63,6 +93,12 @@ EFF = {
  'nd144':'20/06/2026','nd359':'01/01/2026','tt69':'01/07/2025','tt18':'05/03/2026',
  'luat-66':'01/01/2026','nd360':'01/01/2026','tt158':'01/01/2026',
  'nd134':'01/09/2016','nd18':'25/04/2021','nd182':'01/07/2025','tt06':'08/03/2021','tt39':'05/06/2018',
+ # Lao động / BHXH / CĐ
+ 'blld-45':'01/01/2021','luat-84':'01/07/2016','luat-74':'01/07/2026','luat-41':'01/07/2025',
+ 'luat-25':'01/07/2009','luat-50':'01/07/2025','nd293':'01/01/2026','nd145':'01/02/2021',
+ 'nd191':'21/11/2013','nd105':'31/03/2026','qd595':'01/05/2017','qd505':'27/03/2020',
+ # Hóa đơn / Chứng từ
+ 'nd123':'01/07/2022','nd70':'20/03/2025',
 }
 
 # Cache .docx convert từ .doc (textutil, macOS)

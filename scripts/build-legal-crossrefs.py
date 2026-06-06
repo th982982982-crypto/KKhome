@@ -232,6 +232,11 @@ patch_luat67()
 for _slug in ('luat-48','luat-149','luat-109','luat-09','luat-108','luat-38',
               'nd181','nd68','nd144','nd359','tt69','tt18',
               'luat-66','nd360','tt158',
-              'nd134','nd18','nd182','tt06','tt39'):
+              'nd134','nd18','nd182','tt06','tt39',
+              # Lao động / BHXH / Công đoàn
+              'blld-45','luat-74','luat-41','luat-25','luat-50',
+              'nd145','nd293','nd191','nd105','qd595','qd505',
+              # Hóa đơn / Chứng từ
+              'nd123','nd70'):
     patch_json_app(_slug, dark=False, escaper='e', nav='show', before_func='function show(')
 print("Done.")
