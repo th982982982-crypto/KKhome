@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
-import { Loader2, Save, ExternalLink } from 'lucide-react'
+import { Loader2, Save, ExternalLink, FileText } from 'lucide-react'
 import type { Policy } from '@/lib/supabase/types'
 
 const SLUG_ORDER = [
@@ -48,28 +48,29 @@ export function PoliciesEditor({ policies }: { policies: Policy[] }) {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
-      {/* Tab bar */}
-      <div className="flex overflow-x-auto border-b border-gray-100 dark:border-gray-800 scrollbar-none">
+    <div className="flex gap-5 items-start">
+      {/* Sidebar */}
+      <div className="w-56 shrink-0 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-2">
         {ordered.map(p => (
           <button
             key={p.slug}
             onClick={() => setActiveSlug(p.slug)}
-            className={`shrink-0 px-4 py-3 text-sm font-semibold transition-colors border-b-2 -mb-px whitespace-nowrap
+            className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium text-left transition-colors
               ${activeSlug === p.slug
-                ? 'border-gray-900 dark:border-white text-gray-900 dark:text-white'
-                : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50'
+                ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900'
+                : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
           >
-            {p.title}
+            <FileText className="w-3.5 h-3.5 shrink-0" />
+            <span className="leading-snug">{p.title}</span>
           </button>
         ))}
       </div>
 
       {/* Editor */}
       {active && (
-        <div className="p-6">
-          <div className="flex items-center justify-between mb-4">
+        <div className="flex-1 min-w-0 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="flex items-start justify-between gap-4 mb-4">
             <div>
               <h2 className="font-bold text-gray-900 dark:text-gray-50">{active.title}</h2>
               <a
@@ -84,7 +85,7 @@ export function PoliciesEditor({ policies }: { policies: Policy[] }) {
             <button
               onClick={handleSave}
               disabled={saving}
-              className="inline-flex items-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 font-semibold text-sm px-4 h-9 rounded-xl shadow-sm active:scale-95 transition-all disabled:opacity-60"
+              className="shrink-0 inline-flex items-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 font-semibold text-sm px-4 h-9 rounded-xl shadow-sm active:scale-95 transition-all disabled:opacity-60"
             >
               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
               {saving ? 'Đang lưu…' : 'Lưu'}
