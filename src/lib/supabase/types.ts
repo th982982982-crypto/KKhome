@@ -169,6 +169,14 @@ export interface SiteSettings {
   updated_at: string
 }
 
+export interface Policy {
+  id: string
+  slug: string
+  title: string
+  content: string
+  updated_at: string
+}
+
 export function getEffectivePrice(salePrice: number, templateId: string, activePromotions: PromotionWithTemplates[]): number {
   let best = salePrice
   for (const promo of activePromotions) {

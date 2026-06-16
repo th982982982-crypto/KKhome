@@ -86,6 +86,7 @@ export async function SiteFooter() {
             <li><Link href="/chinh-sach/bao-hanh" className="hover:text-gray-900 dark:hover:text-gray-50">Bảo hành, bảo trì</Link></li>
             <li><Link href="/chinh-sach/doi-tra" className="hover:text-gray-900 dark:hover:text-gray-50">Đổi trả</Link></li>
             <li><Link href="/chinh-sach/thanh-toan" className="hover:text-gray-900 dark:hover:text-gray-50">Hình thức thanh toán</Link></li>
+            <li><Link href="/chinh-sach/gia" className="hover:text-gray-900 dark:hover:text-gray-50">Chính sách giá</Link></li>
           </ul>
         </div>
         <div>
