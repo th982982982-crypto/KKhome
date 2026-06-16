@@ -37,7 +37,7 @@ export async function SiteFooter() {
             <Image src="/logo.png" alt={brandName} width={36} height={36} className="w-9 h-9 object-contain" />
             {brandName}
           </div>
-          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed whitespace-pre-line">
             {brandDescription}
           </p>
           {(s.facebook_url || s.zalo_url || s.youtube_url) && (
