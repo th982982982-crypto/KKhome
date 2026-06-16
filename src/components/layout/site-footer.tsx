@@ -5,10 +5,10 @@ import { createAdminClient } from '@/lib/supabase/server'
 import type { SiteSettings } from '@/lib/supabase/types'
 
 const DEFAULTS: Pick<SiteSettings, 'brand_name' | 'brand_description' | 'contact_hours' | 'copyright_text'> = {
-  brand_name: 'KKhome',
+  brand_name: 'KK HOME',
   brand_description: 'Marketplace templates Google Sheets chuyên nghiệp cho doanh nghiệp Việt.',
-  contact_hours: 'Hỗ trợ 24/7',
-  copyright_text: '© 2026 KKhome. Mọi quyền được bảo lưu.',
+  contact_hours: '08:00 – 21:30',
+  copyright_text: 'Copyright © 2026 KK HOME. All rights reserved.',
 }
 
 export async function SiteFooter() {
@@ -20,10 +20,19 @@ export async function SiteFooter() {
   const brandDescription = s.brand_description || DEFAULTS.brand_description
   const copyrightText = s.copyright_text || DEFAULTS.copyright_text
 
+  const businessLegalLine = s.business_name
+    ? [
+        `Website thuộc sở hữu của ${s.business_name}`,
+        s.business_license_no && `Giấy chứng nhận Đăng ký Hộ kinh doanh số: ${s.business_license_no}`,
+        s.business_license_issuer && `do ${s.business_license_issuer}`,
+        s.business_license_date && `cấp lần đầu ngày ${s.business_license_date}`,
+      ].filter(Boolean).join(' | ')
+    : null
+
   return (
     <footer className="bg-white dark:bg-gray-950 border-t border-gray-100 dark:border-gray-800 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-2 sm:grid-cols-4 gap-8">
-        <div className="col-span-2 sm:col-span-1">
+      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="col-span-2 md:col-span-1">
           <div className="flex items-center gap-2 font-bold text-gray-900 dark:text-gray-50 mb-3">
             <Image src="/logo.png" alt={brandName} width={36} height={36} className="w-9 h-9 object-contain" />
             {brandName}
@@ -70,6 +79,16 @@ export async function SiteFooter() {
           </ul>
         </div>
         <div>
+          <h4 className="text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-3">Chính sách</h4>
+          <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
+            <li><Link href="/chinh-sach/bao-mat" className="hover:text-gray-900 dark:hover:text-gray-50">Bảo mật thông tin</Link></li>
+            <li><Link href="/chinh-sach/xac-nhan-don-hang" className="hover:text-gray-900 dark:hover:text-gray-50">Xác nhận đơn hàng</Link></li>
+            <li><Link href="/chinh-sach/bao-hanh" className="hover:text-gray-900 dark:hover:text-gray-50">Bảo hành, bảo trì</Link></li>
+            <li><Link href="/chinh-sach/doi-tra" className="hover:text-gray-900 dark:hover:text-gray-50">Đổi trả</Link></li>
+            <li><Link href="/chinh-sach/thanh-toan" className="hover:text-gray-900 dark:hover:text-gray-50">Hình thức thanh toán</Link></li>
+          </ul>
+        </div>
+        <div>
           <h4 className="text-xs font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-3">Liên hệ</h4>
           <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
             {s.contact_hours && (
@@ -98,8 +117,9 @@ export async function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-gray-100 dark:border-gray-800 py-5 text-center text-xs text-gray-400 dark:text-gray-500">
-        {copyrightText}
+      <div className="border-t border-gray-100 dark:border-gray-800 py-5 px-4 text-center text-xs text-gray-400 dark:text-gray-500 space-y-1">
+        {businessLegalLine && <p>{businessLegalLine}</p>}
+        <p>{copyrightText}</p>
       </div>
     </footer>
   )

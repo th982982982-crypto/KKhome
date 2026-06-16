@@ -153,6 +153,11 @@ export interface SiteSettings {
   id: string
   brand_name: string
   brand_description: string
+  business_name: string | null
+  owner_name: string | null
+  business_license_no: string | null
+  business_license_date: string | null
+  business_license_issuer: string | null
   contact_hours: string | null
   contact_phone: string | null
   contact_email: string | null

@@ -9,6 +9,11 @@ import type { SiteSettings } from '@/lib/supabase/types'
 interface FormState {
   brand_name: string
   brand_description: string
+  business_name: string
+  owner_name: string
+  business_license_no: string
+  business_license_date: string
+  business_license_issuer: string
   contact_hours: string
   contact_phone: string
   contact_email: string
@@ -23,6 +28,11 @@ function toForm(s: SiteSettings): FormState {
   return {
     brand_name: s.brand_name ?? '',
     brand_description: s.brand_description ?? '',
+    business_name: s.business_name ?? '',
+    owner_name: s.owner_name ?? '',
+    business_license_no: s.business_license_no ?? '',
+    business_license_date: s.business_license_date ?? '',
+    business_license_issuer: s.business_license_issuer ?? '',
     contact_hours: s.contact_hours ?? '',
     contact_phone: s.contact_phone ?? '',
     contact_email: s.contact_email ?? '',
@@ -72,14 +82,14 @@ export function SiteSettingsEditor({ initial }: { initial: SiteSettings }) {
 
   return (
     <div className="space-y-6">
-      <Section title="Thương hiệu" desc="Tên và mô tả ngắn hiển thị ở footer">
-        <Field label="Tên brand">
+      <Section title="Thương hiệu" desc="Tên và mô tả ngắn hiển thị ở header/footer">
+        <Field label="Tên brand (hiển thị)">
           <input
             type="text"
             value={form.brand_name}
             onChange={(e) => setField('brand_name', e.target.value)}
             className={inputCls}
-            placeholder="KKhome"
+            placeholder="KK HOME"
           />
         </Field>
         <Field label="Mô tả ngắn">
@@ -89,6 +99,57 @@ export function SiteSettingsEditor({ initial }: { initial: SiteSettings }) {
             rows={3}
             className={inputCls}
             placeholder="Marketplace templates Google Sheets…"
+          />
+        </Field>
+      </Section>
+
+      <Section title="Thông tin chủ sở hữu" desc="Thông tin pháp lý của đơn vị sở hữu website">
+        <Field label="Tên đơn vị">
+          <input
+            type="text"
+            value={form.business_name}
+            onChange={(e) => setField('business_name', e.target.value)}
+            className={inputCls}
+            placeholder="HỘ KINH DOANH KK HOME"
+          />
+        </Field>
+        <Field label="Người đại diện">
+          <input
+            type="text"
+            value={form.owner_name}
+            onChange={(e) => setField('owner_name', e.target.value)}
+            className={inputCls}
+            placeholder="Huỳnh Ngọc Ngân"
+          />
+        </Field>
+      </Section>
+
+      <Section title="Giấy phép kinh doanh" desc="Hiển thị ở dòng pháp lý cuối footer">
+        <Field label="Số GCNĐKKD">
+          <input
+            type="text"
+            value={form.business_license_no}
+            onChange={(e) => setField('business_license_no', e.target.value)}
+            className={inputCls}
+            placeholder="087193019574"
+          />
+        </Field>
+        <Field label="Cơ quan cấp">
+          <input
+            type="text"
+            value={form.business_license_issuer}
+            onChange={(e) => setField('business_license_issuer', e.target.value)}
+            className={inputCls}
+            placeholder="Ủy Ban Nhân dân Phường Mỹ Trà Tỉnh Đồng Tháp"
+          />
+        </Field>
+        <Field label="Ngày cấp lần đầu">
+          <input
+            type="text"
+            value={form.business_license_date}
+            onChange={(e) => setField('business_license_date', e.target.value)}
+            className={inputCls}
+            placeholder="30/01/2026"
           />
         </Field>
       </Section>

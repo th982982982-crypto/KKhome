@@ -9,6 +9,8 @@ export async function PATCH(req: Request) {
   const body = await req.json()
   const allowed = [
     'brand_name', 'brand_description',
+    'business_name', 'owner_name',
+    'business_license_no', 'business_license_date', 'business_license_issuer',
     'contact_hours', 'contact_phone', 'contact_email', 'contact_address',
     'facebook_url', 'zalo_url', 'youtube_url',
     'copyright_text',
