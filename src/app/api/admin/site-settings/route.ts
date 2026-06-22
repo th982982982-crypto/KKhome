@@ -13,6 +13,7 @@ export async function PATCH(req: Request) {
     'business_license_no', 'business_license_date', 'business_license_issuer',
     'contact_hours', 'contact_phone', 'contact_email', 'contact_address',
     'facebook_url', 'zalo_url', 'youtube_url',
+    'mocongthuong_url',
     'copyright_text',
   ]
   const payload: Record<string, unknown> = { updated_at: new Date().toISOString() }

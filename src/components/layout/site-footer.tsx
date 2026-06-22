@@ -118,7 +118,27 @@ export async function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-gray-100 dark:border-gray-800 py-5 px-4 text-center text-xs text-gray-400 dark:text-gray-500 space-y-1">
+      <div className="border-t border-gray-100 dark:border-gray-800 py-5 px-4 text-center text-xs text-gray-400 dark:text-gray-500 space-y-2">
+        {s.mocongthuong_url && (
+          <div className="flex justify-center">
+            <a
+              href={s.mocongthuong_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Đã thông báo Bộ Công Thương"
+              className="inline-block"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://online.gov.vn/Content/EndUser/LogoCCDVSaleNoti/logoSaleNoti.png"
+                alt="Đã thông báo Bộ Công Thương"
+                width={150}
+                height={57}
+                className="h-12 w-auto"
+              />
+            </a>
+          </div>
+        )}
         {businessLegalLine && <p>{businessLegalLine}</p>}
         <p>{copyrightText}</p>
       </div>

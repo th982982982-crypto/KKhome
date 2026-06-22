@@ -21,6 +21,7 @@ interface FormState {
   facebook_url: string
   zalo_url: string
   youtube_url: string
+  mocongthuong_url: string
   copyright_text: string
 }
 
@@ -40,6 +41,7 @@ function toForm(s: SiteSettings): FormState {
     facebook_url: s.facebook_url ?? '',
     zalo_url: s.zalo_url ?? '',
     youtube_url: s.youtube_url ?? '',
+    mocongthuong_url: s.mocongthuong_url ?? '',
     copyright_text: s.copyright_text ?? '',
   }
 }
@@ -219,6 +221,18 @@ export function SiteSettingsEditor({ initial }: { initial: SiteSettings }) {
             onChange={(e) => setField('youtube_url', e.target.value)}
             className={inputCls}
             placeholder="https://youtube.com/@…"
+          />
+        </Field>
+      </Section>
+
+      <Section title="Bộ Công Thương" desc="Dán link “WebDetails/…” từ tài khoản online.gov.vn để hiện logo “Đã thông báo Bộ Công Thương”. Để trống để ẩn.">
+        <Field label="Link xác nhận online.gov.vn">
+          <input
+            type="url"
+            value={form.mocongthuong_url}
+            onChange={(e) => setField('mocongthuong_url', e.target.value)}
+            className={inputCls}
+            placeholder="http://online.gov.vn/Home/WebDetails/XXXXX"
           />
         </Field>
       </Section>

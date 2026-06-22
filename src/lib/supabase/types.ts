@@ -165,6 +165,7 @@ export interface SiteSettings {
   facebook_url: string | null
   zalo_url: string | null
   youtube_url: string | null
+  mocongthuong_url: string | null
   copyright_text: string | null
   updated_at: string
 }
