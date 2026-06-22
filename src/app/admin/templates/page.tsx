@@ -1,14 +1,24 @@
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { TemplateEditor } from '@/components/admin/template-editor'
+import { LegalPlanManager } from '@/components/admin/legal-plan-manager'
 import Link from 'next/link'
-import { ArrowLeft, FileSpreadsheet } from 'lucide-react'
+import { ArrowLeft, FileSpreadsheet, LayoutGrid, ScrollText } from 'lucide-react'
+import type { LegalPlan } from '@/lib/supabase/types'
 
-export default async function AdminTemplatesPage() {
+export const revalidate = 0
+
+export default async function AdminTemplatesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string }>
+}) {
+  const { tab = 'templates' } = await searchParams
   const supabase = await createClient()
-  const { data: templates } = await supabase
-    .from('templates')
-    .select('*')
-    .order('sort_order', { ascending: true })
+
+  const [{ data: templates }, { data: plans }] = await Promise.all([
+    supabase.from('templates').select('*').order('sort_order', { ascending: true }),
+    createAdminClient().from('legal_plans').select('*').order('sort_order', { ascending: true }),
+  ])
 
   return (
     <div className="px-4 sm:px-6 lg:px-10 py-8">
@@ -26,7 +36,37 @@ export default async function AdminTemplatesPage() {
         </div>
       </div>
 
-      <TemplateEditor initialTemplates={templates ?? []} />
+      {/* Tabs */}
+      <div className="flex gap-1 border-b border-gray-200 dark:border-gray-800 mb-6">
+        {[
+          { key: 'templates', label: 'Templates', icon: LayoutGrid },
+          { key: 'legal-plans', label: 'Gói Pháp luật', icon: ScrollText },
+        ].map(({ key, label, icon: Icon }) => (
+          <Link
+            key={key}
+            href={`?tab=${key}`}
+            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-semibold border-b-2 transition-colors ${
+              tab === key
+                ? 'border-blue-600 text-blue-700 dark:text-blue-400'
+                : 'border-transparent text-gray-500 hover:text-gray-800 dark:hover:text-gray-200'
+            }`}
+          >
+            <Icon className="w-4 h-4" />
+            {label}
+          </Link>
+        ))}
+      </div>
+
+      {tab === 'templates' && <TemplateEditor initialTemplates={templates ?? []} />}
+
+      {tab === 'legal-plans' && (
+        <>
+          <p className="text-gray-500 dark:text-gray-400 mb-6">
+            Bán quyền truy cập thư viện Pháp luật như một sản phẩm theo thời hạn (1/3/6/12 tháng). Khách mua qua giỏ hàng; admin duyệt đơn sẽ tự cộng thời hạn cho tài khoản.
+          </p>
+          <LegalPlanManager initialPlans={(plans as LegalPlan[]) ?? []} />
+        </>
+      )}
     </div>
   )
 }

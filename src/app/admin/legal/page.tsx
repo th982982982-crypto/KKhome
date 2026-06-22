@@ -1,10 +1,8 @@
 import { createAdminClient } from '@/lib/supabase/server'
 import { LegalAccessManager } from '@/components/admin/legal-access-manager'
-import { LegalPlanManager } from '@/components/admin/legal-plan-manager'
 import { FormsManager } from '@/components/admin/legal-forms/forms-manager'
 import { hasLegalAccess } from '@/lib/legal/has-legal-access'
-import { Scale, Users, FileDown, ShoppingBag } from 'lucide-react'
-import type { LegalPlan } from '@/lib/supabase/types'
+import { Scale, Users, FileDown } from 'lucide-react'
 
 export const revalidate = 0
 
@@ -16,10 +14,9 @@ export default async function AdminLegalPage({
   const { tab = 'access' } = await searchParams
   const admin = createAdminClient()
 
-  const [{ data: profiles }, { data: authData }, { data: plans }] = await Promise.all([
+  const [{ data: profiles }, { data: authData }] = await Promise.all([
     admin.from('profiles').select('id, full_name, is_admin, legal_access_until'),
     admin.auth.admin.listUsers({ perPage: 1000 }),
-    admin.from('legal_plans').select('*').order('sort_order', { ascending: true }),
   ])
 
   const users = (authData?.users ?? []).map((u) => {
@@ -50,7 +47,6 @@ export default async function AdminLegalPage({
       <div className="flex gap-1 border-b border-gray-200 dark:border-gray-800 mb-6">
         {[
           { key: 'access', label: 'Phân quyền', icon: Users },
-          { key: 'plans', label: 'Gói bán', icon: ShoppingBag },
           { key: 'forms', label: 'Biểu mẫu', icon: FileDown },
         ].map(({ key, label, icon: Icon }) => (
           <a
@@ -74,15 +70,6 @@ export default async function AdminLegalPage({
             Cấp hoặc thu hồi quyền xem văn bản pháp luật cho từng người dùng
           </p>
           <LegalAccessManager users={users} />
-        </>
-      )}
-
-      {tab === 'plans' && (
-        <>
-          <p className="text-gray-500 dark:text-gray-400 mb-6">
-            Tạo các gói bán quyền truy cập Pháp luật theo thời hạn (1/3/6/12 tháng). Khách mua qua giỏ hàng, admin duyệt đơn sẽ tự cộng thời hạn cho tài khoản.
-          </p>
-          <LegalPlanManager initialPlans={(plans as LegalPlan[]) ?? []} />
         </>
       )}
 
