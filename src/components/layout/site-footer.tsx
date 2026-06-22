@@ -116,17 +116,13 @@ export async function SiteFooter() {
               <li className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 shrink-0" /> {DEFAULTS.contact_hours}</li>
             )}
           </ul>
-        </div>
-      </div>
-      <div className="border-t border-gray-100 dark:border-gray-800 py-5 px-4 text-center text-xs text-gray-400 dark:text-gray-500 space-y-2">
-        {s.mocongthuong_url && (
-          <div className="flex justify-center">
+          {s.mocongthuong_url && (
             <a
               href={s.mocongthuong_url}
               target="_blank"
               rel="noopener noreferrer"
               title="Đã thông báo Bộ Công Thương"
-              className="inline-block"
+              className="inline-block mt-4"
             >
               <Image
                 src="/logo-bo-cong-thuong.png"
@@ -136,8 +132,10 @@ export async function SiteFooter() {
                 className="h-12 w-auto"
               />
             </a>
-          </div>
-        )}
+          )}
+        </div>
+      </div>
+      <div className="border-t border-gray-100 dark:border-gray-800 py-5 px-4 text-center text-xs text-gray-400 dark:text-gray-500 space-y-2">
         {businessLegalLine && <p>{businessLegalLine}</p>}
         <p>{copyrightText}</p>
       </div>
