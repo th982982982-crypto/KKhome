@@ -2,6 +2,7 @@ import { redirect, notFound } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { userCanViewTemplate } from '@/lib/access-control'
 import { Navbar } from '@/components/layout/navbar'
+import { hasLegalAccess } from '@/lib/legal/has-legal-access'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { getYouTubeEmbedUrl } from '@/lib/format'
 import Link from 'next/link'
@@ -35,7 +36,7 @@ export default async function ViewTemplatePage({ params }: { params: Promise<{ s
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={profile?.is_admin || !!user?.user_metadata?.can_view_legal} />
+      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-6">
         <div className="flex items-center gap-3 mb-6">

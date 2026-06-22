@@ -9,6 +9,15 @@ interface UserRow {
   full_name: string | null
   is_admin: boolean
   can_view_legal: boolean
+  legal_access_until: string | null
+}
+
+function formatExpiry(until: string | null): string {
+  if (!until) return '—'
+  const t = new Date(until).getTime()
+  if (!Number.isFinite(t)) return 'Vĩnh viễn' // 'infinity'
+  if (t < Date.now()) return 'Hết hạn'
+  return `Đến ${new Date(until).toLocaleDateString('vi-VN')}`
 }
 
 interface LegalAccessManagerProps {
@@ -26,7 +35,11 @@ export function LegalAccessManager({ users }: LegalAccessManagerProps) {
 
     // Optimistic update
     setRows((prev) =>
-      prev.map((u) => (u.id === userId ? { ...u, can_view_legal: !current } : u))
+      prev.map((u) =>
+        u.id === userId
+          ? { ...u, can_view_legal: !current, legal_access_until: !current ? 'infinity' : null }
+          : u
+      )
     )
 
     try {
@@ -74,6 +87,7 @@ export function LegalAccessManager({ users }: LegalAccessManagerProps) {
               <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-400">Người dùng</th>
               <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-400 hidden sm:table-cell">Email</th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-400">Vai trò</th>
+              <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-400 hidden md:table-cell">Hạn dùng</th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-400">Xem Pháp luật</th>
             </tr>
           </thead>
@@ -105,6 +119,9 @@ export function LegalAccessManager({ users }: LegalAccessManagerProps) {
                     <span className="text-xs text-gray-400 dark:text-gray-500">Người dùng</span>
                   )}
                 </td>
+                <td className="px-4 py-3 text-center text-xs text-gray-500 dark:text-gray-400 hidden md:table-cell">
+                  {user.is_admin ? 'Vĩnh viễn' : formatExpiry(user.legal_access_until)}
+                </td>
                 <td className="px-4 py-3 text-center">
                   {user.is_admin ? (
                     <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 dark:bg-green-950/50 mx-auto" title="Admin luôn có quyền">
@@ -133,7 +150,7 @@ export function LegalAccessManager({ users }: LegalAccessManagerProps) {
             ))}
             {rows.length === 0 && (
               <tr>
-                <td colSpan={4} className="px-4 py-10 text-center text-sm text-gray-400 dark:text-gray-500">
+                <td colSpan={5} className="px-4 py-10 text-center text-sm text-gray-400 dark:text-gray-500">
                   Chưa có người dùng nào
                 </td>
               </tr>

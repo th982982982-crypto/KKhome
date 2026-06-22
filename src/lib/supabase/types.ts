@@ -53,6 +53,23 @@ export interface Database {
         Insert: Database['public']['Tables']['package_templates']['Row']
         Update: Partial<Database['public']['Tables']['package_templates']['Row']>
       }
+      legal_plans: {
+        Row: {
+          id: string
+          name: string
+          duration_months: number
+          price: number
+          original_price: number | null
+          promo_price: number | null
+          promo_start_at: string | null
+          promo_end_at: string | null
+          is_active: boolean
+          sort_order: number
+          created_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['legal_plans']['Row'], 'id' | 'created_at'>
+        Update: Partial<Database['public']['Tables']['legal_plans']['Insert']>
+      }
       orders: {
         Row: {
           id: string
@@ -91,6 +108,7 @@ export interface Database {
           full_name: string | null
           phone: string | null
           is_admin: boolean
+          legal_access_until: string | null
           created_at: string
         }
         Insert: Omit<Database['public']['Tables']['profiles']['Row'], 'created_at'>
@@ -105,6 +123,7 @@ export type Package = Database['public']['Tables']['packages']['Row']
 export type Order = Database['public']['Tables']['orders']['Row']
 export type UserPurchase = Database['public']['Tables']['user_purchases']['Row']
 export type Profile = Database['public']['Tables']['profiles']['Row']
+export type LegalPlan = Database['public']['Tables']['legal_plans']['Row']
 
 export interface BankTransaction {
   id: string
@@ -118,19 +137,21 @@ export interface BankTransaction {
 }
 
 export interface CartItem {
-  type: 'template' | 'package'
+  type: 'template' | 'package' | 'legal_plan'
   id: string
   name: string
   sale_price: number
   original_price: number | null
   thumbnail_url: string | null
+  duration_months?: number
 }
 
 export interface OrderItem {
-  type: 'template' | 'package'
+  type: 'template' | 'package' | 'legal_plan'
   id: string
   name: string
   price: number
+  duration_months?: number
 }
 
 export interface Promotion {
@@ -189,4 +210,22 @@ export function getEffectivePrice(salePrice: number, templateId: string, activeP
     }
   }
   return best
+}
+
+/** Giá hiệu lực của gói Pháp luật: dùng promo_price nếu đang trong cửa sổ khuyến mãi. */
+export function getLegalPlanEffectivePrice(plan: LegalPlan): number {
+  if (plan.promo_price != null && plan.promo_start_at && plan.promo_end_at) {
+    const now = Date.now()
+    if (now >= new Date(plan.promo_start_at).getTime() && now <= new Date(plan.promo_end_at).getTime()) {
+      return plan.promo_price
+    }
+  }
+  return plan.price
+}
+
+/** Gói Pháp luật có đang chạy khuyến mãi (trong cửa sổ thời gian) không. */
+export function isLegalPlanPromoActive(plan: LegalPlan): boolean {
+  if (plan.promo_price == null || !plan.promo_start_at || !plan.promo_end_at) return false
+  const now = Date.now()
+  return now >= new Date(plan.promo_start_at).getTime() && now <= new Date(plan.promo_end_at).getTime()
 }

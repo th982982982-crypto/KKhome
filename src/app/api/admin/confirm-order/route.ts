@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/server'
 import { requireAdmin } from '@/lib/require-admin'
+import { addMonths } from '@/lib/format'
+import type { OrderItem } from '@/lib/supabase/types'
 
 export async function POST(req: Request) {
   const adminUser = await requireAdmin()
@@ -25,19 +27,69 @@ export async function POST(req: Request) {
     .update({ status: 'confirmed', confirmed_at: new Date().toISOString(), confirmed_by: adminUser.id })
     .eq('id', order_id)
 
-  const items = order.items as { type: string; id: string; name: string; price: number }[]
-  const purchases = items.map((item) => ({
-    user_id: order.user_id,
-    purchase_type: item.type as 'template' | 'package',
-    template_id: item.type === 'template' ? item.id : null,
-    package_id: item.type === 'package' ? item.id : null,
-    order_id: order.id,
-  }))
+  const items = order.items as OrderItem[]
 
-  const { error: purchaseError } = await supabase.from('user_purchases').insert(purchases)
+  // Template/package → user_purchases (chỉ insert khi có)
+  const purchases = items
+    .filter((item) => item.type !== 'legal_plan')
+    .map((item) => ({
+      user_id: order.user_id,
+      purchase_type: item.type as 'template' | 'package',
+      template_id: item.type === 'template' ? item.id : null,
+      package_id: item.type === 'package' ? item.id : null,
+      order_id: order.id,
+    }))
 
-  if (purchaseError) {
-    return NextResponse.json({ error: purchaseError.message }, { status: 500 })
+  if (purchases.length > 0) {
+    const { error: purchaseError } = await supabase.from('user_purchases').insert(purchases)
+    if (purchaseError) {
+      return NextResponse.json({ error: purchaseError.message }, { status: 500 })
+    }
+  }
+
+  // Gói Pháp luật → cộng dồn thời hạn vào profiles.legal_access_until
+  const legalItems = items.filter((item) => item.type === 'legal_plan')
+  if (legalItems.length > 0) {
+    if (!order.user_id) {
+      return NextResponse.json({ error: 'Đơn Pháp luật thiếu user_id' }, { status: 400 })
+    }
+
+    // Lấy thời hạn thật từ DB (fallback snapshot nếu gói đã bị xoá)
+    const planIds = legalItems.map((i) => i.id)
+    const { data: plans } = await supabase
+      .from('legal_plans')
+      .select('id, duration_months')
+      .in('id', planIds)
+
+    let totalMonths = 0
+    for (const item of legalItems) {
+      const plan = plans?.find((p) => p.id === item.id)
+      totalMonths += plan?.duration_months ?? item.duration_months ?? 0
+    }
+
+    if (totalMonths > 0) {
+      const { data: prof } = await supabase
+        .from('profiles')
+        .select('legal_access_until')
+        .eq('id', order.user_id)
+        .single()
+
+      const now = new Date()
+      const current = prof?.legal_access_until ? new Date(prof.legal_access_until) : now
+
+      // Đã vĩnh viễn (infinity → Invalid Date): bỏ qua, không cần gia hạn
+      if (Number.isFinite(current.getTime())) {
+        const base = current.getTime() > now.getTime() ? current : now
+        const newExpiry = addMonths(base, totalMonths)
+        const { error: grantError } = await supabase
+          .from('profiles')
+          .update({ legal_access_until: newExpiry.toISOString() })
+          .eq('id', order.user_id)
+        if (grantError) {
+          return NextResponse.json({ error: grantError.message }, { status: 500 })
+        }
+      }
+    }
   }
 
   // Drive sharing tạm tắt — bật lại khi quota Google reset

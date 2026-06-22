@@ -15,6 +15,18 @@ export function generateOrderCode(): string {
   return `DH${y}${m}${d}${rand}`
 }
 
+/** Cộng thêm `months` tháng theo lịch (giữ nguyên ngày/giờ). */
+export function addMonths(date: Date, months: number): Date {
+  return new Date(
+    date.getFullYear(),
+    date.getMonth() + months,
+    date.getDate(),
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+  )
+}
+
 export function getYouTubeEmbedUrl(url: string): string | null {
   if (!url) return null
   const patterns = [

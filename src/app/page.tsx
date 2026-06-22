@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { Button } from '@/components/ui/button'
 import { Navbar } from '@/components/layout/navbar'
+import { hasLegalAccess } from '@/lib/legal/has-legal-access'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { TemplateSection } from '@/components/templates/template-section'
 import { getUserPurchasedTemplateIds } from '@/lib/access-control'
@@ -47,7 +48,7 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={profile?.is_admin || !!user?.user_metadata?.can_view_legal} />
+      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} />
 
       <main className="flex-1">
       {/* Hero */}

@@ -20,6 +20,12 @@ export async function POST(req: Request) {
   const sessionClient = await createClient()
   const { data: { user } } = await sessionClient.auth.getUser()
 
+  // Gói Pháp luật gắn quyền theo user → bắt buộc đăng nhập
+  const hasLegalPlan = (items as { type: string }[]).some((i) => i.type === 'legal_plan')
+  if (hasLegalPlan && !user) {
+    return NextResponse.json({ error: 'Vui lòng đăng nhập để mua gói Pháp luật' }, { status: 401 })
+  }
+
   const admin = createAdminClient()
   const order_code = generateOrderCode()
 

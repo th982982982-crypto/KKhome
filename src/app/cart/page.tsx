@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
+import { hasLegalAccess } from '@/lib/legal/has-legal-access'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { CartContent } from './cart-content'
 
@@ -11,9 +12,9 @@ export default async function CartPage() {
   let isAdmin = false
   let canViewLegal = false
   if (user) {
-    const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single()
+    const { data: profile } = await supabase.from('profiles').select('is_admin, legal_access_until').eq('id', user.id).single()
     isAdmin = !!profile?.is_admin
-    canViewLegal = !!profile?.is_admin || !!user?.user_metadata?.can_view_legal
+    canViewLegal = hasLegalAccess(profile)
   }
 
   return (

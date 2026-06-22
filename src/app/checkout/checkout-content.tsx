@@ -80,6 +80,10 @@ export function CheckoutContent() {
   const [countdown, setCountdown] = useState(PAYMENT_WINDOW_SECONDS)
   const [orderStatus, setOrderStatus] = useState<'pending' | 'confirmed' | 'cancelled'>('pending')
   const [cancelNote, setCancelNote] = useState<string | null>(null)
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null)
+
+  const hasLegalPlan = items.some((i) => i.type === 'legal_plan')
+  const blockGuestLegal = hasLegalPlan && isLoggedIn === false
 
   // Restore pending order from localStorage on mount
   useEffect(() => {
@@ -97,6 +101,7 @@ export function CheckoutContent() {
   useEffect(() => {
     const supabase = createClient()
     supabase.auth.getUser().then(({ data: { user } }) => {
+      setIsLoggedIn(!!user)
       if (user?.email) setEmail((prev) => prev || user.email || '')
     })
   }, [])
@@ -150,6 +155,11 @@ export function CheckoutContent() {
   async function handleCreateOrder() {
     if (!items.length) return
 
+    if (blockGuestLegal) {
+      toast.error('Vui lòng đăng nhập để mua gói Pháp luật')
+      return
+    }
+
     setEmailTouched(true)
     if (!isValidEmail(email)) {
       toast.error('Vui lòng nhập địa chỉ email hợp lệ')
@@ -162,7 +172,7 @@ export function CheckoutContent() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        items: items.map((i) => ({ type: i.type, id: i.id, name: i.name, price: i.sale_price })),
+        items: items.map((i) => ({ type: i.type, id: i.id, name: i.name, price: i.sale_price, duration_months: i.duration_months })),
         total: submitTotal,
         note,
         email,
@@ -373,7 +383,7 @@ export function CheckoutContent() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">{item.name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{item.type === 'package' ? 'Gói bundle' : 'Template lẻ'}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{item.type === 'package' ? 'Gói bundle' : item.type === 'legal_plan' ? 'Gói Pháp luật' : 'Template lẻ'}</p>
                   </div>
                   <span className="text-sm font-bold text-gray-900 dark:text-gray-50 shrink-0">{formatCurrency(item.sale_price)}</span>
                 </div>
@@ -427,10 +437,17 @@ export function CheckoutContent() {
               <span className="text-gray-500 dark:text-gray-400">Số tiền cần trả</span>
               <span className="text-2xl font-black text-gray-900 dark:text-gray-50">{formatCurrency(total())}</span>
             </div>
+            {blockGuestLegal && (
+              <div className="rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 p-3 text-xs text-amber-800 dark:text-amber-200">
+                Gói Pháp luật gắn quyền theo tài khoản. Vui lòng{' '}
+                <Link href="/login?redirect=/checkout" className="underline font-semibold">đăng nhập</Link>{' '}
+                trước khi thanh toán.
+              </div>
+            )}
             <Button
               className="w-full bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-12 rounded-xl font-semibold text-base"
               onClick={handleCreateOrder}
-              disabled={loading || items.length === 0}
+              disabled={loading || items.length === 0 || blockGuestLegal}
             >
               {loading ? 'Đang tạo đơn...' : 'Tạo đơn & xem thông tin CK'}
             </Button>
