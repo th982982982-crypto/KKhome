@@ -66,26 +66,50 @@ h1.ht{font-size:22px;color:#1e3a8a;margin:0 0 6px}
 .cd-link:hover{color:#1e40af;padding-left:4px;transition:.12s}
 .cd-link.note{color:#b45309;font-style:italic}
 /*CD-CSS-END*/
+/*SUM-CSS-START*/
+#s-summary{padding:0}
+.sum-wrap{max-width:880px;margin:0 auto;padding:22px 20px 60px}
+.sum-h1{font-size:22px;font-weight:800;color:#0f172a;margin:0 0 8px}
+.sum-scope{color:#475569;font-size:14px;line-height:1.6;margin:0 0 14px}
+.sum-grid{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.sum-stat{background:#f1f5f9;border-radius:10px;padding:8px 14px;text-align:center;min-width:80px}
+.sum-stat b{display:block;font-size:18px;color:#2563eb}
+.sum-stat span{font-size:11px;color:#64748b}
+.sum-rel{margin-bottom:18px}
+.sum-tag{display:inline-block;background:#eff6ff;color:#2563eb;border-radius:999px;padding:3px 10px;font-size:12px;margin:0 6px 6px 0}
+.sum-ch{font-weight:800;color:#1e40af;font-size:13px;text-transform:uppercase;letter-spacing:.04em;margin:20px 0 8px;padding-bottom:5px;border-bottom:1px solid #e2e8f0}
+.sum-mu{font-weight:700;color:#475569;font-size:13px;margin:12px 0 6px}
+.sum-art{background:#fff;border:1px solid #e8edf3;border-radius:12px;padding:13px 15px;margin-bottom:10px}
+.sum-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.sum-code{font-weight:800;color:#0f172a;font-size:14px}
+.sum-title{color:#334155;font-size:14px;flex:1}
+.sum-go{color:#2563eb;font-size:12px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.sum-go:hover{text-decoration:underline}
+.sum-tldr{color:#1f2937;font-size:14px;line-height:1.65;margin:0 0 6px}
+.sum-pts{margin:6px 0 0;padding-left:18px}
+.sum-pts li{color:#374151;font-size:13.5px;line-height:1.6;margin-bottom:3px}
+.sum-empty{color:#94a3b8;font-style:italic;font-size:13px;margin:0}
+/*SUM-CSS-END*/
 </style></head>
 <body>
 <div class="tb">
   <div class="tb-logo">NĐ 359/2025<small>Sửa đổi, bổ sung một số Nghị định</small></div>
   <div class="tb-search">🔍<input id="q" placeholder="Tìm điều khoản..." oninput="search(this.value)"></div>
   <div class="tabs">
-    <button class="tab on" id="tab-main" onclick="tab('main',this)">📖 Nội dung</button>
+    <!--SUM-TAB-START--><button class="tab on" id="tab-summary" onclick="tab('summary',this)">📋 Tóm tắt</button><!--SUM-TAB-END--><button class="tab" id="tab-main" onclick="tab('main',this)">📖 Nguyên bản</button>
 
-    <button class="tab" id="tab-home" onclick="tab('home',this)">🏛️ Tổng quan</button>
+    
   </div>
 </div>
 <div class="wrap">
   <div class="sb" id="sb"></div>
   <div class="main">
-    <div class="sec on" id="s-main"><div id="av" class="hint">← Chọn điều khoản từ danh sách bên trái</div></div>
+    <div class="sec" id="s-main"><div id="av" class="hint">← Chọn điều khoản từ danh sách bên trái</div></div>
 
-    <div class="sec" id="s-home"></div>
+    <div class="sec on" id="s-summary"></div>
   </div>
 </div>
-<script id="LD" type="application/json">{"meta":{"title":"Nghị định 359/2025/NĐ-CP — Sửa đổi, bổ sung một số điều các Nghị định về thuế","shortCode":"NĐ 359/2025","subtitle":"Sửa đổi, bổ sung một số Nghị định","slug":"nd359","effectiveDate":"01/01/2026","scope":"","description":"Sửa đổi, bổ sung một số Nghị định","related":[]},"outline":[{"id":"nd359_1","no":1,"code":"Điều 1","title":"Điều 1. Sửa đổi, bổ sung một số điều của Nghị định số 181/2025/NĐ-CP ngày 01 tháng 7 năm 2025 của Chính phủ quy định chi tiết thi hành một số điều của Luật Thuế giá trị gia tăng","shortTitle":"Sửa đổi, bổ sung một số điều của Nghị định số 181/2025/NĐ-CP ngày 01 tháng 7 năm 2025 của Chính phủ quy định chi tiết thi hành một số điều của Luật Thuế giá trị gia tăng","chuong":"","muc":"","level":1,"content":[{"k":"p","t":"1. Bổ sung khoản 1b sau khoản 1 Điều 4 như sau:"},{"k":"p","t":"“1b. Doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã mua sản phẩm cây trồng, rừng trồng, chăn nuôi, thủy sản nuôi trồng, đánh bắt chưa chế biến thành các sản phẩm khác hoặc chỉ qua sơ chế thông thường bán cho doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã khác thì không phải kê khai, tính nộp thuế giá trị gia tăng nhưng được khấu trừ thuế giá trị gia tăng đầu vào."},{"k":"p","t":"Trong đó:"},{"k":"p","t":"a) Doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã nộp thuế giá trị gia tăng theo phương pháp khấu trừ thuế bán sản phẩm cây trồng, rừng trồng, chăn nuôi, thủy sản nuôi trồng, đánh bắt chưa chế biến thành các sản phẩm khác hoặc chỉ qua sơ chế thông thường cho doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã khác ở khâu kinh doanh thương mại thì không phải kê khai, tính nộp thuế giá trị gia tăng."},{"k":"p","t":"b) Trường hợp doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã nộp thuế giá trị gia tăng theo phương pháp khấu trừ thuế bán sản phẩm cây trồng, rừng trồng, chăn nuôi, thủy sản nuôi trồng, đánh bắt chưa chế biến thành các sản phẩm khác hoặc chỉ qua sơ chế thông thường cho các đối tượng như hộ, cá nhân sản xuất, kinh doanh và các tổ chức, cá nhân khác thì phải tính thuế giá trị gia tăng theo mức thuế suất 5% quy định tại khoản 3 Điều 19 Nghị định này."},{"k":"p","t":"c) Hộ, cá nhân sản xuất, kinh doanh, doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã và tổ chức kinh tế khác nộp thuế giá trị gia tăng theo phương pháp tính trực tiếp khi bán sản phẩm cây trồng, rừng trồng, chăn nuôi, thủy sản nuôi trồng, đánh bắt chưa chế biến thành các sản phẩm khác hoặc chỉ qua sơ chế thông thường ở khâu kinh doanh thương mại thì tính thuế giá trị gia tăng phải nộp theo doanh thu bằng 1% (tỷ lệ %) nhân với doanh thu.”"},{"k":"p","t":"2. Bãi bỏ khoản 3 Điều 37 và khoản 3 Điều 39."}]},{"id":"nd359_2","no":2,"code":"Điều 2","title":"Điều 2. Điều khoản thi hành","shortTitle":"Điều khoản thi hành","chuong":"","muc":"","level":1,"content":[{"k":"p","t":"1. Nghị định này có hiệu lực thi hành từ ngày 01 tháng 01 năm 2026."},{"k":"p","t":"2. Cơ sở kinh doanh thuộc trường hợp hoàn thuế quy định tại Điều 15 Luật Thuế giá trị gia tăng đã nộp hồ sơ hoàn thuế giá trị gia tăng và đã được cơ quan quản lý thuế tiếp nhận trước ngày 01 tháng 01 năm 2026 nhưng cơ quan quản lý thuế chưa ban hành Quyết định hoàn thuế hoặc Quyết định hoàn thuế kiêm bù trừ thu ngân sách nhà nước thì không phải đáp ứng điều kiện người bán đã kê khai, nộp thuế giá trị gia tăng theo quy định đối với hóa đơn đã xuất cho cơ sở kinh doanh đề nghị hoàn thuế."},{"k":"p","t":"3. Các Bộ trưởng, Thủ trưởng cơ quan ngang bộ, Thủ trưởng cơ quan thuộc Chính phủ, Chủ tịch Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương và các tổ chức, cá nhân có liên quan chịu trách nhiệm thi hành Nghị định này."},{"k":"tbl","rows":[["Nơi nhận:\n- Ban Bí thư Trung ương Đảng;\n- Thủ tướng, các Phó Thủ tướng Chính phủ;\n- Các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ;\n- HĐND, UBND các tỉnh, thành phố trực thuộc trung ương;\n- Văn phòng Trung ương và các Ban của Đảng;\n- Văn phòng Tổng Bí thư;\n- Văn phòng Chủ tịch nước;\n- Hội đồng Dân tộc và các Ủy ban của Quốc hội;\n- Văn phòng Quốc hội;\n- Tòa án nhân dân tối cao;\n- Viện kiểm sát nhân dân tối cao;\n- Kiểm toán nhà nước;\n- Ủy ban Trung ương Mặt trận Tổ quốc Việt Nam;\n- Cơ quan trung ương của các tổ chức chính trị - xã hội;\n- VPCP: BTCN, các PCN, Trợ lý TTg, TGĐ Cổng TTĐT, các Vụ, Cục, đơn vị trực thuộc, Công báo;\n- Lưu: VT, KTTH (2b).","TM. CHÍNH PHỦ\nKT. THỦ TƯỚNG\nPHÓ THỦ TƯỚNG\nHồ Đức Phớc"]]}]}],"refs":{"nd359_1":[{"kind":"related","targetSlug":"nd181","targetAnchor":"nd181_1","label":"NĐ 181/2025 — Hướng dẫn Luật GTGT (liên quan)"}]},"details":{}}</script>
+<script id="LD" type="application/json">{"meta":{"title":"Nghị định 359/2025/NĐ-CP — Sửa đổi, bổ sung một số điều các Nghị định về thuế","shortCode":"NĐ 359/2025","subtitle":"Sửa đổi, bổ sung một số Nghị định","slug":"nd359","effectiveDate":"01/01/2026","scope":"","description":"Sửa đổi, bổ sung một số Nghị định","related":[]},"outline":[{"id":"nd359_1","no":1,"code":"Điều 1","title":"Điều 1. Sửa đổi, bổ sung một số điều của Nghị định số 181/2025/NĐ-CP ngày 01 tháng 7 năm 2025 của Chính phủ quy định chi tiết thi hành một số điều của Luật Thuế giá trị gia tăng","shortTitle":"Sửa đổi, bổ sung một số điều của Nghị định số 181/2025/NĐ-CP ngày 01 tháng 7 năm 2025 của Chính phủ quy định chi tiết thi hành một số điều của Luật Thuế giá trị gia tăng","chuong":"","muc":"","level":1,"content":[{"k":"p","t":"1. Bổ sung khoản 1b sau khoản 1 Điều 4 như sau:"},{"k":"p","t":"“1b. Doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã mua sản phẩm cây trồng, rừng trồng, chăn nuôi, thủy sản nuôi trồng, đánh bắt chưa chế biến thành các sản phẩm khác hoặc chỉ qua sơ chế thông thường bán cho doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã khác thì không phải kê khai, tính nộp thuế giá trị gia tăng nhưng được khấu trừ thuế giá trị gia tăng đầu vào."},{"k":"p","t":"Trong đó:"},{"k":"p","t":"a) Doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã nộp thuế giá trị gia tăng theo phương pháp khấu trừ thuế bán sản phẩm cây trồng, rừng trồng, chăn nuôi, thủy sản nuôi trồng, đánh bắt chưa chế biến thành các sản phẩm khác hoặc chỉ qua sơ chế thông thường cho doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã khác ở khâu kinh doanh thương mại thì không phải kê khai, tính nộp thuế giá trị gia tăng."},{"k":"p","t":"b) Trường hợp doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã nộp thuế giá trị gia tăng theo phương pháp khấu trừ thuế bán sản phẩm cây trồng, rừng trồng, chăn nuôi, thủy sản nuôi trồng, đánh bắt chưa chế biến thành các sản phẩm khác hoặc chỉ qua sơ chế thông thường cho các đối tượng như hộ, cá nhân sản xuất, kinh doanh và các tổ chức, cá nhân khác thì phải tính thuế giá trị gia tăng theo mức thuế suất 5% quy định tại khoản 3 Điều 19 Nghị định này."},{"k":"p","t":"c) Hộ, cá nhân sản xuất, kinh doanh, doanh nghiệp, hợp tác xã, liên hiệp hợp tác xã và tổ chức kinh tế khác nộp thuế giá trị gia tăng theo phương pháp tính trực tiếp khi bán sản phẩm cây trồng, rừng trồng, chăn nuôi, thủy sản nuôi trồng, đánh bắt chưa chế biến thành các sản phẩm khác hoặc chỉ qua sơ chế thông thường ở khâu kinh doanh thương mại thì tính thuế giá trị gia tăng phải nộp theo doanh thu bằng 1% (tỷ lệ %) nhân với doanh thu.”"},{"k":"p","t":"2. Bãi bỏ khoản 3 Điều 37 và khoản 3 Điều 39."}]},{"id":"nd359_2","no":2,"code":"Điều 2","title":"Điều 2. Điều khoản thi hành","shortTitle":"Điều khoản thi hành","chuong":"","muc":"","level":1,"content":[{"k":"p","t":"1. Nghị định này có hiệu lực thi hành từ ngày 01 tháng 01 năm 2026."},{"k":"p","t":"2. Cơ sở kinh doanh thuộc trường hợp hoàn thuế quy định tại Điều 15 Luật Thuế giá trị gia tăng đã nộp hồ sơ hoàn thuế giá trị gia tăng và đã được cơ quan quản lý thuế tiếp nhận trước ngày 01 tháng 01 năm 2026 nhưng cơ quan quản lý thuế chưa ban hành Quyết định hoàn thuế hoặc Quyết định hoàn thuế kiêm bù trừ thu ngân sách nhà nước thì không phải đáp ứng điều kiện người bán đã kê khai, nộp thuế giá trị gia tăng theo quy định đối với hóa đơn đã xuất cho cơ sở kinh doanh đề nghị hoàn thuế."},{"k":"p","t":"3. Các Bộ trưởng, Thủ trưởng cơ quan ngang bộ, Thủ trưởng cơ quan thuộc Chính phủ, Chủ tịch Ủy ban nhân dân các tỉnh, thành phố trực thuộc trung ương và các tổ chức, cá nhân có liên quan chịu trách nhiệm thi hành Nghị định này."},{"k":"tbl","rows":[["Nơi nhận:\n- Ban Bí thư Trung ương Đảng;\n- Thủ tướng, các Phó Thủ tướng Chính phủ;\n- Các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ;\n- HĐND, UBND các tỉnh, thành phố trực thuộc trung ương;\n- Văn phòng Trung ương và các Ban của Đảng;\n- Văn phòng Tổng Bí thư;\n- Văn phòng Chủ tịch nước;\n- Hội đồng Dân tộc và các Ủy ban của Quốc hội;\n- Văn phòng Quốc hội;\n- Tòa án nhân dân tối cao;\n- Viện kiểm sát nhân dân tối cao;\n- Kiểm toán nhà nước;\n- Ủy ban Trung ương Mặt trận Tổ quốc Việt Nam;\n- Cơ quan trung ương của các tổ chức chính trị - xã hội;\n- VPCP: BTCN, các PCN, Trợ lý TTg, TGĐ Cổng TTĐT, các Vụ, Cục, đơn vị trực thuộc, Công báo;\n- Lưu: VT, KTTH (2b).","TM. CHÍNH PHỦ\nKT. THỦ TƯỚNG\nPHÓ THỦ TƯỚNG\nHồ Đức Phớc"]]}]}],"refs":{"nd359_1":[{"kind":"related","targetSlug":"nd181","targetAnchor":"nd181_1","label":"NĐ 181/2025 — Hướng dẫn Luật GTGT (liên quan)"}]},"details":{},"summaries":{}}</script>
 <script>
 var D=JSON.parse(document.getElementById('LD').textContent);
 var cur=null;
@@ -161,7 +185,7 @@ function tab(t,btn){
   document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on')});
   document.getElementById('s-'+t).classList.add('on');
   if(btn)btn.classList.add('on');
-  if(t==='home')buildHome();
+  if(t==='home')buildHome();if(t==='summary')buildSummary();
   if(t==='forms'&&typeof buildForms==='function')buildForms();
 }
 function buildHome(){
@@ -179,11 +203,37 @@ function buildHome(){
   document.getElementById('s-home').innerHTML=h;
 }
 
+/*SUM-JS-START*/
+function summaryHtml(s){
+  if(!s||(!s.tldr&&!(s.points&&s.points.length)))return '<p class="sum-empty">— Chưa có tóm tắt —</p>';
+  var h='';
+  if(s.tldr)h+='<p class="sum-tldr">'+e(s.tldr)+'</p>';
+  if(s.points&&s.points.length){h+='<ul class="sum-pts">';s.points.forEach(function(p){h+='<li>'+e(p)+'</li>'});h+='</ul>';}
+  return h;
+}
+function buildSummary(){
+  var m=D.meta||{},o=D.outline||[],sm=D.summaries||{};
+  var chs={};o.forEach(function(a){if(a.chuong)chs[a.chuong]=1});
+  var h='<div class="sum-wrap"><h1 class="sum-h1">'+e(m.title||'')+'</h1>';
+  if(m.scope)h+='<p class="sum-scope">'+e(m.scope)+'</p>';
+  h+='<div class="sum-grid"><div class="sum-stat"><b>'+o.length+'</b><span>Điều</span></div><div class="sum-stat"><b>'+Object.keys(chs).length+'</b><span>Chương</span></div>'+(m.effectiveDate?'<div class="sum-stat"><b>'+e(m.effectiveDate)+'</b><span>Hiệu lực</span></div>':'')+'</div>';
+  if(m.related&&m.related.length){h+='<div class="sum-rel">';m.related.forEach(function(r){h+='<span class="sum-tag">'+e(r)+'</span>'});h+='</div>';}
+  var lastC='',lastM='';
+  o.forEach(function(a){
+    if((a.chuong||'')!==lastC){lastC=a.chuong||'';lastM='';if(lastC)h+='<div class="sum-ch">'+e(lastC)+'</div>';}
+    if((a.muc||'')!==lastM){lastM=a.muc||'';if(lastM)h+='<div class="sum-mu">'+e(lastM)+'</div>';}
+    h+='<div class="sum-art" id="sum-'+a.id+'"><div class="sum-head"><span class="sum-code">'+e(a.code)+'</span>'+(a.shortTitle?'<span class="sum-title">'+e(a.shortTitle)+'</span>':'')+'<a class="sum-go" onclick="goOriginal(\''+a.id+'\');return false">Xem nguyên bản →</a></div>'+summaryHtml(sm[a.id])+'</div>';
+  });
+  h+='</div>';
+  document.getElementById('s-summary').innerHTML=h;
+}
+function goOriginal(id){show(id);}
+/*SUM-JS-END*/
 function initHash(){
   var id=(location.hash||'').replace('#','');
   var ok=(D.outline||[]).some(function(a){return a.id===id});
-  buildSb('');
-  if(ok)show(id);else if((D.outline||[]).length)show(D.outline[0].id);
+  buildSb('');buildSummary();
+  if(ok)show(id);else if(!D.summaries||!Object.keys(D.summaries).length){if((D.outline||[]).length)show(D.outline[0].id);}
 }
 initHash();
 </script>

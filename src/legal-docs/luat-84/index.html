@@ -40,26 +40,50 @@ h1.ht{font-size:22px;color:#1e3a8a;margin:0 0 6px}
 .dl-btn:hover{filter:brightness(.97)}.dl-btn.loading{opacity:.6;pointer-events:none}
 .sp{display:inline-block;width:10px;height:10px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .6s linear infinite;vertical-align:-1px}
 @keyframes spin{to{transform:rotate(360deg)}}
+/*SUM-CSS-START*/
+#s-summary{padding:0}
+.sum-wrap{max-width:880px;margin:0 auto;padding:22px 20px 60px}
+.sum-h1{font-size:22px;font-weight:800;color:#0f172a;margin:0 0 8px}
+.sum-scope{color:#475569;font-size:14px;line-height:1.6;margin:0 0 14px}
+.sum-grid{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.sum-stat{background:#f1f5f9;border-radius:10px;padding:8px 14px;text-align:center;min-width:80px}
+.sum-stat b{display:block;font-size:18px;color:#2563eb}
+.sum-stat span{font-size:11px;color:#64748b}
+.sum-rel{margin-bottom:18px}
+.sum-tag{display:inline-block;background:#eff6ff;color:#2563eb;border-radius:999px;padding:3px 10px;font-size:12px;margin:0 6px 6px 0}
+.sum-ch{font-weight:800;color:#1e40af;font-size:13px;text-transform:uppercase;letter-spacing:.04em;margin:20px 0 8px;padding-bottom:5px;border-bottom:1px solid #e2e8f0}
+.sum-mu{font-weight:700;color:#475569;font-size:13px;margin:12px 0 6px}
+.sum-art{background:#fff;border:1px solid #e8edf3;border-radius:12px;padding:13px 15px;margin-bottom:10px}
+.sum-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.sum-code{font-weight:800;color:#0f172a;font-size:14px}
+.sum-title{color:#334155;font-size:14px;flex:1}
+.sum-go{color:#2563eb;font-size:12px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.sum-go:hover{text-decoration:underline}
+.sum-tldr{color:#1f2937;font-size:14px;line-height:1.65;margin:0 0 6px}
+.sum-pts{margin:6px 0 0;padding-left:18px}
+.sum-pts li{color:#374151;font-size:13.5px;line-height:1.6;margin-bottom:3px}
+.sum-empty{color:#94a3b8;font-style:italic;font-size:13px;margin:0}
+/*SUM-CSS-END*/
 </style></head>
 <body>
 <div class="tb">
   <div class="tb-logo">Luật 84/2015<small>An toàn, vệ sinh lao động</small></div>
   <div class="tb-search">🔍<input id="q" placeholder="Tìm điều khoản..." oninput="search(this.value)"></div>
   <div class="tabs">
-    <button class="tab on" id="tab-main" onclick="tab('main',this)">📖 Nội dung</button>
+    <!--SUM-TAB-START--><button class="tab on" id="tab-summary" onclick="tab('summary',this)">📋 Tóm tắt</button><!--SUM-TAB-END--><button class="tab" id="tab-main" onclick="tab('main',this)">📖 Nguyên bản</button>
 
-    <button class="tab" id="tab-home" onclick="tab('home',this)">🏛️ Tổng quan</button>
+    
   </div>
 </div>
 <div class="wrap">
   <div class="sb" id="sb"></div>
   <div class="main">
-    <div class="sec on" id="s-main"><div id="av" class="hint">← Chọn điều khoản từ danh sách bên trái</div></div>
+    <div class="sec" id="s-main"><div id="av" class="hint">← Chọn điều khoản từ danh sách bên trái</div></div>
 
-    <div class="sec" id="s-home"></div>
+    <div class="sec on" id="s-summary"></div>
   </div>
 </div>
-<script id="LD" type="application/json">{"meta":{"title":"Luật 84/2015/QH13 — Luật An toàn, vệ sinh lao động","shortCode":"Luật 84/2015","subtitle":"An toàn, vệ sinh lao động","slug":"luat-84","effectiveDate":"01/07/2016","scope":"","description":"An toàn, vệ sinh lao động","related":[]},"outline":[]}</script>
+<script id="LD" type="application/json">{"meta":{"title":"Luật 84/2015/QH13 — Luật An toàn, vệ sinh lao động","shortCode":"Luật 84/2015","subtitle":"An toàn, vệ sinh lao động","slug":"luat-84","effectiveDate":"01/07/2016","scope":"","description":"An toàn, vệ sinh lao động","related":[]},"outline":[],"summaries":{}}</script>
 <script>
 var D=JSON.parse(document.getElementById('LD').textContent);
 var cur=null;
@@ -123,7 +147,7 @@ function tab(t,btn){
   document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on')});
   document.getElementById('s-'+t).classList.add('on');
   if(btn)btn.classList.add('on');
-  if(t==='home')buildHome();
+  if(t==='home')buildHome();if(t==='summary')buildSummary();
   if(t==='forms'&&typeof buildForms==='function')buildForms();
 }
 function buildHome(){
@@ -141,11 +165,37 @@ function buildHome(){
   document.getElementById('s-home').innerHTML=h;
 }
 
+/*SUM-JS-START*/
+function summaryHtml(s){
+  if(!s||(!s.tldr&&!(s.points&&s.points.length)))return '<p class="sum-empty">— Chưa có tóm tắt —</p>';
+  var h='';
+  if(s.tldr)h+='<p class="sum-tldr">'+e(s.tldr)+'</p>';
+  if(s.points&&s.points.length){h+='<ul class="sum-pts">';s.points.forEach(function(p){h+='<li>'+e(p)+'</li>'});h+='</ul>';}
+  return h;
+}
+function buildSummary(){
+  var m=D.meta||{},o=D.outline||[],sm=D.summaries||{};
+  var chs={};o.forEach(function(a){if(a.chuong)chs[a.chuong]=1});
+  var h='<div class="sum-wrap"><h1 class="sum-h1">'+e(m.title||'')+'</h1>';
+  if(m.scope)h+='<p class="sum-scope">'+e(m.scope)+'</p>';
+  h+='<div class="sum-grid"><div class="sum-stat"><b>'+o.length+'</b><span>Điều</span></div><div class="sum-stat"><b>'+Object.keys(chs).length+'</b><span>Chương</span></div>'+(m.effectiveDate?'<div class="sum-stat"><b>'+e(m.effectiveDate)+'</b><span>Hiệu lực</span></div>':'')+'</div>';
+  if(m.related&&m.related.length){h+='<div class="sum-rel">';m.related.forEach(function(r){h+='<span class="sum-tag">'+e(r)+'</span>'});h+='</div>';}
+  var lastC='',lastM='';
+  o.forEach(function(a){
+    if((a.chuong||'')!==lastC){lastC=a.chuong||'';lastM='';if(lastC)h+='<div class="sum-ch">'+e(lastC)+'</div>';}
+    if((a.muc||'')!==lastM){lastM=a.muc||'';if(lastM)h+='<div class="sum-mu">'+e(lastM)+'</div>';}
+    h+='<div class="sum-art" id="sum-'+a.id+'"><div class="sum-head"><span class="sum-code">'+e(a.code)+'</span>'+(a.shortTitle?'<span class="sum-title">'+e(a.shortTitle)+'</span>':'')+'<a class="sum-go" onclick="goOriginal(\''+a.id+'\');return false">Xem nguyên bản →</a></div>'+summaryHtml(sm[a.id])+'</div>';
+  });
+  h+='</div>';
+  document.getElementById('s-summary').innerHTML=h;
+}
+function goOriginal(id){show(id);}
+/*SUM-JS-END*/
 function initHash(){
   var id=(location.hash||'').replace('#','');
   var ok=(D.outline||[]).some(function(a){return a.id===id});
-  buildSb('');
-  if(ok)show(id);else if((D.outline||[]).length)show(D.outline[0].id);
+  buildSb('');buildSummary();
+  if(ok)show(id);else if(!D.summaries||!Object.keys(D.summaries).length){if((D.outline||[]).length)show(D.outline[0].id);}
 }
 initHash();
 </script>
