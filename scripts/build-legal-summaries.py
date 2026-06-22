@@ -31,17 +31,26 @@ SUM_CSS = '''/*SUM-CSS-START*/
 .sum-pts{margin:6px 0 0;padding-left:18px}
 .sum-pts li{color:#374151;font-size:13.5px;line-height:1.6;margin-bottom:3px}
 .sum-empty{color:#94a3b8;font-style:italic;font-size:13px;margin:0}
+.sum-verbatim{font-size:13.5px;line-height:1.6;color:#374151}
+.sum-verbatim p{margin:0 0 4px}
+.sum-vlabel{display:inline-block;font-size:11px;font-weight:600;color:#64748b;background:#f1f5f9;border-radius:6px;padding:2px 7px;margin-bottom:5px}
 /*SUM-CSS-END*/
 '''
 
 # JS dùng e() (đã có sẵn trong template generator), show() để mở Nguyên bản.
 SUM_JS = '''/*SUM-JS-START*/
-function summaryHtml(s){
-  if(!s||(!s.tldr&&!(s.points&&s.points.length)))return '<p class="sum-empty">— Chưa có tóm tắt —</p>';
-  var h='';
-  if(s.tldr)h+='<p class="sum-tldr">'+e(s.tldr)+'</p>';
-  if(s.points&&s.points.length){h+='<ul class="sum-pts">';s.points.forEach(function(p){h+='<li>'+e(p)+'</li>'});h+='</ul>';}
-  return h;
+function srcLen(a){var n=0;(a.content||[]).forEach(function(b){if(b.k==='p')n+=(b.t||'').length;else if(b.k==='tbl')(b.rows||[]).forEach(function(r){n+=r.join(' ').length})});return n;}
+function summaryHtml(a,s){
+  if(s&&(s.tldr||(s.points&&s.points.length))){
+    var h='';
+    if(s.tldr)h+='<p class="sum-tldr">'+e(s.tldr)+'</p>';
+    if(s.points&&s.points.length){h+='<ul class="sum-pts">';s.points.forEach(function(p){h+='<li>'+e(p)+'</li>'});h+='</ul>';}
+    return h;
+  }
+  // Chưa có tóm tắt: Điều ngắn (<250 ký tự) → trích nguyên văn; Điều dài → chờ tóm tắt
+  var L=srcLen(a);
+  if(L>0&&L<250)return '<div class="sum-verbatim"><span class="sum-vlabel">Điều ngắn — trích nguyên văn</span>'+renderContent(a.content||[],'')+'</div>';
+  return '<p class="sum-empty">— Chưa có tóm tắt —</p>';
 }
 function buildSummary(){
   var m=D.meta||{},o=D.outline||[],sm=D.summaries||{};
@@ -54,7 +63,7 @@ function buildSummary(){
   o.forEach(function(a){
     if((a.chuong||'')!==lastC){lastC=a.chuong||'';lastM='';if(lastC)h+='<div class="sum-ch">'+e(lastC)+'</div>';}
     if((a.muc||'')!==lastM){lastM=a.muc||'';if(lastM)h+='<div class="sum-mu">'+e(lastM)+'</div>';}
-    h+='<div class="sum-art" id="sum-'+a.id+'"><div class="sum-head"><span class="sum-code">'+e(a.code)+'</span>'+(a.shortTitle?'<span class="sum-title">'+e(a.shortTitle)+'</span>':'')+'<a class="sum-go" onclick="goOriginal(\\''+a.id+'\\');return false">Xem nguyên bản →</a></div>'+summaryHtml(sm[a.id])+'</div>';
+    h+='<div class="sum-art" id="sum-'+a.id+'"><div class="sum-head"><span class="sum-code">'+e(a.code)+'</span>'+(a.shortTitle?'<span class="sum-title">'+e(a.shortTitle)+'</span>':'')+'<a class="sum-go" onclick="goOriginal(\\''+a.id+'\\');return false">Xem nguyên bản →</a></div>'+summaryHtml(a,sm[a.id])+'</div>';
   });
   h+='</div>';
   document.getElementById('s-summary').innerHTML=h;
