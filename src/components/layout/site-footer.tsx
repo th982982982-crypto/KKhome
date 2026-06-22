@@ -128,9 +128,8 @@ export async function SiteFooter() {
               title="Đã thông báo Bộ Công Thương"
               className="inline-block"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://online.gov.vn/Content/EndUser/LogoCCDVSaleNoti/logoSaleNoti.png"
+              <Image
+                src="/logo-bo-cong-thuong.png"
                 alt="Đã thông báo Bộ Công Thương"
                 width={150}
                 height={57}
