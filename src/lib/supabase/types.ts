@@ -109,10 +109,75 @@ export interface Database {
           phone: string | null
           is_admin: boolean
           legal_access_until: string | null
+          tax_access_until: string | null
           created_at: string
         }
         Insert: Omit<Database['public']['Tables']['profiles']['Row'], 'created_at'>
         Update: Partial<Database['public']['Tables']['profiles']['Insert']>
+      }
+      tax_plans: {
+        Row: {
+          id: string
+          name: string
+          duration_months: number
+          price: number
+          original_price: number | null
+          is_active: boolean
+          sort_order: number
+          created_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['tax_plans']['Row'], 'id' | 'created_at'>
+        Update: Partial<Database['public']['Tables']['tax_plans']['Insert']>
+      }
+      tax_files: {
+        Row: {
+          id: string
+          user_id: string
+          file_name: string
+          mst: string
+          declaration_type: string
+          tax_period: string
+          tax_year: string
+          khai_type: string | null
+          so_lan: string | null
+          nguoi_ky: string | null
+          storage_path: string | null
+          status: string
+          uploaded_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['tax_files']['Row'], 'id' | 'uploaded_at'>
+        Update: Partial<Database['public']['Tables']['tax_files']['Insert']>
+      }
+      tax_data_rows: {
+        Row: {
+          id: number
+          user_id: string
+          file_id: string
+          mst: string
+          declaration_type: string
+          tax_period: string
+          tax_year: string
+          khai_type: string | null
+          so_lan: string | null
+          indicator_code: string
+          value: number
+          status: string
+        }
+        Insert: Omit<Database['public']['Tables']['tax_data_rows']['Row'], 'id'>
+        Update: Partial<Database['public']['Tables']['tax_data_rows']['Insert']>
+      }
+      tax_audit_notes: {
+        Row: {
+          id: string
+          user_id: string
+          key_id: string
+          mst: string | null
+          audit_type: string | null
+          note_text: string | null
+          updated_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['tax_audit_notes']['Row'], 'id' | 'updated_at'>
+        Update: Partial<Database['public']['Tables']['tax_audit_notes']['Insert']>
       }
     }
   }
@@ -124,6 +189,10 @@ export type Order = Database['public']['Tables']['orders']['Row']
 export type UserPurchase = Database['public']['Tables']['user_purchases']['Row']
 export type Profile = Database['public']['Tables']['profiles']['Row']
 export type LegalPlan = Database['public']['Tables']['legal_plans']['Row']
+export type TaxPlan = Database['public']['Tables']['tax_plans']['Row']
+export type TaxFile = Database['public']['Tables']['tax_files']['Row']
+export type TaxDataRow = Database['public']['Tables']['tax_data_rows']['Row']
+export type TaxAuditNote = Database['public']['Tables']['tax_audit_notes']['Row']
 
 export interface BankTransaction {
   id: string
@@ -137,7 +206,7 @@ export interface BankTransaction {
 }
 
 export interface CartItem {
-  type: 'template' | 'package' | 'legal_plan'
+  type: 'template' | 'package' | 'legal_plan' | 'tax_plan'
   id: string
   name: string
   sale_price: number
@@ -147,7 +216,7 @@ export interface CartItem {
 }
 
 export interface OrderItem {
-  type: 'template' | 'package' | 'legal_plan'
+  type: 'template' | 'package' | 'legal_plan' | 'tax_plan'
   id: string
   name: string
   price: number

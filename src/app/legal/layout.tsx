@@ -2,6 +2,7 @@ import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
 import { LegalPlanCard } from '@/components/legal/legal-plan-card'
 import { hasLegalAccess } from '@/lib/legal/has-legal-access'
+import { hasTaxAccess } from '@/lib/tax/has-tax-access'
 import { ScrollText, MessageCircle, LogIn } from 'lucide-react'
 import Link from 'next/link'
 import type { User } from '@supabase/supabase-js'
@@ -96,7 +97,7 @@ export default async function LegalLayout({ children }: { children: React.ReactN
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('is_admin, legal_access_until')
+    .select('is_admin, legal_access_until, tax_access_until')
     .eq('id', user.id)
     .single()
 
@@ -108,7 +109,7 @@ export default async function LegalLayout({ children }: { children: React.ReactN
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={true} />
+      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={true} canViewTax={hasTaxAccess(profile)} />
       <main className="flex-1 flex flex-col min-h-0">{children}</main>
     </div>
   )

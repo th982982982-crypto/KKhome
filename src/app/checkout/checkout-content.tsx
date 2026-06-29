@@ -82,7 +82,7 @@ export function CheckoutContent() {
   const [cancelNote, setCancelNote] = useState<string | null>(null)
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null)
 
-  const hasLegalPlan = items.some((i) => i.type === 'legal_plan')
+  const hasLegalPlan = items.some((i) => i.type === 'legal_plan' || i.type === 'tax_plan')
   const blockGuestLegal = hasLegalPlan && isLoggedIn === false
 
   // Restore pending order from localStorage on mount
@@ -383,7 +383,7 @@ export function CheckoutContent() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">{item.name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{item.type === 'package' ? 'Gói bundle' : item.type === 'legal_plan' ? 'Gói Pháp luật' : 'Template lẻ'}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{item.type === 'package' ? 'Gói bundle' : item.type === 'legal_plan' ? `Gói Pháp luật${item.duration_months ? ` · ${item.duration_months} tháng` : ''}` : item.type === 'tax_plan' ? `Gói Tờ Khai Thuế${item.duration_months ? ` · ${item.duration_months} tháng` : ''}` : 'Template lẻ'}</p>
                   </div>
                   <span className="text-sm font-bold text-gray-900 dark:text-gray-50 shrink-0">{formatCurrency(item.sale_price)}</span>
                 </div>

@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
 import { hasLegalAccess } from '@/lib/legal/has-legal-access'
+import { hasTaxAccess } from '@/lib/tax/has-tax-access'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { getUserPurchasedTemplateIds } from '@/lib/access-control'
 import { DashboardTabs } from '@/components/dashboard/dashboard-tabs'
@@ -46,7 +47,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} />
+      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)} />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-10">
         <div className="mb-8">

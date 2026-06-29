@@ -22,6 +22,7 @@ import {
   Settings,
   Scale,
   FileText,
+  Receipt,
 } from 'lucide-react'
 
 interface AdminShellProps {
@@ -37,6 +38,7 @@ const NAV = [
   { href: '/admin/promotions', label: 'Khuyến mãi', icon: Tag },
   { href: '/admin/sync', label: 'Đồng bộ Sheets', icon: RefreshCw },
   { href: '/admin/legal', label: 'Pháp luật', icon: Scale },
+  { href: '/admin/tax', label: 'Tờ Khai Thuế', icon: Receipt },
   { href: '/admin/policies', label: 'Chính sách', icon: FileText },
   { href: '/admin/settings', label: 'Cài đặt', icon: Settings },
 ]

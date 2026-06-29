@@ -3,6 +3,7 @@ import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { Button } from '@/components/ui/button'
 import { Navbar } from '@/components/layout/navbar'
 import { hasLegalAccess } from '@/lib/legal/has-legal-access'
+import { hasTaxAccess } from '@/lib/tax/has-tax-access'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { TemplateSection } from '@/components/templates/template-section'
 import { getUserPurchasedTemplateIds } from '@/lib/access-control'
@@ -48,7 +49,7 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} />
+      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)} />
 
       <main className="flex-1">
       {/* Hero */}

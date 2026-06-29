@@ -31,7 +31,7 @@ export async function POST(req: Request) {
 
   // Template/package → user_purchases (chỉ insert khi có)
   const purchases = items
-    .filter((item) => item.type !== 'legal_plan')
+    .filter((item) => item.type !== 'legal_plan' && item.type !== 'tax_plan')
     .map((item) => ({
       user_id: order.user_id,
       purchase_type: item.type as 'template' | 'package',
@@ -88,6 +88,46 @@ export async function POST(req: Request) {
         if (grantError) {
           return NextResponse.json({ error: grantError.message }, { status: 500 })
         }
+      }
+    }
+  }
+
+  // Gói Tờ Khai Thuế → cộng dồn thời hạn vào profiles.tax_access_until
+  const taxItems = items.filter((item) => item.type === 'tax_plan')
+  if (taxItems.length > 0) {
+    if (!order.user_id) {
+      return NextResponse.json({ error: 'Đơn Tax thiếu user_id' }, { status: 400 })
+    }
+
+    const planIds = taxItems.map((i) => i.id)
+    const { data: taxPlans } = await supabase
+      .from('tax_plans')
+      .select('id, duration_months')
+      .in('id', planIds)
+
+    let totalMonths = 0
+    for (const item of taxItems) {
+      const plan = taxPlans?.find((p) => p.id === item.id)
+      totalMonths += plan?.duration_months ?? item.duration_months ?? 0
+    }
+
+    if (totalMonths > 0) {
+      const { data: prof } = await supabase
+        .from('profiles')
+        .select('tax_access_until')
+        .eq('id', order.user_id)
+        .single()
+
+      const now = new Date()
+      const current = prof?.tax_access_until ? new Date(prof.tax_access_until) : now
+      if (Number.isFinite(current.getTime())) {
+        const base = current.getTime() > now.getTime() ? current : now
+        const newExpiry = addMonths(base, totalMonths)
+        const { error: grantError } = await supabase
+          .from('profiles')
+          .update({ tax_access_until: newExpiry.toISOString() })
+          .eq('id', order.user_id)
+        if (grantError) return NextResponse.json({ error: grantError.message }, { status: 500 })
       }
     }
   }
