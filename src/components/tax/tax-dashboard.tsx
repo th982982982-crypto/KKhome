@@ -7,11 +7,12 @@ import { toast } from 'sonner'
 import { TaxUploadWidget } from './tax-upload-widget'
 import { TaxTable } from './tax-table'
 import { TaxAuditBalPanel, TaxAuditRevPanel } from './tax-audit-panel'
+import { TaxPaymentPanel } from './tax-payment-panel'
 import type { TaxFile } from '@/lib/supabase/types'
 import { UI_CONFIG } from '@/lib/tax/ui-config'
 import type { GtgtAuditResult, RevenueAuditResult } from '@/lib/tax/audit-engine'
 
-type Tab = 'GTGT' | 'TNDN' | 'TNCN' | 'AUDIT_BAL' | 'AUDIT_REV' | 'FILES'
+type Tab = 'GTGT' | 'TNDN' | 'TNCN' | 'AUDIT_BAL' | 'AUDIT_REV' | 'FILES' | 'PAYMENTS'
 type Mode = 'year' | 'period'
 
 function fmtDate(iso: string) {
@@ -162,6 +163,7 @@ export function TaxDashboard() {
   }
 
   const isAuditTab = tab === 'AUDIT_BAL' || tab === 'AUDIT_REV'
+  const isSpecialTab = isAuditTab || tab === 'FILES' || tab === 'PAYMENTS'
   const hasActiveData = files.some(f => f.status === 'ĐƯỢC CỘNG')
 
   return (
@@ -215,7 +217,7 @@ export function TaxDashboard() {
           </div>
 
           <div className="ml-auto flex items-center gap-2">
-            {!isAuditTab && tab !== 'FILES' && (
+            {!isSpecialTab && (
               <button
                 onClick={handleExcelExport}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors"
@@ -243,6 +245,7 @@ export function TaxDashboard() {
           { id: 'TNCN', label: 'TNCN' },
           { id: 'AUDIT_BAL', label: 'Rủi ro Số dư', danger: true },
           { id: 'AUDIT_REV', label: 'Rủi ro Doanh thu', danger: true },
+          { id: 'PAYMENTS', label: 'Giấy nộp tiền' },
           { id: 'FILES', label: 'Lịch sử tải lên' },
         ] as { id: Tab; label: string; danger?: boolean }[]).map((t) => (
           <button
@@ -273,7 +276,7 @@ export function TaxDashboard() {
         <div className="text-center py-16 text-red-500">{error}</div>
       ) : (
         <>
-          {!isAuditTab && tab !== 'FILES' && (
+          {!isSpecialTab && (
             <div className="flex items-center gap-2 mb-4">
               <button
                 onClick={() => setMode('year')}
@@ -313,6 +316,7 @@ export function TaxDashboard() {
             )
           )}
 
+          {tab === 'PAYMENTS' && <TaxPaymentPanel />}
           {tab === 'FILES' && <FileList files={files} deletingId={deletingId} onDelete={handleDelete} />}
         </>
       )}

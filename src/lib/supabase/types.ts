@@ -129,6 +129,28 @@ export interface Database {
         Insert: Omit<Database['public']['Tables']['tax_plans']['Row'], 'id' | 'created_at'>
         Update: Partial<Database['public']['Tables']['tax_plans']['Insert']>
       }
+      tax_payments: {
+        Row: {
+          id: string
+          user_id: string
+          file_name: string
+          mst: string
+          ten_nnop: string | null
+          hthuc_nop: string | null
+          so_gnt: string | null
+          ma_thamchieu: string | null
+          ngay_lap: string | null
+          tong_tien: number | null
+          ten_cqt: string | null
+          ma_nhang_nop: string | null
+          ten_nhang_nop: string | null
+          stk_nhang_nop: string | null
+          chi_tiet: Array<{ ndungNop: string; maNdkt: string; maChuong: string; kyThue: string; tienPnop: number; ghiChu: string }>
+          uploaded_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['tax_payments']['Row'], 'id' | 'uploaded_at'>
+        Update: Partial<Database['public']['Tables']['tax_payments']['Insert']>
+      }
       tax_files: {
         Row: {
           id: string
@@ -161,6 +183,7 @@ export type Profile = Database['public']['Tables']['profiles']['Row']
 export type LegalPlan = Database['public']['Tables']['legal_plans']['Row']
 export type TaxPlan = Database['public']['Tables']['tax_plans']['Row']
 export type TaxFile = Database['public']['Tables']['tax_files']['Row']
+export type TaxPayment = Database['public']['Tables']['tax_payments']['Row']
 
 export interface BankTransaction {
   id: string
