@@ -43,6 +43,21 @@ next-env.d.ts
 # screenshots
 /screenshots
 /test-results
+
+# Legal documents, scripts, XML source files — not needed in deployment
+/Biểu mẫu xuất/
+/Luật 67-2025-QH15/
+/Nghị-định-320-2025-NĐ-CP/
+/Thông tư 99_2025_TT-BTC DOC/
+/Thông tư 99_2025_TT-BTC/
+/Thông-tư-133-2016-TT-BTC/
+/Thông-tư-152-2025-TT-BTC/
+/Thông-tư-20-2026-TT-BTC/
+/Thông-tư-58-2026-TT-BTC/
+/Tổng hợp/
+/Sricpt/
+/xml/
+/audit_modal.mjs
 /playwright-report
 scripts/.doc-cache/
 src/lib/legal/summaries-parts/
