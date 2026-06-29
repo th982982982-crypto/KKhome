@@ -238,10 +238,10 @@ export function TaxDashboard() {
       {/* Tabs */}
       <div className="flex border-b border-gray-200 dark:border-gray-700 mb-4 gap-1 overflow-x-auto">
         {([
-          { id: 'GTGT', label: 'Báo cáo GTGT' },
-          { id: 'TNDN', label: 'Báo cáo TNDN' },
-          { id: 'TNCN', label: 'Báo cáo TNCN' },
-          { id: 'AUDIT_BAL', label: 'Rủi ro Số dư GTGT', danger: true },
+          { id: 'GTGT', label: 'GTGT' },
+          { id: 'TNDN', label: 'TNDN' },
+          { id: 'TNCN', label: 'TNCN' },
+          { id: 'AUDIT_BAL', label: 'Rủi ro Số dư', danger: true },
           { id: 'AUDIT_REV', label: 'Rủi ro Doanh thu', danger: true },
           { id: 'FILES', label: 'Lịch sử tải lên' },
         ] as { id: Tab; label: string; danger?: boolean }[]).map((t) => (
