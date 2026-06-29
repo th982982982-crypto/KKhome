@@ -12,7 +12,6 @@ export interface ParsedDeclaration {
 
 // Works in both browser (client) and Node.js (server) — no DOMParser needed.
 function getTagText(xml: string, tag: string): string {
-  // Match <tag> or <tag attr="..."> with content, handling self-closing and xsi:nil
   const re = new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, 'i')
   const m = xml.match(re)
   return m ? m[1].trim() : ''
@@ -25,25 +24,38 @@ function getIndicatorValue(xml: string, tag: string): number {
   return isNaN(num) ? 0 : num
 }
 
+// Only these maTKhai are tax declarations with structured indicator rows.
+// Others (373=bảng kê chứng từ, 302=đăng ký NPT, 402=BCTC, 892≠953, etc.) are rejected.
+const SUPPORTED_MA_TKHAI: Record<string, 'GTGT' | 'TNDN' | 'TNCN'> = {
+  '842': 'GTGT',  // 01/GTGT — Tờ khai GTGT (monthly)
+  '892': 'TNDN',  // 03/TNDN — Quyết toán TNDN (annual)
+  '864': 'TNCN',  // 05/KK-TNCN — Tờ khai TNCN (monthly)
+  '953': 'TNCN',  // 05/QTT-TNCN — Quyết toán TNCN (annual)
+}
+
 export function parseXmlText(xmlText: string): ParsedDeclaration {
   const maTKhai = getTagText(xmlText, 'maTKhai')
-  if (!maTKhai) throw new Error('Không tìm thấy thẻ maTKhai — file XML không hợp lệ')
+  if (!maTKhai) throw new Error('File XML không hợp lệ — không tìm thấy thẻ maTKhai')
 
-  const declarationType: 'GTGT' | 'TNDN' | 'TNCN' =
-    maTKhai === '842' ? 'GTGT' : maTKhai === '892' ? 'TNDN' : 'TNCN'
+  const declarationType = SUPPORTED_MA_TKHAI[maTKhai]
+  if (!declarationType) {
+    const tenTKhai = getTagText(xmlText, 'tenTKhai') || `maTKhai=${maTKhai}`
+    throw new Error(`Không hỗ trợ loại tờ khai: "${tenTKhai}". Chỉ hỗ trợ: GTGT (01/GTGT), TNDN (03/TNDN), TNCN (05/KK-TNCN, 05/QTT-TNCN).`)
+  }
 
   const kyKKhai = getTagText(xmlText, 'kyKKhai')
   if (!kyKKhai) throw new Error('Không tìm thấy kỳ khai thuế')
 
+  // "01/2024" → year="2024"; "2024" (annual) → year="2024"
   const taxYear = kyKKhai.includes('/') ? kyKKhai.split('/').pop()! : kyKKhai
 
   let indicatorTags: string[] = []
 
   if (declarationType === 'GTGT') {
     indicatorTags = [
-      'ct21','ct22','ct23','ct24','ct23a','ct24a','ct25','ct26','ct27','ct28',
-      'ct29','ct30','ct31','ct32','ct33','ct32a','ct34','ct35','ct36','ct37',
-      'ct38','ct39a','ct40a','ct40b','ct40','ct41','ct42','ct43',
+      'ct21','ct22','ct23','ct24','ct23a','ct24a','ct25',
+      'ct26','ct27','ct28','ct29','ct30','ct31','ct32','ct33','ct32a','ct34','ct35',
+      'ct36','ct37','ct38','ct39a','ct40a','ct40b','ct40','ct41','ct42','ct43',
     ]
   } else if (declarationType === 'TNDN') {
     indicatorTags = [
@@ -57,8 +69,9 @@ export function parseXmlText(xmlText: string): ParsedDeclaration {
       'ctE1','ctE2','ctE3','ctE4','ctE5','ctE6',
     ]
   } else {
+    // TNCN: both 05/KK-TNCN (monthly, maTKhai=864) and 05/QTT-TNCN (annual, maTKhai=953)
     indicatorTags = [
-      'ct16','ct17','ct18','ct19','ct20','ct21','ct22','ct23',
+      'ct15','ct16','ct17','ct18','ct19','ct20','ct21','ct22','ct23',
       'ct24','ct25','ct26','ct27','ct28','ct29','ct30','ct31','ct32',
     ]
   }
