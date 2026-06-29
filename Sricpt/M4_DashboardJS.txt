@@ -1,0 +1,517 @@
+<style>
+  /* 🔐 CSS MODULE ĐĂNG NHẬP / ĐĂNG KÝ HỢP NHẤT */
+  .login-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: #f4f6f9; display: flex; justify-content: center; align-items: center; z-index: 9999; font-family: Arial, sans-serif; }
+  .login-box { background: #fff; padding: 35px 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 360px; text-align: center; }
+  .login-tabs-nav { display: flex; margin-bottom: 25px; border-bottom: 2px solid #edf2f7; }
+  .login-tab-toggle { flex: 1; padding: 10px; background: none; border: none; font-weight: bold; color: #64748b; cursor: pointer; font-size: 14px; transition: 0.2s; border-bottom: 3px solid transparent; }
+  .login-tab-toggle.active { color: #007bff; border-bottom-color: #007bff; }
+  .login-group { margin-bottom: 18px; text-align: left; }
+  .login-group label { display: block; font-size: 13px; color: #5c7080; margin-bottom: 5px; font-weight: bold; }
+  .login-group input { width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-size: 14px; }
+  .login-btn { width: 100%; padding: 12px; background: #0056b3; color: #fff; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 14px; transition: 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+  .login-btn:hover { background: #003b7e; }
+  .login-error { color: #dc3545; font-size: 13px; margin-top: 10px; display: none; font-weight: bold; }
+  .login-success { color: #28a745; font-size: 13px; margin-top: 10px; display: none; font-weight: bold; }
+
+  /* 🏢 CSS BỘ LỌC DOANH NGHIỆP & THANH LỌC KỲ ĐỘNG */
+  .biz-select { padding: 8px 12px; border: 1px solid #ced4da; border-radius: 4px; background-color: #fff; color: #333; font-weight: bold; font-size: 14px; cursor: pointer; outline: none; min-width: 220px; }
+  .period-filter-bar { display: inline-flex; align-items: center; background: #fff; padding: 4px; border: 1px solid #e1e4e8; border-radius: 20px; }
+  .period-label { font-size: 12px; font-weight: bold; color: #5c7080; margin: 0 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .filter-yr-btn { background: none; border: none; padding: 6px 16px; font-size: 13px; font-weight: bold; color: #485460; cursor: pointer; border-radius: 15px; transition: 0.2s; margin-right: 2px; }
+  .filter-yr-btn:hover { background: #f1f2f6; }
+  .filter-yr-btn.active { background: #0056b3; color: #fff; }
+
+  /* ⚡ SIÊU CẤU TRÚC PHÒM BẢNG ĐÓNG BĂNG ĐA TRỤC TUYỆT ĐỐI */
+  .report-table-card { max-height: 580px !important; overflow: auto !important; padding: 0px !important; border: 1px solid #cbd5e1 !important; border-radius: 6px !important; background-color: #fff !important; }
+  .table-custom { table-layout: auto; border-collapse: separate !important; border-spacing: 0 !important; width: 100%; margin: 0 !important; }
+  .table-custom th, .table-custom td { padding: 12px 15px; border-bottom: 1px solid #dee2e6 !important; border-right: 1px solid #dee2e6 !important; background-clip: padding-box !important; }
+  .table-custom thead th { position: sticky !important; top: 0 !important; z-index: 20 !important; background-color: #f8f9fa !important; border-bottom: 2px solid #94a3b8 !important; }
+
+  /* Lớp ghim cố định trục ngang cho bảng thường */
+  .table-custom.pinned-mode th:nth-child(1), .table-custom.pinned-mode td:nth-child(1) { position: sticky !important; left: 0 !important; z-index: 10 !important; background-color: #fff !important; min-width: 290px !important; max-width: 290px !important; border-right: 2px solid #94a3b8 !important; }
+  .table-custom.pinned-mode th:nth-child(2), .table-custom.pinned-mode td:nth-child(2) { position: sticky !important; left: 290px !important; z-index: 10 !important; background-color: #fff !important; min-width: 65px !important; max-width: 65px !important; text-align: center !important; border-right: 2px solid #94a3b8 !important; }
+  .table-custom.pinned-mode thead th:nth-child(1) { left: 0 !important; z-index: 25 !important; }
+  .table-custom.pinned-mode thead th:nth-child(2) { left: 290px !important; z-index: 25 !important; }
+  .table-custom tr.section-header-row td { background-color: #fcf4ec !important; padding: 0 !important; }
+
+  /* 🎨 CSS ĐỘC QUYỀN CHO MODULE AUDIT ALERTS */
+  .badge-success { background-color: #d4edda; color: #155724; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; display: inline-block; }
+  .badge-danger { background-color: #f8d7da; color: #721c24; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 12px; display: inline-block; animation: pulse 2s infinite; }
+  .input-note { width: 100%; padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 4px; box-sizing: border-box; font-size: 12.5px; }
+  .input-note:focus { border-color: #4a90e2; outline: none; background-color: #fdfdfd; }
+  .btn-save-note { background: #0056b3; color: #fff; border: none; padding: 6px 12px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 12px; }
+  .btn-save-note:hover { background: #003b7e; }
+  @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+</style>
+
+<script>
+  var currentTab = 'GTGT'; var currentMode = 'year'; var globalData = [];
+  var selectedMst = 'all'; var selectedYear = 'all'; var currentAuthAction = 'login';
+
+  var UI_CONFIG = {
+    GTGT: [
+      { isHeader: true, name: "A. CÁC CHỈ TIÊU ĐẦU KỲ VÀ MUA VÀO" },
+      { code: "21", name: "Không phát sinh hoạt động mua, bán trong kỳ" },
+      { code: "22", name: "Thuế giá trị gia tăng còn được khấu trừ kỳ trước chuyển sang" },
+      { code: "23", name: "Giá trị hàng hóa, dịch vụ mua vào" },
+      { code: "24", name: "Thuế giá trị gia tăng của hàng hóa, dịch vụ mua vào" },
+      { code: "23a", name: "Giá trị hàng hóa, dịch vụ nhập khẩu" },
+      { code: "24a", name: "Thuế giá trị gia tăng hàng hóa, dịch vụ nhập khẩu" },
+      { code: "25", name: "Thuế giá trị gia tăng của hàng hóa, dịch vụ mua vào được khấu trừ kỳ này" },
+      { isHeader: true, name: "B. CÁC CHỈ TIÊU BÁN RA" },
+      { code: "26", name: "Giá trị hàng hóa, dịch vụ bán ra không chịu thuế giá trị gia tăng" },
+      { code: "27", name: "Giá trị hàng hóa, dịch vụ bán ra chịu thuế giá trị gia tăng" },
+      { code: "28", name: "Thuế giá trị gia tăng của hàng hóa, dịch vụ bán ra chịu thuế giá trị gia tăng" },
+      { code: "29", name: "Giá trị hàng hóa, dịch vụ bán ra chịu thuế suất 0%" },
+      { code: "30", name: "Giá trị hàng hóa, dịch vụ bán ra chịu thuế suất 5%" },
+      { code: "31", name: "Thuế giá trị gia tăng của hàng hóa, dịch vụ bán ra chịu thuế suất 5%" },
+      { code: "32", name: "Giá trị hàng hóa, dịch vụ bán ra chịu thuế suất 10%" },
+      { code: "33", name: "Thuế giá trị gia tăng của hàng hóa, dịch vụ bán ra chịu thuế suất 10%" },
+      { code: "32a", name: "Giá trị hàng hóa, dịch vụ bán ra không tính thuế" },
+      { code: "34", name: "Tổng doanh thu của hàng hóa, dịch vụ bán ra" },
+      { code: "35", name: "Tổng thuế giá trị gia tăng của hàng hóa, dịch vụ bán ra" },
+      { isHeader: true, name: "C. XÁC ĐỊNH NGHĨA VỤ THUẾ" },
+      { code: "36", name: "Thuế giá trị gia tăng phát sinh trong kỳ" },
+      { code: "37", name: "Điều chỉnh giảm (thuế GTGT còn được khấu trừ của các kỳ trước)" },
+      { code: "38", name: "Điều chỉnh tăng (thuế GTGT còn được khấu trừ của các kỳ trước)" },
+      { code: "39a", name: "Thuế giá trị gia tăng nhận bàn giao được khấu trừ trong kỳ" },
+      { code: "40a", name: "Thuế giá trị gia tăng phải nộp của hoạt động sản xuất kinh doanh trong kỳ" },
+      { code: "40b", name: "Thuế giá trị gia tăng mua vào của dự án đầu tư được bù trừ với thuế GTGT còn phải nộp" },
+      { code: "40", name: "Thuế giá trị gia tăng còn phải nộp trong kỳ" },
+      { code: "41", name: "Thuế giá trị gia tăng chưa khấu trừ hết kỳ này" },
+      { code: "42", name: "Thuế giá trị gia tăng đề nghị hoàn" },
+      { code: "43", name: "Thuế giá trị gia tăng còn được khấu trừ chuyển kỳ sau" }
+    ],
+    TNDN: [
+      { isHeader: true, name: "KẾT QUẢ GHI NHẬN THEO BÁO CÁO TÀI CHÍNH" },
+      { code: "04", name: "1. Doanh thu bán hàng và cung cấp dịch vụ" },
+      { code: "05", name: "Trong đó: - Doanh thu bán hàng hoá, dịch vụ xuất khẩu" },
+      { code: "06", name: "2. Các khoản giảm trừ doanh thu ([06] = [07] + [08] + [09])" },
+      { code: "07", name: "a. Chiết khấu thương mại" },
+      { code: "08", name: "b. Giảm giá hàng bán" },
+      { code: "09", name: "c. Giá trị hàng bán bị trả lại" },
+      { code: "10", name: "3. Doanh thu hoạt động tài chính" },
+      { code: "11", name: "Trong đó: Doanh thu từ lãi tiền gửi" },
+      { code: "12", name: "4. Chi phí sản xuất, kinh doanh hàng hoá, dịch vụ ([12] = [13] + [14] + [15])" },
+      { code: "13", name: "a. Giá vốn hàng bán" },
+      { code: "14", name: "b. Chi phí bán hàng" },
+      { code: "15", name: "c. Chi phí quản lý doanh nghiệp" },
+      { code: "16", name: "5. Chi phí tài chính" },
+      { code: "17", name: "Trong đó: Chi phí lãi tiền vay" },
+      { code: "18", name: "6. Lợi nhuận thuần từ hoạt động kinh doanh ([18] = [04] - [06] + [10] - [12] - [16])" },
+      { code: "19", name: "7. Thu nhập khác" },
+      { code: "20", name: "8. Chi phí khác" },
+      { code: "21", name: "9. Lợi nhuận khác ([21] = [19] - [20])" },
+      { code: "22", name: "10. Tổng lợi nhuận kế toán trước thuế thu nhập doanh nghiệp ([22] = [18] + [21])" },
+      { isHeader: true, name: "A. KẾT QUẢ KINH DOANH GHI NHẬN THEO BÁO CÁO TÀI CHÍNH" },
+      { code: "A1", name: "1. Tổng lợi nhuận kế toán trước thuế thu nhập doanh nghiệp" },
+      { isHeader: true, name: "B. XÁC ĐỊNH THU NHẬP CHỊU THUẾ THEO LUẬT THUẾ THU NHẬP DOANH NGHIỆP" },
+      { code: "B1", name: "1. Điều chỉnh tăng tổng lợi nhuận trước thuế thu nhập doanh nghiệp (B1 = B2+B3+B4+B5+B6+B7)" },
+      { code: "B2", name: "1.1. Các khoản điều chỉnh tăng doanh thu" },
+      { code: "B3", name: "1.2. Chi phí của phần doanh thu điều chỉnh giảm" },
+      { code: "B4", name: "1.3. Các khoản chi không được trừ khi xác định thu nhập chịu thuế" },
+      { code: "B5", name: "1.4. Thuế thu nhập đã nộp cho phần thu nhập nhận được ở nước ngoài" },
+      { code: "B6", name: "1.5. Điều chỉnh tăng lợi nhuận do xác định giá thị trường đối với giao dịch liên kết" },
+      { code: "B7", name: "1.6. Các khoản điều chỉnh làm tăng lợi nhuận trước thuế khác" },
+      { code: "B8", name: "2. Điều chỉnh giảm tổng lợi nhuận trước thuế thu nhập doanh nghiệp (B8 = B9+B10+B11+B12)" },
+      { code: "B9", name: "2.1. Giảm trừ các khoản doanh thu đã tính thuế năm trước" },
+      { code: "B10", name: "2.2. Chi phí của phần doanh thu điều chỉnh tăng" },
+      { code: "B11", name: "2.3. Chi phí lãi vay không được trừ kỳ trước được chuyển sang kỳ này..." },
+      { code: "B12", name: "2.4. Các khoản điều chỉnh làm giảm lợi nhuận trước thuế khác" },
+      { code: "B13", name: "3. Tổng thu nhập chịu thuế (B13 = A1 + B1 - B8)" },
+      { code: "B14", name: "3.1. Thu nhập chịu thuế từ hoạt động sản xuất kinh doanh" },
+      { code: "B15", name: "3.2. Thu nhập chịu thuế từ hoạt động chuyển nhượng bất động sản" },
+      { isHeader: true, name: "C. THUẾ THU NHẬP DOANH NGHIỆP (TNDN) PHẢI NỘP TỪ HOẠT ĐỘNG SXKD" },
+      { code: "C1", name: "1. Thu nhập chịu thuế (C1 = B14)" },
+      { code: "C2", name: "2. Thu nhập miễn thuế" },
+      { code: "C3", name: "3. Chuyển lỗ và bù trừ lãi, lỗ (C3 = C3a + C3b)" },
+      { code: "C3a", name: "3.1. + Lỗ từ hoạt động SXKD được chuyển trong kỳ" },
+      { code: "C3c", name: "3.2. + Lỗ từ chuyển nhượng BĐS được bù trừ với lãi của hoạt động SXKD" },
+      { code: "C4", name: "4. Thu nhập tính thuế (TNTT) (C4 = C1 - C2 - C3)" },
+      { code: "C5", name: "5. Trích lập quỹ khoa học công nghệ (nếu có)" },
+      { code: "C6", name: "6. TNTT sau khi đã trích lập quỹ khoa học công nghệ (C6 = C4 - C5 = C7 + C8)" },
+      { code: "C7", name: "6.1. + Thu nhập tính thuế áp dụng thuế suất 15%" },
+      { code: "C8", name: "6.2. + Thu nhập tính thuế tính theo thuế suất không ưu đãi khác" },
+      { code: "C8a", name: "6.3. + Thuế suất không ưu đãi khác (%)" },
+      { code: "C9", name: "7. Thuế TNDN từ hoạt động SXKD tính theo thuế suất không ưu đãi" },
+      { code: "C10", name: "8. Thuế TNDN được ưu đãi theo Luật thuế TNDN (C10 = C11 + C12 + C13)" },
+      { code: "C11", name: "8.1. + Thuế TNDN chênh lệch do áp dụng mức thuế suất ưu đãi" },
+      { code: "C12", name: "8.2. + Thuế TNDN được miễn trong kỳ" },
+      { code: "C13", name: "8.3. + Thuế TNDN được giảm trong kỳ" },
+      { code: "C14", name: "9. Thuế TNDN được miễn, giảm theo Hiệp định thuế" },
+      { code: "C15", name: "10. Thuế TNDN được miễn, giảm theo từng thời kỳ" },
+      { code: "C16", name: "11. Thuế thu nhập đã nộp ở nước ngoài được trừ trong kỳ tính thuế" },
+      { code: "C17", name: "12. Thuế TNDN phải nộp của hoạt động sản xuất kinh doanh (C17 = C9 - C10 - C14 - C15 - C16)" },
+      { isHeader: true, name: "D. THUẾ TNDN PHẢI NỘP TỪ HOẠT ĐỘNG CHUYỂN NHƯỢNG BĐS" },
+      { code: "D1", name: "1. Thu nhập chịu thuế (D1 = B15)" },
+      { code: "D2", name: "2. Lỗ từ hoạt động chuyển nhượng BĐS được chuyển trong kỳ và Lỗ từ hoạt động SXKD được bù trừ" },
+      { code: "D3", name: "3. Thu nhập tính thuế (D3 = D1 - D2)" },
+      { code: "D4", name: "4. Trích lập quỹ khoa học công nghệ (nếu có)" },
+      { code: "D5", name: "5. TNTT sau khi đã trích lập quỹ khoa học công nghệ (D5 = D3 - D4)" },
+      { code: "D6", name: "6. Thuế TNDN phải nộp của hoạt động chuyển nhượng BĐS trong kỳ" },
+      { code: "D7", name: "7. Thuế TNDN chênh lệch do áp dụng mức thuế suất ưu đãi đối với dự án" },
+      { code: "D8", name: "8. Thuế TNDN của hoạt động chuyển nhượng BĐS còn phải nộp kỳ này (D8 = D6 - D7)" },
+      { isHeader: true, name: "E. SỐ THUẾ TNDN PHẢI NỘP QUYẾT TOÁN TRONG KỲ" },
+      { code: "E1", name: "1. Thuế TNDN của hoạt động sản xuất kinh doanh" },
+      { code: "E2", name: "2. Thuế TNDN từ hoạt động chuyển nhượng bất động sản (E2 = E3 + E4)" },
+      { code: "E3", name: "2.1. Thuế TNDN từ hoạt động chuyển nhượng bất động sản" },
+      { code: "E4", name: "2.2. Thuế TNDN từ hoạt động chuyển nhượng cơ sở hạ tầng, nhà có thu tiền theo tiến độ" },
+      { code: "E5", name: "3. Thuế TNDN phải nộp khác (nếu có)" },
+      { code: "E6", name: "3.1. Trong đó thuế TNDN từ xử lý Quỹ phát triển khoa học công nghệ" },
+      { isHeader: true, name: "G. SỐ THUẾ TNDN ĐÃ TẠM NỘP" },
+      { code: "G1", name: "1.1. Thuế TNDN nộp thừa kỳ trước chuyển sang kỳ này" },
+      { code: "G2", name: "1.2. Thuế TNDN đã tạm nộp trong năm" },
+      { code: "G3", name: "2.1. Thuế TNDN nộp thừa kỳ trước chuyển sang kỳ này của hoạt động chuyển nhượng BĐS" },
+      { code: "G4", name: "2.2. Thuế TNDN đã tạm nộp trong năm của hoạt động chuyển nhượng BĐS" },
+      { code: "G5", name: "2.3. Thuế TNDN đã tạm nộp các kỳ trước và trong năm quyết toán của hoạt động chuyển nhượng cơ sở hạ tầng" },
+      { isHeader: true, name: "H. CHÊNH LỆCH GIỮA SỐ THUẾ PHẢI NỘP VÀ SỐ THUẾ ĐÃ TẠM NỘP" },
+      { code: "h1", name: "1. Chênh lệch giữa số thuế phải nộp và tạm nộp của HĐ SXKD (h1 = E1 + E5 - G2)" },
+      { code: "h2", name: "2. Chênh lệch thuế của hoạt động chuyển nhượng BĐS (h2 = E3 - G4)" },
+      { code: "h3", name: "3. Chênh lệch của HĐ chuyển nhượng cơ sở hạ tầng (h3 = E4 - G5)" },
+      { isHeader: true, name: "I. SỐ THUẾ TNDN CÒN PHẢI NỘP ĐẾN THỜI HẠN NỘP HỒ SƠ QUYẾT TOÁN" },
+      { code: "i1", name: "1. Thuế TNDN còn phải nộp của hoạt động sản xuất kinh doanh" },
+      { code: "i2", name: "2. Thuế TNDN còn phải nộp của hoạt động chuyển nhượng BĐS" }
+    ],
+    TNCN: [
+      { isHeader: true, name: "CHỈ TIÊU KHAI TRỰC TIẾP TRÊN TỜ KHAI (MẪU 05/KK-TNCN)" },
+      { code: "16", name: "Tổng số người lao động:" },
+      { code: "17", name: "Trong đó: Cá nhân cư trú có hợp đồng lao động" },
+      { code: "18", name: "Tổng số cá nhân đã khấu trừ thuế [18]=[19]+[20]" },
+      { code: "19", name: "Cá nhân cư trú" },
+      { code: "20", name: "Cá nhân không cư trú" },
+      { code: "21", name: "Tổng thu nhập chịu thuế (TNCT) trả cho cá nhân [21]=[22]+[23]" },
+      { code: "22", name: "Cá nhân cư trú" },
+      { code: "23", name: "Cá nhân không cư trú" },
+      { code: "24", name: "Trong đó: Tổng thu nhập chịu thuế từ tiền phí mua bảo hiểm nhân thọ..." },
+      { code: "25", name: "Trong đó tổng thu nhập chịu thuế được miễn theo quy định của Hợp đồng dầu khí" },
+      { code: "26", name: "Tổng thu nhập chịu thuế trả cho cá nhân thuộc diện phải khấu trừ thuế [26]=[27]+[28]" },
+      { code: "27", name: "Cá nhân cư trú" },
+      { code: "28", name: "Cá nhân không cư trú" },
+      { code: "29", name: "Tổng số thuế thu nhập cá nhân đã khấu trừ [29]=[30]+[31]" },
+      { code: "30", name: "Cá nhân cư trú" },
+      { code: "31", name: "Cá nhân không cư trú" },
+      { code: "32", name: "Trong đó: Tổng số thuế TNCN đã khấu trừ trên tiền phí mua bảo hiểm nhân thọ..." }
+    ]
+  };
+
+  function switchAuthMode(mode) {
+    currentAuthAction = mode;
+    document.getElementById("loginErrorMsg").style.display = "none";
+    document.getElementById("loginSuccessMsg").style.display = "none";
+    if (mode === 'login') {
+      document.getElementById("btnAuthTabLogin").className = "login-tab-toggle active";
+      document.getElementById("btnAuthTabReg").className = "login-tab-toggle";
+      document.getElementById("btnAuthSubmit").innerText = "Xác nhận đăng nhập";
+    } else {
+      document.getElementById("btnAuthTabReg").className = "login-tab-toggle active";
+      document.getElementById("btnAuthTabLogin").className = "login-tab-toggle";
+      document.getElementById("btnAuthSubmit").innerText = "Tạo tài khoản mới";
+    }
+  }
+
+  function executeSystemAuth() {
+    var u = document.getElementById("txtUser").value.trim();
+    var p = document.getElementById("txtPass").value.trim();
+    if (!u || !p) { alert("Vui lòng nhập tài khoản và mật khẩu!"); return; }
+
+    if (currentAuthAction === 'login') {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          if (res.success) {
+            localStorage.setItem("tenantUser", u);
+            document.getElementById("loginModule").style.display = "none";
+            loadDataFromServer();
+            autoCheckDriveOnLoad();
+          } else {
+            document.getElementById("loginErrorMsg").innerText = "❌ " + res.message;
+            document.getElementById("loginErrorMsg").style.display = "block";
+          }
+        })
+        .processUserLogin(u, p);
+    } else {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          if (res.success) {
+            document.getElementById("loginSuccessMsg").innerText = "🎉 " + res.message;
+            document.getElementById("loginSuccessMsg").style.display = "block";
+            switchAuthMode('login');
+            document.getElementById("txtUser").value = u;
+            document.getElementById("txtPass").value = "";
+          } else {
+            document.getElementById("loginErrorMsg").innerText = "❌ " + res.message;
+            document.getElementById("loginErrorMsg").style.display = "block";
+          }
+        })
+        .processUserRegister(u, p);
+    }
+  }
+
+  function loadDataFromServer() {
+    var tenantToken = localStorage.getItem("tenantUser");
+    if (!tenantToken) return;
+    google.script.run.withSuccessHandler(function(data) {
+      globalData = data;
+      buildBusinessDropdown();
+      // ✅ VÁ LỖI: Định tuyến chính xác luồng quét dữ liệu đối soát khi khởi tạo dữ liệu nền
+      if (currentTab.indexOf("AUDIT") !== -1) loadTaxAuditAlerts(); else renderDynamicTable();
+    }).getDashboardData(tenantToken);
+  }
+
+  function buildBusinessDropdown() {
+    if (!Array.isArray(globalData) || globalData.length === 0) return;
+    var msts = globalData.map(function(d) { return d.mst.toString().trim(); });
+    var uniqueMsts = msts.filter(function(item, pos) { return msts.indexOf(item) == pos; }).sort();
+
+    var htmlDropdown = '<select id="bizSelect" class="biz-select" onchange="handleMstChange(this.value)"><option value="all" ' + (selectedMst === 'all' ? 'selected' : '') + '>🏢 TẤT CẢ DOANH NGHIỆP</option>';
+    uniqueMsts.forEach(function(mst) { htmlDropdown += '<option value="' + mst + '" ' + (selectedMst === mst ? 'selected' : '') + '>🏢 MST: ' + mst + '</option>'; });
+    htmlDropdown += '</select>';
+
+    var toolbar = document.getElementById("filterToolbar");
+    if (toolbar) {
+      if (currentTab === "AUDIT") {
+        toolbar.innerHTML = htmlDropdown + ' <span style="font-size:13px;color:#e67e22;font-weight:bold;margin-left:10px;"><i class="fa-solid fa-wand-magic-sparkles"></i> Chế độ phân tích rủi ro chênh lệch liên kỳ</span>';
+      } else {
+        var years = globalData.map(function(d) { return d.year.toString().trim(); }).filter(function(y) { return y !== ""; });
+        var uniqueYears = years.filter(function(item, pos) { return years.indexOf(item) == pos; }).sort(function(a, b) { return b - a; });
+        var htmlYearsBar = '<div class="period-filter-bar"><span class="period-label">LỌC KỲ:</span><button class="filter-yr-btn ' + (selectedYear === 'all' ? 'active' : '') + '" onclick="switchYear(\'all\')">Tất cả</button>';
+        uniqueYears.forEach(function(yr) { htmlYearsBar += '<button class="filter-yr-btn ' + (selectedYear === yr ? 'active' : '') + '" onclick="switchYear(\'' + yr + '\')">' + yr + '</button>'; });
+        htmlYearsBar += '</div>';
+        toolbar.innerHTML = htmlDropdown + htmlYearsBar;
+      }
+    }
+  }
+
+  function handleMstChange(val) { selectedMst = val; if (currentTab === "AUDIT") loadTaxAuditAlerts(); else renderDynamicTable(); }
+  function switchYear(year) { selectedYear = year; buildBusinessDropdown(); renderDynamicTable(); }
+
+  function switchTab(name) {
+    currentTab = name;
+    document.querySelectorAll(".tab-btn").forEach(function(b) { b.className = "tab-btn"; });
+    document.getElementById("tab" + name).className = "tab-btn active";
+    buildBusinessDropdown();
+    // ✅ VÁ LỖI: Kiểm tra nếu tên Tab chứa từ khóa "AUDIT" (Chấp nhận cả AUDIT_BAL và AUDIT_REV)
+    if (name.indexOf("AUDIT") !== -1) {
+      loadTaxAuditAlerts();
+    } else {
+      renderDynamicTable();
+    }
+  }
+
+  function switchMode(mode) {
+    currentMode = mode;
+    document.querySelectorAll(".action-btn").forEach(function(b) { b.classList.remove("active"); });
+    if (mode === 'year') document.getElementById("btnModeYear").className = "action-btn active";
+    else document.getElementById("btnModePeriod").className = "action-btn active";
+    renderDynamicTable();
+  }
+
+  // =========================================================================
+  // ⚡ PHÂN HỆ RENDER 1: BẢNG SỐ LIỆU PHẲNG CHUẨN CỐ ĐỊNH ĐA TRỤC
+  // =========================================================================
+  function renderDynamicTable() {
+    var config = UI_CONFIG[currentTab]; if (!config) return;
+    document.getElementById("mainTaxTable") ? document.getElementById("mainTaxTable").className = "table-custom pinned-mode" : null;
+    if (!Array.isArray(globalData) || globalData.length === 0) {
+      document.getElementById("tableContainer").innerHTML = '<div style="text-align:center; padding:50px; color:#999;"><p>📭 Cơ sở dữ liệu trống - Vui lòng chọn và nạp file XML tờ khai thuế!</p></div>'; return;
+    }
+
+    var filteredData = globalData.filter(function(d) {
+      if (d.type !== currentTab) return false;
+      if (selectedMst !== 'all' && d.mst.toString().trim() !== selectedMst) return false;
+      if (d.status !== "ĐƯỢC CỘNG") return false;
+      return true;
+    });
+
+    var html = '<table id="mainTaxTable" class="table-custom pinned-mode"><thead><tr><th class="text-center" style="font-weight: bold; text-align: center;">CHỈ TIÊU BÁO CÁO (TỜ KHAI CHUẨN)</th><th class="text-center" style="font-weight: bold; text-align: center;">MÃ SỐ</th>';
+
+    if (currentMode === 'year') {
+      var colsYears = filteredData.map(function(d) { return d.year.toString().trim(); }).filter(function(y) { return y !== ""; });
+      var uniqueYearsForColumns = colsYears.filter(function(item, pos) { return colsYears.indexOf(item) == pos; }).sort(function(a, b) { return a - b; });
+      var displayYears = (selectedYear === 'all') ? (uniqueYearsForColumns.length > 0 ? uniqueYearsForColumns : [new Date().getFullYear().toString()]) : [selectedYear];
+
+      displayYears.forEach(function(yr) { html += '<th class="text-center" style="min-width:150px; font-weight: bold; text-align: center;">TỔNG NĂM ' + yr + '</th>'; });
+      html += '</tr></thead><tbody>';
+
+      config.forEach(function(row) {
+        if (row.isHeader) {
+          html += '<tr class="section-header-row"><td colspan="' + (displayYears.length + 2) + '"><div style="position: sticky !important; left: 15px !important; padding: 12px 5px; font-weight: bold; color: #c47c1a; font-size: 13px; text-transform: uppercase; width: max-content;">' + row.name + '</div></td></tr>';
+          return;
+        }
+        html += '<tr><td>' + row.name + '</td><td class="text-center" style="color:#5c7080;">[' + row.code + ']</td>';
+        displayYears.forEach(function(yr) {
+          var sum = filteredData.filter(function(d) { return d.code.toString().trim() === row.code.toString().trim() && d.year === yr; }).reduce(function(t, i) { return t + i.value; }, 0);
+          html += '<td class="text-right" style="' + (sum === 0 ? 'color: #004085;' : 'color: #001f3f;') + '">' + formatNumber(sum) + '</td>';
+        });
+        html += '</tr>';
+      });
+    } else {
+      var rawPeriods = filteredData.filter(function(d) { return selectedYear === 'all' || d.year === selectedYear; }).map(function(d) { return d.period; });
+      var periods = rawPeriods.filter(function(item, pos, self) { return self.indexOf(item) == pos; });
+
+      periods.sort(function(a, b) {
+        var pA = a.split('/'); var pB = b.split('/');
+        if (pA.length < 2 || pB.length < 2) return a.localeCompare(b);
+        var yA = parseInt(pA[1]), yB = parseInt(pB[1]); var mA = parseInt(pA[0]), mB = parseInt(pB[0]);
+        if (yA !== yB) return yA - yB; return mA - mB;
+      });
+
+      if (periods.length === 0) {
+        html += '<th class="text-right">KỲ CHƯA CÓ DỮ LIỆU</th></tr></thead><tbody><tr><td colspan="3" style="text-align:center; padding:30px; color:#999;">Không tìm thấy kỳ kê khai nào!</td></tr>';
+      } else {
+        periods.forEach(function(prd) {
+          var sample = filteredData.find(function(d) { return d.period === prd; }) || {};
+          var lk = sample.loaiKhai === 'C' ? 'Chính thức' : (sample.loaiKhai === 'B' ? 'Bổ sung' : sample.loaiKhai || 'C');
+          var sl = sample.soLan !== undefined ? 'Lần ' + sample.soLan : 'Lần 0'; var st = sample.status || 'ĐƯỢC CỘNG';
+          html += '<th class="text-center" style="min-width:160px; font-size:12.5px; font-weight: bold; text-align: center; vertical-align: top;">' +
+                    'KỲ ' + prd + '<br><span style="font-size:10.5px; font-weight:bold; color:#c47c1a;">[' + lk + ' - ' + sl + ']</span><br><span style="font-size:9.5px; font-weight:bold; color:#28a745;">● ' + st + '</span></th>';
+        });
+        html += '</tr></thead><tbody>';
+
+        config.forEach(function(row) {
+          if (row.isHeader) {
+            html += '<tr class="section-header-row"><td colspan="' + (periods.length + 2) + '"><div style="position: sticky !important; left: 15px !important; padding: 12px 5px; font-weight: bold; color: #c47c1a; font-size: 13px; text-transform: uppercase; width: max-content;">' + row.name + '</div></td></tr>';
+            return;
+          }
+          html += '<tr><td>' + row.name + '</td><td class="text-center" style="color:#5c7080;">[' + row.code + ']</td>';
+          periods.forEach(function(prd) {
+            var val = filteredData.find(function(d) { return d.code.toString().trim() === row.code.toString().trim() && d.period === prd; });
+            var sum = val ? val.value : 0;
+            html += '<td class="text-right" style="' + (sum === 0 ? 'color: #004085;' : 'color: #001f3f;') + '">' + formatNumber(sum) + '</td>';
+          });
+          html += '</tr>';
+        });
+      }
+    }
+    html += '</tbody></table>';
+    document.getElementById("tableContainer").innerHTML = html;
+  }
+
+  // =========================================================================
+  // ⚡ PHÂN HỆ RENDER 2: HỆ THỐNG ĐỐI CHIẾU VÀ CẢNH BÁO RỦI RO THUẾ ĐỘNG TỰ ĐỘNG
+  // =========================================================================
+  function loadTaxAuditAlerts() {
+    var tenantToken = localStorage.getItem("tenantUser");
+
+    // ✅ FIX CHÍ MẠNG: Nếu chọn "TẤT CẢ DOANH NGHIỆP" (all), yêu cầu chọn cụ thể doanh nghiệp để chạy liên kỳ
+    if (selectedMst === "all") {
+      document.getElementById("tableContainer").innerHTML =
+        '<div style="text-align:center; padding:50px; color:#c47c1a;">' +
+        '<i class="fa-solid fa-building-circle-exclamation" style="font-size:40px;margin-bottom:15px;"></i>' +
+        '<p>⚠️ Vui lòng chọn một <strong>Mã số thuế Doanh nghiệp cụ thể</strong> trên thanh lọc để phân tích rủi ro liên kỳ!</p>' +
+        '</div>';
+      return;
+    }
+
+    document.getElementById("tableContainer").innerHTML =
+      '<div style="text-align:center; padding:50px; color:#64748b;">' +
+      '<i class="fa-solid fa-spinner fa-spin" style="font-size:30px;margin-bottom:10px;"></i>' +
+      '<p>Hệ thống AI đang quét chênh lệch số liệu đối soát...</p>' +
+      '</div>';
+
+    google.script.run.withSuccessHandler(function(res) {
+      if (!res.success) {
+        document.getElementById("tableContainer").innerHTML = '<div style="padding:20px; color:#dc3545;">❌ Lỗi: ' + res.message + '</div>';
+        return;
+      }
+
+      var html = '';
+
+      // =========================================================================
+      // 📊 XỬ LÝ RENDER THEO TỪNG PHÂN HỆ TAB KIỂM TOÁN BIỆT LẬP
+      // =========================================================================
+      if (currentTab === "AUDIT_BAL") {
+        html += '<div style="padding:10px 0;"><h3 style="font-size:15px;color:#1e293b;margin:0 0 15px 0;text-transform:uppercase;"><i class="fa-solid fa-arrow-right-arrow-left"></i> 1. ĐỐI CHIẾU SỐ DƯ CHUYỂN KỲ GTGT [22] vs [43]</h3>';
+        html += '<table class="table-custom" style="margin-bottom:35px !important;"><thead><tr>' +
+                '<th>KỲ TRƯỚC (j)</th><th>[43] KỲ TRƯỚC</th><th>KỲ SAU (j+1)</th><th>[22] KỲ SAU</th><th>CHÊNH LỆCH</th><th>KẾT LUẬN HỆ THỐNG</th><th>GHI CHÚ GIẢI TRÌNH NGUYÊN NHÂN</th>' +
+                '</tr></thead><tbody>';
+
+        if (!res.gtgtAudit || res.gtgtAudit.length === 0) {
+          html += '<tr><td colspan="7" style="text-align:center;color:#999;padding:20px;">Chưa đủ dữ liệu tối thiểu 2 kỳ kê khai liên tiếp để chạy đối soát chéo!</td></tr>';
+        } else {
+          res.gtgtAudit.forEach(function(row) {
+            var badg = (row.diff === 0) ? '<span class="badge-success">✓ Khớp số liệu</span>' : '<span class="badge-danger">⚠️ Có chênh lệch cần kiểm tra</span>';
+            html += '<tr>' +
+                    '<td class="text-center" style="font-weight:bold;">Kỳ ' + row.periodJ + '</td>' +
+                    '<td class="text-right">' + formatNumber(row.val43) + '</td>' +
+                    '<td class="text-center" style="font-weight:bold;">Kỳ ' + row.periodJ1 + '</td>' +
+                    '<td class="text-right">' + formatNumber(row.val22) + '</td>' +
+                    '<td class="text-right" style="font-weight:bold;color:' + (row.diff !== 0 ? '#dc3545' : '#1e293b') + '">' + formatNumber(row.diff) + '</td>' +
+                    '<td class="text-center">' + badg + '</td>' +
+                    '<td><div style="display:flex;gap:5px;"><input type="text" id="inp_' + row.keyId + '" class="input-note" value="' + row.note + '" placeholder="Nhập lý do lệch...">' +
+                    '<button class="btn-save-note" onclick="btnSaveNoteClicked(\'' + row.keyId + '\',\'GTGT_BALANCE\')">Lưu</button></div></td>' +
+                    '</tr>';
+          });
+        }
+        html += '</tbody></table></div>';
+      }
+      else if (currentTab === "AUDIT_REV") {
+        html += '<div style="padding:10px 0;"><h3 style="font-size:15px;color:#1e293b;margin:0 0 15px 0;text-transform:uppercase;"><i class="fa-solid fa-chart-line"></i> 2. ĐỐI CHIẾU DOANH THU TÍNH THUẾ GTGT VÀ DOANH THU TÍNH THUẾ TNDN</h3>';
+        html += '<table class="table-custom"><thead><tr>' +
+                '<th>NĂM</th><th>DOANH THU LŨY KẾ GTGT [34]</th><th>DOANH THU QUYẾT TOÁN TNDN [04]</th><th>CHÊNH LỆCH HỢP NHẤT</th><th>KẾT LUẬN HỆ THỐNG</th><th>GHI CHÚ GIẢI TRÌNH NGUYÊN NHÂN</th>' +
+                '</tr></thead><tbody>';
+
+        if (!res.revenueAudit || res.revenueAudit.length === 0) {
+          html += '<tr><td colspan="6" style="text-align:center;color:#999;padding:20px;">Không tìm thấy tệp hồ sơ doanh thu hợp lệ trên hệ thống!</td></tr>';
+        } else {
+          res.revenueAudit.forEach(function(row) {
+            var badg = (row.diff === 0) ? '<span class="badge-success">✓ Khớp số liệu</span>' : '<span class="badge-danger">⚠️ Có chênh lệch cần kiểm tra</span>';
+            html += '<tr>' +
+                    '<td class="text-center" style="font-weight:bold;font-size:14px;color:#0056b3;">Năm ' + row.year + '</td>' +
+                    '<td class="text-right" style="color:#001f3f;">' + formatNumber(row.val34) + '</td>' +
+                    '<td class="text-right" style="color:#001f3f;">' + formatNumber(row.val04) + '</td>' +
+                    '<td class="text-right" style="font-weight:bold;color:' + (row.diff !== 0 ? '#dc3545' : '#1e293b') + '">' + formatNumber(row.diff) + '</td>' +
+                    '<td class="text-center">' + badg + '</td>' +
+                    '<td><div style="display:flex;gap:5px;"><input type="text" id="inp_' + row.keyId + '" class="input-note" value="' + row.note + '" placeholder="Giải trình lệch doanh thu...">' +
+                    '<button class="btn-save-note" onclick="btnSaveNoteClicked(\'' + row.keyId + '\',\'REVENUE_CROSS\')">Lưu</button></div></td>' +
+                    '</tr>';
+          });
+        }
+        html += '</tbody></table></div>';
+      }
+
+      document.getElementById("tableContainer").innerHTML = html;
+    }).getTaxAuditAlertsData(tenantToken, selectedMst);
+  }
+
+  function btnSaveNoteClicked(keyId, auditType) {
+    var tenantToken = localStorage.getItem("tenantUser");
+    var txt = document.getElementById("inp_" + keyId).value.trim();
+    google.script.run.withSuccessHandler(function(res) {
+      if (res.success) alert("🎉 Đã ghi sổ giải trình rủi ro thành công!");
+      else alert("❌ Thất bại: " + res.message);
+    }).saveAuditNoteText(tenantToken, keyId, selectedMst, auditType, txt);
+  }
+
+  function formatNumber(n) { return n === 0 ? '0' : n.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); }
+  function autoCheckDriveOnLoad() { var tenantToken = localStorage.getItem("tenantUser"); if (!tenantToken) return; google.script.run.withSuccessHandler(function(res) { var btn = document.getElementById("btnDriveConnect"); var txt = document.getElementById("driveSubStatus"); if (res.success) { btn.innerHTML = "✅ Đã kết nối"; btn.style.backgroundColor = "#28a745"; btn.style.color = "#fff"; txt.innerHTML = "Thư mục hoạt động: <strong>" + res.folderName + "</strong>"; } else { btn.innerHTML = "❌ Lỗi kết nối"; btn.style.backgroundColor = "#dc3545"; btn.style.color = "#fff"; txt.innerHTML = "<span style='color:#dc3545;'>" + res.message + "</span>"; } }).checkDriveConnection(tenantToken); }
+  function handleDriveConnect() { var btn = document.getElementById("btnDriveConnect"); btn.innerHTML = "⏳ Đang thử..."; btn.style.backgroundColor = "#ffc107"; autoCheckDriveOnLoad(); }
+  function triggerFileInput() { document.getElementById("fileInput").click(); }
+  function clearSelectedFile() { document.getElementById("fileInput").value = ""; alert("Đã xóa tệp đã chọn!"); }
+  function runServerFunction(functionName, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) { return new Promise(function(resolve, reject) { google.script.run.withSuccessHandler(resolve).withFailureHandler(reject)[functionName](arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8); }); }
+
+  async function handleFileSelect(input) {
+    var files = input.files; if (!files || files.length === 0) return;
+    var total = files.length; var ok = 0; var fail = 0; var tenantToken = localStorage.getItem("tenantUser");
+    for (var i = 0; i < total; i++) {
+      var file = files[i]; document.getElementById("uploadSubStatus").innerText = "⏳ Đang xử lý (" + (i + 1) + "/" + total + "): " + file.name;
+      try {
+        var text = await new Promise(function(r) { var rd = new FileReader(); rd.onload = function(e) { r(e.target.result); }; rd.readAsText(file); });
+        var xmlDoc = new DOMParser().parseFromString(text, "text/xml");
+        var mst = xmlDoc.querySelector("mst") ? xmlDoc.querySelector("mst").textContent : "";
+        var ky = xmlDoc.querySelector("kyKKhai") ? xmlDoc.querySelector("kyKKhai").textContent : "";
+        var ma = xmlDoc.querySelector("maTKhai") ? xmlDoc.querySelector("maTKhai").textContent : "";
+        var nk = xmlDoc.querySelector("nguoiKy") ? xmlDoc.querySelector("nguoiKy").textContent : "Hệ thống";
+        if (!mst || !ky || !ma) { fail++; continue; }
+        var type = ma === "842" ? "GTGT" : (ma === "892" ? "TNDN" : "TNCN"); var yr = ky.includes("/") ? ky.split("/")[1] : ky;
+        var base64 = await new Promise(function(r) { var rd = new FileReader(); rd.onload = function(e) { r(e.target.result); }; rd.readAsDataURL(file); });
+        await runServerFunction("uploadAndLogFileAndParse", base64, file.name, mst, yr, type, ky, nk, tenantToken); ok++;
+      } catch (err) { fail++; }
+    }
+    alert("🎉 Xử lý SaaS hoàn tất!\n- Thành công: " + ok + "/" + total + "\n- Lỗi: " + fail);
+    document.getElementById("uploadSubStatus").innerText = "Kéo thả các tệp XML hoặc nhấn để chọn";
+    input.value = "";
+    loadDataFromServer();
+  }
+
+  function btnExportExcelClicked() { var t = document.getElementById("mainTaxTable"); if (!t) return alert("Không có dữ liệu để xuất!"); var wb = XLSX.utils.table_to_book(t, { sheet: "Báo cáo" }); XLSX.writeFile(wb, "Bao_Cao_" + currentTab + ".xlsx"); }
+</script>

@@ -1,0 +1,99 @@
+/**
+ * MODULE 3: VERSION CONTROL & DATA CONSOLIDATION
+ * Hàm xử lý kiểm tra phiên bản tờ khai và lưu trữ dữ liệu phẳng vào Google Sheets Tenant
+ */
+function processAndSaveData(parsedData, targetSsId) {
+  try {
+    // ✅ FIX TRIỆT ĐỂ: Sử dụng targetSsId động của Tenant khách hàng thay thế cho hằng số SS_ID lỗi
+    var ss = SpreadsheetApp.openById(targetSsId);
+    var sheetData = ss.getSheetByName("U_Tax_Data_Rows");
+    var sheetFile = ss.getSheetByName("M_File_Management");
+
+    var sheetTimeZone = ss.getSpreadsheetTimeZone();
+    var mst = parsedData.mst ? parsedData.mst.toString().trim() : "";
+    var kyThue = parsedData.kyKKhai ? parsedData.kyKKhai.toString().trim() : "";
+    var loaiToKhai = parsedData.maTKhai === "842" ? "GTGT" : (parsedData.maTKhai === "892" ? "TNDN" : "TNCN");
+    var namThue = kyThue.includes("/") ? kyThue.split("/")[1] : kyThue;
+    var currentFileId = parsedData.fileId ? parsedData.fileId.toString().trim() : "";
+
+    var clean = function(val) {
+      if (val instanceof Date) {
+        return Utilities.formatDate(val, sheetTimeZone, "MM/yyyy");
+      }
+      if (typeof val === 'number') {
+        return val.toString().trim();
+      }
+      return val ? val.toString().trim() : "";
+    };
+
+    var dataValues = sheetData.getDataRange().getValues();
+    for (var i = 1; i < dataValues.length; i++) {
+      var rowFileId = clean(dataValues[i][0]);
+      var rowMst    = clean(dataValues[i][1]);
+      var rowType   = clean(dataValues[i][2]);
+      var rowPeriod = clean(dataValues[i][3]);
+      var rowStatus = clean(dataValues[i][9]);
+
+      if (rowFileId !== currentFileId &&
+          rowMst === mst &&
+          rowType === loaiToKhai &&
+          rowPeriod === kyThue &&
+          rowStatus === "ĐƯỢC CỘNG") {
+        sheetData.getRange(i + 1, 10).setValue("THAY THẾ");
+      }
+    }
+
+    var fileValues = sheetFile.getDataRange().getValues();
+    for (var j = 1; j < fileValues.length; j++) {
+      var fileId     = clean(fileValues[j][0]);
+      var fileMst    = clean(fileValues[j][1]);
+      var fileType   = clean(fileValues[j][3]);
+      var filePeriod = clean(fileValues[j][4]);
+      var fileStatus = clean(fileValues[j][8]);
+
+      if (fileId !== currentFileId &&
+          fileMst === mst &&
+          fileType === loaiToKhai &&
+          filePeriod === kyThue &&
+          fileStatus === "ĐƯỢC CỘNG") {
+        sheetFile.getRange(j + 1, 9).setValue("THAY THẾ");
+      }
+
+      if (clean(fileValues[j][0]) === currentFileId) {
+        sheetFile.getRange(j + 1, 10).setValue(parsedData.loaiKhai);
+        sheetFile.getRange(j + 1, 11).setValue(parsedData.soLan);
+      }
+    }
+
+    var status = "ĐƯỢC CỘNG";
+    for (var key in parsedData.chiTieu) {
+      sheetData.appendRow([
+        parsedData.fileId,
+        "'" + mst,
+        loaiToKhai,
+        "'" + kyThue,
+        namThue,
+        parsedData.loaiKhai,
+        parsedData.soLan,
+        "'" + key,
+        parsedData.chiTieu[key],
+        status
+      ]);
+    }
+
+    return true;
+  } catch (e) {
+    throw new Error("Lỗi Module 3: " + e.toString());
+  }
+}
+
+function updateDataRowsStatus(sheetData, fileId, newStatus) {
+  var data = sheetData.getDataRange().getValues();
+  var targetId = fileId ? fileId.toString().trim() : "";
+  for (var i = 1; i < data.length; i++) {
+    var rowFileId = data[i][0] ? data[i][0].toString().trim() : "";
+    if (rowFileId === targetId) {
+      sheetData.getRange(i + 1, 10).setValue(newStatus);
+    }
+  }
+}

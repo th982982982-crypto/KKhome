@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><HSoThueDTu xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <HSoKhaiThue id="_NODE_TO_SIGN">
+    <TTinChung>
+      <TTinDVu>
+        <maDVu>HTKK</maDVu>
+        <tenDVu>HỖ TRỢ KÊ KHAI THUẾ</tenDVu>
+        <pbanDVu>5.1.8</pbanDVu>
+        <ttinNhaCCapDVu>D5D23F5DD3A58BD30A439E1AB02BE9AB</ttinNhaCCapDVu>
+      </TTinDVu>
+      <TTinTKhaiThue>
+        <TKhaiThue>
+          <maTKhai>373</maTKhai>
+          <tenTKhai>Bảng kê sử dụng chứng từ khấu trừ thuế TNCN</tenTKhai>
+          <moTaBMau>(Ban hành kèm theo Thông tư số 37/2010/TT-BTC ngày 18/3/2010 của Bộ Tài chính)</moTaBMau>
+          <pbanTKhaiXML>2.1.3</pbanTKhaiXML>
+          <loaiTKhai>C</loaiTKhai>
+          <soLan>0</soLan>
+          <KyKKhaiThue>
+            <kieuKy>Q</kieuKy>
+            <kyKKhai>1/2024</kyKKhai>
+            <kyKKhaiTuNgay>01/01/2024</kyKKhaiTuNgay>
+            <kyKKhaiDenNgay>31/03/2024</kyKKhaiDenNgay>
+            <kyKKhaiTuThang/>
+            <kyKKhaiDenThang/>
+          </KyKKhaiThue>
+          <maCQTNoiNop>70129</maCQTNoiNop>
+          <tenCQTNoiNop>Chi cục Thuế Quận Bình Thạnh</tenCQTNoiNop>
+          <ngayLapTKhai>2024-04-19</ngayLapTKhai>
+          <GiaHan>
+            <maLyDoGiaHan>
+            </maLyDoGiaHan>
+            <lyDoGiaHan>
+            </lyDoGiaHan>
+          </GiaHan>
+          <nguoiKy>Như Nghiệp Thuận</nguoiKy>
+          <ngayKy>2024-04-19</ngayKy>
+          <nganhNgheKD>
+          </nganhNgheKD>
+        </TKhaiThue>
+        <NNT>
+          <mst>0309519880</mst>
+          <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+          <dchiNNT>Lầu 3, Toà nhà Coteccons, 236/6 Điện Biên Phủ, Phường 17</dchiNNT>
+          <phuongXa>
+          </phuongXa>
+          <maHuyenNNT>70129</maHuyenNNT>
+          <tenHuyenNNT>Quận Bình Thạnh</tenHuyenNNT>
+          <maTinhNNT>701</maTinhNNT>
+          <tenTinhNNT>TP Hồ Chí Minh</tenTinhNNT>
+          <dthoaiNNT>628533880</dthoaiNNT>
+          <faxNNT>62853881</faxNNT>
+          <emailNNT>rosa_hcm@orientstargroup.com</emailNNT>
+        </NNT>
+      </TTinTKhaiThue>
+    </TTinChung>
+    <CTieuTKhaiChinh>
+      <ChungTu>
+        <ChiTiet ID="ID_1">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>1</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>SUNG WAI FUNG</hoVaTen>
+          <mst_CMT_HoChieu>8058896814</mst_CMT_HoChieu>
+          <soTienThue>62796850</soTienThue>
+          <ghiChu>AA/2024/E</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_2">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>2</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>HUANG JUI SHENG</hoVaTen>
+          <mst_CMT_HoChieu>8560403535</mst_CMT_HoChieu>
+          <soTienThue>18300240</soTienThue>
+          <ghiChu>AA/2024/E</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_3">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>3</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>YANG YU KAI</hoVaTen>
+          <mst_CMT_HoChieu>8482787465</mst_CMT_HoChieu>
+          <soTienThue>22697711</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_4">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>4</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Phan Thị Hiến Dương</hoVaTen>
+          <mst_CMT_HoChieu>8381993542</mst_CMT_HoChieu>
+          <soTienThue>18076471</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_5">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>5</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Nguyễn Thị Bảo Châu</hoVaTen>
+          <mst_CMT_HoChieu>8629900659</mst_CMT_HoChieu>
+          <soTienThue>1205734</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_6">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>6</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Trương Thị Mỹ Ni</hoVaTen>
+          <mst_CMT_HoChieu>8431503877</mst_CMT_HoChieu>
+          <soTienThue>1405218</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_7">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>7</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Lê Thị Hồng Oanh</hoVaTen>
+          <mst_CMT_HoChieu>8105838361</mst_CMT_HoChieu>
+          <soTienThue>1659248</soTienThue>
+          <ghiChu>Đã huỷ và thay thế bằng số ct 64 ngày 03/04/2024</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_8">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>8</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Nguyễn Thị Mỹ Lưu</hoVaTen>
+          <mst_CMT_HoChieu>8540442053</mst_CMT_HoChieu>
+          <soTienThue>2463777</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_9">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>9</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Nguyễn Thị Hồng Vân</hoVaTen>
+          <mst_CMT_HoChieu>8637983419</mst_CMT_HoChieu>
+          <soTienThue>2071513</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_10">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>10</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Vũ Ngọc Ánh</hoVaTen>
+          <mst_CMT_HoChieu>8606216107</mst_CMT_HoChieu>
+          <soTienThue>62011</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_11">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>11</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Nguyễn Thị Như Quỳnh</hoVaTen>
+          <mst_CMT_HoChieu>8497591497</mst_CMT_HoChieu>
+          <soTienThue>2516816</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_12">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>12</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Trần Thị Mỹ Duyên</hoVaTen>
+          <mst_CMT_HoChieu>8567269871</mst_CMT_HoChieu>
+          <soTienThue>635056</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_13">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>13</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Lê Thị Hồng Loan</hoVaTen>
+          <mst_CMT_HoChieu>8554093846</mst_CMT_HoChieu>
+          <soTienThue>1501869</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_14">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>14</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Phạm Vũ Thu Hiền</hoVaTen>
+          <mst_CMT_HoChieu>8414839764</mst_CMT_HoChieu>
+          <soTienThue>725831</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_15">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>15</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Trần Nguyễn Thanh Tuyền</hoVaTen>
+          <mst_CMT_HoChieu>8328918074</mst_CMT_HoChieu>
+          <soTienThue>11623447</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_16">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>16</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Phạm Thị Mỹ Tiên</hoVaTen>
+          <mst_CMT_HoChieu>8564716602</mst_CMT_HoChieu>
+          <soTienThue>901526</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_17">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>17</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Đoàn Thu Ngọc</hoVaTen>
+          <mst_CMT_HoChieu>8684097619</mst_CMT_HoChieu>
+          <soTienThue>155012</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_18">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>18</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Nguyễn Ngọc Lan Phương</hoVaTen>
+          <mst_CMT_HoChieu>8594970130</mst_CMT_HoChieu>
+          <soTienThue>819400</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_19">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>19</soCTu>
+          <ngayCTu>2024-03-26</ngayCTu>
+          <hoVaTen>Trương Thị Hiếu</hoVaTen>
+          <mst_CMT_HoChieu>8605995122</mst_CMT_HoChieu>
+          <soTienThue>380939</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_20">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>20</soCTu>
+          <ngayCTu>2024-03-27</ngayCTu>
+          <hoVaTen>Phạm Anh Thư</hoVaTen>
+          <mst_CMT_HoChieu>8582983706</mst_CMT_HoChieu>
+          <soTienThue>89052</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_21">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>21</soCTu>
+          <ngayCTu>2024-03-27</ngayCTu>
+          <hoVaTen>Nguyễn Thị Loan</hoVaTen>
+          <mst_CMT_HoChieu>8427716079</mst_CMT_HoChieu>
+          <soTienThue>2087570</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_22">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>22</soCTu>
+          <ngayCTu>2024-03-27</ngayCTu>
+          <hoVaTen>Nguyễn Thị Thúy Loan</hoVaTen>
+          <mst_CMT_HoChieu>8515381696</mst_CMT_HoChieu>
+          <soTienThue>4475876</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_23">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>23</soCTu>
+          <ngayCTu>2024-03-27</ngayCTu>
+          <hoVaTen>Nguyễn Lê Hồng Việt</hoVaTen>
+          <mst_CMT_HoChieu>8448532964</mst_CMT_HoChieu>
+          <soTienThue>83585</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_24">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>24</soCTu>
+          <ngayCTu>2024-03-27</ngayCTu>
+          <hoVaTen>Thái Ngọc Nhung</hoVaTen>
+          <mst_CMT_HoChieu>8115933744</mst_CMT_HoChieu>
+          <soTienThue>1078128</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_25">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>25</soCTu>
+          <ngayCTu>2024-03-27</ngayCTu>
+          <hoVaTen>Nguyễn Thị Ngọc Diễm</hoVaTen>
+          <mst_CMT_HoChieu>8604473927</mst_CMT_HoChieu>
+          <soTienThue>670265</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_26">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>26</soCTu>
+          <ngayCTu>2024-03-27</ngayCTu>
+          <hoVaTen>Nguyễn Hoàng Vy Na</hoVaTen>
+          <mst_CMT_HoChieu>8605297505</mst_CMT_HoChieu>
+          <soTienThue>2651353</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_27">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>27</soCTu>
+          <ngayCTu>2024-03-27</ngayCTu>
+          <hoVaTen>Lê Gia Ngọc</hoVaTen>
+          <mst_CMT_HoChieu>8442830019</mst_CMT_HoChieu>
+          <soTienThue>2193099</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <ChiTiet ID="ID_28">
+          <kyHieuCTu>AA/2024/T</kyHieuCTu>
+          <soCTu>28</soCTu>
+          <ngayCTu>2024-03-27</ngayCTu>
+          <hoVaTen>Vương Trần Thủy Tiên</hoVaTen>
+          <mst_CMT_HoChieu>8691735911</mst_CMT_HoChieu>
+          <soTienThue>234271</soTienThue>
+          <ghiChu>AA/2024/T</ghiChu>
+        </ChiTiet>
+        <tongSoTienThue>163561868</tongSoTienThue>
+      </ChungTu>
+      <nguoiDaiDien>Như Nghiệp Thuận</nguoiDaiDien>
+    </CTieuTKhaiChinh>
+  </HSoKhaiThue>
+<CKyDTu><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/><ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><ds:Reference URI="#_NODE_TO_SIGN"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ds:DigestValue>jAqz5XAQPSGRvT1rRLvgBiKacJo=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>R3qH0fV8H0FJLDHm5RBrGrlLDiiYRG6zsjEs0ham5dSy2cDpPfNDlEJTlJdZEwDEFead4TQ6SWhd
+wUkRpDU8yts6IptUOfNYJ24OYmrKWKm9wBAN4/xfUNbssfVbNmty34TXhj+6rhci4QrYlpN48GFU
+kj3MAje/0kiXmAc4ByQ=</ds:SignatureValue><ds:KeyInfo><ds:KeyValue><ds:RSAKeyValue><ds:Modulus>ssZ3vtc0YhFxA+5pXM66e/cx95E/30vCUWIU9Adxd2hcHhk6JWTEW/p/CW4NBw50Ipt+gwAZp5Jq
+Ap9zmyfUvGzvlw0JhCIYWeI3paCU0wM4cSVOx170Ea61I+Ig/dxlpP6q/QNBJBbQXQ/5pnXHmUmS
+Ffwiccw1SoX+tm2aVgk=</ds:Modulus><ds:Exponent>AQAB</ds:Exponent></ds:RSAKeyValue></ds:KeyValue><ds:X509Data><ds:X509SubjectName>C=VN,ST=Hồ Chí Minh,CN=CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG,UID=MST:0309519880</ds:X509SubjectName><ds:X509Certificate>MIIELzCCAxegAwIBAgIQVAMP0NdoiAxZTABm7JZtpDANBgkqhkiG9w0BAQUFADBJMQswCQYDVQQG
+EwJWTjEOMAwGA1UEBxMFSGFub2kxGTAXBgNVBAoTEEJrYXYgQ29ycG9yYXRpb24xDzANBgNVBAMT
+BkJrYXZDQTAeFw0yMDA1MDcwMTUwMjJaFw0yNDA1MTAwODAzMDdaMIGEMR4wHAYKCZImiZPyLGQB
+AQwOTVNUOjAzMDk1MTk4ODAxPDA6BgNVBAMMM0PDlE5HIFRZIFROSEggR0lBTyBOSOG6rE4gTkfD
+lEkgU0FPIFBIxq/GoE5HIMSQw5RORzEXMBUGA1UECAwOSOG7kyBDaMOtIE1pbmgxCzAJBgNVBAYT
+AlZOMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCyxne+1zRiEXED7mlczrp79zH3kT/fS8JR
+YhT0B3F3aFweGTolZMRb+n8Jbg0HDnQim36DABmnkmoCn3ObJ9S8bO+XDQmEIhhZ4jeloJTTAzhx
+JU7HXvQRrrUj4iD93GWk/qr9A0EkFtBdD/mmdceZSZIV/CJxzDVKhf62bZpWCQIDAQABo4IBWTCC
+AVUwMQYIKwYBBQUHAQEEJTAjMCEGCCsGAQUFBzABhhVodHRwOi8vb2NzcC5ia2F2Y2Eudm4wHQYD
+VR0OBBYEFAlKTC9K7QIXpDNruKy8DVqhmwPmMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUHrAP
+SJff0MNnp0aEO1g7iA1TlIYwfwYDVR0fBHgwdjB0oCOgIYYfaHR0cDovL2NybC5ia2F2Y2Eudm4v
+QmthdkNBLmNybKJNpEswSTEPMA0GA1UEAwwGQmthdkNBMRkwFwYDVQQKDBBCa2F2IENvcnBvcmF0
+aW9uMQ4wDAYDVQQHDAVIYW5vaTELMAkGA1UEBhMCVk4wDgYDVR0PAQH/BAQDAgTwMB8GA1UdJQQY
+MBYGCCsGAQUFBwMEBgorBgEEAYI3CgMMMCAGA1UdEQQZMBeBFW5ndXllbmhhMTgwQHlhaG9vLmNv
+bTANBgkqhkiG9w0BAQUFAAOCAQEAFjMQ4xFzNElhQ7SJLpE4SC/8gD96w02OkaFCoIaFoKl73xD7
+pI0qiGkDSyyhn7lIeFZEMGUFu/s7IpVplHbBlheMbVhVt3PQCp3H1MjuWZQ5a14vncNWOtX/BThs
+2caV6Tql6kiswBcmbzjAk2Zt/2Y4PmIJc/eD4c420xe16r7OUzasik7Fuvs32lRlSD1UE0dsgChg
+sTxlradqHvBua3nwFyUYXc3cDYpyuZDinr0kGzvclGRHNn/Ryqt+PgH9LSHDl2TLxINVgGFsvUEH
+CKSh4MtfN+4gwBIoeGhvhmkw6nqhausjhpinr4Sg/Kuc4rRuoOk06QjsvDIonNYSVQ==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></CKyDTu></HSoThueDTu>

@@ -1,0 +1,198 @@
+// =========================================================================
+// 🧠 MODULE 6: ĐỘNG CƠ ĐỐI SOÁT & CẢNH BÁO RỦI RO THUẾ TỰ ĐỘNG (BẢN VÁ LỖI POS)
+// =========================================================================
+
+/**
+ * Lấy dữ liệu đối soát chéo toàn diện cho giao diện Audit Alerts
+ */
+function getTaxAuditAlertsData(tenantToken, targetMst) {
+  try {
+    if (!tenantToken || !targetMst || targetMst === "all") {
+      return { success: false, message: "Vui lòng chọn một Mã số thuế cụ thể để chạy đối soát chéo liên kỳ!" };
+    }
+
+    var config = getTenantConfig(tenantToken);
+    var ss = SpreadsheetApp.openById(config.ssId);
+
+    var sheetNotes = ss.getSheetByName("U_Audit_Notes");
+    if (!sheetNotes) {
+      sheetNotes = ss.insertSheet("U_Audit_Notes");
+      sheetNotes.appendRow(["Key_ID", "Mst", "Audit_Type", "Note_Text", "Updated_At"]);
+    }
+
+    var sheetData = ss.getSheetByName("U_Tax_Data_Rows");
+    var values = sheetData.getDataRange().getValues();
+
+    var notesData = sheetNotes.getDataRange().getValues();
+    var notesMap = {};
+    for (var n = 1; n < notesData.length; n++) {
+      notesMap[notesData[n][0].toString().trim()] = notesData[n][3].toString();
+    }
+
+    var gtgtRows = [];
+    var tndnRows = [];
+
+    for (var i = 1; i < values.length; i++) {
+      var r = values[i];
+      if (r[1].toString().trim() !== targetMst.trim() || r[9].toString().trim() !== "ĐƯỢC CỘNG") continue;
+
+      var rowObj = {
+        period: r[3].toString().trim(),
+        year: r[4].toString().trim(),
+        code: r[7].toString().trim(),
+        value: parseFloat(r[8] || 0)
+      };
+
+      if (r[2].toString().trim() === "GTGT") gtgtRows.push(rowObj);
+      if (r[2].toString().trim() === "TNDN") tndnRows.push(rowObj);
+    }
+
+    var alertGtgt = runGtgtSequenceAudit(gtgtRows, targetMst, notesMap);
+    var alertRevenue = runRevenueCrossAudit(gtgtRows, tndnRows, targetMst, notesMap);
+
+    return {
+      success: true,
+      mst: targetMst,
+      gtgtAudit: alertGtgt,
+      revenueAudit: alertRevenue
+    };
+  } catch (e) {
+    return { success: false, message: "Lỗi động cơ đối soát: " + e.toString() };
+  }
+}
+
+/**
+ * Thuật toán 1: Sắp xếp chuỗi thời gian cuốn chiếu đối chiếu chỉ tiêu [43] kỳ j với [22] kỳ j+1
+ */
+function runGtgtSequenceAudit(gtgtRows, mst, notesMap) {
+  var listPeriods = [];
+  for (var i = 0; i < gtgtRows.length; i++) {
+    if (listPeriods.indexOf(gtgtRows[i].period) === -1) listPeriods.push(gtgtRows[i].period);
+  }
+
+  listPeriods.sort(function(a, b) {
+    return getPeriodTimeScore(a) - getPeriodTimeScore(b);
+  });
+
+  var result = [];
+  // 🔥 ĐÃ VÁ LỖI CHÍ MẠNG: Đồng bộ hóa toàn bộ biến chạy vòng lặp sang 'pos'
+  for (var pos = 0; pos < listPeriods.length - 1; pos++) {
+    var prdJ = listPeriods[pos];
+    var prdJ1 = listPeriods[pos + 1];
+
+    var ct43_J = 0;
+    for (var i = 0; i < gtgtRows.length; i++) {
+      if (gtgtRows[i].period === prdJ && gtgtRows[i].code === "43") { ct43_J = gtgtRows[i].value; break; }
+    }
+
+    var ct22_J1 = 0;
+    for (var i = 0; i < gtgtRows.length; i++) {
+      if (gtgtRows[i].period === prdJ1 && gtgtRows[i].code === "22") { ct22_J1 = gtgtRows[i].value; break; }
+    }
+
+    var diff = ct22_J1 - ct43_J;
+    var status = (diff === 0) ? "Khớp số liệu" : "Có chênh lệch cần kiểm tra";
+    var keyId = "GTGT_" + mst + "_" + prdJ.replace("/", "") + "_" + prdJ1.replace("/", "");
+    var savedNote = notesMap[keyId] || "";
+
+    result.push({
+      keyId: keyId,
+      periodJ: prdJ,
+      periodJ1: prdJ1,
+      val22: ct22_J1,
+      val43: ct43_J,
+      diff: diff,
+      status: status,
+      note: savedNote
+    });
+  }
+  return result;
+}
+
+/**
+ * Thuật toán 2: Gom lũy kế doanh thu GTGT [34] đối chiếu doanh thu quyết toán TNDN [04]
+ */
+function runRevenueCrossAudit(gtgtRows, tndnRows, mst, notesMap) {
+  var yearsList = [];
+  for (var i = 0; i < gtgtRows.length; i++) {
+    if (yearsList.indexOf(gtgtRows[i].year) === -1) yearsList.push(gtgtRows[i].year);
+  }
+  for (var j = 0; j < tndnRows.length; j++) {
+    if (yearsList.indexOf(tndnRows[j].year) === -1) yearsList.push(tndnRows[j].year);
+  }
+  yearsList.sort(function(a, b) { return b - a; });
+
+  var result = [];
+  yearsList.forEach(function(yr) {
+    var sum34 = 0;
+    gtgtRows.forEach(function(r) {
+      if (r.year === yr && r.code === "34") sum34 += r.value;
+    });
+
+    var val04 = 0;
+    tndnRows.forEach(function(r) {
+      if (r.year === yr && r.code === "04") val04 = r.value;
+    });
+
+    var diff = sum34 - val04;
+    var status = (diff === 0) ? "Khớp số liệu" : "Có chênh lệch cần kiểm tra";
+    var keyId = "REV_" + mst + "_" + yr;
+    var savedNote = notesMap[keyId] || "";
+
+    result.push({
+      keyId: keyId,
+      year: yr,
+      val34: sum34,
+      val04: val04,
+      diff: diff,
+      status: status,
+      note: savedNote
+    });
+  });
+  return result;
+}
+
+/**
+ * Trọng số quy đổi thời gian để sắp xếp Tháng/Quý
+ */
+function getPeriodTimeScore(periodStr) {
+  var parts = periodStr.split("/");
+  if (parts.length < 2) return 0;
+  var year = parseInt(parts[1]);
+  var prefix = parts[0].toUpperCase();
+
+  if (prefix.indexOf("QUÝ") !== -1) {
+    var q = parseInt(prefix.replace("QUÝ", "").trim());
+    return (year * 12) + (q * 3);
+  } else {
+    var m = parseInt(prefix);
+    return (year * 12) + m;
+  }
+}
+
+/**
+ * Ghi sổ giải trình ghi chú xuống Sheets của khách hàng
+ */
+function saveAuditNoteText(tenantToken, keyId, mst, auditType, noteText) {
+  try {
+    var config = getTenantConfig(tenantToken);
+    var ss = SpreadsheetApp.openById(config.ssId);
+    var sheet = ss.getSheetByName("U_Audit_Notes");
+
+    var data = sheet.getDataRange().getValues();
+    var foundRow = -1;
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][0].toString().trim() === keyId.trim()) { foundRow = i + 1; break; }
+    }
+
+    if (foundRow !== -1) {
+      sheet.getRange(foundRow, 4).setValue(noteText);
+      sheet.getRange(foundRow, 5).setValue(new Date());
+    } else {
+      sheet.appendRow([keyId, mst, auditType, noteText, new Date()]);
+    }
+    return { success: true };
+  } catch (e) {
+    return { success: false, message: e.toString() };
+  }
+}

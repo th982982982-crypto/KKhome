@@ -1,0 +1,3283 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><HSoThueDTu xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <HSoKhaiThue id="ID_1">
+    <TTinChung>
+      <TTinDVu>
+        <maDVu>HTKK</maDVu>
+        <tenDVu>HỖ TRỢ KÊ KHAI THUẾ</tenDVu>
+        <pbanDVu>5.1.8</pbanDVu>
+        <ttinNhaCCapDVu>7C1EB353B69339B14759C753FBE486FD</ttinNhaCCapDVu>
+      </TTinDVu>
+      <TTinTKhaiThue>
+        <TKhaiThue>
+          <maTKhai>953</maTKhai>
+          <tenTKhai>TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN (Mẫu số 05/QTT-TNCN)</tenTKhai>
+          <moTaBMau>(Ban hành kèm theo Thông tư số 80/2021/TT-BTC ngày 29 tháng 9 năm 2021 của Bộ trưởng Bộ Tài chính)</moTaBMau>
+          <pbanTKhaiXML>2.5.1</pbanTKhaiXML>
+          <loaiTKhai>B</loaiTKhai>
+          <soLan>1</soLan>
+          <KyKKhaiThue>
+            <kieuKy>Y</kieuKy>
+            <kyKKhai>2023</kyKKhai>
+            <kyKKhaiTuNgay/>
+            <kyKKhaiDenNgay/>
+            <kyKKhaiTuThang>01/2023</kyKKhaiTuThang>
+            <kyKKhaiDenThang>12/2023</kyKKhaiDenThang>
+          </KyKKhaiThue>
+          <maCQTNoiNop>70129</maCQTNoiNop>
+          <tenCQTNoiNop>Chi cục Thuế Quận Bình Thạnh</tenCQTNoiNop>
+          <ngayLapTKhai>2024-03-28</ngayLapTKhai>
+          <GiaHan>
+            <maLyDoGiaHan/>
+            <lyDoGiaHan/>
+          </GiaHan>
+          <nguoiKy>Như Nghiệp Thuận</nguoiKy>
+          <ngayKy>2024-03-01</ngayKy>
+          <nganhNgheKD/>
+        </TKhaiThue>
+        <NNT>
+          <mst>0309519880</mst>
+          <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+          <dchiNNT>Lầu 3, Toà nhà Coteccons, 236/6 Điện Biên Phủ, Phường 17</dchiNNT>
+          <phuongXa/>
+          <maHuyenNNT>70129</maHuyenNNT>
+          <tenHuyenNNT>Quận Bình Thạnh</tenHuyenNNT>
+          <maTinhNNT>701</maTinhNNT>
+          <tenTinhNNT>TP Hồ Chí Minh</tenTinhNNT>
+          <dthoaiNNT>628533880</dthoaiNNT>
+          <faxNNT>62853881</faxNNT>
+          <emailNNT>rosa_hcm@orientstargroup.com</emailNNT>
+        </NNT>
+      </TTinTKhaiThue>
+    </TTinChung>
+    <CTieuTKhaiChinh>
+      <Header>
+        <toChucCoQTTTheoUyQuyen>0</toChucCoQTTTheoUyQuyen>
+        <ma_THQuyetToan>01</ma_THQuyetToan>
+        <ten_THQuyetToan>QT định kỳ</ten_THQuyetToan>
+        <hanNop/>
+      </Header>
+      <NVuKhauTruThue>
+        <ct16>91</ct16>
+        <ct17>91</ct17>
+        <ct18>65</ct18>
+        <ct19>65</ct19>
+        <ct20>0</ct20>
+        <ct21>0</ct21>
+        <ct22>42</ct22>
+        <ct23>15445808912</ct23>
+        <ct24>15445808912</ct24>
+        <ct25>0</ct25>
+        <ct26>0</ct26>
+        <ct27>0</ct27>
+        <ct28>13500612648</ct28>
+        <ct29>13500612648</ct29>
+        <ct30>0</ct30>
+        <ct31>282498789</ct31>
+        <ct32>282498789</ct32>
+        <ct33>0</ct33>
+        <ct34>0</ct34>
+      </NVuKhauTruThue>
+      <NVuQToanThay>
+        <ct35>0</ct35>
+        <ct36>0</ct36>
+        <ct37>0</ct37>
+        <ct38>0</ct38>
+        <ct39>0</ct39>
+        <ct40>0</ct40>
+        <ct41>0</ct41>
+      </NVuQToanThay>
+    </CTieuTKhaiChinh>
+    <PLuc>
+      <PLuc_05_1_BK_QTT>
+        <BKeCTietCNhan id="ID_1">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Phó Hà Nhi</ct07>
+          <ct08>8058896726</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>299295975</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>2</ct16>
+          <ct17>237600000</ct17>
+          <ct18>0</ct18>
+          <ct19>19580400</ct19>
+          <ct20>0</ct20>
+          <ct21>42115575</ct21>
+          <ct22>2306257</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_2">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Trần Kim Tài</ct07>
+          <ct08>8058896740</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>178292625</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>1</ct16>
+          <ct17>184800000</ct17>
+          <ct18>0</ct18>
+          <ct19>13230000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>79125</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_3">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Kim Phượng</ct07>
+          <ct08>0308453757</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>361303061</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>2</ct16>
+          <ct17>237600000</ct17>
+          <ct18>0</ct18>
+          <ct19>25137000</ct19>
+          <ct20>0</ct20>
+          <ct21>98566061</ct21>
+          <ct22>7066216</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_4">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Phạm Xuân An</ct07>
+          <ct08>8057671617</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>231441552</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>3</ct16>
+          <ct17>237600000</ct17>
+          <ct18>0</ct18>
+          <ct19>21168000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_5">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Phương Vũ</ct07>
+          <ct08>0307651139</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>224355250</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>2</ct16>
+          <ct17>193600000</ct17>
+          <ct18>0</ct18>
+          <ct19>12700800</ct19>
+          <ct20>0</ct20>
+          <ct21>18054450</ct21>
+          <ct22>1892165</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_6">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Văn Đức Toàn</ct07>
+          <ct08>8544115755</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>259547700</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>23814000</ct19>
+          <ct20>0</ct20>
+          <ct21>103733700</ct21>
+          <ct22>7373370</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_7">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Đăng Luân</ct07>
+          <ct08>8365620430</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>53343500</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>55000000</ct17>
+          <ct18>0</ct18>
+          <ct19>3307500</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_8">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Huỳnh Thụy Phụng Vy</ct07>
+          <ct08>0306927433</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>288181000</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>3</ct16>
+          <ct17>237600000</ct17>
+          <ct18>0</ct18>
+          <ct19>18522000</ct19>
+          <ct20>0</ct20>
+          <ct21>32059000</ct21>
+          <ct22>1602950</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_9">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Bùi Minh Trí</ct07>
+          <ct08>0307383578</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>519148200</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>2</ct16>
+          <ct17>237600000</ct17>
+          <ct18>0</ct18>
+          <ct19>29295000</ct19>
+          <ct20>0</ct20>
+          <ct21>252253200</ct21>
+          <ct22>30650640</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_10">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Phan Thị Hiến Dương</ct07>
+          <ct08>8381993542</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>342938796</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>30429000</ct19>
+          <ct20>0</ct20>
+          <ct21>180509796</ct21>
+          <ct22>18076471</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_11">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Huỳnh Thị Phương Hạnh</ct07>
+          <ct08>8393628375</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>298713486</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>2</ct16>
+          <ct17>237600000</ct17>
+          <ct18>0</ct18>
+          <ct19>27783000</ct19>
+          <ct20>0</ct20>
+          <ct21>33330486</ct21>
+          <ct22>1666540</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_12">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Phạm Thị Thắm</ct07>
+          <ct08>8073875047</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>124906427</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>2</ct16>
+          <ct17>202400000</ct17>
+          <ct18>0</ct18>
+          <ct19>11576250</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>209939</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_13">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Thị Hồng Oanh</ct07>
+          <ct08>8105838361</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>225930450</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>1</ct16>
+          <ct17>176000000</ct17>
+          <ct18>0</ct18>
+          <ct19>19845000</ct19>
+          <ct20>0</ct20>
+          <ct21>30085450</ct21>
+          <ct22>1659248</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_14">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Văn Tuấn</ct07>
+          <ct08>8058896733</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>257554300</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>2</ct16>
+          <ct17>184800000</ct17>
+          <ct18>0</ct18>
+          <ct19>17608500</ct19>
+          <ct20>0</ct20>
+          <ct21>55145800</ct21>
+          <ct22>2945779</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_15">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Bích Trâm</ct07>
+          <ct08>8097498528</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>25274429</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>2</ct16>
+          <ct17>19800000</ct17>
+          <ct18>0</ct18>
+          <ct19>1984500</ct19>
+          <ct20>0</ct20>
+          <ct21>3489929</ct21>
+          <ct22>174496</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_16">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>HUANG, JUI-SHENG</ct07>
+          <ct08>8560403535</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>346081200</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>29828400</ct19>
+          <ct20>0</ct20>
+          <ct21>184252800</ct21>
+          <ct22>18300240</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_17">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Đỗ Văn Thanh</ct07>
+          <ct08>8014244547</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>161201897</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>6350400</ct19>
+          <ct20>0</ct20>
+          <ct21>22851497</ct21>
+          <ct22>1804860</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_18">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Trương Thị Mỹ Ni</ct07>
+          <ct08>8431503877</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>226134325</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>1</ct16>
+          <ct17>184800000</ct17>
+          <ct18>0</ct18>
+          <ct19>13230000</ct19>
+          <ct20>0</ct20>
+          <ct21>28104325</ct21>
+          <ct22>1405218</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_19">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Minh Châu</ct07>
+          <ct08>8117039081</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>245125450</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>21168000</ct19>
+          <ct20>0</ct20>
+          <ct21>91957450</ct21>
+          <ct22>6195745</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_20">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Thị Lưu</ct07>
+          <ct08>8331123695</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>241063325</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>18786600</ct19>
+          <ct20>0</ct20>
+          <ct21>90276725</ct21>
+          <ct22>6027674</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_21">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Trần Thị Hồng Ngọc</ct07>
+          <ct08>8403038321</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>230703200</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>1</ct16>
+          <ct17>184800000</ct17>
+          <ct18>0</ct18>
+          <ct19>19845000</ct19>
+          <ct20>0</ct20>
+          <ct21>26058200</ct21>
+          <ct22>1302916</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_22">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Thị Như Quỳnh</ct07>
+          <ct08>8533701405</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>157189400</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>10584000</ct19>
+          <ct20>0</ct20>
+          <ct21>14605400</ct21>
+          <ct22>807578</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_23">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Phượng Thảo</ct07>
+          <ct08>8532803796</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>219054106</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>15876000</ct19>
+          <ct20>0</ct20>
+          <ct21>71178106</ct21>
+          <ct22>4152425</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_24">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Điền Bảo Vân</ct07>
+          <ct08>8601767742</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>177732858</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>15346800</ct19>
+          <ct20>0</ct20>
+          <ct21>30386058</ct21>
+          <ct22>1519303</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_25">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Hồng Vân</ct07>
+          <ct08>8637983419</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>189306249</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>15876000</ct19>
+          <ct20>0</ct20>
+          <ct21>41430249</ct21>
+          <ct22>2071513</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_26">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Thị Ngọc Oanh</ct07>
+          <ct08>8620178823</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>189209437</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>15876000</ct19>
+          <ct20>0</ct20>
+          <ct21>41333437</ct21>
+          <ct22>2066674</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_27">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Thúy</ct07>
+          <ct08>0302624452</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>511575000</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>3</ct16>
+          <ct17>290400000</ct17>
+          <ct18>0</ct18>
+          <ct19>23814000</ct19>
+          <ct20>0</ct20>
+          <ct21>197361000</ct21>
+          <ct22>20622225</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_28">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Sung Wai Fung</ct07>
+          <ct08>8058896814</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>576626000</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>35122000</ct19>
+          <ct20>0</ct20>
+          <ct21>409504000</ct21>
+          <ct22>62796850</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_29">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Trần Quốc Việt</ct07>
+          <ct08>8415983873</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>158380750</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>6350400</ct19>
+          <ct20>0</ct20>
+          <ct21>20030350</ct21>
+          <ct22>1001519</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_30">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Thái Ngọc Nhung</ct07>
+          <ct08>8115933744</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>225149092</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>1</ct16>
+          <ct17>184800000</ct17>
+          <ct18>0</ct18>
+          <ct19>18786600</ct19>
+          <ct20>0</ct20>
+          <ct21>21562492</ct21>
+          <ct22>1078128</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_31">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Lê Hồng Việt</ct07>
+          <ct08>8448532964</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>201108493</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>1</ct16>
+          <ct17>184800000</ct17>
+          <ct18>0</ct18>
+          <ct19>18522000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>83585</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_32">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>YANG YU KAI</ct07>
+          <ct08>8482787465</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>432403500</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>1</ct16>
+          <ct17>184800000</ct17>
+          <ct18>0</ct18>
+          <ct19>34591900</ct19>
+          <ct20>0</ct20>
+          <ct21>213011600</ct21>
+          <ct22>22697711</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_33">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Công Thành</ct07>
+          <ct08>8335365409</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>158443000</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>121000000</ct17>
+          <ct18>0</ct18>
+          <ct19>7717500</ct19>
+          <ct20>0</ct20>
+          <ct21>29725500</ct21>
+          <ct22>1486275</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_34">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Thuận Vũ</ct07>
+          <ct08>8034550510</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>82789111</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>44000000</ct17>
+          <ct18>0</ct18>
+          <ct19>8820000</ct19>
+          <ct20>0</ct20>
+          <ct21>29969111</ct21>
+          <ct22>2494350</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_35">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Bùi Hoa Liên</ct07>
+          <ct08>8125044127</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>117187332</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>11377800</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_36">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Hải Anh</ct07>
+          <ct08>8684097577</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>93637500</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>9261000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_37">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Triệu Thị Khánh Hòa</ct07>
+          <ct08>8105344443</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>75489750</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>121000000</ct17>
+          <ct18>0</ct18>
+          <ct19>7717500</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_38">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lý Thái Trung</ct07>
+          <ct08>8057287908</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>142242353</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>13230000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>37620</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_39">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Đoàn Thu Ngọc</ct07>
+          <ct08>8684097619</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>154351240</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>1</ct16>
+          <ct17>171600000</ct17>
+          <ct18>0</ct18>
+          <ct19>11907000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>155012</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_40">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Thị Hương Lý</ct07>
+          <ct08>8585047906</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>34390824</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>22000000</ct17>
+          <ct18>0</ct18>
+          <ct19>2866500</ct19>
+          <ct20>0</ct20>
+          <ct21>9524324</ct21>
+          <ct22>492942</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_41">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Hồ Kim Phụng</ct07>
+          <ct08>8479423098</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>221778270</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>2</ct16>
+          <ct17>176000000</ct17>
+          <ct18>0</ct18>
+          <ct19>17304000</ct19>
+          <ct20>0</ct20>
+          <ct21>28474270</ct21>
+          <ct22>1647720</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_42">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Phạm Thị Mỹ Tiên</ct07>
+          <ct08>8564716602</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>161937447</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>11907000</ct19>
+          <ct20>0</ct20>
+          <ct21>18030447</ct21>
+          <ct22>901526</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_43">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Huỳnh Xuân Trúc Nhi</ct07>
+          <ct08>8581347377</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>12366926</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>11000000</ct17>
+          <ct18>0</ct18>
+          <ct19>1102500</ct19>
+          <ct20>0</ct20>
+          <ct21>264426</ct21>
+          <ct22>13221</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_44">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Loan</ct07>
+          <ct08>8427716079</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>191744171</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>17992800</ct19>
+          <ct20>0</ct20>
+          <ct21>41751371</ct21>
+          <ct22>2087570</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_45">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Thu Hà</ct07>
+          <ct08>8594057185</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>163120235</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>9790200</ct19>
+          <ct20>0</ct20>
+          <ct21>21330035</ct21>
+          <ct22>1285739</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_46">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Bảo Châu</ct07>
+          <ct08>8629900659</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>169344675</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>13230000</ct19>
+          <ct20>0</ct20>
+          <ct21>24114675</ct21>
+          <ct22>1205734</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_47">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Dương Thị Thương</ct07>
+          <ct08>8566619361</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>20763550</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>22000000</ct17>
+          <ct18>0</ct18>
+          <ct19>1631700</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_48">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Gia Ngọc</ct07>
+          <ct08>8442830019</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>191737997</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>15876000</ct19>
+          <ct20>0</ct20>
+          <ct21>43861997</ct21>
+          <ct22>2193099</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_49">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Hoàng Vy Na</ct07>
+          <ct08>8605297505</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>200297048</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>15876000</ct19>
+          <ct20>0</ct20>
+          <ct21>52421048</ct21>
+          <ct22>2651353</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_50">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Ngọc Diễm</ct07>
+          <ct08>8604473927</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>157215982</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>14553000</ct19>
+          <ct20>0</ct20>
+          <ct21>10662982</ct21>
+          <ct22>670265</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_51">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Ngọc Lan Phương</ct07>
+          <ct08>8594970130</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>162940929</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>14553000</ct19>
+          <ct20>0</ct20>
+          <ct21>16387929</ct21>
+          <ct22>819400</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_52">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Trần Thị Mỹ Duyên</ct07>
+          <ct08>8567269871</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>156608103</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>11907000</ct19>
+          <ct20>0</ct20>
+          <ct21>12701103</ct21>
+          <ct22>635056</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_53">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Đinh Ngọc Hà My</ct07>
+          <ct08>8371477299</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>159819048</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>11907000</ct19>
+          <ct20>0</ct20>
+          <ct21>15912048</ct21>
+          <ct22>795606</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_54">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Bùi Thị Ngọc</ct07>
+          <ct08>8579373281</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>33269602</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>88000000</ct17>
+          <ct18>0</ct18>
+          <ct19>3969000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_55">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Vũ ngọc Ánh</ct07>
+          <ct08>8606216107</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>138580773</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>10584000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>62011</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_56">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Thúy Loan</ct07>
+          <ct08>8515381696</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>225280750</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>18522000</ct19>
+          <ct20>0</ct20>
+          <ct21>74758750</ct21>
+          <ct22>4475876</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_57">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Trần Nguyễn Thanh Tuyền</ct07>
+          <ct08>8328918074</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>287641883</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>18522000</ct19>
+          <ct20>0</ct20>
+          <ct21>137119883</ct21>
+          <ct22>11623447</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_58">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Mỹ Lưu</ct07>
+          <ct08>8540442053</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>199797497</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>18522000</ct19>
+          <ct20>0</ct20>
+          <ct21>49275497</ct21>
+          <ct22>2463777</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_59">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Thu Vân</ct07>
+          <ct08>8642835180</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>133858142</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>10584000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_60">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Thị Hồng Loan</ct07>
+          <ct08>8554093846</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>177384170</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>15346800</ct19>
+          <ct20>0</ct20>
+          <ct21>30037370</ct21>
+          <ct22>1501869</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_61">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Thu Hà</ct07>
+          <ct08>8580366200</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>146085643</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>10584000</ct19>
+          <ct20>0</ct20>
+          <ct21>3501643</ct21>
+          <ct22>300829</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_62">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Như Quỳnh</ct07>
+          <ct08>8497591497</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>197654659</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>15876000</ct19>
+          <ct20>0</ct20>
+          <ct21>49778659</ct21>
+          <ct22>2516816</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_63">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Thị Huyền Trân</ct07>
+          <ct08>8640388628</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>115811316</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>1</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>10914750</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_64">
+          <coDieuChinhSoLieu>1</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Minh Phương</ct07>
+          <ct08>8501361900</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>145716576</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>11377800</ct19>
+          <ct20>0</ct20>
+          <ct21>2338776</ct21>
+          <ct22>189593</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_65">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Phạm Thị Huyền Trang</ct07>
+          <ct08>8719962392</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>126588898</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>10584000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_66">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thùy Trâm Anh</ct07>
+          <ct08>8665006768</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>14144000</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>11000000</ct17>
+          <ct18>0</ct18>
+          <ct19>1212750</ct19>
+          <ct20>0</ct20>
+          <ct21>1931250</ct21>
+          <ct22>96563</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_67">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Trần Ái Xuân</ct07>
+          <ct08>8539131085</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>35293320</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>44000000</ct17>
+          <ct18>0</ct18>
+          <ct19>3528000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_68">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Trương Thị Hiếu</ct07>
+          <ct08>8605995122</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>167214127</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>1</ct16>
+          <ct17>162800000</ct17>
+          <ct18>0</ct18>
+          <ct19>15876000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>380939</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_69">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Phạm Anh Thư</ct07>
+          <ct08>8582983706</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>141799725</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>11907000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>89052</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_70">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Vương Trần Thủy Tiên</ct07>
+          <ct08>8691735911</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>148888332</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>13759200</ct19>
+          <ct20>0</ct20>
+          <ct21>3129132</ct21>
+          <ct22>234271</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_71">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Xuân Hoa</ct07>
+          <ct08>8588800412</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>86269500</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>7938000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_72">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Diễm Quyên</ct07>
+          <ct08>8604035313</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>125962902</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>10584000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_73">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thủy Tiên</ct07>
+          <ct08>8624838485</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>160601000</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>13891500</ct19>
+          <ct20>0</ct20>
+          <ct21>14709500</ct21>
+          <ct22>735477</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_74">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Phạm Vũ Thu Hiền</ct07>
+          <ct08>8414839764</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>160275782</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>13759200</ct19>
+          <ct20>0</ct20>
+          <ct21>14516582</ct21>
+          <ct22>725831</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_75">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Văn Duy</ct07>
+          <ct08>8304782346</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>82863267</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>7938000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_76">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Vũ Thị Vân Quỳnh</ct07>
+          <ct08>8521748575</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>203985700</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>2</ct16>
+          <ct17>184800000</ct17>
+          <ct18>0</ct18>
+          <ct19>17199000</ct19>
+          <ct20>0</ct20>
+          <ct21>1986700</ct21>
+          <ct22>350768</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_77">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Phạm Thị Anh</ct07>
+          <ct08>8794100180</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>126005125</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>132000000</ct17>
+          <ct18>0</ct18>
+          <ct19>9261000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_78">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Lê Tuyết Ngân</ct07>
+          <ct08>8614957564</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>5805026</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>22000000</ct17>
+          <ct18>0</ct18>
+          <ct19>0</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_79">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Thanh Hoa</ct07>
+          <ct08>8006376701</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>341668337</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>3</ct16>
+          <ct17>266200000</ct17>
+          <ct18>0</ct18>
+          <ct19>25401600</ct19>
+          <ct20>0</ct20>
+          <ct21>50066737</ct21>
+          <ct22>3239777</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_80">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Diệu Linh</ct07>
+          <ct08>8404577220</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>35209508</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>57200000</ct17>
+          <ct18>0</ct18>
+          <ct19>0</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_81">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Trần Thái Bình</ct07>
+          <ct08>8325411303</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>155872234</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>112200000</ct17>
+          <ct18>0</ct18>
+          <ct19>0</ct19>
+          <ct20>0</ct20>
+          <ct21>43672234</ct21>
+          <ct22>3910696</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_82">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Trần Mỹ Linh</ct07>
+          <ct08>8470748937</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>75219330</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>88000000</ct17>
+          <ct18>0</ct18>
+          <ct19>0</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_83">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Bảo Ngọc</ct07>
+          <ct08>8579740220</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>72720136</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>88000000</ct17>
+          <ct18>0</ct18>
+          <ct19>882000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_84">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thúy Diễm</ct07>
+          <ct08>8503525350</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>76396417</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>88000000</ct17>
+          <ct18>0</ct18>
+          <ct19>882000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_85">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Bùi Thị Nhi</ct07>
+          <ct08>8510410061</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>67788000</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>77000000</ct17>
+          <ct18>0</ct18>
+          <ct19>882000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_86">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Hoàng Gia Anh Thư</ct07>
+          <ct08>8625202639</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>58573543</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>66000000</ct17>
+          <ct18>0</ct18>
+          <ct19>3969000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_87">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Phương Thanh Tuyến</ct07>
+          <ct08>8752398166</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>59292643</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>66000000</ct17>
+          <ct18>0</ct18>
+          <ct19>3969000</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_88">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Thị Thu</ct07>
+          <ct08>8467474235</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>73408120</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>66000000</ct17>
+          <ct18>0</ct18>
+          <ct19>5292000</ct19>
+          <ct20>0</ct20>
+          <ct21>2116120</ct21>
+          <ct22>391349</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_89">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Tiến Đạt</ct07>
+          <ct08>8379133500</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>21084850</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>22000000</ct17>
+          <ct18>0</ct18>
+          <ct19>0</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_90">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Nguyễn Hồng Kông</ct07>
+          <ct08>8378530664</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>9801600</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>11000000</ct17>
+          <ct18>0</ct18>
+          <ct19>0</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <BKeCTietCNhan id="ID_91">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07>Võ Tuấn Đức</ct07>
+          <ct08>8406818665</ct08>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>5519955</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+          <ct17>11000000</ct17>
+          <ct18>0</ct18>
+          <ct19>0</ct19>
+          <ct20>0</ct20>
+          <ct21>0</ct21>
+          <ct22>0</ct22>
+          <ct23>0</ct23>
+          <ct24>0</ct24>
+          <ct25>0</ct25>
+          <ct26>0</ct26>
+          <ct27>0</ct27>
+        </BKeCTietCNhan>
+        <ct28>15445808912</ct28>
+        <ct29>0</ct29>
+        <ct30>0</ct30>
+        <ct31>0</ct31>
+        <ct32>42</ct32>
+        <ct33>11816200000</ct33>
+        <ct34>0</ct34>
+        <ct35>1149980150</ct35>
+        <ct36>0</ct36>
+        <ct37>3187317235</ct37>
+        <ct38>282498789</ct38>
+        <ct39>0</ct39>
+        <ct40>0</ct40>
+        <ct41>0</ct41>
+        <ct42>0</ct42>
+        <ct43>0</ct43>
+      </PLuc_05_1_BK_QTT>
+      <PLuc_05_2_BK_QTT>
+        <BKeCTietCNhan id="ID_1">
+          <coDieuChinhSoLieu>0</coDieuChinhSoLieu>
+          <ct07/>
+          <ct08 xsi:nil="true"/>
+          <ct09a_ma/>
+          <ct09a_ten/>
+          <ct09/>
+          <ct10>0</ct10>
+          <ct11>0</ct11>
+          <ct12>0</ct12>
+          <ct13>0</ct13>
+          <ct14>0</ct14>
+          <ct15>0</ct15>
+          <ct16>0</ct16>
+        </BKeCTietCNhan>
+        <ct17>0</ct17>
+        <ct18>0</ct18>
+        <ct19>0</ct19>
+        <ct20>0</ct20>
+        <ct21>0</ct21>
+        <ct22>0</ct22>
+      </PLuc_05_2_BK_QTT>
+      <PLuc_05_3_BK_QTT>
+        <BKeTTinNPT id="ID_1">
+          <ct07>Huỳnh Thụy Phụng Vy</ct07>
+          <ct08>0306927433</ct08>
+          <ct09>Dương Nguyên Khang</ct09>
+          <ct10>2015-11-20</ct10>
+          <ct11>8605894639</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_2">
+          <ct07>Huỳnh Thụy Phụng Vy</ct07>
+          <ct08>0306927433</ct08>
+          <ct09>Dương Huỳnh An Thy</ct09>
+          <ct10>2012-11-30</ct10>
+          <ct11>8605894646</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_3">
+          <ct07>Huỳnh Thụy Phụng Vy</ct07>
+          <ct08>0306927433</ct08>
+          <ct09>Huỳnh Thị Kim Phụng</ct09>
+          <ct10>1953-12-02</ct10>
+          <ct11>8860611712</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>12/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_4">
+          <ct07>Nguyễn Bích Trâm</ct07>
+          <ct08>8097498528</ct08>
+          <ct09>Bùi Ngọc Mai Anh</ct09>
+          <ct10>2017-03-12</ct10>
+          <ct11>8481125998</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_5">
+          <ct07>Nguyễn Bích Trâm</ct07>
+          <ct08>8097498528</ct08>
+          <ct09>Bùi Ngọc Tuệ Anh</ct09>
+          <ct10>2020-02-14</ct10>
+          <ct11>8643728826</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_6">
+          <ct07>Nguyễn Thị Thúy</ct07>
+          <ct08>0302624452</ct08>
+          <ct09>Nguyễn Thị Toán</ct09>
+          <ct10>1953-02-21</ct10>
+          <ct11>0300160808</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_7">
+          <ct07>Nguyễn Thị Thúy</ct07>
+          <ct08>0302624452</ct08>
+          <ct09>Bùi Thị Lập</ct09>
+          <ct10>1952-12-02</ct10>
+          <ct11>8402517522</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_8">
+          <ct07>Nguyễn Thị Thúy</ct07>
+          <ct08>0302624452</ct08>
+          <ct09>Hà Xuân Khôi</ct09>
+          <ct10>2004-12-05</ct10>
+          <ct11>8605895216</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_9">
+          <ct07>Trần Thị Hồng Ngọc</ct07>
+          <ct08>8403038321</ct08>
+          <ct09>Nguyễn Vinh</ct09>
+          <ct10>2010-07-02</ct10>
+          <ct11>8526712928</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_10">
+          <ct07>Bùi Minh Trí</ct07>
+          <ct08>0307383578</ct08>
+          <ct09>Mai Thị Ngọc Lang</ct09>
+          <ct10>1952-08-24</ct10>
+          <ct11>8399220247</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_11">
+          <ct07>Bùi Minh Trí</ct07>
+          <ct08>0307383578</ct08>
+          <ct09>Bùi Thiên Tạo</ct09>
+          <ct10>1954-10-27</ct10>
+          <ct11>8067834564</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_12">
+          <ct07>Nguyễn Thị Kim Phượng</ct07>
+          <ct08>0308453757</ct08>
+          <ct09>Nguyễn Phương Hoàng</ct09>
+          <ct10>2009-10-12</ct10>
+          <ct11>8697775999</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>01</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_13">
+          <ct07>Nguyễn Thị Kim Phượng</ct07>
+          <ct08>0308453757</ct08>
+          <ct09>Nguyễn Hoàng Tùng</ct09>
+          <ct10>2011-09-24</ct10>
+          <ct11>8697776008</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_14">
+          <ct07>Phạm xuân An</ct07>
+          <ct08>8057671617</ct08>
+          <ct09>Đỗ Hồng Ân</ct09>
+          <ct10>2019-05-16</ct10>
+          <ct11>8648327218</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_15">
+          <ct07>Phạm xuân An</ct07>
+          <ct08>8057671617</ct08>
+          <ct09>Đỗ Hồng Ngân</ct09>
+          <ct10>2021-11-21</ct10>
+          <ct11>8822417922</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_16">
+          <ct07>Phạm xuân An</ct07>
+          <ct08>8057671617</ct08>
+          <ct09>Đặng Thị Kim Thoa</ct09>
+          <ct10>1964-10-05</ct10>
+          <ct11>8860611705</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>12/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_17">
+          <ct07>Phạm Thị Thắm</ct07>
+          <ct08>8073875047</ct08>
+          <ct09>Đàm Minh Hưng</ct09>
+          <ct10>2018-12-05</ct10>
+          <ct11>8591842902</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_18">
+          <ct07>Phạm Thị Thắm</ct07>
+          <ct08>8073875047</ct08>
+          <ct09>Đàm Bảo Hân</ct09>
+          <ct10>2023-08-03</ct10>
+          <ct11>8843454308</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>08/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_19">
+          <ct07>Thái Ngọc Nhung</ct07>
+          <ct08>8115933744</ct08>
+          <ct09>Nguyễn Thị Kiều</ct09>
+          <ct10>1957-10-20</ct10>
+          <ct11>8452836274</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_20">
+          <ct07>Nguyễn Lê Hồng Việt</ct07>
+          <ct08>8448532964</ct08>
+          <ct09>Lý Tuệ Mẫn</ct09>
+          <ct10>2020-11-11</ct10>
+          <ct11>8699564834</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_21">
+          <ct07>Phó Hà Nhi</ct07>
+          <ct08>8058896726</ct08>
+          <ct09>Phó Khánh Nhiên</ct09>
+          <ct10>2016-03-02</ct10>
+          <ct11>8481126007</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>01</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_22">
+          <ct07>Phó Hà Nhi</ct07>
+          <ct08>8058896726</ct08>
+          <ct09>Phó Hùng</ct09>
+          <ct10>1959-11-20</ct10>
+          <ct11>8205915901</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_23">
+          <ct07>Lê Văn Tuấn</ct07>
+          <ct08>8058896733</ct08>
+          <ct09>Lê Ái Thùy Duyên</ct09>
+          <ct10>2019-05-24</ct10>
+          <ct11>8643728819</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_24">
+          <ct07>Lê Văn Tuấn</ct07>
+          <ct08>8058896733</ct08>
+          <ct09>Lê Ái Thùy Dương</ct09>
+          <ct10>2011-09-26</ct10>
+          <ct11>8832396125</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>01</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_25">
+          <ct07>Trần Kim Tài</ct07>
+          <ct08>8058896740</ct08>
+          <ct09>Trần Anh Thi</ct09>
+          <ct10>2007-08-31</ct10>
+          <ct11>8747015682</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_26">
+          <ct07>Yang Yu Kai</ct07>
+          <ct08>8482787465</ct08>
+          <ct09>Yang Tuyết An</ct09>
+          <ct10>2017-11-20</ct10>
+          <ct11>8534232918</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_27">
+          <ct07>Vũ Thị Vân Quỳnh</ct07>
+          <ct08>8521748575</ct08>
+          <ct09>Tu Vũ Huyên</ct09>
+          <ct10>2021-10-31</ct10>
+          <ct11>8791705565</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_28">
+          <ct07>Vũ Thị Vân Quỳnh</ct07>
+          <ct08>8521748575</ct08>
+          <ct09>Vũ Văn Xuân</ct09>
+          <ct10>1962-12-07</ct10>
+          <ct11>8194198079</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>10/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_29">
+          <ct07>Trương Thị Mỹ Ni</ct07>
+          <ct08>8431503877</ct08>
+          <ct09>Trương Văn Sinh</ct09>
+          <ct10>1960-09-10</ct10>
+          <ct11>6001110704</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_30">
+          <ct07>Huỳnh Thị Phương Hạnh</ct07>
+          <ct08>8393628375</ct08>
+          <ct09>Đặng Thị Mai</ct09>
+          <ct10>1963-01-01</ct10>
+          <ct11>8794122064</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_31">
+          <ct07>Huỳnh Thị Phương Hạnh</ct07>
+          <ct08>8393628375</ct08>
+          <ct09>Trần Huỳnh Linh Sam</ct09>
+          <ct10>2022-04-27</ct10>
+          <ct11>8789937625</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_32">
+          <ct07>Lê Thị Hồng Oanh</ct07>
+          <ct08>8105838361</ct08>
+          <ct09>Nguyễn Thị Theo</ct09>
+          <ct10>1966-01-20</ct10>
+          <ct11>8817635410</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_33">
+          <ct07>Hồ Kim Phụng</ct07>
+          <ct08>8479423098</ct08>
+          <ct09>Hà Thị Hữu</ct09>
+          <ct10>1962-05-20</ct10>
+          <ct11>8819560337</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_34">
+          <ct07>Hồ Kim Phụng</ct07>
+          <ct08>8479423098</ct08>
+          <ct09>Hà Văn Muôn</ct09>
+          <ct10>1960-03-20</ct10>
+          <ct11>8064503684</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_35">
+          <ct07>Đoàn Thu Ngọc</ct07>
+          <ct08>8684097619</ct08>
+          <ct09>Bùi Thị Tuyết Hoa</ct09>
+          <ct10>1965-03-10</ct10>
+          <ct11>8825585629</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_36">
+          <ct07>Nguyễn Phương Vũ</ct07>
+          <ct08>0307651139</ct08>
+          <ct09>Nguyễn Bảo Trâm Anh</ct09>
+          <ct10>2016-02-01</ct10>
+          <ct11>8832396100</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_37">
+          <ct07>Nguyễn Phương Vũ</ct07>
+          <ct08>0307651139</ct08>
+          <ct09>Nguyễn Hoàng Khôi Vĩ</ct09>
+          <ct10>2018-06-02</ct10>
+          <ct11>8832396118</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_38">
+          <ct07>Trương Thị Hiếu</ct07>
+          <ct08>8605995122</ct08>
+          <ct09>Lê Thị Ngừa</ct09>
+          <ct10>1956-02-15</ct10>
+          <ct11>8832396090</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_39">
+          <ct07>Lê Thị Huyền Trân</ct07>
+          <ct08>8640388628</ct08>
+          <ct09>Nguyễn Nguyên Quân</ct09>
+          <ct10>2023-12-14</ct10>
+          <ct11>8860611695</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>12/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_40">
+          <ct07>Nguyễn Thị Thanh Hoa</ct07>
+          <ct08>8006376701</ct08>
+          <ct09>Trần ngọc hạnh Uyên</ct09>
+          <ct10>2016-01-15</ct10>
+          <ct11>8618212756</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_41">
+          <ct07>Nguyễn Thị Thanh Hoa</ct07>
+          <ct08>8006376701</ct08>
+          <ct09>Trần ngọc Diễm Uyên</ct09>
+          <ct10>2017-10-30</ct10>
+          <ct11>8618212749</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>Con</ct14_ma>
+          <ct14_ten>Con</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+        <BKeTTinNPT id="ID_42">
+          <ct07>Nguyễn Thị Thanh Hoa</ct07>
+          <ct08>8006376701</ct08>
+          <ct09>Nguyễn Văn Yến</ct09>
+          <ct10>1954-06-06</ct10>
+          <ct11>8200101867</ct11>
+          <ct12_ma/>
+          <ct12_ten/>
+          <ct13/>
+          <ct14_ma>03</ct14_ma>
+          <ct14_ten>Cha/mẹ</ct14_ten>
+          <ct15>01/2023</ct15>
+          <ct16>12/2023</ct16>
+        </BKeTTinNPT>
+      </PLuc_05_3_BK_QTT>
+      <PL01_KHBS>
+        <Header>
+          <maTKhai>953</maTKhai>
+          <tenTKhai>TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN (Mẫu số 05/QTT-TNCN)</tenTKhai>
+          <maGiaoDich/>
+          <KyKKhaiThue>
+            <kieuKy>Y</kieuKy>
+            <kyKKhai>2023</kyKKhai>
+            <kyKKhaiTuNgay>01/01/2023</kyKKhaiTuNgay>
+            <kyKKhaiDenNgay>31/12/2023</kyKKhaiDenNgay>
+            <kyKKhaiTuThang>01/2023</kyKKhaiTuThang>
+            <kyKKhaiDenThang>12/2023</kyKKhaiDenThang>
+          </KyKKhaiThue>
+          <soLan>1</soLan>
+          <mst>0309519880</mst>
+          <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+          <mstDLyThue xsi:nil="true"/>
+          <tenDLyThue/>
+          <soHDongDLyThue/>
+          <ngayKyHDDLyThue xsi:nil="true"/>
+        </Header>
+        <ma_DonViTien>VND</ma_DonViTien>
+        <ten_DonViTien>Đồng Việt Nam</ten_DonViTien>
+        <Muc_A>
+          <Muc_I>
+            <Muc_1>
+              <ChiTiet id="ID_1">
+                <ct2_ma/>
+                <ct2_ten/>
+                <ct3>0</ct3>
+              </ChiTiet>
+              <tongCong_ct10>0</tongCong_ct10>
+            </Muc_1>
+            <Muc_2>
+              <DSachPLuc>
+                <BKePLuc id="ID_1">
+                  <ma_PLuc/>
+                  <ten_PLuc/>
+                  <CTietPLuc>
+                    <ChiTiet id="ID_1">
+                      <ct2_ma/>
+                      <ct2_ten/>
+                      <ct3_ma/>
+                      <ct3_ten/>
+                      <ct04_ma/>
+                      <ct04_ten/>
+                      <ct05_ma/>
+                      <ct05_ten/>
+                      <ct06_ma/>
+                      <ct06_ten/>
+                      <ct7>0</ct7>
+                    </ChiTiet>
+                  </CTietPLuc>
+                </BKePLuc>
+                <tongCong_ct11>0</tongCong_ct11>
+              </DSachPLuc>
+            </Muc_2>
+            <Muc_3>
+              <ct3a_1 xsi:nil="true"/>
+              <ct3a_2>0</ct3a_2>
+              <ct3b>0</ct3b>
+            </Muc_3>
+          </Muc_I>
+          <Muc_II>
+            <ChiTiet id="ID_1">
+              <ct2_ma/>
+              <ct2_ten/>
+              <ct3>0</ct3>
+            </ChiTiet>
+            <tongCong_ct12>0</tongCong_ct12>
+          </Muc_II>
+          <Muc_III>
+            <ChiTiet id="ID_1">
+              <ct2_ma/>
+              <ct2_ten/>
+              <ct3>0</ct3>
+            </ChiTiet>
+            <tongCong_ct13>0</tongCong_ct13>
+          </Muc_III>
+        </Muc_A>
+        <Muc_B>
+          <Muc_I>
+            <ct_1>0</ct_1>
+            <ct_2_so/>
+            <ct_2_ngay xsi:nil="true"/>
+            <ct_2_CQT_ma/>
+            <ct_2_CQT_ten/>
+            <ct_3_so/>
+            <ct_3_ngay xsi:nil="true"/>
+          </Muc_I>
+          <Muc_II>
+            <ct_1>0</ct_1>
+            <ct_2>0</ct_2>
+          </Muc_II>
+        </Muc_B>
+      </PL01_KHBS>
+      <PL01_1_KHBS>
+        <Header>
+          <maTKhai>953</maTKhai>
+          <tenTKhai>TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN (Mẫu số 05/QTT-TNCN)</tenTKhai>
+          <maGiaoDich/>
+          <KyKKhaiThue>
+            <kieuKy>Y</kieuKy>
+            <kyKKhai>2023</kyKKhai>
+            <kyKKhaiTuNgay>01/01/2023</kyKKhaiTuNgay>
+            <kyKKhaiDenNgay>31/12/2023</kyKKhaiDenNgay>
+            <kyKKhaiTuThang>01/2023</kyKKhaiTuThang>
+            <kyKKhaiDenThang>12/2023</kyKKhaiDenThang>
+          </KyKKhaiThue>
+          <soLan>1</soLan>
+          <mst>0309519880</mst>
+          <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+          <mstDLyThue xsi:nil="true"/>
+          <tenDLyThue/>
+          <soHDongDLyThue/>
+          <ngayKyHDDLyThue xsi:nil="true"/>
+        </Header>
+        <ma_DonViTien>VND</ma_DonViTien>
+        <ten_DonViTien>Đồng Việt Nam</ten_DonViTien>
+        <Muc_A>
+          <DSachHSo>
+            <BKeHSo id="ID_1">
+              <ma_HSo>000401</ma_HSo>
+              <ten_HSo>05-1/BK-TNCN</ten_HSo>
+              <CTietHSo>
+                <ChiTiet id="ID_1">
+                  <ct2_ma/>
+                  <ct2_ten/>
+                  <ct3_ma>[33]</ct3_ma>
+                  <ct3_ten>Tổng số tiền giảm trừ gia cảnh</ct3_ten>
+                  <ct3_1_ma/>
+                  <ct3_1_ten/>
+                  <ct3_2_ma/>
+                  <ct3_2_ten/>
+                  <ct04>14014000000</ct04>
+                  <ct05>11816200000</ct05>
+                  <ct06>-2197800000</ct06>
+                  <ct7>0</ct7>
+                  <ct8/>
+                </ChiTiet>
+                <ChiTiet id="ID_2">
+                  <ct2_ma/>
+                  <ct2_ten/>
+                  <ct3_ma>[37]</ct3_ma>
+                  <ct3_ten>Tổng thu nhập tính thuế ([21]= [12]-[14]-[15]-[17] –[18] –[19]-[20])</ct3_ten>
+                  <ct3_1_ma/>
+                  <ct3_1_ten/>
+                  <ct3_2_ma/>
+                  <ct3_2_ten/>
+                  <ct04>2970506655</ct04>
+                  <ct05>3187317235</ct05>
+                  <ct06>216810580</ct06>
+                  <ct7>0</ct7>
+                  <ct8/>
+                </ChiTiet>
+              </CTietHSo>
+            </BKeHSo>
+            <TongCong>
+              <tongCong_7>0</tongCong_7>
+              <tongCong_8>0</tongCong_8>
+              <tongCong_9>0</tongCong_9>
+            </TongCong>
+          </DSachHSo>
+        </Muc_A>
+        <Muc_B>
+          <CTietTaiLieu id="ID_1">
+            <ma_TLieu/>
+            <ten_TLieu/>
+          </CTietTaiLieu>
+        </Muc_B>
+      </PL01_1_KHBS>
+    </PLuc>
+  </HSoKhaiThue>
+<CKyDTu><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/><ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><ds:Reference URI="#ID_1"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ds:DigestValue>VA/2UbONlJYK0MeSsX+YQk8MRNY=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>O07gkfucZHu9H+2d7+QTGnVGaVhq/O86kiGyyO5gDfRTblNHycm4CkcUdkh43FQL1BKL2o5+DSlB
+rxMAenUriz+0oC6z2wXyT/RD54fsgaAeZMAfasGi9dEn1HGqR33Gz8wAWXCRvn4yxgdqqxWo/uet
+j7k/FwQHzU3pbLXmLIM=</ds:SignatureValue><ds:KeyInfo><ds:KeyValue><ds:RSAKeyValue><ds:Modulus>ssZ3vtc0YhFxA+5pXM66e/cx95E/30vCUWIU9Adxd2hcHhk6JWTEW/p/CW4NBw50Ipt+gwAZp5Jq
+Ap9zmyfUvGzvlw0JhCIYWeI3paCU0wM4cSVOx170Ea61I+Ig/dxlpP6q/QNBJBbQXQ/5pnXHmUmS
+Ffwiccw1SoX+tm2aVgk=</ds:Modulus><ds:Exponent>AQAB</ds:Exponent></ds:RSAKeyValue></ds:KeyValue><ds:X509Data><ds:X509SubjectName>C=VN,ST=Hồ Chí Minh,CN=CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG,UID=MST:0309519880</ds:X509SubjectName><ds:X509Certificate>MIIELzCCAxegAwIBAgIQVAMP0NdoiAxZTABm7JZtpDANBgkqhkiG9w0BAQUFADBJMQswCQYDVQQG
+EwJWTjEOMAwGA1UEBxMFSGFub2kxGTAXBgNVBAoTEEJrYXYgQ29ycG9yYXRpb24xDzANBgNVBAMT
+BkJrYXZDQTAeFw0yMDA1MDcwMTUwMjJaFw0yNDA1MTAwODAzMDdaMIGEMR4wHAYKCZImiZPyLGQB
+AQwOTVNUOjAzMDk1MTk4ODAxPDA6BgNVBAMMM0PDlE5HIFRZIFROSEggR0lBTyBOSOG6rE4gTkfD
+lEkgU0FPIFBIxq/GoE5HIMSQw5RORzEXMBUGA1UECAwOSOG7kyBDaMOtIE1pbmgxCzAJBgNVBAYT
+AlZOMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCyxne+1zRiEXED7mlczrp79zH3kT/fS8JR
+YhT0B3F3aFweGTolZMRb+n8Jbg0HDnQim36DABmnkmoCn3ObJ9S8bO+XDQmEIhhZ4jeloJTTAzhx
+JU7HXvQRrrUj4iD93GWk/qr9A0EkFtBdD/mmdceZSZIV/CJxzDVKhf62bZpWCQIDAQABo4IBWTCC
+AVUwMQYIKwYBBQUHAQEEJTAjMCEGCCsGAQUFBzABhhVodHRwOi8vb2NzcC5ia2F2Y2Eudm4wHQYD
+VR0OBBYEFAlKTC9K7QIXpDNruKy8DVqhmwPmMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUHrAP
+SJff0MNnp0aEO1g7iA1TlIYwfwYDVR0fBHgwdjB0oCOgIYYfaHR0cDovL2NybC5ia2F2Y2Eudm4v
+QmthdkNBLmNybKJNpEswSTEPMA0GA1UEAwwGQmthdkNBMRkwFwYDVQQKDBBCa2F2IENvcnBvcmF0
+aW9uMQ4wDAYDVQQHDAVIYW5vaTELMAkGA1UEBhMCVk4wDgYDVR0PAQH/BAQDAgTwMB8GA1UdJQQY
+MBYGCCsGAQUFBwMEBgorBgEEAYI3CgMMMCAGA1UdEQQZMBeBFW5ndXllbmhhMTgwQHlhaG9vLmNv
+bTANBgkqhkiG9w0BAQUFAAOCAQEAFjMQ4xFzNElhQ7SJLpE4SC/8gD96w02OkaFCoIaFoKl73xD7
+pI0qiGkDSyyhn7lIeFZEMGUFu/s7IpVplHbBlheMbVhVt3PQCp3H1MjuWZQ5a14vncNWOtX/BThs
+2caV6Tql6kiswBcmbzjAk2Zt/2Y4PmIJc/eD4c420xe16r7OUzasik7Fuvs32lRlSD1UE0dsgChg
+sTxlradqHvBua3nwFyUYXc3cDYpyuZDinr0kGzvclGRHNn/Ryqt+PgH9LSHDl2TLxINVgGFsvUEH
+CKSh4MtfN+4gwBIoeGhvhmkw6nqhausjhpinr4Sg/Kuc4rRuoOk06QjsvDIonNYSVQ==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></CKyDTu></HSoThueDTu>

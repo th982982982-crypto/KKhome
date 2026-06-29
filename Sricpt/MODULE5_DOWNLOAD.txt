@@ -1,0 +1,11 @@
+function downloadXmlFile(fileId) {
+  try {
+    var file = DriveApp.getFileById(fileId);
+    return {
+      fileName: file.getName(),
+      base64: Utilities.base64Encode(file.getBlob().getBytes())
+    };
+  } catch (e) {
+    throw new Error("Lỗi Module 5: " + e.toString());
+  }
+}

@@ -1,0 +1,412 @@
+<HSoThueDTu xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <HSoKhaiThue id="NODETOSIGN">
+        <TTinChung>
+            <TTinDVu>
+                <maDVu>TTGQ TTHC</maDVu>
+                <tenDVu>TTGQ TTHC</tenDVu>
+                <pbanDVu>1.0.0</pbanDVu>
+                <ttinNhaCCapDVu>TTGQ TTHC</ttinNhaCCapDVu>
+            </TTinDVu>
+            <TTinTKhaiThue>
+                <TKhaiThue>
+                    <maTKhai>842</maTKhai>
+                    <tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG Mẫu số 01/GTGT (TT80/2021)</tenTKhai>
+                    <moTaBMau>01/GTGT</moTaBMau>
+                    <pbanTKhaiXML>2.8.3</pbanTKhaiXML>
+                    <loaiTKhai>B</loaiTKhai>
+                    <soLan>1</soLan>
+                    <KyKKhaiThue>
+                        <kieuKy>M</kieuKy>
+                        <kyKKhai>01/2026</kyKKhai>
+                        <kyKKhaiTuNgay>01/01/2026</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>31/01/2026</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang>01/2026</kyKKhaiTuThang>
+                        <kyKKhaiDenThang>01/2026</kyKKhaiDenThang>
+                    </KyKKhaiThue>
+                    <maCQTNoiNop>70129</maCQTNoiNop>
+                    <tenCQTNoiNop>Thuế cơ sở 14 Thành phố Hồ Chí Minh</tenCQTNoiNop>
+                    <ngayLapTKhai>18/03/2026</ngayLapTKhai>
+                    <nguoiKy/>
+                    <ngayKy>2026-03-18</ngayKy>
+                    <nganhNgheKD/>
+                </TKhaiThue>
+                <NNT>
+                    <mst>0309519880</mst>
+                    <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+                    <dchiNNT>Tầng 2, toà nhà Dreamplex 195, số 195 Điện Biên Phủ</dchiNNT>
+                    <phuongXa>Phường Gia Định</phuongXa>
+                    <maHuyenNNT/>
+                    <tenHuyenNNT/>
+                    <maTinhNNT>701</maTinhNNT>
+                    <tenTinhNNT>TP Hồ Chí Minh</tenTinhNNT>
+                    <dthoaiNNT>0708980000</dthoaiNNT>
+                    <faxNNT/>
+                    <emailNNT>tira_hcm@orientstargroup.com</emailNNT>
+                </NNT>
+            </TTinTKhaiThue>
+        </TTinChung>
+        <CTieuTKhaiChinh>
+            <ma_NganhNghe>00</ma_NganhNghe>
+            <ten_NganhNghe>Hoạt động sản xuất kinh doanh thông thường</ten_NganhNghe>
+            <tieuMucHachToan>1701</tieuMucHachToan>
+            <Header>
+                <ct09/>
+                <ct10/>
+                <DiaChiHDSXKDKhacTinhNDTSC>
+                    <ct11a_phuongXa_ma/>
+                    <ct11a_phuongXa_ten/>
+                    <ct11b_quanHuyen_ma xsi:nil="true"/>
+                    <ct11b_quanHuyen_ten xsi:nil="true"/>
+                    <ct11c_tinhTP_ma/>
+                    <ct11c_tinhTP_ten/>
+                </DiaChiHDSXKDKhacTinhNDTSC>
+            </Header>
+            <ct21>false</ct21>
+            <ct22>0</ct22>
+            <GiaTriVaThueGTGTHHDVMuaVao>
+                <ct23>29992109058</ct23>
+                <ct24>327451280</ct24>
+            </GiaTriVaThueGTGTHHDVMuaVao>
+            <HangHoaDichVuNhapKhau>
+                <ct23a>0</ct23a>
+                <ct24a>0</ct24a>
+            </HangHoaDichVuNhapKhau>
+            <ct25>327451280</ct25>
+            <ct26>0</ct26>
+            <HHDVBRaChiuThueGTGT>
+                <ct27>39300881789</ct27>
+                <ct28>583072886</ct28>
+            </HHDVBRaChiuThueGTGT>
+            <ct29>32012468688</ct29>
+            <HHDVBRaChiuTSuat5>
+                <ct30>0</ct30>
+                <ct31>0</ct31>
+            </HHDVBRaChiuTSuat5>
+            <HHDVBRaChiuTSuat10>
+                <ct32>7288413101</ct32>
+                <ct33>583072886</ct33>
+            </HHDVBRaChiuTSuat10>
+            <ct32a>0</ct32a>
+            <TongDThuVaThueGTGTHHDVBRa>
+                <ct34>39300881789</ct34>
+                <ct35>583072886</ct35>
+            </TongDThuVaThueGTGTHHDVBRa>
+            <ct36>255621606</ct36>
+            <ct37>0</ct37>
+            <ct38>0</ct38>
+            <ct39a>0</ct39a>
+            <ct40a>255621606</ct40a>
+            <ct40b>0</ct40b>
+            <ct40>255621606</ct40>
+            <ct41>0</ct41>
+            <ct42>0</ct42>
+            <ct43>0</ct43>
+        </CTieuTKhaiChinh>
+        <PLuc>
+            <PL_NQ142_GTGT>
+                <HH_DV_MuaVaoTrongKy>
+                    <BangKeTenHHDV ID="1">
+                        <tenHHDVMuaVao>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</tenHHDVMuaVao>
+                        <giaTriHHDVMuaVao>853698072</giaTriHHDVMuaVao>
+                        <thueGTGTHHDV>68295846</thueGTGTHHDV>
+                    </BangKeTenHHDV>
+                    <tongCongGiaTriHHDVMuaVao>853698072</tongCongGiaTriHHDVMuaVao>
+                    <tongCongThueGTGTHHDV>68295846</tongCongThueGTGTHHDV>
+                </HH_DV_MuaVaoTrongKy>
+                <HH_DV_BanRaTrongKy>
+                    <BangKeTenHHDV ID="1">
+                        <tenHHDV>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</tenHHDV>
+                        <giaTriHHDV>7288413101</giaTriHHDV>
+                        <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+                        <thueSuatSauGiam>8</thueSuatSauGiam>
+                        <thueGTGTDuocGiam>145768262</thueGTGTDuocGiam>
+                    </BangKeTenHHDV>
+                    <tongCongGiaTriHHDV>7288413101</tongCongGiaTriHHDV>
+                    <tongCongThueGTGTDuocGiam>145768262</tongCongThueGTGTDuocGiam>
+                </HH_DV_BanRaTrongKy>
+                <ChenhLech>
+                    <ct9>77472416</ct9>
+                </ChenhLech>
+            </PL_NQ142_GTGT>
+            <PL01_KHBS>
+                <Header>
+                    <maTKhai>842</maTKhai>
+                    <tenTKhai>01/GTGT</tenTKhai>
+                    <maGiaoDich>10820260009578687</maGiaoDich>
+                    <KyKKhaiThue>
+                        <kieuKy>M</kieuKy>
+                        <kyKKhai>01/2026</kyKKhai>
+                        <kyKKhaiTuNgay>01/01/2026</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>31/01/2026</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang>01/2026</kyKKhaiTuThang>
+                        <kyKKhaiDenThang>01/2026</kyKKhaiDenThang>
+                    </KyKKhaiThue>
+                    <soLan>1</soLan>
+                    <mst>0309519880</mst>
+                    <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+                    <mstDLyThue xsi:nil="true"/>
+                    <tenDLyThue xsi:nil="true"/>
+                    <soHDongDLyThue xsi:nil="true"/>
+                    <ngayKyHDDLyThue xsi:nil="true"/>
+                </Header>
+                <ma_DonViTien>VND</ma_DonViTien>
+                <ten_DonViTien>Việt Nam Đồng</ten_DonViTien>
+                <Muc_A>
+                    <Muc_I>
+                        <Muc_1>
+                            <ChiTiet id="1">
+<ct2_ma/>
+<ct2_ten/>
+<ct3>0</ct3>
+                            </ChiTiet>
+                            <tongCong_ct10>0</tongCong_ct10>
+                        </Muc_1>
+                        <Muc_2>
+                            <DSachPLuc>
+<BKePLuc id="1">
+    <ma_PLuc/>
+    <ten_PLuc/>
+    <CTietPLuc>
+        <ChiTiet id="1">
+            <ct2_ma/>
+            <ct2_ten/>
+            <ct3_ma/>
+            <ct3_ten/>
+            <ma_Xa/>
+            <ten_Xa/>
+            <ct04_ma xsi:nil="true"/>
+            <ct04_ten xsi:nil="true"/>
+            <ct05_ma/>
+            <ct05_ten/>
+            <ct06_ma/>
+            <ct06_ten/>
+            <ct7>0</ct7>
+        </ChiTiet>
+    </CTietPLuc>
+</BKePLuc>
+<tongCong_ct11>0</tongCong_ct11>
+                            </DSachPLuc>
+                        </Muc_2>
+                        <Muc_3>
+                            <ct3a_1 xsi:nil="true"/>
+                            <ct3a_2>0</ct3a_2>
+                            <ct3b>0</ct3b>
+                        </Muc_3>
+                    </Muc_I>
+                    <Muc_II>
+                        <ChiTiet id="1">
+                            <ct2_ma/>
+                            <ct2_ten/>
+                            <ct3>0</ct3>
+                        </ChiTiet>
+                        <tongCong_ct12>0</tongCong_ct12>
+                    </Muc_II>
+                    <Muc_III>
+                        <ChiTiet id="1">
+                            <ct2_ma/>
+                            <ct2_ten/>
+                            <ct3>0</ct3>
+                        </ChiTiet>
+                        <tongCong_ct13>0</tongCong_ct13>
+                    </Muc_III>
+                </Muc_A>
+                <Muc_B>
+                    <Muc_I>
+                        <ct_1>0</ct_1>
+                        <ct_2_so/>
+                        <ct_2_ngay xsi:nil="true"/>
+                        <ct_2_CQT_ma/>
+                        <ct_2_CQT_ten/>
+                        <ct_3_so/>
+                        <ct_3_ngay xsi:nil="true"/>
+                    </Muc_I>
+                    <Muc_II>
+                        <ct_1>0</ct_1>
+                        <ct_2>0</ct_2>
+                    </Muc_II>
+                </Muc_B>
+            </PL01_KHBS>
+            <PL01_1_KHBS>
+                <Header>
+                    <maTKhai>842</maTKhai>
+                    <tenTKhai>01/GTGT</tenTKhai>
+                    <maGiaoDich>10820260009578687</maGiaoDich>
+                    <KyKKhaiThue>
+                        <kieuKy>M</kieuKy>
+                        <kyKKhai>01/2026</kyKKhai>
+                        <kyKKhaiTuNgay>01/01/2026</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>31/01/2026</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang>01/2026</kyKKhaiTuThang>
+                        <kyKKhaiDenThang>01/2026</kyKKhaiDenThang>
+                    </KyKKhaiThue>
+                    <soLan>1</soLan>
+                    <mst>0309519880</mst>
+                    <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+                    <mstDLyThue xsi:nil="true"/>
+                    <tenDLyThue xsi:nil="true"/>
+                    <soHDongDLyThue xsi:nil="true"/>
+                    <ngayKyHDDLyThue xsi:nil="true"/>
+                </Header>
+                <ma_DonViTien>VND</ma_DonViTien>
+                <ten_DonViTien>Việt Nam Đồng</ten_DonViTien>
+                <Muc_A>
+                    <DSachHSo>
+                        <BKeHSo id="1">
+                            <ma_HSo>002609</ma_HSo>
+                            <ten_HSo>PL 142/2024/QH15 - 174/2024/QH15 - 204/2025/QH15</ten_HSo>
+                            <CTietHSo>
+<ChiTiet id="1">
+    <ct2_ma>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</ct2_ma>
+    <ct2_ten>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển - </ct2_ten>
+    <ct3_ma>(2)</ct3_ma>
+    <ct3_ten>Tên hàng hóa, dịch v</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04/>
+    <ct05>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</ct05>
+    <ct06>0</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</ct2_ma>
+    <ct2_ten>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển - </ct2_ten>
+    <ct3_ma>(3)</ct3_ma>
+    <ct3_ten>Giá trị hàng hóa, dịch vụ mua vào chưa có thuế GTGT được khấu trừ trong kỳ</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>853.698.072</ct05>
+    <ct06>853698072</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</ct2_ma>
+    <ct2_ten>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển - </ct2_ten>
+    <ct3_ma>(4)</ct3_ma>
+    <ct3_ten>Thuế GTGT của hàng hóa, dịch vụ mua vào được khấu trừ trong kỳ</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>68.295.846</ct05>
+    <ct06>68295846</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</ct2_ma>
+    <ct2_ten>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển - </ct2_ten>
+    <ct3_ma>(2)</ct3_ma>
+    <ct3_ten>Tên hàng hóa, dịch vụ</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04/>
+    <ct05>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</ct05>
+    <ct06>0</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</ct2_ma>
+    <ct2_ten>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển - </ct2_ten>
+    <ct3_ma>(3)</ct3_ma>
+    <ct3_ten>Giá trị hàng hóa, dịch vụ chưa có thuế GTGT</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>7.288.413.101</ct05>
+    <ct06>7288413101</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</ct2_ma>
+    <ct2_ten>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển - </ct2_ten>
+    <ct3_ma>(4)</ct3_ma>
+    <ct3_ten>Thuế suất theo quy định</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>10</ct05>
+    <ct06>10</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</ct2_ma>
+    <ct2_ten>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển - </ct2_ten>
+    <ct3_ma>(5)</ct3_ma>
+    <ct3_ten>Thuế suất sau giảm</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>8</ct05>
+    <ct06>8</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</ct2_ma>
+    <ct2_ten>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển - </ct2_ten>
+    <ct3_ma>(6)</ct3_ma>
+    <ct3_ten>Thuế GTGT của hàng hóa, dịch vụ bán ra được giảm</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>145.768.262</ct05>
+    <ct06>145768262</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[09]</ct3_ma>
+    <ct3_ten>III. Chênh lệch thuế GTGT của hàng hoá, dịch vụ bán ra và mua vào trong kỳ được áp dụng mức thuế suất thuế giá trị gia tăng 8%: </ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>77.472.416</ct05>
+    <ct06>77472416</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+                            </CTietHSo>
+                        </BKeHSo>
+                        <TongCong>
+                            <tongCong_7>0</tongCong_7>
+                            <tongCong_8>0</tongCong_8>
+                            <tongCong_9>0</tongCong_9>
+                        </TongCong>
+                    </DSachHSo>
+                </Muc_A>
+                <Muc_B>
+                    <CTietTaiLieu id="1">
+                        <ma_TLieu/>
+                        <ten_TLieu/>
+                    </CTietTaiLieu>
+                </Muc_B>
+            </PL01_1_KHBS>
+        </PLuc>
+    </HSoKhaiThue>
+    <CKyDTu><Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="NBan-39f973c3f95a40069c5249dcb6051414"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><Reference URI="#NODETOSIGN"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>IbqPr0axUWwGyJRL2vbcSbgx4hN1ERrygifTD2JMAdo=</DigestValue></Reference><Reference URI="#SigningTime-623807b1e1c44390bca4726b8431c657"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>tThIUb5XxgLSVZbCuLEqNrYugsDLxEcAy6Z8cRhX3/w=</DigestValue></Reference></SignedInfo><SignatureValue>X1VLgosLimxlo91d9i3IwjBI4jVIp0zIrT9rJkpm0MspmkNtEC137aD/nw90M7Rm7Va4g4MvmKuOYaV/3JHLSxr1feheB7dqIDwX4KaoVFm10vvooG9Kho7gABY+ZqgYiM4BndbWbWiBxFqLKMWxnzJG5+f/c+yggFtBfFRiGHg=</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=VN,ST=Hồ Chí Minh,CN=CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG,UID=MST:0309519880</X509SubjectName><X509Certificate>MIID7zCCAtegAwIBAgIQVANGqO4M3R5Ey8DYYB7B2DANBgkqhkiG9w0BAQsFADBAMQswCQYDVQQGEwJWTjEZMBcGA1UECgwQQmthdiBDb3Jwb3JhdGlvbjEWMBQGA1UEAwwNQmthdkNBIFNIQTI1NjAeFw0yNTA2MzAwODE3MDVaFw0yOTA1MDkwMzMzMDZaMIGEMR4wHAYKCZImiZPyLGQBAQwOTVNUOjAzMDk1MTk4ODAxPDA6BgNVBAMMM0PDlE5HIFRZIFROSEggR0lBTyBOSOG6rE4gTkfDlEkgU0FPIFBIxq/GoE5HIMSQw5RORzEXMBUGA1UECAwOSOG7kyBDaMOtIE1pbmgxCzAJBgNVBAYTAlZOMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8MEGkLxBLYDiJKywqxk+6izbvwFPZPLTPxsGqR9GcOs2J5z7haEYCnAZdSBFZBZ6fWc8E0t48QnSj2CYwKACKgV79XAPxMtoBr2hZHmdN9biOOO0UiLgJik9gJCo36ILIqjrpwMD04nSWMzsvpGnu/greR1XR+9ttSxpa3uPFtwIDAQABo4IBIjCCAR4wDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBQr1P4Wyp4Wo2d1Yxgzk+FtExY01DBqBggrBgEFBQcBAQReMFwwNwYIKwYBBQUHMAKGK2h0dHBzOi8vcm9vdGNhLmdvdi52bi9jcnQvQmthdkNBX1NIQTI1Ni5wN2IwIQYIKwYBBQUHMAGGFWh0dHA6Ly9vY3NwLmJrYXZjYS52bjAfBgNVHSUEGDAWBggrBgEFBQcDBAYKKwYBBAGCNwoDDDAxBgNVHR8EKjAoMCagJKAihiBodHRwOi8vY3JsLmJrYXZjYS52bi9Ca2F2Q0EyLmNybDAdBgNVHQ4EFgQULF/9A8rFEQArtfOzD8/s+B+XrTkwDgYDVR0PAQH/BAQDAgTwMA0GCSqGSIb3DQEBCwUAA4IBAQBtWXpaaCrcUETuO549glJsRuA4+w+RI1i9zTCenBx0sTGia1OXO2T65K97opQoSW3pWFRH/0KFVjVJf34MbvXBUHPiEC8hLkkCkuKQwMqInTole2djobUbmeq20v1RfwKY6iJlwnDJuqtghIaQ5m1EH8gBchX6Ia20hzosXSYv05qK2oRzgRNqFuWVuh6fNOAF6IIAtiSw9M+MnxvM8WChaAyTVRckgeixxe1WvNsWSNxbjmY+V3GX2XYyQaxx57Wtz9nr0xCg2GKaXw6DPvzEH8LUvYUC7+m4HslgUuGUvCuSRYMxb7m3pYMbQJeVd56zeU9MWAEZ5ZSp4oma5KrD</X509Certificate></X509Data></KeyInfo><Object Id="SigningTime-623807b1e1c44390bca4726b8431c657"><SignatureProperties><SignatureProperty Target="signatureProperties"><SigningTime>2026-03-18T09:12:36</SigningTime></SignatureProperty></SignatureProperties></Object></Signature></CKyDTu>
+</HSoThueDTu>

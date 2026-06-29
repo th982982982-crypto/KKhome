@@ -1,0 +1,134 @@
+<HSoThueDTu xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <HSoKhaiThue id="NODETOSIGN">
+        <TTinChung>
+            <TTinDVu>
+                <maDVu>TTGQ TTHC</maDVu>
+                <tenDVu>TTGQ TTHC</tenDVu>
+                <pbanDVu>1.0.0</pbanDVu>
+                <ttinNhaCCapDVu>TTGQ TTHC</ttinNhaCCapDVu>
+            </TTinDVu>
+            <TTinTKhaiThue>
+                <TKhaiThue>
+                    <maTKhai>842</maTKhai>
+                    <tenTKhai>TỜ KHAI THUẾ GIÁ TRỊ GIA TĂNG Mẫu số 01/GTGT (TT80/2021)</tenTKhai>
+                    <moTaBMau>01/GTGT</moTaBMau>
+                    <pbanTKhaiXML>2.8.3</pbanTKhaiXML>
+                    <loaiTKhai>C</loaiTKhai>
+                    <soLan>0</soLan>
+                    <KyKKhaiThue>
+                        <kieuKy>M</kieuKy>
+                        <kyKKhai>02/2026</kyKKhai>
+                        <kyKKhaiTuNgay>01/02/2026</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>28/02/2026</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang>02/2026</kyKKhaiTuThang>
+                        <kyKKhaiDenThang>02/2026</kyKKhaiDenThang>
+                    </KyKKhaiThue>
+                    <maCQTNoiNop>70129</maCQTNoiNop>
+                    <tenCQTNoiNop>Thuế cơ sở 14 Thành phố Hồ Chí Minh</tenCQTNoiNop>
+                    <ngayLapTKhai>18/03/2026</ngayLapTKhai>
+                    <nguoiKy/>
+                    <ngayKy>2026-03-18</ngayKy>
+                    <nganhNgheKD/>
+                </TKhaiThue>
+                <NNT>
+                    <mst>0309519880</mst>
+                    <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+                    <dchiNNT>Tầng 2, toà nhà Dreamplex 195, số 195 Điện Biên Phủ</dchiNNT>
+                    <phuongXa>Phường Gia Định</phuongXa>
+                    <maHuyenNNT/>
+                    <tenHuyenNNT/>
+                    <maTinhNNT>701</maTinhNNT>
+                    <tenTinhNNT>TP Hồ Chí Minh</tenTinhNNT>
+                    <dthoaiNNT>0708980000</dthoaiNNT>
+                    <faxNNT/>
+                    <emailNNT>tira_hcm@orientstargroup.com</emailNNT>
+                </NNT>
+            </TTinTKhaiThue>
+        </TTinChung>
+        <CTieuTKhaiChinh>
+            <ma_NganhNghe>00</ma_NganhNghe>
+            <ten_NganhNghe>Hoạt động sản xuất kinh doanh thông thường</ten_NganhNghe>
+            <tieuMucHachToan>1701</tieuMucHachToan>
+            <Header>
+                <ct09/>
+                <ct10/>
+                <DiaChiHDSXKDKhacTinhNDTSC>
+                    <ct11a_phuongXa_ma/>
+                    <ct11a_phuongXa_ten/>
+                    <ct11b_quanHuyen_ma xsi:nil="true"/>
+                    <ct11b_quanHuyen_ten xsi:nil="true"/>
+                    <ct11c_tinhTP_ma/>
+                    <ct11c_tinhTP_ten/>
+                </DiaChiHDSXKDKhacTinhNDTSC>
+            </Header>
+            <ct21>false</ct21>
+            <ct22>0</ct22>
+            <GiaTriVaThueGTGTHHDVMuaVao>
+                <ct23>25835645750</ct23>
+                <ct24>319323473</ct24>
+            </GiaTriVaThueGTGTHHDVMuaVao>
+            <HangHoaDichVuNhapKhau>
+                <ct23a>0</ct23a>
+                <ct24a>0</ct24a>
+            </HangHoaDichVuNhapKhau>
+            <ct25>319323473</ct25>
+            <ct26>0</ct26>
+            <HHDVBRaChiuThueGTGT>
+                <ct27>31855812390</ct27>
+                <ct28>413395577</ct28>
+            </HHDVBRaChiuThueGTGT>
+            <ct29>26688367685</ct29>
+            <HHDVBRaChiuTSuat5>
+                <ct30>0</ct30>
+                <ct31>0</ct31>
+            </HHDVBRaChiuTSuat5>
+            <HHDVBRaChiuTSuat10>
+                <ct32>5167444705</ct32>
+                <ct33>413395577</ct33>
+            </HHDVBRaChiuTSuat10>
+            <ct32a>0</ct32a>
+            <TongDThuVaThueGTGTHHDVBRa>
+                <ct34>31855812390</ct34>
+                <ct35>413395577</ct35>
+            </TongDThuVaThueGTGTHHDVBRa>
+            <ct36>94072104</ct36>
+            <ct37>0</ct37>
+            <ct38>0</ct38>
+            <ct39a>0</ct39a>
+            <ct40a>94072104</ct40a>
+            <ct40b>0</ct40b>
+            <ct40>94072104</ct40>
+            <ct41>0</ct41>
+            <ct42>0</ct42>
+            <ct43>0</ct43>
+        </CTieuTKhaiChinh>
+        <PLuc>
+            <PL_NQ142_GTGT>
+                <HH_DV_MuaVaoTrongKy>
+                    <BangKeTenHHDV ID="1">
+                        <tenHHDVMuaVao>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</tenHHDVMuaVao>
+                        <giaTriHHDVMuaVao>993925180</giaTriHHDVMuaVao>
+                        <thueGTGTHHDV>79514014</thueGTGTHHDV>
+                    </BangKeTenHHDV>
+                    <tongCongGiaTriHHDVMuaVao>993925180</tongCongGiaTriHHDVMuaVao>
+                    <tongCongThueGTGTHHDV>79514014</tongCongThueGTGTHHDV>
+                </HH_DV_MuaVaoTrongKy>
+                <HH_DV_BanRaTrongKy>
+                    <BangKeTenHHDV ID="1">
+                        <tenHHDV>Phí khai hải quan, chứng từ, xếp dỡ, niêm chì, điện giao hàng, phí vận chuyển</tenHHDV>
+                        <giaTriHHDV>5167444705</giaTriHHDV>
+                        <thueSuatTheoQuyDinh>10</thueSuatTheoQuyDinh>
+                        <thueSuatSauGiam>8</thueSuatSauGiam>
+                        <thueGTGTDuocGiam>103348894</thueGTGTDuocGiam>
+                    </BangKeTenHHDV>
+                    <tongCongGiaTriHHDV>5167444705</tongCongGiaTriHHDV>
+                    <tongCongThueGTGTDuocGiam>103348894</tongCongThueGTGTDuocGiam>
+                </HH_DV_BanRaTrongKy>
+                <ChenhLech>
+                    <ct9>23834880</ct9>
+                </ChenhLech>
+            </PL_NQ142_GTGT>
+        </PLuc>
+    </HSoKhaiThue>
+    <CKyDTu><Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="NBan-ea63684825ef49d3ae27f57877d3a279"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><Reference URI="#NODETOSIGN"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>JhEwhj758d2Q8RbMm9TW7w7EWU8pZre99VwbfjsKCHY=</DigestValue></Reference><Reference URI="#SigningTime-e84c5444da3d4347a8a1702299d6bfc4"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>MqKZNjCGknihvNvNWBEigxqibgRphkkfqmt+0Vlfsjk=</DigestValue></Reference></SignedInfo><SignatureValue>VOpk6YWUhRIMcw8H1l0nyH8Omfaip7YAZkePdrumG9i2dwvl6THNoMecB5UFB9fHmvn1mmiZa5QYd0k/h19HWjALvVb6diJcL+F1ttPvQjxVkubd7vLf2s6FZe8CRuTi0sSucwCppUT8lsYDSh9e6KwS2cJUf8YaJb5fgad9thY=</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=VN,ST=Hồ Chí Minh,CN=CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG,UID=MST:0309519880</X509SubjectName><X509Certificate>MIID7zCCAtegAwIBAgIQVANGqO4M3R5Ey8DYYB7B2DANBgkqhkiG9w0BAQsFADBAMQswCQYDVQQGEwJWTjEZMBcGA1UECgwQQmthdiBDb3Jwb3JhdGlvbjEWMBQGA1UEAwwNQmthdkNBIFNIQTI1NjAeFw0yNTA2MzAwODE3MDVaFw0yOTA1MDkwMzMzMDZaMIGEMR4wHAYKCZImiZPyLGQBAQwOTVNUOjAzMDk1MTk4ODAxPDA6BgNVBAMMM0PDlE5HIFRZIFROSEggR0lBTyBOSOG6rE4gTkfDlEkgU0FPIFBIxq/GoE5HIMSQw5RORzEXMBUGA1UECAwOSOG7kyBDaMOtIE1pbmgxCzAJBgNVBAYTAlZOMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8MEGkLxBLYDiJKywqxk+6izbvwFPZPLTPxsGqR9GcOs2J5z7haEYCnAZdSBFZBZ6fWc8E0t48QnSj2CYwKACKgV79XAPxMtoBr2hZHmdN9biOOO0UiLgJik9gJCo36ILIqjrpwMD04nSWMzsvpGnu/greR1XR+9ttSxpa3uPFtwIDAQABo4IBIjCCAR4wDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBQr1P4Wyp4Wo2d1Yxgzk+FtExY01DBqBggrBgEFBQcBAQReMFwwNwYIKwYBBQUHMAKGK2h0dHBzOi8vcm9vdGNhLmdvdi52bi9jcnQvQmthdkNBX1NIQTI1Ni5wN2IwIQYIKwYBBQUHMAGGFWh0dHA6Ly9vY3NwLmJrYXZjYS52bjAfBgNVHSUEGDAWBggrBgEFBQcDBAYKKwYBBAGCNwoDDDAxBgNVHR8EKjAoMCagJKAihiBodHRwOi8vY3JsLmJrYXZjYS52bi9Ca2F2Q0EyLmNybDAdBgNVHQ4EFgQULF/9A8rFEQArtfOzD8/s+B+XrTkwDgYDVR0PAQH/BAQDAgTwMA0GCSqGSIb3DQEBCwUAA4IBAQBtWXpaaCrcUETuO549glJsRuA4+w+RI1i9zTCenBx0sTGia1OXO2T65K97opQoSW3pWFRH/0KFVjVJf34MbvXBUHPiEC8hLkkCkuKQwMqInTole2djobUbmeq20v1RfwKY6iJlwnDJuqtghIaQ5m1EH8gBchX6Ia20hzosXSYv05qK2oRzgRNqFuWVuh6fNOAF6IIAtiSw9M+MnxvM8WChaAyTVRckgeixxe1WvNsWSNxbjmY+V3GX2XYyQaxx57Wtz9nr0xCg2GKaXw6DPvzEH8LUvYUC7+m4HslgUuGUvCuSRYMxb7m3pYMbQJeVd56zeU9MWAEZ5ZSp4oma5KrD</X509Certificate></X509Data></KeyInfo><Object Id="SigningTime-e84c5444da3d4347a8a1702299d6bfc4"><SignatureProperties><SignatureProperty Target="signatureProperties"><SigningTime>2026-03-18T09:08:11</SigningTime></SignatureProperty></SignatureProperties></Object></Signature></CKyDTu>
+</HSoThueDTu>

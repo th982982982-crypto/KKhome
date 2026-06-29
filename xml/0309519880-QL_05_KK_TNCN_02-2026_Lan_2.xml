@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HSoThueDTu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">
+  <HSoKhaiThue id="ID-NODETOSIGN-XML">
+    <TTinChung>
+      <TTinDVu>
+        <maDVu>HTKK</maDVu>
+        <tenDVu>HỖ TRỢ KÊ KHAI THUẾ</tenDVu>
+        <pbanDVu>5.5.9</pbanDVu>
+        <ttinNhaCCapDVu>2E3B44C5884AF332ECAD135A1BF7FB10</ttinNhaCCapDVu>
+      </TTinDVu>
+      <TTinTKhaiThue>
+        <TKhaiThue>
+          <maTKhai>864</maTKhai>
+          <tenTKhai>TK khấu trừ thuế thu nhập cá nhân Mẫu 05/KK-TNCN (TT80/2021)</tenTKhai>
+          <moTaBMau>(Ban hành kèm theo Thông tư số 80/2021/TT-BTC ngày 29 tháng 9 năm 2021 của Bộ trưởng Bộ Tài chính)</moTaBMau>
+          <pbanTKhaiXML>2.9.3</pbanTKhaiXML>
+          <loaiTKhai>B</loaiTKhai>
+          <soLan>1</soLan>
+          <KyKKhaiThue>
+            <kieuKy>M</kieuKy>
+            <kyKKhai>02/2026</kyKKhai>
+            <kyKKhaiTuNgay>01/02/2026</kyKKhaiTuNgay>
+            <kyKKhaiDenNgay>28/02/2026</kyKKhaiDenNgay>
+            <kyKKhaiTuThang />
+            <kyKKhaiDenThang />
+          </KyKKhaiThue>
+          <maCQTNoiNop>70129</maCQTNoiNop>
+          <tenCQTNoiNop>Thuế cơ sở 14 Thành phố Hồ Chí Minh</tenCQTNoiNop>
+          <ngayLapTKhai>2026-03-18</ngayLapTKhai>
+          <GiaHan>
+            <maLyDoGiaHan />
+            <lyDoGiaHan />
+          </GiaHan>
+          <nguoiKy>NHƯ NGHIỆP THUẬN</nguoiKy>
+          <ngayKy>2026-03-17</ngayKy>
+          <nganhNgheKD />
+        </TKhaiThue>
+        <NNT>
+          <mst>0309519880</mst>
+          <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+          <dchiNNT>Tầng 2, toà nhà Dreamplex 195, số 195 Điện Biên Phủ</dchiNNT>
+          <tenXaNNT>Phường Gia Định</tenXaNNT>
+          <maXaNNT>70129104</maXaNNT>
+          <maHuyenNNT />
+          <tenHuyenNNT />
+          <maTinhNNT>701</maTinhNNT>
+          <tenTinhNNT>Thành phố Hồ Chí Minh</tenTinhNNT>
+          <dthoaiNNT />
+          <faxNNT />
+          <emailNNT />
+        </NNT>
+      </TTinTKhaiThue>
+    </TTinChung>
+    <CTieuTKhaiChinh>
+      <mst_cu>0309519880</mst_cu>
+      <ct15>0</ct15>
+      <ct16>71</ct16>
+      <ct17>70</ct17>
+      <ct18>71</ct18>
+      <ct19>71</ct19>
+      <ct20>0</ct20>
+      <ct21>2677934619</ct21>
+      <ct22>2677934619</ct22>
+      <ct23>0</ct23>
+      <ct24>0</ct24>
+      <ct25>0</ct25>
+      <ct25_1>0</ct25_1>
+      <ct26>2677934619</ct26>
+      <ct27>2677934619</ct27>
+      <ct28>0</ct28>
+      <ct29>137922257</ct29>
+      <ct30>137922257</ct30>
+      <ct31>0</ct31>
+      <ct32>0</ct32>
+    </CTieuTKhaiChinh>
+    <PLuc>
+      <PL01_KHBS>
+        <Header>
+          <maTKhai>864</maTKhai>
+          <tenTKhai>TK khấu trừ thuế thu nhập cá nhân Mẫu 05/KK-TNCN (TT80/2021)</tenTKhai>
+          <maGiaoDich>000.701.18.G12-260318-27012900038132</maGiaoDich>
+          <KyKKhaiThue>
+            <kieuKy>M</kieuKy>
+            <kyKKhai>02/2026</kyKKhai>
+            <kyKKhaiTuNgay>01/02/2026</kyKKhaiTuNgay>
+            <kyKKhaiDenNgay>28/02/2026</kyKKhaiDenNgay>
+            <kyKKhaiTuThang />
+            <kyKKhaiDenThang />
+          </KyKKhaiThue>
+          <soLan>1</soLan>
+          <mst>0309519880</mst>
+          <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+          <mstDLyThue xsi:nil="true" />
+          <tenDLyThue />
+          <soHDongDLyThue />
+          <ngayKyHDDLyThue xsi:nil="true" />
+        </Header>
+        <ma_DonViTien>VND</ma_DonViTien>
+        <ten_DonViTien>Đồng Việt Nam</ten_DonViTien>
+        <Muc_A>
+          <Muc_I>
+            <Muc_1>
+              <ChiTiet id="ID_1">
+                <ct2_ma>1001</ct2_ma>
+                <ct2_ten>Thuế thu nhập từ tiền lương, tiền công</ct2_ten>
+                <ct3>95398897</ct3>
+              </ChiTiet>
+              <tongCong_ct10>95398897</tongCong_ct10>
+            </Muc_1>
+            <Muc_2>
+              <DSachPLuc>
+                <BKePLuc id="ID_1">
+                  <ma_PLuc />
+                  <ten_PLuc />
+                  <CTietPLuc>
+                    <ChiTiet id="ID_1">
+                      <ct2_ma />
+                      <ct2_ten />
+                      <ct3_ma />
+                      <ct3_ten />
+                      <ma_Xa />
+                      <ten_Xa />
+                      <ct04_ma />
+                      <ct04_ten />
+                      <ct05_ma />
+                      <ct05_ten />
+                      <ct06_ma />
+                      <ct06_ten />
+                      <ct7>0</ct7>
+                    </ChiTiet>
+                  </CTietPLuc>
+                </BKePLuc>
+                <tongCong_ct11>0</tongCong_ct11>
+              </DSachPLuc>
+            </Muc_2>
+            <Muc_3>
+              <ct3a_1>2026-03-18</ct3a_1>
+              <ct3a_2>0</ct3a_2>
+              <ct3b>0</ct3b>
+            </Muc_3>
+          </Muc_I>
+          <Muc_II>
+            <ChiTiet id="ID_1">
+              <ct2_ma />
+              <ct2_ten />
+              <ct3>0</ct3>
+            </ChiTiet>
+            <tongCong_ct12>0</tongCong_ct12>
+          </Muc_II>
+          <Muc_III>
+            <ChiTiet id="ID_1">
+              <ct2_ma />
+              <ct2_ten />
+              <ct3>0</ct3>
+            </ChiTiet>
+            <tongCong_ct13>0</tongCong_ct13>
+          </Muc_III>
+        </Muc_A>
+        <Muc_B>
+          <Muc_I>
+            <ct_1>0</ct_1>
+            <ct_2_so />
+            <ct_2_ngay xsi:nil="true" />
+            <ct_2_CQT_ma />
+            <ct_2_CQT_ten />
+            <ct_3_so />
+            <ct_3_ngay xsi:nil="true" />
+          </Muc_I>
+          <Muc_II>
+            <ct_1>0</ct_1>
+            <ct_2>0</ct_2>
+          </Muc_II>
+        </Muc_B>
+      </PL01_KHBS>
+      <PL01_1_KHBS>
+        <Header>
+          <maTKhai>864</maTKhai>
+          <tenTKhai>TK khấu trừ thuế thu nhập cá nhân Mẫu 05/KK-TNCN (TT80/2021)</tenTKhai>
+          <maGiaoDich>000.701.18.G12-260318-27012900038132</maGiaoDich>
+          <KyKKhaiThue>
+            <kieuKy>M</kieuKy>
+            <kyKKhai>02/2026</kyKKhai>
+            <kyKKhaiTuNgay>01/02/2026</kyKKhaiTuNgay>
+            <kyKKhaiDenNgay>28/02/2026</kyKKhaiDenNgay>
+            <kyKKhaiTuThang />
+            <kyKKhaiDenThang />
+          </KyKKhaiThue>
+          <soLan>1</soLan>
+          <mst>0309519880</mst>
+          <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+          <mstDLyThue xsi:nil="true" />
+          <tenDLyThue />
+          <soHDongDLyThue />
+          <ngayKyHDDLyThue xsi:nil="true" />
+        </Header>
+        <ma_DonViTien>VND</ma_DonViTien>
+        <ten_DonViTien>Đồng Việt Nam</ten_DonViTien>
+        <Muc_A>
+          <DSachHSo>
+            <BKeHSo id="ID_1">
+              <ma_HSo>0001</ma_HSo>
+              <ten_HSo>05/KK-TNCN</ten_HSo>
+              <CTietHSo>
+                <ChiTiet id="ID_1">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[16]</ct3_ma>
+                  <ct3_ten>Tổng số người lao động</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>66</ct04>
+                  <ct05>71</ct05>
+                  <ct06>5</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_2">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[17]</ct3_ma>
+                  <ct3_ten>Cá nhân cư trú có hợp đồng lao động-Tổng số người lao động</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>65</ct04>
+                  <ct05>70</ct05>
+                  <ct06>5</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_3">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[18]</ct3_ma>
+                  <ct3_ten>Tổng số cá nhân đã khấu trừ thuế [18]=[19]+[20]</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>27</ct04>
+                  <ct05>71</ct05>
+                  <ct06>44</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_4">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[19]</ct3_ma>
+                  <ct3_ten>Cá nhân cư trú đã khấu trừ thuế</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>27</ct04>
+                  <ct05>71</ct05>
+                  <ct06>44</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_5">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[21]</ct3_ma>
+                  <ct3_ten>Tổng thu nhập chịu thuế trả cho cá nhân [21]=[22]+[23]</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>1467306431</ct04>
+                  <ct05>2677934619</ct05>
+                  <ct06>1210628188</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_6">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[22]</ct3_ma>
+                  <ct3_ten>Thu nhập chịu thuế trả cho cá nhân cư trú</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>1467306431</ct04>
+                  <ct05>2677934619</ct05>
+                  <ct06>1210628188</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_7">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[26]</ct3_ma>
+                  <ct3_ten>Tổng  thu nhập chịu thuế trả cho cá nhân thuộc diện phải khấu trừ thuế [26]=[27]+[28]</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>910829495</ct04>
+                  <ct05>2677934619</ct05>
+                  <ct06>1767105124</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_8">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[27]</ct3_ma>
+                  <ct3_ten>Thu nhập chịu thuế trả cho cá nhân cư trú thuộc diện phải khấu trừ thuế</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>910829495</ct04>
+                  <ct05>2677934619</ct05>
+                  <ct06>1767105124</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_9">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[29]</ct3_ma>
+                  <ct3_ten>Tổng số thuế thu nhập cá nhân đã khấu trừ [29]=[30]+[31]</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>42523360</ct04>
+                  <ct05>137922257</ct05>
+                  <ct06>95398897</ct06>
+                  <ct7>95398897</ct7>
+                  <ct8 />
+                </ChiTiet>
+                <ChiTiet id="ID_10">
+                  <ct2_ma />
+                  <ct2_ten />
+                  <ct3_ma>[30]</ct3_ma>
+                  <ct3_ten>Số thuế thu nhập cá nhân cư trú đã khấu trừ</ct3_ten>
+                  <ct3_1_ma />
+                  <ct3_1_ten />
+                  <ct3_2_ma />
+                  <ct3_2_ten />
+                  <ct04>42523360</ct04>
+                  <ct05>137922257</ct05>
+                  <ct06>95398897</ct06>
+                  <ct7>0</ct7>
+                  <ct8 />
+                </ChiTiet>
+              </CTietHSo>
+            </BKeHSo>
+            <TongCong>
+              <tongCong_7>95398897</tongCong_7>
+              <tongCong_8>0</tongCong_8>
+              <tongCong_9>0</tongCong_9>
+            </TongCong>
+          </DSachHSo>
+        </Muc_A>
+        <Muc_B>
+          <CTietTaiLieu id="ID_1">
+            <ma_TLieu />
+            <ten_TLieu />
+          </CTietTaiLieu>
+        </Muc_B>
+      </PL01_1_KHBS>
+    </PLuc>
+  </HSoKhaiThue>
+<CKyDTu><Signature Id="CKyDTuID-NODETOSIGN-XML" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI="#ID-NODETOSIGN-XML"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>pKVb2najFXg/jlFTYXESG5h4brMphZ8UbOT0M+0wUAg=</DigestValue></Reference><Reference URI="#ObjectCKyDTuID-NODETOSIGN-XML"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>0IiasSY5hvN9eggxP3qu8B76XtpPYYIdIRoynoYHgmU=</DigestValue></Reference></SignedInfo><SignatureValue>deqlhNx7o86Nker8QtT2jj1EKPV64pv532+wmVSJFHMuwIfZfu2rsr9PO4nqO6tDjxfur4CHGGIMoP1V5OFE4QVDDcK5/QUuEGaO8iNIzKOndN8YKU0K3kHrE4BnGXmeXCuUNAAqU3WzY9rA7mSRJwadIxtKyeXWJQqAwMiYYHg=</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=VN, S=Hồ Chí Minh, CN=CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG, OID.0.9.2342.19200300.100.1.1=MST:0309519880</X509SubjectName><X509Certificate>MIID7zCCAtegAwIBAgIQVANGqO4M3R5Ey8DYYB7B2DANBgkqhkiG9w0BAQsFADBAMQswCQYDVQQGEwJWTjEZMBcGA1UECgwQQmthdiBDb3Jwb3JhdGlvbjEWMBQGA1UEAwwNQmthdkNBIFNIQTI1NjAeFw0yNTA2MzAwODE3MDVaFw0yOTA1MDkwMzMzMDZaMIGEMR4wHAYKCZImiZPyLGQBAQwOTVNUOjAzMDk1MTk4ODAxPDA6BgNVBAMMM0PDlE5HIFRZIFROSEggR0lBTyBOSOG6rE4gTkfDlEkgU0FPIFBIxq/GoE5HIMSQw5RORzEXMBUGA1UECAwOSOG7kyBDaMOtIE1pbmgxCzAJBgNVBAYTAlZOMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8MEGkLxBLYDiJKywqxk+6izbvwFPZPLTPxsGqR9GcOs2J5z7haEYCnAZdSBFZBZ6fWc8E0t48QnSj2CYwKACKgV79XAPxMtoBr2hZHmdN9biOOO0UiLgJik9gJCo36ILIqjrpwMD04nSWMzsvpGnu/greR1XR+9ttSxpa3uPFtwIDAQABo4IBIjCCAR4wDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBQr1P4Wyp4Wo2d1Yxgzk+FtExY01DBqBggrBgEFBQcBAQReMFwwNwYIKwYBBQUHMAKGK2h0dHBzOi8vcm9vdGNhLmdvdi52bi9jcnQvQmthdkNBX1NIQTI1Ni5wN2IwIQYIKwYBBQUHMAGGFWh0dHA6Ly9vY3NwLmJrYXZjYS52bjAfBgNVHSUEGDAWBggrBgEFBQcDBAYKKwYBBAGCNwoDDDAxBgNVHR8EKjAoMCagJKAihiBodHRwOi8vY3JsLmJrYXZjYS52bi9Ca2F2Q0EyLmNybDAdBgNVHQ4EFgQULF/9A8rFEQArtfOzD8/s+B+XrTkwDgYDVR0PAQH/BAQDAgTwMA0GCSqGSIb3DQEBCwUAA4IBAQBtWXpaaCrcUETuO549glJsRuA4+w+RI1i9zTCenBx0sTGia1OXO2T65K97opQoSW3pWFRH/0KFVjVJf34MbvXBUHPiEC8hLkkCkuKQwMqInTole2djobUbmeq20v1RfwKY6iJlwnDJuqtghIaQ5m1EH8gBchX6Ia20hzosXSYv05qK2oRzgRNqFuWVuh6fNOAF6IIAtiSw9M+MnxvM8WChaAyTVRckgeixxe1WvNsWSNxbjmY+V3GX2XYyQaxx57Wtz9nr0xCg2GKaXw6DPvzEH8LUvYUC7+m4HslgUuGUvCuSRYMxb7m3pYMbQJeVd56zeU9MWAEZ5ZSp4oma5KrD</X509Certificate></X509Data></KeyInfo><Object Id="ObjectCKyDTuID-NODETOSIGN-XML"><SignatureProperties xmlns=""><SignatureProperty Target="#CKyDTuID-NODETOSIGN-XML" Id="SignatureProperty-CKyDTuID-NODETOSIGN-XML"><SigningTime>2026-03-19T14:58:11</SigningTime></SignatureProperty></SignatureProperties></Object></Signature></CKyDTu></HSoThueDTu>

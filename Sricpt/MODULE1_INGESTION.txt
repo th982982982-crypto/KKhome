@@ -1,0 +1,58 @@
+/**
+ * MODULE 1: INGESTION ENGINE
+ * Xử lý lưu trữ file gốc lên Drive và tạo bản ghi nhật ký hệ thống
+ * Đã cấu hình ép kiểu Chuỗi bằng dấu nháy đơn (') để bảo toàn số 0 ở đầu MST/Kỳ thuế
+ */
+function uploadAndLogFile(fileBase64, fileName, mst, nam, loaiToKhai, kyThue, nguoiKy, targetSsId) {
+  try {
+    if (!fileBase64) throw new Error("Dữ liệu file truyền lên bị trống!");
+
+    if (fileBase64.indexOf(",") !== -1) {
+      fileBase64 = fileBase64.split(",")[1];
+    }
+
+    var decodedBytes = Utilities.base64Decode(fileBase64);
+    var fileBlob = Utilities.newBlob(decodedBytes);
+    fileBlob.setContentType("application/xml");
+    fileBlob.setName(fileName);
+
+    var rootFolder = DriveApp.getFolderById(ROOT_FOLDER_ID);
+    var mstFolder = getOrCreateSubFolder(rootFolder, mst);
+    var yearFolder = getOrCreateSubFolder(mstFolder, nam);
+    var typeFolder = getOrCreateSubFolder(yearFolder, loaiToKhai);
+
+    var file = typeFolder.createFile(fileBlob);
+    var fileId = file.getId();
+    var fileUrl = file.getUrl();
+
+    // ✅ FIX CHÍ MẠNG: Mở chính xác file Database tính toán riêng của Tenant khách hàng đó
+    var clientSs = SpreadsheetApp.openById(targetSsId);
+    var sheetFile = clientSs.getSheetByName("M_File_Management");
+    if (!sheetFile) throw new Error("Không tìm thấy tab dữ liệu quản lý 'M_File_Management' trong DB của bạn!");
+
+    sheetFile.appendRow([
+      fileId,
+      "" + mst,
+      fileName,
+      loaiToKhai,
+      "'" + kyThue,
+      new Date(),
+      nguoiKy,
+      fileUrl,
+      "ĐƯỢC CỘNG"
+    ]);
+
+    return fileId;
+  } catch (e) {
+    throw new Error("Lỗi Module 1: " + e.toString());
+  }
+}
+
+/**
+ * Hàm bổ trợ kiểm tra hoặc tự động tạo thư mục con nếu chưa tồn tại
+ */
+function getOrCreateSubFolder(parentFolder, folderName) {
+  var folders = parentFolder.getFoldersByName(folderName);
+  if (folders.hasNext()) return folders.next();
+  return parentFolder.createFolder(folderName);
+}

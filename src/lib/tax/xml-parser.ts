@@ -1,5 +1,6 @@
 export interface ParsedDeclaration {
   mst: string
+  tenNNT: string
   kyKKhai: string
   maTKhai: string
   declarationType: 'GTGT' | 'TNDN' | 'TNCN'
@@ -84,6 +85,7 @@ export function parseXmlText(xmlText: string): ParsedDeclaration {
 
   return {
     mst: getTagText(xmlText, 'mst'),
+    tenNNT: getTagText(xmlText, 'tenNNT'),
     kyKKhai,
     maTKhai,
     declarationType,

@@ -1,0 +1,3387 @@
+<HSoThueDTu xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <HSoKhaiThue id="NODETOSIGN">
+        <TTinChung>
+            <TTinDVu>
+                <maDVu>TTGQ TTHC</maDVu>
+                <tenDVu>TTGQ TTHC</tenDVu>
+                <pbanDVu>1.0.0</pbanDVu>
+                <ttinNhaCCapDVu>TTGQ TTHC</ttinNhaCCapDVu>
+            </TTinDVu>
+            <TTinTKhaiThue>
+                <TKhaiThue>
+                    <maTKhai>953</maTKhai>
+                    <tenTKhai>TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN (Mẫu số 05/QTT-TNCN)</tenTKhai>
+                    <moTaBMau>05/QTT-TNCN</moTaBMau>
+                    <pbanTKhaiXML>2.9.3</pbanTKhaiXML>
+                    <loaiTKhai>B</loaiTKhai>
+                    <soLan>1</soLan>
+                    <KyKKhaiThue>
+                        <kieuKy>Y</kieuKy>
+                        <kyKKhai>2025</kyKKhai>
+                        <kyKKhaiTuNgay>01/01/2025</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>31/12/2025</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang>01/2025</kyKKhaiTuThang>
+                        <kyKKhaiDenThang>12/2025</kyKKhaiDenThang>
+                    </KyKKhaiThue>
+                    <maCQTNoiNop>70129</maCQTNoiNop>
+                    <tenCQTNoiNop>Thuế cơ sở 14 Thành phố Hồ Chí Minh</tenCQTNoiNop>
+                    <ngayLapTKhai>20/04/2026</ngayLapTKhai>
+                    <nguoiKy>NHƯ NGHIỆP THUẬN</nguoiKy>
+                    <ngayKy>2026-04-20</ngayKy>
+                    <nganhNgheKD/>
+                </TKhaiThue>
+                <NNT>
+                    <mst>0309519880</mst>
+                    <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+                    <dchiNNT/>
+                    <tenXaNNT>Phường Gia Định</tenXaNNT>
+                    <maXaNNT>70129104</maXaNNT>
+                    <maHuyenNNT/>
+                    <tenHuyenNNT/>
+                    <maTinhNNT>701</maTinhNNT>
+                    <tenTinhNNT>Thành phố Hồ Chí Minh</tenTinhNNT>
+                    <dthoaiNNT/>
+                    <faxNNT/>
+                    <emailNNT>tira_hcm@orientstargroup.com</emailNNT>
+                </NNT>
+            </TTinTKhaiThue>
+        </TTinChung>
+        <CTieuTKhaiChinh>
+            <mst_cu>0309519880</mst_cu>
+            <Header>
+                <toChucCoQTTTheoUyQuyen>false</toChucCoQTTTheoUyQuyen>
+                <ma_THQuyetToan>01</ma_THQuyetToan>
+                <ten_THQuyetToan>Quyết toán định kỳ</ten_THQuyetToan>
+                <hanNop/>
+            </Header>
+            <NVuKhauTruThue>
+                <ct16>83</ct16>
+                <ct17>82</ct17>
+                <ct18>89</ct18>
+                <ct19>89</ct19>
+                <ct20>0</ct20>
+                <ct21>0</ct21>
+                <ct22>49</ct22>
+                <ct23>24935232038</ct23>
+                <ct24>24935232038</ct24>
+                <ct25>0</ct25>
+                <ct26>0</ct26>
+                <ct27>0</ct27>
+                <ct28>24935232038</ct28>
+                <ct29>24935232038</ct29>
+                <ct30>0</ct30>
+                <ct31>1336850822</ct31>
+                <ct32>1336850822</ct32>
+                <ct33>0</ct33>
+                <ct34>0</ct34>
+            </NVuKhauTruThue>
+            <NVuQToanThay>
+                <ct35>2</ct35>
+                <ct36>109749380</ct36>
+                <ct37>0</ct37>
+                <ct38>114488840</ct38>
+                <ct39>0</ct39>
+                <ct40>4739460</ct40>
+                <ct41>0</ct41>
+            </NVuQToanThay>
+        </CTieuTKhaiChinh>
+        <PLuc>
+            <PLuc_05_1_BK_QTT>
+                <BKeCTietCNhan id="1">
+                    <ct07>Sung Wai Fung</ct07>
+                    <ct08>8058896814</ct08>
+                    <nguoiVNSongNN_NguoiNN>true</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>02</ct09a_ma>
+                    <ct09a_ten>Hộ chiếu</ct09a_ten>
+                    <ct09>KJ0665452</ct09>
+                    <ct10>true</ct10>
+                    <ct11>false</ct11>
+                    <ct12>679674000</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>49590000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>498084000</ct21>
+                    <ct22>82271000</ct22>
+                    <ct23>0</ct23>
+                    <ct24>85521000</ct24>
+                    <ct25>0</ct25>
+                    <ct26>3250000</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="2">
+                    <ct07>Huang Jui Sheng</ct07>
+                    <ct08>8560403535</ct08>
+                    <nguoiVNSongNN_NguoiNN>true</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>02</ct09a_ma>
+                    <ct09a_ten>Hộ chiếu</ct09a_ten>
+                    <ct09>313623942</ct09>
+                    <ct10>true</ct10>
+                    <ct11>false</ct11>
+                    <ct12>407918800</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>32079600</ct19>
+                    <ct20>0</ct20>
+                    <ct21>243839200</ct21>
+                    <ct22>27478380</ct22>
+                    <ct23>0</ct23>
+                    <ct24>28967840</ct24>
+                    <ct25>0</ct25>
+                    <ct26>1489460</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="3">
+                    <ct07>Yang Yu Kai</ct07>
+                    <ct08>8482787465</ct08>
+                    <nguoiVNSongNN_NguoiNN>true</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>02</ct09a_ma>
+                    <ct09a_ten>Hộ chiếu</ct09a_ten>
+                    <ct09>352863328</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>509684000</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>39979800</ct19>
+                    <ct20>0</ct20>
+                    <ct21>284904200</ct21>
+                    <ct22>35845240</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="4">
+                    <ct07>Trần Thị Hồng Ngọc</ct07>
+                    <ct08>075184022562</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>075184022562</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>299125200</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>23284800</ct19>
+                    <ct20>0</ct20>
+                    <ct21>91040400</ct21>
+                    <ct22>6701120</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="5">
+                    <ct07>Lý Thái Trung</ct07>
+                    <ct08>056088001887</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>056088001887</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>203930800</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>15876000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>56054800</ct21>
+                    <ct22>3584700</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="6">
+                    <ct07>Nguyễn Thị Bảo Ngọc</ct07>
+                    <ct08>075196002761</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>075196002761</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>91946570</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>10584000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>667240</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="7">
+                    <ct07>Nguyễn Thúy Diễm</ct07>
+                    <ct08>083195009496</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>083195009496</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>134013134</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>10584000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>779100</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="8">
+                    <ct07>Bùi Thị Nhi</ct07>
+                    <ct08>051196005390</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>051196005390</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>135706000</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>10584000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>779100</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="9">
+                    <ct07>Nguyễn Hồng Kông</ct07>
+                    <ct08>030091019911</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>030091019911</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>184986520</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>15876000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>37110520</ct21>
+                    <ct22>2599176</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="10">
+                    <ct07>Bùi Hoa Liên</ct07>
+                    <ct08>038189016789</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>038189016789</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>142158733</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>11377800</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>662983</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="11">
+                    <ct07>Nguyễn Hải Anh</ct07>
+                    <ct08>001193018751</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>001193018751</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>115674484</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>9261000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>492717</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="12">
+                    <ct07>Nguyễn Văn Duy</ct07>
+                    <ct08>034084001455</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>034084001455</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>92533548</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>7938000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>439140</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="13">
+                    <ct07>Bùi Minh Trí</ct07>
+                    <ct08>079083008626</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079083008626</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>598316933</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>215600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>46683000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>336033933</ct21>
+                    <ct22>46521300</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="14">
+                    <ct07>Nguyễn Thị Kim Phượng</ct07>
+                    <ct08>058180003281</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>058180003281</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>476952760</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>237600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>30847950</ct19>
+                    <ct20>0</ct20>
+                    <ct21>208504810</ct21>
+                    <ct22>22404541</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="15">
+                    <ct07>Phạm Xuân An</ct07>
+                    <ct08>079189001851</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079189001851</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>318119625</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>3</ct16>
+                    <ct17>290400000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>22954050</ct19>
+                    <ct20>0</ct20>
+                    <ct21>4765575</ct21>
+                    <ct22>5500940</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="16">
+                    <ct07>Phan Thị Hiến Dương</ct07>
+                    <ct08>066193018770</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>066193018770</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>388866624</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>237600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>32678100</ct19>
+                    <ct20>0</ct20>
+                    <ct21>118588524</ct21>
+                    <ct22>8893233</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="17">
+                    <ct07>Huỳnh Thị Phương Hạnh</ct07>
+                    <ct08>080193014966</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>080193014966</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>432100190</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>237600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>31994550</ct19>
+                    <ct20>0</ct20>
+                    <ct21>162505640</ct21>
+                    <ct22>15395717</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="18">
+                    <ct07>Lê Thị Hồng Oanh</ct07>
+                    <ct08>046186005710</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>046186005710</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>302822775</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>21553875</ct19>
+                    <ct20>0</ct20>
+                    <ct21>96468900</ct21>
+                    <ct22>7802361</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="19">
+                    <ct07>Thái Ngọc Nhung</ct07>
+                    <ct08>079188013744</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079188013744</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>302728769</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>21631050</ct19>
+                    <ct20>0</ct20>
+                    <ct21>96297719</ct21>
+                    <ct22>7800193</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="20">
+                    <ct07>Nguyễn Lê Hồng Việt</ct07>
+                    <ct08>079196013627</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079196013627</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>238665168</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>20098575</ct19>
+                    <ct20>0</ct20>
+                    <ct21>86566593</ct21>
+                    <ct22>2166856</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="21">
+                    <ct07>Trương Thị Mỹ Ni</ct07>
+                    <ct08>066194006538</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>066194006538</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>264125444</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>19856025</ct19>
+                    <ct20>0</ct20>
+                    <ct21>59469419</ct21>
+                    <ct22>7074600</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="22">
+                    <ct07>Nguyễn Thị Phượng Thảo</ct07>
+                    <ct08>087196004398</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>087196004398</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>305215591</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>22050000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>151165591</ct21>
+                    <ct22>13028046</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="23">
+                    <ct07>Nguyễn Thị Hồng Vân</ct07>
+                    <ct08>066197009572</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>066197009572</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>236584928</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>17507700</ct19>
+                    <ct20>0</ct20>
+                    <ct21>87077228</ct21>
+                    <ct22>8209910</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="24">
+                    <ct07>Lê Thị Ngọc Oanh</ct07>
+                    <ct08>083196009551</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>083196009551</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>267501100</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>18577125</ct19>
+                    <ct20>0</ct20>
+                    <ct21>116923975</ct21>
+                    <ct22>9025380</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="25">
+                    <ct07>Đoàn Thu Ngọc</ct07>
+                    <ct08>082193000380</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>082193000380</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>210458056</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>14861700</ct19>
+                    <ct20>0</ct20>
+                    <ct21>10796356</ct21>
+                    <ct22>2768715</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="26">
+                    <ct07>Phạm Thị Mỹ Tiên</ct07>
+                    <ct08>051199010057</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>051199010057</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>229569050</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>16184700</ct19>
+                    <ct20>0</ct20>
+                    <ct21>81384350</ct21>
+                    <ct22>5674140</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="27">
+                    <ct07>Nguyễn Thị Loan</ct07>
+                    <ct08>049193005755</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>049193005755</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>210612988</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>14564025</ct19>
+                    <ct20>0</ct20>
+                    <ct21>64048963</ct21>
+                    <ct22>7909355</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="28">
+                    <ct07>Nguyễn Thị Bảo Châu</ct07>
+                    <ct08>046197015541</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>046197015541</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>228655470</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>16140600</ct19>
+                    <ct20>0</ct20>
+                    <ct21>80514870</ct21>
+                    <ct22>5682490</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="29">
+                    <ct07>Lê Gia Ngọc</ct07>
+                    <ct08>079195023743</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079195023743</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>276027410</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>19778850</ct19>
+                    <ct20>0</ct20>
+                    <ct21>124248560</ct21>
+                    <ct22>9903462</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="30">
+                    <ct07>Nguyễn Hoàng Vy Na</ct07>
+                    <ct08>066197008786</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>066197008786</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>75489016</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>33000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>3969000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>38520016</ct21>
+                    <ct22>3367643</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="31">
+                    <ct07>Nguyễn Ngọc Lan Phương</ct07>
+                    <ct08>079189017937</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079189017937</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>233354890</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>16868250</ct19>
+                    <ct20>0</ct20>
+                    <ct21>31686640</ct21>
+                    <ct22>3448263</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="32">
+                    <ct07>Trần Thị Mỹ Duyên</ct07>
+                    <ct08>052196004429</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>052196004429</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>216324133</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>15346800</ct19>
+                    <ct20>0</ct20>
+                    <ct21>68977333</ct21>
+                    <ct22>4950143</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="33">
+                    <ct07>Đinh Ngọc Hà My</ct07>
+                    <ct08>048193004611</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>048193004611</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>214795390</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>15545250</ct19>
+                    <ct20>0</ct20>
+                    <ct21>67250140</ct21>
+                    <ct22>4811964</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="34">
+                    <ct07>Trần Nguyễn Thanh Tuyền</ct07>
+                    <ct08>079192019516</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079192019516</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>405979703</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>29877750</ct19>
+                    <ct20>0</ct20>
+                    <ct21>244101953</ct21>
+                    <ct22>26849552</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="35">
+                    <ct07>Nguyễn Thị Thúy Loan</ct07>
+                    <ct08>066196014922</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>066196014922</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>250109672</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>17915625</ct19>
+                    <ct20>0</ct20>
+                    <ct21>100194047</ct21>
+                    <ct22>10743409</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="36">
+                    <ct07>Vũ Ngọc Anh</ct07>
+                    <ct08>068199004523</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>068199004523</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>189668475</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>13538700</ct19>
+                    <ct20>0</ct20>
+                    <ct21>44129775</ct21>
+                    <ct22>3293190</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="37">
+                    <ct07>Nguyễn Thị Mỹ Lưu</ct07>
+                    <ct08>052195001079</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>052195001079</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>267050595</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>20098575</ct19>
+                    <ct20>0</ct20>
+                    <ct21>114952020</ct21>
+                    <ct22>8387308</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="38">
+                    <ct07>Nguyễn Thị Thu Vân</ct07>
+                    <ct08>077199008736</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>077199008736</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>103231738</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>77000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>6637050</ct19>
+                    <ct20>0</ct20>
+                    <ct21>19594688</ct21>
+                    <ct22>2538479</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="39">
+                    <ct07>Lê Thị Hồng Loan</ct07>
+                    <ct08>080196012980</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>080196012980</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>236245290</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>16713900</ct19>
+                    <ct20>0</ct20>
+                    <ct21>87531390</ct21>
+                    <ct22>6116898</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="40">
+                    <ct07>Nguyễn Thị Thu Hà</ct07>
+                    <ct08>030199011924</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>030199011924</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>249978900</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>17662050</ct19>
+                    <ct20>0</ct20>
+                    <ct21>100316850</ct21>
+                    <ct22>7250935</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="41">
+                    <ct07>Nguyễn Thị Thu Hà</ct07>
+                    <ct08>051199004705</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>051199004705</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>204026120</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>14288400</ct19>
+                    <ct20>0</ct20>
+                    <ct21>57737720</ct21>
+                    <ct22>4184395</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="42">
+                    <ct07>Nguyễn Thị Như Quỳnh</ct07>
+                    <ct08>077198008950</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>077198008950</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>268933134</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>19172475</ct19>
+                    <ct20>0</ct20>
+                    <ct21>117760659</ct21>
+                    <ct22>9151030</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="43">
+                    <ct07>Lê Thị Huyền Trân</ct07>
+                    <ct08>080198007591</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>080198007591</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>170464550</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>13329225</ct19>
+                    <ct20>0</ct20>
+                    <ct21>25135325</ct21>
+                    <ct22>949793</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="44">
+                    <ct07>Trương Thị Hiếu</ct07>
+                    <ct08>052195010445</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>052195010445</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>198632588</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>17474625</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>1317450</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="45">
+                    <ct07>Phạm Anh Thư</ct07>
+                    <ct08>082300012567</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>082300012567</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>192324238</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>13935600</ct19>
+                    <ct20>0</ct20>
+                    <ct21>46388638</ct21>
+                    <ct22>3483867</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="46">
+                    <ct07>Vương Trần Thủy Tiên</ct07>
+                    <ct08>077196002353</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>077196002353</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>178109137</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>14817600</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>1933768</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="47">
+                    <ct07>Nguyễn Thị Diễm Quyên</ct07>
+                    <ct08>066300015770</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>066300015770</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>115794318</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>7596225</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>2568871</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="48">
+                    <ct07>Nguyễn Thủy Tiên</ct07>
+                    <ct08>079196016497</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079196016497</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>152607618</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>88000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>10253250</ct19>
+                    <ct20>0</ct20>
+                    <ct21>54354368</ct21>
+                    <ct22>4170694</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="49">
+                    <ct07>Phó Hà Nhi</ct07>
+                    <ct08>079085026491</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079085026491</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>393369345</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>237600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>24673950</ct19>
+                    <ct20>0</ct20>
+                    <ct21>131095395</ct21>
+                    <ct22>12168717</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="50">
+                    <ct07>Điền Bảo Vân</ct07>
+                    <ct08>079195005427</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079195005427</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>241215890</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>15346800</ct19>
+                    <ct20>0</ct20>
+                    <ct21>93869090</ct21>
+                    <ct22>6618027</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="51">
+                    <ct07>Nguyễn Thị Thanh Hoa</ct07>
+                    <ct08>052184019410</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>052184019410</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>403236221</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>3</ct16>
+                    <ct17>242000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>28627200</ct19>
+                    <ct20>0</ct20>
+                    <ct21>132609021</ct21>
+                    <ct22>13253663</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="52">
+                    <ct07>Đỗ Thị Hồng Yến</ct07>
+                    <ct08>077302002092</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>077302002092</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>107582679</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>7938000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>150085</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="53">
+                    <ct07>Phạm Thị Phương Loan</ct07>
+                    <ct08>045192004978</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>045192004978</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>293562497</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>237600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>23747850</ct19>
+                    <ct20>0</ct20>
+                    <ct21>32214647</ct21>
+                    <ct22>7899472</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="54">
+                    <ct07>Vũ Thị Vân Quỳnh</ct07>
+                    <ct08>022196000236</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>022196000236</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>288448840</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>237600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>20330100</ct19>
+                    <ct20>0</ct20>
+                    <ct21>30518740</ct21>
+                    <ct22>4419718</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="55">
+                    <ct07>Phạm Thị Anh</ct07>
+                    <ct08>042301012319</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>042301012319</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>181560590</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>12744900</ct19>
+                    <ct20>0</ct20>
+                    <ct21>36815690</ct21>
+                    <ct22>2775541</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="56">
+                    <ct07>Hoàng Gia Anh Thư</ct07>
+                    <ct08>001199013157</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>001199013157</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>173990250</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>12215700</ct19>
+                    <ct20>0</ct20>
+                    <ct21>29774550</ct21>
+                    <ct22>2369261</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="57">
+                    <ct07>Phương Thanh Tuyến</ct07>
+                    <ct08>001092043703</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>001092043703</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>171594996</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>12215700</ct19>
+                    <ct20>0</ct20>
+                    <ct21>27379296</ct21>
+                    <ct22>2275403</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="58">
+                    <ct07>Nguyễn Thị Thu</ct07>
+                    <ct08>001193003348</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>001193003348</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>126644161</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>3</ct16>
+                    <ct17>290400000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>8391600</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>3157380</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="59">
+                    <ct07>Lê Văn Tuấn</ct07>
+                    <ct08>083080007668</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>083080007668</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>332708165</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>237600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>22744575</ct19>
+                    <ct20>0</ct20>
+                    <ct21>72363590</ct21>
+                    <ct22>10594441</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="60">
+                    <ct07>Nguyễn Phương Vũ</ct07>
+                    <ct08>079084002510</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079084002510</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>294004255</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>237600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>17099775</ct19>
+                    <ct20>0</ct20>
+                    <ct21>39304480</ct21>
+                    <ct22>4488636</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="61">
+                    <ct07>Trần Kim Tài</ct07>
+                    <ct08>079068014452</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079068014452</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>224577885</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>237600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>14255325</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>2639969</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="62">
+                    <ct07>Trần Quốc Việt</ct07>
+                    <ct08>082087007729</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>082087007729</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>186703000</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>11135250</ct19>
+                    <ct20>0</ct20>
+                    <ct21>43567750</ct21>
+                    <ct22>2830890</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="63">
+                    <ct07>Huỳnh Thụy Phụng Vy</ct07>
+                    <ct08>079184031710</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079184031710</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>339694000</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>2</ct16>
+                    <ct17>237600000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>26460000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>75634000</ct21>
+                    <ct22>3465450</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="64">
+                    <ct07>Nguyễn Thị Thúy</ct07>
+                    <ct08>038177012984</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>038177012984</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>596019857</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>3</ct16>
+                    <ct17>290400000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>37705500</ct19>
+                    <ct20>0</ct20>
+                    <ct21>267914357</ct21>
+                    <ct22>33266508</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="65">
+                    <ct07>Đỗ Văn Thanh</ct07>
+                    <ct08>038079009426</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>038079009426</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>130251750</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>132000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>10584000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>781740</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="66">
+                    <ct07>Lê Minh Châu</ct07>
+                    <ct08>056088005325</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>056088005325</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>285123935</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>3</ct16>
+                    <ct17>290400000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>22491000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>0</ct21>
+                    <ct22>10583753</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="67">
+                    <ct07>Văn Đức Toàn</ct07>
+                    <ct08>066093017643</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>066093017643</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>335671745</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>184800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>26460000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>124411745</ct21>
+                    <ct22>17250631</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="68">
+                    <ct07>Phạm Vũ Thu Hiền</ct07>
+                    <ct08>075198014286</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>075198014286</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>125684850</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>1</ct16>
+                    <ct17>85800000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>10473750</ct19>
+                    <ct20>0</ct20>
+                    <ct21>29411100</ct21>
+                    <ct22>2571110</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="69">
+                    <ct07>Lê Thị Thanh Trang</ct07>
+                    <ct08>079192019603</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079192019603</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>61129704</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>22000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>2646000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>36483704</ct21>
+                    <ct22>3576656</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="70">
+                    <ct07>Lê Thị Hồng Na</ct07>
+                    <ct08>068196006144</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>068196006144</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>63005262</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>44000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>5292000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>13713262</ct21>
+                    <ct22>685663</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="71">
+                    <ct07>Lê Thị Thúy Hà</ct07>
+                    <ct08>066194011190</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>066194011190</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>42306143</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>33000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>3426570</ct19>
+                    <ct20>0</ct20>
+                    <ct21>5879573</ct21>
+                    <ct22>293978</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="72">
+                    <ct07>Mai Trần Phương Uyên</ct07>
+                    <ct08>079196018997</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079196018997</ct09>
+                    <ct10>false</ct10>
+                    <ct11>false</ct11>
+                    <ct12>16406886</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct15>0</ct15>
+                    <ct15.1>0</ct15.1>
+                    <ct16>0</ct16>
+                    <ct17>11000000</ct17>
+                    <ct18>0</ct18>
+                    <ct19>1323000</ct19>
+                    <ct20>0</ct20>
+                    <ct21>4083886</ct21>
+                    <ct22>204194</ct22>
+                    <ct23>0</ct23>
+                    <ct24>0</ct24>
+                    <ct25>0</ct25>
+                    <ct26>0</ct26>
+                    <ct27>false</ct27>
+                </BKeCTietCNhan>
+                <ct28>17622287081</ct28>
+                <ct29>0</ct29>
+                <ct30>0</ct30>
+                <ct31>0</ct31>
+                <ct31.1>0</ct31.1>
+                <ct32>49</ct32>
+                <ct33>11305800000</ct33>
+                <ct34>0</ct34>
+                <ct35>1288345770</ct35>
+                <ct36>0</ct36>
+                <ct37>5542069564</ct37>
+                <ct38>605899673</ct38>
+                <ct39>0</ct39>
+                <ct40>114488840</ct40>
+                <ct41>0</ct41>
+                <ct42>4739460</ct42>
+                <ct43>0</ct43>
+            </PLuc_05_1_BK_QTT>
+            <PLuc_05_2_BK_QTT>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Nguyễn Công Thành</ct07>
+                    <ct08>052089010785</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>052089010785</ct09>
+                    <ct10>false</ct10>
+                    <ct11>15302000</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>1530200</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Bùi Thị Thu Huệ</ct07>
+                    <ct08>015303001458</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>015303001458</ct09>
+                    <ct10>false</ct10>
+                    <ct11>39470461</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>3947047</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Đặng Xuân Công</ct07>
+                    <ct08>079202026880</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079202026880</ct09>
+                    <ct10>false</ct10>
+                    <ct11>39879665</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>3987967</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Nguyễn Đăng Luân</ct07>
+                    <ct08>049092012229</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>049092012229</ct09>
+                    <ct10>false</ct10>
+                    <ct11>85002318</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>8216733</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Nguyễn Vũ Kiều Anh</ct07>
+                    <ct08>079193039055</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079193039055</ct09>
+                    <ct10>false</ct10>
+                    <ct11>41578424</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>4157842</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Phạm Vũ Thu Hiền</ct07>
+                    <ct08>075198014286</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>075198014286</ct09>
+                    <ct10>false</ct10>
+                    <ct11>60338743</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>6033874</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Lê Thị Thanh Trang</ct07>
+                    <ct08>079192019603</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079192019603</ct09>
+                    <ct10>false</ct10>
+                    <ct11>117995248</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>11799525</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Lê Thị Hồng Na</ct07>
+                    <ct08>068196006144</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>068196006144</ct09>
+                    <ct10>false</ct10>
+                    <ct11>21063797</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>2106380</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Lê Thị Thúy Hà</ct07>
+                    <ct08>066194011190</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>066194011190</ct09>
+                    <ct10>false</ct10>
+                    <ct11>23116582</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>2311658</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Nguyễn Thị Thu Hằng</ct07>
+                    <ct08>030300001649</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>030300001649</ct09>
+                    <ct10>false</ct10>
+                    <ct11>7455566</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>745557</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Nguyễn Hà Phương</ct07>
+                    <ct08>083303002382</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>083303002382</ct09>
+                    <ct10>false</ct10>
+                    <ct11>9943179</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>994318</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Mai Trần Phương Uyên</ct07>
+                    <ct08>079196018997</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079196018997</ct09>
+                    <ct10>false</ct10>
+                    <ct11>29368846</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>2936884</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Đô Khắc Quyền</ct07>
+                    <ct08>064201012732</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>064201012732</ct09>
+                    <ct10>false</ct10>
+                    <ct11>22178580</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>2158008</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Huỳnh Thị Bé Thơ</ct07>
+                    <ct08>080189008302</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>080189008302</ct09>
+                    <ct10>false</ct10>
+                    <ct11>50008811</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>5000882</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Nguyễn Thị Thanh Hoa</ct07>
+                    <ct08>052184019410</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>052184019410</ct09>
+                    <ct10>false</ct10>
+                    <ct11>16384054</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>1638405</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Lê Thị Trúc Ly</ct07>
+                    <ct08>064304008708</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>064304008708</ct09>
+                    <ct10>false</ct10>
+                    <ct11>3767376</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>376738</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <BKeCTietCNhan id="1">
+                    <coDieuChinhSoLieu>false</coDieuChinhSoLieu>
+                    <ct07>Dương Văn Bửu</ct07>
+                    <ct08>079064033790</ct08>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct09a_ma>03</ct09a_ma>
+                    <ct09a_ten>Thẻ CCCD/Số định danh cá nhân</ct09a_ten>
+                    <ct09>079064033790</ct09>
+                    <ct10>false</ct10>
+                    <ct11>6730091307</ct11>
+                    <ct12>0</ct12>
+                    <ct13>0</ct13>
+                    <ct14>0</ct14>
+                    <ct14.1>0</ct14.1>
+                    <ct15>673009131</ct15>
+                    <ct16>0</ct16>
+                </BKeCTietCNhan>
+                <ct17>7312944957</ct17>
+                <ct18>0</ct18>
+                <ct19>0</ct19>
+                <ct20>0</ct20>
+                <ct20.1>0</ct20.1>
+                <ct21>730951149</ct21>
+                <ct22>0</ct22>
+            </PLuc_05_2_BK_QTT>
+            <PLuc_05_3_BK_QTT>
+                <BKeTTinNPT id="1">
+                    <ct07>Nguyễn Thị Thu</ct07>
+                    <ct08>001193003348</ct08>
+                    <ct09>Nguyễn Duy Tốt</ct09>
+                    <ct10>1962-08-15</ct10>
+                    <ct11>001062028963</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>001062028963</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="2">
+                    <ct07>Nguyễn Thị Thu</ct07>
+                    <ct08>001193003348</ct08>
+                    <ct09>Khuất Thị Uyên</ct09>
+                    <ct10>1962-06-26</ct10>
+                    <ct11>001162030635</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>001162030635</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="3">
+                    <ct07>Nguyễn Thị Thu</ct07>
+                    <ct08>001193003348</ct08>
+                    <ct09>Trịnh Đức Anh</ct09>
+                    <ct10>2025-01-05</ct10>
+                    <ct11>001225002122</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>001225002122</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="4">
+                    <ct07>Vũ Thị Vân Quỳnh</ct07>
+                    <ct08>022196000236</ct08>
+                    <ct09>Vũ Văn Xuân</ct09>
+                    <ct10>1962-07-12</ct10>
+                    <ct11>022062003683</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>022062003683</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="5">
+                    <ct07>Vũ Thị Vân Quỳnh</ct07>
+                    <ct08>022196000236</ct08>
+                    <ct09>Tu Vũ Huyên</ct09>
+                    <ct10>2021-03-11</ct10>
+                    <ct11>022321004601</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>022321004601</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="6">
+                    <ct07>Nguyễn Phương Vũ</ct07>
+                    <ct08>079084002510</ct08>
+                    <ct09>Nguyễn Hoàng Khôi Vĩ</ct09>
+                    <ct10>2018-06-02</ct10>
+                    <ct11>079218015964</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079218015964</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="7">
+                    <ct07>Nguyễn Phương Vũ</ct07>
+                    <ct08>079084002510</ct08>
+                    <ct09>Nguyễn Bảo Trâm Anh</ct09>
+                    <ct10>2016-02-01</ct10>
+                    <ct11>079316002031</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079316002031</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="8">
+                    <ct07>Huỳnh Thị Phương Hạnh</ct07>
+                    <ct08>080193014966</ct08>
+                    <ct09>Trần Huỳnh Linh Sam</ct09>
+                    <ct10>2022-04-27</ct10>
+                    <ct11>080322002258</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>080322002258</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="9">
+                    <ct07>Huỳnh Thị Phương Hạnh</ct07>
+                    <ct08>080193014966</ct08>
+                    <ct09>Đặng Thị Mai</ct09>
+                    <ct10>1963-01-01</ct10>
+                    <ct11>080163005550</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>080163005550</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="10">
+                    <ct07>Trương Thị Mỹ Ni</ct07>
+                    <ct08>066194006538</ct08>
+                    <ct09>Trương Văn Sinh</ct09>
+                    <ct10>1960-09-10</ct10>
+                    <ct11>046060004621</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>046060004621</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="11">
+                    <ct07>NguyễN NgọC Lan Phương</ct07>
+                    <ct08>079189017937</ct08>
+                    <ct09>NguyễN Huy DũNg</ct09>
+                    <ct10>1958-10-19</ct10>
+                    <ct11>079058008948</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079058008948</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="12">
+                    <ct07>Phan Thị Hiến Dương</ct07>
+                    <ct08>066193018770</ct08>
+                    <ct09>Nguyễn Thị Hiền</ct09>
+                    <ct10>1967-11-13</ct10>
+                    <ct11>033167004375</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>033167004375</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="13">
+                    <ct07>Phan Thị Hiến Dương</ct07>
+                    <ct08>066193018770</ct08>
+                    <ct09>Lê Từ Tuệ Hân</ct09>
+                    <ct10>2024-02-11</ct10>
+                    <ct11>079324003254</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079324003254</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="14">
+                    <ct07>Nguyễn Thị Thúy</ct07>
+                    <ct08>038177012984</ct08>
+                    <ct09>Hà Xuân Khôi</ct09>
+                    <ct10>2004-12-05</ct10>
+                    <ct11>079204035696</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079204035696</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="15">
+                    <ct07>Nguyễn Thị Thúy</ct07>
+                    <ct08>038177012984</ct08>
+                    <ct09>Bùi Thị Lập</ct09>
+                    <ct10>1952-12-02</ct10>
+                    <ct11>030152011706</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>030152011706</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="16">
+                    <ct07>Nguyễn Thị Thúy</ct07>
+                    <ct08>038177012984</ct08>
+                    <ct09>Nguyễn Thị Toán</ct09>
+                    <ct10>1953-02-21</ct10>
+                    <ct11>038153001491</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>038153001491</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="17">
+                    <ct07>Huỳnh Thụy Phụng Vy</ct07>
+                    <ct08>079184031710</ct08>
+                    <ct09>Dương Huỳnh An Thy</ct09>
+                    <ct10>2012-11-30</ct10>
+                    <ct11>079312006437</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079312006437</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="18">
+                    <ct07>Huỳnh Thụy Phụng Vy</ct07>
+                    <ct08>079184031710</ct08>
+                    <ct09>Dương Nguyên Khang</ct09>
+                    <ct10>2015-11-20</ct10>
+                    <ct11>079215027268</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079215027268</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="19">
+                    <ct07>Lê Thị Hồng Oanh</ct07>
+                    <ct08>046186005710</ct08>
+                    <ct09>Nguyễn Thị Theo</ct09>
+                    <ct10>1966-01-20</ct10>
+                    <ct11>046166001926</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>046166001926</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="20">
+                    <ct07>Phạm Thị Phương Loan</ct07>
+                    <ct08>045192004978</ct08>
+                    <ct09>Trần Nhật Khánh Minh</ct09>
+                    <ct10>2018-04-12</ct10>
+                    <ct11>079218013012</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079218013012</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="21">
+                    <ct07>Phạm Thị Phương Loan</ct07>
+                    <ct08>045192004978</ct08>
+                    <ct09>Nguyễn Thị Phương</ct09>
+                    <ct10>1965-05-10</ct10>
+                    <ct11>049165013615</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>049165013615</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="22">
+                    <ct07>Lê Minh Châu</ct07>
+                    <ct08>056088005325</ct08>
+                    <ct09>Lê Minh Sơn</ct09>
+                    <ct10>2023-08-03</ct10>
+                    <ct11>079223031982</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079223031982</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="23">
+                    <ct07>Lê Minh Châu</ct07>
+                    <ct08>056088005325</ct08>
+                    <ct09>Huỳnh Thị Năm</ct09>
+                    <ct10>1957-02-08</ct10>
+                    <ct11>056157004746</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>056157004746</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="24">
+                    <ct07>Lê Minh Châu</ct07>
+                    <ct08>056088005325</ct08>
+                    <ct09>Lê Đức Dương</ct09>
+                    <ct10>1950-07-02</ct10>
+                    <ct11>052050004079</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>052050004079</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="25">
+                    <ct07>Nguyễn Thị Kim Phượng</ct07>
+                    <ct08>058180003281</ct08>
+                    <ct09>Nguyễn Phương Hoàng</ct09>
+                    <ct10>2009-10-12</ct10>
+                    <ct11>079309006329</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079309006329</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="26">
+                    <ct07>Nguyễn Thị Kim Phượng</ct07>
+                    <ct08>058180003281</ct08>
+                    <ct09>Nguyễn Hoàng Tùng</ct09>
+                    <ct10>2011-09-24</ct10>
+                    <ct11>079211017832</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079211017832</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="27">
+                    <ct07>Đoàn Thu Ngọc</ct07>
+                    <ct08>082193000380</ct08>
+                    <ct09>Bùi Thị Tuyết Hoa</ct09>
+                    <ct10>1965-03-10</ct10>
+                    <ct11>082165000412</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>082165000412</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="28">
+                    <ct07>Thái Ngọc Nhung</ct07>
+                    <ct08>079188013744</ct08>
+                    <ct09>Nguyễn Thị Kiều</ct09>
+                    <ct10>1957-10-20</ct10>
+                    <ct11>082157000347</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>082157000347</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="29">
+                    <ct07>Vương Trần Thủy Tiên</ct07>
+                    <ct08>077196002353</ct08>
+                    <ct09>Dương Hà My</ct09>
+                    <ct10>2024-06-13</ct10>
+                    <ct11>077324003254</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>077324003254</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="30">
+                    <ct07>Phó Hà Nhi</ct07>
+                    <ct08>079085026491</ct08>
+                    <ct09>Phó Hùng</ct09>
+                    <ct10>1959-11-20</ct10>
+                    <ct11>079059010407</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079059010407</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="31">
+                    <ct07>Phó Hà Nhi</ct07>
+                    <ct08>079085026491</ct08>
+                    <ct09>Phó Khánh Nhiên</ct09>
+                    <ct10>2016-03-02</ct10>
+                    <ct11>079216005873</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079216005873</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="32">
+                    <ct07>Nguyễn Thuý Diễm</ct07>
+                    <ct08>083195009496</ct08>
+                    <ct09>Nguyễn Văn Quanh</ct09>
+                    <ct10>1965-04-19</ct10>
+                    <ct11>083065018457</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>083065018457</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="33">
+                    <ct07>Phạm Xuân An</ct07>
+                    <ct08>079189001851</ct08>
+                    <ct09>Đặng Thị Kim Thoa</ct09>
+                    <ct10>1964-10-05</ct10>
+                    <ct11>079164004992</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079164004992</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="34">
+                    <ct07>Phạm Xuân An</ct07>
+                    <ct08>079189001851</ct08>
+                    <ct09>Đỗ Hồng Ân</ct09>
+                    <ct10>2019-05-16</ct10>
+                    <ct11>079319014833</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079319014833</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="35">
+                    <ct07>Phạm Xuân An</ct07>
+                    <ct08>079189001851</ct08>
+                    <ct09>Đỗ Hồng Ngân</ct09>
+                    <ct10>2021-11-21</ct10>
+                    <ct11>079321027357</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079321027357</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="36">
+                    <ct07>Phạm Vũ Thu Hiền</ct07>
+                    <ct08>075198014286</ct08>
+                    <ct09>Trần Phạm Tuệ Đan</ct09>
+                    <ct10>2024-05-11</ct10>
+                    <ct11>075324006960</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>075324006960</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>06/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="37">
+                    <ct07>Trương Thị Hiếu</ct07>
+                    <ct08>052195010445</ct08>
+                    <ct09>Lê Thị Ngừa</ct09>
+                    <ct10>1956-02-15</ct10>
+                    <ct11>052156011074</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>052156011074</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="38">
+                    <ct07>Văn Đức Toàn</ct07>
+                    <ct08>066093017643</ct08>
+                    <ct09>Văn Đức Đăng Khoa</ct09>
+                    <ct10>2024-06-25</ct10>
+                    <ct11>079224018731</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079224018731</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="39">
+                    <ct07>Bùi Minh Trí</ct07>
+                    <ct08>079083008626</ct08>
+                    <ct09>Mai Thị Ngọc Lang</ct09>
+                    <ct10>1952-08-24</ct10>
+                    <ct11>075152000081</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>075152000081</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>07/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="40">
+                    <ct07>Bùi Minh Trí</ct07>
+                    <ct08>079083008626</ct08>
+                    <ct09>Bùi Thiên Tạo</ct09>
+                    <ct10>1954-10-27</ct10>
+                    <ct11>082054000231</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>082054000231</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="41">
+                    <ct07>Lê Văn Tuấn</ct07>
+                    <ct08>083080007668</ct08>
+                    <ct09>Lê Ái Thùy Duyên</ct09>
+                    <ct10>2019-05-24</ct10>
+                    <ct11>083319003374</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>083319003374</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="42">
+                    <ct07>Lê Văn Tuấn</ct07>
+                    <ct08>083080007668</ct08>
+                    <ct09>Lê Ái Thùy Dương</ct09>
+                    <ct10>2011-09-26</ct10>
+                    <ct11>083311001199</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>083311001199</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="43">
+                    <ct07>Nguyễn Thị Thanh Hoa</ct07>
+                    <ct08>052184019410</ct08>
+                    <ct09>Trần Ngọc Hạnh Uyên</ct09>
+                    <ct10>2016-01-15</ct10>
+                    <ct11>060316001463</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>060316001463</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>10/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="44">
+                    <ct07>Nguyễn Thị Thanh Hoa</ct07>
+                    <ct08>052184019410</ct08>
+                    <ct09>Trần Ngọc Diễm Uyên</ct09>
+                    <ct10>2017-10-30</ct10>
+                    <ct11>060317001369</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>060317001369</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>10/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="45">
+                    <ct07>Nguyễn Thị Thanh Hoa</ct07>
+                    <ct08>052184019410</ct08>
+                    <ct09>Nguyễn Văn Yến</ct09>
+                    <ct10>1954-06-06</ct10>
+                    <ct11>052054000773</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>052054000773</ct13>
+                    <ct14_ma>03</ct14_ma>
+                    <ct14_ten>Cha/mẹ</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>10/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="46">
+                    <ct07>Trần Kim Tài</ct07>
+                    <ct08>079068014452</ct08>
+                    <ct09>Trần Anh Thi</ct09>
+                    <ct10>2007-08-31</ct10>
+                    <ct11>079307016393</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079307016393</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="47">
+                    <ct07>Trần Kim Tài</ct07>
+                    <ct08>079068014452</ct08>
+                    <ct09>Trần Anh Thư</ct09>
+                    <ct10>2004-09-27</ct10>
+                    <ct11>079304013923</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>079304013923</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="48">
+                    <ct07>Trần Thị Hồng Ngọc</ct07>
+                    <ct08>075184022562</ct08>
+                    <ct09>Nguyễn Vinh</ct09>
+                    <ct10>2010-07-02</ct10>
+                    <ct11>075210006079</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>075210006079</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+                <BKeTTinNPT id="49">
+                    <ct07>Yang Yu Kai</ct07>
+                    <ct08>8482787465</ct08>
+                    <ct09>Yang Tuyết An</ct09>
+                    <ct10>2017-11-20</ct10>
+                    <ct11>031317015078</ct11>
+                    <nguoiVNSongNN_NguoiNN>false</nguoiVNSongNN_NguoiNN>
+                    <ct12_ma>03</ct12_ma>
+                    <ct12_ten>Thẻ CCCD/Số định danh cá nhân</ct12_ten>
+                    <ct13>031317015078</ct13>
+                    <ct14_ma>01</ct14_ma>
+                    <ct14_ten>Con</ct14_ten>
+                    <ct15>01/2025</ct15>
+                    <ct16>12/2025</ct16>
+                </BKeTTinNPT>
+            </PLuc_05_3_BK_QTT>
+            <PL01_KHBS>
+                <Header>
+                    <maTKhai>953</maTKhai>
+                    <tenTKhai>05/QTT-TNCN</tenTKhai>
+                    <maGiaoDich>10820260012037215</maGiaoDich>
+                    <KyKKhaiThue>
+                        <kieuKy>Y</kieuKy>
+                        <kyKKhai>2025</kyKKhai>
+                        <kyKKhaiTuNgay>01/01/2025</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>31/12/2025</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang>01/2025</kyKKhaiTuThang>
+                        <kyKKhaiDenThang>12/2025</kyKKhaiDenThang>
+                    </KyKKhaiThue>
+                    <soLan>1</soLan>
+                    <mst>0309519880</mst>
+                    <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+                    <mstDLyThue xsi:nil="true"/>
+                    <tenDLyThue xsi:nil="true"/>
+                    <soHDongDLyThue xsi:nil="true"/>
+                    <ngayKyHDDLyThue xsi:nil="true"/>
+                </Header>
+                <ma_DonViTien>VND</ma_DonViTien>
+                <ten_DonViTien>Việt Nam Đồng</ten_DonViTien>
+                <Muc_A>
+                    <Muc_I>
+                        <Muc_1>
+                            <ChiTiet id="1">
+<ct2_ma>1001</ct2_ma>
+<ct2_ten>Thuế thu nhập từ tiền lương, tiền công</ct2_ten>
+<ct3>4739460</ct3>
+                            </ChiTiet>
+                            <tongCong_ct10>4739460</tongCong_ct10>
+                        </Muc_1>
+                        <Muc_2>
+                            <DSachPLuc>
+<BKePLuc id="1">
+    <ma_PLuc/>
+    <ten_PLuc/>
+    <CTietPLuc>
+        <ChiTiet id="1">
+            <ct2_ma/>
+            <ct2_ten/>
+            <ct3_ma/>
+            <ct3_ten/>
+            <ct04_ma/>
+            <ct04_ten/>
+            <ct05_ma/>
+            <ct05_ten/>
+            <ct06_ma/>
+            <ct06_ten/>
+            <ct7>0</ct7>
+        </ChiTiet>
+    </CTietPLuc>
+</BKePLuc>
+<tongCong_ct11>0</tongCong_ct11>
+                            </DSachPLuc>
+                        </Muc_2>
+                        <Muc_3>
+                            <ct3a_1 xsi:nil="true"/>
+                            <ct3a_2>0</ct3a_2>
+                            <ct3b>0</ct3b>
+                        </Muc_3>
+                    </Muc_I>
+                    <Muc_II>
+                        <ChiTiet id="1">
+                            <ct2_ma/>
+                            <ct2_ten/>
+                            <ct3>0</ct3>
+                        </ChiTiet>
+                        <tongCong_ct12>0</tongCong_ct12>
+                    </Muc_II>
+                    <Muc_III>
+                        <ChiTiet id="1">
+                            <ct2_ma/>
+                            <ct2_ten/>
+                            <ct3>0</ct3>
+                        </ChiTiet>
+                        <tongCong_ct13>0</tongCong_ct13>
+                    </Muc_III>
+                </Muc_A>
+                <Muc_B>
+                    <Muc_I>
+                        <ct_1>0</ct_1>
+                        <ct_2_so/>
+                        <ct_2_ngay xsi:nil="true"/>
+                        <ct_2_CQT_ma/>
+                        <ct_2_CQT_ten/>
+                        <ct_3_so/>
+                        <ct_3_ngay xsi:nil="true"/>
+                    </Muc_I>
+                    <Muc_II>
+                        <ct_1>0</ct_1>
+                        <ct_2>0</ct_2>
+                    </Muc_II>
+                </Muc_B>
+            </PL01_KHBS>
+            <PL01_1_KHBS>
+                <Header>
+                    <maTKhai>953</maTKhai>
+                    <tenTKhai>05/QTT-TNCN</tenTKhai>
+                    <maGiaoDich>10820260012037215</maGiaoDich>
+                    <KyKKhaiThue>
+                        <kieuKy>Y</kieuKy>
+                        <kyKKhai>2025</kyKKhai>
+                        <kyKKhaiTuNgay>01/01/2025</kyKKhaiTuNgay>
+                        <kyKKhaiDenNgay>31/12/2025</kyKKhaiDenNgay>
+                        <kyKKhaiTuThang>01/2025</kyKKhaiTuThang>
+                        <kyKKhaiDenThang>12/2025</kyKKhaiDenThang>
+                    </KyKKhaiThue>
+                    <soLan>1</soLan>
+                    <mst>0309519880</mst>
+                    <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+                    <mstDLyThue xsi:nil="true"/>
+                    <tenDLyThue xsi:nil="true"/>
+                    <soHDongDLyThue xsi:nil="true"/>
+                    <ngayKyHDDLyThue xsi:nil="true"/>
+                </Header>
+                <ma_DonViTien>VND</ma_DonViTien>
+                <ten_DonViTien>Việt Nam Đồng</ten_DonViTien>
+                <Muc_A>
+                    <DSachHSo>
+                        <BKeHSo id="1">
+                            <ma_HSo>0004</ma_HSo>
+                            <ten_HSo>05/QTT-TNCN</ten_HSo>
+                            <CTietHSo>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[22]</ct3_ma>
+    <ct3_ten>Tổng số cá nhân giảm trừ gia cảnh</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>50</ct04>
+    <ct05>49</ct05>
+    <ct06>-1</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[35]</ct3_ma>
+    <ct3_ten>Tổng số cá nhân uỷ quyền cho tổ chức, cá nhân trả thu nhập quyết toán thay</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>2</ct05>
+    <ct06>2</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[36]</ct3_ma>
+    <ct3_ten>Tổng số thuế thu nhập cá nhân đã khấu trừ</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>109.749.380</ct05>
+    <ct06>109749380</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[38]</ct3_ma>
+    <ct3_ten>Tổng số thuế thu nhập cá nhân phải nộp</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>114.488.840</ct05>
+    <ct06>114488840</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[40]</ct3_ma>
+    <ct3_ten>Tổng số thuế thu nhập cá nhân còn phải nộp [40] = ([38] – [36] – [39]) &gt;0</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>4.739.460</ct05>
+    <ct06>4739460</ct06>
+    <ct7>4739460</ct7>
+    <ct8/>
+</ChiTiet>
+                            </CTietHSo>
+                        </BKeHSo>
+                        <BKeHSo id="1">
+                            <ma_HSo>000401</ma_HSo>
+                            <ten_HSo>05-1/BK-TNCN</ten_HSo>
+                            <CTietHSo>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>32]</ct3_ma>
+    <ct3_ten>Tổng Số lượng NPT tính giảm trừ</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>50</ct04>
+    <ct05>49</ct05>
+    <ct06>-1</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[33]</ct3_ma>
+    <ct3_ten>Tổng số tiền giảm trừ gia cảnh</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>11.358.600.000</ct04>
+    <ct05>11.305.800.000</ct05>
+    <ct06>-52800000</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[37]</ct3_ma>
+    <ct3_ten>Tổng thu nhập tính thuế ([21]= [12]-[14]-[15]-[17] –[18] –[19]-[20])</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>5.489.269.564</ct04>
+    <ct05>5.542.069.564</ct05>
+    <ct06>52800000</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[40]</ct3_ma>
+    <ct3_ten>Tổng số thuế phải nộp</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>114.488.840</ct05>
+    <ct06>114488840</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+<ChiTiet id="1">
+    <ct2_ma/>
+    <ct2_ten/>
+    <ct3_ma>[42]</ct3_ma>
+    <ct3_ten>Tổng số thuế còn phải nộp</ct3_ten>
+    <ct3_1_ma xsi:nil="true"/>
+    <ct3_1_ten xsi:nil="true"/>
+    <ct3_2_ma xsi:nil="true"/>
+    <ct3_2_ten/>
+    <ct04>0</ct04>
+    <ct05>4.739.460</ct05>
+    <ct06>4739460</ct06>
+    <ct7>0</ct7>
+    <ct8/>
+</ChiTiet>
+                            </CTietHSo>
+                        </BKeHSo>
+                        <TongCong>
+                            <tongCong_7>4739460</tongCong_7>
+                            <tongCong_8>0</tongCong_8>
+                            <tongCong_9>0</tongCong_9>
+                        </TongCong>
+                    </DSachHSo>
+                </Muc_A>
+                <Muc_B>
+                    <CTietTaiLieu id="1">
+                        <ma_TLieu/>
+                        <ten_TLieu/>
+                    </CTietTaiLieu>
+                </Muc_B>
+            </PL01_1_KHBS>
+        </PLuc>
+    </HSoKhaiThue>
+    <CKyDTu><Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="NBan-60d27589e4e345938bc4be92a48af25b"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><Reference URI="#NODETOSIGN"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>ZICw/i1JYvX+Wj2cNKFjp4gJ0VajLuyZc5BnX7Mq26w=</DigestValue></Reference><Reference URI="#SigningTime-339f45c7e7b346bdab50b4285ee8dc2b"><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>7HLixEb/QMbORf6WctyBxYQFRF6R1K7oNyrsDuTK8Vc=</DigestValue></Reference></SignedInfo><SignatureValue>b02Aqs1HOh+2pcBGcFXocBngkMJAbq8cb870NpJ0qDDYoSfPq7Ntcyd5pUQ6W8eL/iLJEBJfebZ4b7/klbTMSFpIFZ6MrgH5sOzCSyLFAQVn2shxUmVSGG8odIyCy1DoxN8KMJ+f1LFMbd+NteZS2s87uoRed/rI/IdOEWO/feQ=</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=VN,ST=Hồ Chí Minh,CN=CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG,UID=MST:0309519880</X509SubjectName><X509Certificate>MIID7zCCAtegAwIBAgIQVANGqO4M3R5Ey8DYYB7B2DANBgkqhkiG9w0BAQsFADBAMQswCQYDVQQGEwJWTjEZMBcGA1UECgwQQmthdiBDb3Jwb3JhdGlvbjEWMBQGA1UEAwwNQmthdkNBIFNIQTI1NjAeFw0yNTA2MzAwODE3MDVaFw0yOTA1MDkwMzMzMDZaMIGEMR4wHAYKCZImiZPyLGQBAQwOTVNUOjAzMDk1MTk4ODAxPDA6BgNVBAMMM0PDlE5HIFRZIFROSEggR0lBTyBOSOG6rE4gTkfDlEkgU0FPIFBIxq/GoE5HIMSQw5RORzEXMBUGA1UECAwOSOG7kyBDaMOtIE1pbmgxCzAJBgNVBAYTAlZOMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8MEGkLxBLYDiJKywqxk+6izbvwFPZPLTPxsGqR9GcOs2J5z7haEYCnAZdSBFZBZ6fWc8E0t48QnSj2CYwKACKgV79XAPxMtoBr2hZHmdN9biOOO0UiLgJik9gJCo36ILIqjrpwMD04nSWMzsvpGnu/greR1XR+9ttSxpa3uPFtwIDAQABo4IBIjCCAR4wDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBQr1P4Wyp4Wo2d1Yxgzk+FtExY01DBqBggrBgEFBQcBAQReMFwwNwYIKwYBBQUHMAKGK2h0dHBzOi8vcm9vdGNhLmdvdi52bi9jcnQvQmthdkNBX1NIQTI1Ni5wN2IwIQYIKwYBBQUHMAGGFWh0dHA6Ly9vY3NwLmJrYXZjYS52bjAfBgNVHSUEGDAWBggrBgEFBQcDBAYKKwYBBAGCNwoDDDAxBgNVHR8EKjAoMCagJKAihiBodHRwOi8vY3JsLmJrYXZjYS52bi9Ca2F2Q0EyLmNybDAdBgNVHQ4EFgQULF/9A8rFEQArtfOzD8/s+B+XrTkwDgYDVR0PAQH/BAQDAgTwMA0GCSqGSIb3DQEBCwUAA4IBAQBtWXpaaCrcUETuO549glJsRuA4+w+RI1i9zTCenBx0sTGia1OXO2T65K97opQoSW3pWFRH/0KFVjVJf34MbvXBUHPiEC8hLkkCkuKQwMqInTole2djobUbmeq20v1RfwKY6iJlwnDJuqtghIaQ5m1EH8gBchX6Ia20hzosXSYv05qK2oRzgRNqFuWVuh6fNOAF6IIAtiSw9M+MnxvM8WChaAyTVRckgeixxe1WvNsWSNxbjmY+V3GX2XYyQaxx57Wtz9nr0xCg2GKaXw6DPvzEH8LUvYUC7+m4HslgUuGUvCuSRYMxb7m3pYMbQJeVd56zeU9MWAEZ5ZSp4oma5KrD</X509Certificate></X509Data></KeyInfo><Object Id="SigningTime-339f45c7e7b346bdab50b4285ee8dc2b"><SignatureProperties><SignatureProperty Target="signatureProperties"><SigningTime>2026-04-20T14:39:52</SigningTime></SignatureProperty></SignatureProperties></Object></Signature></CKyDTu>
+</HSoThueDTu>

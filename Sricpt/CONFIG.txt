@@ -1,0 +1,206 @@
+// =========================================================================
+// ⚙️ FILE: CONFIG.GS - BỘ ĐIỀU PHỐI DỮ LIỆU ĐA THUÊ CHUẨN SAAS (MULTI-TENANT)
+// =========================================================================
+
+// Hệ thống hằng số định tuyến tài nguyên cốt lõi của phần mềm
+const ROOT_FOLDER_ID = "1fXemtmQJeGviJNb9nXTz0WLOZXVI2iuo";
+const SYSTEM_MASTER_SS_ID = "1u22dB5pNYUZpzEaZw4AvW1Nx75tMKDcfN4fiku1WUrA";
+const SYSTEM_TEMPLATE_SS_ID = "10kiEzDLqie9BnXoWlKFNPedsXQy06PB-OOWPEfXI3wU"; // Kế toán thay ID file mẫu vào đây
+
+/**
+ * Khởi tạo ứng dụng Web App giao diện điều hành chính
+ */
+function doGet(e) {
+  try {
+    return HtmlService.createTemplateFromFile('Index')
+        .evaluate()
+        .setTitle('Hệ Thống Quản Lý Tờ Khai Thuế - SaaS Edition')
+        .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  } catch (err) {
+    return HtmlService.createHtmlOutput("<div style='padding:20px;color:#721c24;background:#f8d7da;font-family:Arial;border-radius:4px;'><h3>❌ LỖI KHỞI TẠO BIÊN DỊCH SERVER:</h3><p>" + err.toString() + "</p></div>");
+  }
+}
+
+/**
+ * Hàm nhúng an toàn mã nguồn file con (HTML/CSS/JS) vào trang Index.html
+ */
+function include(filename) {
+  try {
+    return HtmlService.createHtmlOutputFromFile(filename).getContent();
+  } catch (err) {
+    return "/* ⚠️ Hệ thống cảnh báo: Không tìm thấy hoặc lỗi cấu trúc file con '" + filename + "' */";
+  }
+}
+
+/**
+ * Tra cứu cấu hình cơ sở dữ liệu và thư mục cô lập của từng khách hàng (Tenant) dựa trên Token đăng nhập
+ */
+function getTenantConfig(username) {
+  var masterSs = SpreadsheetApp.openById(SYSTEM_MASTER_SS_ID);
+  var sheet = masterSs.getSheetByName("M_Tenants");
+  if (!sheet) throw new Error("Không tìm thấy tab cấu hình quản trị 'M_Tenants' trên Master Admin!");
+
+  var data = sheet.getDataRange().getValues();
+  for (var i = 1; i < data.length; i++) {
+    if (data[i][0].toString().trim().toLowerCase() === username.trim().toLowerCase()) {
+      var expiry = new Date(data[i][5]);
+      var today = new Date();
+
+      // Chặn truy cập lập tức nếu tài khoản bị Admin khóa thủ công hoặc hết hạn gói cước
+      if (data[i][6].toString().trim() === "LOCKED" || today > expiry) {
+        throw new Error("Tài khoản đã hết hạn dùng thử hoặc bị khóa! Vui lòng liên hệ Admin để gia hạn dịch vụ.");
+      }
+
+      return {
+        ssId: data[i][2].toString().trim(),
+        folderId: data[i][3].toString().trim(),
+        package: data[i][4].toString().trim()
+      };
+    }
+  }
+  throw new Error("Không tìm thấy thông tin cấu hình tài khoản SaaS của bạn!");
+}
+
+/**
+ * Xử lý Đăng ký tài khoản SaaS mới - Tự động tạo bản sao Database và Thư mục lưu trữ độc lập
+ */
+function processUserRegister(username, password) {
+  try {
+    var masterSs = SpreadsheetApp.openById(SYSTEM_MASTER_SS_ID);
+    var sheet = masterSs.getSheetByName("M_Tenants");
+    var data = sheet.getDataRange().getValues();
+
+    // Kiểm tra trùng lặp tên tài khoản bảo vệ dữ liệu hệ thống
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][0].toString().trim().toLowerCase() === username.trim().toLowerCase()) {
+        return { success: false, message: "Tên tài khoản này đã được đăng ký trên hệ thống!" };
+      }
+    }
+
+    if (SYSTEM_TEMPLATE_SS_ID.includes("ĐIỀN_MÃ_ID")) {
+      return { success: false, message: "Hệ thống chưa cấu hình hằng số SYSTEM_TEMPLATE_SS_ID trong file Config.gs!" };
+    }
+
+    // 1. Tự động sao chép file database mẫu thành file dữ liệu tính toán riêng biệt cho khách
+    var templateDbFile = DriveApp.getFileById(SYSTEM_TEMPLATE_SS_ID);
+    var newClientDb = templateDbFile.makeCopy("Tax_DB_" + username);
+    var clientSsId = newClientDb.getId();
+
+    // 2. Tự động tạo thư mục chứa file XML gốc hoàn toàn độc lập cho khách trên đám mây Drive
+    var rootSystemFolder = DriveApp.getFolderById(ROOT_FOLDER_ID);
+    var newClientFolder = rootSystemFolder.createFolder("Storage_XML_" + username);
+    var clientFolderId = newClientFolder.getId();
+
+    // 3. Thiết lập hạn dùng thử mặc định ban đầu là 30 ngày
+    var expiryDate = new Date();
+    expiryDate.setDate(expiryDate.getDate() + 30);
+
+    // 4. Ghi sổ nhật ký đồng bộ phân hệ SaaS mới vào Master Admin tính toán dòng tiền
+    sheet.appendRow([username.trim(), password.trim(), clientSsId, clientFolderId, "TRIAL", expiryDate, "ACTIVE"]);
+    return { success: true, message: "Đăng ký thành công! Hệ thống đã cấp riêng cho bạn 1 phân hệ SaaS dùng thử 30 ngày." };
+  } catch (e) {
+    return { success: false, message: "Lỗi kích hoạt phân hệ SaaS đa thuê: " + e.toString() };
+  }
+}
+
+/**
+ * Xử lý Đăng nhập hệ thống đối soát tài khoản thời gian thực từ Master Sheet
+ */
+function processUserLogin(username, password) {
+  try {
+    var masterSs = SpreadsheetApp.openById(SYSTEM_MASTER_SS_ID);
+    var sheet = masterSs.getSheetByName("M_Tenants");
+    var data = sheet.getDataRange().getValues();
+
+    for (var i = 1; i < data.length; i++) {
+      if (data[i][0].toString().trim() === username.trim() && data[i][1].toString().trim() === password.trim()) {
+        if (data[i][6].toString().trim() === "LOCKED" || new Date() > new Date(data[i][5])) {
+          return { success: false, message: "Tài khoản của bạn đã hết hạn sử dụng hoặc đang bị tạm khóa!" };
+        }
+        return { success: true };
+      }
+    }
+    return { success: false, message: "Tài khoản hoặc mật khẩu hệ thống không chính xác!" };
+  } catch (e) {
+    return { success: false, message: "Lỗi xác thực máy chủ: " + e.toString() };
+  }
+}
+
+/**
+ * Tải toàn bộ dữ liệu chỉ tiêu phẳng từ tệp cơ sở dữ liệu độc lập của khách hàng đổ lên Dashboard Frontend
+ */
+function getDashboardData(tenantToken) {
+  try {
+    if (!tenantToken) return [];
+    var config = getTenantConfig(tenantToken); // Nhận diện cấu hình ID Sheet động của riêng Tenant
+    var ss = SpreadsheetApp.openById(config.ssId);
+    var sheetData = ss.getSheetByName("U_Tax_Data_Rows");
+    var values = sheetData.getDataRange().getValues();
+    if (values.length <= 1) return [];
+
+    var result = [];
+    for (var i = 1; i < values.length; i++) {
+      var row = values[i]; if (!row[7] || row[8] === "") continue;
+      result.push({
+        fileId: row[0].toString(),
+        mst: row[1].toString(),
+        type: row[2].toString(),
+        period: row[3].toString(),
+        year: row[4].toString(),
+        loaiKhai: row[5].toString(),
+        soLan: row[6].toString(),
+        code: row[7].toString(),
+        value: parseFloat(row[8] || 0),
+        status: row[9].toString()
+      });
+    }
+    return result;
+  } catch (e) {
+    throw new Error("Lỗi tải dữ liệu máy chủ SaaS: " + e.message);
+  }
+}
+
+/**
+ * Kiểm tra trạng thái kết nối tới thư mục lưu trữ độc lập của riêng từng khách hàng
+ */
+function checkDriveConnection(tenantToken) {
+  try {
+    if (!tenantToken) return { success: false, message: "Chưa xác thực token đăng nhập hệ thống!" };
+    var config = getTenantConfig(tenantToken);
+    var folder = DriveApp.getFolderById(config.folderId);
+    return { success: true, folderName: folder.getName() };
+  } catch (e) {
+    return { success: false, message: "Lỗi kết nối bộ nhớ Drive: " + e.message };
+  }
+}
+
+/**
+ * 🔥 HÀM ĐỒNG BỘ ĐẶC BIỆT CỦA PHÂN HỆ SAAS THƯƠNG MẠI:
+ * Tiếp nhận file từ Frontend, tự động nạp lưu (Module 1) và giải phẫu XML (Module 2) trong 1 vòng máy chủ duy nhất.
+ * Hàm này loại bỏ việc gọi lặp hàm động ẩn từ trình duyệt, triệt tiêu hoàn toàn lỗi Syntax/TypeError Token ở Console.
+ */
+/**
+ * 🔥 HÀM ĐỒNG BỘ ĐẶC BIỆT CỦA PHÂN HỆ SAAS THƯƠNG MẠI:
+ * Định tuyến dynamic ID Database riêng biệt cho từng Tenant khách hàng
+ */
+/**
+ * 🔥 HÀM ĐỒNG BỘ ĐẶC BIỆT CỦA PHÂN HỆ SAAS THƯƠNG MẠI:
+ * Tiếp nhận file từ Frontend, tự động nạp lưu và giải phẫu XML theo ID Sheet riêng của Tenant.
+ */
+function uploadAndLogFileAndParse(base64, fileName, mst, yr, type, ky, nk, tenantToken) {
+  try {
+    // 1. Tra cứu cấu hình cơ sở dữ liệu cô lập của khách hàng dựa trên Token đăng nhập
+    var config = getTenantConfig(tenantToken);
+    var targetSsId = config.ssId;
+
+    // 2. Kích hoạt Module 1 tải và lưu file XML gốc vào đúng thư mục kèm ghi nhật ký vào database của khách
+    var fileId = uploadAndLogFile(base64, fileName, mst, yr, type, ky, nk, targetSsId);
+
+    // 3. Kích hoạt Module 2 và 3 giải phẫu XML rồi ghi đè chỉ tiêu phẳng lên file Spreadsheet của khách
+    var parseStatus = parseXmlContent(fileId, targetSsId);
+
+    return parseStatus;
+  } catch (e) {
+    throw new Error("Lỗi luồng bóc tách tích hợp máy chủ SaaS: " + e.toString());
+  }
+}

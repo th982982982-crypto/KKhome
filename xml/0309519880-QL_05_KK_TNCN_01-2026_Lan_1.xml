@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HSoThueDTu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://kekhaithue.gdt.gov.vn/TKhaiThue">
+  <HSoKhaiThue id="ID_1">
+    <TTinChung>
+      <TTinDVu>
+        <maDVu>HTKK</maDVu>
+        <tenDVu>HỖ TRỢ KÊ KHAI THUẾ</tenDVu>
+        <pbanDVu>5.5.6</pbanDVu>
+        <ttinNhaCCapDVu>2023CE3CCA131CD10D53C1D13F636A2F</ttinNhaCCapDVu>
+      </TTinDVu>
+      <TTinTKhaiThue>
+        <TKhaiThue>
+          <maTKhai>864</maTKhai>
+          <tenTKhai>TK khấu trừ thuế thu nhập cá nhân Mẫu 05/KK-TNCN (TT80/2021)</tenTKhai>
+          <moTaBMau>(Ban hành kèm theo Thông tư số 80/2021/TT-BTC ngày 29 tháng 9 năm 2021 của Bộ trưởng Bộ Tài chính)</moTaBMau>
+          <pbanTKhaiXML>2.8.3</pbanTKhaiXML>
+          <loaiTKhai>C</loaiTKhai>
+          <soLan>0</soLan>
+          <KyKKhaiThue>
+            <kieuKy>M</kieuKy>
+            <kyKKhai>01/2026</kyKKhai>
+            <kyKKhaiTuNgay>01/01/2026</kyKKhaiTuNgay>
+            <kyKKhaiDenNgay>31/01/2026</kyKKhaiDenNgay>
+            <kyKKhaiTuThang />
+            <kyKKhaiDenThang />
+          </KyKKhaiThue>
+          <maCQTNoiNop>70129</maCQTNoiNop>
+          <tenCQTNoiNop>Thuế cơ sở 14 Thành phố Hồ Chí Minh</tenCQTNoiNop>
+          <ngayLapTKhai>2026-02-06</ngayLapTKhai>
+          <GiaHan>
+            <maLyDoGiaHan />
+            <lyDoGiaHan />
+          </GiaHan>
+          <nguoiKy>NHƯ NGHIỆP THUẬN</nguoiKy>
+          <ngayKy>2026-02-06</ngayKy>
+          <nganhNgheKD />
+        </TKhaiThue>
+        <NNT>
+          <mst>0309519880</mst>
+          <tenNNT>CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG</tenNNT>
+          <dchiNNT>Tầng 2, toà nhà Dreamplex 195, số 195 Điện Biên Phủ</dchiNNT>
+          <tenXaNNT>Phường Gia Định</tenXaNNT>
+          <maXaNNT>70129104</maXaNNT>
+          <maHuyenNNT />
+          <tenHuyenNNT />
+          <maTinhNNT>701</maTinhNNT>
+          <tenTinhNNT>Thành phố Hồ Chí Minh</tenTinhNNT>
+          <dthoaiNNT />
+          <faxNNT />
+          <emailNNT />
+        </NNT>
+      </TTinTKhaiThue>
+    </TTinChung>
+    <CTieuTKhaiChinh>
+      <mst_cu>0309519880</mst_cu>
+      <ct15>0</ct15>
+      <ct16>72</ct16>
+      <ct17>72</ct17>
+      <ct18>28</ct18>
+      <ct19>28</ct19>
+      <ct20>0</ct20>
+      <ct21>1270836539</ct21>
+      <ct22>1270836539</ct22>
+      <ct23>0</ct23>
+      <ct24>0</ct24>
+      <ct25>0</ct25>
+      <ct26>664749403</ct26>
+      <ct27>664749403</ct27>
+      <ct28>0</ct28>
+      <ct29>12625906</ct29>
+      <ct30>12625906</ct30>
+      <ct31>0</ct31>
+      <ct32>0</ct32>
+    </CTieuTKhaiChinh>
+  </HSoKhaiThue>
+<CKyDTu><Signature Id="CKyDTuID_1" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI="#ID_1"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>Y59hm6y9zCxMrZx4P3tUjsmjMJLQskJiGYmpfEa1tmM=</DigestValue></Reference><Reference URI="#ObjectCKyDTuID_1"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>TISVvNzIJrdaQBjN3kxEcqb2V4YI6c2m9OSPHxFFG8E=</DigestValue></Reference></SignedInfo><SignatureValue>rrmzv8ByjBhRTs/EgeInICEtULFFiLkd2vz23yrfzwdE9YugRfLotwyHj1I9na50/ULiuDqSOrrNcdAR7UG6y+re9AdxYtaHLHrYeVEiC2zwDZs3jDUpEX3F9UihjsLI6t31a2hRjOytU9jf2Yc5QyptpZvHAv9Q+sPDdH8cU3g=</SignatureValue><KeyInfo><X509Data><X509SubjectName>C=VN, S=Hồ Chí Minh, CN=CÔNG TY TNHH GIAO NHẬN NGÔI SAO PHƯƠNG ĐÔNG, OID.0.9.2342.19200300.100.1.1=MST:0309519880</X509SubjectName><X509Certificate>MIID7zCCAtegAwIBAgIQVANGqO4M3R5Ey8DYYB7B2DANBgkqhkiG9w0BAQsFADBAMQswCQYDVQQGEwJWTjEZMBcGA1UECgwQQmthdiBDb3Jwb3JhdGlvbjEWMBQGA1UEAwwNQmthdkNBIFNIQTI1NjAeFw0yNTA2MzAwODE3MDVaFw0yOTA1MDkwMzMzMDZaMIGEMR4wHAYKCZImiZPyLGQBAQwOTVNUOjAzMDk1MTk4ODAxPDA6BgNVBAMMM0PDlE5HIFRZIFROSEggR0lBTyBOSOG6rE4gTkfDlEkgU0FPIFBIxq/GoE5HIMSQw5RORzEXMBUGA1UECAwOSOG7kyBDaMOtIE1pbmgxCzAJBgNVBAYTAlZOMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8MEGkLxBLYDiJKywqxk+6izbvwFPZPLTPxsGqR9GcOs2J5z7haEYCnAZdSBFZBZ6fWc8E0t48QnSj2CYwKACKgV79XAPxMtoBr2hZHmdN9biOOO0UiLgJik9gJCo36ILIqjrpwMD04nSWMzsvpGnu/greR1XR+9ttSxpa3uPFtwIDAQABo4IBIjCCAR4wDAYDVR0TAQH/BAIwADAfBgNVHSMEGDAWgBQr1P4Wyp4Wo2d1Yxgzk+FtExY01DBqBggrBgEFBQcBAQReMFwwNwYIKwYBBQUHMAKGK2h0dHBzOi8vcm9vdGNhLmdvdi52bi9jcnQvQmthdkNBX1NIQTI1Ni5wN2IwIQYIKwYBBQUHMAGGFWh0dHA6Ly9vY3NwLmJrYXZjYS52bjAfBgNVHSUEGDAWBggrBgEFBQcDBAYKKwYBBAGCNwoDDDAxBgNVHR8EKjAoMCagJKAihiBodHRwOi8vY3JsLmJrYXZjYS52bi9Ca2F2Q0EyLmNybDAdBgNVHQ4EFgQULF/9A8rFEQArtfOzD8/s+B+XrTkwDgYDVR0PAQH/BAQDAgTwMA0GCSqGSIb3DQEBCwUAA4IBAQBtWXpaaCrcUETuO549glJsRuA4+w+RI1i9zTCenBx0sTGia1OXO2T65K97opQoSW3pWFRH/0KFVjVJf34MbvXBUHPiEC8hLkkCkuKQwMqInTole2djobUbmeq20v1RfwKY6iJlwnDJuqtghIaQ5m1EH8gBchX6Ia20hzosXSYv05qK2oRzgRNqFuWVuh6fNOAF6IIAtiSw9M+MnxvM8WChaAyTVRckgeixxe1WvNsWSNxbjmY+V3GX2XYyQaxx57Wtz9nr0xCg2GKaXw6DPvzEH8LUvYUC7+m4HslgUuGUvCuSRYMxb7m3pYMbQJeVd56zeU9MWAEZ5ZSp4oma5KrD</X509Certificate></X509Data></KeyInfo><Object Id="ObjectCKyDTuID_1"><SignatureProperties xmlns=""><SignatureProperty Target="#CKyDTuID_1" Id="SignatureProperty-CKyDTuID_1"><SigningTime>2026-02-12T08:47:51</SigningTime></SignatureProperty></SignatureProperties></Object></Signature></CKyDTu></HSoThueDTu>
