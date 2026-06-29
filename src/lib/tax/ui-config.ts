@@ -124,6 +124,7 @@ export const UI_CONFIG: Record<DeclarationType, UiRow[]> = {
   ],
   TNCN: [
     { isHeader: true, name: 'TỔNG HỢP THUẾ THU NHẬP CÁ NHÂN' },
+    { code: '15', name: 'Số hợp đồng lao động' },
     { code: '16', name: 'Tổng số người có thu nhập' },
     { code: '17', name: 'Trong đó: Số người thuộc diện phải nộp thuế' },
     { code: '18', name: 'Tổng thu nhập chịu thuế' },

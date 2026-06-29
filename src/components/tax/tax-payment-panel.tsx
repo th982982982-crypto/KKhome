@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import { Upload, Trash2, ChevronDown, ChevronRight, RefreshCw, FileCheck, Download } from 'lucide-react'
 import * as XLSX from 'xlsx'
 import { toast } from 'sonner'
@@ -203,9 +203,8 @@ export function TaxPaymentPanel() {
             </thead>
             <tbody>
               {filtered.map(p => (
-                <>
+                <Fragment key={p.id}>
                   <tr
-                    key={p.id}
                     className="hover:bg-gray-50 dark:hover:bg-gray-800/50 cursor-pointer"
                     onClick={() => toggleExpand(p.id)}
                   >
@@ -276,7 +275,7 @@ export function TaxPaymentPanel() {
                       </td>
                     </tr>
                   )}
-                </>
+                </Fragment>
               ))}
             </tbody>
           </table>

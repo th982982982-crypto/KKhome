@@ -29,7 +29,6 @@ export function TaxDashboard() {
   const [selectedMst, setSelectedMst] = useState('all')
   const [selectedYear, setSelectedYear] = useState('all')
   const [deletingId, setDeletingId] = useState<string | null>(null)
-  const [showHistory, setShowHistory] = useState(false)
 
   const [auditData, setAuditData] = useState<{
     gtgtAudit: GtgtAuditResult[]
