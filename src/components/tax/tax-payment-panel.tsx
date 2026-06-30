@@ -96,7 +96,7 @@ function KhoanNopBadges({ chiTiet }: { chiTiet: TaxPayment['chi_tiet'] }) {
   )
 }
 
-export function TaxPaymentPanel() {
+export function TaxPaymentPanel({ isReadOnly = false }: { isReadOnly?: boolean }) {
   const [payments, setPayments] = useState<TaxPayment[]>([])
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
@@ -276,6 +276,7 @@ export function TaxPaymentPanel() {
   return (
     <div className="space-y-4">
       {/* Upload zone */}
+      {!isReadOnly && (
       <div
         className="border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-xl p-6 text-center cursor-pointer hover:border-blue-400 dark:hover:border-blue-500 transition-colors"
         onClick={() => inputRef.current?.click()}
@@ -289,6 +290,7 @@ export function TaxPaymentPanel() {
         </p>
         <p className="text-xs text-gray-400 mt-1">Hỗ trợ nhiều file cùng lúc</p>
       </div>
+      )}
 
       {/* Filters + export */}
       {payments.length > 0 && (
@@ -315,6 +317,7 @@ export function TaxPaymentPanel() {
             <button onClick={exportExcel} className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors">
               <Download className="w-4 h-4" /> Xuất Excel
             </button>
+            {!isReadOnly && (
             <button
               onClick={handleDeleteAll}
               disabled={deletingAll}
@@ -323,6 +326,7 @@ export function TaxPaymentPanel() {
               <Trash2 className="w-4 h-4" />
               {deletingAll ? 'Đang xóa...' : `Xóa tất cả (${payments.length})`}
             </button>
+            )}
             <button onClick={fetchPayments} className="p-2 rounded-lg text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800" title="Làm mới">
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
             </button>
@@ -391,13 +395,15 @@ export function TaxPaymentPanel() {
                       {p.ma_thamchieu ?? '—'}
                     </td>
                     <td className="px-3 py-3 border-b border-gray-100 dark:border-gray-800">
-                      <button
-                        onClick={e => { e.stopPropagation(); handleDelete(p.id) }}
-                        disabled={deletingId === p.id}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors disabled:opacity-50"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                      {!isReadOnly && (
+                        <button
+                          onClick={e => { e.stopPropagation(); handleDelete(p.id) }}
+                          disabled={deletingId === p.id}
+                          className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors disabled:opacity-50"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      )}
                     </td>
                   </tr>
 

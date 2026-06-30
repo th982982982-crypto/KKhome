@@ -10,6 +10,7 @@ interface TaxShellProps {
   isTrial: boolean
   trialDaysLeft: number
   accessUntil: string | null
+  trialExpired: boolean  // trial đã bắt đầu nhưng đã hết, chưa mua gói
 }
 
 function formatDate(d: string | null) {
@@ -19,8 +20,9 @@ function formatDate(d: string | null) {
   return new Date(d).toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
-export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil }: TaxShellProps) {
-  if (!hasAccess) {
+export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil, trialExpired }: TaxShellProps) {
+  // Chưa bắt đầu trial và không có subscription → hiện intro
+  if (!hasAccess && !trialExpired) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4 py-16">
         <div className="w-20 h-20 bg-blue-50 dark:bg-blue-950/40 rounded-3xl flex items-center justify-center mb-6">
@@ -30,10 +32,7 @@ export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil }: Tax
           Mô-đun Tờ Khai Thuế
         </h2>
         <p className="text-gray-500 dark:text-gray-400 max-w-md mb-4 text-sm">
-          Thời gian dùng thử đã hết. Mua gói để tiếp tục sử dụng phân tích tờ khai XML.
-        </p>
-        <p className="text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-xl px-4 py-2 mb-8">
-          Dữ liệu đã upload được giữ nguyên sau khi mua gói
+          Mua gói hoặc được cấp dùng thử để bắt đầu phân tích tờ khai XML.
         </p>
         <div className="flex gap-3 flex-wrap justify-center">
           <Link href="/packages">
@@ -64,8 +63,23 @@ export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil }: Tax
 
   return (
     <div>
-      {/* Trial countdown banner */}
-      {isTrial && (
+      {/* Trial hết hạn — read-only banner */}
+      {trialExpired && (
+        <div className="flex items-center gap-3 mb-4 px-4 py-3 rounded-xl border bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800 text-red-700 dark:text-red-300 text-sm">
+          <AlertCircle className="w-4 h-4 shrink-0" />
+          <span className="flex-1">
+            <strong>Thời gian dùng thử đã hết.</strong> Dữ liệu được giữ nguyên — mua gói để tiếp tục upload và phân tích.
+          </span>
+          <Link href="/packages">
+            <button className="text-xs px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold whitespace-nowrap">
+              Mua gói ngay
+            </button>
+          </Link>
+        </div>
+      )}
+
+      {/* Trial đang hoạt động — countdown banner */}
+      {isTrial && !trialExpired && (
         <div className={`flex items-center gap-3 mb-4 px-4 py-3 rounded-xl border text-sm ${
           trialDaysLeft <= 3
             ? 'bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800 text-red-700 dark:text-red-300'
@@ -98,7 +112,7 @@ export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil }: Tax
           )}
         </div>
       </div>
-      <TaxDashboard />
+      <TaxDashboard isReadOnly={trialExpired} />
     </div>
   )
 }

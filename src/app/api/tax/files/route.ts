@@ -10,7 +10,7 @@ export async function DELETE() {
 
   const { data: profile } = await supabase
     .from('profiles')
-    .select('tax_access_until, is_admin')
+    .select('tax_access_until, is_admin, tax_trial_started_at')
     .eq('id', user.id)
     .single()
   if (!hasTaxAccess(profile)) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })

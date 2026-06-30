@@ -20,7 +20,7 @@ function fmtDate(iso: string) {
   return new Date(iso).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })
 }
 
-export function TaxDashboard() {
+export function TaxDashboard({ isReadOnly = false }: { isReadOnly?: boolean }) {
   const [files, setFiles] = useState<TaxFile[]>([])
   const [mstNames, setMstNames] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(true)
@@ -239,7 +239,7 @@ export function TaxDashboard() {
 
   return (
     <div>
-      <TaxUploadWidget onUploaded={fetchData} />
+      {!isReadOnly && <TaxUploadWidget onUploaded={fetchData} />}
 
       {hasActiveData && (
         <div className="flex items-center gap-3 bg-white dark:bg-gray-900 border-l-4 border-amber-500 px-4 py-3 rounded-r-lg shadow-sm mb-4">
@@ -389,8 +389,8 @@ export function TaxDashboard() {
             )
           )}
 
-          {tab === 'PAYMENTS' && <TaxPaymentPanel />}
-          {tab === 'FILES' && <FileList files={files} deletingId={deletingId} deletingAll={deletingAll} onDelete={handleDelete} onDeleteAll={handleDeleteAll} />}
+          {tab === 'PAYMENTS' && <TaxPaymentPanel isReadOnly={isReadOnly} />}
+          {tab === 'FILES' && <FileList files={files} deletingId={deletingId} deletingAll={deletingAll} onDelete={isReadOnly ? async () => {} : handleDelete} onDeleteAll={isReadOnly ? async () => {} : handleDeleteAll} isReadOnly={isReadOnly} />}
         </>
       )}
     </div>
@@ -403,12 +403,14 @@ function FileList({
   deletingAll,
   onDelete,
   onDeleteAll,
+  isReadOnly = false,
 }: {
   files: TaxFile[]
   deletingId: string | null
   deletingAll: boolean
   onDelete: (id: string, name: string) => void
   onDeleteAll: () => void
+  isReadOnly?: boolean
 }) {
   const [showReplaced, setShowReplaced] = useState(false)
 
@@ -427,6 +429,7 @@ function FileList({
 
   return (
     <div className="space-y-4">
+      {!isReadOnly && (
       <div className="flex justify-end">
         <button
           onClick={onDeleteAll}
@@ -437,6 +440,7 @@ function FileList({
           {deletingAll ? 'Đang xóa...' : `Xóa tất cả (${files.length})`}
         </button>
       </div>
+      )}
       {/* Active files */}
       <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
         <div className="bg-gray-50 dark:bg-gray-900 px-4 py-2.5 border-b border-gray-200 dark:border-gray-700">
@@ -477,14 +481,16 @@ function FileList({
                   {fmtDate(f.uploaded_at)}
                 </td>
                 <td className="px-4 py-2.5 border-b border-gray-100 dark:border-gray-800 text-right">
-                  <button
-                    onClick={() => onDelete(f.id, f.file_name)}
-                    disabled={deletingId === f.id}
-                    className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors disabled:opacity-50"
-                    title="Xoá file này"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                  {!isReadOnly && (
+                    <button
+                      onClick={() => onDelete(f.id, f.file_name)}
+                      disabled={deletingId === f.id}
+                      className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors disabled:opacity-50"
+                      title="Xoá file này"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
@@ -517,14 +523,16 @@ function FileList({
                     <td className="px-4 py-2 border-b border-gray-100 dark:border-gray-800 text-xs text-gray-400">{f.declaration_type} · {f.tax_period}</td>
                     <td className="px-4 py-2 border-b border-gray-100 dark:border-gray-800 text-xs text-gray-400 whitespace-nowrap">{fmtDate(f.uploaded_at)}</td>
                     <td className="px-4 py-2 border-b border-gray-100 dark:border-gray-800 text-right">
-                      <button
-                        onClick={() => onDelete(f.id, f.file_name)}
-                        disabled={deletingId === f.id}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors disabled:opacity-50"
-                        title="Xoá vĩnh viễn"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                      {!isReadOnly && (
+                        <button
+                          onClick={() => onDelete(f.id, f.file_name)}
+                          disabled={deletingId === f.id}
+                          className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors disabled:opacity-50"
+                          title="Xoá vĩnh viễn"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))}

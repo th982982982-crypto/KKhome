@@ -38,10 +38,37 @@ export function getTaxAccessStatus(
   return { hasAccess: false, isTrial: false, trialDaysLeft: 0 }
 }
 
-/** Backward-compatible boolean check */
+/** Full access: admin OR valid subscription OR active trial */
 export function hasTaxAccess(
   profile: TaxProfile | null | undefined,
   trialDays = 14
 ): boolean {
   return getTaxAccessStatus(profile, trialDays).hasAccess
+}
+
+/** View-only access: same as above PLUS expired trial (user đã từng dùng trial) */
+export function hasTaxViewAccess(profile: TaxProfile | null | undefined): boolean {
+  if (!profile) return false
+  if (profile.is_admin) return true
+  if (profile.tax_access_until) {
+    const t = new Date(profile.tax_access_until).getTime()
+    if (!Number.isFinite(t) || t > Date.now()) return true
+  }
+  // Trial đã bắt đầu (dù đã hết) → vẫn cho xem data
+  return !!profile.tax_trial_started_at
+}
+
+/** True nếu trial đã bắt đầu nhưng đã hết hạn (và không có subscription) */
+export function isTaxTrialExpired(
+  profile: TaxProfile | null | undefined,
+  trialDays = 14
+): boolean {
+  if (!profile || profile.is_admin) return false
+  if (profile.tax_access_until) {
+    const t = new Date(profile.tax_access_until).getTime()
+    if (!Number.isFinite(t) || t > Date.now()) return false
+  }
+  if (!profile.tax_trial_started_at) return false
+  const trialEnd = new Date(profile.tax_trial_started_at).getTime() + trialDays * 24 * 60 * 60 * 1000
+  return Date.now() >= trialEnd
 }
