@@ -1,6 +1,7 @@
 'use client'
 
-import { Receipt, Scale, FileSpreadsheet, Clock } from 'lucide-react'
+import Link from 'next/link'
+import { Receipt, Scale, FileSpreadsheet, Clock, ExternalLink } from 'lucide-react'
 
 interface PlanOrderItem {
   id: string
@@ -41,12 +42,30 @@ function fmtMoney(v: number) {
 }
 
 export function PlanPurchaseHistory({ orders }: Props) {
+  const header = (
+    <div className="flex items-center justify-between mb-4">
+      <p className="text-sm text-gray-500">
+        <span className="font-bold text-gray-800 dark:text-gray-100">{orders.flatMap(o => o.items).length}</span> giao dịch gói
+      </p>
+      <Link
+        href="/admin/orders"
+        className="flex items-center gap-1.5 text-xs text-blue-600 dark:text-blue-400 hover:underline font-semibold"
+      >
+        <ExternalLink className="w-3.5 h-3.5" />
+        Xem toàn bộ trong Quản lý đơn hàng
+      </Link>
+    </div>
+  )
+
   if (!orders.length) {
     return (
-      <div className="text-center py-16 text-gray-400">
-        <Receipt className="w-10 h-10 mx-auto mb-3 opacity-30" />
-        <p className="font-semibold">Chưa có giao dịch mua gói nào</p>
-      </div>
+      <>
+        {header}
+        <div className="text-center py-16 text-gray-400">
+          <Receipt className="w-10 h-10 mx-auto mb-3 opacity-30" />
+          <p className="font-semibold">Chưa có giao dịch mua gói nào</p>
+        </div>
+      </>
     )
   }
 
@@ -58,6 +77,8 @@ export function PlanPurchaseHistory({ orders }: Props) {
   )
 
   return (
+    <>
+      {header}
     <div className="overflow-auto border border-gray-200 dark:border-gray-700 rounded-xl">
       <table className="min-w-full border-collapse text-sm">
         <thead>
@@ -108,5 +129,6 @@ export function PlanPurchaseHistory({ orders }: Props) {
         </tbody>
       </table>
     </div>
+    </>
   )
 }

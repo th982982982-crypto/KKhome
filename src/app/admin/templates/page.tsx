@@ -52,6 +52,21 @@ export default async function AdminTemplatesPage({
   const emailMap = Object.fromEntries((authUsers?.users ?? []).map((u) => [u.id, u.email ?? '']))
   const nameMap = Object.fromEntries((profiles ?? []).map((p) => [p.id, p.full_name]))
 
+  // Map userId → { latestLegalOrder, latestTaxOrder } for showing plan name in Phân quyền
+  const userPlanMap: Record<string, { legal?: { name: string; confirmedAt: string }; tax?: { name: string; confirmedAt: string } }> = {}
+  for (const o of planOrders ?? []) {
+    if (!o.user_id) continue
+    const items = (o.items ?? []) as OrderItem[]
+    for (const item of items) {
+      if (item.type === 'legal_plan' && !userPlanMap[o.user_id]?.legal) {
+        userPlanMap[o.user_id] = { ...userPlanMap[o.user_id], legal: { name: item.name, confirmedAt: o.confirmed_at ?? '' } }
+      }
+      if (item.type === 'tax_plan' && !userPlanMap[o.user_id]?.tax) {
+        userPlanMap[o.user_id] = { ...userPlanMap[o.user_id], tax: { name: item.name, confirmedAt: o.confirmed_at ?? '' } }
+      }
+    }
+  }
+
   const users = (profiles ?? []).map((p) => ({
     id: p.id,
     email: emailMap[p.id] ?? '',
@@ -59,6 +74,8 @@ export default async function AdminTemplatesPage({
     is_admin: p.is_admin,
     legal_access_until: p.legal_access_until,
     tax_access_until: p.tax_access_until,
+    latestLegalPlan: userPlanMap[p.id]?.legal ?? null,
+    latestTaxPlan: userPlanMap[p.id]?.tax ?? null,
   }))
 
   // Filter orders that have legal_plan or tax_plan items

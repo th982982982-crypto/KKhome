@@ -5,6 +5,11 @@ import { Shield, CalendarDays, Check } from 'lucide-react'
 import { toast } from 'sonner'
 import { Input } from '@/components/ui/input'
 
+interface PlanInfo {
+  name: string
+  confirmedAt: string
+}
+
 interface UserRow {
   id: string
   email: string
@@ -12,6 +17,8 @@ interface UserRow {
   is_admin: boolean
   legal_access_until: string | null
   tax_access_until: string | null
+  latestLegalPlan?: PlanInfo | null
+  latestTaxPlan?: PlanInfo | null
 }
 
 function formatExpiry(until: string | null, fallback = '—'): string {
@@ -194,6 +201,9 @@ export function AccessManager({ users }: { users: UserRow[] }) {
                           <span className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-200 ${legalOn ? 'translate-x-[22px]' : 'translate-x-0.5'}`} />
                         </button>
                         <span className="text-[10px] text-gray-400">{legalOn ? formatExpiry(u.legal_access_until, 'Vĩnh viễn') : '—'}</span>
+                        {u.latestLegalPlan && (
+                          <span className="text-[10px] text-blue-500 dark:text-blue-400 font-medium">{u.latestLegalPlan.name}</span>
+                        )}
                       </div>
                     )}
                   </td>
@@ -238,11 +248,16 @@ export function AccessManager({ users }: { users: UserRow[] }) {
                             </button>
                           )}
                         </div>
-                        <div className="flex items-center gap-1 text-[10px]">
-                          <CalendarDays className="w-3 h-3 text-gray-400" />
-                          <span className={taxOn ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : 'text-gray-400'}>
-                            {u.is_admin ? 'Vĩnh viễn' : taxOn ? formatExpiry(u.tax_access_until) : 'Chưa có quyền'}
-                          </span>
+                        <div className="flex flex-col items-center gap-0.5">
+                          <div className="flex items-center gap-1 text-[10px]">
+                            <CalendarDays className="w-3 h-3 text-gray-400" />
+                            <span className={taxOn ? 'text-emerald-600 dark:text-emerald-400 font-semibold' : 'text-gray-400'}>
+                              {u.is_admin ? 'Vĩnh viễn' : taxOn ? formatExpiry(u.tax_access_until) : 'Chưa có quyền'}
+                            </span>
+                          </div>
+                          {u.latestTaxPlan && (
+                            <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">{u.latestTaxPlan.name}</span>
+                          )}
                         </div>
                       </div>
                     )}
