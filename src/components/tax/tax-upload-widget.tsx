@@ -4,6 +4,10 @@ import { useRef, useState } from 'react'
 import { Upload, X, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
 import { parseXmlText } from '@/lib/tax/xml-parser'
 
+function isGiayNopTien(xml: string): boolean {
+  return /<CHUNGTU_HDR[\s>]/i.test(xml)
+}
+
 interface UploadStatus {
   name: string
   state: 'parsing' | 'uploading' | 'done' | 'error'
@@ -39,15 +43,25 @@ export function TaxUploadWidget({ onUploaded }: TaxUploadWidgetProps) {
     for (const file of arr) {
       try {
         const text = await file.text()
-        const parsed = parseXmlText(text)
-        setStatus(file.name, {
-          state: 'uploading',
-          info: `${parsed.declarationType} | ${parsed.mst} | ${parsed.kyKKhai}`,
-        })
+
+        let info: string
+        let endpoint: string
+
+        if (isGiayNopTien(text)) {
+          // Auto-detect Giấy nộp tiền → route sang endpoint GNT
+          endpoint = '/api/tax/payments/upload'
+          info = 'Giấy nộp tiền'
+        } else {
+          const parsed = parseXmlText(text)
+          endpoint = '/api/tax/upload'
+          info = `${parsed.declarationType} | ${parsed.mst} | ${parsed.kyKKhai}`
+        }
+
+        setStatus(file.name, { state: 'uploading', info })
 
         const fd = new FormData()
         fd.append('file', file)
-        const res = await fetch('/api/tax/upload', { method: 'POST', body: fd })
+        const res = await fetch(endpoint, { method: 'POST', body: fd })
         if (!res.ok) {
           const d = await res.json()
           throw new Error(d.error ?? 'Upload thất bại')
