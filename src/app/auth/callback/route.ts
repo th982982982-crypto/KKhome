@@ -21,7 +21,8 @@ export async function GET(request: Request) {
       type: type as 'signup' | 'invite' | 'magiclink' | 'recovery' | 'email_change' | 'email',
       token_hash: tokenHash,
     })
-    if (!error) return NextResponse.redirect(`${origin}${next}`)
+    const destination = type === 'recovery' ? '/reset-password' : next
+    if (!error) return NextResponse.redirect(`${origin}${destination}`)
     return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent(error.message)}`)
   }
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
@@ -14,29 +14,25 @@ import Link from 'next/link'
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState('')
   const [confirm, setConfirm] = useState('')
-
   const updatePassword = (v: string) => setPassword(v)
   const updateConfirm = (v: string) => setConfirm(v)
   const [loading, setLoading] = useState(false)
   const [done, setDone] = useState(false)
   const [sessionReady, setSessionReady] = useState(false)
   const [sessionError, setSessionError] = useState(false)
-  const sessionReadyRef = useRef(false)  // ref tránh stale closure trong setTimeout
   const router = useRouter()
 
   useEffect(() => {
+    // Với PKCE flow: /auth/callback đã exchange code + tạo session trước khi redirect về đây
+    // Nên chỉ cần getSession() kiểm tra — không cần đợi event
     const supabase = createClient()
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
-      if (event === 'PASSWORD_RECOVERY') {
-        sessionReadyRef.current = true
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
         setSessionReady(true)
+      } else {
+        setSessionError(true)
       }
     })
-    // Nếu sau 5s vẫn chưa có recovery session → link hết hạn hoặc không có hash
-    const timer = setTimeout(() => {
-      if (!sessionReadyRef.current) setSessionError(true)
-    }, 5000)
-    return () => { subscription.unsubscribe(); clearTimeout(timer) }
   }, [])
 
   async function handleSubmit(e: React.FormEvent) {
@@ -92,7 +88,7 @@ export default function ResetPasswordPage() {
         </div>
       ) : !sessionReady ? (
         <div className="flex items-center justify-center py-10 text-gray-400 gap-2 text-sm">
-          <Loader2 className="w-4 h-4 animate-spin" /> Đang xác thực link...
+          <Loader2 className="w-4 h-4 animate-spin" /> Đang xác thực...
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
