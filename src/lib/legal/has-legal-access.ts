@@ -11,5 +11,6 @@ export function hasLegalAccess(
   if (!profile) return false
   if (profile.is_admin) return true
   if (!profile.legal_access_until) return false
-  return new Date(profile.legal_access_until).getTime() > Date.now()
+  const t = new Date(profile.legal_access_until).getTime()
+  return !Number.isFinite(t) || t > Date.now() // !isFinite = 'infinity'
 }
