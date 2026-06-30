@@ -106,12 +106,25 @@ export async function POST(req: Request) {
       .in('id', planIds)
 
     let totalMonths = 0
+    let isLifetime = false
     for (const item of taxItems) {
       const plan = taxPlans?.find((p) => p.id === item.id)
-      totalMonths += plan?.duration_months ?? item.duration_months ?? 0
+      const months = plan?.duration_months ?? item.duration_months ?? 0
+      if (months === 0) {
+        isLifetime = true  // duration_months = 0 → gói vĩnh viễn
+      } else {
+        totalMonths += months
+      }
     }
 
-    if (totalMonths > 0) {
+    if (isLifetime) {
+      // Vĩnh viễn: set 'infinity' (Postgres timestamptz infinity)
+      const { error: grantError } = await supabase
+        .from('profiles')
+        .update({ tax_access_until: 'infinity' })
+        .eq('id', order.user_id)
+      if (grantError) return NextResponse.json({ error: grantError.message }, { status: 500 })
+    } else if (totalMonths > 0) {
       const { data: prof } = await supabase
         .from('profiles')
         .select('tax_access_until')
