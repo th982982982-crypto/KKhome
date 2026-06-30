@@ -31,6 +31,7 @@ export function TaxDashboard() {
   const [selectedMst, setSelectedMst] = useState('all')
   const [selectedYear, setSelectedYear] = useState('all')
   const [deletingId, setDeletingId] = useState<string | null>(null)
+  const [deletingAll, setDeletingAll] = useState(false)
 
   const [auditData, setAuditData] = useState<{
     gtgtAudit: GtgtAuditResult[]
@@ -105,6 +106,21 @@ export function TaxDashboard() {
       toast.error('Xoá thất bại')
     } finally {
       setDeletingId(null)
+    }
+  }
+
+  async function handleDeleteAll() {
+    if (!confirm(`Xoá toàn bộ ${files.length} file đã upload?\n\nHành động này không thể hoàn tác.`)) return
+    setDeletingAll(true)
+    try {
+      const res = await fetch('/api/tax/files', { method: 'DELETE' })
+      if (!res.ok) throw new Error('Xoá thất bại')
+      toast.success(`Đã xoá toàn bộ ${files.length} file`)
+      fetchData()
+    } catch {
+      toast.error('Xoá thất bại')
+    } finally {
+      setDeletingAll(false)
     }
   }
 
@@ -374,7 +390,7 @@ export function TaxDashboard() {
           )}
 
           {tab === 'PAYMENTS' && <TaxPaymentPanel />}
-          {tab === 'FILES' && <FileList files={files} deletingId={deletingId} onDelete={handleDelete} />}
+          {tab === 'FILES' && <FileList files={files} deletingId={deletingId} deletingAll={deletingAll} onDelete={handleDelete} onDeleteAll={handleDeleteAll} />}
         </>
       )}
     </div>
@@ -384,11 +400,15 @@ export function TaxDashboard() {
 function FileList({
   files,
   deletingId,
+  deletingAll,
   onDelete,
+  onDeleteAll,
 }: {
   files: TaxFile[]
   deletingId: string | null
+  deletingAll: boolean
   onDelete: (id: string, name: string) => void
+  onDeleteAll: () => void
 }) {
   const [showReplaced, setShowReplaced] = useState(false)
 
@@ -407,6 +427,16 @@ function FileList({
 
   return (
     <div className="space-y-4">
+      <div className="flex justify-end">
+        <button
+          onClick={onDeleteAll}
+          disabled={deletingAll}
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          <Trash2 className="w-3.5 h-3.5" />
+          {deletingAll ? 'Đang xóa...' : `Xóa tất cả (${files.length})`}
+        </button>
+      </div>
       {/* Active files */}
       <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
         <div className="bg-gray-50 dark:bg-gray-900 px-4 py-2.5 border-b border-gray-200 dark:border-gray-700">
