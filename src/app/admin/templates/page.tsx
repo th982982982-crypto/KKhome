@@ -4,17 +4,19 @@ import { LegalPlanManager } from '@/components/admin/legal-plan-manager'
 import { TaxPlanManager } from '@/components/admin/tax-plan-manager'
 import { TaxTrialConfig } from '@/components/admin/tax-trial-config'
 import { AccessManager } from '@/components/admin/access-manager'
+import { PlanPurchaseHistory } from '@/components/admin/plan-purchase-history'
 import Link from 'next/link'
-import { ArrowLeft, FileSpreadsheet, LayoutGrid, ScrollText, Receipt, Users } from 'lucide-react'
-import type { LegalPlan, TaxPlan } from '@/lib/supabase/types'
+import { ArrowLeft, FileSpreadsheet, LayoutGrid, ScrollText, Receipt, Users, History } from 'lucide-react'
+import type { LegalPlan, TaxPlan, OrderItem } from '@/lib/supabase/types'
 
 export const revalidate = 0
 
 const TABS = [
-  { key: 'templates',   label: 'Templates',      icon: LayoutGrid },
-  { key: 'legal-plans', label: 'Gói Pháp luật',  icon: ScrollText },
-  { key: 'tax-plans',   label: 'Gói Tờ Khai',    icon: Receipt },
-  { key: 'access',      label: 'Phân quyền',      icon: Users },
+  { key: 'templates',   label: 'Templates',         icon: LayoutGrid },
+  { key: 'legal-plans', label: 'Gói Pháp luật',     icon: ScrollText },
+  { key: 'tax-plans',   label: 'Gói Tờ Khai',       icon: Receipt },
+  { key: 'access',      label: 'Phân quyền',         icon: Users },
+  { key: 'history',     label: 'Lịch sử mua gói',   icon: History },
 ]
 
 export default async function AdminTemplatesPage({
@@ -32,17 +34,23 @@ export default async function AdminTemplatesPage({
     { data: taxPlans },
     { data: profiles },
     { data: settings },
+    { data: planOrders },
   ] = await Promise.all([
     supabase.from('templates').select('*').order('sort_order', { ascending: true }),
     admin.from('legal_plans').select('*').order('sort_order', { ascending: true }),
     admin.from('tax_plans').select('*').order('sort_order', { ascending: true }),
     admin.from('profiles').select('id, full_name, is_admin, legal_access_until, tax_access_until').order('created_at'),
     admin.from('site_settings').select('tax_trial_days').single(),
+    admin.from('orders')
+      .select('id, user_id, items, confirmed_at')
+      .eq('status', 'confirmed')
+      .order('confirmed_at', { ascending: false }),
   ])
 
   // Fetch emails from auth.users via admin client
   const { data: authUsers } = await admin.auth.admin.listUsers({ perPage: 1000 })
   const emailMap = Object.fromEntries((authUsers?.users ?? []).map((u) => [u.id, u.email ?? '']))
+  const nameMap = Object.fromEntries((profiles ?? []).map((p) => [p.id, p.full_name]))
 
   const users = (profiles ?? []).map((p) => ({
     id: p.id,
@@ -52,6 +60,22 @@ export default async function AdminTemplatesPage({
     legal_access_until: p.legal_access_until,
     tax_access_until: p.tax_access_until,
   }))
+
+  // Filter orders that have legal_plan or tax_plan items
+  const planOrderRows = (planOrders ?? [])
+    .filter((o) => {
+      const items = (o.items ?? []) as OrderItem[]
+      return items.some((i) => i.type === 'legal_plan' || i.type === 'tax_plan')
+    })
+    .map((o) => ({
+      id: o.id,
+      email: emailMap[o.user_id ?? ''] ?? '—',
+      full_name: nameMap[o.user_id ?? ''] ?? null,
+      confirmed_at: o.confirmed_at,
+      items: ((o.items ?? []) as OrderItem[]).filter(
+        (i) => i.type === 'legal_plan' || i.type === 'tax_plan'
+      ) as { id: string; name: string; type: 'legal_plan' | 'tax_plan'; price: number; duration_months?: number }[],
+    }))
 
   return (
     <div className="px-4 sm:px-6 lg:px-10 py-8">
@@ -117,6 +141,15 @@ export default async function AdminTemplatesPage({
             Quản lý quyền truy cập Pháp luật và Tờ Khai cho từng người dùng.
           </p>
           <AccessManager users={users} />
+        </>
+      )}
+
+      {tab === 'history' && (
+        <>
+          <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">
+            Tất cả đơn hàng đã xác nhận có gói Pháp luật hoặc Tờ Khai — gồm tên gói, thời hạn, ngày mua.
+          </p>
+          <PlanPurchaseHistory orders={planOrderRows} />
         </>
       )}
     </div>
