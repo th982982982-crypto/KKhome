@@ -118,25 +118,39 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
     )
   }
 
-  // Period mode — year-total column + individual period columns per year
-  const years = [...new Set(filtered.map((f) => f.tax_year))].sort(
+  // Period mode — include THAY THẾ files too (dimmed), year-total column only sums ĐƯỢC CỘNG
+  // Include all statuses for period columns display
+  const allPeriodFiles = useMemo(
+    () =>
+      files.filter(
+        (f) =>
+          f.declaration_type === declarationType &&
+          (selectedMst === 'all' || f.mst === selectedMst) &&
+          (selectedYear === 'all' || f.tax_year === selectedYear)
+      // Sort: year → period → uploaded_at (THAY THẾ appears before ĐƯỢC CỘNG for same period)
+      ).sort((a, b) =>
+        a.tax_year.localeCompare(b.tax_year) ||
+        a.tax_period.localeCompare(b.tax_period) ||
+        a.uploaded_at.localeCompare(b.uploaded_at)
+      ),
+    [files, declarationType, selectedMst, selectedYear]
+  )
+
+  const years = [...new Set(allPeriodFiles.map((f) => f.tax_year))].sort(
     (a, b) => parseInt(a) - parseInt(b)
   )
 
-  // Group files by year, sorted by period within year
+  // Group ALL files by year (for period columns)
   const byYear = new Map<string, TaxFile[]>()
   for (const yr of years) {
-    byYear.set(
-      yr,
-      filtered.filter((f) => f.tax_year === yr).sort((a, b) => a.tax_period.localeCompare(b.tax_period))
-    )
+    byYear.set(yr, allPeriodFiles.filter((f) => f.tax_year === yr))
   }
 
-  // Compute year totals
+  // Year totals: only ĐƯỢC CỘNG files
   const yearTotals = new Map<string, Record<string, number>>()
   for (const [yr, yrFiles] of byYear) {
     const tot: Record<string, number> = {}
-    for (const f of yrFiles) {
+    for (const f of yrFiles.filter((f) => f.status === 'ĐƯỢC CỘNG')) {
       for (const [code, val] of Object.entries(f.indicators)) {
         tot[code] = (tot[code] ?? 0) + val
       }
@@ -153,7 +167,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
 
   if (cols.length === 0) return <Empty />
 
-  const multiMst = new Set(filtered.map((f) => f.mst)).size > 1
+  const multiMst = new Set(allPeriodFiles.map((f) => f.mst)).size > 1
 
   return (
     <div className="overflow-auto max-h-[600px] border border-gray-200 dark:border-gray-700 rounded-lg">
@@ -174,6 +188,19 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
                 >
                   <div className="text-[9px] font-semibold text-emerald-500 dark:text-emerald-400 uppercase tracking-wide">Tổng năm</div>
                   {col.yr}
+                </th>
+              ) : col.file.status === 'THAY THẾ' ? (
+                <th
+                  key={col.file.id}
+                  className="text-right px-4 py-3 font-bold text-gray-400 dark:text-gray-500 bg-gray-50/80 dark:bg-gray-800/30 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[110px] opacity-60"
+                >
+                  {multiMst && <div className="text-[10px] text-gray-400">{col.file.mst}</div>}
+                  <div className="line-through">{col.file.tax_period}</div>
+                  <div className="text-[9px] text-gray-400">
+                    {col.file.khai_type === 'C' ? 'Chính thức' : col.file.khai_type === 'B' ? 'Bổ sung' : (col.file.khai_type ?? '')}
+                    {col.file.so_lan && ` #${col.file.so_lan}`}
+                  </div>
+                  <div className="text-[9px] font-semibold text-amber-500 uppercase">Thay thế</div>
                 </th>
               ) : (
                 <th
@@ -222,6 +249,13 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
                       className="text-right px-4 py-2 font-mono text-xs font-bold border-b border-r border-gray-100 dark:border-gray-800 bg-emerald-50/60 dark:bg-emerald-950/10 text-emerald-800 dark:text-emerald-300"
                     >
                       {fmt(yearTotals.get(col.yr)?.[row.code] ?? 0)}
+                    </td>
+                  ) : col.file.status === 'THAY THẾ' ? (
+                    <td
+                      key={`${col.file.id}-${row.code}`}
+                      className="text-right px-4 py-2 font-mono text-xs border-b border-r border-gray-100 dark:border-gray-800 text-gray-400 dark:text-gray-600 bg-gray-50/50 dark:bg-gray-800/20 opacity-60"
+                    >
+                      {fmt(col.file.indicators[row.code] ?? 0)}
                     </td>
                   ) : (
                     <td
