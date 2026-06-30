@@ -25,11 +25,11 @@ function khaiTypeLabel(f: TaxFile) {
 
 type ColDesc = { type: 'total'; yr: string } | { type: 'file'; file: TaxFile }
 
-// Only 1 sticky column now (col1 = chỉ tiêu + mã số merged)
-// This eliminates the left-[Npx] positioning bug where col2 would float over data
 const STICKY_HEAD = 'sticky top-0 z-[20] bg-gray-50 dark:bg-gray-900'
 const STICKY_COL1_HEAD = 'sticky top-0 left-0 z-[40] bg-gray-50 dark:bg-gray-900'
 const STICKY_COL1_BODY = 'sticky left-0 z-[10] bg-white dark:bg-gray-950'
+// Section header cell phải sticky riêng — colSpan đơn không sticky được
+const STICKY_COL1_SECTION = 'sticky left-0 z-[10] bg-orange-50 dark:bg-orange-950/20'
 
 // Col1 width — locked so sticky data headers align correctly
 const COL1_W = 'w-[340px] min-w-[340px] max-w-[340px]'
@@ -110,12 +110,10 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
               if (row.isHeader) {
                 return (
                   <tr key={i}>
-                    <td
-                      colSpan={1 + mstList.length * years.length}
-                      className="bg-orange-50 dark:bg-orange-950/20 text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide"
-                    >
+                    <td className={`${STICKY_COL1_SECTION} ${COL1_W} text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide`}>
                       {row.name}
                     </td>
+                    <td colSpan={mstList.length * years.length} className="bg-orange-50 dark:bg-orange-950/20 border-b border-gray-200 dark:border-gray-700" />
                   </tr>
                 )
               }
@@ -229,12 +227,10 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
             if (row.isHeader) {
               return (
                 <tr key={i}>
-                  <td
-                    colSpan={1 + cols.length}
-                    className="bg-orange-50 dark:bg-orange-950/20 text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide"
-                  >
+                  <td className={`${STICKY_COL1_SECTION} ${COL1_W} text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide`}>
                     {row.name}
                   </td>
+                  <td colSpan={cols.length} className="bg-orange-50 dark:bg-orange-950/20 border-b border-gray-200 dark:border-gray-700" />
                 </tr>
               )
             }

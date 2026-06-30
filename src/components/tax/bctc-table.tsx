@@ -21,6 +21,7 @@ function fmt(v: number): string {
 const STICKY_HEAD = 'sticky top-0 z-[20] bg-gray-50 dark:bg-gray-900'
 const STICKY_COL1_HEAD = 'sticky top-0 left-0 z-[40] bg-gray-50 dark:bg-gray-900'
 const STICKY_COL1_BODY = 'sticky left-0 z-[10] bg-white dark:bg-gray-950'
+const STICKY_COL1_SECTION = 'sticky left-0 z-[10] bg-orange-50 dark:bg-orange-950/20'
 const COL1_W = 'w-[340px] min-w-[340px] max-w-[340px]'
 
 type BctcCol =
@@ -151,12 +152,10 @@ export function BctcTable({ files, selectedMst, selectedYear }: Props) {
               if (row.isHeader) {
                 return (
                   <tr key={i}>
-                    <td
-                      colSpan={1 + cols.length}
-                      className="bg-orange-50 dark:bg-orange-950/20 text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide"
-                    >
+                    <td className={`${STICKY_COL1_SECTION} ${COL1_W} text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide`}>
                       {row.name}
                     </td>
+                    <td colSpan={cols.length} className="bg-orange-50 dark:bg-orange-950/20 border-b border-gray-200 dark:border-gray-700" />
                   </tr>
                 )
               }
