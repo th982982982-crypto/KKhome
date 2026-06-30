@@ -24,27 +24,55 @@ function HthucBadge({ code }: { code: string | null }) {
   return <span className="px-2 py-0.5 text-[11px] font-bold rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600">{code ?? '—'}</span>
 }
 
-// Detect tax type from nội dung nộp text
-function detectTaxType(ndung: string): string {
+// Map mã tiểu mục NSNN → tên loại thuế
+const MA_NDKT_MAP: Record<string, string> = {
+  '1001': 'GTGT', '1002': 'GTGT XK', '1003': 'GTGT NK',
+  '1004': 'TNDN', '1005': 'TNDN BS',
+  '1006': 'Tài nguyên', '1007': 'Tài nguyên',
+  '1009': 'Tài nguyên',
+  '1010': 'Đất', '1011': 'Nhà đất', '1013': 'Đất',
+  '1014': 'Môn bài',
+  '1015': 'Chuyển QSD đất',
+  '1021': 'TTĐB', '1050': 'TTĐB NK',
+  '1052': 'Bảo vệ MT',
+  '1100': 'XNK', '1101': 'Nhập khẩu', '1102': 'Xuất khẩu',
+  '1503': 'TNCN',
+  '2050': 'Phạt CN', '2051': 'Phạt CN', '2052': 'Phạt CN',
+  '4200': 'Hoàn thuế',
+}
+
+// Detect tax type from nội dung nộp text (keyword) hoặc mã tiểu mục
+function detectTaxType(ndung: string, maNdkt?: string): string {
   const s = ndung.toLowerCase()
   if (s.includes('giá trị gia tăng') || s.includes('gtgt')) return 'GTGT'
   if (s.includes('thu nhập doanh nghiệp') || s.includes('tndn')) return 'TNDN'
   if (s.includes('thu nhập cá nhân') || s.includes('tncn')) return 'TNCN'
   if (s.includes('môn bài') || s.includes('mon bai') || s.includes('mba')) return 'Môn bài'
-  if (s.includes('chậm nộp') || s.includes('cham nop')) return 'Phạt CN'
   if (s.includes('tiêu thụ đặc biệt') || s.includes('ttdb')) return 'TTĐB'
-  if (s.includes('xuất khẩu') || s.includes('nhập khẩu') || s.includes('xk') || s.includes('nk')) return 'XNK'
+  if (s.includes('xuất khẩu') || s.includes('nhập khẩu')) return 'XNK'
+  if (s.includes('chậm nộp') || s.includes('cham nop') || s.includes('phạt')) return 'Phạt CN'
+  // Fallback to mã tiểu mục NSNN
+  if (maNdkt && MA_NDKT_MAP[maNdkt]) return MA_NDKT_MAP[maNdkt]
   return ''
 }
 
 const TAX_TYPE_COLOR: Record<string, string> = {
-  GTGT:     'bg-purple-100 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300',
-  TNDN:     'bg-blue-100 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300',
-  TNCN:     'bg-teal-100 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300',
-  'Môn bài':'bg-orange-100 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300',
-  'Phạt CN':'bg-red-100 dark:bg-red-950/40 text-red-700 dark:text-red-300',
-  'TTĐB':   'bg-pink-100 dark:bg-pink-950/40 text-pink-700 dark:text-pink-300',
-  XNK:      'bg-yellow-100 dark:bg-yellow-950/40 text-yellow-700 dark:text-yellow-300',
+  GTGT:       'bg-purple-100 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300',
+  'GTGT XK':  'bg-violet-100 dark:bg-violet-950/40 text-violet-700 dark:text-violet-300',
+  'GTGT NK':  'bg-violet-100 dark:bg-violet-950/40 text-violet-700 dark:text-violet-300',
+  TNDN:       'bg-blue-100 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300',
+  'TNDN BS':  'bg-blue-100 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300',
+  TNCN:       'bg-teal-100 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300',
+  'Môn bài':  'bg-orange-100 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300',
+  'Phạt CN':  'bg-red-100 dark:bg-red-950/40 text-red-700 dark:text-red-300',
+  TTĐB:       'bg-pink-100 dark:bg-pink-950/40 text-pink-700 dark:text-pink-300',
+  'TTĐB NK':  'bg-pink-100 dark:bg-pink-950/40 text-pink-700 dark:text-pink-300',
+  XNK:        'bg-yellow-100 dark:bg-yellow-950/40 text-yellow-700 dark:text-yellow-300',
+  'Nhập khẩu':'bg-yellow-100 dark:bg-yellow-950/40 text-yellow-700 dark:text-yellow-300',
+  'Xuất khẩu':'bg-yellow-100 dark:bg-yellow-950/40 text-yellow-700 dark:text-yellow-300',
+  'Tài nguyên':'bg-green-100 dark:bg-green-950/40 text-green-700 dark:text-green-300',
+  'Bảo vệ MT':'bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300',
+  'Hoàn thuế':'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300',
 }
 
 function KhoanNopBadges({ chiTiet }: { chiTiet: TaxPayment['chi_tiet'] }) {
@@ -53,7 +81,7 @@ function KhoanNopBadges({ chiTiet }: { chiTiet: TaxPayment['chi_tiet'] }) {
   const seen = new Set<string>()
   const items: { taxType: string; kyThue: string }[] = []
   for (const ct of chiTiet) {
-    const taxType = detectTaxType(ct.ndungNop) || ct.maNdkt || '?'
+    const taxType = detectTaxType(ct.ndungNop, ct.maNdkt) || ct.maNdkt || '?'
     const key = `${taxType}|${ct.kyThue}`
     if (!seen.has(key)) { seen.add(key); items.push({ taxType, kyThue: ct.kyThue }) }
   }
