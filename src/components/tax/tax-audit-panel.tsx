@@ -23,7 +23,9 @@ function AuditBadge({ diff }: { diff: number }) {
 const NOTE_KEY_BAL = 'kk_audit_bal_notes'
 const NOTE_KEY_REV = 'kk_audit_rev_notes'
 
-export function TaxAuditBalPanel({ data }: { data: GtgtAuditResult[] }) {
+export function TaxAuditBalPanel({ data: rawData }: { data: GtgtAuditResult[] }) {
+  // Hiển thị kỳ gần nhất lên trên
+  const data = [...rawData].reverse()
   const [notes, setNotes] = useState<Record<string, string>>({})
 
   useEffect(() => {
