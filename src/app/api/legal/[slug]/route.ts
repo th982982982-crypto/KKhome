@@ -56,6 +56,7 @@ function buildLockScript(plans: { name: string; duration_months: number; price: 
 
   function lock(){
     document.querySelectorAll('a[href*="/api/legal/forms"]').forEach(function(el){ lockEl(el); });
+    document.querySelectorAll('a.dl-btn').forEach(function(el){ lockEl(el); });
     document.querySelectorAll('.refrow').forEach(function(el){ lockEl(el); });
     document.querySelectorAll('.refbox').forEach(function(box){
       if(box.dataset.locked) return;
