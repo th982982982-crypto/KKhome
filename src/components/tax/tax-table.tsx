@@ -34,6 +34,7 @@ const STICKY_COL1_BODY = 'sticky left-0 z-[10] bg-white dark:bg-gray-950'
 const STICKY_COL2_BODY = 'sticky left-[300px] z-[10] bg-white dark:bg-gray-950'
 
 export function TaxTable({ files, declarationType, selectedMst, selectedYear, mode }: TaxTableProps) {
+  // All hooks MUST be called before any conditional return (Rules of Hooks)
   const filtered = useMemo(
     () =>
       files.filter(
@@ -43,6 +44,25 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
           (selectedMst === 'all' || f.mst === selectedMst) &&
           (selectedYear === 'all' || f.tax_year === selectedYear)
       ),
+    [files, declarationType, selectedMst, selectedYear]
+  )
+
+  // Include THAY THẾ files for period mode (computed always to satisfy Rules of Hooks)
+  const allPeriodFiles = useMemo(
+    () =>
+      files
+        .filter(
+          (f) =>
+            f.declaration_type === declarationType &&
+            (selectedMst === 'all' || f.mst === selectedMst) &&
+            (selectedYear === 'all' || f.tax_year === selectedYear)
+        )
+        .sort(
+          (a, b) =>
+            a.tax_year.localeCompare(b.tax_year) ||
+            a.tax_period.localeCompare(b.tax_period) ||
+            a.uploaded_at.localeCompare(b.uploaded_at)
+        ),
     [files, declarationType, selectedMst, selectedYear]
   )
 
@@ -133,24 +153,6 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
   }
 
   // ── PERIOD MODE ───────────────────────────────────────────────────────
-  // Include THAY THẾ files too (dimmed), sorted by uploaded_at (oldest first)
-  const allPeriodFiles = useMemo(
-    () =>
-      files
-        .filter(
-          (f) =>
-            f.declaration_type === declarationType &&
-            (selectedMst === 'all' || f.mst === selectedMst) &&
-            (selectedYear === 'all' || f.tax_year === selectedYear)
-        )
-        .sort(
-          (a, b) =>
-            a.tax_year.localeCompare(b.tax_year) ||
-            a.tax_period.localeCompare(b.tax_period) ||
-            a.uploaded_at.localeCompare(b.uploaded_at)
-        ),
-    [files, declarationType, selectedMst, selectedYear]
-  )
 
   const years = [...new Set(allPeriodFiles.map((f) => f.tax_year))].sort(
     (a, b) => parseInt(a) - parseInt(b)
