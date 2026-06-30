@@ -54,12 +54,10 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax }: NavbarProps)
           <nav className="hidden md:flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-300">
             <Link href="/templates" className="px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">Templates</Link>
             <Link href="/packages" className="px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">Gói mua</Link>
-            {canViewLegal && (
-              <Link href="/legal" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">
-                <Scale className="w-3.5 h-3.5" />Pháp luật
-              </Link>
-            )}
-            {canViewTax && (
+            <Link href="/legal" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">
+              <Scale className="w-3.5 h-3.5" />Pháp luật
+            </Link>
+            {user && (
               <Link href="/tax" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">
                 <Receipt className="w-3.5 h-3.5" />Tờ Khai
               </Link>
@@ -159,12 +157,10 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax }: NavbarProps)
                   <LayoutDashboard className="w-4 h-4 text-gray-400" /> Dashboard
                 </Link>
               )}
-              {canViewLegal && (
-                <Link href="/legal" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                  <Scale className="w-4 h-4 text-gray-400" /> Pháp luật
-                </Link>
-              )}
-              {canViewTax && (
+              <Link href="/legal" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                <Scale className="w-4 h-4 text-gray-400" /> Pháp luật
+              </Link>
+              {user && (
                 <Link href="/tax" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                   <Receipt className="w-4 h-4 text-gray-400" /> Tờ Khai Thuế
                 </Link>
