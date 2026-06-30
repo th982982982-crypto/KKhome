@@ -5,7 +5,8 @@ import { getDocBySlug } from '@/lib/legal/registry'
 import { createAdminClient } from '@/lib/supabase/server'
 
 function buildLockScript(plans: { name: string; duration_months: number; price: number }[]) {
-  const plansJson = JSON.stringify(plans)
+  // Escape </script> to prevent breaking out of script tag
+  const plansJson = JSON.stringify(plans).replace(/<\/script>/gi, '<\\/script>')
 
   return `<script>
 (function(){
