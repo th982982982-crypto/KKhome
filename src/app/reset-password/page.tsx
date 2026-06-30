@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
@@ -21,23 +21,22 @@ export default function ResetPasswordPage() {
   const [done, setDone] = useState(false)
   const [sessionReady, setSessionReady] = useState(false)
   const [sessionError, setSessionError] = useState(false)
+  const sessionReadyRef = useRef(false)  // ref tránh stale closure trong setTimeout
   const router = useRouter()
 
   useEffect(() => {
-    // Supabase gửi token qua URL hash: #access_token=...&type=recovery
-    // createClient().auth.onAuthStateChange bắt event SIGNED_IN sau khi Supabase tự xử lý hash
     const supabase = createClient()
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
       if (event === 'PASSWORD_RECOVERY' || event === 'SIGNED_IN') {
+        sessionReadyRef.current = true
         setSessionReady(true)
       }
     })
-    // Nếu sau 5s vẫn chưa có session → link hết hạn hoặc sai
+    // Nếu sau 5s vẫn chưa có recovery session → link hết hạn hoặc không có hash
     const timer = setTimeout(() => {
-      if (!sessionReady) setSessionError(true)
+      if (!sessionReadyRef.current) setSessionError(true)
     }, 5000)
     return () => { subscription.unsubscribe(); clearTimeout(timer) }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function handleSubmit(e: React.FormEvent) {
