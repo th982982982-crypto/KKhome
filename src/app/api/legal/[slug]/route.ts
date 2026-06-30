@@ -7,14 +7,25 @@ import { createAdminClient } from '@/lib/supabase/server'
 export const dynamic = 'force-dynamic'
 
 function buildLockScript(plans: { name: string; duration_months: number; price: number }[]) {
-  // Escape </script> to prevent breaking out of script tag
   const plansJson = JSON.stringify(plans).replace(/<\/script>/gi, '<\\/script>')
 
   return `<script>
 (function(){
   var PLANS=${plansJson};
 
-  /* ── Upsell modal ── */
+  /* ── 1. CSS injection — live selectors, no timing/MutationObserver needed ── */
+  var _css=document.createElement('style');
+  _css.textContent=[
+    /* Dim ALL external links (target=_top covers refrow + cd-link across all doc types) */
+    'a[target="_top"],a.dl-btn,a[href*="/api/legal/forms"]{opacity:.45!important;cursor:not-allowed!important;pointer-events:auto!important}',
+    /* Lock badge on every refbox header via CSS pseudo-element */
+    '.refbox .refhead::after{content:" 🔒";font-size:12px;color:#f59e0b}',
+    /* Restore normal style inside upsell modal itself */
+    '#kk-upsell a{opacity:1!important;cursor:pointer!important;pointer-events:auto!important}',
+  ].join('');
+  (document.head||document.documentElement).appendChild(_css);
+
+  /* ── 2. Upsell modal ── */
   var _modal=null;
   function fmtPrice(n){return n.toLocaleString('vi-VN')+'₫';}
   function fmtDur(m){return m===1?'1 tháng':m===12?'1 năm':m+' tháng';}
@@ -43,53 +54,16 @@ function buildLockScript(plans: { name: string; duration_months: number; price: 
     _modal=el;
   }
 
-  function lockEl(el){
-    if(el.dataset.locked) return;
-    el.dataset.locked='1';
-    el.removeAttribute('href');
-    el.style.opacity='0.5';
-    el.style.cursor='not-allowed';
-    el.style.pointerEvents='auto';
-    el.title='Mua gói Pháp luật để dùng tính năng này';
-    el.addEventListener('click',function(e){ e.preventDefault(); showUpsell(); });
-  }
+  /* ── 3. Single capture-phase delegation — catches every click regardless of timing ── */
+  document.addEventListener('click',function(e){
+    /* Allow clicks inside the upsell modal itself (e.g. "Xem gói" links) */
+    if(e.target.closest&&e.target.closest('#kk-upsell')) return;
+    var el=e.target.closest
+      ?e.target.closest('a[target="_top"],a.dl-btn,a[href*="/api/legal/forms"]')
+      :null;
+    if(el){e.preventDefault();e.stopPropagation();showUpsell();}
+  },true);
 
-  function lock(){
-    document.querySelectorAll('a[href*="/api/legal/forms"]').forEach(function(el){ lockEl(el); });
-    document.querySelectorAll('a.dl-btn').forEach(function(el){ lockEl(el); });
-    document.querySelectorAll('.refrow').forEach(function(el){ lockEl(el); });
-    document.querySelectorAll('.refbox').forEach(function(box){
-      if(box.dataset.locked) return;
-      box.dataset.locked='1';
-      var head=box.querySelector('.refhead');
-      if(head && !head.querySelector('.lock-badge')){
-        var b=document.createElement('span');
-        b.style.cssText='font-size:11px;color:#f59e0b;margin-left:6px;font-weight:600;';
-        b.textContent='🔒 Yêu cầu gói Pháp luật';
-        head.appendChild(b);
-      }
-    });
-    document.querySelectorAll('a.cd-link[href]').forEach(function(el){ lockEl(el); });
-  }
-
-  function hookOpenDetail(){
-    if(typeof openDetail!=='function'||openDetail.__locked) return;
-    var orig=openDetail;
-    openDetail=function(id,ix){
-      orig(id,ix);
-      var c=document.getElementById('cdLinks');
-      if(c) c.querySelectorAll('a.cd-link').forEach(function(el){ lockEl(el); });
-    };
-    openDetail.__locked=true;
-  }
-
-  // Run immediately for elements already in DOM
-  lock(); hookOpenDetail();
-  // Run on DOMContentLoaded in case article renderer fires then
-  document.addEventListener('DOMContentLoaded',function(){ lock(); hookOpenDetail(); });
-  // Run on any future DOM change (e.g. user navigates to another section)
-  new MutationObserver(function(){ lock(); hookOpenDetail(); })
-    .observe(document.documentElement,{childList:true,subtree:true});
 })();
 </script>`
 }
