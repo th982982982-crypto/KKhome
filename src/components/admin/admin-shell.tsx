@@ -20,9 +20,7 @@ import {
   X,
   Tag,
   Settings,
-  Scale,
   FileText,
-  Receipt,
 } from 'lucide-react'
 
 interface AdminShellProps {
@@ -33,12 +31,10 @@ interface AdminShellProps {
 
 const NAV = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/admin/templates', label: 'Templates', icon: FileSpreadsheet },
+  { href: '/admin/templates', label: 'Sản phẩm & Gói', icon: FileSpreadsheet },
   { href: '/admin/orders', label: 'Đơn hàng', icon: ShoppingBag, badgeKey: 'pending' as const },
   { href: '/admin/promotions', label: 'Khuyến mãi', icon: Tag },
   { href: '/admin/sync', label: 'Đồng bộ Sheets', icon: RefreshCw },
-  { href: '/admin/legal', label: 'Pháp luật', icon: Scale },
-  { href: '/admin/tax', label: 'Tờ Khai Thuế', icon: Receipt },
   { href: '/admin/policies', label: 'Chính sách', icon: FileText },
   { href: '/admin/settings', label: 'Cài đặt', icon: Settings },
 ]

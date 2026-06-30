@@ -1,11 +1,20 @@
 import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { TemplateEditor } from '@/components/admin/template-editor'
 import { LegalPlanManager } from '@/components/admin/legal-plan-manager'
+import { TaxPlanManager } from '@/components/admin/tax-plan-manager'
+import { AccessManager } from '@/components/admin/access-manager'
 import Link from 'next/link'
-import { ArrowLeft, FileSpreadsheet, LayoutGrid, ScrollText } from 'lucide-react'
-import type { LegalPlan } from '@/lib/supabase/types'
+import { ArrowLeft, FileSpreadsheet, LayoutGrid, ScrollText, Receipt, Users } from 'lucide-react'
+import type { LegalPlan, TaxPlan } from '@/lib/supabase/types'
 
 export const revalidate = 0
+
+const TABS = [
+  { key: 'templates',   label: 'Templates',      icon: LayoutGrid },
+  { key: 'legal-plans', label: 'Gói Pháp luật',  icon: ScrollText },
+  { key: 'tax-plans',   label: 'Gói Tờ Khai',    icon: Receipt },
+  { key: 'access',      label: 'Phân quyền',      icon: Users },
+]
 
 export default async function AdminTemplatesPage({
   searchParams,
@@ -14,16 +23,40 @@ export default async function AdminTemplatesPage({
 }) {
   const { tab = 'templates' } = await searchParams
   const supabase = await createClient()
+  const admin = createAdminClient()
 
-  const [{ data: templates }, { data: plans }] = await Promise.all([
+  const [
+    { data: templates },
+    { data: legalPlans },
+    { data: taxPlans },
+    { data: profiles },
+  ] = await Promise.all([
     supabase.from('templates').select('*').order('sort_order', { ascending: true }),
-    createAdminClient().from('legal_plans').select('*').order('sort_order', { ascending: true }),
+    admin.from('legal_plans').select('*').order('sort_order', { ascending: true }),
+    admin.from('tax_plans').select('*').order('sort_order', { ascending: true }),
+    admin.from('profiles').select('id, full_name, is_admin, legal_access_until, tax_access_until').order('created_at'),
   ])
+
+  // Fetch emails from auth.users via admin client
+  const { data: authUsers } = await admin.auth.admin.listUsers({ perPage: 1000 })
+  const emailMap = Object.fromEntries((authUsers?.users ?? []).map((u) => [u.id, u.email ?? '']))
+
+  const users = (profiles ?? []).map((p) => ({
+    id: p.id,
+    email: emailMap[p.id] ?? '',
+    full_name: p.full_name,
+    is_admin: p.is_admin,
+    legal_access_until: p.legal_access_until,
+    tax_access_until: p.tax_access_until,
+  }))
 
   return (
     <div className="px-4 sm:px-6 lg:px-10 py-8">
       <div className="flex items-center gap-4 mb-6">
-        <Link href="/admin" className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 p-2 -m-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <Link
+          href="/admin"
+          className="text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 p-2 -m-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+        >
           <ArrowLeft className="w-5 h-5" />
         </Link>
         <div className="flex-1">
@@ -31,21 +64,18 @@ export default async function AdminTemplatesPage({
             <FileSpreadsheet className="w-4 h-4" />
             <span>Templates</span>
           </div>
-          <h1 className="text-3xl font-black text-gray-900 dark:text-gray-50 tracking-tight">Quản lý Templates</h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Nhập và chỉnh sửa trực tiếp trên bảng</p>
+          <h1 className="text-3xl font-black text-gray-900 dark:text-gray-50 tracking-tight">Quản lý Sản phẩm & Quyền</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Templates · Gói Pháp luật · Gói Tờ Khai · Phân quyền người dùng</p>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 border-b border-gray-200 dark:border-gray-800 mb-6">
-        {[
-          { key: 'templates', label: 'Templates', icon: LayoutGrid },
-          { key: 'legal-plans', label: 'Gói Pháp luật', icon: ScrollText },
-        ].map(({ key, label, icon: Icon }) => (
+      <div className="flex gap-1 border-b border-gray-200 dark:border-gray-800 mb-6 overflow-x-auto">
+        {TABS.map(({ key, label, icon: Icon }) => (
           <Link
             key={key}
             href={`?tab=${key}`}
-            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-semibold border-b-2 transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-semibold border-b-2 transition-colors whitespace-nowrap ${
               tab === key
                 ? 'border-blue-600 text-blue-700 dark:text-blue-400'
                 : 'border-transparent text-gray-500 hover:text-gray-800 dark:hover:text-gray-200'
@@ -61,10 +91,28 @@ export default async function AdminTemplatesPage({
 
       {tab === 'legal-plans' && (
         <>
-          <p className="text-gray-500 dark:text-gray-400 mb-6">
-            Bán quyền truy cập thư viện Pháp luật như một sản phẩm theo thời hạn (1/3/6/12 tháng). Khách mua qua giỏ hàng; admin duyệt đơn sẽ tự cộng thời hạn cho tài khoản.
+          <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">
+            Gói truy cập thư viện Pháp luật theo thời hạn. Khách mua qua giỏ hàng; admin duyệt đơn sẽ tự cộng thời hạn.
           </p>
-          <LegalPlanManager initialPlans={(plans as LegalPlan[]) ?? []} />
+          <LegalPlanManager initialPlans={(legalPlans as LegalPlan[]) ?? []} />
+        </>
+      )}
+
+      {tab === 'tax-plans' && (
+        <>
+          <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">
+            Gói Tờ Khai Thuế theo thời hạn. Gói trọn đời: nhập 0 tháng. Khách dùng thử miễn phí 2 tuần khi đăng ký.
+          </p>
+          <TaxPlanManager initialPlans={(taxPlans as TaxPlan[]) ?? []} />
+        </>
+      )}
+
+      {tab === 'access' && (
+        <>
+          <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">
+            Quản lý quyền truy cập Pháp luật và Tờ Khai cho từng người dùng.
+          </p>
+          <AccessManager users={users} />
         </>
       )}
     </div>
