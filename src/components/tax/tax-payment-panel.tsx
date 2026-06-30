@@ -141,24 +141,76 @@ export function TaxPaymentPanel() {
     const data = filtered
     if (!data.length) { toast.error('Không có dữ liệu để xuất'); return }
 
-    const rows: (string | number | null)[][] = [
-      ['Ngày lập', 'MST', 'Công ty', 'Hình thức', 'Tổng tiền', 'Ngân hàng', 'Số tài khoản', 'Mã tham chiếu', 'Khoản nộp', 'Kỳ thuế', 'Số tiền', 'Ghi chú'],
-    ]
-    for (const p of data) {
-      const base: (string | number | null)[] = [
-        fmtDate(p.ngay_lap), p.mst, p.ten_nnop, p.hthuc_nop === 'CK' ? 'Chuyển khoản' : 'Tiền mặt',
-        p.tong_tien, p.ten_nhang_nop, p.stk_nhang_nop, p.ma_thamchieu,
-      ]
-      if (p.chi_tiet.length === 0) {
-        rows.push([...base, '', '', '', ''])
+    // Flatten each GNT → chi_tiet rows, keeping original GNT STT (by date order)
+    type FlatRow = {
+      stt: number
+      ngayLap: string | null
+      mst: string
+      tenNNop: string | null
+      maThamChieu: string | null
+      ndungNop: string
+      maNdkt: string
+      kyThue: string
+      tienPnop: number
+    }
+    const flat: FlatRow[] = []
+    data.forEach((p, idx) => {
+      const stt = idx + 1
+      if (!p.chi_tiet.length) {
+        flat.push({ stt, ngayLap: p.ngay_lap, mst: p.mst, tenNNop: p.ten_nnop, maThamChieu: p.ma_thamchieu, ndungNop: '', maNdkt: '', kyThue: '', tienPnop: p.tong_tien ?? 0 })
       } else {
         for (const ct of p.chi_tiet) {
-          rows.push([...base, ct.ndungNop, ct.kyThue, ct.tienPnop, ct.ghiChu])
+          flat.push({ stt, ngayLap: p.ngay_lap, mst: p.mst, tenNNop: p.ten_nnop, maThamChieu: p.ma_thamchieu, ndungNop: ct.ndungNop, maNdkt: ct.maNdkt, kyThue: ct.kyThue, tienPnop: ct.tienPnop })
         }
       }
+    })
+
+    // Group by maNdkt, preserving insertion order
+    const groupMap = new Map<string, FlatRow[]>()
+    for (const row of flat) {
+      const key = row.maNdkt || '__other'
+      if (!groupMap.has(key)) groupMap.set(key, [])
+      groupMap.get(key)!.push(row)
     }
-    const ws = XLSX.utils.aoa_to_sheet(rows)
-    ws['!cols'] = [8,12,30,12,14,30,18,20,40,12,14,20].map(w => ({ wch: w }))
+
+    // Build Excel rows
+    const wsData: (string | number | null)[][] = [
+      ['STT', 'Ngày lập', 'Mã số thuế', 'Công ty', 'Mã tham chiếu', 'Loại thuế (Nội dung kinh tế)', 'Mã NDKT', 'Kỳ thuế', 'Số tiền nộp'],
+    ]
+    let grandTotal = 0
+    for (const [ndkt, rows] of groupMap) {
+      // Group header row: derive description from first row's ndungNop
+      const desc = rows.find(r => r.ndungNop)?.ndungNop ?? ''
+      const groupLabel = ndkt !== '__other'
+        ? `${desc}${desc ? ' ' : ''}(Tiểu mục ${ndkt})`
+        : 'Không xác định loại thuế'
+      wsData.push([groupLabel, '', '', '', '', '', '', '', ''])
+
+      for (const r of rows) {
+        wsData.push([r.stt, fmtDate(r.ngayLap), r.mst, r.tenNNop ?? '', r.maThamChieu ?? '', r.ndungNop, ndkt !== '__other' ? ndkt : '', r.kyThue, r.tienPnop])
+        grandTotal += r.tienPnop
+      }
+    }
+    wsData.push(['Tổng', '', '', '', '', '', '', '', grandTotal])
+
+    const ws = XLSX.utils.aoa_to_sheet(wsData)
+
+    // Bold group header rows and total row
+    const headerRows = new Set<number>()
+    let ri = 1 // 0-indexed, row 0 = column headers
+    for (const [, rows] of groupMap) {
+      headerRows.add(ri) // group header
+      ri += 1 + rows.length
+    }
+    headerRows.add(ri) // total row
+    for (const r of headerRows) {
+      for (let c = 0; c < 9; c++) {
+        const cell = XLSX.utils.encode_cell({ r, c })
+        if (ws[cell]) ws[cell].s = { font: { bold: true } }
+      }
+    }
+
+    ws['!cols'] = [6, 12, 14, 30, 22, 42, 10, 12, 16].map(w => ({ wch: w }))
     const wb = XLSX.utils.book_new()
     XLSX.utils.book_append_sheet(wb, ws, 'Giấy nộp tiền')
     XLSX.writeFile(wb, `GiayNopTien_${selectedMst === 'all' ? 'TatCa' : selectedMst}.xlsx`)
