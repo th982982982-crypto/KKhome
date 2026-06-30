@@ -5,9 +5,8 @@ import { LegalViewer } from '@/components/legal/legal-viewer'
 import { createClient } from '@/lib/supabase/server'
 import { hasLegalAccess } from '@/lib/legal/has-legal-access'
 
-export function generateStaticParams() {
-  return LEGAL_DOCS.map((d) => ({ slug: d.slug }))
-}
+// force-dynamic: trang cần auth cookie để tính hasAccess, không thể static render
+export const dynamic = 'force-dynamic'
 
 export default async function LegalDocPage({
   params,
