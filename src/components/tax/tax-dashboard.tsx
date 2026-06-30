@@ -73,6 +73,7 @@ export function TaxDashboard() {
     setAuditLoading(true)
     try {
       const res = await fetch(`/api/tax/audit?mst=${encodeURIComponent(mst)}`)
+      if (!res.ok) throw new Error('Audit failed')
       const json = await res.json()
       setAuditData(json)
     } catch {

@@ -69,7 +69,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
         <table className="min-w-full border-separate border-spacing-0 text-sm">
           <thead>
             <tr>
-              <th className={`${STICKY_COL1_HEAD} text-left px-4 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 min-w-[300px] text-xs uppercase tracking-wide`}>
+              <th className={`${STICKY_COL1_HEAD} text-left px-4 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 w-[300px] max-w-[300px] text-xs uppercase tracking-wide`}>
                 Chỉ tiêu báo cáo (Tờ khai chuẩn)
               </th>
               <th className={`${STICKY_COL2_HEAD} text-center px-3 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 min-w-[60px] text-xs uppercase tracking-wide`}>
@@ -104,7 +104,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
               }
               return (
                 <tr key={row.code} className="hover:bg-gray-50 dark:hover:bg-gray-800/30">
-                  <td className={`${STICKY_COL1_BODY} px-4 py-2 text-gray-700 dark:text-gray-300 border-b border-r border-gray-100 dark:border-gray-800 text-xs min-w-[300px]`}>
+                  <td className={`${STICKY_COL1_BODY} px-4 py-2 text-gray-700 dark:text-gray-300 border-b border-r border-gray-100 dark:border-gray-800 text-xs w-[300px] max-w-[300px]`}>
                     {row.name}
                   </td>
                   <td className={`${STICKY_COL2_BODY} text-center px-3 py-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400 border-b border-r border-gray-100 dark:border-gray-800`}>
@@ -188,7 +188,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
         <thead>
           <tr>
             {/* Sticky corner: col 1 */}
-            <th className={`${STICKY_COL1_HEAD} text-left px-4 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 min-w-[300px] text-xs uppercase tracking-wide`}>
+            <th className={`${STICKY_COL1_HEAD} text-left px-4 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 w-[300px] max-w-[300px] text-xs uppercase tracking-wide`}>
               Chỉ tiêu báo cáo (Tờ khai chuẩn)
             </th>
             {/* Sticky corner: col 2 */}
@@ -249,7 +249,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
             }
             return (
               <tr key={row.code} className="hover:bg-gray-50 dark:hover:bg-gray-800/30">
-                <td className={`${STICKY_COL1_BODY} px-4 py-2 text-gray-700 dark:text-gray-300 border-b border-r border-gray-100 dark:border-gray-800 text-xs min-w-[300px]`}>
+                <td className={`${STICKY_COL1_BODY} px-4 py-2 text-gray-700 dark:text-gray-300 border-b border-r border-gray-100 dark:border-gray-800 text-xs w-[300px] max-w-[300px]`}>
                   {row.name}
                 </td>
                 <td className={`${STICKY_COL2_BODY} text-center px-3 py-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400 border-b border-r border-gray-100 dark:border-gray-800`}>

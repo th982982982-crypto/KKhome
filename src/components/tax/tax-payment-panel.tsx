@@ -109,6 +109,7 @@ export function TaxPaymentPanel() {
     setLoading(true)
     try {
       const res = await fetch('/api/tax/payments')
+      if (!res.ok) throw new Error('Failed to fetch payments')
       const json = await res.json()
       setPayments(json.payments ?? [])
     } catch {
@@ -129,9 +130,13 @@ export function TaxPaymentPanel() {
       fd.append('file', file)
       try {
         const res = await fetch('/api/tax/payments/upload', { method: 'POST', body: fd })
-        const json = await res.json()
-        if (!res.ok) { toast.error(`${file.name}: ${json.error}`); fail++ }
-        else ok++
+        if (!res.ok) {
+          const json = await res.json().catch(() => ({}))
+          toast.error(`${file.name}: ${(json as {error?: string}).error ?? 'Upload thất bại'}`)
+          fail++
+        } else {
+          ok++
+        }
       } catch {
         fail++
       }
