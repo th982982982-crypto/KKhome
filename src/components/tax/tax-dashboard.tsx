@@ -120,44 +120,96 @@ export function TaxDashboard() {
 
       if (!filtered.length) continue
 
-      // Pivot: sum by mst+year
-      const years = [...new Set(filtered.map((f) => f.tax_year))].sort()
-      const pivot: Record<string, Record<string, number>> = {}
-      for (const f of filtered) {
-        const key = `${f.mst}\n${f.tax_year}`
-        if (!pivot[key]) pivot[key] = {}
-        for (const [code, val] of Object.entries(f.indicators)) {
-          pivot[key][code] = (pivot[key][code] ?? 0) + val
+      if (mode === 'period') {
+        // Period mode: Tổng năm YYYY + individual periods
+        const years = [...new Set(filtered.map((f) => f.tax_year))].sort()
+        const byYear = new Map<string, typeof filtered>()
+        for (const yr of years) {
+          byYear.set(yr, filtered.filter((f) => f.tax_year === yr))
         }
-      }
-      const colKeys = [...new Set(filtered.map(f => `${f.mst}\n${f.tax_year}`))]
-
-      const header = ['Chỉ tiêu', 'Mã', ...colKeys.map(k => {
-        const [mst, yr] = k.split('\n')
-        return mstMap.get(mst) ? `${mst} — ${yr}` : `${mst} — ${yr}`
-      })]
-      const rows: (string | number)[][] = [header]
-
-      for (const row of cfg) {
-        if (row.isHeader) {
-          rows.push([row.name, '', ...colKeys.map(() => '')])
-        } else {
-          rows.push([
-            row.name,
-            `[${row.code}]`,
-            ...colKeys.map(k => pivot[k]?.[row.code] ?? 0),
-          ])
+        const yearTotals = new Map<string, Record<string, number>>()
+        for (const [yr, yrFiles] of byYear) {
+          const tot: Record<string, number> = {}
+          for (const f of yrFiles) {
+            for (const [code, val] of Object.entries(f.indicators)) {
+              tot[code] = (tot[code] ?? 0) + val
+            }
+          }
+          yearTotals.set(yr, tot)
         }
-      }
 
-      const ws = XLSX.utils.aoa_to_sheet(rows)
-      ws['!cols'] = [{ wch: 50 }, { wch: 8 }, ...colKeys.map(() => ({ wch: 18 }))]
-      XLSX.utils.book_append_sheet(wb, ws, dtype)
+        // Build header: [Chỉ tiêu, Mã, Tổng YYYY, period1, period2, ..., Tổng YYYY+1, ...]
+        type Col = { type: 'total'; yr: string } | { type: 'file'; file: typeof filtered[0] }
+        const cols: Col[] = []
+        for (const yr of years) {
+          cols.push({ type: 'total', yr })
+          for (const f of byYear.get(yr)!) cols.push({ type: 'file', file: f })
+        }
+
+        const header1 = ['Chỉ tiêu', 'Mã chỉ tiêu', ...cols.map((c) =>
+          c.type === 'total' ? `Tổng Năm ${c.yr}` : c.file.tax_period
+        )]
+        const header2 = ['', '', ...cols.map((c) => {
+          if (c.type === 'total') return 'Theo năm Chi tiết'
+          const t = c.file.khai_type === 'C' ? 'Chính thức' : c.file.khai_type === 'B' ? 'Bổ sung' : (c.file.khai_type ?? '')
+          return t + (c.file.so_lan ? ` Lần ${c.file.so_lan}` : '') + ' Cộng'
+        })]
+
+        const rows: (string | number)[][] = [header1, header2]
+        for (const row of cfg) {
+          if (row.isHeader) {
+            rows.push([row.name, '', ...cols.map(() => '')])
+          } else {
+            rows.push([
+              row.name,
+              `[${row.code}]`,
+              ...cols.map((c) =>
+                c.type === 'total'
+                  ? (yearTotals.get(c.yr)?.[row.code] ?? 0)
+                  : (c.file.indicators[row.code] ?? 0)
+              ),
+            ])
+          }
+        }
+
+        const ws = XLSX.utils.aoa_to_sheet(rows)
+        ws['!cols'] = [{ wch: 55 }, { wch: 10 }, ...cols.map((c) => ({ wch: c.type === 'total' ? 18 : 14 }))]
+        XLSX.utils.book_append_sheet(wb, ws, dtype)
+      } else {
+        // Year mode: sum per mst+year
+        const years = [...new Set(filtered.map((f) => f.tax_year))].sort()
+        const pivot: Record<string, Record<string, number>> = {}
+        for (const f of filtered) {
+          const key = `${f.mst}\n${f.tax_year}`
+          if (!pivot[key]) pivot[key] = {}
+          for (const [code, val] of Object.entries(f.indicators)) {
+            pivot[key][code] = (pivot[key][code] ?? 0) + val
+          }
+        }
+        const colKeys = [...new Set(filtered.map(f => `${f.mst}\n${f.tax_year}`))]
+
+        const header = ['Chỉ tiêu', 'Mã', ...colKeys.map(k => {
+          const [mst, yr] = k.split('\n')
+          return `${mst} — ${yr}`
+        })]
+        const rows: (string | number)[][] = [header]
+        for (const row of cfg) {
+          if (row.isHeader) {
+            rows.push([row.name, '', ...colKeys.map(() => '')])
+          } else {
+            rows.push([row.name, `[${row.code}]`, ...colKeys.map(k => pivot[k]?.[row.code] ?? 0)])
+          }
+        }
+        const ws = XLSX.utils.aoa_to_sheet(rows)
+        ws['!cols'] = [{ wch: 50 }, { wch: 8 }, ...colKeys.map(() => ({ wch: 18 }))]
+        XLSX.utils.book_append_sheet(wb, ws, dtype)
+      }
     }
 
     const mstLabel = selectedMst === 'all' ? 'TatCa' : selectedMst
     const yearLabel = selectedYear === 'all' ? 'TatCaNam' : selectedYear
-    XLSX.writeFile(wb, `TorKhai_${mstLabel}_${yearLabel}.xlsx`)
+    const modeLabel = mode === 'period' ? '_ChiTiet' : ''
+    XLSX.writeFile(wb, `TorKhai_${mstLabel}_${yearLabel}${modeLabel}.xlsx`)
     toast.success('Đã xuất Excel')
   }
 
