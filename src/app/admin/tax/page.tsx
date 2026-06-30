@@ -12,15 +12,18 @@ export default async function AdminTaxPage() {
 
   const supabase = createAdminClient()
 
-  const [{ data: plans }, { data: users }, { data: authUsers }] = await Promise.all([
+  const [{ data: plans }, { data: users }, { data: authUsers }, { data: settings }] = await Promise.all([
     supabase.from('tax_plans').select('*').order('sort_order'),
-    supabase.from('profiles').select('id, full_name, is_admin, tax_access_until').order('created_at', { ascending: false }),
+    supabase.from('profiles').select('id, full_name, is_admin, tax_access_until, tax_trial_started_at').order('created_at', { ascending: false }),
     supabase.auth.admin.listUsers({ perPage: 1000 }),
+    supabase.from('site_settings').select('tax_trial_days').single(),
   ])
 
   const emailMap = Object.fromEntries(
     (authUsers?.users ?? []).map((u) => [u.id, u.email ?? ''])
   )
+
+  const trialDays = settings?.tax_trial_days ?? 14
 
   const userRows = (users ?? []).map((p) => ({
     id: p.id,
@@ -28,6 +31,7 @@ export default async function AdminTaxPage() {
     full_name: p.full_name,
     is_admin: p.is_admin,
     tax_access_until: p.tax_access_until ?? null,
+    tax_trial_started_at: p.tax_trial_started_at ?? null,
   }))
 
   return (
@@ -41,7 +45,7 @@ export default async function AdminTaxPage() {
       <div>
         <h2 className="text-xl font-black text-gray-900 dark:text-gray-50 mb-1">Phân Quyền Tờ Khai</h2>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">Cấp hoặc thu hồi quyền truy cập Tờ Khai Thuế cho từng user</p>
-        <TaxAccessManager users={userRows} />
+        <TaxAccessManager users={userRows} trialDays={trialDays} />
       </div>
     </div>
   )
