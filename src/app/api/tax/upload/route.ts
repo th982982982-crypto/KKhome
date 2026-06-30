@@ -25,23 +25,46 @@ export async function POST(req: Request) {
 
   const admin = createAdminClient()
 
+  const loaiKhai = parsed.loaiKhai || null  // null if empty
+  const soLan = parsed.soLan || null        // null if empty
+  const isBossung = loaiKhai === 'B'
+
   // Check for exact duplicate: same mst+type+period+khai_type+so_lan already ĐƯỢC CỘNG
-  const { data: exactMatch } = await admin
+  // Must use .is() for null values — .eq('col', '') does NOT match null in Postgres
+  let exactQuery = admin
     .from('tax_files')
     .select('id')
     .eq('user_id', user.id)
     .eq('mst', parsed.mst)
     .eq('declaration_type', parsed.declarationType)
     .eq('tax_period', parsed.kyKKhai)
-    .eq('khai_type', parsed.loaiKhai || '')
-    .eq('so_lan', parsed.soLan || '')
+    .eq('status', 'ĐƯỢC CỘNG')
+
+  exactQuery = loaiKhai === null
+    ? exactQuery.is('khai_type', null)
+    : exactQuery.eq('khai_type', loaiKhai)
+  exactQuery = soLan === null
+    ? exactQuery.is('so_lan', null)
+    : exactQuery.eq('so_lan', soLan)
+
+  const { data: exactMatch } = await exactQuery.maybeSingle()
+
+  // Check if there's a Bổ sung ĐƯỢC CỘNG for this period (higher priority than Chính thức)
+  const { data: existingBossung } = await admin
+    .from('tax_files')
+    .select('id, khai_type')
+    .eq('user_id', user.id)
+    .eq('mst', parsed.mst)
+    .eq('declaration_type', parsed.declarationType)
+    .eq('tax_period', parsed.kyKKhai)
+    .eq('khai_type', 'B')
     .eq('status', 'ĐƯỢC CỘNG')
     .maybeSingle()
 
   let fileId: string
 
   if (exactMatch) {
-    // Same declaration re-uploaded → overwrite data, no extra THAY THẾ column
+    // Same declaration re-uploaded → overwrite data in place, no new column
     const { error } = await admin
       .from('tax_files')
       .update({
@@ -54,8 +77,31 @@ export async function POST(req: Request) {
       .eq('id', exactMatch.id)
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
     fileId = exactMatch.id
+  } else if (!isBossung && existingBossung) {
+    // Uploading Chính thức but Bổ sung already exists → Chính thức goes in as THAY THẾ
+    // (Bổ sung supersedes Chính thức, so don't disturb the existing ĐƯỢC CỘNG)
+    const { data: fileRecord, error } = await admin
+      .from('tax_files')
+      .insert({
+        user_id: user.id,
+        file_name: file.name,
+        mst: parsed.mst,
+        ten_nnt: parsed.tenNNT || null,
+        declaration_type: parsed.declarationType,
+        tax_period: parsed.kyKKhai,
+        tax_year: parsed.taxYear,
+        khai_type: loaiKhai,
+        so_lan: soLan,
+        nguoi_ky: parsed.nguoiKy || null,
+        indicators: parsed.indicators,
+        status: 'THAY THẾ',
+      })
+      .select('id')
+      .single()
+    if (error || !fileRecord) return NextResponse.json({ error: error?.message ?? 'DB error' }, { status: 500 })
+    fileId = fileRecord.id
   } else {
-    // New or amended declaration → mark old ĐƯỢC CỘNG as THAY THẾ, insert new
+    // New or amended declaration → mark old ĐƯỢC CỘNG as THAY THẾ, insert new ĐƯỢC CỘNG
     await admin
       .from('tax_files')
       .update({ status: 'THAY THẾ' })
@@ -75,8 +121,8 @@ export async function POST(req: Request) {
         declaration_type: parsed.declarationType,
         tax_period: parsed.kyKKhai,
         tax_year: parsed.taxYear,
-        khai_type: parsed.loaiKhai || null,
-        so_lan: parsed.soLan || null,
+        khai_type: loaiKhai,
+        so_lan: soLan,
         nguoi_ky: parsed.nguoiKy || null,
         indicators: parsed.indicators,
         status: 'ĐƯỢC CỘNG',
