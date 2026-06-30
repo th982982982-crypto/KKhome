@@ -242,7 +242,7 @@ export function TaxDashboard() {
             <option value="all">Tất cả MST</option>
             {mstList.map(([mst, name]) => (
               <option key={mst} value={mst}>
-                {mst}{name ? ` — ${name}` : ''}
+                {name ? `${name} (${mst})` : mst}
               </option>
             ))}
           </select>
