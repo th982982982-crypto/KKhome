@@ -4,6 +4,8 @@ import { checkLegalAccess } from '@/lib/legal/check-legal-access'
 import { getDocBySlug } from '@/lib/legal/registry'
 import { createAdminClient } from '@/lib/supabase/server'
 
+export const dynamic = 'force-dynamic'
+
 function buildLockScript(plans: { name: string; duration_months: number; price: number }[]) {
   // Escape </script> to prevent breaking out of script tag
   const plansJson = JSON.stringify(plans).replace(/<\/script>/gi, '<\\/script>')
@@ -80,7 +82,11 @@ function buildLockScript(plans: { name: string; duration_months: number; price: 
     openDetail.__locked=true;
   }
 
+  // Run immediately for elements already in DOM
+  lock(); hookOpenDetail();
+  // Run on DOMContentLoaded in case article renderer fires then
   document.addEventListener('DOMContentLoaded',function(){ lock(); hookOpenDetail(); });
+  // Run on any future DOM change (e.g. user navigates to another section)
   new MutationObserver(function(){ lock(); hookOpenDetail(); })
     .observe(document.documentElement,{childList:true,subtree:true});
 })();
