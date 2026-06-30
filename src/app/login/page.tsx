@@ -65,7 +65,12 @@ function LoginForm() {
         <Input id="email" type="email" placeholder="email@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
       </div>
       <div className="space-y-1.5">
-        <Label htmlFor="password">Mật khẩu</Label>
+        <div className="flex items-center justify-between">
+          <Label htmlFor="password">Mật khẩu</Label>
+          <Link href="/forgot-password" className="text-xs text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 hover:underline">
+            Quên mật khẩu?
+          </Link>
+        </div>
         <PasswordInput id="password" placeholder="••••••••" value={password} onChange={setPassword} required />
       </div>
       <Button type="submit" className="w-full bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl font-semibold" disabled={loading}>
