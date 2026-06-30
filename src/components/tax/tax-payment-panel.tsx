@@ -101,6 +101,7 @@ export function TaxPaymentPanel() {
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
   const [deletingId, setDeletingId] = useState<string | null>(null)
+  const [deletingAll, setDeletingAll] = useState(false)
   const [expanded, setExpanded] = useState<Set<string>>(new Set())
   const [selectedMst, setSelectedMst] = useState('all')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -145,6 +146,21 @@ export function TaxPaymentPanel() {
     if (fail) toast.error(`${fail} file thất bại`)
     setUploading(false)
     fetchPayments()
+  }
+
+  async function handleDeleteAll() {
+    if (!confirm(`Xóa toàn bộ ${payments.length} giấy nộp tiền?\n\nHành động này không thể hoàn tác.`)) return
+    setDeletingAll(true)
+    try {
+      const res = await fetch('/api/tax/payments', { method: 'DELETE' })
+      if (!res.ok) throw new Error()
+      toast.success(`Đã xóa toàn bộ ${payments.length} giấy nộp tiền`)
+      fetchPayments()
+    } catch {
+      toast.error('Xóa thất bại')
+    } finally {
+      setDeletingAll(false)
+    }
   }
 
   async function handleDelete(id: string) {
@@ -298,6 +314,14 @@ export function TaxPaymentPanel() {
           <div className="ml-auto flex items-center gap-2">
             <button onClick={exportExcel} className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors">
               <Download className="w-4 h-4" /> Xuất Excel
+            </button>
+            <button
+              onClick={handleDeleteAll}
+              disabled={deletingAll}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-bold text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 hover:bg-red-50 dark:hover:bg-red-950/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              <Trash2 className="w-4 h-4" />
+              {deletingAll ? 'Đang xóa...' : `Xóa tất cả (${payments.length})`}
             </button>
             <button onClick={fetchPayments} className="p-2 rounded-lg text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800" title="Làm mới">
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
