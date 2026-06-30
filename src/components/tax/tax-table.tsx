@@ -17,7 +17,21 @@ function fmt(v: number): string {
   return v.toLocaleString('vi-VN')
 }
 
+function khaiTypeLabel(f: TaxFile) {
+  const type = f.khai_type === 'C' ? 'Chính thức' : f.khai_type === 'B' ? 'Bổ sung' : (f.khai_type ?? '')
+  const lan = f.so_lan != null ? ` - Lần ${f.so_lan}` : ''
+  return type + lan
+}
+
 type ColDesc = { type: 'total'; yr: string } | { type: 'file'; file: TaxFile }
+
+// Tailwind sticky classes — must be on <th>/<td> directly (not <tr>)
+// border-separate is required for sticky to work in all browsers
+const STICKY_COL1_HEAD = 'sticky top-0 left-0 z-[40] bg-gray-50 dark:bg-gray-900'
+const STICKY_COL2_HEAD = 'sticky top-0 left-[300px] z-[40] bg-gray-50 dark:bg-gray-900'
+const STICKY_HEAD = 'sticky top-0 z-[20] bg-gray-50 dark:bg-gray-900'
+const STICKY_COL1_BODY = 'sticky left-0 z-[10] bg-white dark:bg-gray-950'
+const STICKY_COL2_BODY = 'sticky left-[300px] z-[10] bg-white dark:bg-gray-950'
 
 export function TaxTable({ files, declarationType, selectedMst, selectedYear, mode }: TaxTableProps) {
   const filtered = useMemo(
@@ -34,13 +48,13 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
 
   const config = UI_CONFIG[declarationType]
 
+  // ── YEAR MODE ────────────────────────────────────────────────────────
   if (mode === 'year') {
     const years = [...new Set(filtered.map((f) => f.tax_year))].sort((a, b) => parseInt(b) - parseInt(a))
     const mstList = selectedMst === 'all' ? [...new Set(filtered.map((f) => f.mst))] : [selectedMst]
 
     if (years.length === 0) return <Empty />
 
-    // Sum indicators per mst+year
     const pivot: Record<string, Record<string, Record<string, number>>> = {}
     for (const f of filtered) {
       if (!pivot[f.mst]) pivot[f.mst] = {}
@@ -52,23 +66,23 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
 
     return (
       <div className="overflow-auto max-h-[600px] border border-gray-200 dark:border-gray-700 rounded-lg">
-        <table className="min-w-full border-collapse text-sm">
+        <table className="min-w-full border-separate border-spacing-0 text-sm">
           <thead>
-            <tr className="sticky top-0 z-20 bg-gray-50 dark:bg-gray-900">
-              <th className="sticky left-0 z-30 bg-gray-50 dark:bg-gray-900 text-left px-4 py-3 font-bold text-gray-600 dark:text-gray-300 border-b border-r border-gray-200 dark:border-gray-700 min-w-[300px]">
-                Chỉ tiêu
+            <tr>
+              <th className={`${STICKY_COL1_HEAD} text-left px-4 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 min-w-[300px] text-xs uppercase tracking-wide`}>
+                Chỉ tiêu báo cáo (Tờ khai chuẩn)
               </th>
-              <th className="sticky left-[300px] z-30 bg-gray-50 dark:bg-gray-900 text-center px-3 py-3 font-bold text-gray-500 border-b border-r border-gray-200 dark:border-gray-700 min-w-[60px]">
-                Mã
+              <th className={`${STICKY_COL2_HEAD} text-center px-3 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 min-w-[60px] text-xs uppercase tracking-wide`}>
+                Mã số
               </th>
               {mstList.map((mst) =>
                 years.map((yr) => (
                   <th
                     key={`${mst}-${yr}`}
-                    className="text-right px-4 py-3 font-bold text-gray-600 dark:text-gray-300 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[130px]"
+                    className={`${STICKY_HEAD} text-right px-4 py-3 font-bold text-gray-700 dark:text-gray-200 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[140px]`}
                   >
-                    {mstList.length > 1 && <div className="text-[10px] text-gray-400">{mst}</div>}
-                    {yr}
+                    {mstList.length > 1 && <div className="text-[10px] text-gray-400 mb-0.5">{mst}</div>}
+                    <div className="text-sm">{yr}</div>
                   </th>
                 ))
               )}
@@ -81,7 +95,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
                   <tr key={i}>
                     <td
                       colSpan={2 + mstList.length * years.length}
-                      className="sticky left-0 bg-orange-50 dark:bg-orange-950/20 text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide"
+                      className="bg-orange-50 dark:bg-orange-950/20 text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide"
                     >
                       {row.name}
                     </td>
@@ -89,11 +103,11 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
                 )
               }
               return (
-                <tr key={row.code} className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                  <td className="sticky left-0 bg-white dark:bg-gray-950 px-4 py-2 text-gray-700 dark:text-gray-300 border-b border-r border-gray-100 dark:border-gray-800 text-xs min-w-[300px]">
+                <tr key={row.code} className="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+                  <td className={`${STICKY_COL1_BODY} px-4 py-2 text-gray-700 dark:text-gray-300 border-b border-r border-gray-100 dark:border-gray-800 text-xs min-w-[300px]`}>
                     {row.name}
                   </td>
-                  <td className="sticky left-[300px] bg-white dark:bg-gray-950 text-center px-3 py-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400 border-b border-r border-gray-100 dark:border-gray-800">
+                  <td className={`${STICKY_COL2_BODY} text-center px-3 py-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400 border-b border-r border-gray-100 dark:border-gray-800`}>
                     [{row.code}]
                   </td>
                   {mstList.map((mst) =>
@@ -118,21 +132,23 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
     )
   }
 
-  // Period mode — include THAY THẾ files too (dimmed), year-total column only sums ĐƯỢC CỘNG
-  // Include all statuses for period columns display
+  // ── PERIOD MODE ───────────────────────────────────────────────────────
+  // Include THAY THẾ files too (dimmed), sorted by uploaded_at (oldest first)
   const allPeriodFiles = useMemo(
     () =>
-      files.filter(
-        (f) =>
-          f.declaration_type === declarationType &&
-          (selectedMst === 'all' || f.mst === selectedMst) &&
-          (selectedYear === 'all' || f.tax_year === selectedYear)
-      // Sort: year → period → uploaded_at (THAY THẾ appears before ĐƯỢC CỘNG for same period)
-      ).sort((a, b) =>
-        a.tax_year.localeCompare(b.tax_year) ||
-        a.tax_period.localeCompare(b.tax_period) ||
-        a.uploaded_at.localeCompare(b.uploaded_at)
-      ),
+      files
+        .filter(
+          (f) =>
+            f.declaration_type === declarationType &&
+            (selectedMst === 'all' || f.mst === selectedMst) &&
+            (selectedYear === 'all' || f.tax_year === selectedYear)
+        )
+        .sort(
+          (a, b) =>
+            a.tax_year.localeCompare(b.tax_year) ||
+            a.tax_period.localeCompare(b.tax_period) ||
+            a.uploaded_at.localeCompare(b.uploaded_at)
+        ),
     [files, declarationType, selectedMst, selectedYear]
   )
 
@@ -140,13 +156,10 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
     (a, b) => parseInt(a) - parseInt(b)
   )
 
-  // Group ALL files by year (for period columns)
   const byYear = new Map<string, TaxFile[]>()
-  for (const yr of years) {
-    byYear.set(yr, allPeriodFiles.filter((f) => f.tax_year === yr))
-  }
+  for (const yr of years) byYear.set(yr, allPeriodFiles.filter((f) => f.tax_year === yr))
 
-  // Year totals: only ĐƯỢC CỘNG files
+  // Year totals: ĐƯỢC CỘNG only
   const yearTotals = new Map<string, Record<string, number>>()
   for (const [yr, yrFiles] of byYear) {
     const tot: Record<string, number> = {}
@@ -158,7 +171,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
     yearTotals.set(yr, tot)
   }
 
-  // Build flat column list: [total-2023, file-01/2023, ..., total-2024, file-01/2024, ...]
+  // Build flat columns: [total-yr, file, file, ..., total-yr2, ...]
   const cols: ColDesc[] = []
   for (const yr of years) {
     cols.push({ type: 'total', yr })
@@ -171,53 +184,53 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
 
   return (
     <div className="overflow-auto max-h-[600px] border border-gray-200 dark:border-gray-700 rounded-lg">
-      <table className="min-w-full border-collapse text-sm">
+      <table className="min-w-full border-separate border-spacing-0 text-sm">
         <thead>
-          <tr className="sticky top-0 z-20 bg-gray-50 dark:bg-gray-900">
-            <th className="sticky left-0 z-30 bg-gray-50 dark:bg-gray-900 text-left px-4 py-3 font-bold text-gray-600 dark:text-gray-300 border-b border-r border-gray-200 dark:border-gray-700 min-w-[300px]">
-              Chỉ tiêu
+          <tr>
+            {/* Sticky corner: col 1 */}
+            <th className={`${STICKY_COL1_HEAD} text-left px-4 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 min-w-[300px] text-xs uppercase tracking-wide`}>
+              Chỉ tiêu báo cáo (Tờ khai chuẩn)
             </th>
-            <th className="sticky left-[300px] z-30 bg-gray-50 dark:bg-gray-900 text-center px-3 py-3 font-bold text-gray-500 border-b border-r border-gray-200 dark:border-gray-700 min-w-[60px]">
-              Mã
+            {/* Sticky corner: col 2 */}
+            <th className={`${STICKY_COL2_HEAD} text-center px-3 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 min-w-[60px] text-xs uppercase tracking-wide`}>
+              Mã số
             </th>
-            {cols.map((col) =>
-              col.type === 'total' ? (
-                <th
-                  key={`tot-${col.yr}`}
-                  className="text-right px-4 py-3 font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/20 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[130px]"
-                >
-                  <div className="text-[9px] font-semibold text-emerald-500 dark:text-emerald-400 uppercase tracking-wide">Tổng năm</div>
-                  {col.yr}
-                </th>
-              ) : col.file.status === 'THAY THẾ' ? (
+            {/* Data columns */}
+            {cols.map((col) => {
+              if (col.type === 'total') {
+                return (
+                  <th
+                    key={`tot-${col.yr}`}
+                    className={`${STICKY_HEAD} text-right px-4 py-3 font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/20 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[140px]`}
+                  >
+                    <div className="text-[9px] font-semibold text-emerald-500 dark:text-emerald-400 uppercase tracking-wide">Tổng năm</div>
+                    <div className="text-sm">{col.yr}</div>
+                  </th>
+                )
+              }
+              const isReplaced = col.file.status === 'THAY THẾ'
+              return (
                 <th
                   key={col.file.id}
-                  className="text-right px-4 py-3 font-bold text-gray-400 dark:text-gray-500 bg-gray-50/80 dark:bg-gray-800/30 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[110px] opacity-60"
+                  className={`${STICKY_HEAD} text-right px-3 py-2 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[130px] ${
+                    isReplaced ? 'opacity-50' : ''
+                  }`}
                 >
-                  {multiMst && <div className="text-[10px] text-gray-400">{col.file.mst}</div>}
-                  <div className="line-through">{col.file.tax_period}</div>
-                  <div className="text-[9px] text-gray-400">
-                    {col.file.khai_type === 'C' ? 'Chính thức' : col.file.khai_type === 'B' ? 'Bổ sung' : (col.file.khai_type ?? '')}
-                    {col.file.so_lan && ` #${col.file.so_lan}`}
-                  </div>
-                  <div className="text-[9px] font-semibold text-amber-500 uppercase">Thay thế</div>
-                </th>
-              ) : (
-                <th
-                  key={col.file.id}
-                  className="text-right px-4 py-3 font-bold text-gray-600 dark:text-gray-300 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[110px]"
-                >
-                  {multiMst && <div className="text-[10px] text-gray-400">{col.file.mst}</div>}
-                  <div>{col.file.tax_period}</div>
-                  {col.file.khai_type && (
-                    <div className="text-[10px] text-gray-400">
-                      {col.file.khai_type === 'C' ? 'Chính thức' : col.file.khai_type === 'B' ? 'Bổ sung' : col.file.khai_type}
-                      {col.file.so_lan && ` #${col.file.so_lan}`}
-                    </div>
+                  {multiMst && (
+                    <div className="text-[9px] text-gray-400 mb-0.5">{col.file.mst}</div>
                   )}
+                  <div className={`text-xs font-bold ${isReplaced ? 'text-gray-500 dark:text-gray-400' : 'text-gray-700 dark:text-gray-200'}`}>
+                    Kỳ {col.file.tax_period}
+                  </div>
+                  <div className={`text-[10px] mt-0.5 ${isReplaced ? 'text-gray-400' : 'text-gray-500 dark:text-gray-400'}`}>
+                    [{khaiTypeLabel(col.file)}]
+                  </div>
+                  <div className={`text-[9px] font-semibold mt-0.5 ${isReplaced ? 'text-amber-500' : 'text-emerald-500'}`}>
+                    ● {isReplaced ? 'THAY THẾ' : 'ĐƯỢC CỘNG'}
+                  </div>
                 </th>
               )
-            )}
+            })}
           </tr>
         </thead>
         <tbody>
@@ -227,7 +240,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
                 <tr key={i}>
                   <td
                     colSpan={2 + cols.length}
-                    className="sticky left-0 bg-orange-50 dark:bg-orange-950/20 text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide"
+                    className="bg-orange-50 dark:bg-orange-950/20 text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide"
                   >
                     {row.name}
                   </td>
@@ -235,37 +248,38 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
               )
             }
             return (
-              <tr key={row.code} className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                <td className="sticky left-0 bg-white dark:bg-gray-950 px-4 py-2 text-gray-700 dark:text-gray-300 border-b border-r border-gray-100 dark:border-gray-800 text-xs min-w-[300px]">
+              <tr key={row.code} className="hover:bg-gray-50 dark:hover:bg-gray-800/30">
+                <td className={`${STICKY_COL1_BODY} px-4 py-2 text-gray-700 dark:text-gray-300 border-b border-r border-gray-100 dark:border-gray-800 text-xs min-w-[300px]`}>
                   {row.name}
                 </td>
-                <td className="sticky left-[300px] bg-white dark:bg-gray-950 text-center px-3 py-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400 border-b border-r border-gray-100 dark:border-gray-800">
+                <td className={`${STICKY_COL2_BODY} text-center px-3 py-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400 border-b border-r border-gray-100 dark:border-gray-800`}>
                   [{row.code}]
                 </td>
-                {cols.map((col) =>
-                  col.type === 'total' ? (
-                    <td
-                      key={`tot-${col.yr}-${row.code}`}
-                      className="text-right px-4 py-2 font-mono text-xs font-bold border-b border-r border-gray-100 dark:border-gray-800 bg-emerald-50/60 dark:bg-emerald-950/10 text-emerald-800 dark:text-emerald-300"
-                    >
-                      {fmt(yearTotals.get(col.yr)?.[row.code] ?? 0)}
-                    </td>
-                  ) : col.file.status === 'THAY THẾ' ? (
-                    <td
-                      key={`${col.file.id}-${row.code}`}
-                      className="text-right px-4 py-2 font-mono text-xs border-b border-r border-gray-100 dark:border-gray-800 text-gray-400 dark:text-gray-600 bg-gray-50/50 dark:bg-gray-800/20 opacity-60"
-                    >
-                      {fmt(col.file.indicators[row.code] ?? 0)}
-                    </td>
-                  ) : (
+                {cols.map((col) => {
+                  if (col.type === 'total') {
+                    return (
+                      <td
+                        key={`tot-${col.yr}-${row.code}`}
+                        className="text-right px-4 py-2 font-mono text-xs font-bold border-b border-r border-gray-100 dark:border-gray-800 bg-emerald-50/60 dark:bg-emerald-950/10 text-emerald-800 dark:text-emerald-300"
+                      >
+                        {fmt(yearTotals.get(col.yr)?.[row.code] ?? 0)}
+                      </td>
+                    )
+                  }
+                  const isReplaced = col.file.status === 'THAY THẾ'
+                  return (
                     <td
                       key={`${col.file.id}-${row.code}`}
-                      className="text-right px-4 py-2 font-mono text-xs border-b border-r border-gray-100 dark:border-gray-800 text-gray-800 dark:text-gray-200"
+                      className={`text-right px-4 py-2 font-mono text-xs border-b border-r border-gray-100 dark:border-gray-800 ${
+                        isReplaced
+                          ? 'text-gray-400 dark:text-gray-600 opacity-50'
+                          : 'text-gray-800 dark:text-gray-200'
+                      }`}
                     >
                       {fmt(col.file.indicators[row.code] ?? 0)}
                     </td>
                   )
-                )}
+                })}
               </tr>
             )
           })}
