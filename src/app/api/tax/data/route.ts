@@ -18,5 +18,17 @@ export async function GET() {
     .order('tax_period', { ascending: false })
     .order('uploaded_at', { ascending: false })
 
-  return NextResponse.json({ files: files ?? [] })
+  // Collect company names from payments (ten_nnop is always populated from GNT XML)
+  const { data: payments } = await supabase
+    .from('tax_payments')
+    .select('mst, ten_nnop')
+    .eq('user_id', user.id)
+    .not('ten_nnop', 'is', null)
+
+  const mstNames: Record<string, string> = {}
+  for (const p of payments ?? []) {
+    if (p.ten_nnop && !mstNames[p.mst]) mstNames[p.mst] = p.ten_nnop
+  }
+
+  return NextResponse.json({ files: files ?? [], mstNames })
 }

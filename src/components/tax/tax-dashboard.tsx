@@ -21,6 +21,7 @@ function fmtDate(iso: string) {
 
 export function TaxDashboard() {
   const [files, setFiles] = useState<TaxFile[]>([])
+  const [mstNames, setMstNames] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -36,11 +37,11 @@ export function TaxDashboard() {
   } | null>(null)
   const [auditLoading, setAuditLoading] = useState(false)
 
-  // Derive MST list with company names from active files
+  // Derive MST list with company names — fallback to mstNames from payments when ten_nnt is null
   const mstMap = new Map<string, string>()
   for (const f of files) {
     if (f.status === 'ĐƯỢC CỘNG' && !mstMap.has(f.mst)) {
-      mstMap.set(f.mst, f.ten_nnt ?? '')
+      mstMap.set(f.mst, f.ten_nnt || mstNames[f.mst] || '')
     }
   }
   const mstList = [...mstMap.entries()].sort((a, b) => a[0].localeCompare(b[0]))
@@ -56,6 +57,7 @@ export function TaxDashboard() {
       if (!res.ok) throw new Error('Tải dữ liệu thất bại')
       const json = await res.json()
       setFiles(json.files ?? [])
+      setMstNames(json.mstNames ?? {})
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Lỗi không xác định')
     } finally {
