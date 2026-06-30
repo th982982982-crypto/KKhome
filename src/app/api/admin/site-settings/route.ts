@@ -15,6 +15,7 @@ export async function PATCH(req: Request) {
     'facebook_url', 'zalo_url', 'youtube_url',
     'mocongthuong_url',
     'copyright_text',
+    'tax_trial_days',
   ]
   const payload: Record<string, unknown> = { updated_at: new Date().toISOString() }
   for (const key of allowed) {

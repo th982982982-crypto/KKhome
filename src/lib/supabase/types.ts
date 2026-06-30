@@ -110,6 +110,7 @@ export interface Database {
           is_admin: boolean
           legal_access_until: string | null
           tax_access_until: string | null
+          tax_trial_started_at: string | null
           created_at: string
         }
         Insert: Omit<Database['public']['Tables']['profiles']['Row'], 'created_at'>
@@ -248,6 +249,7 @@ export interface SiteSettings {
   youtube_url: string | null
   mocongthuong_url: string | null
   copyright_text: string | null
+  tax_trial_days: number
   updated_at: string
 }
 

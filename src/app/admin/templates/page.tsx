@@ -2,6 +2,7 @@ import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { TemplateEditor } from '@/components/admin/template-editor'
 import { LegalPlanManager } from '@/components/admin/legal-plan-manager'
 import { TaxPlanManager } from '@/components/admin/tax-plan-manager'
+import { TaxTrialConfig } from '@/components/admin/tax-trial-config'
 import { AccessManager } from '@/components/admin/access-manager'
 import Link from 'next/link'
 import { ArrowLeft, FileSpreadsheet, LayoutGrid, ScrollText, Receipt, Users } from 'lucide-react'
@@ -30,11 +31,13 @@ export default async function AdminTemplatesPage({
     { data: legalPlans },
     { data: taxPlans },
     { data: profiles },
+    { data: settings },
   ] = await Promise.all([
     supabase.from('templates').select('*').order('sort_order', { ascending: true }),
     admin.from('legal_plans').select('*').order('sort_order', { ascending: true }),
     admin.from('tax_plans').select('*').order('sort_order', { ascending: true }),
     admin.from('profiles').select('id, full_name, is_admin, legal_access_until, tax_access_until').order('created_at'),
+    admin.from('site_settings').select('tax_trial_days').single(),
   ])
 
   // Fetch emails from auth.users via admin client
@@ -100,8 +103,9 @@ export default async function AdminTemplatesPage({
 
       {tab === 'tax-plans' && (
         <>
-          <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">
-            Gói Tờ Khai Thuế theo thời hạn. Gói trọn đời: nhập 0 tháng. Khách dùng thử miễn phí 2 tuần khi đăng ký.
+          <TaxTrialConfig initialDays={settings?.tax_trial_days ?? 14} />
+          <p className="text-gray-500 dark:text-gray-400 mb-4 text-sm">
+            Gói Tờ Khai Thuế theo thời hạn. Nhập <strong>0 tháng</strong> = gói trọn đời (vĩnh viễn).
           </p>
           <TaxPlanManager initialPlans={(taxPlans as TaxPlan[]) ?? []} />
         </>
