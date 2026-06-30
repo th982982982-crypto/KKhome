@@ -6,13 +6,14 @@ import * as XLSX from 'xlsx'
 import { toast } from 'sonner'
 import { TaxUploadWidget } from './tax-upload-widget'
 import { TaxTable } from './tax-table'
+import { BctcTable } from './bctc-table'
 import { TaxAuditBalPanel, TaxAuditRevPanel } from './tax-audit-panel'
 import { TaxPaymentPanel } from './tax-payment-panel'
 import type { TaxFile } from '@/lib/supabase/types'
 import { UI_CONFIG } from '@/lib/tax/ui-config'
 import type { GtgtAuditResult, RevenueAuditResult } from '@/lib/tax/audit-engine'
 
-type Tab = 'GTGT' | 'TNDN' | 'TNCN' | 'AUDIT_BAL' | 'AUDIT_REV' | 'FILES' | 'PAYMENTS'
+type Tab = 'GTGT' | 'TNDN' | 'TNCN' | 'BCTC' | 'AUDIT_BAL' | 'AUDIT_REV' | 'FILES' | 'PAYMENTS'
 type Mode = 'year' | 'period'
 
 function fmtDate(iso: string) {
@@ -216,7 +217,7 @@ export function TaxDashboard() {
   }
 
   const isAuditTab = tab === 'AUDIT_BAL' || tab === 'AUDIT_REV'
-  const isSpecialTab = isAuditTab || tab === 'FILES' || tab === 'PAYMENTS'
+  const isSpecialTab = isAuditTab || tab === 'FILES' || tab === 'PAYMENTS' || tab === 'BCTC'
   const hasActiveData = files.some(f => f.status === 'ĐƯỢC CỘNG')
 
   return (
@@ -296,6 +297,7 @@ export function TaxDashboard() {
           { id: 'GTGT', label: 'GTGT' },
           { id: 'TNDN', label: 'TNDN' },
           { id: 'TNCN', label: 'TNCN' },
+          { id: 'BCTC', label: 'BCTC' },
           { id: 'AUDIT_BAL', label: 'Rủi ro Số dư', danger: true },
           { id: 'AUDIT_REV', label: 'Rủi ro Doanh thu', danger: true },
           { id: 'PAYMENTS', label: 'Giấy nộp tiền' },
@@ -349,6 +351,7 @@ export function TaxDashboard() {
           {tab === 'GTGT' && <TaxTable files={files} declarationType="GTGT" selectedMst={selectedMst} selectedYear={selectedYear} mode={mode} />}
           {tab === 'TNDN' && <TaxTable files={files} declarationType="TNDN" selectedMst={selectedMst} selectedYear={selectedYear} mode={mode} />}
           {tab === 'TNCN' && <TaxTable files={files} declarationType="TNCN" selectedMst={selectedMst} selectedYear={selectedYear} mode={mode} />}
+          {tab === 'BCTC' && <BctcTable files={files} selectedMst={selectedMst} selectedYear={selectedYear} />}
 
           {tab === 'AUDIT_BAL' && (
             selectedMst === 'all' ? (
