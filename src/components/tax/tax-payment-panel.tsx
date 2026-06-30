@@ -24,6 +24,50 @@ function HthucBadge({ code }: { code: string | null }) {
   return <span className="px-2 py-0.5 text-[11px] font-bold rounded-md bg-gray-100 dark:bg-gray-800 text-gray-600">{code ?? '—'}</span>
 }
 
+// Detect tax type from nội dung nộp text
+function detectTaxType(ndung: string): string {
+  const s = ndung.toLowerCase()
+  if (s.includes('giá trị gia tăng') || s.includes('gtgt')) return 'GTGT'
+  if (s.includes('thu nhập doanh nghiệp') || s.includes('tndn')) return 'TNDN'
+  if (s.includes('thu nhập cá nhân') || s.includes('tncn')) return 'TNCN'
+  if (s.includes('môn bài') || s.includes('mon bai') || s.includes('mba')) return 'Môn bài'
+  if (s.includes('chậm nộp') || s.includes('cham nop')) return 'Phạt CN'
+  if (s.includes('tiêu thụ đặc biệt') || s.includes('ttdb')) return 'TTĐB'
+  if (s.includes('xuất khẩu') || s.includes('nhập khẩu') || s.includes('xk') || s.includes('nk')) return 'XNK'
+  return ''
+}
+
+const TAX_TYPE_COLOR: Record<string, string> = {
+  GTGT:     'bg-purple-100 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300',
+  TNDN:     'bg-blue-100 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300',
+  TNCN:     'bg-teal-100 dark:bg-teal-950/40 text-teal-700 dark:text-teal-300',
+  'Môn bài':'bg-orange-100 dark:bg-orange-950/40 text-orange-700 dark:text-orange-300',
+  'Phạt CN':'bg-red-100 dark:bg-red-950/40 text-red-700 dark:text-red-300',
+  'TTĐB':   'bg-pink-100 dark:bg-pink-950/40 text-pink-700 dark:text-pink-300',
+  XNK:      'bg-yellow-100 dark:bg-yellow-950/40 text-yellow-700 dark:text-yellow-300',
+}
+
+function KhoanNopBadges({ chiTiet }: { chiTiet: TaxPayment['chi_tiet'] }) {
+  if (!chiTiet.length) return <span className="text-gray-300 dark:text-gray-600">—</span>
+  // Deduplicate by (taxType, kyThue)
+  const seen = new Set<string>()
+  const items: { taxType: string; kyThue: string }[] = []
+  for (const ct of chiTiet) {
+    const taxType = detectTaxType(ct.ndungNop) || ct.maNdkt || '?'
+    const key = `${taxType}|${ct.kyThue}`
+    if (!seen.has(key)) { seen.add(key); items.push({ taxType, kyThue: ct.kyThue }) }
+  }
+  return (
+    <div className="flex flex-wrap gap-1">
+      {items.map(({ taxType, kyThue }, i) => (
+        <span key={i} className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${TAX_TYPE_COLOR[taxType] ?? 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'}`}>
+          {taxType}{kyThue ? ` ${kyThue}` : ''}
+        </span>
+      ))}
+    </div>
+  )
+}
+
 export function TaxPaymentPanel() {
   const [payments, setPayments] = useState<TaxPayment[]>([])
   const [loading, setLoading] = useState(true)
@@ -155,7 +199,7 @@ export function TaxPaymentPanel() {
           >
             <option value="all">Tất cả MST</option>
             {mstList.map(([mst, name]) => (
-              <option key={mst} value={mst}>{mst}{name ? ` — ${name}` : ''}</option>
+              <option key={mst} value={mst}>{name ? `${name} (${mst})` : mst}</option>
             ))}
           </select>
 
@@ -194,6 +238,7 @@ export function TaxPaymentPanel() {
                 <th className="w-8 px-3 py-3 border-b border-gray-200 dark:border-gray-700"></th>
                 <th className="text-left px-4 py-3 border-b border-gray-200 dark:border-gray-700">Ngày lập</th>
                 <th className="text-left px-4 py-3 border-b border-gray-200 dark:border-gray-700">MST / Công ty</th>
+                <th className="text-left px-4 py-3 border-b border-gray-200 dark:border-gray-700">Khoản nộp</th>
                 <th className="text-left px-4 py-3 border-b border-gray-200 dark:border-gray-700">Hình thức</th>
                 <th className="text-right px-4 py-3 border-b border-gray-200 dark:border-gray-700">Tổng tiền</th>
                 <th className="text-left px-4 py-3 border-b border-gray-200 dark:border-gray-700">Ngân hàng</th>
@@ -219,6 +264,9 @@ export function TaxPaymentPanel() {
                     <td className="px-4 py-3 border-b border-gray-100 dark:border-gray-800">
                       <div className="font-mono text-xs font-bold text-gray-700 dark:text-gray-300">{p.mst}</div>
                       {p.ten_nnop && <div className="text-[11px] text-gray-400 mt-0.5 max-w-[200px] truncate">{p.ten_nnop}</div>}
+                    </td>
+                    <td className="px-4 py-3 border-b border-gray-100 dark:border-gray-800 max-w-[200px]">
+                      <KhoanNopBadges chiTiet={p.chi_tiet} />
                     </td>
                     <td className="px-4 py-3 border-b border-gray-100 dark:border-gray-800">
                       <HthucBadge code={p.hthuc_nop} />
@@ -247,7 +295,7 @@ export function TaxPaymentPanel() {
                   {/* Expanded detail rows */}
                   {expanded.has(p.id) && p.chi_tiet.length > 0 && (
                     <tr key={`${p.id}-detail`}>
-                      <td colSpan={8} className="bg-blue-50 dark:bg-blue-950/10 border-b border-gray-200 dark:border-gray-700 px-8 py-3">
+                      <td colSpan={9} className="bg-blue-50 dark:bg-blue-950/10 border-b border-gray-200 dark:border-gray-700 px-8 py-3">
                         <table className="min-w-full text-xs border-collapse">
                           <thead>
                             <tr className="text-gray-500 dark:text-gray-400 font-semibold">
