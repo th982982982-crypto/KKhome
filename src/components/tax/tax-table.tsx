@@ -25,16 +25,17 @@ function khaiTypeLabel(f: TaxFile) {
 
 type ColDesc = { type: 'total'; yr: string } | { type: 'file'; file: TaxFile }
 
-// Tailwind sticky classes — must be on <th>/<td> directly (not <tr>)
-// border-separate is required for sticky to work in all browsers
-const STICKY_COL1_HEAD = 'sticky top-0 left-0 z-[40] bg-gray-50 dark:bg-gray-900'
-const STICKY_COL2_HEAD = 'sticky top-0 left-[300px] z-[40] bg-gray-50 dark:bg-gray-900'
+// Only 1 sticky column now (col1 = chỉ tiêu + mã số merged)
+// This eliminates the left-[Npx] positioning bug where col2 would float over data
 const STICKY_HEAD = 'sticky top-0 z-[20] bg-gray-50 dark:bg-gray-900'
+const STICKY_COL1_HEAD = 'sticky top-0 left-0 z-[40] bg-gray-50 dark:bg-gray-900'
 const STICKY_COL1_BODY = 'sticky left-0 z-[10] bg-white dark:bg-gray-950'
-const STICKY_COL2_BODY = 'sticky left-[300px] z-[10] bg-white dark:bg-gray-950'
+
+// Col1 width — locked so sticky data headers align correctly
+const COL1_W = 'w-[340px] min-w-[340px] max-w-[340px]'
 
 export function TaxTable({ files, declarationType, selectedMst, selectedYear, mode }: TaxTableProps) {
-  // All hooks MUST be called before any conditional return (Rules of Hooks)
+  // All hooks MUST be before any conditional return (Rules of Hooks)
   const filtered = useMemo(
     () =>
       files.filter(
@@ -47,7 +48,6 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
     [files, declarationType, selectedMst, selectedYear]
   )
 
-  // Include THAY THẾ files for period mode (computed always to satisfy Rules of Hooks)
   const allPeriodFiles = useMemo(
     () =>
       files
@@ -89,17 +89,14 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
         <table className="min-w-full border-separate border-spacing-0 text-sm">
           <thead>
             <tr>
-              <th className={`${STICKY_COL1_HEAD} text-left px-4 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 w-[300px] max-w-[300px] text-xs uppercase tracking-wide`}>
-                Chỉ tiêu báo cáo (Tờ khai chuẩn)
-              </th>
-              <th className={`${STICKY_COL2_HEAD} text-center px-3 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 min-w-[60px] text-xs uppercase tracking-wide`}>
-                Mã số
+              <th className={`${STICKY_COL1_HEAD} ${COL1_W} text-left px-4 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 text-xs uppercase tracking-wide`}>
+                Chỉ tiêu <span className="text-blue-400 font-normal">[Mã số]</span>
               </th>
               {mstList.map((mst) =>
                 years.map((yr) => (
                   <th
                     key={`${mst}-${yr}`}
-                    className={`${STICKY_HEAD} text-right px-4 py-3 font-bold text-gray-700 dark:text-gray-200 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[140px]`}
+                    className={`${STICKY_HEAD} text-right px-4 py-3 font-bold text-gray-700 dark:text-gray-200 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[150px]`}
                   >
                     {mstList.length > 1 && <div className="text-[10px] text-gray-400 mb-0.5">{mst}</div>}
                     <div className="text-sm">{yr}</div>
@@ -114,7 +111,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
                 return (
                   <tr key={i}>
                     <td
-                      colSpan={2 + mstList.length * years.length}
+                      colSpan={1 + mstList.length * years.length}
                       className="bg-orange-50 dark:bg-orange-950/20 text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide"
                     >
                       {row.name}
@@ -124,11 +121,11 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
               }
               return (
                 <tr key={row.code} className="hover:bg-gray-50 dark:hover:bg-gray-800/30">
-                  <td className={`${STICKY_COL1_BODY} px-4 py-2 text-gray-700 dark:text-gray-300 border-b border-r border-gray-100 dark:border-gray-800 text-xs w-[300px] max-w-[300px]`}>
-                    {row.name}
-                  </td>
-                  <td className={`${STICKY_COL2_BODY} text-center px-3 py-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400 border-b border-r border-gray-100 dark:border-gray-800`}>
-                    [{row.code}]
+                  <td className={`${STICKY_COL1_BODY} ${COL1_W} px-4 py-2 border-b border-r border-gray-100 dark:border-gray-800 text-xs`}>
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="text-gray-700 dark:text-gray-300 leading-snug">{row.name}</span>
+                      <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0">[{row.code}]</span>
+                    </div>
                   </td>
                   {mstList.map((mst) =>
                     years.map((yr) => {
@@ -173,7 +170,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
     yearTotals.set(yr, tot)
   }
 
-  // Build flat columns: [total-yr, file, file, ..., total-yr2, ...]
+  // Columns: [total-yr1, file1, file2, ..., total-yr2, ...]
   const cols: ColDesc[] = []
   for (const yr of years) {
     cols.push({ type: 'total', yr })
@@ -189,21 +186,15 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
       <table className="min-w-full border-separate border-spacing-0 text-sm">
         <thead>
           <tr>
-            {/* Sticky corner: col 1 */}
-            <th className={`${STICKY_COL1_HEAD} text-left px-4 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 w-[300px] max-w-[300px] text-xs uppercase tracking-wide`}>
-              Chỉ tiêu báo cáo (Tờ khai chuẩn)
+            <th className={`${STICKY_COL1_HEAD} ${COL1_W} text-left px-4 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 text-xs uppercase tracking-wide`}>
+              Chỉ tiêu <span className="text-blue-400 font-normal">[Mã số]</span>
             </th>
-            {/* Sticky corner: col 2 */}
-            <th className={`${STICKY_COL2_HEAD} text-center px-3 py-3 font-bold text-gray-500 dark:text-gray-400 border-b border-r border-gray-200 dark:border-gray-700 min-w-[60px] text-xs uppercase tracking-wide`}>
-              Mã số
-            </th>
-            {/* Data columns */}
             {cols.map((col) => {
               if (col.type === 'total') {
                 return (
                   <th
                     key={`tot-${col.yr}`}
-                    className={`${STICKY_HEAD} text-right px-4 py-3 font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/20 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[140px]`}
+                    className={`${STICKY_HEAD} text-right px-4 py-3 font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/20 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[150px]`}
                   >
                     <div className="text-[9px] font-semibold text-emerald-500 dark:text-emerald-400 uppercase tracking-wide">Tổng năm</div>
                     <div className="text-sm">{col.yr}</div>
@@ -214,17 +205,15 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
               return (
                 <th
                   key={col.file.id}
-                  className={`${STICKY_HEAD} text-right px-3 py-2 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[130px] ${
-                    isReplaced ? 'opacity-50' : ''
-                  }`}
+                  className={`${STICKY_HEAD} text-right px-3 py-2 border-b border-r border-gray-200 dark:border-gray-700 whitespace-nowrap min-w-[130px]`}
                 >
                   {multiMst && (
                     <div className="text-[9px] text-gray-400 mb-0.5">{col.file.mst}</div>
                   )}
-                  <div className={`text-xs font-bold ${isReplaced ? 'text-gray-500 dark:text-gray-400' : 'text-gray-700 dark:text-gray-200'}`}>
+                  <div className={`text-xs font-bold ${isReplaced ? 'text-gray-400 dark:text-gray-500' : 'text-gray-700 dark:text-gray-200'}`}>
                     Kỳ {col.file.tax_period}
                   </div>
-                  <div className={`text-[10px] mt-0.5 ${isReplaced ? 'text-gray-400' : 'text-gray-500 dark:text-gray-400'}`}>
+                  <div className={`text-[10px] mt-0.5 ${isReplaced ? 'text-gray-400 dark:text-gray-600' : 'text-gray-500 dark:text-gray-400'}`}>
                     [{khaiTypeLabel(col.file)}]
                   </div>
                   <div className={`text-[9px] font-semibold mt-0.5 ${isReplaced ? 'text-amber-500' : 'text-emerald-500'}`}>
@@ -241,7 +230,7 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
               return (
                 <tr key={i}>
                   <td
-                    colSpan={2 + cols.length}
+                    colSpan={1 + cols.length}
                     className="bg-orange-50 dark:bg-orange-950/20 text-orange-800 dark:text-orange-300 font-bold text-xs px-4 py-2 border-b border-gray-200 dark:border-gray-700 uppercase tracking-wide"
                   >
                     {row.name}
@@ -251,11 +240,11 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
             }
             return (
               <tr key={row.code} className="hover:bg-gray-50 dark:hover:bg-gray-800/30">
-                <td className={`${STICKY_COL1_BODY} px-4 py-2 text-gray-700 dark:text-gray-300 border-b border-r border-gray-100 dark:border-gray-800 text-xs w-[300px] max-w-[300px]`}>
-                  {row.name}
-                </td>
-                <td className={`${STICKY_COL2_BODY} text-center px-3 py-2 font-mono text-xs font-bold text-blue-600 dark:text-blue-400 border-b border-r border-gray-100 dark:border-gray-800`}>
-                  [{row.code}]
+                <td className={`${STICKY_COL1_BODY} ${COL1_W} px-4 py-2 border-b border-r border-gray-100 dark:border-gray-800 text-xs`}>
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="text-gray-700 dark:text-gray-300 leading-snug">{row.name}</span>
+                    <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0">[{row.code}]</span>
+                  </div>
                 </td>
                 {cols.map((col) => {
                   if (col.type === 'total') {
@@ -274,11 +263,11 @@ export function TaxTable({ files, declarationType, selectedMst, selectedYear, mo
                       key={`${col.file.id}-${row.code}`}
                       className={`text-right px-4 py-2 font-mono text-xs border-b border-r border-gray-100 dark:border-gray-800 ${
                         isReplaced
-                          ? 'text-gray-400 dark:text-gray-600 opacity-50'
+                          ? 'text-gray-400 dark:text-gray-600'
                           : 'text-gray-800 dark:text-gray-200'
                       }`}
                     >
-                      {fmt(col.file.indicators[row.code] ?? 0)}
+                      {fmt((col.file.indicators as Record<string, number>)[row.code] ?? 0)}
                     </td>
                   )
                 })}
