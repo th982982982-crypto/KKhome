@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { FileSpreadsheet, Lock, ShoppingCart, Clock, AlertCircle, FlaskConical, Loader2 } from 'lucide-react'
+import { FileSpreadsheet, ShoppingCart, Clock, AlertCircle, FlaskConical, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { TaxDashboard } from './tax-dashboard'
 import { toast } from 'sonner'
@@ -46,71 +46,92 @@ export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil, trial
 
   // Chưa bắt đầu trial và không có subscription → hiện intro
   if (!hasAccess && !trialExpired) {
+    const features = [
+      { icon: '📄', color: 'bg-blue-50 dark:bg-blue-950/40', title: 'Upload XML tờ khai', desc: 'Hỗ trợ GTGT (01/GTGT), TNDN, TNCN. Nhập nhiều kỳ cùng lúc.' },
+      { icon: '📊', color: 'bg-amber-50 dark:bg-amber-950/40', title: 'Báo cáo chỉ tiêu', desc: 'Xem theo năm hoặc từng kỳ, pivot dữ liệu tự động.' },
+      { icon: '🔍', color: 'bg-green-50 dark:bg-green-950/40', title: 'Đối soát rủi ro', desc: 'Phát hiện sai lệch ct[43] vs ct[22] và doanh thu GTGT–TNDN.' },
+      { icon: '📥', color: 'bg-purple-50 dark:bg-purple-950/40', title: 'Export Excel', desc: 'Xuất báo cáo tổng hợp sang Excel với một click.' },
+    ]
+
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4 py-16">
-        <div className="w-20 h-20 bg-blue-50 dark:bg-blue-950/40 rounded-3xl flex items-center justify-center mb-6">
-          <Lock className="w-10 h-10 text-blue-400" />
-        </div>
-        <h2 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
-          Mô-đun Tờ Khai Thuế
-        </h2>
-        <p className="text-gray-500 dark:text-gray-400 max-w-md mb-6 text-sm">
-          Phân tích tờ khai XML, đối soát rủi ro, báo cáo chỉ tiêu theo kỳ.
-        </p>
-        <div className="flex gap-3 flex-wrap justify-center">
-          {!isLoggedIn ? (
-            <>
-              <Link href="/login">
-                <Button className="bg-amber-500 hover:bg-amber-600 text-white gap-2 rounded-xl">
-                  <FlaskConical className="w-4 h-4" />
-                  Đăng nhập để dùng thử miễn phí
-                </Button>
-              </Link>
-              <Link href="/packages">
-                <Button variant="outline" className="gap-2 rounded-xl">
-                  <ShoppingCart className="w-4 h-4" />
-                  Xem gói
-                </Button>
-              </Link>
-            </>
-          ) : (
-            <>
-              {canStartTrial && (
-                <Button
-                  onClick={handleStartTrial}
-                  disabled={starting}
-                  className="bg-amber-500 hover:bg-amber-600 text-white gap-2 rounded-xl"
-                >
-                  {starting
-                    ? <><Loader2 className="w-4 h-4 animate-spin" />Đang kích hoạt...</>
-                    : <><FlaskConical className="w-4 h-4" />Bắt đầu dùng thử {trialDays} ngày miễn phí</>
-                  }
-                </Button>
-              )}
-              <Link href="/packages">
-                <Button variant={canStartTrial ? 'outline' : 'default'} className={`gap-2 rounded-xl ${!canStartTrial ? 'bg-blue-600 hover:bg-blue-700 text-white' : ''}`}>
-                  <ShoppingCart className="w-4 h-4" />
-                  Mua gói Tờ Khai Thuế
-                </Button>
-              </Link>
-            </>
-          )}
-        </div>
-        {isLoggedIn && !canStartTrial && (
-          <p className="mt-3 text-xs text-gray-400">Bạn đã dùng hết lượt thử miễn phí.</p>
-        )}
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl w-full text-left">
-          {[
-            { icon: '📄', title: 'Upload XML tờ khai', desc: 'Hỗ trợ GTGT (01/GTGT), TNDN, TNCN. Nhập nhiều kỳ cùng lúc.' },
-            { icon: '📊', title: 'Báo cáo chỉ tiêu', desc: 'Xem theo năm hoặc từng kỳ, pivot dữ liệu tự động.' },
-            { icon: '🔍', title: 'Đối soát rủi ro', desc: 'Tự động phát hiện sai lệch ct[43] vs ct[22] và doanh thu GTGT-TNDN.' },
-          ].map((f) => (
-            <div key={f.title} className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-4">
-              <div className="text-2xl mb-2">{f.icon}</div>
-              <div className="font-bold text-sm text-gray-900 dark:text-gray-50 mb-1">{f.title}</div>
-              <div className="text-xs text-gray-500 dark:text-gray-400">{f.desc}</div>
+      <div className="-mx-4 -mt-8">
+        {/* Hero */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-amber-500 via-orange-500 to-amber-600 text-white px-4 py-16 text-center">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl pointer-events-none" />
+
+          <div className="relative max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-4 py-1.5 rounded-full mb-6 ring-1 ring-white/30">
+              🧾 Mô-đun Tờ Khai Thuế
             </div>
-          ))}
+            <h1 className="text-3xl sm:text-4xl font-black mb-4 leading-tight tracking-tight">
+              Phân tích tờ khai XML<br />nhanh &amp; chính xác
+            </h1>
+            <p className="text-amber-100 text-sm sm:text-base max-w-lg mx-auto mb-8 leading-relaxed">
+              Upload XML từ phần mềm thuế, xem bảng chỉ tiêu theo kỳ/năm, tự động đối soát rủi ro và xuất báo cáo Excel.
+            </p>
+
+            <div className="flex flex-wrap gap-3 justify-center">
+              {!isLoggedIn ? (
+                <>
+                  <Link href="/login">
+                    <Button className="h-11 px-6 rounded-xl bg-white text-amber-700 hover:bg-amber-50 font-bold shadow-lg shadow-amber-900/20 gap-2">
+                      <FlaskConical className="w-4 h-4" />
+                      Đăng nhập dùng thử miễn phí
+                    </Button>
+                  </Link>
+                  <Link href="/packages#tax">
+                    <Button className="h-11 px-6 rounded-xl bg-white/15 hover:bg-white/25 text-white border border-white/30 font-semibold gap-2">
+                      <ShoppingCart className="w-4 h-4" />
+                      Xem bảng giá
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  {canStartTrial && (
+                    <Button
+                      onClick={handleStartTrial}
+                      disabled={starting}
+                      className="h-11 px-6 rounded-xl bg-white text-amber-700 hover:bg-amber-50 font-bold shadow-lg shadow-amber-900/20 gap-2"
+                    >
+                      {starting
+                        ? <><Loader2 className="w-4 h-4 animate-spin" />Đang kích hoạt...</>
+                        : <><FlaskConical className="w-4 h-4" />Dùng thử {trialDays} ngày miễn phí</>
+                      }
+                    </Button>
+                  )}
+                  <Link href="/packages#tax">
+                    <Button className={`h-11 px-6 rounded-xl font-bold gap-2 ${canStartTrial ? 'bg-white/15 hover:bg-white/25 text-white border border-white/30' : 'bg-white text-amber-700 hover:bg-amber-50 shadow-lg shadow-amber-900/20'}`}>
+                      <ShoppingCart className="w-4 h-4" />
+                      {canStartTrial ? 'Xem bảng giá' : 'Mua gói Tờ Khai Thuế'}
+                    </Button>
+                  </Link>
+                  {!canStartTrial && (
+                    <p className="w-full text-xs text-amber-200 mt-1">Bạn đã dùng hết lượt thử miễn phí.</p>
+                  )}
+                </>
+              )}
+            </div>
+
+            {!isLoggedIn && (
+              <p className="mt-4 text-xs text-amber-200">Dùng thử {trialDays} ngày, không cần thẻ tín dụng</p>
+            )}
+          </div>
+        </div>
+
+        {/* Feature grid */}
+        <div className="max-w-4xl mx-auto px-4 py-12">
+          <p className="text-center text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-8">Tính năng nổi bật</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {features.map((f) => (
+              <div key={f.title} className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-2xl p-5 hover:shadow-md dark:hover:shadow-black/40 transition-shadow">
+                <div className={`w-10 h-10 ${f.color} rounded-xl flex items-center justify-center text-xl mb-3`}>{f.icon}</div>
+                <div className="font-bold text-sm text-gray-900 dark:text-gray-50 mb-1">{f.title}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">{f.desc}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     )
