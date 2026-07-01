@@ -3,10 +3,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import { ShoppingCart, LogOut, LayoutDashboard, Settings, Loader2, Menu, X, FileSpreadsheet, Package, Scale, Receipt } from 'lucide-react'
+import { ShoppingCart, LogOut, LayoutDashboard, Settings, Loader2, Menu, X, FileSpreadsheet, Package, Scale, Receipt, Trash2, ShoppingBag, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { useCartStore } from '@/lib/cart-store'
+import { formatCurrency } from '@/lib/format'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import {
@@ -25,7 +26,10 @@ interface NavbarProps {
 }
 
 export function Navbar({ user, isAdmin, canViewLegal, canViewTax }: NavbarProps) {
-  const cartCount = useCartStore((s) => s.items.length)
+  const cartItems = useCartStore((s) => s.items)
+  const cartCount = cartItems.length
+  const cartTotal = useCartStore((s) => s.total)
+  const removeItem = useCartStore((s) => s.removeItem)
   const clearCart = useCartStore((s) => s.clearCart)
   const router = useRouter()
   const [isLoggingOut, setIsLoggingOut] = useState(false)
@@ -65,16 +69,83 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax }: NavbarProps)
           <div className="flex items-center gap-1.5 sm:gap-3">
             <ThemeToggle />
 
-            <Link href="/cart">
-              <Button variant="ghost" size="sm" className="relative h-9 w-9 sm:w-auto sm:px-3">
+            {/* Mini-cart dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="relative flex items-center justify-center h-9 w-9 sm:w-auto sm:px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                 <ShoppingCart className="w-5 h-5" />
                 {cartCount > 0 && (
                   <span className="absolute -top-0.5 -right-0.5 bg-gradient-to-br from-rose-500 to-red-600 text-white text-[10px] font-bold rounded-full min-w-5 h-5 px-1 flex items-center justify-center shadow-sm ring-2 ring-white dark:ring-gray-950">
                     {cartCount}
                   </span>
                 )}
-              </Button>
-            </Link>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-[340px] p-0 shadow-xl">
+                {/* Header */}
+                <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-800">
+                  <span className="font-bold text-gray-900 dark:text-gray-50 text-sm">
+                    Giỏ hàng {cartCount > 0 && <span className="text-gray-400 dark:text-gray-500 font-normal">({cartCount} sản phẩm)</span>}
+                  </span>
+                  {cartCount > 0 && (
+                    <button onClick={() => clearCart()} className="text-xs text-gray-400 hover:text-red-500 transition-colors">Xóa tất cả</button>
+                  )}
+                </div>
+
+                {/* Items */}
+                {cartCount === 0 ? (
+                  <div className="py-10 px-4 text-center">
+                    <ShoppingBag className="w-10 h-10 mx-auto text-gray-300 dark:text-gray-600 mb-2" />
+                    <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Giỏ hàng trống</p>
+                    <p className="text-xs text-gray-400 dark:text-gray-500 mt-1">Khám phá Templates và Gói mua</p>
+                  </div>
+                ) : (
+                  <div className="max-h-72 overflow-y-auto divide-y divide-gray-50 dark:divide-gray-800">
+                    {cartItems.map((item) => {
+                      const typeLabel = item.type === 'package' ? 'Gói bundle' : item.type === 'legal_plan' ? 'Pháp luật' : item.type === 'tax_plan' ? 'Tờ Khai Thuế' : 'Template'
+                      return (
+                        <div key={item.id} className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800/60">
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-700 overflow-hidden shrink-0 flex items-center justify-center text-base">
+                            {item.thumbnail_url
+                              ? <Image src={item.thumbnail_url} alt={item.name} width={40} height={40} className="object-cover w-full h-full" />
+                              : item.type === 'legal_plan' ? '⚖️' : item.type === 'tax_plan' ? '🧾' : '📊'}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 truncate">{item.name}</p>
+                            <p className="text-[11px] text-gray-400 dark:text-gray-500">{typeLabel}</p>
+                          </div>
+                          <span className="text-sm font-bold text-gray-900 dark:text-gray-50 shrink-0">{formatCurrency(item.sale_price)}</span>
+                          <button
+                            onClick={() => removeItem(item.id)}
+                            className="p-1 rounded text-gray-300 dark:text-gray-600 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors shrink-0"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+
+                {/* Footer */}
+                {cartCount > 0 && (
+                  <div className="border-t border-gray-100 dark:border-gray-800 p-4 space-y-3">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-500 dark:text-gray-400">Tổng cộng</span>
+                      <span className="text-lg font-black text-gray-900 dark:text-gray-50">{formatCurrency(cartTotal())}</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Link href="/cart" className="block">
+                        <Button variant="outline" className="w-full h-9 text-sm rounded-xl">Xem giỏ hàng</Button>
+                      </Link>
+                      <Link href="/checkout" className="block">
+                        <Button className="w-full h-9 text-sm rounded-xl bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100">
+                          Thanh toán <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             {user ? (
               <DropdownMenu>
