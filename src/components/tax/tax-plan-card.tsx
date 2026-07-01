@@ -28,10 +28,12 @@ export function TaxPlanCard({ plan, hasAccess = false, isRecommended = false }: 
     : 0
 
   function handleAddToCart() {
+    const durLabel = plan.duration_months === 120 ? 'Vĩnh viễn' : plan.duration_months === 12 ? '1 năm' : `${plan.duration_months} tháng`
+    const cartName = `Gói Tờ Khai Thuế · ${durLabel}`
     const added = addItem({
       type: 'tax_plan',
       id: plan.id,
-      name: plan.name,
+      name: cartName,
       sale_price: plan.price,
       original_price: plan.original_price ?? null,
       thumbnail_url: null,

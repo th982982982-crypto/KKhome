@@ -86,7 +86,7 @@ export function CartContent() {
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-gray-900 dark:text-gray-50 truncate">{item.name}</p>
                 <span className="inline-block mt-1 px-2 py-0.5 text-[11px] font-medium rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300">
-                  {item.type === 'package' ? 'Gói bundle' : item.type === 'legal_plan' ? 'Gói Pháp luật' : 'Template lẻ'}
+                  {item.type === 'package' ? 'Gói bundle' : item.type === 'legal_plan' ? 'Gói Pháp luật' : item.type === 'tax_plan' ? 'Gói Tờ Khai Thuế' : 'Template lẻ'}
                 </span>
               </div>
 

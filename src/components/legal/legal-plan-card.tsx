@@ -33,10 +33,12 @@ export function LegalPlanCard({ plan, hasAccess = false, isRecommended = false }
     : 0
 
   function handleAddToCart() {
+    const durLabel = plan.duration_months === 120 ? 'Vĩnh viễn' : plan.duration_months === 12 ? '1 năm' : `${plan.duration_months} tháng`
+    const cartName = `Gói Pháp luật · ${durLabel}`
     const added = addItem({
       type: 'legal_plan',
       id: plan.id,
-      name: plan.name,
+      name: cartName,
       sale_price: effectivePrice,
       original_price: strikePrice ?? plan.price,
       thumbnail_url: null,
