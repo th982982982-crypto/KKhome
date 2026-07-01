@@ -1,23 +1,32 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { CountdownCard } from '@/components/ui/countdown-timer'
 import { formatCurrency } from '@/lib/format'
 import { useCartStore } from '@/lib/cart-store'
 import { toast } from 'sonner'
-import { ShoppingCart, ScrollText } from 'lucide-react'
+import { ShoppingCart, Check, Star } from 'lucide-react'
 import { getLegalPlanEffectivePrice, isLegalPlanPromoActive } from '@/lib/supabase/types'
 import type { LegalPlan } from '@/lib/supabase/types'
 
-export function LegalPlanCard({ plan, hasAccess = false }: { plan: LegalPlan; hasAccess?: boolean }) {
+const FEATURES = [
+  'Tra cứu toàn bộ văn bản pháp luật',
+  'Tham chiếu chéo giữa các điều khoản',
+  'Tải biểu mẫu đính kèm văn bản',
+  'Đọc tóm tắt từng Điều ngay trên web',
+]
+
+export function LegalPlanCard({ plan, hasAccess = false, isRecommended = false }: {
+  plan: LegalPlan
+  hasAccess?: boolean
+  isRecommended?: boolean
+}) {
   const addItem = useCartStore((s) => s.addItem)
   const cartItems = useCartStore((s) => s.items)
   const inCart = cartItems.some((i) => i.id === plan.id)
 
   const effectivePrice = getLegalPlanEffectivePrice(plan)
   const promoActive = isLegalPlanPromoActive(plan)
-  // Giá gạch: khi đang KM gạch giá thường; ngược lại gạch original_price (nếu có)
   const strikePrice = promoActive ? plan.price : plan.original_price
   const discount = strikePrice && strikePrice > effectivePrice
     ? Math.round((1 - effectivePrice / strikePrice) * 100)
@@ -38,40 +47,89 @@ export function LegalPlanCard({ plan, hasAccess = false }: { plan: LegalPlan; ha
   }
 
   return (
-    <div className="bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 rounded-2xl p-6 hover:border-black dark:hover:border-white transition-colors duration-200 flex flex-col">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-indigo-100 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-300">
-          <ScrollText className="w-5 h-5" />
+    <div className={`relative flex flex-col rounded-2xl p-6 transition-all duration-200 ${
+      isRecommended
+        ? 'bg-indigo-600 dark:bg-indigo-700 text-white ring-4 ring-indigo-300 dark:ring-indigo-500 shadow-xl shadow-indigo-200/50 dark:shadow-indigo-900/50 scale-[1.02]'
+        : 'bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 hover:border-indigo-200 dark:hover:border-indigo-800'
+    }`}>
+      {/* Recommended badge */}
+      {isRecommended && (
+        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+          <span className="inline-flex items-center gap-1 bg-amber-400 text-amber-900 text-xs font-black px-3 py-1 rounded-full shadow-sm whitespace-nowrap">
+            <Star className="w-3 h-3 fill-amber-900" /> PHỔ BIẾN NHẤT
+          </span>
+        </div>
+      )}
+
+      {/* Discount badge */}
+      {discount > 0 && (
+        <span className={`absolute top-4 right-4 text-xs font-black px-2 py-0.5 rounded-full ${
+          isRecommended ? 'bg-white/20 text-white' : 'bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-400'
+        }`}>
+          -{discount}%
         </span>
-        {discount > 0 && <Badge className="bg-red-500 text-white">Tiết kiệm {discount}%</Badge>}
+      )}
+
+      {/* Duration */}
+      <div className={`text-sm font-bold mb-1 ${isRecommended ? 'text-indigo-200' : 'text-indigo-500 dark:text-indigo-400'}`}>
+        {plan.duration_months === 1 ? '1 tháng' : plan.duration_months === 12 ? '1 năm' : `${plan.duration_months} tháng`}
       </div>
 
-      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-1">{plan.name}</h3>
-      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-        Truy cập toàn bộ thư viện Pháp luật trong <strong>{plan.duration_months} tháng</strong>
-      </p>
+      {/* Name */}
+      <h3 className={`text-lg font-black mb-4 ${isRecommended ? 'text-white' : 'text-gray-900 dark:text-gray-50'}`}>
+        {plan.name}
+      </h3>
 
-      <div className="mb-2">
+      {/* Price */}
+      <div className="mb-5">
         <div className="flex items-baseline gap-2">
-          <span className="text-3xl font-bold text-gray-900 dark:text-gray-50">{formatCurrency(effectivePrice)}</span>
+          <span className={`text-3xl font-black ${isRecommended ? 'text-white' : 'text-gray-900 dark:text-gray-50'}`}>
+            {formatCurrency(effectivePrice)}
+          </span>
           {strikePrice && strikePrice > effectivePrice && (
-            <span className="text-gray-400 dark:text-gray-500 line-through text-sm">{formatCurrency(strikePrice)}</span>
+            <span className={`text-sm line-through ${isRecommended ? 'text-indigo-300' : 'text-gray-400 dark:text-gray-500'}`}>
+              {formatCurrency(strikePrice)}
+            </span>
           )}
         </div>
+        {promoActive && plan.promo_end_at && (
+          <div className="mt-2">
+            <CountdownCard endAt={plan.promo_end_at} />
+          </div>
+        )}
       </div>
 
-      {promoActive && plan.promo_end_at && <CountdownCard endAt={plan.promo_end_at} />}
+      {/* Features */}
+      <ul className="space-y-2 mb-6 flex-1">
+        {FEATURES.map((f) => (
+          <li key={f} className="flex items-start gap-2 text-sm">
+            <Check className={`w-4 h-4 mt-0.5 shrink-0 ${isRecommended ? 'text-indigo-200' : 'text-indigo-500 dark:text-indigo-400'}`} />
+            <span className={isRecommended ? 'text-indigo-100' : 'text-gray-600 dark:text-gray-300'}>{f}</span>
+          </li>
+        ))}
+      </ul>
 
-      <div className="flex-1" />
-
-      <Button
-        className="w-full bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl font-semibold mt-6"
-        onClick={inCart ? undefined : handleAddToCart}
-        disabled={inCart}
-      >
-        <ShoppingCart className="w-4 h-4 mr-2" />
-        {inCart ? 'Đã có trong giỏ hàng' : hasAccess ? 'Gia hạn' : 'Thêm vào giỏ hàng'}
-      </Button>
+      {/* CTA */}
+      {hasAccess ? (
+        <div className={`text-center text-sm font-semibold py-2.5 rounded-xl ${isRecommended ? 'bg-white/15 text-white' : 'bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400'}`}>
+          ✓ Đang sử dụng — <button onClick={inCart ? undefined : handleAddToCart} disabled={inCart} className="underline">{inCart ? 'Đã thêm' : 'Gia hạn'}</button>
+        </div>
+      ) : (
+        <Button
+          className={`w-full h-11 rounded-xl font-bold ${
+            isRecommended
+              ? 'bg-white text-indigo-700 hover:bg-indigo-50 shadow-sm'
+              : inCart
+                ? 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500'
+                : 'bg-indigo-600 hover:bg-indigo-700 text-white dark:bg-indigo-500 dark:hover:bg-indigo-600'
+          }`}
+          onClick={inCart ? undefined : handleAddToCart}
+          disabled={inCart}
+        >
+          <ShoppingCart className="w-4 h-4 mr-2" />
+          {inCart ? 'Đã thêm vào giỏ' : 'Thêm vào giỏ hàng'}
+        </Button>
+      )}
     </div>
   )
 }

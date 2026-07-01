@@ -100,9 +100,15 @@ export function TemplateCard({ template, onViewDetail, isPurchased, activePromot
 
       {/* Content */}
       <div className="p-4">
-        <h3 className="font-semibold text-gray-900 dark:text-gray-50 text-sm leading-snug mb-2 line-clamp-2 group-hover:text-black dark:group-hover:text-white">
+        <h3 className="font-bold text-gray-900 dark:text-gray-50 text-sm leading-snug mb-1.5 line-clamp-2 group-hover:text-black dark:group-hover:text-white">
           {template.name}
         </h3>
+
+        {template.description && (
+          <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mb-2 leading-relaxed">
+            {template.description}
+          </p>
+        )}
 
         {template.tags && template.tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mb-3">
