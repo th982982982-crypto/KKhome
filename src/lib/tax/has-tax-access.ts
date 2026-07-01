@@ -1,6 +1,11 @@
 import type { Profile } from '../supabase/types'
 
-type TaxProfile = Pick<Profile, 'is_admin' | 'tax_access_until'> & { tax_trial_started_at?: string | null }
+type TaxProfile = Pick<Profile, 'is_admin' | 'tax_access_until'> & {
+  tax_trial_started_at?: string | null
+  tax_trial_count?: number | null
+  tax_trial_max_count?: number | null
+  tax_trial_bonus_days?: number | null
+}
 
 export interface TaxAccessStatus {
   hasAccess: boolean
@@ -8,6 +13,10 @@ export interface TaxAccessStatus {
   isTrial: boolean
   /** Số ngày còn lại của trial (0 nếu không còn hoặc đã mua gói) */
   trialDaysLeft: number
+}
+
+function effectiveTrialDays(profile: TaxProfile, baseDays: number): number {
+  return baseDays + (profile.tax_trial_bonus_days ?? 0)
 }
 
 export function getTaxAccessStatus(
@@ -25,9 +34,10 @@ export function getTaxAccessStatus(
     }
   }
 
-  // Kiểm tra trial
+  // Kiểm tra trial (bonus_days được cộng vào)
   if (profile.tax_trial_started_at) {
-    const trialEnd = new Date(profile.tax_trial_started_at).getTime() + trialDays * 24 * 60 * 60 * 1000
+    const totalDays = effectiveTrialDays(profile, trialDays)
+    const trialEnd = new Date(profile.tax_trial_started_at).getTime() + totalDays * 24 * 60 * 60 * 1000
     const remaining = trialEnd - Date.now()
     if (remaining > 0) {
       const daysLeft = Math.ceil(remaining / (24 * 60 * 60 * 1000))
@@ -69,6 +79,23 @@ export function isTaxTrialExpired(
     if (!Number.isFinite(t) || t > Date.now()) return false
   }
   if (!profile.tax_trial_started_at) return false
-  const trialEnd = new Date(profile.tax_trial_started_at).getTime() + trialDays * 24 * 60 * 60 * 1000
+  const totalDays = effectiveTrialDays(profile, trialDays)
+  const trialEnd = new Date(profile.tax_trial_started_at).getTime() + totalDays * 24 * 60 * 60 * 1000
   return Date.now() >= trialEnd
+}
+
+/** User có thể tự bấm bắt đầu trial không (chưa dùng hết quota) */
+export function canStartTrial(profile: TaxProfile | null | undefined): boolean {
+  if (!profile || profile.is_admin) return false
+  // Đã có subscription thì không cần trial
+  if (profile.tax_access_until) {
+    const t = new Date(profile.tax_access_until).getTime()
+    if (!Number.isFinite(t) || t > Date.now()) return false
+  }
+  // trial đang chạy rồi
+  if (profile.tax_trial_started_at) return false
+  // Còn quota trial
+  const used = profile.tax_trial_count ?? 0
+  const max = profile.tax_trial_max_count ?? 1
+  return used < max
 }

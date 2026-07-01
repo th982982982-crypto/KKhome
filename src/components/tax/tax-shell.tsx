@@ -1,16 +1,21 @@
 'use client'
 
 import Link from 'next/link'
-import { FileSpreadsheet, Lock, ShoppingCart, Clock, AlertCircle } from 'lucide-react'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { FileSpreadsheet, Lock, ShoppingCart, Clock, AlertCircle, FlaskConical, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { TaxDashboard } from './tax-dashboard'
+import { toast } from 'sonner'
 
 interface TaxShellProps {
   hasAccess: boolean
   isTrial: boolean
   trialDaysLeft: number
   accessUntil: string | null
-  trialExpired: boolean  // trial đã bắt đầu nhưng đã hết, chưa mua gói
+  trialExpired: boolean
+  canStartTrial?: boolean
+  trialDays?: number
 }
 
 function formatDate(d: string | null) {
@@ -20,7 +25,24 @@ function formatDate(d: string | null) {
   return new Date(d).toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
-export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil, trialExpired }: TaxShellProps) {
+export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil, trialExpired, canStartTrial = false, trialDays = 14 }: TaxShellProps) {
+  const router = useRouter()
+  const [starting, setStarting] = useState(false)
+
+  async function handleStartTrial() {
+    setStarting(true)
+    try {
+      const res = await fetch('/api/tax/start-trial', { method: 'POST' })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error || 'Lỗi khi bắt đầu dùng thử')
+      toast.success(`Đã kích hoạt ${trialDays} ngày dùng thử!`)
+      router.refresh()
+    } catch (e) {
+      toast.error((e as Error).message)
+      setStarting(false)
+    }
+  }
+
   // Chưa bắt đầu trial và không có subscription → hiện intro
   if (!hasAccess && !trialExpired) {
     return (
@@ -31,17 +53,32 @@ export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil, trial
         <h2 className="text-2xl font-black text-gray-900 dark:text-gray-50 mb-2">
           Mô-đun Tờ Khai Thuế
         </h2>
-        <p className="text-gray-500 dark:text-gray-400 max-w-md mb-4 text-sm">
-          Mua gói hoặc được cấp dùng thử để bắt đầu phân tích tờ khai XML.
+        <p className="text-gray-500 dark:text-gray-400 max-w-md mb-6 text-sm">
+          Phân tích tờ khai XML, đối soát rủi ro, báo cáo chỉ tiêu theo kỳ.
         </p>
         <div className="flex gap-3 flex-wrap justify-center">
+          {canStartTrial && (
+            <Button
+              onClick={handleStartTrial}
+              disabled={starting}
+              className="bg-amber-500 hover:bg-amber-600 text-white gap-2 rounded-xl"
+            >
+              {starting
+                ? <><Loader2 className="w-4 h-4 animate-spin" />Đang kích hoạt...</>
+                : <><FlaskConical className="w-4 h-4" />Bắt đầu dùng thử {trialDays} ngày miễn phí</>
+              }
+            </Button>
+          )}
           <Link href="/packages">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white gap-2 rounded-xl">
+            <Button variant={canStartTrial ? 'outline' : 'default'} className={`gap-2 rounded-xl ${!canStartTrial ? 'bg-blue-600 hover:bg-blue-700 text-white' : ''}`}>
               <ShoppingCart className="w-4 h-4" />
               Mua gói Tờ Khai Thuế
             </Button>
           </Link>
         </div>
+        {!canStartTrial && (
+          <p className="mt-3 text-xs text-gray-400">Bạn đã dùng hết lượt thử miễn phí.</p>
+        )}
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl w-full text-left">
           {[
             { icon: '📄', title: 'Upload XML tờ khai', desc: 'Hỗ trợ GTGT (01/GTGT), TNDN, TNCN. Nhập nhiều kỳ cùng lúc.' },

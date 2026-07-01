@@ -14,7 +14,7 @@ export default async function AdminTaxPage() {
 
   const [{ data: plans }, { data: users }, { data: authUsers }, { data: settings }] = await Promise.all([
     supabase.from('tax_plans').select('*').order('sort_order'),
-    supabase.from('profiles').select('id, full_name, is_admin, tax_access_until, tax_trial_started_at').order('created_at', { ascending: false }),
+    supabase.from('profiles').select('id, full_name, is_admin, tax_access_until, tax_trial_started_at, tax_trial_count, tax_trial_max_count, tax_trial_bonus_days').order('created_at', { ascending: false }),
     supabase.auth.admin.listUsers({ perPage: 1000 }),
     supabase.from('site_settings').select('tax_trial_days').single(),
   ])
@@ -32,6 +32,9 @@ export default async function AdminTaxPage() {
     is_admin: p.is_admin,
     tax_access_until: p.tax_access_until ?? null,
     tax_trial_started_at: p.tax_trial_started_at ?? null,
+    tax_trial_count: p.tax_trial_count ?? 0,
+    tax_trial_max_count: p.tax_trial_max_count ?? 1,
+    tax_trial_bonus_days: p.tax_trial_bonus_days ?? 0,
   }))
 
   return (

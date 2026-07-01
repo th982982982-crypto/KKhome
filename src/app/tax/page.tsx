@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import { getTaxAccessStatus, isTaxTrialExpired } from '@/lib/tax/has-tax-access'
+import { getTaxAccessStatus, isTaxTrialExpired, canStartTrial } from '@/lib/tax/has-tax-access'
 import { TaxShell } from '@/components/tax/tax-shell'
 
 export const revalidate = 0
@@ -18,6 +18,7 @@ export default async function TaxPage() {
   const trialDays = settings?.tax_trial_days ?? 14
   const { hasAccess, isTrial, trialDaysLeft } = getTaxAccessStatus(profile, trialDays)
   const trialExpired = isTaxTrialExpired(profile, trialDays)
+  const canTrial = canStartTrial(profile)
 
   return (
     <TaxShell
@@ -26,6 +27,8 @@ export default async function TaxPage() {
       trialDaysLeft={trialDaysLeft}
       accessUntil={profile?.tax_access_until ?? null}
       trialExpired={trialExpired}
+      canStartTrial={canTrial}
+      trialDays={trialDays}
     />
   )
 }
