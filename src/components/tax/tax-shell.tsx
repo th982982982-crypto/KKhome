@@ -16,6 +16,7 @@ interface TaxShellProps {
   trialExpired: boolean
   canStartTrial?: boolean
   trialDays?: number
+  isLoggedIn?: boolean
 }
 
 function formatDate(d: string | null) {
@@ -25,7 +26,7 @@ function formatDate(d: string | null) {
   return new Date(d).toLocaleDateString('vi-VN', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
-export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil, trialExpired, canStartTrial = false, trialDays = 14 }: TaxShellProps) {
+export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil, trialExpired, canStartTrial = false, trialDays = 14, isLoggedIn = true }: TaxShellProps) {
   const router = useRouter()
   const [starting, setStarting] = useState(false)
 
@@ -57,26 +58,45 @@ export function TaxShell({ hasAccess, isTrial, trialDaysLeft, accessUntil, trial
           Phân tích tờ khai XML, đối soát rủi ro, báo cáo chỉ tiêu theo kỳ.
         </p>
         <div className="flex gap-3 flex-wrap justify-center">
-          {canStartTrial && (
-            <Button
-              onClick={handleStartTrial}
-              disabled={starting}
-              className="bg-amber-500 hover:bg-amber-600 text-white gap-2 rounded-xl"
-            >
-              {starting
-                ? <><Loader2 className="w-4 h-4 animate-spin" />Đang kích hoạt...</>
-                : <><FlaskConical className="w-4 h-4" />Bắt đầu dùng thử {trialDays} ngày miễn phí</>
-              }
-            </Button>
+          {!isLoggedIn ? (
+            <>
+              <Link href="/login">
+                <Button className="bg-amber-500 hover:bg-amber-600 text-white gap-2 rounded-xl">
+                  <FlaskConical className="w-4 h-4" />
+                  Đăng nhập để dùng thử miễn phí
+                </Button>
+              </Link>
+              <Link href="/packages">
+                <Button variant="outline" className="gap-2 rounded-xl">
+                  <ShoppingCart className="w-4 h-4" />
+                  Xem gói
+                </Button>
+              </Link>
+            </>
+          ) : (
+            <>
+              {canStartTrial && (
+                <Button
+                  onClick={handleStartTrial}
+                  disabled={starting}
+                  className="bg-amber-500 hover:bg-amber-600 text-white gap-2 rounded-xl"
+                >
+                  {starting
+                    ? <><Loader2 className="w-4 h-4 animate-spin" />Đang kích hoạt...</>
+                    : <><FlaskConical className="w-4 h-4" />Bắt đầu dùng thử {trialDays} ngày miễn phí</>
+                  }
+                </Button>
+              )}
+              <Link href="/packages">
+                <Button variant={canStartTrial ? 'outline' : 'default'} className={`gap-2 rounded-xl ${!canStartTrial ? 'bg-blue-600 hover:bg-blue-700 text-white' : ''}`}>
+                  <ShoppingCart className="w-4 h-4" />
+                  Mua gói Tờ Khai Thuế
+                </Button>
+              </Link>
+            </>
           )}
-          <Link href="/packages">
-            <Button variant={canStartTrial ? 'outline' : 'default'} className={`gap-2 rounded-xl ${!canStartTrial ? 'bg-blue-600 hover:bg-blue-700 text-white' : ''}`}>
-              <ShoppingCart className="w-4 h-4" />
-              Mua gói Tờ Khai Thuế
-            </Button>
-          </Link>
         </div>
-        {!canStartTrial && (
+        {isLoggedIn && !canStartTrial && (
           <p className="mt-3 text-xs text-gray-400">Bạn đã dùng hết lượt thử miễn phí.</p>
         )}
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl w-full text-left">
