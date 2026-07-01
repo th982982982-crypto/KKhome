@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { createClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
 import { hasLegalAccess } from '@/lib/legal/has-legal-access'
@@ -24,7 +25,9 @@ export default async function CartPage() {
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950">
       <Navbar user={user} isAdmin={isAdmin} canViewLegal={canViewLegal} canViewTax={canViewTax} />
       <main className="flex-1">
-        <CartContent />
+        <Suspense>
+          <CartContent />
+        </Suspense>
       </main>
       <SiteFooter />
     </div>

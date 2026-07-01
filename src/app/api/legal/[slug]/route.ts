@@ -6,7 +6,7 @@ import { createAdminClient } from '@/lib/supabase/server'
 
 export const dynamic = 'force-dynamic'
 
-function buildLockScript(plans: { name: string; duration_months: number; price: number }[]) {
+function buildLockScript(plans: { id: string; name: string; duration_months: number; price: number; original_price: number | null }[]) {
   const plansJson = JSON.stringify(plans).replace(/<\/script>/gi, '<\\/script>')
 
   return `<script>
@@ -36,7 +36,7 @@ function buildLockScript(plans: { name: string; duration_months: number; price: 
     if(_modal){_modal.style.display='flex';return;}
     var cards='';
     PLANS.forEach(function(p){
-      cards+='<a href="/packages" target="_top" class="kk-plan-card">'
+      cards+='<a href="/cart?legal_plan='+p.id+'" target="_top" class="kk-plan-card">'
         +'<div style="font-weight:700;font-size:13px;color:#1e40af">'+p.name+' — '+fmtDur(p.duration_months)+'</div>'
         +'<div style="font-size:18px;font-weight:800;color:#2563eb;margin-top:4px">'+fmtPrice(p.price)+'</div>'
         +'</a>';
@@ -88,7 +88,7 @@ export async function GET(
     const admin = createAdminClient()
     const { data: plans } = await admin
       .from('legal_plans')
-      .select('name, duration_months, price')
+      .select('id, name, duration_months, price, original_price')
       .eq('is_active', true)
       .order('price', { ascending: true })
 

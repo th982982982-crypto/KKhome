@@ -2,13 +2,41 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { useEffect, useRef } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { useCartStore } from '@/lib/cart-store'
 import { formatCurrency } from '@/lib/format'
 import { Button } from '@/components/ui/button'
 import { Trash2, ShoppingBag, ArrowRight, ArrowLeft } from 'lucide-react'
 
 export function CartContent() {
-  const { items, removeItem, total } = useCartStore()
+  const { items, addItem, removeItem, total } = useCartStore()
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const didAutoAdd = useRef(false)
+
+  useEffect(() => {
+    const planId = searchParams.get('legal_plan')
+    if (!planId || didAutoAdd.current) return
+    didAutoAdd.current = true
+
+    fetch(`/api/legal/plans/${planId}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(plan => {
+        if (!plan) return
+        addItem({
+          type: 'legal_plan',
+          id: plan.id,
+          name: plan.name,
+          sale_price: plan.price,
+          original_price: plan.original_price ?? null,
+          thumbnail_url: null,
+          duration_months: plan.duration_months,
+        })
+        router.replace('/checkout')
+      })
+      .catch(() => {})
+  }, [searchParams, addItem, router])
 
   if (items.length === 0) {
     return (
