@@ -4,7 +4,7 @@
 import type { LegalDoc } from './registry'
 
 // Cập nhật mỗi khi thêm/sửa văn bản mới vào registry
-export const REGISTRY_UPDATED_AT = '2026-06-06'
+export const REGISTRY_UPDATED_AT = '2026-07-03'
 
 export type DocType =
   | 'Luật'
@@ -37,6 +37,7 @@ export const CATEGORY_ORDER = [
   'Quản lý thuế',
   'Thuế Nhà thầu (FCT)',
   'HKD, CNKD',
+  'Doanh nghiệp',
   'Khác',
 ] as const
 
@@ -53,6 +54,7 @@ export const CATEGORY_META: Record<string, { desc: string; gradient: string; ico
   'Quản lý thuế': { desc: 'Đăng ký, kê khai, nộp, thanh tra thuế', gradient: 'from-violet-100 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/30', iconColor: 'text-violet-600 dark:text-violet-400' },
   'Thuế Nhà thầu (FCT)': { desc: 'Nghĩa vụ thuế nhà thầu nước ngoài', gradient: 'from-fuchsia-100 to-pink-50 dark:from-fuchsia-950/50 dark:to-pink-950/30', iconColor: 'text-fuchsia-600 dark:text-fuchsia-400' },
   'HKD, CNKD': { desc: 'Hộ kinh doanh, cá nhân kinh doanh', gradient: 'from-lime-100 to-green-50 dark:from-lime-950/50 dark:to-green-950/30', iconColor: 'text-lime-600 dark:text-lime-400' },
+  'Doanh nghiệp': { desc: 'Thành lập, tổ chức, quản trị doanh nghiệp', gradient: 'from-blue-100 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/30', iconColor: 'text-blue-600 dark:text-blue-400' },
   'Khác': { desc: 'Nghị quyết và văn bản khác', gradient: 'from-slate-100 to-gray-50 dark:from-slate-900/60 dark:to-gray-900/40', iconColor: 'text-slate-600 dark:text-slate-400' },
 }
 
@@ -79,6 +81,8 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   'luat-67': { docType: 'Luật', categories: ['Thuế TNDN'] },
   nd320: { docType: 'Nghị định', categories: ['Thuế TNDN'] },
   tt20: { docType: 'Thông tư', categories: ['Thuế TNDN'], hasForms: true },
+  // Chuyển giá / Giao dịch liên kết (TNDN)
+  nd132: { docType: 'Nghị định', categories: ['Thuế TNDN'], hasForms: true },
   // Thuế GTGT
   'luat-48': { docType: 'Luật', categories: ['Thuế GTGT'] },
   'luat-149': { docType: 'Luật', categories: ['Thuế GTGT'] },
@@ -89,6 +93,8 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   // Thuế TNCN
   'luat-109': { docType: 'Luật', categories: ['Thuế TNCN'] },
   'luat-09': { docType: 'Luật', categories: ['Thuế TNDN', 'Thuế GTGT', 'Thuế TNCN', 'Thuế TTĐB'] },
+  nd253: { docType: 'Nghị định', categories: ['Thuế TNCN'] },
+  nq110: { docType: 'Khác', categories: ['Thuế TNCN'] },
   // Thuế TTĐB
   'luat-66': { docType: 'Luật', categories: ['Thuế TTĐB'] },
   nd360: { docType: 'Nghị định', categories: ['Thuế TTĐB'] },
@@ -104,6 +110,24 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   'luat-38': { docType: 'Luật', categories: ['Quản lý thuế'] },
   nd68: { docType: 'Nghị định', categories: ['Quản lý thuế', 'HKD, CNKD'] },
   tt18: { docType: 'Thông tư', categories: ['Quản lý thuế', 'HKD, CNKD'], hasForms: true },
+  // Hóa đơn / Chứng từ (nhóm chung Quản lý thuế)
+  nd123: { docType: 'Nghị định', categories: ['Quản lý thuế'] },
+  nd70: { docType: 'Nghị định', categories: ['Quản lý thuế'] },
+  nd254: { docType: 'Nghị định', categories: ['Quản lý thuế'], hasForms: true },
+  // Doanh nghiệp
+  'luat-59': { docType: 'Luật', categories: ['Doanh nghiệp'] },
+  // Khác — Lao động, Bảo hiểm xã hội, Công đoàn
+  'blld-45': { docType: 'Luật', categories: ['Khác'] },
+  'luat-74': { docType: 'Luật', categories: ['Khác'] },
+  'luat-41': { docType: 'Luật', categories: ['Khác'] },
+  'luat-25': { docType: 'Luật', categories: ['Khác'] },
+  'luat-50': { docType: 'Luật', categories: ['Khác'] },
+  nd293: { docType: 'Nghị định', categories: ['Khác'] },
+  nd145: { docType: 'Nghị định', categories: ['Khác'] },
+  nd191: { docType: 'Nghị định', categories: ['Khác'] },
+  nd105: { docType: 'Nghị định', categories: ['Khác'] },
+  qd595: { docType: 'Khác', categories: ['Khác'] },
+  qd505: { docType: 'Khác', categories: ['Khác'] },
 }
 
 // Hình dạng nhẹ, serializable để truyền từ Server Component → Client Component
@@ -125,7 +149,6 @@ export const COMING_SOON: CatalogDoc[] = [
   { slug: 'soon-luat-107', title: 'Luật 107/2016/QH13 — Luật Thuế Xuất khẩu, Nhập khẩu', shortTitle: 'Luật 107/2016', description: 'Luật Thuế XNK hiện hành. Đối tượng chịu thuế, biểu thuế, miễn/giảm/hoàn thuế xuất nhập khẩu.', effectiveDate: '2016-09-01', docType: 'Luật', categories: ['Thuế XNK'], status: 'coming-soon', hasForms: false, crossRefsCount: 0 },
   { slug: 'soon-tt38', title: 'TT 38/2015/TT-BTC — Thủ tục hải quan, thuế XNK', shortTitle: 'TT 38/2015', description: 'Thủ tục hải quan; kiểm tra, giám sát hải quan; thuế xuất khẩu, nhập khẩu và quản lý thuế hàng hóa XNK.', effectiveDate: '2015-04-01', docType: 'Thông tư', categories: ['Thuế XNK'], status: 'coming-soon', hasForms: false, crossRefsCount: 0 },
   { slug: 'soon-tt103', title: 'TT 103/2014/TT-BTC — Thuế nhà thầu nước ngoài', shortTitle: 'TT 103/2014', description: 'Nghĩa vụ thuế áp dụng đối với tổ chức, cá nhân nước ngoài kinh doanh hoặc có thu nhập tại Việt Nam.', effectiveDate: '2014-10-01', docType: 'Thông tư', categories: ['Thuế Nhà thầu (FCT)'], status: 'coming-soon', hasForms: false, crossRefsCount: 0 },
-  { slug: 'soon-nq110', title: 'Nghị quyết 110/2025/UBTVQH15 — Giảm trừ gia cảnh TNCN', shortTitle: 'NQ 110/2025', description: 'Điều chỉnh mức giảm trừ gia cảnh của thuế thu nhập cá nhân.', effectiveDate: '2026-01-01', docType: 'Khác', categories: ['Thuế TNCN'], status: 'coming-soon', hasForms: false, crossRefsCount: 0 },
   { slug: 'soon-nq204', title: 'Nghị quyết 204/2025/QH15 — Giảm thuế GTGT', shortTitle: 'NQ 204/2025', description: 'Chính sách giảm thuế giá trị gia tăng.', effectiveDate: '2026-01-01', docType: 'Khác', categories: ['Thuế GTGT'], status: 'coming-soon', hasForms: false, crossRefsCount: 0 },
 ]
 

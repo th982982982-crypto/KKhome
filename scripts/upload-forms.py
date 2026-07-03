@@ -10,7 +10,7 @@ BUCKET = 'legal-forms'
 
 # slug -> tên thư mục ngắn (khớp extract-forms.py)
 SHORT = {'tt18': 'TT18', 'tt69': 'TT69', 'tt158': 'TT158', 'nd360': 'NĐ360',
-         'nd181': 'NĐ181', 'nd144': 'NĐ144'}
+         'nd181': 'NĐ181', 'nd144': 'NĐ144', 'nd132': 'NĐ132', 'nd254': 'NĐ254'}
 MIME = {'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}
 

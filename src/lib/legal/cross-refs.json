@@ -646,6 +646,18 @@
         "targetSlug": "tt152",
         "targetAnchor": "tt152_1",
         "label": "TT 152 — Kế toán hộ/cá nhân kinh doanh"
+      },
+      {
+        "kind": "guidance",
+        "targetSlug": "nd253",
+        "targetAnchor": "nd253_1",
+        "label": "NĐ 253/2026 — Hướng dẫn chi tiết Luật Thuế TNCN"
+      },
+      {
+        "kind": "related",
+        "targetSlug": "nq110",
+        "targetAnchor": "nq110_1",
+        "label": "NQ 110/2025 — Điều chỉnh mức giảm trừ gia cảnh"
       }
     ]
   },
@@ -662,6 +674,12 @@
         "targetSlug": "luat-48",
         "targetAnchor": "luat-48_1",
         "label": "Luật 48/2024 — Thuế GTGT (gốc)"
+      },
+      {
+        "kind": "guidance",
+        "targetSlug": "nd253",
+        "targetAnchor": "nd253_1",
+        "label": "NĐ 253/2026 — Hướng dẫn chi tiết Luật Thuế TNCN"
       }
     ]
   },
@@ -690,6 +708,12 @@
         "targetSlug": null,
         "label": "Thay thế Luật Quản lý thuế 38/2019/QH14",
         "note": "(từ 01/07/2026)"
+      },
+      {
+        "kind": "guidance",
+        "targetSlug": "nd254",
+        "targetAnchor": "nd254_1",
+        "label": "NĐ 254/2026 — Hướng dẫn hóa đơn điện tử, chứng từ điện tử"
       }
     ]
   },
@@ -924,6 +948,86 @@
         "targetSlug": "nd134",
         "targetAnchor": "nd134_1",
         "label": "NĐ 134/2016 — Thuế XNK"
+      }
+    ]
+  },
+  "nd253": {
+    "nd253_1": [
+      {
+        "kind": "related",
+        "targetSlug": "luat-109",
+        "targetAnchor": "luat-109_1",
+        "label": "Luật 109/2025 — Luật Thuế TNCN (căn cứ)"
+      },
+      {
+        "kind": "related",
+        "targetSlug": "luat-09",
+        "targetAnchor": "luat-09_1",
+        "label": "Luật 09/2026 — Sửa đổi Luật TNCN"
+      }
+    ]
+  },
+  "nd254": {
+    "nd254_1": [
+      {
+        "kind": "related",
+        "targetSlug": "luat-108",
+        "targetAnchor": "luat-108_1",
+        "label": "Luật 108/2025 — Luật Quản lý thuế (căn cứ)"
+      },
+      {
+        "kind": "replaces",
+        "targetSlug": "nd123",
+        "targetAnchor": "nd123_1",
+        "label": "Thay thế toàn bộ NĐ 123/2020 về hóa đơn"
+      },
+      {
+        "kind": "replaces",
+        "targetSlug": "nd70",
+        "targetAnchor": "nd70_1",
+        "label": "Thay thế toàn bộ NĐ 70/2025 (sửa NĐ 123)"
+      }
+    ]
+  },
+  "nd132": {
+    "nd132_1": [
+      {
+        "kind": "related",
+        "targetSlug": "luat-67",
+        "targetAnchor": "expenses",
+        "label": "Luật 67/2025 — Điều 9 Chi phí được trừ (liên quan chi phí lãi vay bên liên kết)"
+      },
+      {
+        "kind": "guidance",
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "NĐ 320/2025 — Điều 9–10 Chi phí được trừ"
+      }
+    ]
+  },
+  "luat-59": {
+    "luat-59_1": [
+      {
+        "kind": "related",
+        "targetSlug": "nd132",
+        "targetAnchor": "nd132_1",
+        "label": "NĐ 132/2020 — Quản lý thuế DN có giao dịch liên kết"
+      }
+    ]
+  },
+  "nq110": {
+    "nq110_1": [
+      {
+        "kind": "related",
+        "targetSlug": "luat-109",
+        "targetAnchor": "luat-109_1",
+        "label": "Luật 109/2025 — Luật Thuế TNCN (căn cứ giảm trừ gia cảnh)"
+      },
+      {
+        "kind": "related",
+        "targetSlug": "luat-09",
+        "targetAnchor": "luat-09_1",
+        "label": "Luật 09/2026 — Sửa đổi Luật TNCN"
       }
     ]
   }

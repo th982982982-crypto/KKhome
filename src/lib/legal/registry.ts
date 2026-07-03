@@ -577,6 +577,75 @@ export const LEGAL_DOCS: LegalDoc[] = [
       { targetSlug: 'nd123', label: 'Văn bản gốc → NĐ 123/2020 (hóa đơn, chứng từ)', description: 'Nghị định được sửa đổi', targetAnchor: 'nd123_1' },
     ],
   },
+  {
+    slug: 'nd253',
+    title: 'NĐ 253/2026/NĐ-CP — Hướng dẫn thi hành Luật Thuế TNCN',
+    shortTitle: 'NĐ 253/2026',
+    description: 'Quy định chi tiết và biện pháp thi hành Luật Thuế TNCN 109/2025, hiệu lực 01/07/2026. Thu nhập chịu thuế, miễn/giảm thuế, căn cứ tính thuế, khấu trừ, quyết toán, hoàn thuế.',
+    effectiveDate: '2026-07-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/nd253/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-109', label: 'Căn cứ → Luật Thuế TNCN 109/2025', description: 'Luật gốc được NĐ 253 hướng dẫn chi tiết', targetAnchor: 'luat-109_1' },
+      { targetSlug: 'luat-09', label: 'Căn cứ → Luật 09/2026 (sửa Luật TNCN)', description: 'Sửa đổi, bổ sung một số điều Luật TNCN', targetAnchor: 'luat-09_1' },
+    ],
+  },
+  // ===== Chum Hóa đơn / Chứng từ — bổ sung =====
+  {
+    slug: 'nd254',
+    title: 'NĐ 254/2026/NĐ-CP — Hóa đơn điện tử, chứng từ điện tử',
+    shortTitle: 'NĐ 254/2026',
+    description: 'Quy định chi tiết thi hành Luật Quản lý thuế 108/2025 về hóa đơn điện tử, chứng từ điện tử, hiệu lực 01/07/2026. Thay thế toàn bộ NĐ 123/2020 và NĐ 70/2025.',
+    effectiveDate: '2026-07-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/nd254/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025', description: 'Luật gốc được NĐ 254 hướng dẫn chi tiết', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'nd123', label: 'Thay thế toàn bộ → NĐ 123/2020 (hóa đơn, chứng từ)', description: 'NĐ 123/2020 hết hiệu lực từ 01/07/2026', targetAnchor: 'nd123_1' },
+      { targetSlug: 'nd70', label: 'Thay thế toàn bộ → NĐ 70/2025 (sửa NĐ 123)', description: 'NĐ 70/2025 hết hiệu lực từ 01/07/2026', targetAnchor: 'nd70_1' },
+    ],
+  },
+  // ===== Chum Chuyển giá / Giao dịch liên kết (TNDN) =====
+  {
+    slug: 'nd132',
+    title: 'NĐ 132/2020/NĐ-CP — Quản lý thuế với DN có giao dịch liên kết',
+    shortTitle: 'NĐ 132/2020',
+    description: 'Quy định về quản lý thuế đối với doanh nghiệp có giao dịch liên kết (chuyển giá), hiệu lực 20/12/2020. Phân tích so sánh độc lập, chi phí lãi vay, hồ sơ kê khai, báo cáo lợi nhuận liên quốc gia.',
+    effectiveDate: '2020-12-20',
+    filePath: path.join(process.cwd(), 'src/legal-docs/nd132/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-67', label: 'Liên quan → Luật 67/2025 (Điều 9 chi phí được trừ)', description: 'Chi phí lãi vay bên liên kết chịu khống chế theo NĐ 132', targetAnchor: 'expenses' },
+      { targetSlug: 'nd320', label: 'Liên quan → NĐ 320/2025 (Điều 9–10 chi phí được trừ)', description: 'Hướng dẫn chi tiết chi phí được trừ khi tính thuế TNDN', targetAnchor: 'nd320_9' },
+    ],
+  },
+  // ===== Chum Doanh nghiệp =====
+  {
+    slug: 'luat-59',
+    title: 'Luật 59/2020/QH14 — Luật Doanh nghiệp',
+    shortTitle: 'Luật 59/2020',
+    description: 'Luật Doanh nghiệp hiện hành, hiệu lực 01/01/2021. Thành lập DN, công ty TNHH, công ty cổ phần, công ty hợp danh, DNTN, DNNN, tổ chức lại/giải thể/phá sản.',
+    effectiveDate: '2021-01-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/luat-59/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd132', label: 'Liên quan → NĐ 132/2020 (giao dịch liên kết)', description: 'Khái niệm "người có liên quan" trong Luật DN là cơ sở xác định giao dịch liên kết', targetAnchor: 'nd132_1' },
+    ],
+  },
+  // ===== Nghị quyết độc lập — Thuế TNCN =====
+  {
+    slug: 'nq110',
+    title: 'NQ 110/2025/UBTVQH15 — Điều chỉnh mức giảm trừ gia cảnh TNCN',
+    shortTitle: 'NQ 110/2025',
+    description: 'Điều chỉnh mức giảm trừ gia cảnh thuế TNCN: 15,5 triệu đồng/tháng cho người nộp thuế, 6,2 triệu đồng/tháng cho mỗi người phụ thuộc, áp dụng từ kỳ tính thuế 2026. Thay thế NQ 954/2020/UBTVQH14.',
+    effectiveDate: '2026-01-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/nq110/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-109', label: 'Căn cứ → Luật Thuế TNCN 109/2025 (Điều 19 giảm trừ gia cảnh)', description: 'NQ 110 điều chỉnh mức giảm trừ theo Điều 19 Luật TNCN', targetAnchor: 'luat-109_1' },
+      { targetSlug: 'luat-09', label: 'Căn cứ → Luật 09/2026 (sửa Luật TNCN)', description: 'Sửa đổi, bổ sung một số điều Luật TNCN', targetAnchor: 'luat-09_1' },
+    ],
+  },
   // Thêm văn bản mới: bổ sung object và đặt file HTML vào src/legal-docs/[slug]/index.html
 ]
 

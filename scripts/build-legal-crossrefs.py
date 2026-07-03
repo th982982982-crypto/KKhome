@@ -119,8 +119,9 @@ def patch_json_app(slug, dark, escaper, nav, before_func):
     # inline edits (idempotent: original pattern absent if already patched)
     if slug in ('tt58','tt152'):
         c=c.replace("h+='<p>'+t+'</p>';", "h+='<p>'+autolink(t)+'</p>';")
-        c=c.replace("  document.getElementById('av').innerHTML=h;",
-                    "  h+=renderRefs(id);\n  document.getElementById('av').innerHTML=h;", 1)
+        refs_marker="  h+=renderRefs(id);\n  document.getElementById('av').innerHTML=h;"
+        if refs_marker not in c:
+            c=c.replace("  document.getElementById('av').innerHTML=h;", refs_marker, 1)
     elif slug in ('tt133','nd320','tt20'):
         c=c.replace("+renderContent(a.content||[],q)+'</div>';",
                     "+renderContent(a.content||[],q)+'</div>'+renderRefs(id);")
@@ -237,6 +238,8 @@ for _slug in ('luat-48','luat-149','luat-109','luat-09','luat-108','luat-38',
               'blld-45','luat-74','luat-41','luat-25','luat-50',
               'nd145','nd293','nd191','nd105','qd595','qd505',
               # Hóa đơn / Chứng từ
-              'nd123','nd70'):
+              'nd123','nd70','nd254',
+              # Chuyển giá / Doanh nghiệp / Nghị quyết
+              'nd253','nd132','luat-59','nq110'):
     patch_json_app(_slug, dark=False, escaper='e', nav='show', before_func='function show(')
 print("Done.")

@@ -782,5 +782,45 @@
       "pl": "",
       "note": ""
     }
+  ],
+  "nd132": [
+    {
+      "code": "PL1",
+      "title": "THÔNG TIN VỀ QUAN HỆ LIÊN KẾT VÀ GIAO DỊCH LIÊN KẾT",
+      "pl": "Phụ lục I",
+      "note": ""
+    },
+    {
+      "code": "PL2",
+      "title": "DANH MỤC CÁC THÔNG TIN, TÀI LIỆU CẦN CUNG CẤP TẠI HỒ SƠ QUỐC GIA",
+      "pl": "Phụ lục II",
+      "note": ""
+    },
+    {
+      "code": "PL3",
+      "title": "DANH MỤC CÁC THÔNG TIN, TÀI LIỆU CẦN CUNG CẤP TẠI HỒ SƠ TOÀN CẦU",
+      "pl": "Phụ lục III",
+      "note": ""
+    },
+    {
+      "code": "PL4",
+      "title": "KÊ KHAI THÔNG TIN BÁO CÁO LỢI NHUẬN LIÊN QUỐC GIA",
+      "pl": "Phụ lục IV",
+      "note": ""
+    },
+    {
+      "code": "PL5",
+      "title": "CÔNG THỨC TÍNH KHOẢNG GIÁ TRỊ GIAO DỊCH ĐỘC LẬP CHUẨN",
+      "pl": "Phụ lục V",
+      "note": ""
+    }
+  ],
+  "nd254": [
+    {
+      "code": "PL1",
+      "title": "NỘI DUNG CỦA HÓA ĐƠN",
+      "pl": "Phụ lục",
+      "note": ""
+    }
   ]
 }

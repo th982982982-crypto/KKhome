@@ -20,6 +20,8 @@ DOCS = {
               'Luật 109/2025/QH15 — Luật Thuế Thu nhập cá nhân'),
  'luat-09' : ('Luật-09-2026-QH16.docx',  'Luật 09/2026', 'Sửa đổi Luật Thuế TNCN, GTGT…',
               'Luật 09/2026/QH16 — Sửa đổi, bổ sung một số điều của Luật Thuế TNCN, Thuế GTGT'),
+ 'nd253'   : ('Nghị-định-253-2026-NĐ-CP.docx', 'NĐ 253/2026', 'Hướng dẫn Luật Thuế TNCN',
+              'Nghị định 253/2026/NĐ-CP — Quy định chi tiết thi hành Luật Thuế thu nhập cá nhân'),
  'luat-108': ('Luật-108-2025-QH15.docx', 'Luật 108/2025', 'Quản lý thuế (mới)',
               'Luật 108/2025/QH15 — Luật Quản lý thuế'),
  'luat-38' : ('Luật-38-2019-QH14.docx',  'Luật 38/2019', 'Quản lý thuế (hiện hành)',
@@ -84,6 +86,17 @@ DOCS = {
               'Nghị định 123/2020/NĐ-CP — Quy định về hóa đơn, chứng từ'),
  'nd70'    : ('Nghị-định-70-2025-NĐ-CP.docx', 'NĐ 70/2025', 'Sửa đổi NĐ 123/2020 về hóa đơn',
               'Nghị định 70/2025/NĐ-CP — Sửa đổi, bổ sung NĐ 123/2020 về hóa đơn, chứng từ'),
+ 'nd254'   : ('Nghị-định-254-2026-NĐ-CP.docx', 'NĐ 254/2026', 'Hóa đơn điện tử, chứng từ điện tử (thay NĐ 123, NĐ 70)',
+              'Nghị định 254/2026/NĐ-CP — Quy định chi tiết thi hành Luật Quản lý thuế về hóa đơn điện tử, chứng từ điện tử'),
+ # ----- Chum Chuyển giá / Giao dịch liên kết (TNDN) -----
+ 'nd132'   : ('Nghị-định-132-2020-NĐ-CP.docx', 'NĐ 132/2020', 'Quản lý thuế với DN có giao dịch liên kết',
+              'Nghị định 132/2020/NĐ-CP — Quy định về quản lý thuế đối với doanh nghiệp có giao dịch liên kết'),
+ # ----- Chum Doanh nghiệp -----
+ 'luat-59' : ('Luật-59-2020-QH14.docx', 'Luật 59/2020', 'Luật Doanh nghiệp',
+              'Luật 59/2020/QH14 — Luật Doanh nghiệp'),
+ # ----- Nghị quyết độc lập -----
+ 'nq110'   : ('Nghị-quyết-110-2025-UBTVQH15.docx', 'NQ 110/2025', 'Giảm trừ gia cảnh TNCN',
+              'Nghị quyết 110/2025/UBTVQH15 — Về điều chỉnh mức giảm trừ gia cảnh của thuế thu nhập cá nhân'),
 }
 
 # Ngày hiệu lực chuẩn (override khi parser không bắt được)
@@ -98,7 +111,9 @@ EFF = {
  'luat-25':'01/07/2009','luat-50':'01/07/2025','nd293':'01/01/2026','nd145':'01/02/2021',
  'nd191':'21/11/2013','nd105':'31/03/2026','qd595':'01/05/2017','qd505':'27/03/2020',
  # Hóa đơn / Chứng từ
- 'nd123':'01/07/2022','nd70':'20/03/2025',
+ 'nd123':'01/07/2022','nd70':'20/03/2025','nd254':'01/07/2026',
+ # Thuế TNCN / Chuyển giá / Doanh nghiệp / Nghị quyết
+ 'nd253':'01/07/2026','nd132':'20/12/2020','luat-59':'01/01/2021','nq110':'01/01/2026',
 }
 
 # Cache .docx convert từ .doc (textutil, macOS)
