@@ -26,7 +26,7 @@ export const DOCTYPE_ORDER: DocType[] = [
   'Khác',
 ]
 
-// Thứ tự hiển thị các khu vực theo Phân loại (chủ đề)
+// Thứ tự hiển thị các khu vực theo Phân loại (chủ đề) — khớp cột "Phân loại" file Excel gốc
 export const CATEGORY_ORDER = [
   'Chế độ kế toán',
   'Thuế TNDN',
@@ -36,9 +36,10 @@ export const CATEGORY_ORDER = [
   'Thuế XNK',
   'Quản lý thuế',
   'Thuế Nhà thầu (FCT)',
-  'HKD, CNKD',
-  'Doanh nghiệp',
   'Khác',
+  'HKD, CNKD',
+  'Nhân sự - Lao động',
+  'Bảo hiểm - Công đoàn',
 ] as const
 
 export type Category = (typeof CATEGORY_ORDER)[number]
@@ -54,8 +55,9 @@ export const CATEGORY_META: Record<string, { desc: string; gradient: string; ico
   'Quản lý thuế': { desc: 'Đăng ký, kê khai, nộp, thanh tra thuế', gradient: 'from-violet-100 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/30', iconColor: 'text-violet-600 dark:text-violet-400' },
   'Thuế Nhà thầu (FCT)': { desc: 'Nghĩa vụ thuế nhà thầu nước ngoài', gradient: 'from-fuchsia-100 to-pink-50 dark:from-fuchsia-950/50 dark:to-pink-950/30', iconColor: 'text-fuchsia-600 dark:text-fuchsia-400' },
   'HKD, CNKD': { desc: 'Hộ kinh doanh, cá nhân kinh doanh', gradient: 'from-lime-100 to-green-50 dark:from-lime-950/50 dark:to-green-950/30', iconColor: 'text-lime-600 dark:text-lime-400' },
-  'Doanh nghiệp': { desc: 'Thành lập, tổ chức, quản trị doanh nghiệp', gradient: 'from-blue-100 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/30', iconColor: 'text-blue-600 dark:text-blue-400' },
   'Khác': { desc: 'Nghị quyết và văn bản khác', gradient: 'from-slate-100 to-gray-50 dark:from-slate-900/60 dark:to-gray-900/40', iconColor: 'text-slate-600 dark:text-slate-400' },
+  'Nhân sự - Lao động': { desc: 'Hợp đồng lao động, tiền lương, điều kiện lao động', gradient: 'from-orange-100 to-red-50 dark:from-orange-950/50 dark:to-red-950/30', iconColor: 'text-orange-600 dark:text-orange-400' },
+  'Bảo hiểm - Công đoàn': { desc: 'Bảo hiểm xã hội, y tế, thất nghiệp và công đoàn', gradient: 'from-teal-100 to-green-50 dark:from-teal-950/50 dark:to-green-950/30', iconColor: 'text-teal-600 dark:text-teal-400' },
 }
 
 // Màu badge theo Loại văn bản
@@ -81,8 +83,6 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   'luat-67': { docType: 'Luật', categories: ['Thuế TNDN'] },
   nd320: { docType: 'Nghị định', categories: ['Thuế TNDN'] },
   tt20: { docType: 'Thông tư', categories: ['Thuế TNDN'], hasForms: true },
-  // Chuyển giá / Giao dịch liên kết (TNDN)
-  nd132: { docType: 'Nghị định', categories: ['Thuế TNDN'], hasForms: true },
   // Thuế GTGT
   'luat-48': { docType: 'Luật', categories: ['Thuế GTGT'] },
   'luat-149': { docType: 'Luật', categories: ['Thuế GTGT'] },
@@ -114,20 +114,23 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   nd123: { docType: 'Nghị định', categories: ['Quản lý thuế'] },
   nd70: { docType: 'Nghị định', categories: ['Quản lý thuế'] },
   nd254: { docType: 'Nghị định', categories: ['Quản lý thuế'], hasForms: true },
-  // Doanh nghiệp
-  'luat-59': { docType: 'Luật', categories: ['Doanh nghiệp'] },
-  // Khác — Lao động, Bảo hiểm xã hội, Công đoàn
-  'blld-45': { docType: 'Luật', categories: ['Khác'] },
-  'luat-74': { docType: 'Luật', categories: ['Khác'] },
-  'luat-41': { docType: 'Luật', categories: ['Khác'] },
-  'luat-25': { docType: 'Luật', categories: ['Khác'] },
-  'luat-50': { docType: 'Luật', categories: ['Khác'] },
-  nd293: { docType: 'Nghị định', categories: ['Khác'] },
-  nd145: { docType: 'Nghị định', categories: ['Khác'] },
-  nd191: { docType: 'Nghị định', categories: ['Khác'] },
-  nd105: { docType: 'Nghị định', categories: ['Khác'] },
-  qd595: { docType: 'Khác', categories: ['Khác'] },
-  qd505: { docType: 'Khác', categories: ['Khác'] },
+  // Chuyển giá / Giao dịch liên kết — cùng nhóm Quản lý thuế theo Excel gốc
+  nd132: { docType: 'Nghị định', categories: ['Quản lý thuế'], hasForms: true },
+  // Khác
+  'luat-59': { docType: 'Luật', categories: ['Khác'] },
+  // Nhân sự - Lao động
+  'blld-45': { docType: 'Luật', categories: ['Nhân sự - Lao động'] },
+  nd145: { docType: 'Nghị định', categories: ['Nhân sự - Lao động'] },
+  nd293: { docType: 'Nghị định', categories: ['Nhân sự - Lao động'] },
+  // Bảo hiểm - Công đoàn
+  'luat-41': { docType: 'Luật', categories: ['Bảo hiểm - Công đoàn'] },
+  'luat-74': { docType: 'Luật', categories: ['Bảo hiểm - Công đoàn'] },
+  'luat-25': { docType: 'Luật', categories: ['Bảo hiểm - Công đoàn'] },
+  qd595: { docType: 'Khác', categories: ['Bảo hiểm - Công đoàn'] },
+  qd505: { docType: 'Khác', categories: ['Bảo hiểm - Công đoàn'] },
+  'luat-50': { docType: 'Luật', categories: ['Bảo hiểm - Công đoàn'] },
+  nd105: { docType: 'Nghị định', categories: ['Bảo hiểm - Công đoàn'] },
+  nd191: { docType: 'Nghị định', categories: ['Bảo hiểm - Công đoàn'] },
 }
 
 // Hình dạng nhẹ, serializable để truyền từ Server Component → Client Component
