@@ -1,10 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import * as XLSX from 'xlsx'
 import { formatCurrency } from '@/lib/format'
 import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
-import { Check, X, Copy, CircleDollarSign } from 'lucide-react'
+import { Check, X, Copy, CircleDollarSign, Download } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -88,6 +89,38 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
     setCancelNote('')
   }
 
+  function handleExcelExport() {
+    const rows = filtered.map((order) => {
+      const items = order.items as { type: string; id: string; name: string; price: number }[]
+      const skus = items.map((item) => skuMap[item.id]).filter(Boolean)
+      return {
+        'Mã đơn': order.order_code,
+        'Ngày tạo': new Date(order.created_at).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+        'Khách hàng': order.profiles?.full_name || 'Khách vãng lai',
+        'Gmail': order.email || '',
+        'Sản phẩm': items.map((item) => item.name).join('; '),
+        'SKU': skus.join(', '),
+        'Ghi chú': order.bank_transfer_note || '',
+        'Số tiền': order.total_amount,
+        'Trạng thái': statusLabel[order.status],
+        'Cấp Drive': order.status === 'confirmed' ? (order.drive_shared ? 'Đã cấp' : 'Chưa cấp') : '',
+        'Lý do hủy': order.cancel_note || '',
+      }
+    })
+
+    const ws = XLSX.utils.json_to_sheet(rows)
+    ws['!cols'] = [
+      { wch: 16 }, { wch: 16 }, { wch: 20 }, { wch: 26 }, { wch: 35 },
+      { wch: 16 }, { wch: 24 }, { wch: 12 }, { wch: 14 }, { wch: 10 }, { wch: 24 },
+    ]
+    const wb = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(wb, ws, 'Đơn hàng')
+
+    const dateLabel = new Date().toLocaleDateString('vi-VN').replaceAll('/', '-')
+    XLSX.writeFile(wb, `DonHang_${filter}_${dateLabel}.xlsx`)
+    toast.success('Đã xuất Excel')
+  }
+
   const filtered = filter === 'all' ? orders : orders.filter((o) => o.status === filter)
   const pending = orders.filter((o) => o.status === 'pending')
   const counts = {
@@ -150,20 +183,30 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
         </div>
       )}
 
-      <div className="flex flex-wrap gap-2">
-        {tabs.map((tab) => (
-          <button
-            key={tab.key}
-            onClick={() => setFilter(tab.key)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all active:scale-95
-              ${filter === tab.key
-                ? 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 shadow-sm'
-                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-              }`}
-          >
-            {tab.label} ({counts[tab.key]})
-          </button>
-        ))}
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="flex flex-wrap gap-2">
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setFilter(tab.key)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all active:scale-95
+                ${filter === tab.key
+                  ? 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 shadow-sm'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                }`}
+            >
+              {tab.label} ({counts[tab.key]})
+            </button>
+          ))}
+        </div>
+        <button
+          onClick={handleExcelExport}
+          disabled={filtered.length === 0}
+          className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <Download className="w-4 h-4" />
+          Xuất Excel
+        </button>
       </div>
 
       <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
