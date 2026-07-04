@@ -64,7 +64,11 @@ export async function POST(req: Request) {
     let totalMonths = 0
     for (const item of legalItems) {
       const plan = plans?.find((p) => p.id === item.id)
-      totalMonths += plan?.duration_months ?? item.duration_months ?? 0
+      const months = plan?.duration_months ?? item.duration_months
+      if (months === undefined) {
+        return NextResponse.json({ error: `Không xác định được thời hạn gói Pháp luật "${item.name}" (gói đã bị xoá và đơn thiếu dữ liệu thời hạn)` }, { status: 500 })
+      }
+      totalMonths += months
     }
 
     if (totalMonths > 0) {
@@ -109,7 +113,10 @@ export async function POST(req: Request) {
     let isLifetime = false
     for (const item of taxItems) {
       const plan = taxPlans?.find((p) => p.id === item.id)
-      const months = plan?.duration_months ?? item.duration_months ?? 0
+      const months = plan?.duration_months ?? item.duration_months
+      if (months === undefined) {
+        return NextResponse.json({ error: `Không xác định được thời hạn gói Tờ Khai Thuế "${item.name}" (gói đã bị xoá và đơn thiếu dữ liệu thời hạn)` }, { status: 500 })
+      }
       if (months === 0) {
         isLifetime = true  // duration_months = 0 → gói vĩnh viễn
       } else {
