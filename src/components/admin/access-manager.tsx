@@ -38,6 +38,7 @@ function isActive(until: string | null): boolean {
 export function AccessManager({ users }: { users: UserRow[] }) {
   const [rows, setRows] = useState(users)
   const [loading, setLoading] = useState<string | null>(null)
+  const [legalDates, setLegalDates] = useState<Record<string, string>>({})
   const [taxDates, setTaxDates] = useState<Record<string, string>>({})
   const [search, setSearch] = useState('')
 
@@ -48,23 +49,39 @@ export function AccessManager({ users }: { users: UserRow[] }) {
   )
 
   // ── Legal ──────────────────────────────────────────────────────────
-  async function toggleLegal(userId: string, current: boolean) {
+  async function grantLegal(userId: string) {
+    const dateStr = legalDates[userId]
+    if (!dateStr) { toast.error('Chọn hạn dùng'); return }
+    setLoading(`legal-${userId}`)
+    try {
+      const until = dateStr === 'infinity' ? 'infinity' : new Date(dateStr).toISOString()
+      const res = await fetch('/api/admin/legal-access', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id: userId, legal_access_until: until }),
+      })
+      if (!res.ok) throw new Error((await res.json()).error)
+      setRows((prev) => prev.map((u) => (u.id === userId ? { ...u, legal_access_until: until } : u)))
+      toast.success('Đã cấp quyền Pháp luật')
+    } catch (e) {
+      toast.error((e as Error).message)
+    } finally {
+      setLoading(null)
+    }
+  }
+
+  async function revokeLegal(userId: string) {
+    if (!confirm('Thu hồi quyền Pháp luật của user này?')) return
     setLoading(`legal-${userId}`)
     try {
       const res = await fetch('/api/admin/legal-access', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user_id: userId, can_view_legal: !current }),
+        body: JSON.stringify({ user_id: userId, legal_access_until: null }),
       })
       if (!res.ok) throw new Error((await res.json()).error)
-      setRows((prev) =>
-        prev.map((u) =>
-          u.id === userId
-            ? { ...u, legal_access_until: !current ? 'infinity' : null }
-            : u
-        )
-      )
-      toast.success(!current ? 'Đã cấp quyền Pháp luật' : 'Đã thu hồi quyền Pháp luật')
+      setRows((prev) => prev.map((u) => (u.id === userId ? { ...u, legal_access_until: null } : u)))
+      toast.success('Đã thu hồi quyền Pháp luật')
     } catch (e) {
       toast.error((e as Error).message)
     } finally {
@@ -151,7 +168,7 @@ export function AccessManager({ users }: { users: UserRow[] }) {
             <tr className="border-b border-gray-100 dark:border-gray-800 bg-gray-50/60 dark:bg-gray-800/40">
               <th className="text-left px-4 py-3 font-semibold text-gray-600 dark:text-gray-400">Người dùng</th>
               <th className="text-center px-4 py-3 font-semibold text-gray-600 dark:text-gray-400">Vai trò</th>
-              <th className="text-center px-6 py-3 font-semibold text-blue-600 dark:text-blue-400">Pháp luật</th>
+              <th className="text-center px-6 py-3 font-semibold text-blue-600 dark:text-blue-400 min-w-[260px]">Pháp luật</th>
               <th className="text-center px-6 py-3 font-semibold text-emerald-600 dark:text-emerald-400 min-w-[260px]">Tờ Khai Thuế</th>
             </tr>
           </thead>
@@ -185,25 +202,57 @@ export function AccessManager({ users }: { users: UserRow[] }) {
                     )}
                   </td>
 
-                  {/* Legal toggle */}
-                  <td className="px-6 py-3 text-center">
+                  {/* Legal date picker + grant/revoke */}
+                  <td className="px-6 py-3">
                     {u.is_admin ? (
-                      <Check className="w-4 h-4 text-green-500 mx-auto" />
+                      <div className="flex justify-center"><Check className="w-4 h-4 text-green-500" /></div>
                     ) : (
-                      <div className="flex flex-col items-center gap-1">
-                        <button
-                          onClick={() => toggleLegal(u.id, legalOn)}
-                          disabled={loading === `legal-${u.id}`}
-                          className={`relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${
-                            legalOn ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700'
-                          } ${loading === `legal-${u.id}` ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
-                        >
-                          <span className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-200 ${legalOn ? 'translate-x-[22px]' : 'translate-x-0.5'}`} />
-                        </button>
-                        <span className="text-[10px] text-gray-400">{legalOn ? formatExpiry(u.legal_access_until, 'Vĩnh viễn') : '—'}</span>
-                        {u.latestLegalPlan && (
-                          <span className="text-[10px] text-blue-500 dark:text-blue-400 font-medium">{u.latestLegalPlan.name}</span>
-                        )}
+                      <div className="flex flex-col items-center gap-1.5">
+                        <div className="flex items-center gap-1.5">
+                          <select
+                            className="h-8 text-xs border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-2"
+                            value={legalDates[u.id] ?? ''}
+                            onChange={(e) => setLegalDates((prev) => ({ ...prev, [u.id]: e.target.value }))}
+                          >
+                            <option value="">Chọn hạn...</option>
+                            <option value="__date__">Chọn ngày cụ thể</option>
+                            <option value="infinity">Vĩnh viễn</option>
+                          </select>
+                          {legalDates[u.id] === '__date__' && (
+                            <Input
+                              type="date"
+                              className="h-8 text-xs w-32"
+                              onChange={(e) => setLegalDates((prev) => ({ ...prev, [u.id]: e.target.value }))}
+                            />
+                          )}
+                          <button
+                            onClick={() => grantLegal(u.id)}
+                            disabled={loading === `legal-${u.id}` || !legalDates[u.id] || legalDates[u.id] === '__date__'}
+                            className="text-xs px-2.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold disabled:opacity-40"
+                          >
+                            {loading === `legal-${u.id}` ? '...' : 'Cấp'}
+                          </button>
+                          {legalOn && (
+                            <button
+                              onClick={() => revokeLegal(u.id)}
+                              disabled={loading === `legal-${u.id}`}
+                              className="text-xs px-2.5 py-1.5 bg-red-50 dark:bg-red-950/30 hover:bg-red-100 text-red-600 dark:text-red-400 rounded-lg font-bold border border-red-200 dark:border-red-800 disabled:opacity-50"
+                            >
+                              Thu hồi
+                            </button>
+                          )}
+                        </div>
+                        <div className="flex flex-col items-center gap-0.5">
+                          <div className="flex items-center gap-1 text-[10px]">
+                            <CalendarDays className="w-3 h-3 text-gray-400" />
+                            <span className={legalOn ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'text-gray-400'}>
+                              {legalOn ? formatExpiry(u.legal_access_until) : 'Chưa có quyền'}
+                            </span>
+                          </div>
+                          {u.latestLegalPlan && (
+                            <span className="text-[10px] text-blue-500 dark:text-blue-400 font-medium">{u.latestLegalPlan.name}</span>
+                          )}
+                        </div>
                       </div>
                     )}
                   </td>
