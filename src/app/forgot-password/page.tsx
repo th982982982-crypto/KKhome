@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { createClient } from '@/lib/supabase/client'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -13,25 +12,38 @@ export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
-    const supabase = createClient()
-    await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/callback?next=/reset-password`,
-    })
-    // Always show success (không tiết lộ email có tồn tại hay không)
-    setSent(true)
-    setLoading(false)
+    setError('')
+    try {
+      const res = await fetch('/api/auth/request-password-reset', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setError(data.error || 'Có lỗi xảy ra, vui lòng thử lại sau')
+        return
+      }
+      // Always show success (không tiết lộ email có tồn tại hay không)
+      setSent(true)
+    } catch {
+      setError('Có lỗi xảy ra, vui lòng thử lại sau')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <AuthShell
       title="Quên mật khẩu"
-      subtitle="Nhập email để nhận link đặt lại mật khẩu"
+      subtitle="Nhập email để nhận mật khẩu tạm thời"
       panelTitle={'Khôi phục\ntài khoản của bạn.'}
-      panelSubtitle="Chúng tôi sẽ gửi link đặt lại mật khẩu vào email của bạn. Link có hiệu lực trong 1 giờ."
+      panelSubtitle="Chúng tôi sẽ gửi một mật khẩu tạm thời vào email của bạn để đăng nhập lại."
       footer={
         <Link href="/login" className="flex items-center gap-1 text-gray-900 dark:text-gray-50 font-semibold hover:underline">
           <ArrowLeft className="w-3.5 h-3.5" /> Quay lại đăng nhập
@@ -46,9 +58,9 @@ export default function ForgotPasswordPage() {
           <div>
             <p className="font-bold text-gray-900 dark:text-gray-50 mb-1">Kiểm tra hộp thư</p>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Nếu <span className="font-semibold text-gray-700 dark:text-gray-300">{email}</span> tồn tại trong hệ thống, bạn sẽ nhận được email với link đặt lại mật khẩu.
+              Nếu <span className="font-semibold text-gray-700 dark:text-gray-300">{email}</span> tồn tại trong hệ thống, bạn sẽ nhận được email chứa mật khẩu tạm thời để đăng nhập.
             </p>
-            <p className="text-xs text-gray-400 mt-2">Link có hiệu lực trong 1 giờ. Kiểm tra cả thư mục Spam nếu không thấy.</p>
+            <p className="text-xs text-gray-400 mt-2">Sau khi đăng nhập bằng mật khẩu tạm, bạn sẽ được yêu cầu đặt mật khẩu mới. Kiểm tra cả thư mục Spam nếu không thấy.</p>
           </div>
           <Link href="/login">
             <Button variant="outline" className="mt-2">Quay lại đăng nhập</Button>
@@ -68,12 +80,13 @@ export default function ForgotPasswordPage() {
               autoFocus
             />
           </div>
+          {error && <p className="text-sm text-red-500">{error}</p>}
           <Button
             type="submit"
             className="w-full bg-black dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 h-11 rounded-xl font-semibold"
             disabled={loading}
           >
-            {loading ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Đang gửi...</> : 'Gửi link đặt lại mật khẩu'}
+            {loading ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Đang gửi...</> : 'Gửi mật khẩu tạm thời'}
           </Button>
         </form>
       )}

@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
 import { hasLegalAccess } from '@/lib/legal/has-legal-access'
@@ -37,14 +38,15 @@ export default async function LegalLayout({ children }: { children: React.ReactN
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  let profile: { is_admin: boolean; legal_access_until: string | null; tax_access_until: string | null } | null = null
+  let profile: { is_admin: boolean; legal_access_until: string | null; tax_access_until: string | null; must_change_password: boolean } | null = null
   if (user) {
     const { data } = await supabase
       .from('profiles')
-      .select('is_admin, legal_access_until, tax_access_until')
+      .select('is_admin, legal_access_until, tax_access_until, must_change_password')
       .eq('id', user.id)
       .single()
     profile = data
+    if (profile?.must_change_password) redirect('/reset-password')
   }
 
   const hasAccess = hasLegalAccess(profile)

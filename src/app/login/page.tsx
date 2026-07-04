@@ -28,7 +28,7 @@ function LoginForm() {
     e.preventDefault()
     setLoading(true)
     const supabase = createClient()
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) {
       const msg = error.message === 'Invalid login credentials'
         ? 'Email hoặc mật khẩu không đúng'
@@ -38,7 +38,12 @@ function LoginForm() {
       toast.error(msg)
       setLoading(false)
     } else {
-      router.push(redirect)
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('must_change_password')
+        .eq('id', data.user.id)
+        .single()
+      router.push(profile?.must_change_password ? '/reset-password' : redirect)
       router.refresh()
     }
   }

@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
 import { SiteFooter } from '@/components/layout/site-footer'
@@ -14,6 +15,7 @@ export default async function TaxLayout({ children }: { children: React.ReactNod
   if (user) {
     const { data } = await supabase.from('profiles').select('*').eq('id', user.id).single()
     profile = data
+    if (profile?.must_change_password) redirect('/reset-password')
   }
 
   return (

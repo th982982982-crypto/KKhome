@@ -18,6 +18,8 @@ export default async function DashboardPage() {
   if (!user) redirect('/login')
 
   const { data: profile } = await supabase.from('profiles').select('*').eq('id', user.id).single()
+  if (profile?.must_change_password) redirect('/reset-password')
+
   const purchasedTemplateIds = await getUserPurchasedTemplateIds(user.id)
 
   let accessibleTemplates: Template[] = []

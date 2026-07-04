@@ -20,14 +20,14 @@ export default function ResetPasswordPage() {
   const [done, setDone] = useState(false)
   const [sessionReady, setSessionReady] = useState(false)
   const [sessionError, setSessionError] = useState(false)
+  const [userId, setUserId] = useState('')
   const router = useRouter()
 
   useEffect(() => {
-    // Với PKCE flow: /auth/callback đã exchange code + tạo session trước khi redirect về đây
-    // Nên chỉ cần getSession() kiểm tra — không cần đợi event
     const supabase = createClient()
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
+        setUserId(session.user.id)
         setSessionReady(true)
       } else {
         setSessionError(true)
@@ -46,8 +46,9 @@ export default function ResetPasswordPage() {
       toast.error(error.message)
       setLoading(false)
     } else {
+      await supabase.from('profiles').update({ must_change_password: false }).eq('id', userId)
       setDone(true)
-      setTimeout(() => router.push('/login'), 2500)
+      setTimeout(() => router.push('/dashboard'), 2500)
     }
   }
 
@@ -70,7 +71,7 @@ export default function ResetPasswordPage() {
           </div>
           <div>
             <p className="font-bold text-gray-900 dark:text-gray-50 mb-1">Đặt lại mật khẩu thành công!</p>
-            <p className="text-sm text-gray-500">Đang chuyển hướng về trang đăng nhập...</p>
+            <p className="text-sm text-gray-500">Đang chuyển hướng...</p>
           </div>
         </div>
       ) : sessionError ? (
@@ -79,11 +80,11 @@ export default function ResetPasswordPage() {
             <AlertCircle className="w-7 h-7 text-red-500" />
           </div>
           <div>
-            <p className="font-bold text-gray-900 dark:text-gray-50 mb-1">Link đã hết hạn hoặc không hợp lệ</p>
-            <p className="text-sm text-gray-500 mb-4">Vui lòng yêu cầu gửi lại link đặt lại mật khẩu.</p>
+            <p className="font-bold text-gray-900 dark:text-gray-50 mb-1">Phiên đăng nhập không hợp lệ hoặc đã hết hạn</p>
+            <p className="text-sm text-gray-500 mb-4">Vui lòng đăng nhập lại để đặt mật khẩu mới.</p>
           </div>
-          <Link href="/forgot-password">
-            <Button className="bg-black dark:bg-white text-white dark:text-gray-900">Gửi lại link</Button>
+          <Link href="/login">
+            <Button className="bg-black dark:bg-white text-white dark:text-gray-900">Đăng nhập lại</Button>
           </Link>
         </div>
       ) : !sessionReady ? (
