@@ -97,6 +97,13 @@ DOCS = {
  # ----- Nghị quyết độc lập -----
  'nq110'   : ('Nghị-quyết-110-2025-UBTVQH15.docx', 'NQ 110/2025', 'Giảm trừ gia cảnh TNCN',
               'Nghị quyết 110/2025/UBTVQH15 — Về điều chỉnh mức giảm trừ gia cảnh của thuế thu nhập cá nhân'),
+ # ----- Chum Quản lý thuế — bổ sung -----
+ 'nd20'    : ('Nghị-định-20-2025-NĐ-CP.docx', 'NĐ 20/2025', 'Sửa đổi, bổ sung NĐ 132/2020 (giao dịch liên kết)',
+              'Nghị định 20/2025/NĐ-CP — Sửa đổi, bổ sung một số điều của NĐ 132/2020 về quản lý thuế với DN có giao dịch liên kết'),
+ 'nd252'   : ('Nghị-định-252-2026-NĐ-CP.docx', 'NĐ 252/2026', 'Hướng dẫn thi hành Luật Quản lý thuế',
+              'Nghị định 252/2026/NĐ-CP — Quy định chi tiết một số điều và biện pháp thi hành Luật Quản lý thuế'),
+ 'tt87'    : ('Thông-tư-87-2026-TT-BTC.docx', 'TT 87/2026', 'Hướng dẫn Luật Thuế TNCN & NĐ 253/2026',
+              'Thông tư 87/2026/TT-BTC — Quy định chi tiết một số điều của Luật Thuế TNCN và NĐ 253/2026/NĐ-CP'),
 }
 
 # Ngày hiệu lực chuẩn (override khi parser không bắt được)
@@ -114,6 +121,7 @@ EFF = {
  'nd123':'01/07/2022','nd70':'20/03/2025','nd254':'01/07/2026',
  # Thuế TNCN / Chuyển giá / Doanh nghiệp / Nghị quyết
  'nd253':'01/07/2026','nd132':'20/12/2020','luat-59':'01/01/2021','nq110':'01/01/2026',
+ 'nd20':'27/03/2025','nd252':'01/07/2026','tt87':'01/07/2026',
 }
 
 # Cache .docx convert từ .doc (textutil, macOS)

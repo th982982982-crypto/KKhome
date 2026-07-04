@@ -658,6 +658,12 @@
         "targetSlug": "nq110",
         "targetAnchor": "nq110_1",
         "label": "NQ 110/2025 — Điều chỉnh mức giảm trừ gia cảnh"
+      },
+      {
+        "kind": "guidance",
+        "targetSlug": "tt87",
+        "targetAnchor": "tt87_1",
+        "label": "TT 87/2026 — Hướng dẫn chi tiết Luật Thuế TNCN"
       }
     ]
   },
@@ -714,6 +720,12 @@
         "targetSlug": "nd254",
         "targetAnchor": "nd254_1",
         "label": "NĐ 254/2026 — Hướng dẫn hóa đơn điện tử, chứng từ điện tử"
+      },
+      {
+        "kind": "guidance",
+        "targetSlug": "nd252",
+        "targetAnchor": "nd252_1",
+        "label": "NĐ 252/2026 — Hướng dẫn chung thi hành Luật Quản lý thuế"
       }
     ]
   },
@@ -964,6 +976,12 @@
         "targetSlug": "luat-09",
         "targetAnchor": "luat-09_1",
         "label": "Luật 09/2026 — Sửa đổi Luật TNCN"
+      },
+      {
+        "kind": "guidance",
+        "targetSlug": "tt87",
+        "targetAnchor": "tt87_1",
+        "label": "TT 87/2026 — Hướng dẫn chi tiết NĐ 253"
       }
     ]
   },
@@ -1002,6 +1020,12 @@
         "targetSlug": "nd320",
         "targetAnchor": "nd320_9",
         "label": "NĐ 320/2025 — Điều 9–10 Chi phí được trừ"
+      },
+      {
+        "kind": "guidance",
+        "targetSlug": "nd20",
+        "targetAnchor": "nd20_1",
+        "label": "NĐ 20/2025 — Sửa đổi, bổ sung NĐ 132"
       }
     ]
   },
@@ -1028,6 +1052,48 @@
         "targetSlug": "luat-09",
         "targetAnchor": "luat-09_1",
         "label": "Luật 09/2026 — Sửa đổi Luật TNCN"
+      }
+    ]
+  },
+  "nd20": {
+    "nd20_1": [
+      {
+        "kind": "related",
+        "targetSlug": "nd132",
+        "targetAnchor": "nd132_1",
+        "label": "NĐ 132/2020 — Văn bản gốc (Quản lý thuế với DN có giao dịch liên kết)"
+      }
+    ]
+  },
+  "nd252": {
+    "nd252_1": [
+      {
+        "kind": "related",
+        "targetSlug": "luat-108",
+        "targetAnchor": "luat-108_1",
+        "label": "Luật 108/2025 — Luật Quản lý thuế (căn cứ)"
+      },
+      {
+        "kind": "related",
+        "targetSlug": "nd254",
+        "targetAnchor": "nd254_1",
+        "label": "NĐ 254/2026 — Hướng dẫn hóa đơn điện tử (song song, cùng hướng dẫn Luật QLT)"
+      }
+    ]
+  },
+  "tt87": {
+    "tt87_1": [
+      {
+        "kind": "related",
+        "targetSlug": "nd253",
+        "targetAnchor": "nd253_1",
+        "label": "NĐ 253/2026 — Hướng dẫn chi tiết Luật Thuế TNCN (căn cứ)"
+      },
+      {
+        "kind": "related",
+        "targetSlug": "luat-109",
+        "targetAnchor": "luat-109_1",
+        "label": "Luật 109/2025 — Luật Thuế TNCN (căn cứ)"
       }
     ]
   }

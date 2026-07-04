@@ -4,7 +4,7 @@
 import type { LegalDoc } from './registry'
 
 // Cập nhật mỗi khi thêm/sửa văn bản mới vào registry
-export const REGISTRY_UPDATED_AT = '2026-07-03'
+export const REGISTRY_UPDATED_AT = '2026-07-04'
 
 export type DocType =
   | 'Luật'
@@ -94,6 +94,7 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   'luat-109': { docType: 'Luật', categories: ['Thuế TNCN'] },
   'luat-09': { docType: 'Luật', categories: ['Thuế TNDN', 'Thuế GTGT', 'Thuế TNCN', 'Thuế TTĐB'] },
   nd253: { docType: 'Nghị định', categories: ['Thuế TNCN'] },
+  tt87: { docType: 'Thông tư', categories: ['Thuế TNCN'] },
   nq110: { docType: 'Khác', categories: ['Thuế TNCN'] },
   // Thuế TTĐB
   'luat-66': { docType: 'Luật', categories: ['Thuế TTĐB'] },
@@ -114,8 +115,10 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   nd123: { docType: 'Nghị định', categories: ['Quản lý thuế'] },
   nd70: { docType: 'Nghị định', categories: ['Quản lý thuế'] },
   nd254: { docType: 'Nghị định', categories: ['Quản lý thuế'], hasForms: true },
+  nd252: { docType: 'Nghị định', categories: ['Quản lý thuế'] },
   // Chuyển giá / Giao dịch liên kết — cùng nhóm Quản lý thuế theo Excel gốc
   nd132: { docType: 'Nghị định', categories: ['Quản lý thuế'], hasForms: true },
+  nd20: { docType: 'Nghị định', categories: ['Quản lý thuế'] },
   // Khác
   'luat-59': { docType: 'Luật', categories: ['Khác'] },
   // Nhân sự - Lao động

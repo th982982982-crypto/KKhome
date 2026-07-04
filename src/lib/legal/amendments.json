@@ -174,5 +174,21 @@
       "title": "NĐ 254/2026",
       "anchor": null
     }
+  },
+  {
+    "id": "nd20-amends-nd132",
+    "updatedAt": "2025-02-10",
+    "effectiveDate": "2025-03-27",
+    "summary": "Sửa đổi, bổ sung một số điều về quản lý thuế đối với doanh nghiệp có giao dịch liên kết",
+    "original": {
+      "slug": "nd132",
+      "title": "NĐ 132/2020",
+      "anchor": null
+    },
+    "amendment": {
+      "slug": "nd20",
+      "title": "NĐ 20/2025",
+      "anchor": null
+    }
   }
 ]

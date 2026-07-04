@@ -617,6 +617,45 @@ export const LEGAL_DOCS: LegalDoc[] = [
     crossRefs: [
       { targetSlug: 'luat-67', label: 'Liên quan → Luật 67/2025 (Điều 9 chi phí được trừ)', description: 'Chi phí lãi vay bên liên kết chịu khống chế theo NĐ 132', targetAnchor: 'expenses' },
       { targetSlug: 'nd320', label: 'Liên quan → NĐ 320/2025 (Điều 9–10 chi phí được trừ)', description: 'Hướng dẫn chi tiết chi phí được trừ khi tính thuế TNDN', targetAnchor: 'nd320_9' },
+      { targetSlug: 'nd20', label: 'Sửa đổi, bổ sung → NĐ 20/2025', description: 'NĐ 20/2025 sửa đổi, bổ sung một số điều của NĐ 132/2020', targetAnchor: 'nd20_1' },
+    ],
+  },
+  {
+    slug: 'nd20',
+    title: 'NĐ 20/2025/NĐ-CP — Sửa đổi NĐ 132/2020 về giao dịch liên kết',
+    shortTitle: 'NĐ 20/2025',
+    description: 'Sửa đổi, bổ sung một số điều của NĐ 132/2020/NĐ-CP về quản lý thuế đối với doanh nghiệp có giao dịch liên kết, hiệu lực 27/03/2025.',
+    effectiveDate: '2025-03-27',
+    filePath: path.join(process.cwd(), 'src/legal-docs/nd20/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd132', label: 'Văn bản gốc → NĐ 132/2020 (giao dịch liên kết)', description: 'Nghị định được sửa đổi, bổ sung', targetAnchor: 'nd132_1' },
+    ],
+  },
+  {
+    slug: 'nd252',
+    title: 'NĐ 252/2026/NĐ-CP — Hướng dẫn thi hành Luật Quản lý thuế',
+    shortTitle: 'NĐ 252/2026',
+    description: 'Quy định chi tiết thi hành Luật Quản lý thuế 108/2025: đăng ký thuế, khai thuế, ấn định thuế, hoàn thuế, khoanh/xóa nợ, cưỡng chế thi hành quyết định hành chính, hiệu lực 01/07/2026.',
+    effectiveDate: '2026-07-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/nd252/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025', description: 'Luật gốc được NĐ 252 hướng dẫn chi tiết', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'nd254', label: 'Liên quan → NĐ 254/2026 (hóa đơn điện tử)', description: 'Cùng hướng dẫn Luật Quản lý thuế 108/2025, NĐ 254 phụ trách riêng phần hóa đơn/chứng từ điện tử', targetAnchor: 'nd254_1' },
+    ],
+  },
+  {
+    slug: 'tt87',
+    title: 'TT 87/2026/TT-BTC — Hướng dẫn thi hành Luật Thuế TNCN',
+    shortTitle: 'TT 87/2026',
+    description: 'Hướng dẫn chi tiết Luật Thuế TNCN 109/2025 và NĐ 253/2026/NĐ-CP, hiệu lực 01/07/2026.',
+    effectiveDate: '2026-07-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt87/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd253', label: 'Căn cứ → NĐ 253/2026 (hướng dẫn chi tiết Luật Thuế TNCN)', description: 'TT 87 hướng dẫn thêm chi tiết theo NĐ 253', targetAnchor: 'nd253_1' },
+      { targetSlug: 'luat-109', label: 'Căn cứ → Luật Thuế TNCN 109/2025', description: 'Luật gốc được TT 87 hướng dẫn chi tiết', targetAnchor: 'luat-109_1' },
     ],
   },
   // ===== Chum Doanh nghiệp =====
