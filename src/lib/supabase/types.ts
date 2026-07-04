@@ -172,6 +172,32 @@ export interface Database {
         Insert: Omit<Database['public']['Tables']['tax_files']['Row'], 'id' | 'uploaded_at'>
         Update: Partial<Database['public']['Tables']['tax_files']['Insert']>
       }
+      support_conversations: {
+        Row: {
+          id: string
+          visitor_id: string
+          user_id: string | null
+          last_message_at: string
+          last_customer_message_at: string | null
+          last_admin_message_at: string | null
+          admin_last_read_at: string | null
+          customer_last_read_at: string | null
+          created_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['support_conversations']['Row'], 'id' | 'created_at'>
+        Update: Partial<Database['public']['Tables']['support_conversations']['Insert']>
+      }
+      support_messages: {
+        Row: {
+          id: string
+          conversation_id: string
+          sender: 'customer' | 'admin'
+          content: string
+          created_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['support_messages']['Row'], 'id' | 'created_at'>
+        Update: Partial<Database['public']['Tables']['support_messages']['Insert']>
+      }
     }
   }
 }
@@ -185,6 +211,8 @@ export type LegalPlan = Database['public']['Tables']['legal_plans']['Row']
 export type TaxPlan = Database['public']['Tables']['tax_plans']['Row']
 export type TaxFile = Database['public']['Tables']['tax_files']['Row']
 export type TaxPayment = Database['public']['Tables']['tax_payments']['Row']
+export type SupportConversation = Database['public']['Tables']['support_conversations']['Row']
+export type SupportMessage = Database['public']['Tables']['support_messages']['Row']
 
 export interface BankTransaction {
   id: string

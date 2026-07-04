@@ -78,6 +78,28 @@ CREATE TABLE IF NOT EXISTS public.user_purchases (
   created_at timestamptz NOT NULL DEFAULT now()
 );
 
+-- Support chat (floating widget + admin panel)
+CREATE TABLE IF NOT EXISTS public.support_conversations (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  visitor_id text NOT NULL UNIQUE,
+  user_id uuid REFERENCES public.profiles(id),
+  last_message_at timestamptz NOT NULL DEFAULT now(),
+  last_customer_message_at timestamptz,
+  last_admin_message_at timestamptz,
+  admin_last_read_at timestamptz,
+  customer_last_read_at timestamptz,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS public.support_messages (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  conversation_id uuid NOT NULL REFERENCES public.support_conversations(id) ON DELETE CASCADE,
+  sender text NOT NULL CHECK (sender IN ('customer', 'admin')),
+  content text NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_support_messages_conv ON public.support_messages(conversation_id, created_at);
+
 -- =============================================
 -- Row Level Security
 -- =============================================
@@ -88,6 +110,8 @@ ALTER TABLE public.packages ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.package_templates ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_purchases ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.support_conversations ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.support_messages ENABLE ROW LEVEL SECURITY;
 
 -- Profiles: users see own, admins see all
 CREATE POLICY "Users can view own profile" ON public.profiles FOR SELECT USING (auth.uid() = id);
@@ -114,6 +138,10 @@ CREATE POLICY "Service role full access orders" ON public.orders FOR ALL USING (
 -- User purchases: users see own purchases
 CREATE POLICY "Users can view own purchases" ON public.user_purchases FOR SELECT USING (auth.uid() = user_id);
 CREATE POLICY "Service role full access purchases" ON public.user_purchases FOR ALL USING (auth.role() = 'service_role');
+
+-- Support chat: no public policy, mọi truy cập qua service role trong API route
+CREATE POLICY "Service role full access support_conversations" ON public.support_conversations FOR ALL USING (auth.role() = 'service_role');
+CREATE POLICY "Service role full access support_messages" ON public.support_messages FOR ALL USING (auth.role() = 'service_role');
 
 -- =============================================
 -- Auto-create profile on signup

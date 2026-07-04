@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { Suspense } from "react";
 import { NavProgress } from "@/components/ui/nav-progress";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SupportWidget } from "@/components/support/support-widget";
+import { createAdminClient } from "@/lib/supabase/server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,11 +23,14 @@ export const metadata: Metadata = {
   description: "Kho Google Sheets Templates chuyên nghiệp cho doanh nghiệp",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const supabase = createAdminClient();
+  const { data: settings } = await supabase.from("site_settings").select("zalo_url").limit(1).single();
+
   return (
     <html
       lang="vi"
@@ -39,6 +44,7 @@ export default function RootLayout({
           </Suspense>
           {children}
           <Toaster position="top-right" richColors />
+          <SupportWidget zaloUrl={settings?.zalo_url ?? null} />
         </ThemeProvider>
       </body>
     </html>

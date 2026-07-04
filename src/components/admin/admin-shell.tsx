@@ -21,25 +21,28 @@ import {
   Tag,
   Settings,
   FileText,
+  MessageCircle,
 } from 'lucide-react'
 
 interface AdminShellProps {
   children: ReactNode
   user: { email?: string | null; full_name?: string | null } | null
   pendingCount?: number
+  unreadMessages?: number
 }
 
 const NAV = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/admin/templates', label: 'Sản phẩm & Gói', icon: FileSpreadsheet },
   { href: '/admin/orders', label: 'Đơn hàng', icon: ShoppingBag, badgeKey: 'pending' as const },
+  { href: '/admin/messages', label: 'Tin nhắn hỗ trợ', icon: MessageCircle, badgeKey: 'messages' as const },
   { href: '/admin/promotions', label: 'Khuyến mãi', icon: Tag },
   { href: '/admin/sync', label: 'Đồng bộ Sheets', icon: RefreshCw },
   { href: '/admin/policies', label: 'Chính sách', icon: FileText },
   { href: '/admin/settings', label: 'Cài đặt', icon: Settings },
 ]
 
-export function AdminShell({ children, user, pendingCount = 0 }: AdminShellProps) {
+export function AdminShell({ children, user, pendingCount = 0, unreadMessages = 0 }: AdminShellProps) {
   const pathname = usePathname()
   const router = useRouter()
   const [collapsed, setCollapsed] = useState(false)
@@ -101,7 +104,7 @@ export function AdminShell({ children, user, pendingCount = 0 }: AdminShellProps
           {NAV.map((item) => {
             const active = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href))
             const Icon = item.icon
-            const badge = item.badgeKey === 'pending' ? pendingCount : 0
+            const badge = item.badgeKey === 'pending' ? pendingCount : item.badgeKey === 'messages' ? unreadMessages : 0
             return (
               <Link
                 key={item.href}

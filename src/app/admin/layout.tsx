@@ -22,10 +22,18 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     .select('*', { count: 'exact', head: true })
     .eq('status', 'pending')
 
+  const { data: conversations } = await admin
+    .from('support_conversations')
+    .select('last_customer_message_at, admin_last_read_at')
+  const unreadMessages = (conversations ?? []).filter((c) =>
+    !!c.last_customer_message_at && (!c.admin_last_read_at || c.last_customer_message_at > c.admin_last_read_at)
+  ).length
+
   return (
     <AdminShell
       user={{ email: user.email, full_name: profile.full_name }}
       pendingCount={pendingCount ?? 0}
+      unreadMessages={unreadMessages}
     >
       {children}
     </AdminShell>
