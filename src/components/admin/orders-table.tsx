@@ -278,14 +278,14 @@ export function OrdersTable({ orders: initialOrders, skuMap = {} }: { orders: Or
                         <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 max-w-[130px]">
+                    <td className="px-4 py-3 max-w-[220px]">
                       {order.bank_transfer_note ? (
-                        <p className="text-sm text-gray-600 dark:text-gray-300 truncate" title={order.bank_transfer_note}>{order.bank_transfer_note}</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 whitespace-normal break-words">{order.bank_transfer_note}</p>
                       ) : (
                         <span className="text-xs text-gray-400 dark:text-gray-500">—</span>
                       )}
                       {order.status === 'cancelled' && order.cancel_note && (
-                        <p className="text-xs text-red-500 dark:text-red-400 truncate mt-0.5" title={order.cancel_note}>Lý do: {order.cancel_note}</p>
+                        <p className="text-xs text-red-500 dark:text-red-400 whitespace-normal break-words mt-0.5">Lý do: {order.cancel_note}</p>
                       )}
                     </td>
                     {/* Số tiền — sticky column */}
