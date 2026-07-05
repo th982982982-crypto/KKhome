@@ -23,6 +23,8 @@ interface FormState {
   youtube_url: string
   mocongthuong_url: string
   copyright_text: string
+  support_auto_reply_enabled: boolean
+  support_auto_reply_text: string
 }
 
 function toForm(s: SiteSettings): FormState {
@@ -43,6 +45,8 @@ function toForm(s: SiteSettings): FormState {
     youtube_url: s.youtube_url ?? '',
     mocongthuong_url: s.mocongthuong_url ?? '',
     copyright_text: s.copyright_text ?? '',
+    support_auto_reply_enabled: s.support_auto_reply_enabled ?? false,
+    support_auto_reply_text: s.support_auto_reply_text ?? '',
   }
 }
 
@@ -57,8 +61,9 @@ export function SiteSettingsEditor({ initial }: { initial: SiteSettings }) {
 
   async function handleSave() {
     setSaving(true)
-    const payload: Record<string, string | null> = {}
+    const payload: Record<string, string | boolean | null> = {}
     for (const [k, v] of Object.entries(form)) {
+      if (typeof v === 'boolean') { payload[k] = v; continue }
       payload[k] = v.trim() === '' ? null : v
     }
     if (!form.brand_name.trim()) {
@@ -233,6 +238,27 @@ export function SiteSettingsEditor({ initial }: { initial: SiteSettings }) {
             onChange={(e) => setField('mocongthuong_url', e.target.value)}
             className={inputCls}
             placeholder="http://online.gov.vn/Home/WebDetails/XXXXX"
+          />
+        </Field>
+      </Section>
+
+      <Section title="Trả lời tự động" desc="Tự động gửi khi khách nhắn tin lần đầu, giúp khách không phải chờ khi admin chưa kịp xem">
+        <label className="flex items-center gap-2.5 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={form.support_auto_reply_enabled}
+            onChange={(e) => setField('support_auto_reply_enabled', e.target.checked)}
+            className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 accent-indigo-600"
+          />
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Bật trả lời tự động</span>
+        </label>
+        <Field label="Nội dung trả lời mẫu">
+          <textarea
+            value={form.support_auto_reply_text}
+            onChange={(e) => setField('support_auto_reply_text', e.target.value)}
+            rows={3}
+            className={inputCls}
+            placeholder="Cảm ơn bạn đã liên hệ! Đội ngũ hỗ trợ sẽ phản hồi trong thời gian sớm nhất."
           />
         </Field>
       </Section>

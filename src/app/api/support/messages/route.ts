@@ -5,6 +5,7 @@ export const dynamic = 'force-dynamic'
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 const MAX_CONTENT_LENGTH = 4000
+const CLOUDINARY_URL_RE = /^https:\/\/res\.cloudinary\.com\//
 
 function isValidUuid(v: unknown): v is string {
   return typeof v === 'string' && UUID_RE.test(v)
@@ -22,17 +23,17 @@ export async function GET(req: Request) {
   const admin = createAdminClient()
   const { data: conversation } = await admin
     .from('support_conversations')
-    .select('id, last_admin_message_at, customer_last_read_at')
+    .select('id, last_admin_message_at, customer_last_read_at, admin_last_read_at')
     .eq('visitor_id', visitorId)
     .maybeSingle()
 
   if (!conversation) {
-    return NextResponse.json({ conversation: null, messages: [], unread: false })
+    return NextResponse.json({ conversation: null, messages: [], unread: false, adminLastReadAt: null })
   }
 
   const { data: messages } = await admin
     .from('support_messages')
-    .select('id, sender, content, created_at')
+    .select('id, sender, content, attachment_url, created_at')
     .eq('conversation_id', conversation.id)
     .order('created_at', { ascending: true })
 
@@ -46,17 +47,26 @@ export async function GET(req: Request) {
       .eq('id', conversation.id)
   }
 
-  return NextResponse.json({ conversation: { id: conversation.id }, messages: messages ?? [], unread })
+  return NextResponse.json({
+    conversation: { id: conversation.id },
+    messages: messages ?? [],
+    unread,
+    adminLastReadAt: conversation.admin_last_read_at,
+  })
 }
 
 export async function POST(req: Request) {
-  const { visitorId, content } = await req.json()
+  const { visitorId, content, attachmentUrl } = await req.json()
 
   if (!isValidUuid(visitorId)) {
     return NextResponse.json({ error: 'Invalid visitorId' }, { status: 400 })
   }
   const trimmed = typeof content === 'string' ? content.trim() : ''
-  if (!trimmed || trimmed.length > MAX_CONTENT_LENGTH) {
+  const trimmedAttachment = typeof attachmentUrl === 'string' ? attachmentUrl.trim() : ''
+  if (trimmedAttachment && !CLOUDINARY_URL_RE.test(trimmedAttachment)) {
+    return NextResponse.json({ error: 'Invalid attachment' }, { status: 400 })
+  }
+  if ((!trimmed && !trimmedAttachment) || trimmed.length > MAX_CONTENT_LENGTH) {
     return NextResponse.json({ error: 'Invalid content' }, { status: 400 })
   }
 
@@ -73,6 +83,7 @@ export async function POST(req: Request) {
     .maybeSingle()
 
   let conversationId: string
+  const isNewConversation = !existing
 
   if (!existing) {
     const { data: created, error } = await admin
@@ -108,13 +119,45 @@ export async function POST(req: Request) {
 
   const { data: message, error: messageError } = await admin
     .from('support_messages')
-    .insert({ conversation_id: conversationId, sender: 'customer', content: trimmed })
-    .select('id, sender, content, created_at')
+    .insert({
+      conversation_id: conversationId,
+      sender: 'customer',
+      content: trimmed,
+      attachment_url: trimmedAttachment || null,
+    })
+    .select('id, sender, content, attachment_url, created_at')
     .single()
 
   if (messageError || !message) {
     return NextResponse.json({ error: messageError?.message ?? 'Insert failed' }, { status: 500 })
   }
 
-  return NextResponse.json({ conversationId, message })
+  let autoReplyMessage = null
+  if (isNewConversation) {
+    const { data: settings } = await admin
+      .from('site_settings')
+      .select('support_auto_reply_enabled, support_auto_reply_text')
+      .limit(1)
+      .single()
+
+    const autoReplyText = settings?.support_auto_reply_text?.trim()
+    if (settings?.support_auto_reply_enabled && autoReplyText) {
+      const replyNow = new Date().toISOString()
+      const { data: reply } = await admin
+        .from('support_messages')
+        .insert({ conversation_id: conversationId, sender: 'admin', content: autoReplyText })
+        .select('id, sender, content, attachment_url, created_at')
+        .single()
+
+      if (reply) {
+        autoReplyMessage = reply
+        await admin
+          .from('support_conversations')
+          .update({ last_message_at: replyNow, last_admin_message_at: replyNow })
+          .eq('id', conversationId)
+      }
+    }
+  }
+
+  return NextResponse.json({ conversationId, message, autoReplyMessage })
 }

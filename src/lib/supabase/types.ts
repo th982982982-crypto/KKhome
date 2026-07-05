@@ -182,6 +182,9 @@ export interface Database {
           last_admin_message_at: string | null
           admin_last_read_at: string | null
           customer_last_read_at: string | null
+          guest_name: string | null
+          guest_email: string | null
+          guest_phone: string | null
           created_at: string
         }
         Insert: Omit<Database['public']['Tables']['support_conversations']['Row'], 'id' | 'created_at'>
@@ -193,6 +196,7 @@ export interface Database {
           conversation_id: string
           sender: 'customer' | 'admin'
           content: string
+          attachment_url: string | null
           created_at: string
         }
         Insert: Omit<Database['public']['Tables']['support_messages']['Row'], 'id' | 'created_at'>
@@ -278,6 +282,8 @@ export interface SiteSettings {
   mocongthuong_url: string | null
   copyright_text: string | null
   tax_trial_days: number
+  support_auto_reply_enabled: boolean
+  support_auto_reply_text: string | null
   updated_at: string
 }
 

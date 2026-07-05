@@ -88,6 +88,9 @@ CREATE TABLE IF NOT EXISTS public.support_conversations (
   last_admin_message_at timestamptz,
   admin_last_read_at timestamptz,
   customer_last_read_at timestamptz,
+  guest_name text,
+  guest_email text,
+  guest_phone text,
   created_at timestamptz NOT NULL DEFAULT now()
 );
 
@@ -96,6 +99,7 @@ CREATE TABLE IF NOT EXISTS public.support_messages (
   conversation_id uuid NOT NULL REFERENCES public.support_conversations(id) ON DELETE CASCADE,
   sender text NOT NULL CHECK (sender IN ('customer', 'admin')),
   content text NOT NULL,
+  attachment_url text,
   created_at timestamptz NOT NULL DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS idx_support_messages_conv ON public.support_messages(conversation_id, created_at);

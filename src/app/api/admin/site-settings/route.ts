@@ -16,6 +16,7 @@ export async function PATCH(req: Request) {
     'mocongthuong_url',
     'copyright_text',
     'tax_trial_days',
+    'support_auto_reply_enabled', 'support_auto_reply_text',
   ]
   const payload: Record<string, unknown> = { updated_at: new Date().toISOString() }
   for (const key of allowed) {
