@@ -4,6 +4,9 @@ import { requireAdmin } from '@/lib/require-admin'
 import { addMonths } from '@/lib/format'
 import type { OrderItem } from '@/lib/supabase/types'
 
+// Khách mua Tờ Khai Thuế lần đầu tiên được tặng thêm 7 ngày dùng thử
+const FIRST_ORDER_TAX_BONUS_DAYS = 7
+
 export async function POST(req: Request) {
   const adminUser = await requireAdmin()
   if (!adminUser) return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
@@ -21,6 +24,13 @@ export async function POST(req: Request) {
   if (orderError || !order) {
     return NextResponse.json({ error: 'Order not found or already processed' }, { status: 404 })
   }
+
+  const { count: priorConfirmedCount } = await supabase
+    .from('orders')
+    .select('id', { count: 'exact', head: true })
+    .eq('user_id', order.user_id)
+    .eq('status', 'confirmed')
+  const isFirstOrder = (priorConfirmedCount ?? 0) === 0
 
   await supabase
     .from('orders')
@@ -143,6 +153,9 @@ export async function POST(req: Request) {
       if (Number.isFinite(current.getTime())) {
         const base = current.getTime() > now.getTime() ? current : now
         const newExpiry = addMonths(base, totalMonths)
+        if (isFirstOrder) {
+          newExpiry.setDate(newExpiry.getDate() + FIRST_ORDER_TAX_BONUS_DAYS)
+        }
         const { error: grantError } = await supabase
           .from('profiles')
           .update({ tax_access_until: newExpiry.toISOString() })
