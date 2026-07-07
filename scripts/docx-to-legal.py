@@ -104,6 +104,19 @@ DOCS = {
               'Nghị định 252/2026/NĐ-CP — Quy định chi tiết một số điều và biện pháp thi hành Luật Quản lý thuế'),
  'tt87'    : ('Thông-tư-87-2026-TT-BTC.docx', 'TT 87/2026', 'Hướng dẫn Luật Thuế TNCN & NĐ 253/2026',
               'Thông tư 87/2026/TT-BTC — Quy định chi tiết một số điều của Luật Thuế TNCN và NĐ 253/2026/NĐ-CP'),
+ # ----- Chum Quản lý thuế / TNDN / TNCN / TTĐB / Nhà thầu / XNK — bổ sung 2026-07 -----
+ 'nd126'   : ('Nghị-định-126-2020-NĐ-CP.doc', 'NĐ 126/2020', 'Hướng dẫn Luật Quản lý thuế',
+              'Nghị định 126/2020/NĐ-CP — Quy định chi tiết một số điều của Luật Quản lý thuế'),
+ 'nd91'    : ('Nghị-định-91-2022-NĐ-CP.doc', 'NĐ 91/2022', 'Sửa đổi, bổ sung NĐ 126/2020 (quản lý thuế)',
+              'Nghị định 91/2022/NĐ-CP — Sửa đổi, bổ sung một số điều của NĐ 126/2020/NĐ-CP quy định chi tiết một số điều của Luật Quản lý thuế'),
+ 'tt80'    : ('Thông-tư-80-2021-TT-BTC.doc', 'TT 80/2021', 'Hướng dẫn Luật Quản lý thuế & NĐ 126/2020',
+              'Thông tư 80/2021/TT-BTC — Hướng dẫn thi hành một số điều của Luật Quản lý thuế và Nghị định số 126/2020/NĐ-CP'),
+ 'tt103'   : ('Thông-tư-103-2014-TT-BTC.doc', 'TT 103/2014', 'Thuế nhà thầu nước ngoài (FCT)',
+              'Thông tư 103/2014/TT-BTC — Hướng dẫn thực hiện nghĩa vụ thuế áp dụng đối với tổ chức, cá nhân nước ngoài kinh doanh tại Việt Nam hoặc có thu nhập tại Việt Nam'),
+ 'luat03'  : ('Luật-03-2022-QH15.docx', 'Luật 03/2022', 'Sửa đổi 9 luật (gồm Luật Thuế TTĐB)',
+              'Luật 03/2022/QH15 — Luật sửa đổi, bổ sung một số điều của Luật Đầu tư công, Luật Đầu tư theo phương thức đối tác công tư, Luật Đầu tư, Luật Nhà ở, Luật Đấu thầu, Luật Điện lực, Luật Doanh nghiệp, Luật Thuế tiêu thụ đặc biệt và Luật Thi hành án dân sự'),
+ 'luat-107': ('Luật-107-2016-QH13.doc', 'Luật 107/2016', 'Thuế xuất khẩu, nhập khẩu',
+              'Luật 107/2016/QH13 — Luật Thuế xuất khẩu, thuế nhập khẩu'),
 }
 
 # Ngày hiệu lực chuẩn (override khi parser không bắt được)
@@ -122,6 +135,9 @@ EFF = {
  # Thuế TNCN / Chuyển giá / Doanh nghiệp / Nghị quyết
  'nd253':'01/07/2026','nd132':'20/12/2020','luat-59':'01/01/2021','nq110':'01/01/2026',
  'nd20':'27/03/2025','nd252':'01/07/2026','tt87':'01/07/2026',
+ # Quản lý thuế / TNDN / TNCN / TTĐB / Nhà thầu / XNK — bổ sung 2026-07
+ 'nd126':'05/12/2020','nd91':'30/10/2022','tt80':'01/01/2022','tt103':'01/10/2014',
+ 'luat03':'01/03/2022','luat-107':'01/09/2016',
 }
 
 # Cache .docx convert từ .doc (textutil, macOS)

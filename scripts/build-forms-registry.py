@@ -38,6 +38,8 @@ FOLDER_TO_SLUG = {
     "Biểu mẫu NĐ144": "nd144",
     "Biểu mẫu NĐ132": "nd132",
     "Biểu mẫu NĐ254": "nd254",
+    "Biểu mẫu ND126": "nd126",
+    "Biểu mẫu TT80": "tt80",
 }
 
 SKIP_PREFIXES = (

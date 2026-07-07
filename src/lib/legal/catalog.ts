@@ -4,7 +4,7 @@
 import type { LegalDoc } from './registry'
 
 // Cập nhật mỗi khi thêm/sửa văn bản mới vào registry
-export const REGISTRY_UPDATED_AT = '2026-07-04'
+export const REGISTRY_UPDATED_AT = '2026-07-07'
 
 export type DocType =
   | 'Luật'
@@ -119,6 +119,13 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   // Chuyển giá / Giao dịch liên kết — cùng nhóm Quản lý thuế theo Excel gốc
   nd132: { docType: 'Nghị định', categories: ['Quản lý thuế'], hasForms: true },
   nd20: { docType: 'Nghị định', categories: ['Quản lý thuế'] },
+  // Quản lý thuế / TNDN / TNCN / TTĐB / Nhà thầu / XNK — bổ sung 2026-07
+  nd126: { docType: 'Nghị định', categories: ['Thuế TNDN', 'Quản lý thuế'], hasForms: true },
+  nd91: { docType: 'Nghị định', categories: ['Thuế TNDN'] },
+  tt80: { docType: 'Thông tư', categories: ['Thuế TNCN', 'Quản lý thuế', 'Thuế TTĐB', 'Thuế Nhà thầu (FCT)'], hasForms: true },
+  tt103: { docType: 'Thông tư', categories: ['Thuế Nhà thầu (FCT)'] },
+  luat03: { docType: 'Luật', categories: ['Thuế TTĐB'] },
+  'luat-107': { docType: 'Luật', categories: ['Thuế XNK'] },
   // Khác
   'luat-59': { docType: 'Luật', categories: ['Khác'] },
   // Nhân sự - Lao động
@@ -152,9 +159,7 @@ export interface CatalogDoc {
 
 // 5 văn bản có trong file Excel nhưng chưa biên dịch → hiển thị thẻ "Sắp cập nhật".
 export const COMING_SOON: CatalogDoc[] = [
-  { slug: 'soon-luat-107', title: 'Luật 107/2016/QH13 — Luật Thuế Xuất khẩu, Nhập khẩu', shortTitle: 'Luật 107/2016', description: 'Luật Thuế XNK hiện hành. Đối tượng chịu thuế, biểu thuế, miễn/giảm/hoàn thuế xuất nhập khẩu.', effectiveDate: '2016-09-01', docType: 'Luật', categories: ['Thuế XNK'], status: 'coming-soon', hasForms: false, crossRefsCount: 0 },
   { slug: 'soon-tt38', title: 'TT 38/2015/TT-BTC — Thủ tục hải quan, thuế XNK', shortTitle: 'TT 38/2015', description: 'Thủ tục hải quan; kiểm tra, giám sát hải quan; thuế xuất khẩu, nhập khẩu và quản lý thuế hàng hóa XNK.', effectiveDate: '2015-04-01', docType: 'Thông tư', categories: ['Thuế XNK'], status: 'coming-soon', hasForms: false, crossRefsCount: 0 },
-  { slug: 'soon-tt103', title: 'TT 103/2014/TT-BTC — Thuế nhà thầu nước ngoài', shortTitle: 'TT 103/2014', description: 'Nghĩa vụ thuế áp dụng đối với tổ chức, cá nhân nước ngoài kinh doanh hoặc có thu nhập tại Việt Nam.', effectiveDate: '2014-10-01', docType: 'Thông tư', categories: ['Thuế Nhà thầu (FCT)'], status: 'coming-soon', hasForms: false, crossRefsCount: 0 },
   { slug: 'soon-nq204', title: 'Nghị quyết 204/2025/QH15 — Giảm thuế GTGT', shortTitle: 'NQ 204/2025', description: 'Chính sách giảm thuế giá trị gia tăng.', effectiveDate: '2026-01-01', docType: 'Khác', categories: ['Thuế GTGT'], status: 'coming-soon', hasForms: false, crossRefsCount: 0 },
 ]
 

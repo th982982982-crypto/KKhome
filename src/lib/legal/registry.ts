@@ -212,6 +212,8 @@ export const LEGAL_DOCS: LegalDoc[] = [
     theme: 'light',
     crossRefs: [
       { targetSlug: 'luat-108', label: 'Được thay thế bởi → Luật QLT 108/2025', description: 'Luật QLT mới (hiệu lực 01/07/2026)', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'nd126', label: 'Hướng dẫn chi tiết → Nghị định 126/2020', description: 'NĐ 126 quy định chi tiết thi hành Luật QLT 2019', targetAnchor: 'nd126_1' },
+      { targetSlug: 'tt80', label: 'Hồ sơ, thủ tục → Thông tư 80/2021', description: 'TT 80 hướng dẫn thi hành Luật QLT 2019', targetAnchor: 'tt80_1' },
     ],
   },
   {
@@ -304,6 +306,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
       { targetSlug: 'tt158', label: 'Hồ sơ, thủ tục → Thông tư 158/2025', description: 'TT 158 hướng dẫn hồ sơ chi tiết', targetAnchor: 'tt158_1' },
       { targetSlug: 'luat-48', label: 'Hàng chịu TTĐB cũng chịu GTGT → Luật 48', description: 'Giá tính thuế GTGT gồm cả thuế TTĐB (Luật 48 Đ7)', targetAnchor: 'luat-48_7' },
       { targetSlug: 'luat-108', label: 'Kê khai, nộp, hoàn thuế → Luật QLT 108', description: 'Quản lý thuế áp dụng cho TTĐB', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'luat03', label: 'Thay thế Biểu thuế TTĐB sửa bởi → Luật 03/2022 Điều 8', description: 'Từ 01/01/2026, Luật 66 thay thế Biểu thuế TTĐB đã sửa tại Điều 8 Luật 03/2022', targetAnchor: 'luat03_8' },
     ],
   },
   {
@@ -346,6 +349,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
       { targetSlug: 'nd182', label: 'Sửa đổi, bổ sung → Nghị định 182/2025', description: 'NĐ 182/2025 sửa đổi NĐ 134', targetAnchor: 'nd182_1' },
       { targetSlug: 'luat-48', label: 'Thuế NK trong giá tính thuế GTGT → Luật 48 Đ7', description: 'Giá tính GTGT hàng NK gồm thuế nhập khẩu', targetAnchor: 'luat-48_7' },
       { targetSlug: 'luat-108', label: 'Kê khai, nộp, hoàn thuế → Luật QLT 108', description: 'Quản lý thuế áp dụng cho thuế XNK', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'luat-107', label: 'Căn cứ → Luật Thuế XNK 107/2016', description: 'NĐ 134 quy định chi tiết thi hành Luật Thuế XNK 107/2016', targetAnchor: 'luat-107_1' },
     ],
   },
   {
@@ -669,6 +673,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
     theme: 'light',
     crossRefs: [
       { targetSlug: 'nd132', label: 'Liên quan → NĐ 132/2020 (giao dịch liên kết)', description: 'Khái niệm "người có liên quan" trong Luật DN là cơ sở xác định giao dịch liên kết', targetAnchor: 'nd132_1' },
+      { targetSlug: 'luat03', label: 'Được sửa đổi bởi → Luật 03/2022 (Điều 7)', description: 'Điều 7 Luật 03/2022 sửa đổi một số điều của Luật Doanh nghiệp', targetAnchor: 'luat03_1' },
     ],
   },
   // ===== Nghị quyết độc lập — Thuế TNCN =====
@@ -683,6 +688,84 @@ export const LEGAL_DOCS: LegalDoc[] = [
     crossRefs: [
       { targetSlug: 'luat-109', label: 'Căn cứ → Luật Thuế TNCN 109/2025 (Điều 19 giảm trừ gia cảnh)', description: 'NQ 110 điều chỉnh mức giảm trừ theo Điều 19 Luật TNCN', targetAnchor: 'luat-109_1' },
       { targetSlug: 'luat-09', label: 'Căn cứ → Luật 09/2026 (sửa Luật TNCN)', description: 'Sửa đổi, bổ sung một số điều Luật TNCN', targetAnchor: 'luat-09_1' },
+    ],
+  },
+  // ===== Chum Quản lý thuế / TNDN / TNCN / TTĐB / Nhà thầu / XNK — bổ sung 2026-07 =====
+  {
+    slug: 'nd126',
+    title: 'NĐ 126/2020/NĐ-CP — Quy định chi tiết một số điều của Luật Quản lý thuế',
+    shortTitle: 'NĐ 126/2020',
+    description: 'Nghị định quy định chi tiết thi hành Luật Quản lý thuế 38/2019, hiệu lực 05/12/2020. Kê khai, ấn định thuế, hoàn thuế, quản lý thuế đối với hộ/cá nhân kinh doanh, hoạt động thương mại điện tử.',
+    effectiveDate: '2020-12-05',
+    filePath: path.join(process.cwd(), 'src/legal-docs/nd126/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd91', label: 'Sửa đổi, bổ sung → Nghị định 91/2022', description: 'NĐ 91/2022 sửa đổi một số điều của NĐ 126 về quản lý thuế', targetAnchor: 'nd91_1' },
+      { targetSlug: 'tt80', label: 'Hướng dẫn chi tiết → Thông tư 80/2021', description: 'TT 80 hướng dẫn thi hành Luật Quản lý thuế và NĐ 126', targetAnchor: 'tt80_1' },
+      { targetSlug: 'luat-38', label: 'Căn cứ → Luật Quản lý thuế 38/2019', description: 'NĐ 126 quy định chi tiết thi hành Luật Quản lý thuế 2019', targetAnchor: 'luat-38_1' },
+    ],
+  },
+  {
+    slug: 'nd91',
+    title: 'NĐ 91/2022/NĐ-CP — Sửa đổi, bổ sung NĐ 126/2020 (quản lý thuế)',
+    shortTitle: 'NĐ 91/2022',
+    description: 'Sửa đổi, bổ sung một số điều của NĐ 126/2020/NĐ-CP quy định chi tiết một số điều của Luật Quản lý thuế, hiệu lực kể từ ngày ký ban hành (30/10/2022).',
+    effectiveDate: '2022-10-30',
+    filePath: path.join(process.cwd(), 'src/legal-docs/nd91/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd126', label: 'Văn bản gốc → Nghị định 126/2020', description: 'Nghị định được sửa đổi, bổ sung', targetAnchor: 'nd126_1' },
+    ],
+  },
+  {
+    slug: 'tt80',
+    title: 'TT 80/2021/TT-BTC — Hướng dẫn Luật Quản lý thuế & NĐ 126/2020',
+    shortTitle: 'TT 80/2021',
+    description: 'Hướng dẫn thi hành một số điều của Luật Quản lý thuế và Nghị định 126/2020/NĐ-CP, hiệu lực 01/01/2022. Hồ sơ khai thuế, ấn định thuế, hoàn thuế, quản lý thuế đối với hoạt động kinh doanh xuyên biên giới.',
+    effectiveDate: '2022-01-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt80/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd126', label: 'Căn cứ → Nghị định 126/2020', description: 'TT 80 hướng dẫn thi hành NĐ 126', targetAnchor: 'nd126_1' },
+      { targetSlug: 'luat-38', label: 'Căn cứ → Luật Quản lý thuế 38/2019', description: 'TT 80 hướng dẫn thi hành Luật Quản lý thuế 2019', targetAnchor: 'luat-38_1' },
+      { targetSlug: 'tt103', label: 'Thuế nhà thầu → Thông tư 103/2014', description: 'Hồ sơ khai thuế áp dụng chung theo TT 80, riêng thuế nhà thầu nước ngoài xem TT 103', targetAnchor: 'tt103_1' },
+    ],
+  },
+  {
+    slug: 'tt103',
+    title: 'TT 103/2014/TT-BTC — Thuế nhà thầu nước ngoài (FCT)',
+    shortTitle: 'TT 103/2014',
+    description: 'Hướng dẫn thực hiện nghĩa vụ thuế áp dụng đối với tổ chức, cá nhân nước ngoài kinh doanh tại Việt Nam hoặc có thu nhập tại Việt Nam, hiệu lực 01/10/2014. Thuế GTGT, TNDN đối với nhà thầu nước ngoài.',
+    effectiveDate: '2014-10-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt103/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'tt80', label: 'Thủ tục kê khai, nộp thuế → Thông tư 80/2021', description: 'TT 80 hướng dẫn hồ sơ khai thuế áp dụng chung, gồm cả thuế nhà thầu', targetAnchor: 'tt80_1' },
+    ],
+  },
+  {
+    slug: 'luat03',
+    title: 'Luật 03/2022/QH15 — Sửa đổi, bổ sung một số điều 9 luật (Đầu tư công, PPP, Đầu tư, Nhà ở, Đấu thầu, Điện lực, Doanh nghiệp, Thuế TTĐB, Thi hành án dân sự)',
+    shortTitle: 'Luật 03/2022',
+    description: 'Sửa đổi, bổ sung một số điều của 9 luật, hiệu lực 01/03/2022. Điều 7 sửa Luật Doanh nghiệp; Điều 8 sửa Biểu thuế Tiêu thụ đặc biệt tại Luật Thuế TTĐB.',
+    effectiveDate: '2022-03-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/luat03/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-59', label: 'Sửa đổi → Luật Doanh nghiệp 59/2020 (Điều 7)', description: 'Điều 7 Luật 03/2022 sửa đổi một số điều của Luật Doanh nghiệp', targetAnchor: 'luat-59_1' },
+      { targetSlug: 'luat-66', label: 'TTĐB → thay thế bởi Luật Thuế TTĐB 66/2025', description: 'Điều 8 sửa Biểu thuế TTĐB theo luật cũ; từ 01/01/2026 áp dụng Luật Thuế TTĐB 66/2025', targetAnchor: 'luat-66_1' },
+    ],
+  },
+  {
+    slug: 'luat-107',
+    title: 'Luật 107/2016/QH13 — Luật Thuế xuất khẩu, thuế nhập khẩu',
+    shortTitle: 'Luật 107/2016',
+    description: 'Luật Thuế xuất khẩu, thuế nhập khẩu, hiệu lực 01/09/2016. Đối tượng chịu thuế, căn cứ tính thuế, thuế chống bán phá giá, chống trợ cấp, tự vệ, miễn/giảm/hoàn thuế XNK. Thay thế Luật Thuế XNK 45/2005.',
+    effectiveDate: '2016-09-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/luat-107/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd134', label: 'Hướng dẫn chi tiết → Nghị định 134/2016', description: 'NĐ 134 quy định chi tiết và biện pháp thi hành Luật Thuế XNK 107/2016', targetAnchor: 'nd134_1' },
     ],
   },
   // Thêm văn bản mới: bổ sung object và đặt file HTML vào src/legal-docs/[slug]/index.html

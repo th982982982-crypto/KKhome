@@ -190,5 +190,21 @@
       "title": "NĐ 20/2025",
       "anchor": null
     }
+  },
+  {
+    "id": "nd91-amends-nd126",
+    "updatedAt": "2022-10-30",
+    "effectiveDate": "2022-10-30",
+    "summary": "Sửa đổi, bổ sung một số điều về quản lý thuế",
+    "original": {
+      "slug": "nd126",
+      "title": "NĐ 126/2020",
+      "anchor": null
+    },
+    "amendment": {
+      "slug": "nd91",
+      "title": "NĐ 91/2022",
+      "anchor": null
+    }
   }
 ]

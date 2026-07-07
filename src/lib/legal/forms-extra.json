@@ -654,5 +654,641 @@
       "code": "PL1",
       "title": "NỘI DUNG CỦA HÓA ĐƠN"
     }
+  ],
+  "nd126": [
+    {
+      "code": "01-1-CC",
+      "title": "Kính gửi:...(Tên người nộp thuế/Tên tổ chức tín dụng)…"
+    },
+    {
+      "code": "01-ADT",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "01-APA-TV",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-CC",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "01-CCTT-DDTCQ",
+      "title": "Kính gửi : <Tên cơ quan gửi hồ sơ đến cơ quan thuế>"
+    },
+    {
+      "code": "01-CCTT-TDMN",
+      "title": "Kính gửi : <Tên cơ quan cung cấp thông tin>"
+    },
+    {
+      "code": "01-GHKS",
+      "title": "Kính gửi: (Tên cơ quan thuế quản lý trực tiếp khoản thu)"
+    },
+    {
+      "code": "01-KN",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "01-QDADT-TXNK",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "01-TB-BSTT-NNT",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TB-CNKD",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "01-TB-CQKTKS",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "01-TB-CQKTTNN",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "01-TB-LPTB",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "01-TB-SDDNN",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "01-TB-SDDPNN",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "01-TB-TMDN",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "01-TB-TSDD",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "01-TB-TSDKVB",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "01-TBXNK",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-UNT",
+      "title": "HỢP ĐỒNG UỶ NHIỆM THU"
+    },
+    {
+      "code": "01-XC",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "02-APA-CT",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "02-CC",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "02-GHKS",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "02-KN",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "02-QDHADT-TXNK",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "02-TB-LPTB",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "02-TB-TMDN",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "02-TB-TSDD",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "02-UNT",
+      "title": "BIÊN BẢN THANH LÝ"
+    },
+    {
+      "code": "02-XC",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "03-1-CC",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "03-APA-MAP",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "03-CC",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "03-GHKS",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "03-TB-BDS-TNCN",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "03-UNT",
+      "title": "TỔNG HỢP SỐ TIỀN THUẾ VÀ CÁC KHOẢN THU KHÁC"
+    },
+    {
+      "code": "04-1-CC",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "04-2-CC",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "04-APA-BC",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "04-CC",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "04-GHKS",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "04-TB-TKQT-TNCN",
+      "title": "THÔNG BÁO NỘP TIỀN"
+    },
+    {
+      "code": "04-UNT",
+      "title": "BÁO CÁO KẾT QUẢ THU NGÂN SÁCH NHÀ NƯỚC"
+    },
+    {
+      "code": "05-CC",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "05-UNT",
+      "title": "05-UNT"
+    },
+    {
+      "code": "06-CC",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "07-1-CC",
+      "title": "Kính gửi:...(Tên cơ quan cấp giấy ...)..."
+    },
+    {
+      "code": "07-CC",
+      "title": "Kính gửi:...(Tên cơ quan cấp giấy ...)..."
+    },
+    {
+      "code": "08-CC",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "09-CC",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "PL-I",
+      "title": "DANH MỤC HỒ SƠ KHAI THUẾ"
+    }
+  ],
+  "tt80": [
+    {
+      "code": "01-1-HKNN",
+      "title": "BẢNG KÊ THU NHẬP VẬN TẢI QUỐC TẾ"
+    },
+    {
+      "code": "01-1-HT",
+      "title": "BẢNG KÊ HOÁ ĐƠN, CHỨNG TỪ HÀNG HOÁ, DỊCH VỤ MUA VÀO"
+    },
+    {
+      "code": "01-1-KTTSBD",
+      "title": "BẢNG KÊ CHI TIẾT SỐ THUẾ PHẢI NỘP ĐỐI VỚI HOẠT ĐỘNG KHAI THÁC TÀI SẢN BẢO ĐẢM"
+    },
+    {
+      "code": "01-1-PTHU-VSP",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-1-QT-LNCL",
+      "title": "BẢNG PHÂN BỔ SỐ LỢI NHUẬN SAU THUẾ CÒN LẠI PHẢI NỘP"
+    },
+    {
+      "code": "01-1-TAIN",
+      "title": "BẢNG PHÂN BỔ SỐ THUẾ TÀI NGUYÊN PHẢI NỘP"
+    },
+    {
+      "code": "01-1-TBH-TB",
+      "title": "BẢNG KÊ CÁC HỢP ĐỒNG TÁI BẢO HIỂM ĐÃ HOẶC DỰ KIẾN KÝ KẾT"
+    },
+    {
+      "code": "01-1-TBH",
+      "title": "DANH MỤC HỢP ĐỒNG TÁI BẢO HIỂM"
+    },
+    {
+      "code": "01-1-TNDN-VSP",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-2-HKNN",
+      "title": "BẢNG KÊ THU NHẬP VẬN TẢI QUỐC TẾ"
+    },
+    {
+      "code": "01-2-HT",
+      "title": "DANH SÁCH TỜ KHAI HẢI QUAN ĐÃ THÔNG QUAN"
+    },
+    {
+      "code": "01-3a-HT",
+      "title": "BẢNG KÊ THUẾ GIÁ TRỊ GIA TĂNG (GTGT) CỦA HÀNG HÓA, DỊCH VỤ"
+    },
+    {
+      "code": "01-3b-HT",
+      "title": "BẢNG KÊ"
+    },
+    {
+      "code": "01-4-HT",
+      "title": "BẢNG KÊ CHỨNG TỪ HOÀN THUẾ GIÁ TRỊ GIA TĂNG CHO NGƯỜI NƯỚC NGOÀI XUẤT CẢNH"
+    },
+    {
+      "code": "01-BCTL-DK",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-CTLNDC",
+      "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-DK-TDKTT",
+      "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-DNHUY",
+      "title": "TÊN NGƯỜI NỘP THUẾ"
+    },
+    {
+      "code": "01-DNXN",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-DTA-MAP",
+      "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-DUQT",
+      "title": "VĂN BẢN ĐỀ NGHỊ MIỄN (GIẢM) THUẾ THEO ĐIỀU ƯỚC QUỐC TẾ"
+    },
+    {
+      "code": "01-HT",
+      "title": "GIẤY ĐỀ NGHỊ"
+    },
+    {
+      "code": "01-HTQT",
+      "title": "VĂN BẢN ĐỀ NGHỊ"
+    },
+    {
+      "code": "01-KTT",
+      "title": "TÊN CƠ QUAN CẤP TRÊN TRỰC TIẾP"
+    },
+    {
+      "code": "01-KTTSBD",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-LNCN-VSP",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-MGTH",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-NDAN",
+      "title": "TÊN NGƯỜI NỘP THUẾ"
+    },
+    {
+      "code": "01-PL-BT",
+      "title": "SỐ TIỀN THUẾ, TIỀN CHẬM NỘP, TIỀN PHẠT PHẢI NỘP ĐƯỢC BÙ TRỪ"
+    },
+    {
+      "code": "01-PL-DK",
+      "title": "CHI TIẾT NGHĨA VỤ THUẾ CỦA CÁC NHÀ THẦU DẦU KHÍ"
+    },
+    {
+      "code": "01-PL-HTNT",
+      "title": "SỐ TIỀN THUẾ, TIỀN CHẬM NỘP, TIỀN PHẠT NỘP THỪA ĐƯỢC HOÀN TRẢ"
+    },
+    {
+      "code": "01-QDHT",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN"
+    },
+    {
+      "code": "01-QT-LNCL",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-TAIN",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-TB-HT",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN"
+    },
+    {
+      "code": "01-TB-TS",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TB-XNNV",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TBH-TB",
+      "title": "VĂN BẢN ĐỀ NGHỊ DỰ KIẾN"
+    },
+    {
+      "code": "01-TBH",
+      "title": "CỘNG HOÀ XÃ  HỘI CHỦ NGHĨA VIỆT"
+    },
+    {
+      "code": "01-TK-VSP",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-TMDN",
+      "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-TNDN-DK",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-TNS-DK",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-TS",
+      "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "01-XOANO",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "01T-NKDCK",
+      "title": "GIẤY CHỨNG NHẬN TÀI KHOẢN LƯU KÝ CỔ PHIẾU, TRÁI PHIẾU"
+    },
+    {
+      "code": "02-1-HT",
+      "title": "BẢNG KÊ CHỨNG TỪ NỘP THUẾ"
+    },
+    {
+      "code": "02-1-PL-DK",
+      "title": "SẢN LƯỢNG VÀ DOANH THU XUẤT BÁN DẦU KHÍ"
+    },
+    {
+      "code": "02-1-TBH-TB",
+      "title": "BẢNG KÊ CÁC HỢP ĐỒNG TÁI BẢO HIỂM ĐÃ THỰC HIỆN"
+    },
+    {
+      "code": "02-HT",
+      "title": "GIẤY ĐỀ NGHỊ HOÀN THUẾ THEO HIỆP ĐỊNH"
+    },
+    {
+      "code": "02-HTQT",
+      "title": "GIẤY ĐỀ NGHỊ"
+    },
+    {
+      "code": "02-KTT",
+      "title": "TÊN CƠ QUAN CẤP TRÊN TRỰC TIẾP"
+    },
+    {
+      "code": "02-LNCN-PSC",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "02-MGTH",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "02-NDAN",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN        CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "02-PTHU-DK",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "02-QD-HT",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN"
+    },
+    {
+      "code": "02-TAIN-VSP",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "02-TAIN",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "02-TB-HT",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN"
+    },
+    {
+      "code": "02-TBH-TB",
+      "title": "VĂN BẢN ĐỀ NGHỊ CHÍNH THỨC"
+    },
+    {
+      "code": "02-TNDN-DK",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "02-XD-PNTT",
+      "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "02-XOANO",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "03-1-MGTH",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "03-HTQT",
+      "title": "GIẤY ĐỀ NGHỊ XÁC NHẬN SỐ THUẾ ĐÃ NỘP TẠI VIỆT NAM"
+    },
+    {
+      "code": "03-KTT",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "03-MGTH",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "03-NDAN",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN"
+    },
+    {
+      "code": "03-PTHU-DK",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "03-QD-THH",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN"
+    },
+    {
+      "code": "03-SDDNN",
+      "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "03-TB-HT",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN"
+    },
+    {
+      "code": "03-TNDN-DK",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "03-XOANO",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "04-GTGT",
+      "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "04-HTQT",
+      "title": "TỔNG CỤC THUẾ"
+    },
+    {
+      "code": "04-KTT",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "04-MGTH",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "04-NDAN",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN"
+    },
+    {
+      "code": "04-PTHU-DK",
+      "title": "BẢNG KÊ SẢN LƯỢNG VÀ GIÁ BÁN DẦU THÔ KHAI THÁC"
+    },
+    {
+      "code": "04-TB-HT",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN"
+    },
+    {
+      "code": "04-XOANO",
+      "title": "UỶ BAN NHÂN DÂN TỈNH/TP…"
+    },
+    {
+      "code": "05-HTQT",
+      "title": "TỔNG CỤC THUẾ"
+    },
+    {
+      "code": "05-KTT",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "05-MGTH",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "05-NDAN",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN      CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "05-PTHU-DK",
+      "title": "BẢNG KÊ SỐ PHỤ THU TẠM TÍNH ĐÃ NỘP"
+    },
+    {
+      "code": "05-TB-HT",
+      "title": "TÊN CƠ QUAN THUẾ CẤP TRÊN"
+    },
+    {
+      "code": "05-XOANO",
+      "title": "BỘ TÀI CHÍNH"
+    },
+    {
+      "code": "06-HTQT",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "06-KTT",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "06-MGTH",
+      "title": "CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+    },
+    {
+      "code": "06-XOANO",
+      "title": "BỘ TÀI CHÍNH"
+    },
+    {
+      "code": "07-HTQT",
+      "title": "TỔNG CỤC THUẾ"
+    },
+    {
+      "code": "07-KTT",
+      "title": "TÊN CƠ QUAN RA"
+    },
+    {
+      "code": "07-XOANO",
+      "title": "THỦ TƯỚNG CHÍNH PHỦ"
+    },
+    {
+      "code": "08-KTT",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "09-KTT",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "10-KTT",
+      "title": "TÊN CƠ QUAN CẤP TRÊN"
+    },
+    {
+      "code": "11-KTT",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "12-KTT",
+      "title": "TÊN CƠ QUAN RA QUYẾT ĐỊNH KIỂM TRA"
+    },
+    {
+      "code": "13-KTT",
+      "title": "TÊN CƠ QUAN RA QUYẾT ĐỊNH KIỂM TRA [1]"
+    },
+    {
+      "code": "14-KTT",
+      "title": "TÊN CƠ QUAN RA"
+    },
+    {
+      "code": "15-KTT",
+      "title": "TÊN CƠ QUAN CẤP TRÊN TRỰC TIẾP"
+    }
   ]
 }

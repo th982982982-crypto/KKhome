@@ -242,6 +242,8 @@ for _slug in ('luat-48','luat-149','luat-109','luat-09','luat-108','luat-38',
               # Chuyển giá / Doanh nghiệp / Nghị quyết
               'nd253','nd132','luat-59','nq110',
               # Quản lý thuế — bổ sung
-              'nd20','nd252','tt87'):
+              'nd20','nd252','tt87',
+              # Quản lý thuế / TNDN / TNCN / TTĐB / Nhà thầu / XNK — bổ sung 2026-07
+              'nd126','nd91','tt80','tt103','luat03','luat-107'):
     patch_json_app(_slug, dark=False, escaper='e', nav='show', before_func='function show(')
 print("Done.")
