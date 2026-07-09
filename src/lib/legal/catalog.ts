@@ -4,7 +4,7 @@
 import type { LegalDoc } from './registry'
 
 // Cập nhật mỗi khi thêm/sửa văn bản mới vào registry
-export const REGISTRY_UPDATED_AT = '2026-07-07'
+export const REGISTRY_UPDATED_AT = '2026-07-09'
 
 export type DocType =
   | 'Luật'
@@ -141,6 +141,19 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   'luat-50': { docType: 'Luật', categories: ['Bảo hiểm - Công đoàn'] },
   nd105: { docType: 'Nghị định', categories: ['Bảo hiểm - Công đoàn'] },
   nd191: { docType: 'Nghị định', categories: ['Bảo hiểm - Công đoàn'] },
+  // Đợt bổ sung 2026-07 (Tổng hợp 2)
+  nd255: { docType: 'Nghị định', categories: ['Quản lý thuế'], hasForms: true },
+  nd273: { docType: 'Nghị định', categories: ['Thuế XNK'], hasForms: true },
+  tt90: { docType: 'Thông tư', categories: ['Quản lý thuế', 'HKD, CNKD'] },
+  tt21: { docType: 'Thông tư', categories: ['Thuế TNDN', 'Quản lý thuế'], hasForms: true },
+  tt74: { docType: 'Thông tư', categories: ['Khác'] },
+  tt85: { docType: 'Thông tư', categories: ['Thuế XNK'], hasForms: true },
+  tt86: { docType: 'Thông tư', categories: ['Thuế XNK', 'Quản lý thuế'], hasForms: true },
+  tt91: { docType: 'Thông tư', categories: ['Quản lý thuế'], hasForms: true },
+  tt94: { docType: 'Thông tư', categories: ['Quản lý thuế'], hasForms: true },
+  tt96: { docType: 'Thông tư', categories: ['Khác'], hasForms: true },
+  tt97: { docType: 'Thông tư', categories: ['Thuế GTGT', 'Thuế TNDN'] },
+  cv2927: { docType: 'Công văn', categories: ['Thuế GTGT', 'Quản lý thuế'] },
 }
 
 // Hình dạng nhẹ, serializable để truyền từ Server Component → Client Component

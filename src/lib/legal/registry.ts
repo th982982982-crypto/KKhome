@@ -227,6 +227,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
     crossRefs: [
       { targetSlug: 'luat-48', label: 'Căn cứ → Luật Thuế GTGT 48/2024', description: 'NĐ chi tiết hóa Luật GTGT', targetAnchor: 'luat-48_1' },
       { targetSlug: 'tt69', label: 'Hồ sơ, thủ tục → Thông tư 69/2025', description: 'TT 69 hướng dẫn chi tiết NĐ 181', targetAnchor: 'tt69_1' },
+      { targetSlug: 'nd273', label: 'Mẫu biểu bị thay thế → Nghị định 273/2026', description: 'NĐ 273/2026 thay biểu mẫu Phụ lục III NĐ 181 bằng Mẫu 09/BKHH Phụ lục III NĐ 273', targetAnchor: 'nd273_22' },
     ],
   },
   {
@@ -348,6 +349,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
       { targetSlug: 'nd18', label: 'Sửa đổi, bổ sung → Nghị định 18/2021', description: 'NĐ 18/2021 sửa đổi NĐ 134', targetAnchor: 'nd18_1' },
       { targetSlug: 'nd182', label: 'Sửa đổi, bổ sung → Nghị định 182/2025', description: 'NĐ 182/2025 sửa đổi NĐ 134', targetAnchor: 'nd182_1' },
       { targetSlug: 'luat-48', label: 'Thuế NK trong giá tính thuế GTGT → Luật 48 Đ7', description: 'Giá tính GTGT hàng NK gồm thuế nhập khẩu', targetAnchor: 'luat-48_7' },
+      { targetSlug: 'tt85', label: 'Hướng dẫn phân loại hàng hóa → Thông tư 85/2026', description: 'TT 85/2026 hướng dẫn phân loại, phân tích hàng hóa XNK — cơ sở áp Biểu thuế XK/NK theo NĐ 134', targetAnchor: 'tt85_1' },
       { targetSlug: 'luat-108', label: 'Kê khai, nộp, hoàn thuế → Luật QLT 108', description: 'Quản lý thuế áp dụng cho thuế XNK', targetAnchor: 'luat-108_1' },
       { targetSlug: 'luat-107', label: 'Căn cứ → Luật Thuế XNK 107/2016', description: 'NĐ 134 quy định chi tiết thi hành Luật Thuế XNK 107/2016', targetAnchor: 'luat-107_1' },
     ],
@@ -387,6 +389,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
     crossRefs: [
       { targetSlug: 'nd134', label: 'Liên quan → Nghị định 134/2016 (Thuế XNK)', description: 'Hướng dẫn quản lý thuế hàng hóa XNK', targetAnchor: 'nd134_1' },
       { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế', description: 'Quản lý thuế hàng hóa XNK', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'tt86', label: 'Kế thừa, cập nhật → Thông tư 86/2026 (cùng chủ đề, từ 01/07/2026)', description: 'TT 86/2026 quy định lại quản lý thuế hàng hóa XNK theo khung Luật Quản lý thuế 108/2025', targetAnchor: 'tt86_1' },
     ],
   },
   {
@@ -399,6 +402,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
     theme: 'light',
     crossRefs: [
       { targetSlug: 'nd134', label: 'Liên quan → Nghị định 134/2016 (Thuế XNK)', description: 'Thủ tục hải quan & thuế XNK', targetAnchor: 'nd134_1' },
+      { targetSlug: 'tt86', label: 'Bị bãi bỏ một phần bởi → Thông tư 86/2026', description: 'TT 86/2026 bãi bỏ khoản 64, 65, 67, 68, 71 Điều 1 TT 39/2018', targetAnchor: 'tt86_43' },
     ],
   },
   // ===== Chum Lao động / An toàn lao động =====
@@ -607,6 +611,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
       { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025', description: 'Luật gốc được NĐ 254 hướng dẫn chi tiết', targetAnchor: 'luat-108_1' },
       { targetSlug: 'nd123', label: 'Thay thế toàn bộ → NĐ 123/2020 (hóa đơn, chứng từ)', description: 'NĐ 123/2020 hết hiệu lực từ 01/07/2026', targetAnchor: 'nd123_1' },
       { targetSlug: 'nd70', label: 'Thay thế toàn bộ → NĐ 70/2025 (sửa NĐ 123)', description: 'NĐ 70/2025 hết hiệu lực từ 01/07/2026', targetAnchor: 'nd70_1' },
+      { targetSlug: 'tt91', label: 'Hướng dẫn chi tiết → Thông tư 91/2026', description: 'TT 91/2026 quy định chi tiết hóa đơn điện tử, chứng từ điện tử theo NĐ 254', targetAnchor: 'tt91_1' },
     ],
   },
   // ===== Chum Chuyển giá / Giao dịch liên kết (TNDN) =====
@@ -622,6 +627,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
       { targetSlug: 'luat-67', label: 'Liên quan → Luật 67/2025 (Điều 9 chi phí được trừ)', description: 'Chi phí lãi vay bên liên kết chịu khống chế theo NĐ 132', targetAnchor: 'expenses' },
       { targetSlug: 'nd320', label: 'Liên quan → NĐ 320/2025 (Điều 9–10 chi phí được trừ)', description: 'Hướng dẫn chi tiết chi phí được trừ khi tính thuế TNDN', targetAnchor: 'nd320_9' },
       { targetSlug: 'nd20', label: 'Sửa đổi, bổ sung → NĐ 20/2025', description: 'NĐ 20/2025 sửa đổi, bổ sung một số điều của NĐ 132/2020', targetAnchor: 'nd20_1' },
+      { targetSlug: 'nd255', label: 'Thay thế bởi → Nghị định 255/2026 (từ 01/07/2026)', description: 'NĐ 255/2026 thay thế NĐ 132/2020, áp dụng từ kỳ tính thuế TNDN năm 2026', targetAnchor: 'nd255_1' },
     ],
   },
   {
@@ -634,6 +640,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
     theme: 'light',
     crossRefs: [
       { targetSlug: 'nd132', label: 'Văn bản gốc → NĐ 132/2020 (giao dịch liên kết)', description: 'Nghị định được sửa đổi, bổ sung', targetAnchor: 'nd132_1' },
+      { targetSlug: 'nd255', label: 'Thay thế bởi → Nghị định 255/2026 (từ 01/07/2026)', description: 'NĐ 255/2026 thay thế NĐ 20/2025; Điều 3 NĐ 20 vẫn áp dụng cho đối tượng chuyển tiếp', targetAnchor: 'nd255_1' },
     ],
   },
   {
@@ -647,6 +654,8 @@ export const LEGAL_DOCS: LegalDoc[] = [
     crossRefs: [
       { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025', description: 'Luật gốc được NĐ 252 hướng dẫn chi tiết', targetAnchor: 'luat-108_1' },
       { targetSlug: 'nd254', label: 'Liên quan → NĐ 254/2026 (hóa đơn điện tử)', description: 'Cùng hướng dẫn Luật Quản lý thuế 108/2025, NĐ 254 phụ trách riêng phần hóa đơn/chứng từ điện tử', targetAnchor: 'nd254_1' },
+      { targetSlug: 'tt90', label: 'Hướng dẫn chi tiết → Thông tư 90/2026 (đăng ký thuế)', description: 'TT 90/2026 hướng dẫn chi tiết điểm b khoản 1 Điều 40 và điểm a khoản 1 Điều 45 NĐ 252', targetAnchor: 'tt90_1' },
+      { targetSlug: 'tt94', label: 'Hướng dẫn chi tiết → Thông tư 94/2026 (tuân thủ, rủi ro)', description: 'TT 94/2026 hướng dẫn quản lý tuân thủ, quản lý rủi ro trong quản lý thuế', targetAnchor: 'tt94_1' },
     ],
   },
   {
@@ -729,6 +738,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
       { targetSlug: 'nd126', label: 'Căn cứ → Nghị định 126/2020', description: 'TT 80 hướng dẫn thi hành NĐ 126', targetAnchor: 'nd126_1' },
       { targetSlug: 'luat-38', label: 'Căn cứ → Luật Quản lý thuế 38/2019', description: 'TT 80 hướng dẫn thi hành Luật Quản lý thuế 2019', targetAnchor: 'luat-38_1' },
       { targetSlug: 'tt103', label: 'Thuế nhà thầu → Thông tư 103/2014', description: 'Hồ sơ khai thuế áp dụng chung theo TT 80, riêng thuế nhà thầu nước ngoài xem TT 103', targetAnchor: 'tt103_1' },
+      { targetSlug: 'tt21', label: 'Sửa đổi bởi → Thông tư 21/2026', description: 'TT 21/2026 sửa Điều 59, khoản 2 Điều 82, thay Mẫu 02/TNDN & 05/TNDN, bãi bỏ Điều 60', targetAnchor: 'tt21_1' },
     ],
   },
   {
@@ -766,6 +776,170 @@ export const LEGAL_DOCS: LegalDoc[] = [
     theme: 'light',
     crossRefs: [
       { targetSlug: 'nd134', label: 'Hướng dẫn chi tiết → Nghị định 134/2016', description: 'NĐ 134 quy định chi tiết và biện pháp thi hành Luật Thuế XNK 107/2016', targetAnchor: 'nd134_1' },
+    ],
+  },
+  // ===== Đợt bổ sung 2026-07 (Tổng hợp 2) =====
+  {
+    slug: 'nd255',
+    title: 'NĐ 255/2026/NĐ-CP — Quản lý thuế đối với Giao dịch Liên kết',
+    shortTitle: 'NĐ 255/2026',
+    description: 'Quy định quản lý thuế đối với giao dịch liên kết: xác định bên liên kết, phương pháp xác định giá GDLK, chi phí lãi vay ≤30% EBITDA, Hồ sơ xác định giá GDLK, Báo cáo lợi nhuận liên quốc gia. Thay thế NĐ 132/2020 và NĐ 20/2025, hiệu lực 01/07/2026, áp dụng từ kỳ tính thuế TNDN 2026.',
+    effectiveDate: '2026-07-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/nd255/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd132', label: 'Thay thế → Nghị định 132/2020', description: 'NĐ 132/2020 hết hiệu lực kể từ ngày NĐ 255 có hiệu lực', targetAnchor: 'nd132_1' },
+      { targetSlug: 'nd20', label: 'Thay thế → Nghị định 20/2025', description: 'NĐ 20/2025 hết hiệu lực; Điều 3 NĐ 20 vẫn dùng cho điều khoản chuyển tiếp', targetAnchor: 'nd20_1' },
+      { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025', description: 'Quyền/nghĩa vụ NNT khi kê khai, lập Hồ sơ xác định giá GDLK theo Điều 37 Luật QLT', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'luat-67', label: 'Căn cứ → Luật Thuế TNDN 67/2025', description: 'Điều 16 xác định chi phí tính thuế TNDN với DN có GDLK (chi phí lãi vay, chi phí dịch vụ liên kết)', targetAnchor: 'luat-67_1' },
+    ],
+  },
+  {
+    slug: 'nd273',
+    title: 'NĐ 273/2026/NĐ-CP — Kinh doanh hàng miễn thuế',
+    shortTitle: 'NĐ 273/2026',
+    description: 'Quy định quản lý, thủ tục, kiểm tra, giám sát hải quan đối với hoạt động kinh doanh hàng miễn thuế (cửa hàng/kho miễn thuế tại sân bay, cảng biển, cửa khẩu, bán trên tàu bay/tàu biển quốc tế). Thay thế toàn bộ NĐ 100/2020/NĐ-CP, hiệu lực 21/08/2026.',
+    effectiveDate: '2026-08-21',
+    filePath: path.join(process.cwd(), 'src/legal-docs/nd273/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd181', label: 'Thay thế mẫu biểu → Nghị định 181/2025', description: 'Điều 22.3 NĐ 273 thay biểu mẫu Phụ lục III NĐ 181 (hướng dẫn Luật GTGT) bằng Mẫu 09/BKHH Phụ lục III NĐ 273', targetAnchor: 'nd181_1' },
+      { targetSlug: 'luat-107', label: 'Căn cứ → Luật Thuế XNK 107/2016', description: 'Căn cứ ban hành NĐ 273', targetAnchor: 'luat-107_1' },
+      { targetSlug: 'luat-66', label: 'Căn cứ → Luật TTĐB 66/2025', description: 'Định lượng mua hàng miễn thuế áp dụng riêng cho rượu, thuốc lá (hàng chịu TTĐB)', targetAnchor: 'luat-66_1' },
+      { targetSlug: 'luat-38', label: 'Căn cứ → Luật Quản lý thuế 38/2019', description: 'Căn cứ ban hành NĐ 273', targetAnchor: 'luat-38_1' },
+    ],
+  },
+  {
+    slug: 'tt90',
+    title: 'TT 90/2026/TT-BTC — Quy định về đăng ký thuế',
+    shortTitle: 'TT 90/2026',
+    description: 'Hướng dẫn chi tiết đăng ký thuế theo Điều 10, 11 Luật Quản lý thuế 108/2025 và NĐ 252/2026: cấu trúc mã số thuế, thủ tục đăng ký lần đầu/thay đổi thông tin/tạm ngừng/chấm dứt/khôi phục MST cho tổ chức, hộ kinh doanh, cá nhân. Thay thế TT 86/2024/TT-BTC, hiệu lực 01/07/2026.',
+    effectiveDate: '2026-07-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt90/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025 (Điều 10, 11)', description: 'TT 90 quy định chi tiết phạm vi đăng ký thuế và mã số thuế', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'nd252', label: 'Căn cứ → NĐ 252/2026 (Điều 40, 45)', description: 'TT 90 hướng dẫn chi tiết 2 nội dung được NĐ 252 giao', targetAnchor: 'nd252_1' },
+      { targetSlug: 'tt18', label: 'Liên quan → TT 18/2026 (hồ sơ, thủ tục QLT)', description: 'Cùng nhóm thông tư hướng dẫn Luật 108/NĐ 252; TT18 phụ trách hồ sơ/thủ tục chung, TT90 phụ trách riêng đăng ký thuế', targetAnchor: 'tt18_1' },
+    ],
+  },
+  {
+    slug: 'tt21',
+    title: 'TT 21/2026/TT-BTC — Sửa đổi, bổ sung một số điều của Thông tư số 80/2021/TT-BTC',
+    shortTitle: 'TT 21/2026',
+    description: 'Sửa đổi Điều 59 (hồ sơ miễn/giảm tiền thuê đất), khoản 2 Điều 82 (kinh phí ủy nhiệm thu) TT 80/2021; thay thế Mẫu 02/TNDN và Mẫu 05/TNDN; bãi bỏ Điều 60 TT 80/2021. Hiệu lực 17/03/2026.',
+    effectiveDate: '2026-03-17',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt21/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'tt80', label: 'Sửa đổi trực tiếp → Thông tư 80/2021 (Điều 59)', description: 'TT21 sửa đổi Điều 59, khoản 2 Điều 82, thay Mẫu 02/TNDN & 05/TNDN, bãi bỏ Điều 60 của TT80/2021', targetAnchor: 'tt80_59' },
+      { targetSlug: 'nd320', label: 'Điều khoản chuyển tiếp → Nghị định 320/2025', description: 'Điều 2.2 TT21 dẫn chiếu NĐ320 về DN nước ngoài chuyển nhượng vốn', targetAnchor: 'nd320_1' },
+      { targetSlug: 'luat-67', label: 'Căn cứ → Luật TNDN 67/2025', description: 'Căn cứ ban hành TT21', targetAnchor: 'luat-67_1' },
+    ],
+  },
+  {
+    slug: 'tt74',
+    title: 'TT 74/2026/TT-BTC — Phí, lệ phí trong lĩnh vực năng lượng nguyên tử',
+    shortTitle: 'TT 74/2026',
+    description: 'Quy định người nộp phí/lệ phí, tổ chức thu, mức thu, chế độ thu-nộp đối với phí thẩm định an toàn phóng xạ/bức xạ/hạt nhân, lệ phí cấp chứng chỉ nhân viên bức xạ/hành nghề dịch vụ hỗ trợ ứng dụng năng lượng nguyên tử. Thay thế TT 287/2016 và TT 116/2021, hiệu lực 10/08/2026.',
+    effectiveDate: '2026-08-10',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt74/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025', description: 'Điều 5, Điều 6.4 dẫn chiếu Luật QLT 108/2025 cho thủ tục khai/thu/nộp NSNN', targetAnchor: 'luat-108_1' },
+    ],
+  },
+  {
+    slug: 'tt85',
+    title: 'TT 85/2026/TT-BTC — Phân loại hàng hóa, phân tích để phân loại hàng hóa xuất khẩu, nhập khẩu',
+    shortTitle: 'TT 85/2026',
+    description: 'Quy định phân loại, phân tích để phân loại hàng hóa XNK; xây dựng, sử dụng cơ sở dữ liệu Danh mục hàng hóa XNK Việt Nam; nguyên tắc phân loại, phân loại máy liên hợp/tổ hợp máy, hồ sơ yêu cầu phân tích. Thay thế TT 14/2015 và TT 17/2021, hiệu lực 15/09/2026.',
+    effectiveDate: '2026-09-15',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt85/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd134', label: 'Căn cứ → NĐ 134/2016 (Thuế XNK)', description: 'TT85 hướng dẫn phân loại hàng hóa — cơ sở áp dụng Biểu thuế XK/NK theo NĐ 134', targetAnchor: 'nd134_1' },
+      { targetSlug: 'luat-107', label: 'Căn cứ → Luật Thuế XNK 107/2016', description: 'Luật gốc về thuế XNK, TT85 dẫn làm căn cứ ban hành', targetAnchor: 'luat-107_1' },
+      { targetSlug: 'tt06', label: 'Liên quan → TT 06/2021 (QLT hàng XNK)', description: 'Cùng nhóm thủ tục quản lý thuế/hải quan đối với hàng hóa XNK', targetAnchor: 'tt06_1' },
+    ],
+  },
+  {
+    slug: 'tt86',
+    title: 'TT 86/2026/TT-BTC — Quy định về quản lý thuế đối với hàng hóa xuất khẩu, nhập khẩu',
+    shortTitle: 'TT 86/2026',
+    description: 'Quy định quản lý thuế đối với hàng hóa XNK: đăng ký, khai, tính thuế; hoàn thuế; kiểm tra lại; xác nhận hoàn thành nghĩa vụ nộp thuế. Bãi bỏ một phần TT 38/2015, TT 39/2018 và TT 121/2025, hiệu lực 01/07/2026.',
+    effectiveDate: '2026-07-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt86/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025', description: 'Thẩm quyền kiểm tra lại theo Điều 22 Luật 108/2025', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'luat-107', label: 'Căn cứ → Luật Thuế XNK 107/2016', description: 'Căn cứ ban hành TT86', targetAnchor: 'luat-107_1' },
+      { targetSlug: 'nd134', label: 'Liên quan → Nghị định 134/2016 (Thuế XNK)', description: 'Quản lý thuế hàng hóa XNK gắn với Biểu thuế XK/NK theo NĐ 134', targetAnchor: 'nd134_1' },
+      { targetSlug: 'tt06', label: 'Kế thừa, cập nhật → Thông tư 06/2021', description: 'TT86 quy định lại cùng chủ đề quản lý thuế hàng hóa XNK theo khung Luật QLT 108/2025', targetAnchor: 'tt06_1' },
+      { targetSlug: 'tt39', label: 'Bãi bỏ một phần → Thông tư 39/2018', description: 'Bãi bỏ khoản 64, 65, 67, 68, 71 Điều 1 TT39/2018', targetAnchor: 'tt39_1' },
+    ],
+  },
+  {
+    slug: 'tt91',
+    title: 'TT 91/2026/TT-BTC — Quy định một số điều của Luật Quản lý thuế và Nghị định số 254/2026/NĐ-CP về hóa đơn điện tử, chứng từ điện tử',
+    shortTitle: 'TT 91/2026',
+    description: 'Quy định chi tiết khoản 4, 7 Điều 26, khoản 3, 5 Điều 27 Luật Quản lý thuế: đăng ký sử dụng, định dạng, xử lý hóa đơn/chứng từ điện tử; ký hiệu mẫu số, ký hiệu hóa đơn; cấp hóa đơn theo từng lần phát sinh. Gồm 5 Phụ lục (I–IV bắt buộc, V tham khảo), hiệu lực 01/07/2026.',
+    effectiveDate: '2026-07-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt91/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd254', label: 'Căn cứ → NĐ 254/2026 (hóa đơn điện tử)', description: 'TT91 quy định chi tiết Luật QLT 108/2025 và NĐ 254/2026 về hóa đơn, chứng từ điện tử', targetAnchor: 'nd254_1' },
+      { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025', description: 'Điều 26, 27 Luật QLT về hóa đơn, chứng từ điện tử', targetAnchor: 'luat-108_1' },
+    ],
+  },
+  {
+    slug: 'tt94',
+    title: 'TT 94/2026/TT-BTC — Quy định về quản lý tuân thủ, quản lý rủi ro trong quản lý thuế',
+    shortTitle: 'TT 94/2026',
+    description: 'Quy định đánh giá, phân loại mức độ tuân thủ pháp luật thuế và mức độ rủi ro của NNT; Phân hệ quản lý tuân thủ và rủi ro thuế hỗ trợ cơ quan thuế trong đăng ký thuế, kiểm tra hồ sơ khai thuế, hoàn thuế, quản lý nợ, cưỡng chế. Thay thế TT 31/2021/TT-BTC, hiệu lực 01/07/2026.',
+    effectiveDate: '2026-07-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt94/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025', description: 'Quản lý nợ và cưỡng chế theo Luật QLT 108/2025', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'nd252', label: 'Căn cứ → NĐ 252/2026', description: 'Căn cứ ban hành TT94', targetAnchor: 'nd252_1' },
+      { targetSlug: 'nd254', label: 'Liên quan → NĐ 254/2026 (hóa đơn điện tử)', description: 'Phân loại rủi ro trong quản lý sử dụng hóa đơn, chứng từ', targetAnchor: 'nd254_1' },
+    ],
+  },
+  {
+    slug: 'tt96',
+    title: 'TT 96/2026/TT-BTC — Sửa đổi, bổ sung một số điều của Thông tư số 67/2023/TT-BTC hướng dẫn Luật Kinh doanh bảo hiểm',
+    shortTitle: 'TT 96/2026',
+    description: 'Sửa đổi TT 67/2023/TT-BTC về dự phòng nghiệp vụ, tỷ lệ hoa hồng đại lý bảo hiểm theo 3 mốc thời gian, quản lý đại lý bảo hiểm cá nhân, doanh thu/chi phí doanh nghiệp bảo hiểm. Hiệu lực 02/07/2026 (riêng khoản 2 Điều 16, 17: từ 01/01/2027).',
+    effectiveDate: '2026-07-02',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt96/index.html'),
+    theme: 'light',
+    crossRefs: [],
+  },
+  {
+    slug: 'tt97',
+    title: 'TT 97/2026/TT-BTC — Bãi bỏ Thông tư số 55/2010/TT-BTC hướng dẫn về thuế GTGT và thuế TNDN đối với Đài truyền hình',
+    shortTitle: 'TT 97/2026',
+    description: 'Bãi bỏ toàn bộ TT 55/2010/TT-BTC hướng dẫn thuế GTGT, TNDN riêng cho Đài truyền hình Việt Nam và các Đài truyền hình, phát thanh truyền hình tỉnh/thành phố, do khung pháp lý GTGT/TNDN đã thay đổi. Hiệu lực kể từ ngày ký (06/07/2026).',
+    effectiveDate: '2026-07-06',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt97/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-48', label: 'Căn cứ → Luật Thuế GTGT 48/2024', description: 'Luật GTGT hiện hành — lý do TT55/2010 (hướng dẫn GTGT cũ) không còn phù hợp và bị bãi bỏ', targetAnchor: 'luat-48_1' },
+      { targetSlug: 'luat-67', label: 'Căn cứ → Luật Thuế TNDN 67/2025', description: 'Luật TNDN hiện hành — lý do TT55/2010 (hướng dẫn TNDN cũ) bị bãi bỏ', targetAnchor: 'luat-67_1' },
+    ],
+  },
+  {
+    slug: 'cv2927',
+    title: 'CV 2927/CT-CS — Thuế GTGT đối với sản phẩm xuất khẩu là tài nguyên, khoáng sản',
+    shortTitle: 'CV 2927/CT-CS',
+    description: 'Công văn của Cục Thuế trả lời Thuế tỉnh Gia Lai về xác định thuế suất GTGT (0% hay không) đối với sản phẩm xuất khẩu là đá granite, đá thạch anh nhân tạo — tiêu chí phân biệt "tài nguyên, khoáng sản chưa chế biến" và "đã chế biến" (ngưỡng tỷ trọng giá trị tài nguyên + năng lượng ≥51% giá thành). Ban hành 11/05/2026.',
+    effectiveDate: '2026-05-11',
+    filePath: path.join(process.cwd(), 'src/legal-docs/cv2927/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-38', label: 'Căn cứ → Luật Quản lý thuế 38/2019 (Điều 76)', description: 'CV căn cứ trực tiếp Điều 76 Luật QLT 38/2019 về thẩm quyền quyết định hoàn thuế', targetAnchor: 'luat-38_76' },
+      { targetSlug: 'luat-48', label: 'Liên quan → Luật Thuế GTGT 48/2024', description: 'Luật GTGT hiện hành kế thừa quy định về sản phẩm xuất khẩu là tài nguyên/khoáng sản mà CV này giải thích theo luật cũ', targetAnchor: 'luat-48_1' },
     ],
   },
   // Thêm văn bản mới: bổ sung object và đặt file HTML vào src/legal-docs/[slug]/index.html

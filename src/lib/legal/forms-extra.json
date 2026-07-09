@@ -1290,5 +1290,629 @@
       "code": "15-KTT",
       "title": "TÊN CƠ QUAN CẤP TRÊN TRỰC TIẾP"
     }
+  ],
+  "nd255": [
+    {
+      "code": "PL1",
+      "title": "THÔNG TIN VỀ QUAN HỆ LIÊN KẾT VÀ GIAO DỊCH LIÊN KẾT"
+    },
+    {
+      "code": "PL2",
+      "title": "DANH MỤC CÁC THÔNG TIN, TÀI LIỆU CẦN CUNG CẤPTẠI HỒ SƠ QUỐC GIA"
+    },
+    {
+      "code": "PL3",
+      "title": "DANH MỤC CÁC THÔNG TIN, TÀI LIỆU CẦN CUNG CẤPTẠI HỒ SƠ TOÀN CẦU"
+    },
+    {
+      "code": "PL4",
+      "title": "KÊ KHAI THÔNG TIN BÁO CÁO LỢI NHUẬN LIÊN QUỐC GIA"
+    },
+    {
+      "code": "PL5",
+      "title": "CÔNG THỨC TÍNH GIÁ TRỊ GIAO DỊCH ĐỘC LẬP CHUẨN"
+    }
+  ],
+  "nd273": [
+    {
+      "code": "01-PTBHVDM",
+      "title": "PHIẾU THÔNG BÁO"
+    },
+    {
+      "code": "02-PGH",
+      "title": "PHIẾU GIAO HÀNG"
+    },
+    {
+      "code": "03-BKTMVR",
+      "title": "BẢNG KÊ LƯỢNG TIỀN MANG VÀO/RA"
+    },
+    {
+      "code": "04-BBBG",
+      "title": "BIÊN BẢN"
+    },
+    {
+      "code": "05-BCQT",
+      "title": "BÁO CÁO QUYẾT TOÁN KINH DOANH HÀNG MIỄN THUẾ"
+    },
+    {
+      "code": "06-PGHKVTB",
+      "title": "PHIẾU GIAO NHẬN HÀNG HÓA ĐỐI VỚI HÀNG HÓA"
+    },
+    {
+      "code": "07-BKTMKVTB",
+      "title": "BẢNG KÊ LƯỢNG TIỀN MẶT LUÂN CHUYỂN"
+    },
+    {
+      "code": "08-DSHH",
+      "title": "DANH SÁCH HÀNG HÓA ĐƯA VÀO/ĐƯA RA CỬA HÀNG MIỄN THUẾ, KHO CHỨA HÀNG MIỄN THUẾ"
+    },
+    {
+      "code": "09-BKHH",
+      "title": "BẢNG KÊ HÀNG HÓA BÁN CHO KHÁCH XUẤT CẢNH"
+    },
+    {
+      "code": "10-BKHMT",
+      "title": "BẢNG KÊ HÀNG MẪU, HÀNG THỬ, TÚI, BAO BÌ NHẬP KHẨU"
+    },
+    {
+      "code": "11-BBKT",
+      "title": "BIÊN BẢN KIỂM TRA"
+    }
+  ],
+  "tt21": [
+    {
+      "code": "02-TNDN",
+      "title": "TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP"
+    },
+    {
+      "code": "05-TNDN",
+      "title": "TỜ KHAI THUẾ THU NHẬP DOANH NGHIỆP"
+    }
+  ],
+  "tt85": [
+    {
+      "code": "01-PYCPT-2026",
+      "title": "PHIẾU YÊU CẦU PHÂN TÍCH HÀNG HÓA XUẤT KHẨU, NHẬP KHẨU KIÊM BIÊN BẢN LẤY MẪU"
+    },
+    {
+      "code": "02-PTNYCPT-2026",
+      "title": "PHIẾU TIẾP NHẬN YÊU CẦU PHÂN TÍCH HÀNG HÓA XUẤT KHẨU, NHẬP KHẨU"
+    },
+    {
+      "code": "03-BBTLMHH-2026",
+      "title": "BIÊN BẢN TRẢ LẠI MẪU ĐÃ TIẾP NHẬN YÊU CẦU PHÂN TÍCH"
+    },
+    {
+      "code": "04-TBKQPTPL-2026",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "05-PGTL-2026",
+      "title": "PHIẾU GHI SỐ, NGÀY VĂN BẢN, CHỨNG TỪ THUỘC HỒ SƠ HẢI QUAN LIÊN QUAN ĐẾN MẪU HÀNG HÓA"
+    }
+  ],
+  "tt86": [
+    {
+      "code": "01",
+      "title": "01"
+    },
+    {
+      "code": "02",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "03",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "04",
+      "title": "CÔNG VĂN ĐỀ NGHỊ HOÀN TIỀN THUẾ, KHOẢN THU KHÁC TIỀN CHẬM NỘP, TIỀN PHẠT NỘP THỪA"
+    },
+    {
+      "code": "05",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "06",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "07",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "08",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "09",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "10",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "11",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "12",
+      "title": "12"
+    },
+    {
+      "code": "13",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "14",
+      "title": "14"
+    },
+    {
+      "code": "15",
+      "title": "BÁO CÁO TÍNH THUẾ NGUYÊN LIỆU, VẬT TƯ, LINH KIỆN ĐỀ NGHỊ HOÀN THUẾ NHẬP KHẨU"
+    },
+    {
+      "code": "16",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "17",
+      "title": "17"
+    },
+    {
+      "code": "18",
+      "title": "DANH MỤC"
+    },
+    {
+      "code": "19",
+      "title": "PHIẾU THEO DÕI,"
+    },
+    {
+      "code": "20",
+      "title": "20"
+    },
+    {
+      "code": "21",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "22a",
+      "title": "22a"
+    },
+    {
+      "code": "22b",
+      "title": "22b"
+    },
+    {
+      "code": "23a",
+      "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM ĐỘC LẬP - TỰ DO - HẠNH PHÚC"
+    },
+    {
+      "code": "23b",
+      "title": "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM ĐỘC LẬP - TỰ DO - HẠNH PHÚC"
+    },
+    {
+      "code": "24",
+      "title": "24"
+    },
+    {
+      "code": "25",
+      "title": "25"
+    },
+    {
+      "code": "26",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "27",
+      "title": "27"
+    },
+    {
+      "code": "28",
+      "title": "28"
+    },
+    {
+      "code": "29",
+      "title": "29"
+    },
+    {
+      "code": "30",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "31",
+      "title": "BẢNG KÊ CHI TIẾT HÀNG HÓA NHẬP KHẨU MIỄN THUẾ THEO TỔ HỢP, DÂY CHUYỀN"
+    },
+    {
+      "code": "32",
+      "title": "32"
+    },
+    {
+      "code": "33",
+      "title": "THÔNG BÁO TÌNH HÌNH SỬ DỤNG HÀNG HÓA NHẬP KHẨU MIỄN THUẾ"
+    },
+    {
+      "code": "34",
+      "title": "34"
+    },
+    {
+      "code": "35",
+      "title": "35"
+    },
+    {
+      "code": "36",
+      "title": "36"
+    },
+    {
+      "code": "37",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "38",
+      "title": "38"
+    },
+    {
+      "code": "39",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "40",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "41",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "42",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "43",
+      "title": "43"
+    },
+    {
+      "code": "44",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "45",
+      "title": "45"
+    },
+    {
+      "code": "46",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "47",
+      "title": "47"
+    },
+    {
+      "code": "48",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "49",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "50",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "51",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "52",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "53",
+      "title": "BIÊN BẢN CÔNG BỐ QUYẾT ĐỊNH KIỂM TRA"
+    },
+    {
+      "code": "54",
+      "title": "BIÊN BẢN KIỂM TRA"
+    },
+    {
+      "code": "55",
+      "title": "KẾT LUẬN KIỂM TRA"
+    },
+    {
+      "code": "56",
+      "title": "56"
+    },
+    {
+      "code": "57",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "58",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "59",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "60",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "61",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "62",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "63",
+      "title": "63"
+    },
+    {
+      "code": "64",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "65",
+      "title": "65"
+    },
+    {
+      "code": "66",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "67",
+      "title": "67"
+    },
+    {
+      "code": "68",
+      "title": "QUYẾT ĐỊNH"
+    },
+    {
+      "code": "69",
+      "title": "69"
+    },
+    {
+      "code": "70",
+      "title": "70"
+    },
+    {
+      "code": "71",
+      "title": "BIÊN BẢN"
+    },
+    {
+      "code": "72",
+      "title": "72"
+    },
+    {
+      "code": "73",
+      "title": "73"
+    },
+    {
+      "code": "74",
+      "title": "74"
+    }
+  ],
+  "tt91": [
+    {
+      "code": "01-BH-BL",
+      "title": "01-BH-BL"
+    },
+    {
+      "code": "01-BK-CSGH",
+      "title": "BẢNG KÊ HÀNG HÓA BÁN RA"
+    },
+    {
+      "code": "01-BK-DCTT",
+      "title": "BẢNG KÊ CÁC HÓA ĐƠN ĐIỆN TỬ ĐÃ LẬP SAI"
+    },
+    {
+      "code": "01-BTS",
+      "title": "01-BTS"
+    },
+    {
+      "code": "01-CCTT-DK",
+      "title": "01-CCTT-DK"
+    },
+    {
+      "code": "01-CCTT-TB",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-DKTD-CTDT",
+      "title": "TỜ KHAI"
+    },
+    {
+      "code": "01-DKTD-HDDT",
+      "title": "TỜ KHAI"
+    },
+    {
+      "code": "01-DTQG",
+      "title": "01-DTQG"
+    },
+    {
+      "code": "01-GTGT-BL",
+      "title": "01-GTGT-BL"
+    },
+    {
+      "code": "01-GTGT-DT",
+      "title": "01-GTGT-DT"
+    },
+    {
+      "code": "01-GTGT-NT",
+      "title": "01-GTGT-NT"
+    },
+    {
+      "code": "01-GTGT-TKHT",
+      "title": "HÓA ĐƠN GIÁ TRỊ GIA TĂNG KIÊM TỜ KHAI HOÀN THUẾ(VAT INVOICE CUM TAX REFUND DECLARATION)"
+    },
+    {
+      "code": "01-GTGT",
+      "title": "01-GTGT"
+    },
+    {
+      "code": "01-PLPDT",
+      "title": "01-PLPDT"
+    },
+    {
+      "code": "01-TB-BSTT-NNT",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TB-DKDT",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TB-KTDL",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TB-KTT",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TB-NSD",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TB-RSDT",
+      "title": "THÔNG BÁO VỀ HÓA ĐƠN ĐIỆN TỬ CẦN RÀ SOÁT"
+    },
+    {
+      "code": "01-TB-SD",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TB-SDPS",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TB-SSDT",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TB-TNDT",
+      "title": "THÔNG BÁO"
+    },
+    {
+      "code": "01-TH-BLDT",
+      "title": "BẢNG TỔNG HỢP DỮ LIỆU BIÊN LAI ĐIỆN TỬ GỬI CƠ QUAN THUẾ"
+    },
+    {
+      "code": "01-TH-DT",
+      "title": "BẢNG TỔNG HỢP DOANH THU"
+    },
+    {
+      "code": "01-TH-HDDT",
+      "title": "BẢNG TỔNG HỢP DỮ LIỆU HÓA ĐƠN ĐIỆN TỬ GỬI CƠ QUAN THUẾ"
+    },
+    {
+      "code": "01-TMDT",
+      "title": "01-TMDT"
+    },
+    {
+      "code": "01-TTGD",
+      "title": "BẢNG THÔNG TIN CHI TIẾT GIAO DỊCH"
+    },
+    {
+      "code": "02-BH",
+      "title": "02-BH"
+    },
+    {
+      "code": "02-HUY-HDBLG",
+      "title": "THÔNG BÁO KẾT QUẢ TIÊU HỦY HÓA ĐƠN GIẤY, BIÊN LAI GIẤY"
+    },
+    {
+      "code": "03-TNCN",
+      "title": "CHỨNG TỪ KHẤU TRỪ THUẾ THU NHẬP CÁ NHÂN"
+    },
+    {
+      "code": "03-XKNB",
+      "title": "PHIẾU XUẤT KHO KIÊM VẬN CHUYỂN NỘI BỘ"
+    },
+    {
+      "code": "04-HGDL",
+      "title": "PHIẾU XUẤT KHO HÀNG GỬI BÁN ĐẠI LÝ"
+    },
+    {
+      "code": "04-SS-CTDT",
+      "title": "THÔNG BÁO CHỨNG TỪ ĐIỆN TỬ ĐÃ LẬP SAI"
+    },
+    {
+      "code": "04-SS-HDDT",
+      "title": "THÔNG BÁO HÓA ĐƠN ĐIỆN TỬ ĐÃ LẬP SAI"
+    },
+    {
+      "code": "06-DN-PSDT",
+      "title": "I. TỔ CHỨC, CÁ NHÂN ĐỀ NGHỊ CẤP HÓA ĐƠN THEO TỪNG LẦN PHÁT SINH"
+    },
+    {
+      "code": "CTT50",
+      "title": "CTT50"
+    }
+  ],
+  "tt94": [
+    {
+      "code": "PL1",
+      "title": "TIÊU CHÍ PHÂN LOẠI MỨC ĐỘ TUÂN THỦ PHÁP LUẬT THUẾ CỦA NGƯỜI NỘP THUẾ"
+    },
+    {
+      "code": "PL2",
+      "title": "TIÊU CHÍ PHÂN LOẠI MỨC ĐỘ RỦI RO ĐỐI VỚI NGƯỜI NỘP THUẾ LÀ TỔ CHỨC, HỘ GIA ĐÌNH,HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "PL3",
+      "title": "TIÊU CHÍ PHÂN LOẠI MỨC ĐỘ RỦI RO ĐỐI VỚI NGƯỜI NỘP THUẾ LÀ CÁ NHÂN"
+    }
+  ],
+  "tt96": [
+    {
+      "code": "01-DLBH",
+      "title": "BÁO CÁO"
+    },
+    {
+      "code": "02-DLBH",
+      "title": "BÁO CÁO"
+    },
+    {
+      "code": "03-DLBH",
+      "title": "BÁO CÁO"
+    },
+    {
+      "code": "04-DLBH",
+      "title": "BÁO CÁO"
+    },
+    {
+      "code": "1-MGBH",
+      "title": "BÁO CÁO"
+    },
+    {
+      "code": "1",
+      "title": "TÀI LIỆU GIẢI TRÌNH PHƯƠNG PHÁP, CƠ SỞ TÍNH PHÍ"
+    },
+    {
+      "code": "13-NT",
+      "title": "BÁO CÁO"
+    },
+    {
+      "code": "2-MGBH",
+      "title": "BÁO CÁO"
+    },
+    {
+      "code": "2",
+      "title": "TÀI LIỆU GIẢI TRÌNH PHƯƠNG PHÁP,"
+    },
+    {
+      "code": "3-MGBH",
+      "title": "BÁO CÁO"
+    },
+    {
+      "code": "4-MGBH",
+      "title": "BÁO CÁO"
+    }
   ]
 }

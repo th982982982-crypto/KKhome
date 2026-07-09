@@ -117,6 +117,31 @@ DOCS = {
               'Luật 03/2022/QH15 — Luật sửa đổi, bổ sung một số điều của Luật Đầu tư công, Luật Đầu tư theo phương thức đối tác công tư, Luật Đầu tư, Luật Nhà ở, Luật Đấu thầu, Luật Điện lực, Luật Doanh nghiệp, Luật Thuế tiêu thụ đặc biệt và Luật Thi hành án dân sự'),
  'luat-107': ('Luật-107-2016-QH13.doc', 'Luật 107/2016', 'Thuế xuất khẩu, nhập khẩu',
               'Luật 107/2016/QH13 — Luật Thuế xuất khẩu, thuế nhập khẩu'),
+ # ----- Đợt bổ sung 2026-07 (Tổng hợp 2) -----
+ 'nd255'   : ('Nghị-định-255-2026-NĐ-CP.docx', 'NĐ 255/2026', 'Quản lý thuế với Giao dịch liên kết (thay NĐ132, NĐ20)',
+              'Nghị định 255/2026/NĐ-CP — Quản lý thuế đối với các giao dịch liên kết của doanh nghiệp có quan hệ liên kết'),
+ 'nd273'   : ('Nghị-định-273-2026-NĐ-CP.docx', 'NĐ 273/2026', 'Kinh doanh hàng miễn thuế (thay NĐ100/2020)',
+              'Nghị định 273/2026/NĐ-CP — Kinh doanh hàng miễn thuế'),
+ 'tt90'    : ('Thông tư 90_2026_TT-BTC.docx', 'TT 90/2026', 'Đăng ký thuế (thay TT86/2024)',
+              'Thông tư 90/2026/TT-BTC — Quy định về đăng ký thuế'),
+ 'tt21'    : ('Thông-tư-21-2026-TT-BTC.docx', 'TT 21/2026', 'Sửa đổi, bổ sung TT 80/2021 (miễn giảm tiền thuê đất, mẫu TNDN)',
+              'Thông tư 21/2026/TT-BTC — Sửa đổi, bổ sung một số điều của Thông tư số 80/2021/TT-BTC'),
+ 'tt74'    : ('Thông-tư-74-2026-TT-BTC.docx', 'TT 74/2026', 'Phí, lệ phí lĩnh vực năng lượng nguyên tử',
+              'Thông tư 74/2026/TT-BTC — Quy định mức thu, chế độ thu, nộp phí, lệ phí trong lĩnh vực năng lượng nguyên tử'),
+ 'tt85'    : ('Thông-tư-85-2026-TT-BTC.docx', 'TT 85/2026', 'Phân loại hàng hóa XNK (thay TT14/2015, TT17/2021)',
+              'Thông tư 85/2026/TT-BTC — Phân loại hàng hóa, phân tích để phân loại hàng hóa xuất khẩu, nhập khẩu'),
+ 'tt86'    : ('Thông-tư-86-2026-TT-BTC.docx', 'TT 86/2026', 'Quản lý thuế đối với hàng hóa XNK (thay TT06/2021)',
+              'Thông tư 86/2026/TT-BTC — Quy định về quản lý thuế đối với hàng hóa xuất khẩu, nhập khẩu'),
+ 'tt91'    : ('Thông-tư-91-2026-TT-BTC.docx', 'TT 91/2026', 'Hóa đơn điện tử, chứng từ điện tử (hướng dẫn NĐ254)',
+              'Thông tư 91/2026/TT-BTC — Quy định một số điều của Luật Quản lý thuế và Nghị định số 254/2026/NĐ-CP về hóa đơn điện tử, chứng từ điện tử'),
+ 'tt94'    : ('Thông-tư-94-2026-TT-BTC.docx', 'TT 94/2026', 'Quản lý tuân thủ, quản lý rủi ro trong quản lý thuế',
+              'Thông tư 94/2026/TT-BTC — Quy định về quản lý tuân thủ, quản lý rủi ro trong quản lý thuế'),
+ 'tt96'    : ('Thông-tư-96-2026-TT-BTC.docx', 'TT 96/2026', 'Sửa đổi, bổ sung TT 67/2023 (kinh doanh bảo hiểm)',
+              'Thông tư 96/2026/TT-BTC — Sửa đổi, bổ sung một số điều của Thông tư số 67/2023/TT-BTC hướng dẫn Luật Kinh doanh bảo hiểm'),
+ 'tt97'    : ('Thông-tư-97-2026-TT-BTC.docx', 'TT 97/2026', 'Bãi bỏ TT 55/2010 (thuế GTGT, TNDN đối với Đài truyền hình)',
+              'Thông tư 97/2026/TT-BTC — Bãi bỏ Thông tư số 55/2010/TT-BTC hướng dẫn về thuế GTGT và thuế TNDN đối với Đài truyền hình'),
+ 'cv2927'  : ('CV 2927_CT-CS.docx', 'CV 2927/CT-CS', 'Thuế GTGT đối với sản phẩm xuất khẩu là tài nguyên, khoáng sản',
+              'Công văn 2927/CT-CS — Thuế GTGT đối với sản phẩm xuất khẩu là tài nguyên, khoáng sản'),
 }
 
 # Ngày hiệu lực chuẩn (override khi parser không bắt được)
@@ -138,6 +163,10 @@ EFF = {
  # Quản lý thuế / TNDN / TNCN / TTĐB / Nhà thầu / XNK — bổ sung 2026-07
  'nd126':'05/12/2020','nd91':'30/10/2022','tt80':'01/01/2022','tt103':'01/10/2014',
  'luat03':'01/03/2022','luat-107':'01/09/2016',
+ # Đợt bổ sung 2026-07 (Tổng hợp 2)
+ 'nd255':'01/07/2026','nd273':'21/08/2026','tt90':'01/07/2026','tt21':'17/03/2026',
+ 'tt74':'10/08/2026','tt85':'15/09/2026','tt86':'01/07/2026','tt91':'01/07/2026',
+ 'tt94':'01/07/2026','tt96':'02/07/2026','tt97':'06/07/2026','cv2927':'11/05/2026',
 }
 
 # Cache .docx convert từ .doc (textutil, macOS)
@@ -185,6 +214,7 @@ def parse_table(tbl):
 DIEU_RE = re.compile(r'^Điều\s+(\d+)\s*\.\s*(.*)$', re.DOTALL)
 CHUONG_RE = re.compile(r'^Chương\s+([IVXLCDM\d]+)\b\s*(.*)$', re.IGNORECASE)
 MUC_RE = re.compile(r'^Mục\s+(\d+)\b\s*\.?\s*(.*)$')
+PHULUC_RE = re.compile(r'^(Phụ\s*lục|Danh\s*mục)\b', re.IGNORECASE)
 
 def parse_docx(path, slug):
     xml = zipfile.ZipFile(path).read('word/document.xml').decode('utf-8', 'ignore')
@@ -211,6 +241,7 @@ def parse_docx(path, slug):
     pending_chuong = None  # ('Chương I', maybe title)
     effective = ''
     sign_date = ''  # ngày ký ban hành (fallback khi 'hiệu lực kể từ ngày ký')
+    fallback = []  # nội dung khi VB không có cấu trúc "Điều N." (vd Công văn)
 
     def push_p(t):
         nonlocal effective
@@ -218,20 +249,27 @@ def parse_docx(path, slug):
             mm = re.search(r'hiệu lực thi hành (?:kể từ|từ)?\s*ngày\s+([0-9]{1,2})\s*tháng\s*([0-9]{1,2})\s*năm\s*([0-9]{4})', t)
             if mm:
                 effective = f"{int(mm.group(1)):02d}/{int(mm.group(2)):02d}/{mm.group(3)}"
-        if cur is not None and t.strip():
+        if not t.strip():
+            return
+        if cur is not None:
             cur['content'].append({'k': 'p', 't': t.strip()})
+        else:
+            fallback.append({'k': 'p', 't': t.strip()})
 
     for pos, kind, raw in tokens:
         if kind == 'tbl':
             rows = parse_table(raw)
-            if cur is not None and rows:
-                cur['content'].append({'k': 'tbl', 'rows': rows})
+            if rows:
+                if cur is not None:
+                    cur['content'].append({'k': 'tbl', 'rows': rows})
+                else:
+                    fallback.append({'k': 'tbl', 'rows': rows})
             continue
         t = runtext(raw).strip()
         if not t:
             continue
-        # Bắt đầu phụ lục/biểu mẫu (PHỤ LỤC, DANH MỤC) → dừng (forms làm đợt sau)
-        if re.match(r'^(PHỤ LỤC|DANH MỤC)\b', t) and len(t) < 50:
+        # Bắt đầu phụ lục/biểu mẫu (Phụ lục, Danh mục — không phân biệt hoa/thường) → dừng (forms làm đợt sau)
+        if PHULUC_RE.match(t) and len(t) < 50 and is_heading(raw):
             break
         if not sign_date:
             ms = re.search(r'(?:Hà Nội|Thành phố Hồ Chí Minh)\s*,?\s*ngày\s+([0-9]{1,2})\s*tháng\s*([0-9]{1,2})\s*năm\s*([0-9]{4})', t)
@@ -270,6 +308,12 @@ def parse_docx(path, slug):
             muc = re.sub(r'\s+', ' ', t).strip()
         else:
             push_p(t)
+    if not outline and fallback:
+        outline.append({
+            'id': f"{slug}_1", 'no': 1, 'code': 'Nội dung',
+            'title': 'Nội dung công văn', 'shortTitle': '', 'chuong': '', 'muc': '',
+            'level': 1, 'content': fallback
+        })
     return outline, (effective or sign_date)
 
 # ----------------- HTML template -----------------

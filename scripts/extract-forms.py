@@ -30,10 +30,19 @@ FORM_DOCS = {
  'tt06' : {'src': 'scripts/.doc-cache/Thông-tư-06-2021-TT-BTC.docx', 'short': 'TT06', 'mode': 'mau-start', 'code_filter': r'TXNK', 'title_list': True},
  # TT133: trích đầy đủ chứng từ + BCTC + TSCĐ + sổ kế toán (template 'Ban hành theo')
  'tt133': {'src': 'scripts/.doc-cache/Thông-tư-133-2016-TT-BTC.docx', 'short': 'TT133', 'mode': 'template'},
+ # ----- Đợt bổ sung 2026-07 (Tổng hợp 2) -----
+ 'nd255': {'src': 'Nghị-định-255-2026-NĐ-CP.docx', 'short': 'NĐ255', 'mode': 'pl'},
+ 'nd273': {'src': 'Nghị-định-273-2026-NĐ-CP.docx', 'short': 'NĐ273', 'mode': 'mau-start'},
+ 'tt21' : {'src': 'Thông-tư-21-2026-TT-BTC.docx', 'short': 'TT21', 'mode': 'mau-start'},
+ 'tt85' : {'src': 'Thông-tư-85-2026-TT-BTC.docx', 'short': 'TT85', 'mode': 'mau-start'},
+ 'tt86' : {'src': 'Thông-tư-86-2026-TT-BTC.docx', 'short': 'TT86', 'mode': 'mau-start'},
+ 'tt91' : {'src': 'Thông-tư-91-2026-TT-BTC.docx', 'short': 'TT91', 'mode': 'template'},
+ 'tt94' : {'src': 'Thông-tư-94-2026-TT-BTC.docx', 'short': 'TT94', 'mode': 'pl'},
+ 'tt96' : {'src': 'Thông-tư-96-2026-TT-BTC.docx', 'short': 'TT96', 'mode': 'mau-start'},
 }
 
 P, TBL = qn('w:p'), qn('w:tbl')
-MAU = re.compile(r'M[aẫ]u\s*s[ốo]\s*[:\.]?\s*([0-9][0-9A-Za-zĐĐđ\-\./]*)')
+MAU = re.compile(r'M[aẫ]u\s*s[ốo]\s*[:\.]?\s*([0-9][0-9A-Za-zĐĐđ\.\/\-]*(?:\s+-\s+[A-Za-zĐĐđ]{2,12})?)')
 PL  = re.compile(r'^\s*(PHỤ LỤC|Phụ lục)\b[^\n]{0,60}')
 
 def btext(el):
@@ -97,6 +106,9 @@ def detect_forms(blocks, want='auto', code_filter=None):
             t = btext(c)
             m = MAU.search(t)
             if m and MAU_START.match(t):
+                # bỏ bảng mục lục liệt kê nhiều "Mẫu số" dính liền nhau (không phải 1 mẫu đơn lẻ)
+                if len(MAU.findall(t)) > 1:
+                    continue
                 raw = m.group(1)
                 if cf and not cf.search(raw):
                     continue
