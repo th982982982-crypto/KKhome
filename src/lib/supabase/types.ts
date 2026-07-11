@@ -284,6 +284,7 @@ export interface SiteSettings {
   tax_trial_days: number
   support_auto_reply_enabled: boolean
   support_auto_reply_text: string | null
+  support_session_gap_minutes: number
   updated_at: string
 }
 

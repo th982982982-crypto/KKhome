@@ -25,6 +25,7 @@ interface FormState {
   copyright_text: string
   support_auto_reply_enabled: boolean
   support_auto_reply_text: string
+  support_session_gap_minutes: string
 }
 
 function toForm(s: SiteSettings): FormState {
@@ -47,6 +48,7 @@ function toForm(s: SiteSettings): FormState {
     copyright_text: s.copyright_text ?? '',
     support_auto_reply_enabled: s.support_auto_reply_enabled ?? false,
     support_auto_reply_text: s.support_auto_reply_text ?? '',
+    support_session_gap_minutes: String(s.support_session_gap_minutes ?? 30),
   }
 }
 
@@ -60,17 +62,24 @@ export function SiteSettingsEditor({ initial }: { initial: SiteSettings }) {
   }
 
   async function handleSave() {
+    if (!form.brand_name.trim()) {
+      toast.error('Tên brand không được để trống')
+      return
+    }
+    const sessionGapMinutes = Number(form.support_session_gap_minutes)
+    if (!Number.isInteger(sessionGapMinutes) || sessionGapMinutes < 1) {
+      toast.error('Ngưỡng phiên chat mới phải là số nguyên dương')
+      return
+    }
+
     setSaving(true)
-    const payload: Record<string, string | boolean | null> = {}
+    const payload: Record<string, string | boolean | number | null> = {}
     for (const [k, v] of Object.entries(form)) {
+      if (k === 'support_session_gap_minutes') continue
       if (typeof v === 'boolean') { payload[k] = v; continue }
       payload[k] = v.trim() === '' ? null : v
     }
-    if (!form.brand_name.trim()) {
-      toast.error('Tên brand không được để trống')
-      setSaving(false)
-      return
-    }
+    payload.support_session_gap_minutes = sessionGapMinutes
 
     const res = await fetch('/api/admin/site-settings', {
       method: 'PATCH',
@@ -242,7 +251,7 @@ export function SiteSettingsEditor({ initial }: { initial: SiteSettings }) {
         </Field>
       </Section>
 
-      <Section title="Trả lời tự động" desc="Tự động gửi khi khách nhắn tin lần đầu, giúp khách không phải chờ khi admin chưa kịp xem">
+      <Section title="Trả lời tự động" desc="Tự động gửi khi khách nhắn tin đầu phiên chat mới, giúp khách không phải chờ khi admin chưa kịp xem">
         <label className="flex items-center gap-2.5 cursor-pointer">
           <input
             type="checkbox"
@@ -259,6 +268,16 @@ export function SiteSettingsEditor({ initial }: { initial: SiteSettings }) {
             rows={3}
             className={inputCls}
             placeholder="Cảm ơn bạn đã liên hệ! Đội ngũ hỗ trợ sẽ phản hồi trong thời gian sớm nhất."
+          />
+        </Field>
+        <Field label="Ngưỡng tính phiên chat mới (phút)">
+          <input
+            type="number"
+            min={1}
+            value={form.support_session_gap_minutes}
+            onChange={(e) => setField('support_session_gap_minutes', e.target.value)}
+            className={inputCls}
+            placeholder="30"
           />
         </Field>
       </Section>

@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server'
 import { createClient, createAdminClient } from '@/lib/supabase/server'
+import { currentSupportSessionMessages, isNewSupportSession } from '@/lib/support-session'
 
 export const dynamic = 'force-dynamic'
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 const MAX_CONTENT_LENGTH = 4000
 const CLOUDINARY_URL_RE = /^https:\/\/res\.cloudinary\.com\//
+const DEFAULT_SESSION_GAP_MINUTES = 30
 
 function isValidUuid(v: unknown): v is string {
   return typeof v === 'string' && UUID_RE.test(v)
@@ -37,8 +39,18 @@ export async function GET(req: Request) {
     .eq('conversation_id', conversation.id)
     .order('created_at', { ascending: true })
 
-  const unread = !!conversation.last_admin_message_at &&
-    (!conversation.customer_last_read_at || conversation.last_admin_message_at > conversation.customer_last_read_at)
+  const { data: settings } = await admin
+    .from('site_settings')
+    .select('support_session_gap_minutes')
+    .limit(1)
+    .single()
+  const gapMinutes = settings?.support_session_gap_minutes ?? DEFAULT_SESSION_GAP_MINUTES
+
+  const sessionMessages = currentSupportSessionMessages(messages ?? [], gapMinutes)
+
+  const lastAdminInSession = [...sessionMessages].reverse().find((m) => m.sender === 'admin')
+  const unread = !!lastAdminInSession &&
+    (!conversation.customer_last_read_at || lastAdminInSession.created_at > conversation.customer_last_read_at)
 
   if (markRead) {
     await admin
@@ -49,7 +61,7 @@ export async function GET(req: Request) {
 
   return NextResponse.json({
     conversation: { id: conversation.id },
-    messages: messages ?? [],
+    messages: sessionMessages,
     unread,
     adminLastReadAt: conversation.admin_last_read_at,
   })
@@ -76,14 +88,22 @@ export async function POST(req: Request) {
   const admin = createAdminClient()
   const now = new Date().toISOString()
 
+  const { data: settings } = await admin
+    .from('site_settings')
+    .select('support_auto_reply_enabled, support_auto_reply_text, support_session_gap_minutes')
+    .limit(1)
+    .single()
+  const gapMinutes = settings?.support_session_gap_minutes ?? DEFAULT_SESSION_GAP_MINUTES
+
   const { data: existing } = await admin
     .from('support_conversations')
-    .select('id, user_id')
+    .select('id, user_id, last_customer_message_at')
     .eq('visitor_id', visitorId)
     .maybeSingle()
 
   let conversationId: string
   const isNewConversation = !existing
+  const isNewSession = isNewConversation || isNewSupportSession(existing?.last_customer_message_at ?? null, gapMinutes)
 
   if (!existing) {
     const { data: created, error } = await admin
@@ -133,13 +153,7 @@ export async function POST(req: Request) {
   }
 
   let autoReplyMessage = null
-  if (isNewConversation) {
-    const { data: settings } = await admin
-      .from('site_settings')
-      .select('support_auto_reply_enabled, support_auto_reply_text')
-      .limit(1)
-      .single()
-
+  if (isNewSession) {
     const autoReplyText = settings?.support_auto_reply_text?.trim()
     if (settings?.support_auto_reply_enabled && autoReplyText) {
       const replyNow = new Date().toISOString()
