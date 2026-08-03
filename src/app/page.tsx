@@ -8,7 +8,8 @@ import { SiteFooter } from '@/components/layout/site-footer'
 import { TemplateSection } from '@/components/templates/template-section'
 import { getUserPurchasedTemplateIds } from '@/lib/access-control'
 import { ArrowRight, Sparkles, Shield, Zap, PlayCircle, Star } from 'lucide-react'
-import type { PromotionWithTemplates } from '@/lib/supabase/types'
+import { PostCard } from '@/components/news/post-card'
+import type { PromotionWithTemplates, NewsPost } from '@/lib/supabase/types'
 export const revalidate = 0
 
 export default async function HomePage() {
@@ -31,15 +32,18 @@ export default async function HomePage() {
     { data: packagesData },
     { count: templateCount },
     { data: promoData },
+    { data: newsData },
   ] = await Promise.all([
     admin.from('templates').select('*').eq('is_published', true).order('sort_order', { ascending: true }).limit(8),
     admin.from('packages').select('*').eq('is_active', true).order('sort_order', { ascending: true }).limit(3),
     admin.from('templates').select('*', { count: 'exact', head: true }).eq('is_published', true),
     admin.from('promotions').select('*, promotion_templates(template_id)').eq('is_active', true).lte('start_at', now).gte('end_at', now),
+    admin.from('news_posts').select('*').eq('is_published', true).order('published_at', { ascending: false }).limit(4),
   ])
 
   const featuredTemplates = templatesData ?? []
   const packages = packagesData ?? []
+  const latestNews = (newsData ?? []) as NewsPost[]
 
   const activePromotions: PromotionWithTemplates[] = (promoData ?? []).map((p) => ({
     ...p,
@@ -142,6 +146,35 @@ export default async function HomePage() {
             <div className="text-center mt-8 sm:hidden">
               <Link href="/templates">
                 <Button variant="outline">Xem tất cả templates <ArrowRight className="w-4 h-4 ml-1" /></Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Latest News */}
+      {latestNews.length > 0 && (
+        <section className="py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-end justify-between mb-8 gap-4">
+              <div>
+                <div className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">Blog KKhome</div>
+                <h2 className="text-3xl font-black text-gray-900 dark:text-gray-50 tracking-tight">Tin tức mới nhất</h2>
+              </div>
+              <Link href="/tin-tuc" className="hidden sm:block">
+                <Button variant="ghost" size="sm" className="text-gray-600 dark:text-gray-300">
+                  Xem tất cả <ArrowRight className="w-4 h-4 ml-1" />
+                </Button>
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {latestNews.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))}
+            </div>
+            <div className="text-center mt-8 sm:hidden">
+              <Link href="/tin-tuc">
+                <Button variant="outline">Xem tất cả tin tức <ArrowRight className="w-4 h-4 ml-1" /></Button>
               </Link>
             </div>
           </div>

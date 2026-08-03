@@ -202,6 +202,27 @@ export interface Database {
         Insert: Omit<Database['public']['Tables']['support_messages']['Row'], 'id' | 'created_at'>
         Update: Partial<Database['public']['Tables']['support_messages']['Insert']>
       }
+      news_posts: {
+        Row: {
+          id: string
+          slug: string
+          title: string
+          excerpt: string | null
+          content: string
+          cover_image_url: string | null
+          post_type: 'tin_tuc' | 'quang_cao'
+          category: string | null
+          tags: string[] | null
+          author_name: string | null
+          is_published: boolean
+          published_at: string | null
+          sort_order: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['news_posts']['Row'], 'id' | 'created_at' | 'updated_at'>
+        Update: Partial<Database['public']['Tables']['news_posts']['Insert']>
+      }
     }
   }
 }
@@ -217,6 +238,7 @@ export type TaxFile = Database['public']['Tables']['tax_files']['Row']
 export type TaxPayment = Database['public']['Tables']['tax_payments']['Row']
 export type SupportConversation = Database['public']['Tables']['support_conversations']['Row']
 export type SupportMessage = Database['public']['Tables']['support_messages']['Row']
+export type NewsPost = Database['public']['Tables']['news_posts']['Row']
 
 export interface BankTransaction {
   id: string

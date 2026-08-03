@@ -104,6 +104,26 @@ CREATE TABLE IF NOT EXISTS public.support_messages (
 );
 CREATE INDEX IF NOT EXISTS idx_support_messages_conv ON public.support_messages(conversation_id, created_at);
 
+-- News & advertising posts
+CREATE TABLE IF NOT EXISTS public.news_posts (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  slug text UNIQUE NOT NULL,
+  title text NOT NULL,
+  excerpt text,
+  content text NOT NULL DEFAULT '',
+  cover_image_url text,
+  post_type text NOT NULL DEFAULT 'tin_tuc' CHECK (post_type IN ('tin_tuc', 'quang_cao')),
+  category text,
+  tags text[],
+  author_name text,
+  is_published boolean NOT NULL DEFAULT false,
+  published_at timestamptz,
+  sort_order int NOT NULL DEFAULT 0,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_news_posts_published ON public.news_posts(is_published, published_at DESC);
+
 -- =============================================
 -- Row Level Security
 -- =============================================
@@ -116,6 +136,7 @@ ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_purchases ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.support_conversations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.support_messages ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.news_posts ENABLE ROW LEVEL SECURITY;
 
 -- Profiles: users see own, admins see all
 CREATE POLICY "Users can view own profile" ON public.profiles FOR SELECT USING (auth.uid() = id);
@@ -146,6 +167,10 @@ CREATE POLICY "Service role full access purchases" ON public.user_purchases FOR 
 -- Support chat: no public policy, mọi truy cập qua service role trong API route
 CREATE POLICY "Service role full access support_conversations" ON public.support_conversations FOR ALL USING (auth.role() = 'service_role');
 CREATE POLICY "Service role full access support_messages" ON public.support_messages FOR ALL USING (auth.role() = 'service_role');
+
+-- News posts: public read for published
+CREATE POLICY "Anyone can view published news" ON public.news_posts FOR SELECT USING (is_published = true);
+CREATE POLICY "Service role full access news_posts" ON public.news_posts FOR ALL USING (auth.role() = 'service_role');
 
 -- =============================================
 -- Auto-create profile on signup

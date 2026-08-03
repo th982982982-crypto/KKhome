@@ -22,6 +22,7 @@ import {
   Settings,
   FileText,
   MessageCircle,
+  Newspaper,
 } from 'lucide-react'
 
 interface AdminShellProps {
@@ -36,6 +37,7 @@ const NAV = [
   { href: '/admin/templates', label: 'Sản phẩm & Gói', icon: FileSpreadsheet },
   { href: '/admin/orders', label: 'Đơn hàng', icon: ShoppingBag, badgeKey: 'pending' as const },
   { href: '/admin/messages', label: 'Tin nhắn hỗ trợ', icon: MessageCircle, badgeKey: 'messages' as const },
+  { href: '/admin/news', label: 'Tin tức & Quảng cáo', icon: Newspaper },
   { href: '/admin/promotions', label: 'Khuyến mãi', icon: Tag },
   { href: '/admin/sync', label: 'Đồng bộ Sheets', icon: RefreshCw },
   { href: '/admin/policies', label: 'Chính sách', icon: FileText },
