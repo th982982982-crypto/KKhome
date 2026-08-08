@@ -67,6 +67,7 @@ export async function POST(req: Request) {
 
   const { error: updatePwError } = await admin.auth.admin.updateUserById(authUser.id, {
     password: tempPassword,
+    email_confirm: true,
   })
   if (updatePwError) {
     return NextResponse.json({ error: updatePwError.message }, { status: 500 })
