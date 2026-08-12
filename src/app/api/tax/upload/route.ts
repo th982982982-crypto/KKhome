@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
 import { createClient, createAdminClient } from '@/lib/supabase/server'
-import { parseXmlText } from '@/lib/tax/xml-parser'
+import { parseXmlText, getTagText } from '@/lib/tax/xml-parser'
 import { hasTaxAccess } from '@/lib/tax/has-tax-access'
+import { logTaxUploadError } from '@/lib/tax/log-upload-error'
 
 export async function POST(req: Request) {
   const supabase = await createClient()
@@ -20,7 +21,21 @@ export async function POST(req: Request) {
   try {
     parsed = parseXmlText(xmlText)
   } catch (e) {
-    return NextResponse.json({ error: e instanceof Error ? e.message : 'Không thể đọc file XML' }, { status: 422 })
+    const message = e instanceof Error ? e.message : 'Không thể đọc file XML'
+    logTaxUploadError({
+      userId: user.id,
+      fileName: file.name,
+      source: 'tax_upload',
+      errorMessage: message,
+      rawXml: xmlText,
+      mst: getTagText(xmlText, 'mst') || null,
+      tenNnt: getTagText(xmlText, 'tenNNT') || null,
+      tenTkhai: getTagText(xmlText, 'tenTKhai') || null,
+    }).catch(() => {})
+    return NextResponse.json(
+      { error: `${message} — Hệ thống đã ghi nhận file này, đội ngũ sẽ kiểm tra và xử lý.` },
+      { status: 422 }
+    )
   }
 
   const admin = createAdminClient()

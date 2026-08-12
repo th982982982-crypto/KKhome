@@ -52,9 +52,15 @@ export function TaxUploadWidget({ onUploaded }: TaxUploadWidgetProps) {
           endpoint = '/api/tax/payments/upload'
           info = 'Giấy nộp tiền'
         } else {
-          const parsed = parseXmlText(text)
           endpoint = '/api/tax/upload'
-          info = `${parsed.declarationType} | ${parsed.mst} | ${parsed.kyKKhai}`
+          // Chỉ dùng để hiển thị thông tin sơ bộ — không chặn upload nếu parse lỗi,
+          // vì server mới là nơi quyết định cuối cùng (và sẽ giữ lại file nếu lỗi).
+          try {
+            const parsed = parseXmlText(text)
+            info = `${parsed.declarationType} | ${parsed.mst} | ${parsed.kyKKhai}`
+          } catch {
+            info = 'Đang kiểm tra trên máy chủ...'
+          }
         }
 
         setStatus(file.name, { state: 'uploading', info })

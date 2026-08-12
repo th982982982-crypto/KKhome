@@ -172,6 +172,28 @@ export interface Database {
         Insert: Omit<Database['public']['Tables']['tax_files']['Row'], 'id' | 'uploaded_at'>
         Update: Partial<Database['public']['Tables']['tax_files']['Insert']>
       }
+      tax_upload_errors: {
+        Row: {
+          id: string
+          user_id: string
+          file_name: string
+          source: 'tax_upload' | 'tax_payment_upload'
+          error_message: string
+          raw_xml: string
+          mst: string | null
+          ten_nnt: string | null
+          ten_tkhai: string | null
+          status: 'pending' | 'resolved'
+          admin_note: string | null
+          resolved_at: string | null
+          resolved_by: string | null
+          created_at: string
+        }
+        Insert: Omit<Database['public']['Tables']['tax_upload_errors']['Row'], 'id' | 'status' | 'admin_note' | 'resolved_at' | 'resolved_by' | 'created_at'> & {
+          status?: 'pending' | 'resolved'
+        }
+        Update: Partial<Database['public']['Tables']['tax_upload_errors']['Insert']>
+      }
       support_conversations: {
         Row: {
           id: string

@@ -29,11 +29,17 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     !!c.last_customer_message_at && (!c.admin_last_read_at || c.last_customer_message_at > c.admin_last_read_at)
   ).length
 
+  const { count: taxErrorsCount } = await admin
+    .from('tax_upload_errors')
+    .select('*', { count: 'exact', head: true })
+    .eq('status', 'pending')
+
   return (
     <AdminShell
       user={{ email: user.email, full_name: profile.full_name }}
       pendingCount={pendingCount ?? 0}
       unreadMessages={unreadMessages}
+      taxErrorsCount={taxErrorsCount ?? 0}
     >
       {children}
     </AdminShell>

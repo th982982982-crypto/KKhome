@@ -124,6 +124,26 @@ CREATE TABLE IF NOT EXISTS public.news_posts (
 );
 CREATE INDEX IF NOT EXISTS idx_news_posts_published ON public.news_posts(is_published, published_at DESC);
 
+-- Tax upload errors (file tờ khai/giấy nộp tiền lỗi định dạng — giữ lại để admin xử lý thủ công
+-- thay vì mất file, vì xin khách gửi lại rất khó)
+CREATE TABLE IF NOT EXISTS public.tax_upload_errors (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id uuid NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  file_name text NOT NULL,
+  source text NOT NULL CHECK (source IN ('tax_upload', 'tax_payment_upload')),
+  error_message text NOT NULL,
+  raw_xml text NOT NULL,
+  mst text,
+  ten_nnt text,
+  ten_tkhai text,
+  status text NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'resolved')),
+  admin_note text,
+  resolved_at timestamptz,
+  resolved_by uuid REFERENCES auth.users(id),
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS idx_tax_upload_errors_status ON public.tax_upload_errors(status, created_at DESC);
+
 -- =============================================
 -- Row Level Security
 -- =============================================
@@ -167,6 +187,10 @@ CREATE POLICY "Service role full access purchases" ON public.user_purchases FOR 
 -- Support chat: no public policy, mọi truy cập qua service role trong API route
 CREATE POLICY "Service role full access support_conversations" ON public.support_conversations FOR ALL USING (auth.role() = 'service_role');
 CREATE POLICY "Service role full access support_messages" ON public.support_messages FOR ALL USING (auth.role() = 'service_role');
+
+-- Tax upload errors: no public policy, mọi truy cập qua service role trong API route
+ALTER TABLE public.tax_upload_errors ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Service role full access tax_upload_errors" ON public.tax_upload_errors FOR ALL USING (auth.role() = 'service_role');
 
 -- News posts: public read for published
 CREATE POLICY "Anyone can view published news" ON public.news_posts FOR SELECT USING (is_published = true);

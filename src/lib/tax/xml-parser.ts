@@ -12,7 +12,7 @@ export interface ParsedDeclaration {
 }
 
 // Works in both browser (client) and Node.js (server) — no DOMParser needed.
-function getTagText(xml: string, tag: string): string {
+export function getTagText(xml: string, tag: string): string {
   const re = new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, 'i')
   const m = xml.match(re)
   return m ? m[1].trim() : ''
