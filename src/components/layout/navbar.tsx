@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
-import { ShoppingCart, LogOut, LayoutDashboard, Settings, Loader2, Menu, X, FileSpreadsheet, Package, Scale, Receipt, Trash2, ShoppingBag, ArrowRight, Newspaper } from 'lucide-react'
+import { ShoppingCart, LogOut, LayoutDashboard, Settings, Loader2, Menu, X, FileSpreadsheet, Package, Scale, Receipt, Trash2, ShoppingBag, ArrowRight, Newspaper, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import { useCartStore } from '@/lib/cart-store'
@@ -71,6 +71,9 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax }: NavbarProps)
           <nav className="hidden md:flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-300">
             <Link href="/templates" className="px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">Templates</Link>
             <Link href="/packages" className="px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">Gói mua</Link>
+            <Link href="/tai-lieu" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-950/40 text-blue-900 dark:text-blue-300 font-semibold transition-colors">
+              <FileText className="w-3.5 h-3.5 text-blue-600" />Tài liệu
+            </Link>
             <Link href="/legal" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">
               <Scale className="w-3.5 h-3.5" />Pháp luật
             </Link>
@@ -242,6 +245,9 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax }: NavbarProps)
               </Link>
               <Link href="/packages" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                 <Package className="w-4 h-4 text-gray-400" /> Gói mua
+              </Link>
+              <Link href="/tai-lieu" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                <FileText className="w-4 h-4 text-blue-500" /> Kho Tài liệu
               </Link>
               <Link href="/tin-tuc" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                 <Newspaper className="w-4 h-4 text-gray-400" /> Tin tức
