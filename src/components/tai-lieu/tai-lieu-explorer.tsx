@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
-import { TAI_LIEU_ITEMS, type TaiLieuItem } from '@/lib/tai-lieu-data'
+import { TAI_LIEU_ITEMS, getPreviewPdfUrl, type TaiLieuItem } from '@/lib/tai-lieu-data'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from 'sonner'
 import { 
@@ -58,7 +58,7 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [authTargetItem, setAuthTargetItem] = useState<TaiLieuItem | null>(null)
 
-  const [previewTab, setPreviewTab] = useState<'preview' | 'versions' | 'info'>('preview')
+  const [previewTab, setPreviewTab] = useState<'pdf' | 'raw' | 'versions' | 'info'>('pdf')
   const [previewLoading, setPreviewLoading] = useState(false)
   const [previewError, setPreviewError] = useState<string | null>(null)
   const [previewData, setPreviewData] = useState<{
@@ -155,33 +155,33 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
       return
     }
 
-    setPreviewTab('preview')
+    setPreviewTab('pdf')
     setActiveSheetIndex(0)
     setPreviewError(null)
 
-    if (activeModalItem.fileType === 'pdf') {
-      setPreviewData({
-        fileType: 'pdf',
-        url: activeModalItem.downloadUrl,
-      })
-      setPreviewLoading(false)
-      return
-    }
+    // Direct PDF URL for instant preview (every document has an exact matching PDF)
+    const directPdfUrl = getPreviewPdfUrl(activeModalItem)
+    setPreviewData({
+      fileType: activeModalItem.fileType,
+      url: directPdfUrl,
+    })
+    setPreviewLoading(false)
 
-    setPreviewLoading(true)
+    // Also fetch API to sync or fallback if ever needed
     fetch(`/api/tai-lieu/preview?id=${encodeURIComponent(activeModalItem.id)}`)
       .then((res) => {
         if (!res.ok) throw new Error('Không thể tải bản xem trước')
         return res.json()
       })
       .then((data) => {
-        if (data.error) throw new Error(data.error)
-        setPreviewData(data)
-        setPreviewLoading(false)
+        if (data && !data.error) {
+          setPreviewData(data)
+        }
       })
       .catch((err) => {
-        setPreviewError(err?.message || 'Lỗi khi tải bản xem trước')
-        setPreviewLoading(false)
+        if (!directPdfUrl) {
+          setPreviewError(err?.message || 'Lỗi khi tải bản xem trước')
+        }
       })
   }, [activeModalItem?.id])
 
@@ -491,7 +491,7 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
                       className="bg-[#1e3a8a] hover:bg-[#1e40af] text-white text-xs sm:text-[13px] font-semibold py-2 px-2.5 rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all"
                     >
                       <Eye className="w-3.5 h-3.5" />
-                      <span>Chi tiết & Xem thử</span>
+                      <span>Xem thử mẫu PDF</span>
                     </button>
 
                     <button
@@ -557,18 +557,47 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
               </h3>
 
               {/* Tab Selector */}
-              <div className="flex items-center gap-2 mt-4">
+              <div className="flex flex-wrap items-center gap-2 mt-4">
                 <button
-                  onClick={() => setPreviewTab('preview')}
+                  onClick={() => setPreviewTab('pdf')}
                   className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all ${
-                    previewTab === 'preview'
+                    previewTab === 'pdf'
                       ? 'bg-[#1e3a8a] text-white shadow-sm'
                       : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
                   }`}
                 >
                   <Eye className="w-3.5 h-3.5" />
-                  <span>Xem thử tài liệu</span>
+                  <span>Xem thử mẫu PDF</span>
                 </button>
+
+                {activeModalItem.fileType === 'xlsx' && (
+                  <button
+                    onClick={() => setPreviewTab('raw')}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all ${
+                      previewTab === 'raw'
+                        ? 'bg-emerald-600 text-white shadow-sm'
+                        : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                    }`}
+                  >
+                    <FileSpreadsheet className="w-3.5 h-3.5" />
+                    <span>Bảng tính Excel</span>
+                  </button>
+                )}
+
+                {activeModalItem.fileType === 'docx' && (
+                  <button
+                    onClick={() => setPreviewTab('raw')}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all ${
+                      previewTab === 'raw'
+                        ? 'bg-blue-600 text-white shadow-sm'
+                        : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                    }`}
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Nội dung Word</span>
+                  </button>
+                )}
+
                 <button
                   onClick={() => setPreviewTab('versions')}
                   className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all ${
@@ -580,6 +609,7 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
                   <History className="w-3.5 h-3.5" />
                   <span>Phiên bản ({getVersionsForItem(activeModalItem).length})</span>
                 </button>
+
                 <button
                   onClick={() => setPreviewTab('info')}
                   className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all ${
@@ -596,12 +626,12 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
 
             {/* Modal Body (Scrollable) */}
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 min-h-[360px] bg-gray-50/50 dark:bg-gray-950/40">
-              {previewTab === 'preview' ? (
+              {previewTab === 'pdf' ? (
                 <div>
                   {previewLoading ? (
                     <div className="flex flex-col items-center justify-center h-[460px] text-gray-400 gap-3">
                       <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
-                      <p className="text-sm font-medium text-gray-500">Đang chuẩn bị bản xem trước tài liệu...</p>
+                      <p className="text-sm font-medium text-gray-500">Đang chuẩn bị bản xem trước PDF...</p>
                     </div>
                   ) : previewError ? (
                     <div className="flex flex-col items-center justify-center h-[360px] text-center p-6 bg-white dark:bg-gray-900 rounded-2xl border border-dashed border-gray-200 dark:border-gray-800">
@@ -611,15 +641,51 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
                         Bạn có thể tải file về để xem toàn bộ nội dung trực tiếp trên thiết bị của mình.
                       </p>
                     </div>
-                  ) : activeModalItem.fileType === 'pdf' ? (
-                    <div className="w-full h-[580px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-950 shadow-inner relative">
-                      <iframe
-                        src={`${activeModalItem.downloadUrl}#toolbar=1&navpanes=0`}
-                        className="w-full h-full border-0"
-                        title={activeModalItem.title}
-                      />
+                  ) : (
+                    <div className="space-y-3">
+                      {/* Top Action Bar for PDF Viewer */}
+                      <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200/70 dark:border-blue-900/40 rounded-xl text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="bg-red-600 text-white font-extrabold px-1.5 py-0.5 rounded text-[10px] tracking-wider uppercase shadow-xs">
+                            PDF
+                          </span>
+                          <span className="font-semibold text-blue-950 dark:text-blue-200">
+                            Bản xem trước trực quan (Định dạng PDF chuẩn hóa)
+                          </span>
+                          {activeModalItem.fileType !== 'pdf' && (
+                            <span className="text-[11px] text-gray-500 dark:text-gray-400 hidden md:inline">
+                              • Tệp gốc tải về: <strong>.{activeModalItem.fileType.toUpperCase()}</strong>
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <a
+                            href={previewData?.url || getPreviewPdfUrl(activeModalItem)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 font-semibold text-blue-700 dark:text-blue-300 hover:text-blue-900 dark:hover:text-blue-100 hover:underline px-2.5 py-1 rounded-lg bg-white dark:bg-gray-800 border border-blue-100 dark:border-blue-900/50 shadow-xs transition-colors"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            <span>Mở toàn màn hình</span>
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* PDF Viewer Frame */}
+                      <div className="w-full h-[600px] sm:h-[680px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-950 shadow-inner relative">
+                        <iframe
+                          src={`${previewData?.url || getPreviewPdfUrl(activeModalItem)}#toolbar=1&navpanes=0`}
+                          className="w-full h-full border-0"
+                          title={activeModalItem.title}
+                        />
+                      </div>
                     </div>
-                  ) : activeModalItem.fileType === 'docx' && previewData?.html ? (
+                  )}
+                </div>
+              ) : previewTab === 'raw' ? (
+                <div>
+                  {activeModalItem.fileType === 'docx' && previewData?.html ? (
                     <div className="bg-gray-200/80 dark:bg-gray-950 p-3 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-y-auto max-h-[580px]">
                       <div className="bg-white text-gray-900 rounded-xl shadow-lg border border-gray-200 max-w-3xl mx-auto p-6 sm:p-10 min-h-[500px]">
                         <div
@@ -703,7 +769,12 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
                         )
                       })()}
                     </div>
-                  ) : null}
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-[360px] text-gray-400 gap-3">
+                      <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+                      <p className="text-sm font-medium text-gray-500">Đang chuẩn bị dữ liệu...</p>
+                    </div>
+                  )}
                 </div>
               ) : previewTab === 'versions' ? (
                 /* Versions Tab */

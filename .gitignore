@@ -67,3 +67,6 @@ src/lib/legal/summaries-parts/
 # Python cache
 __pycache__/
 *.pyc
+
+/Tai Lieu/
+src/app/bieu-mau/

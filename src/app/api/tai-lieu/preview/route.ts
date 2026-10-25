@@ -29,11 +29,19 @@ export async function GET(request: NextRequest) {
   }
 
   try {
+    const pdfRelativePath = safeRelativePath.replace(/\.(docx|xlsx)$/i, '.pdf')
+    const pdfFilePath = path.join(process.cwd(), 'public', pdfRelativePath)
+    const hasPdf = fs.existsSync(pdfFilePath)
+    const pdfUrl = hasPdf 
+      ? '/' + pdfRelativePath.replace(/\\/g, '/')
+      : (item.fileType === 'pdf' ? item.downloadUrl : undefined)
+
     if (item.fileType === 'pdf') {
       return NextResponse.json({
         fileType: 'pdf',
         title: item.title,
         url: item.downloadUrl,
+        pdfUrl: item.downloadUrl,
       })
     }
 
@@ -43,6 +51,8 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({
         fileType: 'docx',
         title: item.title,
+        url: pdfUrl,
+        pdfUrl: pdfUrl,
         html: result.value,
       })
     }
@@ -76,6 +86,8 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({
         fileType: 'xlsx',
         title: item.title,
+        url: pdfUrl,
+        pdfUrl: pdfUrl,
         sheets,
       })
     }

@@ -15,6 +15,11 @@ export interface TaiLieuItem {
   tags: string[]
 }
 
+export function getPreviewPdfUrl(item: TaiLieuItem): string {
+  if (item.fileType === 'pdf') return item.downloadUrl
+  return item.downloadUrl.replace(/\.(docx|xlsx)$/i, '.pdf')
+}
+
 export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
   {
     "id": "tl_1",
