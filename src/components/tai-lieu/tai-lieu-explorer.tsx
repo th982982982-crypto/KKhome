@@ -1,7 +1,10 @@
 'use client'
 
 import { useState, useMemo, useEffect } from 'react'
+import Link from 'next/link'
 import { TAI_LIEU_ITEMS, type TaiLieuItem } from '@/lib/tai-lieu-data'
+import { createClient } from '@/lib/supabase/client'
+import { toast } from 'sonner'
 import { 
   FileText, 
   FileSpreadsheet, 
@@ -13,10 +16,12 @@ import {
   X, 
   Check, 
   Share2, 
-  PhoneCall, 
   ShieldCheck, 
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  Lock,
+  LogIn,
+  UserPlus
 } from 'lucide-react'
 
 const CATEGORIES = [
@@ -29,7 +34,11 @@ const CATEGORIES = [
   { id: 'hop_dong', label: 'Hợp đồng & Biểu mẫu' },
 ]
 
-export function TaiLieuExplorer() {
+interface TaiLieuExplorerProps {
+  user?: { email?: string | null; id?: string; user_metadata?: { full_name?: string } | null } | null
+}
+
+export function TaiLieuExplorer({ user }: TaiLieuExplorerProps = {}) {
   const [selectedCat, setSelectedCat] = useState('all')
   const [selectedYear, setSelectedYear] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
@@ -37,6 +46,43 @@ export function TaiLieuExplorer() {
   const [onlyBookmarks, setOnlyBookmarks] = useState(false)
   const [activeModalItem, setActiveModalItem] = useState<TaiLieuItem | null>(null)
   const [showAllLimit, setShowAllLimit] = useState(false)
+
+  const [currentUser, setCurrentUser] = useState(user ?? null)
+  const [showAuthModal, setShowAuthModal] = useState(false)
+  const [authTargetItem, setAuthTargetItem] = useState<TaiLieuItem | null>(null)
+
+  useEffect(() => {
+    setCurrentUser(user ?? null)
+  }, [user])
+
+  useEffect(() => {
+    const supabase = createClient()
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setCurrentUser(session?.user ?? null)
+    })
+    return () => subscription.unsubscribe()
+  }, [])
+
+  function handleDownload(item: TaiLieuItem, e?: React.MouseEvent) {
+    if (e) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+
+    if (!currentUser) {
+      setAuthTargetItem(item)
+      setShowAuthModal(true)
+      return
+    }
+
+    toast.success(`Bắt đầu tải xuống: ${item.filename}`)
+    const a = document.createElement('a')
+    a.href = item.downloadUrl
+    a.download = item.filename
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+  }
 
   // Load bookmarks from localStorage
   useEffect(() => {
@@ -140,14 +186,6 @@ export function TaiLieuExplorer() {
 
             {/* Quick Action Buttons */}
             <div className="flex items-center gap-3 shrink-0">
-              <a
-                href="tel:0988123456"
-                className="hidden sm:inline-flex items-center gap-2 bg-[#1e3a8a] hover:bg-[#1e40af] text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-sm transition-all"
-              >
-                <PhoneCall className="w-3.5 h-3.5" />
-                <span>Tư vấn: 0988 123 456</span>
-              </a>
-
               <button
                 onClick={() => setOnlyBookmarks(!onlyBookmarks)}
                 className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-medium border transition-all ${
@@ -318,14 +356,18 @@ export function TaiLieuExplorer() {
                       <span>Chi tiết & Xem thử</span>
                     </button>
 
-                    <a
-                      href={item.downloadUrl}
-                      download={item.filename}
+                    <button
+                      onClick={(e) => handleDownload(item, e)}
                       className="bg-[#e67e22] hover:bg-[#d35400] text-white text-xs sm:text-[13px] font-semibold py-2 px-2.5 rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                      title={currentUser ? `Tải xuống ${item.filename}` : 'Đăng nhập để tải tài liệu này'}
                     >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>Tải xuống nhanh</span>
-                    </a>
+                      {currentUser ? (
+                        <Download className="w-3.5 h-3.5" />
+                      ) : (
+                        <Lock className="w-3.5 h-3.5 text-amber-200" />
+                      )}
+                      <span>{currentUser ? 'Tải xuống nhanh' : 'Đăng nhập để tải'}</span>
+                    </button>
                   </div>
                 </div>
               )
@@ -405,14 +447,76 @@ export function TaiLieuExplorer() {
               >
                 Đóng
               </button>
-              <a
-                href={activeModalItem.downloadUrl}
-                download={activeModalItem.filename}
+              <button
+                onClick={(e) => handleDownload(activeModalItem, e)}
                 className="bg-[#e67e22] hover:bg-[#d35400] text-white text-sm font-bold px-6 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-2"
+                title={currentUser ? `Tải xuống ${activeModalItem.filename}` : 'Đăng nhập để tải tài liệu này'}
               >
-                <Download className="w-4 h-4" />
-                <span>Tải tệp ngay ({activeModalItem.fileType.toUpperCase()})</span>
-              </a>
+                {currentUser ? (
+                  <Download className="w-4 h-4" />
+                ) : (
+                  <Lock className="w-4 h-4 text-amber-200" />
+                )}
+                <span>
+                  {currentUser
+                    ? `Tải tệp ngay (${activeModalItem.fileType.toUpperCase()})`
+                    : `Đăng nhập để tải (${activeModalItem.fileType.toUpperCase()})`}
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 7. MODAL YÊU CẦU ĐĂNG NHẬP */}
+      {showAuthModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl relative">
+            <button
+              onClick={() => {
+                setShowAuthModal(false)
+                setAuthTargetItem(null)
+              }}
+              className="absolute right-4 top-4 p-2 rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="text-center pt-2">
+              <div className="w-14 h-14 rounded-2xl bg-amber-50 dark:bg-amber-950/50 border border-amber-200/80 dark:border-amber-800/80 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto mb-4 shadow-inner">
+                <Lock className="w-7 h-7" />
+              </div>
+
+              <h3 className="text-xl font-black text-gray-900 dark:text-gray-50 mb-2">
+                Đăng nhập để tải tài liệu
+              </h3>
+
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+                Tài liệu <span className="font-bold text-gray-900 dark:text-gray-100">{authTargetItem?.title || 'này'}</span> thuộc hệ thống biểu mẫu chuẩn hóa KK HOME. Bạn vui lòng đăng nhập để tải xuống miễn phí.
+              </p>
+
+              <div className="space-y-3">
+                <Link
+                  href="/login?redirect=/tai-lieu"
+                  className="w-full bg-[#1e3a8a] hover:bg-[#1e40af] text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm"
+                >
+                  <LogIn className="w-4 h-4" />
+                  <span>Đăng nhập ngay</span>
+                </Link>
+
+                <Link
+                  href="/register"
+                  className="w-full bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/80 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 font-semibold py-2.5 px-4 rounded-xl transition-all flex items-center justify-center gap-2 text-sm"
+                >
+                  <UserPlus className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                  <span>Chưa có tài khoản? Đăng ký miễn phí</span>
+                </Link>
+              </div>
+
+              <div className="mt-5 pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-center gap-2 text-xs text-gray-400">
+                <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                <span>Hoàn toàn miễn phí dành cho thành viên KK HOME</span>
+              </div>
             </div>
           </div>
         </div>

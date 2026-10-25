@@ -32,7 +32,7 @@ export default async function TaiLieuPage() {
       />
 
       <main className="flex-1">
-        <TaiLieuExplorer />
+        <TaiLieuExplorer user={user} />
       </main>
 
       <SiteFooter />
