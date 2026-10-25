@@ -45,6 +45,7 @@ next-env.d.ts
 /test-results
 
 # Legal documents, scripts, XML source files — not needed in deployment
+/VBAN/
 /Biểu mẫu xuất/
 /Luật 67-2025-QH15/
 /Nghị-định-320-2025-NĐ-CP/
@@ -62,3 +63,7 @@ next-env.d.ts
 /playwright-report
 scripts/.doc-cache/
 src/lib/legal/summaries-parts/
+
+# Python cache
+__pycache__/
+*.pyc

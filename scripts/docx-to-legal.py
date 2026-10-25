@@ -1,3 +1,8 @@
+import sys
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
 #!/usr/bin/env python3
 # Sinh src/legal-docs/<slug>/index.html từ các .docx trong thư mục "Tổng hợp".
 # Template họ tt58/nd320: <script id="LD"> JSON + show()/renderContent(); gọi sẵn
@@ -142,6 +147,8 @@ DOCS = {
               'Thông tư 97/2026/TT-BTC — Bãi bỏ Thông tư số 55/2010/TT-BTC hướng dẫn về thuế GTGT và thuế TNDN đối với Đài truyền hình'),
  'cv2927'  : ('CV 2927_CT-CS.docx', 'CV 2927/CT-CS', 'Thuế GTGT đối với sản phẩm xuất khẩu là tài nguyên, khoáng sản',
               'Công văn 2927/CT-CS — Thuế GTGT đối với sản phẩm xuất khẩu là tài nguyên, khoáng sản'),
+ 'tt89'    : ('Thông tư 89-2026.docx', 'TT 89/2026', 'Hướng dẫn Luật Quản lý thuế & NĐ 252/2026 (thay TT80, TT103, TT92)',
+              'Thông tư 89/2026/TT-BTC — Quy định chi tiết một số điều của Luật Quản lý thuế và Nghị định số 252/2026/NĐ-CP'),
 }
 
 # Ngày hiệu lực chuẩn (override khi parser không bắt được)
@@ -167,10 +174,24 @@ EFF = {
  'nd255':'01/07/2026','nd273':'21/08/2026','tt90':'01/07/2026','tt21':'17/03/2026',
  'tt74':'10/08/2026','tt85':'15/09/2026','tt86':'01/07/2026','tt91':'01/07/2026',
  'tt94':'01/07/2026','tt96':'02/07/2026','tt97':'06/07/2026','cv2927':'11/05/2026',
+ 'tt89':'01/07/2026',
 }
 
 # Cache .docx convert từ .doc (textutil, macOS)
 DOC_CACHE = os.path.join(ROOT, 'scripts', '.doc-cache')
+def resolve_docx(fn):
+    candidates = [
+        os.path.join(ROOT, 'VBAN', fn),
+        os.path.join(ROOT, 'Tổng hợp', fn),
+        os.path.join(ROOT, 'Tổng hợp 2', fn),
+        os.path.join(SRC, fn),
+        os.path.join(ROOT, fn),
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            return ensure_docx(p)
+    return ensure_docx(os.path.join(SRC, fn))
+
 def ensure_docx(path):
     if path.lower().endswith('.docx'):
         return path
@@ -276,6 +297,10 @@ def parse_docx(path, slug):
             if ms:
                 sign_date = f"{int(ms.group(1)):02d}/{int(ms.group(2)):02d}/{ms.group(3)}"
         head = is_heading(raw)
+        mmuc_dieu = re.match(r'^(Mục\s+\d+\b.*?)\s+(Điều\s+\d+\..*)$', t) if head else None
+        if mmuc_dieu:
+            muc = re.sub(r'\s+', ' ', mmuc_dieu.group(1)).strip()
+            t = mmuc_dieu.group(2).strip()
         # resolve pending chương title
         if pending_chuong is not None:
             label, lab_title = pending_chuong
@@ -501,7 +526,7 @@ document.addEventListener('click',async function(ev){
 
 def build_one(slug):
     fn, short, sub, title = DOCS[slug]
-    path = ensure_docx(os.path.join(SRC, fn))
+    path = resolve_docx(fn)
     outline, eff = parse_docx(path, slug)
     # scope/description từ Điều 1
     scope = ''
@@ -532,8 +557,10 @@ def build_one(slug):
     return len(outline), nch, eff
 
 if __name__ == '__main__':
-    print("Generating legal docs from docx...")
-    for slug in DOCS:
+    import sys
+    slugs = [sys.argv[1]] if len(sys.argv) > 1 else DOCS
+    print(f"Generating legal docs from docx ({len(slugs)} docs)...")
+    for slug in slugs:
         try:
             n, nch, eff = build_one(slug)
             print(f"  {slug:9} điều={n:3} chương={nch:2} hiệu lực={eff or '?'}")

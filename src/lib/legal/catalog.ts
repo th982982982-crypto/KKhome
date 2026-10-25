@@ -154,6 +154,7 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   tt96: { docType: 'Thông tư', categories: ['Khác'], hasForms: true },
   tt97: { docType: 'Thông tư', categories: ['Thuế GTGT', 'Thuế TNDN'] },
   cv2927: { docType: 'Công văn', categories: ['Thuế GTGT', 'Quản lý thuế'] },
+  tt89: { docType: 'Thông tư', categories: ['Quản lý thuế', 'Thuế Nhà thầu (FCT)', 'HKD, CNKD', 'Thuế GTGT', 'Thuế TNCN', 'Thuế TNDN'] },
 }
 
 // Hình dạng nhẹ, serializable để truyền từ Server Component → Client Component

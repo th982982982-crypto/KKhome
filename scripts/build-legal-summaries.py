@@ -1,3 +1,8 @@
+import sys
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
 #!/usr/bin/env python3
 # Thêm tab "📋 Tóm tắt" (theo từng Điều) + đổi "Nội dung" → "Nguyên bản" cho mọi văn bản.
 # Idempotent — chạy lại an toàn. Chạy SAU build-legal-crossrefs.py.

@@ -942,6 +942,22 @@ export const LEGAL_DOCS: LegalDoc[] = [
       { targetSlug: 'luat-48', label: 'Liên quan → Luật Thuế GTGT 48/2024', description: 'Luật GTGT hiện hành kế thừa quy định về sản phẩm xuất khẩu là tài nguyên/khoáng sản mà CV này giải thích theo luật cũ', targetAnchor: 'luat-48_1' },
     ],
   },
+  {
+    slug: 'tt89',
+    title: 'TT 89/2026/TT-BTC — Quy định chi tiết Luật Quản lý thuế & Nghị định 252/2026/NĐ-CP',
+    shortTitle: 'TT 89/2026',
+    description: 'Quy định chi tiết thi hành Luật Quản lý thuế 108/2025 và NĐ 252/2026 về giao dịch điện tử, khai thuế, nộp thuế, hoàn thuế, miễn giảm thuế, khoanh xóa tiền thuế nợ, kiểm tra thuế. Bãi bỏ TT 80/2021, TT 103/2014, TT 92/2015, TT 19/2021, TT 84/2016. Hiệu lực 01/07/2026.',
+    effectiveDate: '2026-07-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt89/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'luat-108', label: 'Căn cứ → Luật Quản lý thuế 108/2025', description: 'TT 89 hướng dẫn chi tiết các điều khoản được giao tại Luật Quản lý thuế 108/2025', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'nd252', label: 'Căn cứ → Nghị định 252/2026/NĐ-CP', description: 'TT 89 hướng dẫn chi tiết các điều khoản giao tại NĐ 252/2026', targetAnchor: 'nd252_1' },
+      { targetSlug: 'tt90', label: 'Liên quan → TT 90/2026 (Đăng ký thuế)', description: 'Cùng bộ hướng dẫn Luật Quản lý thuế 108/2025; TT90 phụ trách đăng ký thuế, TT89 phụ trách khai, nộp, hoàn, kiểm tra thuế', targetAnchor: 'tt90_1' },
+      { targetSlug: 'tt80', label: 'Thay thế, bãi bỏ → Thông tư 80/2021', description: 'Điều 99.3 bãi bỏ toàn bộ Thông tư 80/2021/TT-BTC', targetAnchor: 'tt80_1' },
+      { targetSlug: 'tt103', label: 'Bãi bỏ → Thông tư 103/2014 (Thuế Nhà thầu)', description: 'Điều 99.3 bãi bỏ toàn bộ TT 103/2014 về thuế nhà thầu nước ngoài', targetAnchor: 'tt103_1' },
+    ],
+  },
   // Thêm văn bản mới: bổ sung object và đặt file HTML vào src/legal-docs/[slug]/index.html
 ]
 
