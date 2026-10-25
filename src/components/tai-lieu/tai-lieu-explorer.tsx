@@ -21,7 +21,9 @@ import {
   ExternalLink,
   Lock,
   LogIn,
-  UserPlus
+  UserPlus,
+  Loader2,
+  AlertCircle
 } from 'lucide-react'
 
 const CATEGORIES = [
@@ -50,6 +52,54 @@ export function TaiLieuExplorer({ user }: TaiLieuExplorerProps = {}) {
   const [currentUser, setCurrentUser] = useState(user ?? null)
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [authTargetItem, setAuthTargetItem] = useState<TaiLieuItem | null>(null)
+
+  const [previewTab, setPreviewTab] = useState<'preview' | 'info'>('preview')
+  const [previewLoading, setPreviewLoading] = useState(false)
+  const [previewError, setPreviewError] = useState<string | null>(null)
+  const [previewData, setPreviewData] = useState<{
+    fileType: 'pdf' | 'docx' | 'xlsx'
+    url?: string
+    html?: string
+    sheets?: Array<{ name: string; totalRows: number; maxCols: number; rows: any[][] }>
+  } | null>(null)
+  const [activeSheetIndex, setActiveSheetIndex] = useState(0)
+
+  useEffect(() => {
+    if (!activeModalItem) {
+      setPreviewData(null)
+      setPreviewError(null)
+      return
+    }
+
+    setPreviewTab('preview')
+    setActiveSheetIndex(0)
+    setPreviewError(null)
+
+    if (activeModalItem.fileType === 'pdf') {
+      setPreviewData({
+        fileType: 'pdf',
+        url: activeModalItem.downloadUrl,
+      })
+      setPreviewLoading(false)
+      return
+    }
+
+    setPreviewLoading(true)
+    fetch(`/api/tai-lieu/preview?id=${encodeURIComponent(activeModalItem.id)}`)
+      .then((res) => {
+        if (!res.ok) throw new Error('Không thể tải bản xem trước')
+        return res.json()
+      })
+      .then((data) => {
+        if (data.error) throw new Error(data.error)
+        setPreviewData(data)
+        setPreviewLoading(false)
+      })
+      .catch((err) => {
+        setPreviewError(err?.message || 'Lỗi khi tải bản xem trước')
+        setPreviewLoading(false)
+      })
+  }, [activeModalItem?.id])
 
   useEffect(() => {
     setCurrentUser(user ?? null)
@@ -389,76 +439,244 @@ export function TaiLieuExplorer({ user }: TaiLieuExplorerProps = {}) {
 
       </div>
 
-      {/* 6. MODAL XEM CHI TIẾT & TẢI VỀ */}
+      {/* 6. MODAL XEM CHI TIẾT & XEM THỬ NỘI DUNG */}
       {activeModalItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative">
-            <button
-              onClick={() => setActiveModalItem(null)}
-              className="absolute right-5 top-5 p-2 rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="flex items-center gap-2 mb-2">
-              <span className="bg-[#e67e22] text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
-                {activeModalItem.code}
-              </span>
-              <span className="bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">
-                {activeModalItem.categoryLabel}
-              </span>
-              <span className="text-xs text-gray-400">
-                Định dạng .{activeModalItem.fileType.toUpperCase()} • {activeModalItem.fileSize}
-              </span>
-            </div>
-
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-50 leading-tight mb-4">
-              {activeModalItem.title}
-            </h3>
-
-            <div className="bg-blue-50/50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/40 rounded-2xl p-4 mb-6">
-              <div className="text-xs font-bold uppercase tracking-wider text-blue-900 dark:text-blue-300 mb-1">
-                Tóm tắt & Mục đích sử dụng
-              </div>
-              <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                {activeModalItem.description}
-              </p>
-            </div>
-
-            <div className="space-y-3 mb-6 text-sm">
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Áp dụng chuẩn quy định pháp luật năm <strong>{activeModalItem.year}</strong>.</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Bảo toàn 100% công thức tính toán tự động trong bảng tính Excel.</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl max-w-5xl w-full max-h-[92vh] shadow-2xl flex flex-col relative overflow-hidden">
+            {/* Modal Header */}
+            <div className="p-5 sm:px-6 sm:pt-6 border-b border-gray-100 dark:border-gray-800 shrink-0">
               <button
                 onClick={() => setActiveModalItem(null)}
-                className="px-4 py-2.5 text-sm font-semibold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl"
+                className="absolute right-4 top-4 p-2 rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors z-10"
               >
-                Đóng
+                <X className="w-5 h-5" />
               </button>
-              <button
-                onClick={(e) => handleDownload(activeModalItem, e)}
-                className="bg-[#e67e22] hover:bg-[#d35400] text-white text-sm font-bold px-6 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-2"
-                title={currentUser ? `Tải xuống ${activeModalItem.filename}` : 'Đăng nhập để tải tài liệu này'}
-              >
-                {currentUser ? (
-                  <Download className="w-4 h-4" />
-                ) : (
-                  <Lock className="w-4 h-4 text-amber-200" />
-                )}
-                <span>
-                  {currentUser
-                    ? `Tải tệp ngay (${activeModalItem.fileType.toUpperCase()})`
-                    : `Đăng nhập để tải (${activeModalItem.fileType.toUpperCase()})`}
+
+              <div className="flex items-center gap-2 mb-2 pr-10">
+                <span className="bg-[#e67e22] text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
+                  {activeModalItem.code}
                 </span>
-              </button>
+                <span className="bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                  {activeModalItem.categoryLabel}
+                </span>
+                <span className="text-xs text-gray-400 font-medium">
+                  Định dạng .{activeModalItem.fileType.toUpperCase()} • {activeModalItem.fileSize}
+                </span>
+              </div>
+
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-50 leading-snug line-clamp-2 pr-10">
+                {activeModalItem.title}
+              </h3>
+
+              {/* Tab Selector */}
+              <div className="flex items-center gap-2 mt-4">
+                <button
+                  onClick={() => setPreviewTab('preview')}
+                  className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all ${
+                    previewTab === 'preview'
+                      ? 'bg-[#1e3a8a] text-white shadow-sm'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                  }`}
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  <span>Xem thử tài liệu</span>
+                </button>
+                <button
+                  onClick={() => setPreviewTab('info')}
+                  className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all ${
+                    previewTab === 'info'
+                      ? 'bg-[#1e3a8a] text-white shadow-sm'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                  }`}
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>Thông tin & Tóm tắt</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Body (Scrollable) */}
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 min-h-[360px] bg-gray-50/50 dark:bg-gray-950/40">
+              {previewTab === 'preview' ? (
+                <div>
+                  {previewLoading ? (
+                    <div className="flex flex-col items-center justify-center h-[460px] text-gray-400 gap-3">
+                      <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+                      <p className="text-sm font-medium text-gray-500">Đang chuẩn bị bản xem trước tài liệu...</p>
+                    </div>
+                  ) : previewError ? (
+                    <div className="flex flex-col items-center justify-center h-[360px] text-center p-6 bg-white dark:bg-gray-900 rounded-2xl border border-dashed border-gray-200 dark:border-gray-800">
+                      <AlertCircle className="w-10 h-10 text-amber-500 mb-2" />
+                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">{previewError}</p>
+                      <p className="text-xs text-gray-400 mt-1 max-w-md">
+                        Bạn có thể tải file về để xem toàn bộ nội dung trực tiếp trên thiết bị của mình.
+                      </p>
+                    </div>
+                  ) : activeModalItem.fileType === 'pdf' ? (
+                    <div className="w-full h-[580px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-950 shadow-inner relative">
+                      <iframe
+                        src={`${activeModalItem.downloadUrl}#toolbar=1&navpanes=0`}
+                        className="w-full h-full border-0"
+                        title={activeModalItem.title}
+                      />
+                    </div>
+                  ) : activeModalItem.fileType === 'docx' && previewData?.html ? (
+                    <div className="bg-gray-200/80 dark:bg-gray-950 p-3 sm:p-6 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-y-auto max-h-[580px]">
+                      <div className="bg-white text-gray-900 rounded-xl shadow-lg border border-gray-200 max-w-3xl mx-auto p-6 sm:p-10 min-h-[500px]">
+                        <div
+                          className="prose prose-sm sm:prose-base max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:my-2 prose-p:leading-relaxed prose-table:border prose-table:border-gray-300 prose-td:border prose-td:border-gray-300 prose-td:p-2 prose-th:border prose-th:border-gray-300 prose-th:p-2 prose-th:bg-gray-100"
+                          dangerouslySetInnerHTML={{ __html: previewData.html }}
+                        />
+                      </div>
+                    </div>
+                  ) : activeModalItem.fileType === 'xlsx' && previewData?.sheets ? (
+                    <div className="space-y-3">
+                      {/* Sheet tabs if multiple */}
+                      {previewData.sheets.length > 1 && (
+                        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+                          {previewData.sheets.map((sheet, sIdx) => (
+                            <button
+                              key={sheet.name}
+                              onClick={() => setActiveSheetIndex(sIdx)}
+                              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ${
+                                activeSheetIndex === sIdx
+                                  ? 'bg-emerald-600 text-white shadow-sm'
+                                  : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100'
+                              }`}
+                            >
+                              <FileSpreadsheet className="w-3.5 h-3.5" />
+                              <span>{sheet.name}</span>
+                              <span className="text-[10px] opacity-75">({sheet.totalRows} dòng)</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Spreadsheet table */}
+                      {(() => {
+                        const currentSheet = previewData.sheets[activeSheetIndex]
+                        if (!currentSheet) return null
+
+                        return (
+                          <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden shadow-inner">
+                            <div className="overflow-x-auto overflow-y-auto max-h-[500px]">
+                              <table className="w-full text-xs text-left border-collapse">
+                                <tbody>
+                                  {currentSheet.rows.map((row, rIdx) => {
+                                    const isHeader = rIdx < 2
+                                    return (
+                                      <tr
+                                        key={rIdx}
+                                        className={
+                                          rIdx % 2 === 0
+                                            ? 'bg-white dark:bg-gray-900 hover:bg-emerald-50/40 dark:hover:bg-emerald-950/20'
+                                            : 'bg-gray-50/80 dark:bg-gray-800/40 hover:bg-emerald-50/40 dark:hover:bg-emerald-950/20'
+                                        }
+                                      >
+                                        <td className="px-2 py-1 border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 text-gray-400 font-mono text-[10px] text-center select-none w-10">
+                                          {rIdx + 1}
+                                        </td>
+                                        {Array.from({ length: currentSheet.maxCols }).map((_, cIdx) => (
+                                          <td
+                                            key={cIdx}
+                                            className={`px-2.5 py-1.5 border border-gray-200 dark:border-gray-800 text-gray-800 dark:text-gray-200 whitespace-nowrap ${
+                                              isHeader ? 'font-semibold text-gray-900 dark:text-gray-100' : ''
+                                            }`}
+                                          >
+                                            {row[cIdx] !== undefined && row[cIdx] !== null ? String(row[cIdx]) : ''}
+                                          </td>
+                                        ))}
+                                      </tr>
+                                    )
+                                  })}
+                                </tbody>
+                              </table>
+                            </div>
+                            <div className="px-4 py-2.5 bg-gray-50 dark:bg-gray-800/60 border-t border-gray-200 dark:border-gray-800 text-[11px] text-gray-500 flex flex-wrap items-center justify-between gap-2">
+                              <span>
+                                Hiển thị {Math.min(currentSheet.rows.length, 100)} / {currentSheet.totalRows} dòng
+                              </span>
+                              <span className="text-emerald-700 dark:text-emerald-400 font-medium flex items-center gap-1">
+                                <Check className="w-3.5 h-3.5" /> Bảo toàn 100% công thức Excel tự động khi tải về
+                              </span>
+                            </div>
+                          </div>
+                        )
+                      })()}
+                    </div>
+                  ) : null}
+                </div>
+              ) : (
+                /* Information Tab */
+                <div className="space-y-4 max-w-3xl mx-auto py-2">
+                  <div className="bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 rounded-2xl p-5">
+                    <div className="text-xs font-bold uppercase tracking-wider text-blue-900 dark:text-blue-300 mb-1.5">
+                      Tóm tắt & Mục đích sử dụng
+                    </div>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                      {activeModalItem.description}
+                    </p>
+                  </div>
+
+                  <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 space-y-3 text-sm">
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                      <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+                      <span>Áp dụng chuẩn quy định pháp luật năm <strong>{activeModalItem.year}</strong>.</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                      <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+                      <span>Bảo toàn 100% công thức tính toán tự động trong bảng tính Excel.</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                      <Check className="w-4 h-4 text-emerald-500 shrink-0" />
+                      <span>Sẵn sàng chỉnh sửa, in ấn và áp dụng ngay cho doanh nghiệp.</span>
+                    </div>
+                  </div>
+
+                  {activeModalItem.tags.length > 0 && (
+                    <div className="flex items-center gap-2 flex-wrap pt-2">
+                      <span className="text-xs text-gray-400">Từ khóa liên quan:</span>
+                      {activeModalItem.tags.map((t, idx) => (
+                        <span key={idx} className="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs px-2.5 py-1 rounded-lg">
+                          #{t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 sm:px-6 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between gap-3 shrink-0">
+              <span className="text-xs text-gray-400 hidden sm:inline">
+                Tệp: <strong className="text-gray-600 dark:text-gray-300">{activeModalItem.filename}</strong>
+              </span>
+
+              <div className="flex items-center gap-2.5 ml-auto">
+                <button
+                  onClick={() => setActiveModalItem(null)}
+                  className="px-4 py-2.5 text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-colors"
+                >
+                  Đóng
+                </button>
+                <button
+                  onClick={(e) => handleDownload(activeModalItem, e)}
+                  className="bg-[#e67e22] hover:bg-[#d35400] text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-2"
+                  title={currentUser ? `Tải xuống ${activeModalItem.filename}` : 'Đăng nhập để tải tài liệu này'}
+                >
+                  {currentUser ? (
+                    <Download className="w-4 h-4" />
+                  ) : (
+                    <Lock className="w-4 h-4 text-amber-200" />
+                  )}
+                  <span>
+                    {currentUser
+                      ? `Tải tệp ngay (${activeModalItem.fileType.toUpperCase()})`
+                      : `Đăng nhập để tải (${activeModalItem.fileType.toUpperCase()})`}
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
