@@ -1,149 +1,111 @@
-# Hướng Dẫn Quản Lý Code, Cập Nhật & Deploy Với Token Từ `.env`
+# HƯỚNG DẪN PULL, PUSH & DEPLOY THEO TOKEN TRONG FILE .ENV — KK HOME
 
-Tài liệu này hướng dẫn cách kéo code (`pull`), đẩy code (`push`) và triển khai (`deploy`) dự án **KKhome** lên nhánh `main` trên GitHub sử dụng Personal Access Token (PAT) lưu trong file `.env`.
+Tài liệu này hướng dẫn cách cấu hình, bảo mật và sử dụng **GitHub Personal Access Token (PAT)** được lưu trữ an toàn trong file `.env` để thực hiện các thao tác **Pull (kéo code)**, **Push (đẩy code)** và **Deploy (triển khai tự động)** cho dự án **KKhome**.
 
 ---
 
 ## 1. Cấu Hình Token Trong File `.env`
 
-Token GitHub đã được cấu hình trong file [`.env`](file:///.env) tại thư mục gốc dự án:
+Token GitHub được lưu trữ an toàn tại file [`.env`](file:///.env) ở thư mục gốc (không commit lên git):
 
 ```env
-# ==========================================
-# CẤU HÌNH GITHUB TOKEN (PUSH / PULL / DEPLOY)
-# ==========================================
-GITHUB_TOKEN=your_github_token_here
+# ==============================================================================
+# GITHUB CONFIGURATION & DEPLOYMENT TOKEN - KK HOME
+# ==============================================================================
+# GitHub Personal Access Token (PAT)
+GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# Repository Information
 GITHUB_REPO_OWNER=th982982982-crypto
+GITHUB_USERNAME=th982982982-crypto
 GITHUB_REPO_NAME=KKhome
 GITHUB_REPO_URL=https://github.com/th982982982-crypto/KKhome.git
+GITHUB_AUTH_URL=https://ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@github.com/th982982982-crypto/KKhome.git
+
+# Deployment Branch
+DEPLOY_BRANCH=main
 ```
 
 > [!IMPORTANT]
-> **Bảo Mật:** File [`.gitignore`](file:///.gitignore) đã cấu hình quy tắc `.env*`. Do đó, file `.env` chứa token này sẽ **không bao giờ bị vô tình đẩy lên GitHub**. Không xóa dòng `.env*` trong file `.gitignore`.
+> **Bảo Mật Tuyệt Đối:**
+> - File [`.env`](file:///.env) **đã được cấu hình trong [`.gitignore`](file:///.gitignore)** (dòng `.env*`).
+> - Token cá nhân sẽ **KHÔNG bao giờ bị vô tình commit hoặc lộ lên GitHub**.
+> - Không xóa hoặc chỉnh sửa dòng `.env*` trong `.gitignore`.
 
 ---
 
-## 2. Cách Thao Tác Nhanh (Dùng Script `sync-git.ps1`)
+## 2. Thao Tác Nhanh Bằng Script PowerShell (`sync-git.ps1`)
 
-Đã có sẵn script tự động hóa [`sync-git.ps1`](file:///sync-git.ps1) giúp tự động đọc token từ `.env` và thực hiện các thao tác git:
+Đã có sẵn script tự động hóa [`sync-git.ps1`](file:///sync-git.ps1). Script sẽ tự động đọc biến `GITHUB_TOKEN` và `GITHUB_REPO_URL` từ file `.env`:
 
 ### 2.1. Kéo code mới nhất từ nhánh `main` (Pull)
-Mỗi khi bắt đầu làm việc hoặc muốn cập nhật code mới từ GitHub về máy:
+Mỗi khi bắt đầu làm việc hoặc muốn cập nhật code mới nhất từ GitHub:
 ```powershell
 .\sync-git.ps1 pull
 ```
+*Lệnh này sẽ tự động kết nối remote `https://github.com/th982982982-crypto/KKhome.git` bằng token và cập nhật nhánh `main`.*
 
-### 2.2. Đẩy code lên nhánh `main` (Push / Deploy)
-Khi bạn sửa xong code và muốn commit + push lên GitHub:
+---
+
+### 2.2. Đẩy code lên nhánh `main` (Push & Auto-Deploy)
+Khi bạn chỉnh sửa xong mã nguồn, thêm tính năng hoặc biểu mẫu mới:
 ```powershell
-.\sync-git.ps1 push "Nội dung ghi chú commit ở đây"
+.\sync-git.ps1 push "Mô tả nội dung cập nhật tại đây"
 ```
-*Script sẽ tự động: `git add .` -> `git commit -m "..."` -> `git push` với token đã xác thực.*
+*Script sẽ tự động thực hiện: `git add .` -> `git commit -m "..."` -> `git push` lên nhánh `main`.*
+*Hệ thống CI/CD (Vercel) sẽ tự động bắt sự kiện commit và kích hoạt bản dựng Deploy lên trang chính thức.*
 
-### 2.3. Cài đặt Remote Origin tự động với Token (Setup một lần)
-Nếu muốn sử dụng các lệnh chuẩn như `git pull` và `git push` trực tiếp trong terminal mà không cần thông qua script:
+---
+
+### 2.3. Cài đặt Remote Origin tự động (Setup)
+Nếu bạn muốn dùng các lệnh git chuẩn (`git pull`, `git push`) trực tiếp trong terminal mà không cần gõ qua script:
 ```powershell
 .\sync-git.ps1 setup
 ```
-Sau lệnh này, bạn có thể chạy bình thường:
+Sau đó bạn có thể gõ trực tiếp:
 ```powershell
 git pull
 git push
 ```
 
-### 2.4. Xem trạng thái git
+---
+
+### 2.4. Kiểm tra trạng thái Git
 ```powershell
 .\sync-git.ps1 status
 ```
 
 ---
 
-## 3. Cách Thao Tác Bằng Lệnh Git Thủ Công (Manual)
+## 3. Thao Tác Bằng Lệnh Git Thủ Công (Manual)
 
-Nếu bạn không muốn dùng script, dưới đây là các câu lệnh thủ công tương đương:
+Nếu không sử dụng script, bạn có thể chạy trực tiếp bằng Git CLI:
 
-### Cách A: Cấu hình trực tiếp URL Origin kèm Token
+### Gán Remote có xác thực Token:
 ```powershell
-# Gán remote origin kèm token (lấy từ .env)
 git remote set-url origin https://<GITHUB_TOKEN>@github.com/th982982982-crypto/KKhome.git
+```
 
-# Kéo code mới nhất
+### Kéo code:
+```powershell
 git pull origin main
+```
 
-# Đẩy code lên
+### Đẩy code & kích hoạt Deploy:
+```powershell
 git add .
-git commit -m "Cập nhật tính năng"
+git commit -m "feat: cap nhat tinh nang moi"
 git push origin main
 ```
 
-### Cách B: Nạp động token từ `.env` trong PowerShell
-```powershell
-# Đọc file .env vào biến môi trường
-Get-Content .env | ForEach-Object {
-    if ($_ -match '^\s*([^#=]+)=(.*)$') {
-        [System.Environment]::SetEnvironmentVariable($matches[1].Trim(), $matches[2].Trim())
-    }
-}
-
-# Pull với token động
-git pull "https://$($env:GITHUB_TOKEN)@github.com/th982982982-crypto/KKhome.git" main
-
-# Push với token động
-git push "https://$($env:GITHUB_TOKEN)@github.com/th982982982-crypto/KKhome.git" main
-```
-
 ---
 
-## 4. Quy Trình Cập Nhật & Deploy Lên Production
-
-Quy trình chuẩn khi phát triển và deploy dự án:
-
-```
-[1. Sửa code / Tính năng]
-          ↓
-[2. Kiểm tra build thử nghiệm: npm run build]
-          ↓
-[3. .\sync-git.ps1 push "Mô tả tính năng"]
-          ↓
-[4. Code được đẩy lên GitHub nhánh main]
-          ↓
-[5. Vercel tự động nhận diện commit và Trigger Deploy Production]
-```
-
-### Các bước chi tiết:
-
-1. **Kiểm tra trạng thái code trước khi đẩy:**
-   ```powershell
-   git status
-   ```
-
-2. **Chạy kiểm tra build tại máy cục bộ (khuyên dùng):**
-   ```powershell
-   npm run build
-   ```
-   *Nếu build pass thành công, đảm bảo khi đẩy lên Vercel sẽ không bị lỗi crash deployment.*
-
-3. **Thực hiện Push lên GitHub:**
-   ```powershell
-   .\sync-git.ps1 push "Cap nhat giao dien va tinh nang moi"
-   ```
-
-4. **Kích hoạt Deploy:**
-   - Dự án đã được liên kết với Vercel. Khi nhánh `main` nhận được commit mới, **Vercel sẽ tự động build và deploy** phiên bản mới lên domain chính thức.
-   - Bạn có thể truy cập dashboard của Vercel để theo dõi tiến trình build và trạng thái deployment.
-
----
-
-## 5. Xử Lý Khi Token Hết Hạn Hoặc Cần Đổi Token Mới
-
-Nếu token GitHub hết hạn hoặc bạn tạo token mới:
-
-1. Mở file [`.env`](file:///.env) và cập nhật giá trị mới:
-   ```env
-   GITHUB_TOKEN=ghp_TOKEN_MOI_CUA_BAN
-   ```
-2. Chạy lệnh:
+## 4. Quy Trình Cập Nhật Khi Token Hết Hạn
+Khi token bị hết hạn hoặc bạn đổi token mới:
+1. Mở file [`.env`](file:///.env).
+2. Thay thế giá trị của `GITHUB_TOKEN=ghp_TOKEN_MOI`.
+3. Chạy lệnh:
    ```powershell
    .\sync-git.ps1 setup
    ```
-   Script sẽ tự động đồng bộ token mới vào cấu hình Git của bạn!
+   Script sẽ tự động cập nhật URL remote mới nhất!
