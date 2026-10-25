@@ -432,10 +432,6 @@ export function TaiLieuExplorer({ user }: TaiLieuExplorerProps = {}) {
               </div>
               <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
                 <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                <span>Đã được làm sạch, xóa bỏ hoàn toàn nhận diện bên thứ ba, gắn sẵn thông tin <strong>KK HOME</strong>.</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <Check className="w-4 h-4 text-emerald-500 shrink-0" />
                 <span>Bảo toàn 100% công thức tính toán tự động trong bảng tính Excel.</span>
               </div>
             </div>
