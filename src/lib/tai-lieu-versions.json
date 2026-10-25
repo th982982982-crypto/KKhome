@@ -1,0 +1,42 @@
+{
+  "tl_1": [
+    {
+      "version": "v2026.1",
+      "releaseDate": "2026-01-15",
+      "changelog": "Phiên bản chuẩn hóa năm 2026 theo Nghị định 145/2020/NĐ-CP và cập nhật quy chuẩn xử phạt Nghị định 283/2026/NĐ-CP.",
+      "updatedBy": "Hệ thống KK HOME"
+    }
+  ],
+  "tl_2": [
+    {
+      "version": "v2026.1",
+      "releaseDate": "2026-01-20",
+      "changelog": "Tự động hóa mẫu HĐLĐ mới nhất, bổ sung phụ lục và điều khoản bảo mật thông tin NDA.",
+      "updatedBy": "Hệ thống KK HOME"
+    }
+  ],
+  "tl_3": [
+    {
+      "version": "v2026.1",
+      "releaseDate": "2026-02-01",
+      "changelog": "Cập nhật căn cứ Bộ luật Dân sự 91/2015, Luật BHXH 41/2024 và Luật Thuế TNCN 109/2025.",
+      "updatedBy": "Hệ thống KK HOME"
+    }
+  ],
+  "tl_29": [
+    {
+      "version": "v2026.1",
+      "releaseDate": "2026-01-10",
+      "changelog": "Phần mềm kế toán Excel chuẩn Thông tư 99/2025/TT-BTC, đầy đủ hệ thống sổ cái và nhật ký chung.",
+      "updatedBy": "Hệ thống KK HOME"
+    }
+  ],
+  "tl_30": [
+    {
+      "version": "v2026.1",
+      "releaseDate": "2026-01-10",
+      "changelog": "Bộ Báo cáo tài chính chuẩn Thông tư 133/2016/TT-BTC tích hợp thuyết minh BCTC tự động.",
+      "updatedBy": "Hệ thống KK HOME"
+    }
+  ]
+}

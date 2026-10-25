@@ -23,7 +23,11 @@ import {
   LogIn,
   UserPlus,
   Loader2,
-  AlertCircle
+  AlertCircle,
+  GitBranch,
+  History,
+  Clock,
+  Plus
 } from 'lucide-react'
 
 const CATEGORIES = [
@@ -38,9 +42,10 @@ const CATEGORIES = [
 
 interface TaiLieuExplorerProps {
   user?: { email?: string | null; id?: string; user_metadata?: { full_name?: string } | null } | null
+  isAdmin?: boolean
 }
 
-export function TaiLieuExplorer({ user }: TaiLieuExplorerProps = {}) {
+export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps = {}) {
   const [selectedCat, setSelectedCat] = useState('all')
   const [selectedYear, setSelectedYear] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
@@ -53,7 +58,7 @@ export function TaiLieuExplorer({ user }: TaiLieuExplorerProps = {}) {
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [authTargetItem, setAuthTargetItem] = useState<TaiLieuItem | null>(null)
 
-  const [previewTab, setPreviewTab] = useState<'preview' | 'info'>('preview')
+  const [previewTab, setPreviewTab] = useState<'preview' | 'versions' | 'info'>('preview')
   const [previewLoading, setPreviewLoading] = useState(false)
   const [previewError, setPreviewError] = useState<string | null>(null)
   const [previewData, setPreviewData] = useState<{
@@ -63,6 +68,85 @@ export function TaiLieuExplorer({ user }: TaiLieuExplorerProps = {}) {
     sheets?: Array<{ name: string; totalRows: number; maxCols: number; rows: any[][] }>
   } | null>(null)
   const [activeSheetIndex, setActiveSheetIndex] = useState(0)
+
+  const [allVersions, setAllVersions] = useState<Record<string, Array<{ version: string; releaseDate: string; changelog: string; updatedBy?: string }>>>({})
+  const [showVersionForm, setShowVersionForm] = useState(false)
+  const [newVersionNum, setNewVersionNum] = useState('')
+  const [newReleaseDate, setNewReleaseDate] = useState('')
+  const [newChangelog, setNewChangelog] = useState('')
+  const [savingVersion, setSavingVersion] = useState(false)
+
+  // Fetch all custom versions
+  useEffect(() => {
+    fetch('/api/admin/tai-lieu/versions')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.allVersions) setAllVersions(data.allVersions)
+      })
+      .catch(() => {})
+  }, [])
+
+  function getVersionsForItem(item: TaiLieuItem) {
+    if (allVersions[item.id] && allVersions[item.id].length > 0) {
+      return allVersions[item.id]
+    }
+    return [
+      {
+        version: 'v2026.1',
+        releaseDate: `${item.year}-01-15`,
+        changelog: `Phiên bản biểu mẫu chuẩn hóa năm ${item.year}, áp dụng hệ thống căn cứ pháp lý hiện hành.`,
+        updatedBy: 'Hệ thống KK HOME',
+      },
+    ]
+  }
+
+  function getCurrentVersion(item: TaiLieuItem) {
+    return getVersionsForItem(item)[0]?.version || 'v2026.1'
+  }
+
+  function openVersionForm(item: TaiLieuItem) {
+    const vers = getVersionsForItem(item)
+    const current = vers[0]?.version || 'v2026.1'
+    const match = current.match(/v(\d{4})\.(\d+)/)
+    const nextVer = match ? `v${match[1]}.${parseInt(match[2]) + 1}` : `${current}.1`
+    setNewVersionNum(nextVer)
+    setNewReleaseDate(new Date().toISOString().split('T')[0])
+    setNewChangelog('')
+    setShowVersionForm(true)
+  }
+
+  async function handleSaveNewVersion(e: React.FormEvent) {
+    e.preventDefault()
+    if (!activeModalItem || !newVersionNum.trim() || !newChangelog.trim()) {
+      toast.error('Vui lòng điền đầy đủ số phiên bản và nội dung thay đổi')
+      return
+    }
+
+    setSavingVersion(true)
+    try {
+      const res = await fetch('/api/admin/tai-lieu/versions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: activeModalItem.id,
+          version: newVersionNum.trim(),
+          releaseDate: newReleaseDate,
+          changelog: newChangelog.trim(),
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Lỗi khi lưu phiên bản mới')
+
+      setAllVersions(data.allVersions)
+      toast.success(data.message || 'Đã cập nhật phiên bản mới thành công!')
+      setShowVersionForm(false)
+      setNewChangelog('')
+    } catch (err: any) {
+      toast.error(err?.message || 'Lỗi khi cập nhật phiên bản')
+    } finally {
+      setSavingVersion(false)
+    }
+  }
 
   useEffect(() => {
     if (!activeModalItem) {
@@ -371,10 +455,14 @@ export function TaiLieuExplorer({ user }: TaiLieuExplorerProps = {}) {
                       {item.title}
                     </h2>
 
-                    {/* Year Badge */}
-                    <div className="mt-2.5">
+                    {/* Year & Version Badge */}
+                    <div className="mt-2.5 flex items-center gap-2">
                       <span className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs font-medium px-2 py-0.5 rounded">
                         Năm {item.year}
+                      </span>
+                      <span className="inline-flex items-center gap-1 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold px-2 py-0.5 rounded border border-blue-200/80 dark:border-blue-800/80">
+                        <GitBranch className="w-3 h-3 text-blue-500" />
+                        {getCurrentVersion(item)}
                       </span>
                     </div>
 
@@ -480,6 +568,17 @@ export function TaiLieuExplorer({ user }: TaiLieuExplorerProps = {}) {
                 >
                   <Eye className="w-3.5 h-3.5" />
                   <span>Xem thử tài liệu</span>
+                </button>
+                <button
+                  onClick={() => setPreviewTab('versions')}
+                  className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all ${
+                    previewTab === 'versions'
+                      ? 'bg-[#1e3a8a] text-white shadow-sm'
+                      : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+                  }`}
+                >
+                  <History className="w-3.5 h-3.5" />
+                  <span>Phiên bản ({getVersionsForItem(activeModalItem).length})</span>
                 </button>
                 <button
                   onClick={() => setPreviewTab('info')}
@@ -605,6 +704,173 @@ export function TaiLieuExplorer({ user }: TaiLieuExplorerProps = {}) {
                       })()}
                     </div>
                   ) : null}
+                </div>
+              ) : previewTab === 'versions' ? (
+                /* Versions Tab */
+                <div className="space-y-6 max-w-3xl mx-auto py-2">
+                  {/* Top Bar with Admin action */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-gray-900 p-4 sm:p-5 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
+                    <div>
+                      <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Phiên bản hiện hành</div>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="text-xl font-black text-blue-700 dark:text-blue-400">
+                          {getCurrentVersion(activeModalItem)}
+                        </span>
+                        <span className="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 text-xs font-bold px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
+                          Mới nhất
+                        </span>
+                      </div>
+                    </div>
+
+                    {isAdmin && (
+                      <button
+                        onClick={() => openVersionForm(activeModalItem)}
+                        className="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2"
+                      >
+                        <Plus className="w-4 h-4" />
+                        <span>Cập nhật version mới</span>
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Form update version (if open) */}
+                  {showVersionForm && (
+                    <form onSubmit={handleSaveNewVersion} className="bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-2xl p-5 space-y-4 animate-in fade-in duration-200 shadow-md">
+                      <div className="flex items-center justify-between pb-2 border-b border-blue-200/60 dark:border-blue-900/60">
+                        <h4 className="font-bold text-sm sm:text-base text-blue-900 dark:text-blue-200 flex items-center gap-2">
+                          <Plus className="w-4 h-4 text-blue-600" />
+                          Phát hành phiên bản mới cho mẫu
+                        </h4>
+                        <button
+                          type="button"
+                          onClick={() => setShowVersionForm(false)}
+                          className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-1 rounded-lg"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                            Mã phiên bản (Version) *
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            value={newVersionNum}
+                            onChange={(e) => setNewVersionNum(e.target.value)}
+                            placeholder="Ví dụ: v2026.2 hoặc v2.0"
+                            className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 font-semibold"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                            Ngày phát hành / áp dụng *
+                          </label>
+                          <input
+                            type="date"
+                            required
+                            value={newReleaseDate}
+                            onChange={(e) => setNewReleaseDate(e.target.value)}
+                            className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                          Nội dung cập nhật & Căn cứ sửa đổi (Changelog) *
+                        </label>
+                        <textarea
+                          required
+                          rows={3}
+                          value={newChangelog}
+                          onChange={(e) => setNewChangelog(e.target.value)}
+                          placeholder="Mô tả chi tiết những điểm mới, các điều khoản/công thức được cập nhật, căn cứ theo luật, thông tư hay nghị định nào..."
+                          className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl p-3 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 leading-relaxed"
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-end gap-2.5 pt-2">
+                        <button
+                          type="button"
+                          onClick={() => setShowVersionForm(false)}
+                          className="px-4 py-2 text-xs font-semibold text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-xl"
+                        >
+                          Hủy
+                        </button>
+                        <button
+                          type="submit"
+                          disabled={savingVersion}
+                          className="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold px-5 py-2 rounded-xl shadow-md transition-all flex items-center gap-1.5"
+                        >
+                          {savingVersion && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+                          <span>Lưu & Xuất bản phiên bản này</span>
+                        </button>
+                      </div>
+                    </form>
+                  )}
+
+                  {/* Versions Timeline List */}
+                  <div className="space-y-4">
+                    <h4 className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+                      Lịch sử các phiên bản phát hành
+                    </h4>
+
+                    <div className="space-y-3 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-gray-200 dark:before:bg-gray-800">
+                      {getVersionsForItem(activeModalItem).map((ver, idx) => {
+                        const isLatest = idx === 0
+                        return (
+                          <div key={ver.version + idx} className="relative flex items-start gap-4 group">
+                            {/* Dot on timeline */}
+                            <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 z-10 ${
+                              isLatest
+                                ? 'bg-blue-600 text-white ring-4 ring-blue-100 dark:ring-blue-950'
+                                : 'bg-gray-200 dark:bg-gray-800 text-gray-500 ring-4 ring-white dark:ring-gray-900'
+                            }`}>
+                              <GitBranch className="w-3.5 h-3.5" />
+                            </div>
+
+                            {/* Card Content */}
+                            <div className={`flex-1 rounded-2xl p-4 sm:p-5 border transition-all ${
+                              isLatest
+                                ? 'bg-white dark:bg-gray-900 border-blue-200 dark:border-blue-800 shadow-sm'
+                                : 'bg-white/70 dark:bg-gray-900/60 border-gray-100 dark:border-gray-800'
+                            }`}>
+                              <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <div className="flex items-center gap-2">
+                                  <span className="font-extrabold text-base text-gray-900 dark:text-gray-50">
+                                    {ver.version}
+                                  </span>
+                                  {isLatest && (
+                                    <span className="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
+                                      Phiên bản hiện hành
+                                    </span>
+                                  )}
+                                </div>
+                                <span className="text-xs text-gray-400 flex items-center gap-1">
+                                  <Clock className="w-3 h-3" />
+                                  {ver.releaseDate}
+                                </span>
+                              </div>
+
+                              <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                                {ver.changelog}
+                              </p>
+
+                              {ver.updatedBy && (
+                                <div className="mt-3 pt-2 border-t border-gray-100 dark:border-gray-800/80 text-[11px] text-gray-400">
+                                  Phát hành bởi: <span className="font-medium text-gray-600 dark:text-gray-300">{ver.updatedBy}</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
                 </div>
               ) : (
                 /* Information Tab */

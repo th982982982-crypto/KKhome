@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
 import { SiteFooter } from '@/components/layout/site-footer'
@@ -22,6 +23,11 @@ export default async function TaiLieuPage() {
     profile = data
   }
 
+  // Tạm thời ẩn đối với người dùng thông thường, chỉ hiển thị cho tài khoản admin
+  if (!profile?.is_admin) {
+    redirect('/')
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50/50 dark:bg-gray-950">
       <Navbar 
@@ -32,7 +38,7 @@ export default async function TaiLieuPage() {
       />
 
       <main className="flex-1">
-        <TaiLieuExplorer user={user} />
+        <TaiLieuExplorer user={user} isAdmin={profile?.is_admin} />
       </main>
 
       <SiteFooter />
