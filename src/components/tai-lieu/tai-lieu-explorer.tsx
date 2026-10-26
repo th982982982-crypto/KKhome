@@ -508,12 +508,33 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
     fetch('/api/admin/tai-lieu/visibility')
       .then(res => res.json())
       .then(data => {
-        if (data && data.isPublicKho !== undefined) {
+        if (!data) return
+        if (data.isPublicKho !== undefined) {
           setIsPublic(Boolean(data.isPublicKho))
+          if (data.isPublicKho === false && !effectiveAdmin) {
+            window.location.href = '/'
+            return
+          }
+        }
+        if (data.metadata) {
+          setItems(prev => {
+            const updated = prev.map(item => {
+              const meta = data.metadata[item.id]
+              if (!meta) return item
+              return {
+                ...item,
+                isHidden: meta.isHidden !== undefined ? meta.isHidden : item.isHidden,
+                googleSheetUrl: meta.googleSheetUrl !== undefined ? meta.googleSheetUrl : item.googleSheetUrl,
+                googleDocUrl: meta.googleDocUrl !== undefined ? meta.googleDocUrl : item.googleDocUrl,
+                googleDriveUrl: meta.googleDriveUrl !== undefined ? meta.googleDriveUrl : item.googleDriveUrl,
+              }
+            })
+            return effectiveAdmin ? updated : updated.filter(it => !it.isHidden)
+          })
         }
       })
       .catch(() => {})
-  }, [])
+  }, [effectiveAdmin])
 
   function handleDownload(item: TaiLieuItem, e?: React.MouseEvent) {
     if (e) {

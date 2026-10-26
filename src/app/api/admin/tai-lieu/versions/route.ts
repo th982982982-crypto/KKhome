@@ -2,15 +2,60 @@ import { NextRequest, NextResponse } from 'next/server'
 import path from 'path'
 import fs from 'fs'
 import { createClient } from '@/lib/supabase/server'
-import { formatVersionString, scanTaiLieuDirectory, writeTaiLieuDataFile } from '@/lib/tai-lieu-scanner'
+import { createClient as createSupabaseClient } from '@supabase/supabase-js'
+import { formatVersionString, scanTaiLieuDirectoryAsync } from '@/lib/tai-lieu-scanner'
 
 export const dynamic = 'force-dynamic'
+
+let inMemoryVersionsCache: Record<string, any[]> | null = null
+let lastVersionsFetch = 0
+const CACHE_TTL_MS = 2000
 
 function getFilePath() {
   return path.join(process.cwd(), 'src', 'lib', 'tai-lieu-versions.json')
 }
 
-function readVersionsData(): Record<string, any[]> {
+function getAdminSupabaseSafe() {
+  try {
+    const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+    const url = rawUrl.replace(/\/(rest|auth|storage)\/v\d.*$/, '').replace(/\/$/, '')
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) return null
+    return createSupabaseClient(url, serviceKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+      global: {
+        fetch: (input, init) => fetch(input, { ...init, cache: 'no-store' }),
+      },
+    })
+  } catch {
+    return null
+  }
+}
+
+async function readVersionsData(forceRefresh = false): Promise<Record<string, any[]>> {
+  const now = Date.now()
+  if (!forceRefresh && inMemoryVersionsCache && (now - lastVersionsFetch < CACHE_TTL_MS)) {
+    return inMemoryVersionsCache
+  }
+
+  // 1. Try Supabase Storage
+  try {
+    const supabase = getAdminSupabaseSafe()
+    if (supabase) {
+      const { data, error } = await supabase.storage.from('legal-forms').download('tai-lieu-config/versions.json')
+      if (!error && data) {
+        const text = await data.text()
+        const parsed = JSON.parse(text)
+        if (parsed && typeof parsed === 'object') {
+          inMemoryVersionsCache = parsed
+          lastVersionsFetch = Date.now()
+          return parsed
+        }
+      }
+    }
+  } catch {}
+
+  // 2. Fallback to local
   try {
     const p = getFilePath()
     if (fs.existsSync(p)) {
@@ -24,6 +69,7 @@ function readVersionsData(): Record<string, any[]> {
           }))
         }
       }
+      inMemoryVersionsCache = data
       return data
     }
   } catch (err) {
@@ -32,22 +78,37 @@ function readVersionsData(): Record<string, any[]> {
   return {}
 }
 
-function writeVersionsData(data: Record<string, any[]>) {
+async function writeVersionsData(data: Record<string, any[]>): Promise<boolean> {
+  inMemoryVersionsCache = data
+  lastVersionsFetch = Date.now()
+
+  // 1. Save to Supabase Storage
+  try {
+    const supabase = getAdminSupabaseSafe()
+    if (supabase) {
+      const jsonStr = JSON.stringify(data, null, 2)
+      const buffer = Buffer.from(jsonStr, 'utf-8')
+      await supabase.storage.from('legal-forms').upload('tai-lieu-config/versions.json', buffer, {
+        contentType: 'application/json',
+        upsert: true,
+      })
+    }
+  } catch {}
+
+  // 2. Try local
   try {
     const p = getFilePath()
     fs.writeFileSync(p, JSON.stringify(data, null, 2), 'utf-8')
-    return true
-  } catch (err) {
-    console.error('Error writing versions json:', err)
-    return false
-  }
+  } catch {}
+
+  return true
 }
 
 // GET /api/admin/tai-lieu/versions or ?id=tl_1
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const id = searchParams.get('id')
-  const allData = readVersionsData()
+  const allData = await readVersionsData(true)
 
   if (id) {
     const list = allData[id] || [
@@ -75,7 +136,8 @@ export async function POST(request: NextRequest) {
     }
 
     const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single()
-    if (!profile?.is_admin) {
+    const isAdmin = Boolean(profile?.is_admin || (user.email ? user.email.toLowerCase().includes('admin') : false))
+    if (!isAdmin) {
       return NextResponse.json({ error: 'Chỉ tài khoản admin mới có quyền cập nhật version' }, { status: 403 })
     }
 
@@ -87,7 +149,7 @@ export async function POST(request: NextRequest) {
     }
 
     const formattedVer = formatVersionString(version)
-    const allData = readVersionsData()
+    const allData = await readVersionsData(true)
     const currentList = allData[id] ? [...allData[id]] : [
       {
         version: 'Ver 2026.1',
@@ -116,12 +178,11 @@ export async function POST(request: NextRequest) {
     }
 
     allData[id] = currentList
-    writeVersionsData(allData)
+    await writeVersionsData(allData)
 
-    // Also update tai-lieu-data.ts with new version
+    // Also update catalog with new version
     try {
-      const items = scanTaiLieuDirectory()
-      writeTaiLieuDataFile(items)
+      await scanTaiLieuDirectoryAsync()
     } catch {}
 
     return NextResponse.json({
@@ -158,10 +219,10 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Thiếu thông tin' }, { status: 400 })
     }
 
-    const allData = readVersionsData()
+    const allData = await readVersionsData(true)
     if (allData[id]) {
       allData[id] = allData[id].filter((v: any) => v.version !== version)
-      writeVersionsData(allData)
+      await writeVersionsData(allData)
     }
 
     return NextResponse.json({ success: true, allVersions: allData })

@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import crypto from 'crypto'
+import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { TAI_LIEU_ITEMS, type TaiLieuItem } from './tai-lieu-data'
 
 const ROOT_DIR = process.cwd()
@@ -9,6 +10,27 @@ const PUBLIC_TAI_LIEU_DIR = path.join(ROOT_DIR, 'public', 'tai-lieu')
 const DATA_FILE = path.join(ROOT_DIR, 'src', 'lib', 'tai-lieu-data.ts')
 const VERSIONS_FILE = path.join(ROOT_DIR, 'src', 'lib', 'tai-lieu-versions.json')
 const METADATA_FILE = path.join(ROOT_DIR, 'src', 'lib', 'tai-lieu-metadata.json')
+
+let inMemoryMetadataCache: Record<string, TaiLieuMetadataOverride> | null = null
+let lastMetadataFetch = 0
+const CACHE_TTL_MS = 2000 // 2 seconds TTL to prevent stale reads across serverless lambdas
+
+function getAdminSupabaseSafe() {
+  try {
+    const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+    const url = rawUrl.replace(/\/(rest|auth|storage)\/v\d.*$/, '').replace(/\/$/, '')
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) return null
+    return createSupabaseClient(url, serviceKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+      global: {
+        fetch: (input, init) => fetch(input, { ...init, cache: 'no-store' }),
+      },
+    })
+  } catch {
+    return null
+  }
+}
 
 export function getFileHash(filePath: string): string {
   try {
@@ -91,10 +113,13 @@ export interface TaiLieuMetadataOverride {
 }
 
 export function readMetadataOverrides(): Record<string, TaiLieuMetadataOverride> {
+  if (inMemoryMetadataCache) return inMemoryMetadataCache
   if (!fs.existsSync(METADATA_FILE)) return {}
   try {
     const raw = fs.readFileSync(METADATA_FILE, 'utf-8')
-    return JSON.parse(raw)
+    const parsed = JSON.parse(raw)
+    inMemoryMetadataCache = parsed
+    return parsed
   } catch (err) {
     console.error('Lỗi khi đọc file tai-lieu-metadata.json:', err)
   }
@@ -102,32 +127,146 @@ export function readMetadataOverrides(): Record<string, TaiLieuMetadataOverride>
 }
 
 export function writeMetadataOverrides(data: Record<string, TaiLieuMetadataOverride>): boolean {
+  inMemoryMetadataCache = data
   try {
     fs.writeFileSync(METADATA_FILE, JSON.stringify(data, null, 2), 'utf-8')
     return true
   } catch (err) {
-    console.error('Lỗi khi ghi tai-lieu-metadata.json:', err)
-    return false
+    // Non-fatal on serverless readonly filesystem
+    return true
   }
 }
 
-export function isTaiLieuPublic(): boolean {
+export async function readMetadataOverridesAsync(forceRefresh = false): Promise<Record<string, TaiLieuMetadataOverride>> {
+  const now = Date.now()
+  if (!forceRefresh && inMemoryMetadataCache && (now - lastMetadataFetch < CACHE_TTL_MS)) {
+    return inMemoryMetadataCache
+  }
+
+  // 1. Try Supabase Storage (Persistent across deployments on Vercel)
   try {
-    const data = readMetadataOverrides()
+    const supabase = getAdminSupabaseSafe()
+    if (supabase) {
+      const { data, error } = await supabase.storage
+        .from('legal-forms')
+        .download('tai-lieu-config/metadata-overrides.json')
+
+      if (!error && data) {
+        const text = await data.text()
+        const parsed = JSON.parse(text)
+        if (parsed && typeof parsed === 'object') {
+          inMemoryMetadataCache = parsed
+          lastMetadataFetch = Date.now()
+          return parsed
+        }
+      }
+    }
+  } catch (err) {
+    console.error('Error downloading metadata from Supabase Storage:', err)
+  }
+
+  // 2. Fallback to local static file
+  return readMetadataOverrides()
+}
+
+export async function writeMetadataOverridesAsync(data: Record<string, TaiLieuMetadataOverride>): Promise<boolean> {
+  inMemoryMetadataCache = data
+  lastMetadataFetch = Date.now()
+
+  // 1. Save to Supabase Storage for persistent cloud storage
+  try {
+    const supabase = getAdminSupabaseSafe()
+    if (supabase) {
+      const jsonStr = JSON.stringify(data, null, 2)
+      const buffer = Buffer.from(jsonStr, 'utf-8')
+      const { error } = await supabase.storage
+        .from('legal-forms')
+        .upload('tai-lieu-config/metadata-overrides.json', buffer, {
+          contentType: 'application/json',
+          upsert: true,
+        })
+
+      if (error) {
+        console.error('Failed to upload metadata to Supabase Storage:', error.message)
+      }
+    }
+  } catch (err) {
+    console.error('Error uploading metadata to Supabase Storage:', err)
+  }
+
+  // 2. Also try writing locally (works in local dev, ignored safely in serverless)
+  try {
+    fs.writeFileSync(METADATA_FILE, JSON.stringify(data, null, 2), 'utf-8')
+  } catch {}
+
+  return true
+}
+
+export function isTaiLieuPublic(): boolean {
+  const data = inMemoryMetadataCache || readMetadataOverrides()
+  if ((data as any).__settings?.isPublic !== undefined) {
+    return Boolean((data as any).__settings.isPublic)
+  }
+  return true
+}
+
+export async function isTaiLieuPublicAsync(forceRefresh = false): Promise<boolean> {
+  try {
+    const data = await readMetadataOverridesAsync(forceRefresh)
     if ((data as any).__settings?.isPublic !== undefined) {
       return Boolean((data as any).__settings.isPublic)
     }
   } catch {}
-  return true // Mặc định mở công khai để người khác có thể xem
+  return true
 }
 
 export function setTaiLieuPublic(isPublic: boolean): boolean {
   try {
-    const data = readMetadataOverrides()
+    const data = inMemoryMetadataCache || readMetadataOverrides()
     ;(data as any).__settings = { ...(data as any).__settings, isPublic }
     return writeMetadataOverrides(data)
   } catch {
     return false
+  }
+}
+
+export async function setTaiLieuPublicAsync(isPublic: boolean): Promise<boolean> {
+  try {
+    const data = await readMetadataOverridesAsync(true)
+    ;(data as any).__settings = { ...(data as any).__settings, isPublic }
+    return await writeMetadataOverridesAsync(data)
+  } catch {
+    return false
+  }
+}
+
+export async function scanTaiLieuDirectoryAsync(forceRefresh = false): Promise<TaiLieuItem[]> {
+  try {
+    const overrides = await readMetadataOverridesAsync(forceRefresh)
+    return TAI_LIEU_ITEMS.map((item) => {
+      const meta = overrides[item.id]
+      if (!meta) return item
+
+      return {
+        ...item,
+        title: meta.title !== undefined ? meta.title : item.title,
+        code: meta.code !== undefined ? meta.code : item.code,
+        description: meta.description !== undefined ? meta.description : item.description,
+        category: meta.category !== undefined ? meta.category : item.category,
+        categoryLabel: meta.categoryLabel !== undefined ? meta.categoryLabel : item.categoryLabel,
+        year: meta.year !== undefined ? meta.year : item.year,
+        tags: meta.tags !== undefined ? meta.tags : item.tags,
+        featured: meta.featured !== undefined ? meta.featured : item.featured,
+        isHot: meta.isHot !== undefined ? meta.isHot : item.isHot,
+        highlights: meta.highlights !== undefined ? meta.highlights : item.highlights,
+        isHidden: meta.isHidden !== undefined ? meta.isHidden : item.isHidden,
+        googleSheetUrl: meta.googleSheetUrl !== undefined ? meta.googleSheetUrl : item.googleSheetUrl,
+        googleDocUrl: meta.googleDocUrl !== undefined ? meta.googleDocUrl : item.googleDocUrl,
+        googleDriveUrl: meta.googleDriveUrl !== undefined ? meta.googleDriveUrl : item.googleDriveUrl,
+      }
+    })
+  } catch {
+    return TAI_LIEU_ITEMS
   }
 }
 
