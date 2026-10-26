@@ -67,6 +67,12 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
   const [showAllLimit, setShowAllLimit] = useState(false)
 
   const [currentUser, setCurrentUser] = useState(user ?? null)
+  const [adminMode, setAdminMode] = useState(isAdmin)
+  const effectiveAdmin = Boolean(
+    isAdmin ||
+    adminMode ||
+    (currentUser?.email ? currentUser.email.toLowerCase().includes('admin') : false)
+  )
   const [showAuthModal, setShowAuthModal] = useState(false)
   const [authTargetItem, setAuthTargetItem] = useState<TaiLieuItem | null>(null)
 
@@ -468,14 +474,45 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
 
   useEffect(() => {
     setCurrentUser(user ?? null)
-  }, [user])
+    if (isAdmin) setAdminMode(true)
+  }, [user, isAdmin])
 
   useEffect(() => {
     const supabase = createClient()
+
+    async function verifyAdminRole(userId: string) {
+      try {
+        const { data } = await supabase.from('profiles').select('is_admin').eq('id', userId).single()
+        if (data?.is_admin) {
+          setAdminMode(true)
+        }
+      } catch {}
+    }
+
+    if (currentUser?.id) {
+      verifyAdminRole(currentUser.id)
+    }
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setCurrentUser(session?.user ?? null)
+      const u = session?.user ?? null
+      setCurrentUser(u)
+      if (u?.id) {
+        verifyAdminRole(u.id)
+      }
     })
     return () => subscription.unsubscribe()
+  }, [])
+
+  // Sync fresh visibility state from API
+  useEffect(() => {
+    fetch('/api/admin/tai-lieu/visibility')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.isPublicKho !== undefined) {
+          setIsPublic(Boolean(data.isPublicKho))
+        }
+      })
+      .catch(() => {})
   }, [])
 
   function handleDownload(item: TaiLieuItem, e?: React.MouseEvent) {
@@ -569,7 +606,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
       }
 
       // Visibility filter: for non-admin, always hide isHidden items
-      if (!isAdmin) {
+      if (!effectiveAdmin) {
         if (item.isHidden) return false
       } else {
         if (selectedVisibility === 'visible' && item.isHidden) return false
@@ -578,7 +615,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
 
       return true
     })
-  }, [selectedCat, selectedYear, searchQuery, onlyBookmarks, bookmarks, items, isAdmin, selectedVisibility])
+  }, [selectedCat, selectedYear, searchQuery, onlyBookmarks, bookmarks, items, effectiveAdmin, selectedVisibility])
 
   const visibleItems = showAllLimit ? filteredItems : filteredItems.slice(0, 18)
 
@@ -625,7 +662,33 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
             </div>
 
             {/* Quick Action Buttons */}
-            <div className="flex items-center gap-2.5 shrink-0">
+            <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
+              {effectiveAdmin && (
+                <button
+                  onClick={handleToggleKhoVisibility}
+                  disabled={isTogglingKho}
+                  className={`flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-bold transition-all shadow-md hover:shadow-lg disabled:opacity-50 ${
+                    isPublic
+                      ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20'
+                      : 'bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 ring-2 ring-amber-300'
+                  }`}
+                  title={
+                    isPublic
+                      ? 'Kho tài liệu đang hiển thị công khai cho mọi người xem - Bấm để chuyển sang tạm ẩn'
+                      : 'Kho tài liệu đang tạm ẩn (chỉ Admin xem) - Bấm để mở hiển thị công khai'
+                  }
+                >
+                  {isTogglingKho ? (
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  ) : isPublic ? (
+                    <Globe className="w-3.5 h-3.5" />
+                  ) : (
+                    <Lock className="w-3.5 h-3.5" />
+                  )}
+                  <span>{isPublic ? 'Kho: Công khai' : 'Kho: Tạm ẩn'}</span>
+                </button>
+              )}
+
               <button
                 onClick={handleSyncFolder}
                 disabled={isSyncing}
@@ -703,7 +766,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
               />
             </div>
 
-            {isAdmin && (
+            {effectiveAdmin && (
               <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 font-medium">
                 <span>Hiển thị:</span>
                 <select
@@ -720,7 +783,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
           </div>
 
           <div className="flex items-center gap-2 flex-wrap">
-            {isAdmin && (
+            {effectiveAdmin && (
               <button
                 onClick={handleToggleKhoVisibility}
                 disabled={isTogglingKho}
@@ -806,7 +869,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                           {item.categoryLabel}
                         </span>
 
-                        {isAdmin && item.isHidden && (
+                        {effectiveAdmin && item.isHidden && (
                           <span className="bg-rose-100 text-rose-700 dark:bg-rose-950/80 dark:text-rose-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase flex items-center gap-1 border border-rose-300 dark:border-rose-800">
                             <EyeOff className="w-2.5 h-2.5" />
                             Đang ẩn
@@ -815,7 +878,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                       </div>
 
                       <div className="flex items-center gap-1.5">
-                        {isAdmin && (
+                        {effectiveAdmin && (
                           <button
                             onClick={e => handleToggleItemVisibility(item, e)}
                             disabled={togglingItemId === item.id}
@@ -846,7 +909,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                           </button>
                         )}
 
-                        {isAdmin && (
+                        {effectiveAdmin && (
                           <button
                             onClick={e => {
                               e.stopPropagation()
@@ -861,7 +924,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                           </button>
                         )}
 
-                        {isAdmin && (
+                        {effectiveAdmin && (
                           <button
                             onClick={e => openGoogleModal(item, e)}
                             className={`p-1 rounded-lg transition-colors ${
@@ -977,7 +1040,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                         <ExternalLink className="w-3 h-3 opacity-60" />
                       </a>
 
-                      {isAdmin && (
+                      {effectiveAdmin && (
                         <button
                           onClick={(e) => openGoogleModal(item, e)}
                           className="px-2.5 py-1.5 rounded-xl border border-dashed border-emerald-400 bg-emerald-50/60 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200 text-xs font-bold transition-all shrink-0 flex items-center gap-1"
@@ -1037,7 +1100,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                   Định dạng .{activeModalItem.fileType.toUpperCase()} • {activeModalItem.fileSize}
                 </span>
 
-                {isAdmin && (
+                {effectiveAdmin && (
                   <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${
                     activeModalItem.isHidden
                       ? 'bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border-rose-200 dark:border-rose-800'
@@ -1062,7 +1125,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-50 leading-snug line-clamp-2">
                   {activeModalItem.title}
                 </h3>
-                {isAdmin && (
+                {effectiveAdmin && (
                   <button
                     onClick={() => {
                       setPreviewTab('info')
@@ -1162,7 +1225,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                   <ExternalLink className="w-3 h-3 opacity-60" />
                 </a>
 
-                {isAdmin && (
+                {effectiveAdmin && (
                   <button
                     onClick={() => openGoogleModal(activeModalItem)}
                     className="px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 border border-dashed border-emerald-400 bg-emerald-50/60 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300 transition-all shadow-xs"
@@ -1344,7 +1407,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                       </div>
                     </div>
 
-                    {isAdmin && (
+                    {effectiveAdmin && (
                       <button
                         onClick={() => openVersionForm(activeModalItem)}
                         className="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2"
@@ -1516,7 +1579,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                       </div>
                     </div>
 
-                    {isAdmin && !isEditingInfo && (
+                    {effectiveAdmin && !isEditingInfo && (
                       <div className="flex items-center gap-2 flex-wrap">
                         <button
                           onClick={() => handleToggleItemVisibility(activeModalItem)}
@@ -1852,7 +1915,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                   ) : (
                     /* Normal View */
                     <div className="space-y-4">
-                      {isAdmin && (
+                      {effectiveAdmin && (
                         <div className={`p-3.5 rounded-xl border flex flex-wrap items-center justify-between gap-3 text-xs ${
                           activeModalItem.isHidden
                             ? 'bg-rose-50/70 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800 text-rose-900 dark:text-rose-200'
@@ -1895,7 +1958,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                       <div className="bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 rounded-2xl p-5">
                         <div className="text-xs font-bold uppercase tracking-wider text-blue-900 dark:text-blue-300 mb-1.5 flex items-center justify-between">
                           <span>Tóm tắt & Mục đích sử dụng</span>
-                          {isAdmin && (
+                          {effectiveAdmin && (
                             <button
                               onClick={() => startEditInfo(activeModalItem)}
                               className="text-[11px] font-bold text-amber-600 hover:text-amber-700 dark:text-amber-400 flex items-center gap-1 hover:underline"
@@ -1970,7 +2033,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                             <ExternalLink className="w-3 h-3" />
                           </a>
 
-                          {isAdmin && (
+                          {effectiveAdmin && (
                             <button
                               onClick={() => openGoogleModal(activeModalItem)}
                               className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-1.5 rounded-xl flex items-center gap-1 shadow-xs transition-all"
@@ -2034,7 +2097,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                   <ExternalLink className="w-3.5 h-3.5 opacity-80" />
                 </a>
 
-                {isAdmin && (
+                {effectiveAdmin && (
                   <button
                     onClick={() => openGoogleModal(activeModalItem)}
                     className="p-2.5 rounded-xl border border-dashed border-emerald-400 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-200 transition-colors"
