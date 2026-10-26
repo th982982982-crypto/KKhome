@@ -537,6 +537,15 @@ export function getPreviewPdfUrl(item: TaiLieuItem): string {
   return item.downloadUrl.replace(/\\.(docx|xlsx)$/i, '.pdf')
 }
 
+export function getGoogleOnlineUrl(item: TaiLieuItem): string {
+  if (item.fileType === 'xlsx' && item.googleSheetUrl) return item.googleSheetUrl
+  if (item.fileType === 'docx' && item.googleDocUrl) return item.googleDocUrl
+  if (item.googleDriveUrl) return item.googleDriveUrl
+
+  const baseUrl = 'https://hkdkkhome.com'
+  return \`https://docs.google.com/viewer?url=\${encodeURIComponent(baseUrl + item.downloadUrl)}&embedded=false\`
+}
+
 export const TAI_LIEU_ITEMS: TaiLieuItem[] = ${JSON.stringify(items, null, 2)};
 `
     fs.writeFileSync(DATA_FILE, content, 'utf-8')
