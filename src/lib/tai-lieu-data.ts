@@ -19,6 +19,9 @@ export interface TaiLieuItem {
   fileHash?: string
   highlights?: string[]
   isHidden?: boolean
+  googleSheetUrl?: string
+  googleDocUrl?: string
+  googleDriveUrl?: string
 }
 
 export function getPreviewPdfUrl(item: TaiLieuItem): string {

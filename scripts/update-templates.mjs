@@ -495,6 +495,9 @@ export function scanTemplates() {
       if (meta.isHot !== undefined) item.isHot = meta.isHot
       if (meta.highlights !== undefined) item.highlights = meta.highlights
       if (meta.isHidden !== undefined) item.isHidden = meta.isHidden
+      if (meta.googleSheetUrl !== undefined) item.googleSheetUrl = meta.googleSheetUrl
+      if (meta.googleDocUrl !== undefined) item.googleDocUrl = meta.googleDocUrl
+      if (meta.googleDriveUrl !== undefined) item.googleDriveUrl = meta.googleDriveUrl
     }
 
     newItems.push(item)
@@ -540,6 +543,9 @@ export function writeTaiLieuData(items) {
   fileHash?: string
   highlights?: string[]
   isHidden?: boolean
+  googleSheetUrl?: string
+  googleDocUrl?: string
+  googleDriveUrl?: string
 }
 
 export function getPreviewPdfUrl(item: TaiLieuItem): string {

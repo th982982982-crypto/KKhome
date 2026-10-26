@@ -75,6 +75,9 @@ export async function POST(request: NextRequest) {
       isHot,
       highlights,
       isHidden,
+      googleSheetUrl,
+      googleDocUrl,
+      googleDriveUrl,
     } = body
 
     if (!id) {
@@ -126,6 +129,9 @@ export async function POST(request: NextRequest) {
       isHot: isHot !== undefined ? Boolean(isHot) : existing.isHot,
       highlights: processedHighlights !== undefined ? processedHighlights : existing.highlights,
       isHidden: isHidden !== undefined ? Boolean(isHidden) : existing.isHidden,
+      googleSheetUrl: googleSheetUrl !== undefined ? String(googleSheetUrl).trim() || undefined : existing.googleSheetUrl,
+      googleDocUrl: googleDocUrl !== undefined ? String(googleDocUrl).trim() || undefined : existing.googleDocUrl,
+      googleDriveUrl: googleDriveUrl !== undefined ? String(googleDriveUrl).trim() || undefined : existing.googleDriveUrl,
     }
 
     allMetadata[id] = newOverride

@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
-import { TAI_LIEU_ITEMS, getPreviewPdfUrl, type TaiLieuItem } from '@/lib/tai-lieu-data'
+import { TAI_LIEU_ITEMS, getPreviewPdfUrl, getGoogleOnlineUrl, type TaiLieuItem } from '@/lib/tai-lieu-data'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from 'sonner'
 import { 
@@ -100,6 +100,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
   const [editFeatured, setEditFeatured] = useState(false)
   const [editIsHot, setEditIsHot] = useState(false)
   const [editIsHidden, setEditIsHidden] = useState(false)
+  const [editGoogleUrl, setEditGoogleUrl] = useState('')
   const [isSavingInfo, setIsSavingInfo] = useState(false)
   const [infoSaveSuccess, setInfoSaveSuccess] = useState<string | null>(null)
   const [infoSaveError, setInfoSaveError] = useState<string | null>(null)
@@ -235,6 +236,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
     setEditFeatured(Boolean(item.featured))
     setEditIsHot(Boolean(item.isHot))
     setEditIsHidden(Boolean(item.isHidden))
+    setEditGoogleUrl(item.googleSheetUrl || item.googleDocUrl || item.googleDriveUrl || '')
     setInfoSaveSuccess(null)
     setInfoSaveError(null)
     setIsEditingInfo(true)
@@ -269,6 +271,9 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
           featured: editFeatured,
           isHot: editIsHot,
           isHidden: editIsHidden,
+          googleSheetUrl: activeModalItem.fileType === 'xlsx' ? editGoogleUrl.trim() : undefined,
+          googleDocUrl: activeModalItem.fileType === 'docx' ? editGoogleUrl.trim() : undefined,
+          googleDriveUrl: editGoogleUrl.trim() || undefined,
         }),
       })
 
@@ -857,28 +862,50 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                     </div>
                   </div>
 
-                  {/* 2 Action Buttons (Exact style: Blue Chi tiết & Xem thử | Orange Tải xuống nhanh) */}
-                  <div className="grid grid-cols-2 gap-2.5 mt-6 pt-4 border-t border-gray-100 dark:border-gray-800/80">
-                    <button
-                      onClick={() => setActiveModalItem(item)}
-                      className="bg-[#1e3a8a] hover:bg-[#1e40af] text-white text-xs sm:text-[13px] font-semibold py-2 px-2.5 rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all"
-                    >
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>Xem thử mẫu PDF</span>
-                    </button>
+                  {/* 2 Action Buttons (Exact style: Blue Chi tiết & Xem thử | Orange Tải xuống nhanh) + Google Sheets/Docs Link */}
+                  <div className="space-y-2 mt-6 pt-4 border-t border-gray-100 dark:border-gray-800/80">
+                    <div className="grid grid-cols-2 gap-2.5">
+                      <button
+                        onClick={() => setActiveModalItem(item)}
+                        className="bg-[#1e3a8a] hover:bg-[#1e40af] text-white text-xs sm:text-[13px] font-semibold py-2 px-2.5 rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>Xem thử mẫu PDF</span>
+                      </button>
 
-                    <button
-                      onClick={(e) => handleDownload(item, e)}
-                      className="bg-[#e67e22] hover:bg-[#d35400] text-white text-xs sm:text-[13px] font-semibold py-2 px-2.5 rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all"
-                      title={currentUser ? `Tải xuống ${item.filename}` : 'Đăng nhập để tải tài liệu này'}
+                      <button
+                        onClick={(e) => handleDownload(item, e)}
+                        className="bg-[#e67e22] hover:bg-[#d35400] text-white text-xs sm:text-[13px] font-semibold py-2 px-2.5 rounded-xl flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                        title={currentUser ? `Tải xuống ${item.filename}` : 'Đăng nhập để tải tài liệu này'}
+                      >
+                        {currentUser ? (
+                          <Download className="w-3.5 h-3.5" />
+                        ) : (
+                          <Lock className="w-3.5 h-3.5 text-amber-200" />
+                        )}
+                        <span>{currentUser ? 'Tải xuống nhanh' : 'Đăng nhập để tải'}</span>
+                      </button>
+                    </div>
+
+                    <a
+                      href={getGoogleOnlineUrl(item)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-full py-1.5 px-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border transition-all ${
+                        item.fileType === 'docx'
+                          ? 'bg-blue-50/70 hover:bg-blue-100 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border-blue-200/80 dark:border-blue-900/60'
+                          : 'bg-emerald-50/70 hover:bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 border-emerald-200/80 dark:border-emerald-900/60'
+                      }`}
+                      title={`Mở trực tiếp trên ${item.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'}`}
                     >
-                      {currentUser ? (
-                        <Download className="w-3.5 h-3.5" />
+                      {item.fileType === 'docx' ? (
+                        <FileText className="w-3.5 h-3.5 text-blue-600" />
                       ) : (
-                        <Lock className="w-3.5 h-3.5 text-amber-200" />
+                        <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
                       )}
-                      <span>{currentUser ? 'Tải xuống nhanh' : 'Đăng nhập để tải'}</span>
-                    </button>
+                      <span>Mở trên {item.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'}</span>
+                      <ExternalLink className="w-3 h-3 opacity-60" />
+                    </a>
                   </div>
                 </div>
               )
@@ -1032,6 +1059,26 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                   <FileText className="w-3.5 h-3.5" />
                   <span>Thông tin & Tóm tắt</span>
                 </button>
+
+                <a
+                  href={getGoogleOnlineUrl(activeModalItem)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 transition-all border shadow-xs ml-auto ${
+                    activeModalItem.fileType === 'docx'
+                      ? 'bg-blue-50 hover:bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 border-blue-200 dark:border-blue-800'
+                      : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                  }`}
+                  title={`Mở và làm việc trực tiếp trên ${activeModalItem.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'}`}
+                >
+                  {activeModalItem.fileType === 'docx' ? (
+                    <FileText className="w-3.5 h-3.5 text-blue-600" />
+                  ) : (
+                    <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
+                  )}
+                  <span>Mở {activeModalItem.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'}</span>
+                  <ExternalLink className="w-3 h-3 opacity-60" />
+                </a>
               </div>
             </div>
 
@@ -1567,6 +1614,27 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                           </p>
                         </div>
 
+                        {/* Link Google Sheet / Google Docs */}
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                            Link {activeModalItem.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'} trực tuyến (Tùy chọn)
+                          </label>
+                          <input
+                            type="url"
+                            value={editGoogleUrl}
+                            onChange={(e) => setEditGoogleUrl(e.target.value)}
+                            placeholder={
+                              activeModalItem.fileType === 'docx'
+                                ? 'https://docs.google.com/document/d/.../copy hoặc /edit'
+                                : 'https://docs.google.com/spreadsheets/d/.../copy hoặc /edit'
+                            }
+                            className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 text-xs font-mono text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                          />
+                          <p className="text-[11px] text-gray-400 mt-1">
+                            Dán link Google Drive của bạn (dạng <code>/copy</code> để người dùng tự động nhân bản vào Drive cá nhân). Nếu để trống, hệ thống sẽ tự động liên kết mở qua Google Docs Viewer.
+                          </p>
+                        </div>
+
                         {/* Trạng thái hiển thị */}
                         <div>
                           <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">
@@ -1785,6 +1853,28 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                 >
                   Đóng
                 </button>
+                <a
+                  href={getGoogleOnlineUrl(activeModalItem)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-2 ${
+                    activeModalItem.fileType === 'docx'
+                      ? 'bg-blue-600 hover:bg-blue-700'
+                      : 'bg-emerald-600 hover:bg-emerald-700'
+                  }`}
+                  title={`Mở và làm việc trực tuyến trên ${activeModalItem.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'}`}
+                >
+                  {activeModalItem.fileType === 'docx' ? (
+                    <FileText className="w-4 h-4" />
+                  ) : (
+                    <FileSpreadsheet className="w-4 h-4" />
+                  )}
+                  <span>
+                    Mở {activeModalItem.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'}
+                  </span>
+                  <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+                </a>
+
                 <button
                   onClick={(e) => handleDownload(activeModalItem, e)}
                   className="bg-[#e67e22] hover:bg-[#d35400] text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-2"
