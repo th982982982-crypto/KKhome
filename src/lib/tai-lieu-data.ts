@@ -18,6 +18,7 @@ export interface TaiLieuItem {
   version?: string
   fileHash?: string
   highlights?: string[]
+  isHidden?: boolean
 }
 
 export function getPreviewPdfUrl(item: TaiLieuItem): string {

@@ -29,7 +29,9 @@ import {
   Clock,
   Plus,
   RefreshCw,
-  Pencil
+  Pencil,
+  EyeOff,
+  Globe
 } from 'lucide-react'
 
 const CATEGORIES = [
@@ -46,10 +48,15 @@ interface TaiLieuExplorerProps {
   user?: { email?: string | null; id?: string; user_metadata?: { full_name?: string } | null } | null
   isAdmin?: boolean
   initialItems?: TaiLieuItem[]
+  isPublicKho?: boolean
 }
 
-export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieuExplorerProps = {}) {
+export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicKho = true }: TaiLieuExplorerProps = {}) {
   const [items, setItems] = useState<TaiLieuItem[]>(initialItems && initialItems.length > 0 ? initialItems : TAI_LIEU_ITEMS)
+  const [isPublic, setIsPublic] = useState(isPublicKho)
+  const [isTogglingKho, setIsTogglingKho] = useState(false)
+  const [togglingItemId, setTogglingItemId] = useState<string | null>(null)
+  const [selectedVisibility, setSelectedVisibility] = useState<'all' | 'visible' | 'hidden'>('all')
   const [isSyncing, setIsSyncing] = useState(false)
   const [selectedCat, setSelectedCat] = useState('all')
   const [selectedYear, setSelectedYear] = useState('all')
@@ -92,6 +99,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
   const [editTags, setEditTags] = useState('')
   const [editFeatured, setEditFeatured] = useState(false)
   const [editIsHot, setEditIsHot] = useState(false)
+  const [editIsHidden, setEditIsHidden] = useState(false)
   const [isSavingInfo, setIsSavingInfo] = useState(false)
   const [infoSaveSuccess, setInfoSaveSuccess] = useState<string | null>(null)
   const [infoSaveError, setInfoSaveError] = useState<string | null>(null)
@@ -226,6 +234,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
     setEditTags(item.tags ? item.tags.join(', ') : '')
     setEditFeatured(Boolean(item.featured))
     setEditIsHot(Boolean(item.isHot))
+    setEditIsHidden(Boolean(item.isHidden))
     setInfoSaveSuccess(null)
     setInfoSaveError(null)
     setIsEditingInfo(true)
@@ -259,6 +268,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
           tags: editTags.split(',').map(s => s.trim().replace(/^#/, '')).filter(Boolean),
           featured: editFeatured,
           isHot: editIsHot,
+          isHidden: editIsHidden,
         }),
       })
 
@@ -275,6 +285,81 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
       setInfoSaveSuccess('Đã cập nhật thông tin và tóm tắt thành công!')
       toast.success('Đã lưu thông tin biểu mẫu thành công!')
       setTimeout(() => {
+        setIsEditingInfo(false)
+        setInfoSaveSuccess(null)
+      }, 1000)
+    } catch (err: any) {
+      setInfoSaveError(err?.message || 'Không thể lưu thông tin')
+      toast.error(err?.message || 'Lỗi khi lưu thông tin biểu mẫu')
+    } finally {
+      setIsSavingInfo(false)
+    }
+  }
+
+  async function handleToggleItemVisibility(item: TaiLieuItem, e?: React.MouseEvent) {
+    if (e) {
+      e.preventDefault()
+      e.stopPropagation()
+    }
+    setTogglingItemId(item.id)
+    const nextHidden = !Boolean(item.isHidden)
+
+    // Optimistic update
+    setItems((prev) =>
+      prev.map((it) => (it.id === item.id ? { ...it, isHidden: nextHidden } : it))
+    )
+    if (activeModalItem?.id === item.id) {
+      setActiveModalItem((prev) => (prev ? { ...prev, isHidden: nextHidden } : null))
+    }
+
+    try {
+      const res = await fetch('/api/admin/tai-lieu/visibility', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: item.id, isHidden: nextHidden }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Lỗi khi cập nhật trạng thái hiển thị')
+      toast.success(
+        data.message || (nextHidden ? 'Đã tạm ẩn biểu mẫu' : 'Đã hiển thị biểu mẫu cho người khác')
+      )
+    } catch (err: any) {
+      // Rollback
+      setItems((prev) =>
+        prev.map((it) => (it.id === item.id ? { ...it, isHidden: !nextHidden } : it))
+      )
+      if (activeModalItem?.id === item.id) {
+        setActiveModalItem((prev) => (prev ? { ...prev, isHidden: !nextHidden } : null))
+      }
+      toast.error(err?.message || 'Lỗi khi cập nhật trạng thái hiển thị')
+    } finally {
+      setTogglingItemId(null)
+    }
+  }
+
+  async function handleToggleKhoVisibility() {
+    setIsTogglingKho(true)
+    const nextPublic = !isPublic
+    setIsPublic(nextPublic)
+
+    try {
+      const res = await fetch('/api/admin/tai-lieu/visibility', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isPublicKho: nextPublic }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Lỗi khi cập nhật trạng thái kho')
+      toast.success(
+        data.message || (nextPublic ? 'Kho biểu mẫu đã mở công khai!' : 'Kho biểu mẫu đã tạm ẩn!')
+      )
+    } catch (err: any) {
+      setIsPublic(!nextPublic)
+      toast.error(err?.message || 'Lỗi khi cập nhật trạng thái kho')
+    } finally {
+      setIsTogglingKho(false)
+    }
+  }
         setIsEditingInfo(false)
         setInfoSaveSuccess(null)
       }, 1000)
@@ -431,9 +516,17 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
         if (!matchTitle && !matchDesc && !matchCode && !matchTag) return false
       }
 
+      // Visibility filter: for non-admin, always hide isHidden items
+      if (!isAdmin) {
+        if (item.isHidden) return false
+      } else {
+        if (selectedVisibility === 'visible' && item.isHidden) return false
+        if (selectedVisibility === 'hidden' && !item.isHidden) return false
+      }
+
       return true
     })
-  }, [selectedCat, selectedYear, searchQuery, onlyBookmarks, bookmarks, items])
+  }, [selectedCat, selectedYear, searchQuery, onlyBookmarks, bookmarks, items, isAdmin, selectedVisibility])
 
   const visibleItems = showAllLimit ? filteredItems : filteredItems.slice(0, 18)
 
@@ -557,9 +650,50 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
                 className="pl-9 pr-3 py-1.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-xs sm:text-sm text-gray-800 dark:text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 w-48 sm:w-64"
               />
             </div>
+
+            {isAdmin && (
+              <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 font-medium">
+                <span>Hiển thị:</span>
+                <select
+                  value={selectedVisibility}
+                  onChange={(e) => setSelectedVisibility(e.target.value as any)}
+                  className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-1.5 text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="all">Tất cả ({items.length})</option>
+                  <option value="visible">Đang hiển thị ({items.filter((i) => !i.isHidden).length})</option>
+                  <option value="hidden">Không hiển thị / Ẩn ({items.filter((i) => i.isHidden).length})</option>
+                </select>
+              </div>
+            )}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
+            {isAdmin && (
+              <button
+                onClick={handleToggleKhoVisibility}
+                disabled={isTogglingKho}
+                className={`inline-flex items-center gap-1.5 font-bold text-xs px-3.5 py-1.5 rounded-full border transition-all shadow-xs ${
+                  isPublic
+                    ? 'bg-blue-50 hover:bg-blue-100 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300 border-blue-200 dark:border-blue-800'
+                    : 'bg-amber-50 hover:bg-amber-100 text-amber-700 dark:bg-amber-950/60 dark:text-amber-300 border-amber-200 dark:border-amber-800'
+                }`}
+                title={
+                  isPublic
+                    ? 'Kho tài liệu đang hiển thị công khai cho mọi người - Bấm để tạm ẩn chỉ Admin xem'
+                    : 'Kho tài liệu đang tạm ẩn - Bấm để mở hiển thị công khai cho người khác xem'
+                }
+              >
+                {isTogglingKho ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                ) : isPublic ? (
+                  <Globe className="w-3.5 h-3.5 text-blue-600" />
+                ) : (
+                  <Lock className="w-3.5 h-3.5 text-amber-600" />
+                )}
+                <span>{isPublic ? 'Kho: Công khai' : 'Kho: Tạm ẩn'}</span>
+              </button>
+            )}
+
             <button
               onClick={handleSyncFolder}
               disabled={isSyncing}
@@ -590,12 +724,16 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
               return (
                 <div
                   key={item.id}
-                  className="bg-white dark:bg-gray-900 border border-gray-200/90 dark:border-gray-800 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-200 flex flex-col justify-between"
+                  className={`bg-white dark:bg-gray-900 border rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-200 flex flex-col justify-between ${
+                    item.isHidden
+                      ? 'border-rose-300/80 dark:border-rose-900/60 bg-rose-50/15 dark:bg-rose-950/10 hover:border-rose-400'
+                      : 'border-gray-200/90 dark:border-gray-800 hover:border-blue-400 dark:hover:border-blue-600'
+                  }`}
                 >
                   <div>
                     {/* Top row: Icon, HOT, Category, Bookmark */}
                     <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2.5">
+                      <div className="flex items-center gap-2 flex-wrap">
                         <div className="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                           {item.fileType === 'xlsx' ? (
                             <FileSpreadsheet className="w-5 h-5 text-emerald-600" />
@@ -615,9 +753,47 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
                         <span className="bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 text-xs font-semibold px-2.5 py-0.5 rounded-full border border-blue-100 dark:border-blue-900/40">
                           {item.categoryLabel}
                         </span>
+
+                        {isAdmin && item.isHidden && (
+                          <span className="bg-rose-100 text-rose-700 dark:bg-rose-950/80 dark:text-rose-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase flex items-center gap-1 border border-rose-300 dark:border-rose-800">
+                            <EyeOff className="w-2.5 h-2.5" />
+                            Đang ẩn
+                          </span>
+                        )}
                       </div>
 
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-1.5">
+                        {isAdmin && (
+                          <button
+                            onClick={e => handleToggleItemVisibility(item, e)}
+                            disabled={togglingItemId === item.id}
+                            className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all border ${
+                              item.isHidden
+                                ? 'bg-rose-50 hover:bg-rose-100 text-rose-700 dark:bg-rose-950/80 dark:text-rose-300 border-rose-300 dark:border-rose-800'
+                                : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                            }`}
+                            title={
+                              item.isHidden
+                                ? 'Đang ẩn với người khác - Bấm để hiển thị'
+                                : 'Đang hiển thị cho người khác xem - Bấm để ẩn'
+                            }
+                          >
+                            {togglingItemId === item.id ? (
+                              <Loader2 className="w-3 h-3 animate-spin" />
+                            ) : item.isHidden ? (
+                              <>
+                                <EyeOff className="w-3 h-3 text-rose-600" />
+                                <span>Không hiển thị</span>
+                              </>
+                            ) : (
+                              <>
+                                <Eye className="w-3 h-3 text-emerald-600" />
+                                <span>Hiển thị</span>
+                              </>
+                            )}
+                          </button>
+                        )}
+
                         {isAdmin && (
                           <button
                             onClick={e => {
@@ -751,6 +927,26 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
                 <span className="text-xs text-gray-400 font-medium">
                   Định dạng .{activeModalItem.fileType.toUpperCase()} • {activeModalItem.fileSize}
                 </span>
+
+                {isAdmin && (
+                  <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${
+                    activeModalItem.isHidden
+                      ? 'bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border-rose-200 dark:border-rose-800'
+                      : 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
+                  }`}>
+                    {activeModalItem.isHidden ? (
+                      <>
+                        <EyeOff className="w-2.5 h-2.5 text-rose-600" />
+                        <span>Không hiển thị</span>
+                      </>
+                    ) : (
+                      <>
+                        <Eye className="w-2.5 h-2.5 text-emerald-600" />
+                        <span>Hiển thị</span>
+                      </>
+                    )}
+                  </span>
+                )}
               </div>
 
               <div className="flex items-center gap-2 pr-10">
@@ -1181,13 +1377,44 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
                     </div>
 
                     {isAdmin && !isEditingInfo && (
-                      <button
-                        onClick={() => startEditInfo(activeModalItem)}
-                        className="bg-amber-600 hover:bg-amber-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2"
-                      >
-                        <Pencil className="w-3.5 h-3.5" />
-                        <span>Điều chỉnh thông tin & Tóm tắt</span>
-                      </button>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <button
+                          onClick={() => handleToggleItemVisibility(activeModalItem)}
+                          disabled={togglingItemId === activeModalItem.id}
+                          className={`text-xs font-bold px-3 py-2 rounded-xl border transition-all flex items-center gap-1.5 shadow-xs ${
+                            activeModalItem.isHidden
+                              ? 'bg-rose-100 hover:bg-rose-200 text-rose-700 dark:bg-rose-950/80 dark:text-rose-300 border-rose-300'
+                              : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200'
+                          }`}
+                          title={
+                            activeModalItem.isHidden
+                              ? 'Đang ẩn với người khác - Bấm để hiển thị'
+                              : 'Đang hiển thị cho người khác xem - Bấm để ẩn'
+                          }
+                        >
+                          {togglingItemId === activeModalItem.id ? (
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          ) : activeModalItem.isHidden ? (
+                            <>
+                              <EyeOff className="w-3.5 h-3.5 text-rose-600" />
+                              <span>Không hiển thị (Bấm để mở)</span>
+                            </>
+                          ) : (
+                            <>
+                              <Eye className="w-3.5 h-3.5 text-emerald-600" />
+                              <span>Đang hiển thị (Bấm để ẩn)</span>
+                            </>
+                          )}
+                        </button>
+
+                        <button
+                          onClick={() => startEditInfo(activeModalItem)}
+                          className="bg-amber-600 hover:bg-amber-700 text-white text-xs sm:text-sm font-bold px-4 py-2 rounded-xl shadow-sm transition-all flex items-center gap-2"
+                        >
+                          <Pencil className="w-3.5 h-3.5" />
+                          <span>Điều chỉnh</span>
+                        </button>
+                      </div>
                     )}
                   </div>
 
@@ -1340,6 +1567,66 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
                           </p>
                         </div>
 
+                        {/* Trạng thái hiển thị */}
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">
+                            Trạng thái hiển thị cho người khác xem *
+                          </label>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label
+                              onClick={() => setEditIsHidden(false)}
+                              className={`flex items-start gap-2.5 p-3 rounded-xl border cursor-pointer transition-all ${
+                                !editIsHidden
+                                  ? 'bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 ring-2 ring-emerald-500/20'
+                                  : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50'
+                              }`}
+                            >
+                              <input
+                                type="radio"
+                                name="formVisibility"
+                                checked={!editIsHidden}
+                                onChange={() => setEditIsHidden(false)}
+                                className="mt-0.5 text-emerald-600 focus:ring-emerald-500"
+                              />
+                              <div>
+                                <div className="text-xs font-bold flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300">
+                                  <Eye className="w-3.5 h-3.5" />
+                                  <span>Hiển thị biểu mẫu</span>
+                                </div>
+                                <div className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
+                                  Công khai để người khác có thể tìm kiếm, xem trước và tải về.
+                                </div>
+                              </div>
+                            </label>
+
+                            <label
+                              onClick={() => setEditIsHidden(true)}
+                              className={`flex items-start gap-2.5 p-3 rounded-xl border cursor-pointer transition-all ${
+                                editIsHidden
+                                  ? 'bg-rose-50/80 dark:bg-rose-950/40 border-rose-300 dark:border-rose-700 text-rose-950 dark:text-rose-200 ring-2 ring-rose-500/20'
+                                  : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50'
+                              }`}
+                            >
+                              <input
+                                type="radio"
+                                name="formVisibility"
+                                checked={editIsHidden}
+                                onChange={() => setEditIsHidden(true)}
+                                className="mt-0.5 text-rose-600 focus:ring-rose-500"
+                              />
+                              <div>
+                                <div className="text-xs font-bold flex items-center gap-1.5 text-rose-800 dark:text-rose-300">
+                                  <EyeOff className="w-3.5 h-3.5" />
+                                  <span>Không hiển thị (Tạm ẩn)</span>
+                                </div>
+                                <div className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5">
+                                  Chỉ có Admin nhìn thấy, người khác sẽ không thấy biểu mẫu này.
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                        </div>
+
                         {/* Checkboxes: Featured & isHot */}
                         <div className="flex flex-wrap items-center gap-6 pt-1">
                           <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-gray-700 dark:text-gray-300">
@@ -1395,6 +1682,46 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
                   ) : (
                     /* Normal View */
                     <div className="space-y-4">
+                      {isAdmin && (
+                        <div className={`p-3.5 rounded-xl border flex flex-wrap items-center justify-between gap-3 text-xs ${
+                          activeModalItem.isHidden
+                            ? 'bg-rose-50/70 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800 text-rose-900 dark:text-rose-200'
+                            : 'bg-emerald-50/70 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200'
+                        }`}>
+                          <div className="flex items-center gap-2.5">
+                            {activeModalItem.isHidden ? (
+                              <EyeOff className="w-4 h-4 text-rose-600 shrink-0" />
+                            ) : (
+                              <Eye className="w-4 h-4 text-emerald-600 shrink-0" />
+                            )}
+                            <div>
+                              <span className="font-bold">
+                                {activeModalItem.isHidden
+                                  ? 'Biểu mẫu này đang: Không hiển thị (Tạm ẩn)'
+                                  : 'Biểu mẫu này đang: Hiển thị công khai'}
+                              </span>
+                              <div className="text-[11px] opacity-80 mt-0.5">
+                                {activeModalItem.isHidden
+                                  ? 'Chỉ có Admin mới thấy biểu mẫu này. Người dùng thông thường sẽ không nhìn thấy.'
+                                  : 'Tất cả mọi người đều có thể tìm kiếm, xem trước và tải biểu mẫu này.'}
+                              </div>
+                            </div>
+                          </div>
+
+                          <button
+                            onClick={() => handleToggleItemVisibility(activeModalItem)}
+                            disabled={togglingItemId === activeModalItem.id}
+                            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all shadow-xs shrink-0 ${
+                              activeModalItem.isHidden
+                                ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                                : 'bg-rose-600 hover:bg-rose-700 text-white'
+                            }`}
+                          >
+                            {activeModalItem.isHidden ? 'Mở hiển thị' : 'Ẩn biểu mẫu'}
+                          </button>
+                        </div>
+                      )}
+
                       <div className="bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 rounded-2xl p-5">
                         <div className="text-xs font-bold uppercase tracking-wider text-blue-900 dark:text-blue-300 mb-1.5 flex items-center justify-between">
                           <span>Tóm tắt & Mục đích sử dụng</span>

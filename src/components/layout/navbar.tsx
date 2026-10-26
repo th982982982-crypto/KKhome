@@ -23,9 +23,10 @@ interface NavbarProps {
   isAdmin?: boolean
   canViewLegal?: boolean
   canViewTax?: boolean
+  isTaiLieuPublic?: boolean
 }
 
-export function Navbar({ user, isAdmin, canViewLegal, canViewTax }: NavbarProps) {
+export function Navbar({ user, isAdmin, canViewLegal, canViewTax, isTaiLieuPublic = true }: NavbarProps) {
   const cartItems = useCartStore((s) => s.items)
   const cartCount = cartItems.length
   const cartTotal = useCartStore((s) => s.total)
@@ -71,7 +72,7 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax }: NavbarProps)
           <nav className="hidden md:flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-300">
             <Link href="/templates" className="px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">Templates</Link>
             <Link href="/packages" className="px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">Gói mua</Link>
-            {isAdmin && (
+            {(isAdmin || isTaiLieuPublic) && (
               <Link href="/tai-lieu" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-950/40 text-blue-900 dark:text-blue-300 font-semibold transition-colors">
                 <FileText className="w-3.5 h-3.5 text-blue-600" />Tài liệu
               </Link>
@@ -248,7 +249,7 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax }: NavbarProps)
               <Link href="/packages" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                 <Package className="w-4 h-4 text-gray-400" /> Gói mua
               </Link>
-              {isAdmin && (
+              {(isAdmin || isTaiLieuPublic) && (
                 <Link href="/tai-lieu" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                   <FileText className="w-4 h-4 text-blue-500" /> Kho Tài liệu
                 </Link>

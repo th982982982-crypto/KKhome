@@ -84,6 +84,7 @@ export interface TaiLieuMetadataOverride {
   featured?: boolean
   isHot?: boolean
   highlights?: string[]
+  isHidden?: boolean
 }
 
 export function readMetadataOverrides(): Record<string, TaiLieuMetadataOverride> {
@@ -103,6 +104,26 @@ export function writeMetadataOverrides(data: Record<string, TaiLieuMetadataOverr
     return true
   } catch (err) {
     console.error('Lỗi khi ghi tai-lieu-metadata.json:', err)
+    return false
+  }
+}
+
+export function isTaiLieuPublic(): boolean {
+  try {
+    const data = readMetadataOverrides()
+    if ((data as any).__settings?.isPublic !== undefined) {
+      return Boolean((data as any).__settings.isPublic)
+    }
+  } catch {}
+  return true // Mặc định mở công khai để người khác có thể xem
+}
+
+export function setTaiLieuPublic(isPublic: boolean): boolean {
+  try {
+    const data = readMetadataOverrides()
+    ;(data as any).__settings = { ...(data as any).__settings, isPublic }
+    return writeMetadataOverrides(data)
+  } catch {
     return false
   }
 }
@@ -452,6 +473,7 @@ export function scanTaiLieuDirectory(): TaiLieuItem[] {
         if (meta.featured !== undefined) item.featured = meta.featured
         if (meta.isHot !== undefined) item.isHot = meta.isHot
         if (meta.highlights !== undefined) item.highlights = meta.highlights
+        if (meta.isHidden !== undefined) item.isHidden = meta.isHidden
       }
 
       newItems.push(item)
@@ -498,6 +520,7 @@ export function writeTaiLieuDataFile(items: TaiLieuItem[]): boolean {
   version?: string
   fileHash?: string
   highlights?: string[]
+  isHidden?: boolean
 }
 
 export function getPreviewPdfUrl(item: TaiLieuItem): string {

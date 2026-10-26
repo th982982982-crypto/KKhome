@@ -74,6 +74,7 @@ export async function POST(request: NextRequest) {
       featured,
       isHot,
       highlights,
+      isHidden,
     } = body
 
     if (!id) {
@@ -124,6 +125,7 @@ export async function POST(request: NextRequest) {
       featured: featured !== undefined ? Boolean(featured) : existing.featured,
       isHot: isHot !== undefined ? Boolean(isHot) : existing.isHot,
       highlights: processedHighlights !== undefined ? processedHighlights : existing.highlights,
+      isHidden: isHidden !== undefined ? Boolean(isHidden) : existing.isHidden,
     }
 
     allMetadata[id] = newOverride

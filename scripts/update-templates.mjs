@@ -494,6 +494,7 @@ export function scanTemplates() {
       if (meta.featured !== undefined) item.featured = meta.featured
       if (meta.isHot !== undefined) item.isHot = meta.isHot
       if (meta.highlights !== undefined) item.highlights = meta.highlights
+      if (meta.isHidden !== undefined) item.isHidden = meta.isHidden
     }
 
     newItems.push(item)
@@ -538,6 +539,7 @@ export function writeTaiLieuData(items) {
   version?: string
   fileHash?: string
   highlights?: string[]
+  isHidden?: boolean
 }
 
 export function getPreviewPdfUrl(item: TaiLieuItem): string {
