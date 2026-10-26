@@ -8,6 +8,7 @@ const TAI_LIEU_SRC_DIR = path.join(ROOT_DIR, 'Tai Lieu')
 const PUBLIC_TAI_LIEU_DIR = path.join(ROOT_DIR, 'public', 'tai-lieu')
 const DATA_FILE = path.join(ROOT_DIR, 'src', 'lib', 'tai-lieu-data.ts')
 const VERSIONS_FILE = path.join(ROOT_DIR, 'src', 'lib', 'tai-lieu-versions.json')
+const METADATA_FILE = path.join(ROOT_DIR, 'src', 'lib', 'tai-lieu-metadata.json')
 
 export function getFileHash(filePath: string): string {
   try {
@@ -68,6 +69,40 @@ export function writeVersionsData(data: Record<string, any[]>): boolean {
     return true
   } catch (err) {
     console.error('Lỗi khi ghi tai-lieu-versions.json:', err)
+    return false
+  }
+}
+
+export interface TaiLieuMetadataOverride {
+  title?: string
+  code?: string
+  description?: string
+  category?: string
+  categoryLabel?: string
+  year?: number
+  tags?: string[]
+  featured?: boolean
+  isHot?: boolean
+  highlights?: string[]
+}
+
+export function readMetadataOverrides(): Record<string, TaiLieuMetadataOverride> {
+  if (!fs.existsSync(METADATA_FILE)) return {}
+  try {
+    const raw = fs.readFileSync(METADATA_FILE, 'utf-8')
+    return JSON.parse(raw)
+  } catch (err) {
+    console.error('Lỗi khi đọc file tai-lieu-metadata.json:', err)
+  }
+  return {}
+}
+
+export function writeMetadataOverrides(data: Record<string, TaiLieuMetadataOverride>): boolean {
+  try {
+    fs.writeFileSync(METADATA_FILE, JSON.stringify(data, null, 2), 'utf-8')
+    return true
+  } catch (err) {
+    console.error('Lỗi khi ghi tai-lieu-metadata.json:', err)
     return false
   }
 }
@@ -232,6 +267,7 @@ export function scanTaiLieuDirectory(): TaiLieuItem[] {
     })
 
     const allVersions = readVersionsData()
+    const allMetadata = readMetadataOverrides()
     let versionsChanged = false
 
     const newItems: TaiLieuItem[] = []
@@ -342,8 +378,10 @@ export function scanTaiLieuDirectory(): TaiLieuItem[] {
         }
       }
 
+      let item: TaiLieuItem
+
       if (existing) {
-        newItems.push({
+        item = {
           ...existing,
           id: itemId,
           filename: fn,
@@ -354,7 +392,7 @@ export function scanTaiLieuDirectory(): TaiLieuItem[] {
           version: currentVersion,
           fileHash,
           lastModified: f.stat.mtime.toISOString(),
-        })
+        }
       } else {
         let title = fn
           .replace(new RegExp(`^${code}_?`, 'i'), '')
@@ -379,7 +417,7 @@ export function scanTaiLieuDirectory(): TaiLieuItem[] {
         if (category === 'hop_dong') tags.push('Hợp đồng')
         if (category === 'kpi') tags.push('KPI')
 
-        newItems.push({
+        item = {
           id: itemId,
           code,
           title,
@@ -398,8 +436,25 @@ export function scanTaiLieuDirectory(): TaiLieuItem[] {
           version: currentVersion,
           fileHash,
           lastModified: f.stat.mtime.toISOString(),
-        })
+        }
       }
+
+      // Merge metadata overrides if any
+      const meta = allMetadata[itemId] || allMetadata[fn] || allMetadata[downloadUrl]
+      if (meta) {
+        if (meta.title) item.title = meta.title
+        if (meta.code) item.code = meta.code
+        if (meta.description) item.description = meta.description
+        if (meta.category) item.category = meta.category
+        if (meta.categoryLabel) item.categoryLabel = meta.categoryLabel
+        if (meta.year) item.year = meta.year
+        if (meta.tags) item.tags = meta.tags
+        if (meta.featured !== undefined) item.featured = meta.featured
+        if (meta.isHot !== undefined) item.isHot = meta.isHot
+        if (meta.highlights !== undefined) item.highlights = meta.highlights
+      }
+
+      newItems.push(item)
     }
 
     if (versionsChanged) {
@@ -442,6 +497,7 @@ export function writeTaiLieuDataFile(items: TaiLieuItem[]): boolean {
   hasPreviewPdf?: boolean
   version?: string
   fileHash?: string
+  highlights?: string[]
 }
 
 export function getPreviewPdfUrl(item: TaiLieuItem): string {

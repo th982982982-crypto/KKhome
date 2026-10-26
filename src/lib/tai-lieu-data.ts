@@ -17,6 +17,7 @@ export interface TaiLieuItem {
   hasPreviewPdf?: boolean
   version?: string
   fileHash?: string
+  highlights?: string[]
 }
 
 export function getPreviewPdfUrl(item: TaiLieuItem): string {
@@ -28,7 +29,7 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
   {
     "id": "tl_1",
     "code": "NS01",
-    "title": "So Quan Ly Lao Dong",
+    "title": "Sổ Quản Lý Lao Động 2026",
     "filename": "NS01_So_Quan_Ly_Lao_Dong.xlsx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
@@ -41,7 +42,8 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/01_Ho_So_Lao_Dong_Va_Hop_Dong/NS01_So_Quan_Ly_Lao_Dong.xlsx",
     "tags": [
       "Nhân sự",
-      "Excel"
+      "Excel",
+      "Quản lý lao động"
     ],
     "hasPreviewPdf": true,
     "lastModified": "2026-10-25T16:13:40.877Z",

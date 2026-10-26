@@ -11,6 +11,7 @@ const TAI_LIEU_SRC_DIR = path.join(ROOT_DIR, 'Tai Lieu')
 const PUBLIC_TAI_LIEU_DIR = path.join(ROOT_DIR, 'public', 'tai-lieu')
 const DATA_FILE = path.join(ROOT_DIR, 'src', 'lib', 'tai-lieu-data.ts')
 const VERSIONS_FILE = path.join(ROOT_DIR, 'src', 'lib', 'tai-lieu-versions.json')
+const METADATA_FILE = path.join(ROOT_DIR, 'src', 'lib', 'tai-lieu-metadata.json')
 
 const BASE_CATEGORIES = [
   '01_NHAN_SU_VA_TIEN_LUONG',
@@ -199,6 +200,27 @@ export function writeVersionsData(data) {
   }
 }
 
+export function readMetadataOverrides() {
+  if (!fs.existsSync(METADATA_FILE)) return {}
+  try {
+    const raw = fs.readFileSync(METADATA_FILE, 'utf-8')
+    return JSON.parse(raw)
+  } catch (err) {
+    console.error('Lỗi khi đọc file tai-lieu-metadata.json:', err)
+  }
+  return {}
+}
+
+export function writeMetadataOverrides(data) {
+  try {
+    fs.writeFileSync(METADATA_FILE, JSON.stringify(data, null, 2), 'utf-8')
+    return true
+  } catch (err) {
+    console.error('Lỗi khi ghi tai-lieu-metadata.json:', err)
+    return false
+  }
+}
+
 // 3. Scan templates from public/tai-lieu
 export function scanTemplates() {
   if (!fs.existsSync(PUBLIC_TAI_LIEU_DIR)) {
@@ -221,6 +243,7 @@ export function scanTemplates() {
 
   // Load versions data
   const allVersions = readVersionsData()
+  const allMetadata = readMetadataOverrides()
   let versionsChanged = false
   const bumpedItems = []
 
@@ -397,8 +420,9 @@ export function scanTemplates() {
       }
     }
 
+    let item
     if (existing) {
-      newItems.push({
+      item = {
         ...existing,
         id: itemId,
         filename: fn,
@@ -409,7 +433,7 @@ export function scanTemplates() {
         version: currentVersion,
         fileHash,
         lastModified: f.stat.mtime.toISOString()
-      })
+      }
     } else {
       // Create new template item
       let title = fn
@@ -435,7 +459,7 @@ export function scanTemplates() {
       if (category === 'hop_dong') tags.push('Hợp đồng')
       if (category === 'kpi') tags.push('KPI')
 
-      newItems.push({
+      item = {
         id: itemId,
         code,
         title,
@@ -454,8 +478,25 @@ export function scanTemplates() {
         version: currentVersion,
         fileHash,
         lastModified: f.stat.mtime.toISOString()
-      })
+      }
     }
+
+    // Merge metadata overrides if any
+    const meta = allMetadata[itemId] || allMetadata[fn] || allMetadata[downloadUrl]
+    if (meta) {
+      if (meta.title) item.title = meta.title
+      if (meta.code) item.code = meta.code
+      if (meta.description) item.description = meta.description
+      if (meta.category) item.category = meta.category
+      if (meta.categoryLabel) item.categoryLabel = meta.categoryLabel
+      if (meta.year) item.year = meta.year
+      if (meta.tags) item.tags = meta.tags
+      if (meta.featured !== undefined) item.featured = meta.featured
+      if (meta.isHot !== undefined) item.isHot = meta.isHot
+      if (meta.highlights !== undefined) item.highlights = meta.highlights
+    }
+
+    newItems.push(item)
   }
 
   // Save versions data if updated
@@ -496,6 +537,7 @@ export function writeTaiLieuData(items) {
   hasPreviewPdf?: boolean
   version?: string
   fileHash?: string
+  highlights?: string[]
 }
 
 export function getPreviewPdfUrl(item: TaiLieuItem): string {

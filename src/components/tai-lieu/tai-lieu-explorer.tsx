@@ -28,7 +28,8 @@ import {
   History,
   Clock,
   Plus,
-  RefreshCw
+  RefreshCw,
+  Pencil
 } from 'lucide-react'
 
 const CATEGORIES = [
@@ -79,6 +80,21 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
   const [newReleaseDate, setNewReleaseDate] = useState('')
   const [newChangelog, setNewChangelog] = useState('')
   const [savingVersion, setSavingVersion] = useState(false)
+
+  // Edit info state
+  const [isEditingInfo, setIsEditingInfo] = useState(false)
+  const [editTitle, setEditTitle] = useState('')
+  const [editCode, setEditCode] = useState('')
+  const [editCategory, setEditCategory] = useState('nhan_su')
+  const [editYear, setEditYear] = useState<number | string>(2026)
+  const [editDescription, setEditDescription] = useState('')
+  const [editHighlights, setEditHighlights] = useState('')
+  const [editTags, setEditTags] = useState('')
+  const [editFeatured, setEditFeatured] = useState(false)
+  const [editIsHot, setEditIsHot] = useState(false)
+  const [isSavingInfo, setIsSavingInfo] = useState(false)
+  const [infoSaveSuccess, setInfoSaveSuccess] = useState<string | null>(null)
+  const [infoSaveError, setInfoSaveError] = useState<string | null>(null)
 
   // Fetch all custom versions
   useEffect(() => {
@@ -193,7 +209,89 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
     }
   }
 
+  function startEditInfo(item: TaiLieuItem) {
+    setEditTitle(item.title)
+    setEditCode(item.code)
+    setEditCategory(item.category)
+    setEditYear(item.year || 2026)
+    setEditDescription(item.description || '')
+    const currentHighlights = item.highlights && item.highlights.length > 0
+      ? item.highlights
+      : [
+          `Áp dụng chuẩn quy định pháp luật năm ${item.year || 2026}.`,
+          `Bảo toàn 100% công thức tính toán tự động trong bảng tính ${item.fileType ? item.fileType.toUpperCase() : 'Excel'}.`,
+          `Sẵn sàng chỉnh sửa, in ấn và áp dụng ngay cho doanh nghiệp.`
+        ]
+    setEditHighlights(currentHighlights.join('\n'))
+    setEditTags(item.tags ? item.tags.join(', ') : '')
+    setEditFeatured(Boolean(item.featured))
+    setEditIsHot(Boolean(item.isHot))
+    setInfoSaveSuccess(null)
+    setInfoSaveError(null)
+    setIsEditingInfo(true)
+  }
+
+  function cancelEditInfo() {
+    setIsEditingInfo(false)
+    setInfoSaveSuccess(null)
+    setInfoSaveError(null)
+  }
+
+  async function handleSaveInfo(e: React.FormEvent) {
+    e.preventDefault()
+    if (!activeModalItem) return
+    setIsSavingInfo(true)
+    setInfoSaveError(null)
+    setInfoSaveSuccess(null)
+
+    try {
+      const res = await fetch('/api/admin/tai-lieu/info', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: activeModalItem.id,
+          title: editTitle,
+          code: editCode,
+          category: editCategory,
+          year: Number(editYear),
+          description: editDescription,
+          highlights: editHighlights.split('\n').map(s => s.trim().replace(/^[-*•]\s*/, '')).filter(Boolean),
+          tags: editTags.split(',').map(s => s.trim().replace(/^#/, '')).filter(Boolean),
+          featured: editFeatured,
+          isHot: editIsHot,
+        }),
+      })
+
+      const data = await res.json()
+      if (!res.ok || data.error) {
+        throw new Error(data.error || 'Lỗi khi lưu thông tin biểu mẫu')
+      }
+
+      if (data.item) {
+        setItems(prev => prev.map(it => it.id === data.item.id ? data.item : it))
+        setActiveModalItem(data.item)
+      }
+
+      setInfoSaveSuccess('Đã cập nhật thông tin và tóm tắt thành công!')
+      toast.success('Đã lưu thông tin biểu mẫu thành công!')
+      setTimeout(() => {
+        setIsEditingInfo(false)
+        setInfoSaveSuccess(null)
+      }, 1000)
+    } catch (err: any) {
+      setInfoSaveError(err?.message || 'Không thể lưu thông tin')
+      toast.error(err?.message || 'Lỗi khi lưu thông tin biểu mẫu')
+    } finally {
+      setIsSavingInfo(false)
+    }
+  }
+
   useEffect(() => {
+    setIsEditingInfo(false)
+    setInfoSaveSuccess(null)
+    setInfoSaveError(null)
+    setShowVersionForm(false)
+
     if (!activeModalItem) {
       setPreviewData(null)
       setPreviewError(null)
@@ -519,13 +617,30 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
                         </span>
                       </div>
 
-                      <button
-                        onClick={e => toggleBookmark(item.id, e)}
-                        className="text-gray-300 hover:text-blue-600 transition-colors p-1"
-                        title={isSaved ? 'Bỏ lưu' : 'Lưu tài liệu'}
-                      >
-                        <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-blue-600 text-blue-600' : ''}`} />
-                      </button>
+                      <div className="flex items-center gap-1">
+                        {isAdmin && (
+                          <button
+                            onClick={e => {
+                              e.stopPropagation()
+                              setActiveModalItem(item)
+                              setPreviewTab('info')
+                              startEditInfo(item)
+                            }}
+                            className="text-gray-400 hover:text-amber-600 transition-colors p-1 rounded-lg hover:bg-amber-50 dark:hover:bg-amber-950/40"
+                            title="Điều chỉnh thông tin & tóm tắt"
+                          >
+                            <Pencil className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+
+                        <button
+                          onClick={e => toggleBookmark(item.id, e)}
+                          className="text-gray-300 hover:text-blue-600 transition-colors p-1"
+                          title={isSaved ? 'Bỏ lưu' : 'Lưu tài liệu'}
+                        >
+                          <Bookmark className={`w-4 h-4 ${isSaved ? 'fill-blue-600 text-blue-600' : ''}`} />
+                        </button>
+                      </div>
                     </div>
 
                     {/* Title (Bold deep blue) */}
@@ -638,9 +753,23 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
                 </span>
               </div>
 
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-50 leading-snug line-clamp-2 pr-10">
-                {activeModalItem.title}
-              </h3>
+              <div className="flex items-center gap-2 pr-10">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-50 leading-snug line-clamp-2">
+                  {activeModalItem.title}
+                </h3>
+                {isAdmin && (
+                  <button
+                    onClick={() => {
+                      setPreviewTab('info')
+                      startEditInfo(activeModalItem)
+                    }}
+                    title="Điều chỉnh thông tin & tóm tắt biểu mẫu"
+                    className="p-1.5 rounded-lg text-gray-400 hover:text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-950/40 transition-colors shrink-0"
+                  >
+                    <Pencil className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
 
               {/* Tab Selector */}
               <div className="flex flex-wrap items-center gap-2 mt-4">
@@ -1032,38 +1161,284 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieu
               ) : (
                 /* Information Tab */
                 <div className="space-y-4 max-w-3xl mx-auto py-2">
-                  <div className="bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 rounded-2xl p-5">
-                    <div className="text-xs font-bold uppercase tracking-wider text-blue-900 dark:text-blue-300 mb-1.5">
-                      Tóm tắt & Mục đích sử dụng
-                    </div>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {activeModalItem.description}
-                    </p>
-                  </div>
-
-                  <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 space-y-3 text-sm">
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                      <span>Áp dụng chuẩn quy định pháp luật năm <strong>{activeModalItem.year}</strong>.</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                      <span>Bảo toàn 100% công thức tính toán tự động trong bảng tính Excel.</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                      <span>Sẵn sàng chỉnh sửa, in ấn và áp dụng ngay cho doanh nghiệp.</span>
-                    </div>
-                  </div>
-
-                  {activeModalItem.tags.length > 0 && (
-                    <div className="flex items-center gap-2 flex-wrap pt-2">
-                      <span className="text-xs text-gray-400">Từ khóa liên quan:</span>
-                      {activeModalItem.tags.map((t, idx) => (
-                        <span key={idx} className="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs px-2.5 py-1 rounded-lg">
-                          #{t}
+                  {/* Top Bar with Admin action */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-gray-900 p-4 sm:p-5 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm">
+                    <div>
+                      <div className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Thông tin chi tiết & Căn cứ áp dụng</div>
+                      <div className="flex items-center gap-2 mt-1 flex-wrap">
+                        <span className="text-sm font-bold text-gray-800 dark:text-gray-200">
+                          Mã: <span className="text-blue-600 dark:text-blue-400 font-mono font-extrabold">{activeModalItem.code}</span>
                         </span>
-                      ))}
+                        <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+                        <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">
+                          Danh mục: <strong className="text-gray-800 dark:text-gray-200">{activeModalItem.categoryLabel}</strong>
+                        </span>
+                        <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+                        <span className="text-xs font-semibold text-gray-600 dark:text-gray-400">
+                          Năm: <strong className="text-gray-800 dark:text-gray-200">{activeModalItem.year}</strong>
+                        </span>
+                      </div>
+                    </div>
+
+                    {isAdmin && !isEditingInfo && (
+                      <button
+                        onClick={() => startEditInfo(activeModalItem)}
+                        className="bg-amber-600 hover:bg-amber-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2"
+                      >
+                        <Pencil className="w-3.5 h-3.5" />
+                        <span>Điều chỉnh thông tin & Tóm tắt</span>
+                      </button>
+                    )}
+                  </div>
+
+                  {isEditingInfo ? (
+                    /* Edit Form */
+                    <form onSubmit={handleSaveInfo} className="bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/80 rounded-2xl p-5 space-y-4 animate-in fade-in duration-200 shadow-md">
+                      <div className="flex items-center justify-between pb-2 border-b border-amber-200/60 dark:border-amber-900/60">
+                        <div>
+                          <h4 className="font-bold text-sm sm:text-base text-amber-950 dark:text-amber-200 flex items-center gap-2">
+                            <Pencil className="w-4 h-4 text-amber-600" />
+                            Điều chỉnh thông tin & Tóm tắt biểu mẫu
+                          </h4>
+                          <p className="text-xs text-amber-800/80 dark:text-amber-300/80 mt-0.5">
+                            Cập nhật tiêu đề tiếng Việt chuẩn, tóm tắt mục đích, từ khóa và đặc quyền hiển thị.
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={cancelEditInfo}
+                          className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-1 rounded-lg"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      {infoSaveError && (
+                        <div className="p-3 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 rounded-xl text-xs text-red-600 dark:text-red-300 flex items-center gap-2">
+                          <AlertCircle className="w-4 h-4 shrink-0" />
+                          <span>{infoSaveError}</span>
+                        </div>
+                      )}
+
+                      {infoSaveSuccess && (
+                        <div className="p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-xl text-xs text-emerald-700 dark:text-emerald-300 flex items-center gap-2">
+                          <Check className="w-4 h-4 shrink-0" />
+                          <span>{infoSaveSuccess}</span>
+                        </div>
+                      )}
+
+                      <div className="space-y-3.5">
+                        {/* Title */}
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                            Tiêu đề biểu mẫu (Tiếng Việt chuẩn có dấu) *
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            value={editTitle}
+                            onChange={(e) => setEditTitle(e.target.value)}
+                            placeholder="Ví dụ: Sổ Quản Lý Lao Động 2026"
+                            className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 font-semibold"
+                          />
+                        </div>
+
+                        {/* Code, Category, Year */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                          <div>
+                            <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                              Mã biểu mẫu *
+                            </label>
+                            <input
+                              type="text"
+                              required
+                              value={editCode}
+                              onChange={(e) => setEditCode(e.target.value)}
+                              placeholder="Ví dụ: NS01"
+                              className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono font-bold"
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                              Phân loại danh mục *
+                            </label>
+                            <select
+                              value={editCategory}
+                              onChange={(e) => setEditCategory(e.target.value)}
+                              className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 font-medium"
+                            >
+                              <option value="nhan_su">Nhân sự - Lương</option>
+                              <option value="ke_toan">Kế toán - Thuế</option>
+                              <option value="thue">Pháp lý doanh nghiệp & Thuế</option>
+                              <option value="bhxh">Bảo hiểm Xã hội</option>
+                              <option value="kpi">Đánh giá KPI</option>
+                              <option value="hop_dong">Hợp đồng & Biểu mẫu</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                              Năm áp dụng *
+                            </label>
+                            <input
+                              type="number"
+                              required
+                              value={editYear}
+                              onChange={(e) => setEditYear(e.target.value)}
+                              className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 font-semibold"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Description / Summary */}
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                            Tóm tắt & Mục đích sử dụng *
+                          </label>
+                          <textarea
+                            required
+                            rows={3}
+                            value={editDescription}
+                            onChange={(e) => setEditDescription(e.target.value)}
+                            placeholder="Mô tả mục đích sử dụng, căn cứ pháp lý, đối tượng áp dụng..."
+                            className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl p-3 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 leading-relaxed"
+                          />
+                        </div>
+
+                        {/* Highlights */}
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                            Các điểm nổi bật & Căn cứ áp dụng (mỗi dòng một gạch đầu dòng)
+                          </label>
+                          <textarea
+                            rows={3}
+                            value={editHighlights}
+                            onChange={(e) => setEditHighlights(e.target.value)}
+                            placeholder="Áp dụng chuẩn quy định pháp luật năm 2026.&#10;Bảo toàn 100% công thức tính toán tự động trong bảng tính Excel.&#10;Sẵn sàng chỉnh sửa, in ấn và áp dụng ngay cho doanh nghiệp."
+                            className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl p-3 text-xs sm:text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500 leading-relaxed font-mono"
+                          />
+                          <p className="text-[11px] text-gray-400 mt-1">
+                            Mỗi dòng sẽ hiển thị thành một gạch đầu dòng có dấu tích xanh (Check) trong phần thông tin.
+                          </p>
+                        </div>
+
+                        {/* Tags */}
+                        <div>
+                          <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
+                            Từ khóa tìm kiếm (phân cách bởi dấu phẩy)
+                          </label>
+                          <input
+                            type="text"
+                            value={editTags}
+                            onChange={(e) => setEditTags(e.target.value)}
+                            placeholder="Nhân sự, Excel, Quản lý lao động, Nghị định 145"
+                            className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                          />
+                          <p className="text-[11px] text-gray-400 mt-1">
+                            Giúp người dùng tìm thấy biểu mẫu nhanh chóng khi gõ trên thanh tìm kiếm.
+                          </p>
+                        </div>
+
+                        {/* Checkboxes: Featured & isHot */}
+                        <div className="flex flex-wrap items-center gap-6 pt-1">
+                          <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-gray-700 dark:text-gray-300">
+                            <input
+                              type="checkbox"
+                              checked={editFeatured}
+                              onChange={(e) => setEditFeatured(e.target.checked)}
+                              className="w-4 h-4 rounded text-amber-600 focus:ring-amber-500 border-gray-300 dark:border-gray-700"
+                            />
+                            <span>⭐ Đặt làm Biểu mẫu Nổi bật (Featured)</span>
+                          </label>
+
+                          <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-gray-700 dark:text-gray-300">
+                            <input
+                              type="checkbox"
+                              checked={editIsHot}
+                              onChange={(e) => setEditIsHot(e.target.checked)}
+                              className="w-4 h-4 rounded text-red-600 focus:ring-red-500 border-gray-300 dark:border-gray-700"
+                            />
+                            <span>🔥 Gắn nhãn HOT</span>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-amber-200/60 dark:border-amber-900/60">
+                        <button
+                          type="button"
+                          onClick={cancelEditInfo}
+                          disabled={isSavingInfo}
+                          className="px-4 py-2 text-xs font-semibold text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-xl transition-colors"
+                        >
+                          Hủy
+                        </button>
+                        <button
+                          type="submit"
+                          disabled={isSavingInfo}
+                          className="bg-amber-600 hover:bg-amber-700 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-md transition-all flex items-center gap-1.5"
+                        >
+                          {isSavingInfo ? (
+                            <>
+                              <Loader2 className="w-4 h-4 animate-spin" />
+                              <span>Đang lưu...</span>
+                            </>
+                          ) : (
+                            <>
+                              <Check className="w-4 h-4" />
+                              <span>Lưu thay đổi</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </form>
+                  ) : (
+                    /* Normal View */
+                    <div className="space-y-4">
+                      <div className="bg-blue-50/60 dark:bg-blue-950/30 border border-blue-100 dark:border-blue-900/40 rounded-2xl p-5">
+                        <div className="text-xs font-bold uppercase tracking-wider text-blue-900 dark:text-blue-300 mb-1.5 flex items-center justify-between">
+                          <span>Tóm tắt & Mục đích sử dụng</span>
+                          {isAdmin && (
+                            <button
+                              onClick={() => startEditInfo(activeModalItem)}
+                              className="text-[11px] font-bold text-amber-600 hover:text-amber-700 dark:text-amber-400 flex items-center gap-1 hover:underline"
+                            >
+                              <Pencil className="w-3 h-3" />
+                              <span>Chỉnh sửa</span>
+                            </button>
+                          )}
+                        </div>
+                        <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
+                          {activeModalItem.description}
+                        </p>
+                      </div>
+
+                      <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 space-y-3 text-sm">
+                        {(activeModalItem.highlights && activeModalItem.highlights.length > 0
+                          ? activeModalItem.highlights
+                          : [
+                              `Áp dụng chuẩn quy định pháp luật năm ${activeModalItem.year}.`,
+                              `Bảo toàn 100% công thức tính toán tự động trong bảng tính ${activeModalItem.fileType ? activeModalItem.fileType.toUpperCase() : 'Excel'}.`,
+                              `Sẵn sàng chỉnh sửa, in ấn và áp dụng ngay cho doanh nghiệp.`
+                            ]
+                        ).map((hl, idx) => (
+                          <div key={idx} className="flex items-start gap-2.5 text-gray-600 dark:text-gray-300 leading-relaxed">
+                            <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                            <span>{hl}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {activeModalItem.tags.length > 0 && (
+                        <div className="flex items-center gap-2 flex-wrap pt-2">
+                          <span className="text-xs text-gray-400">Từ khóa liên quan:</span>
+                          {activeModalItem.tags.map((t, idx) => (
+                            <span key={idx} className="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs px-2.5 py-1 rounded-lg">
+                              #{t}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
