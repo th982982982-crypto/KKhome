@@ -52,7 +52,7 @@ Khi bạn chỉnh sửa xong mã nguồn, thêm tính năng hoặc biểu mẫu 
 ```powershell
 .\sync-git.ps1 push "Mô tả nội dung cập nhật tại đây"
 ```
-*Script sẽ tự động thực hiện: `git add .` -> `git commit -m "..."` -> `git push` lên nhánh `main`.*
+*Script sẽ tự động: quét đồng bộ biểu mẫu từ thư mục -> `git add .` -> `git commit -m "..."` -> `git push` lên nhánh `main`.*
 *Hệ thống CI/CD (Vercel) sẽ tự động bắt sự kiện commit và kích hoạt bản dựng Deploy lên trang chính thức.*
 
 ---
@@ -74,6 +74,30 @@ git push
 ```powershell
 .\sync-git.ps1 status
 ```
+
+---
+
+### 2.5. Tự Động Cập Nhật Biểu Mẫu Khi Thư Mục Thay Đổi (Auto-Sync Templates)
+Khi bạn thêm mới, chỉnh sửa hoặc xóa các file biểu mẫu (`.docx`, `.xlsx`, `.pdf`) trong thư mục [`Tai Lieu`](file:///Tai%20Lieu) hoặc [`public/tai-lieu`](file:///public/tai-lieu):
+
+* **Cách 1 - Chế độ tự động theo dõi thời gian thực (Khuyên dùng khi làm việc/soạn thảo):**
+  ```powershell
+  npm run watch:templates
+  ```
+  *Hệ thống sẽ chạy ngầm, tự động phát hiện thay đổi và đồng bộ danh mục biểu mẫu tức thì.*
+
+* **Cách 2 - Quét và đồng bộ nhanh 1 lần:**
+  ```powershell
+  npm run sync:templates
+  # hoặc dùng script git:
+  .\sync-git.ps1 sync-templates
+  ```
+
+* **Cách 3 - Tự động đồng bộ khi Push:**
+  Khi bạn gõ `.\sync-git.ps1 push "..."`, script sẽ tự động kiểm tra và cập nhật toàn bộ biểu mẫu mới vào code trước khi commit và push lên GitHub.
+
+* **Cách 4 - Nút bấm trực tiếp trên giao diện Admin:**
+  Tại trang web [`/tai-lieu`](http://localhost:3000/tai-lieu), Admin chỉ cần nhấn nút **"Đồng bộ thư mục"** trên thanh tìm kiếm để hệ thống tự động quét lại toàn bộ file trên đĩa và cập nhật ngay lập tức.
 
 ---
 

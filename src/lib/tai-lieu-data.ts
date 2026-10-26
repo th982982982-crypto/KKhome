@@ -13,6 +13,10 @@ export interface TaiLieuItem {
   fileSize: string
   downloadUrl: string
   tags: string[]
+  lastModified?: string
+  hasPreviewPdf?: boolean
+  version?: string
+  fileHash?: string
 }
 
 export function getPreviewPdfUrl(item: TaiLieuItem): string {
@@ -24,716 +28,376 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
   {
     "id": "tl_1",
     "code": "NS01",
-    "title": "Sổ Quản Lý Lao Động 2026",
+    "title": "So Quan Ly Lao Dong",
     "filename": "NS01_So_Quan_Ly_Lao_Dong.xlsx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Sổ quản lý, theo dõi toàn bộ lao động trong doanh nghiệp theo quy định Bộ luật Lao động và NĐ 145/2020.",
-    "featured": true,
-    "isHot": true,
+    "description": "Sổ quản lý theo dõi toàn bộ lao động trong doanh nghiệp theo quy định Bộ luật Lao động 2019 và NĐ 145/2020.",
+    "featured": false,
+    "isHot": false,
     "fileType": "xlsx",
-    "fileSize": "39.6 KB",
+    "fileSize": "65.7 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/01_Ho_So_Lao_Dong_Va_Hop_Dong/NS01_So_Quan_Ly_Lao_Dong.xlsx",
     "tags": [
       "Nhân sự",
-      "Sổ lao động",
-      "Bắt buộc"
-    ]
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T16:13:40.877Z",
+    "version": "Ver 2026.1",
+    "fileHash": "c83ec57681b4bf99d46c545c42a90c2e"
   },
   {
-    "id": "tl_2",
-    "code": "NS02",
-    "title": "Hệ Thống Tạo Hợp Đồng Lao Động Tự Động",
-    "filename": "NS02_He_Thong_Tao_Hop_Dong_Lao_Dong_Tu_Dong.xlsx",
-    "category": "nhan_su",
-    "categoryLabel": "Nhân sự",
-    "year": 2026,
-    "description": "Công cụ Excel tự động tạo HĐLĐ không xác định thời hạn, có thời hạn, phụ lục HĐLĐ và cam kết bảo mật.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "545.7 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/01_Ho_So_Lao_Dong_Va_Hop_Dong/NS02_He_Thong_Tao_Hop_Dong_Lao_Dong_Tu_Dong.xlsx",
-    "tags": [
-      "HĐLĐ",
-      "Excel tự động",
-      "Hot"
-    ]
-  },
-  {
-    "id": "tl_3",
-    "code": "NS03",
-    "title": "Hợp Đồng Giao Khoán Công Việc Mẫu",
-    "filename": "NS03_Hop_Dong_Giao_Khoan_Cong_Viec.docx",
-    "category": "hop_dong",
-    "categoryLabel": "Hợp đồng",
-    "year": 2026,
-    "description": "Mẫu hợp đồng giao khoán công việc theo thời vụ, công nhật hoặc khối lượng bàn giao độc lập.",
-    "featured": true,
-    "isHot": false,
-    "fileType": "docx",
-    "fileSize": "165.8 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/01_Ho_So_Lao_Dong_Va_Hop_Dong/NS03_Hop_Dong_Giao_Khoan_Cong_Viec.docx",
-    "tags": [
-      "Khoán việc",
-      "Hợp đồng"
-    ]
-  },
-  {
-    "id": "tl_4",
-    "code": "NS04",
-    "title": "Hợp Đồng Dịch Vụ Chuyên Gia Cá Nhân",
-    "filename": "NS04_Hop_Dong_Dich_Vu_Chuyen_Gia_Ca_Nhan.docx",
-    "category": "hop_dong",
-    "categoryLabel": "Hợp đồng",
-    "year": 2026,
-    "description": "Mẫu hợp đồng dịch vụ tư vấn với cá nhân (thuộc đối tượng khấu trừ 10% thuế TNCN).",
-    "featured": false,
-    "isHot": false,
-    "fileType": "docx",
-    "fileSize": "113.3 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/01_Ho_So_Lao_Dong_Va_Hop_Dong/NS04_Hop_Dong_Dich_Vu_Chuyen_Gia_Ca_Nhan.docx",
-    "tags": [
-      "Dịch vụ",
-      "Cá nhân"
-    ]
-  },
-  {
-    "id": "tl_5",
+    "id": "tl_6",
     "code": "NS05",
-    "title": "Bảng Chấm Công Tự Động 2026",
+    "title": "Bang Cham Cong Tu Dong 2026",
     "filename": "NS05_Bang_Cham_Cong_Tu_Dong_2026.xlsx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
     "description": "Bảng chấm công tự động 31 ngày, tổng hợp công thực tế, nghỉ phép, lễ tết, tăng ca OT và làm đêm.",
-    "featured": true,
-    "isHot": true,
+    "featured": false,
+    "isHot": false,
     "fileType": "xlsx",
     "fileSize": "338.0 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/02_Cham_Cong_Va_Tinh_Luong/NS05_Bang_Cham_Cong_Tu_Dong_2026.xlsx",
     "tags": [
-      "Chấm công",
-      "Excel 2026",
-      "Tự động"
-    ]
+      "Nhân sự",
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.282Z",
+    "version": "Ver 2026.1",
+    "fileHash": "ab11a7747414eca519a30670426d5c88"
   },
   {
-    "id": "tl_6",
+    "id": "tl_7",
     "code": "NS06",
-    "title": "Bảng Lương Tự Động 2026 (Tính Thuế TNCN & BHXH Mới)",
+    "title": "Bang Luong Tu Dong 2026",
     "filename": "NS06_Bang_Luong_Tu_Dong_2026.xlsx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
     "description": "Bảng tính lương tự động liên kết chấm công, tự động khấu trừ thuế TNCN lũy tiến và tỷ lệ trích nộp BHXH.",
-    "featured": true,
-    "isHot": true,
+    "featured": false,
+    "isHot": false,
     "fileType": "xlsx",
     "fileSize": "663.4 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/02_Cham_Cong_Va_Tinh_Luong/NS06_Bang_Luong_Tu_Dong_2026.xlsx",
     "tags": [
-      "Bảng lương",
-      "Thuế TNCN",
-      "BHXH 2026"
-    ]
+      "Nhân sự",
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.282Z",
+    "version": "Ver 2026.1",
+    "fileHash": "9720dff8369c35a34674b6ae14b87916"
   },
   {
-    "id": "tl_7",
+    "id": "tl_17",
     "code": "NS07",
-    "title": "Nội Quy Lao Động Doanh Nghiệp Chuẩn 2026",
+    "title": "Quy Dinh Noi Quy Lao Dong 2026",
     "filename": "NS07_Quy_Dinh_Noi_Quy_Lao_Dong_2026.docx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
     "description": "Nội quy lao động doanh nghiệp chuẩn 2026 hoàn chỉnh các chương: Kỷ luật, An toàn, Quấy rối tình dục nơi làm việc.",
-    "featured": true,
-    "isHot": true,
+    "featured": false,
+    "isHot": false,
     "fileType": "docx",
     "fileSize": "62.0 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/NS07_Quy_Dinh_Noi_Quy_Lao_Dong_2026.docx",
     "tags": [
-      "Nội quy",
-      "Quy chế",
-      "Doanh nghiệp"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.290Z",
+    "version": "Ver 2026.1",
+    "fileHash": "d38b7cf5dfa7e2b30a11e62bf95b03e8"
   },
   {
     "id": "tl_8",
-    "code": "NS09",
-    "title": "Quy Chế Chi Phúc Lợi Cho Người Lao Động",
-    "filename": "NS09_Quy_Che_Chi_Phuc_Loi_Nguoi_Lao_Dong.docx",
-    "category": "nhan_su",
-    "categoryLabel": "Nhân sự",
-    "year": 2026,
-    "description": "Quy chế chi phúc lợi: đám hiếu, hỷ, sinh nhật, du lịch teambuilding, khen thưởng con em NLĐ đạt chuẩn thuế TNDN.",
-    "featured": false,
-    "isHot": true,
-    "fileType": "docx",
-    "fileSize": "19.9 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/NS09_Quy_Che_Chi_Phuc_Loi_Nguoi_Lao_Dong.docx",
-    "tags": [
-      "Phúc lợi",
-      "Quy chế"
-    ]
-  },
-  {
-    "id": "tl_9",
-    "code": "NS10",
-    "title": "Bộ Biểu Mẫu Chi Tặng Quà Lễ, Tết & Trung Thu",
-    "filename": "NS10_Bo_Bieu_Mau_Chi_Tang_Qua_Le_Tet.docx",
-    "category": "nhan_su",
-    "categoryLabel": "Nhân sự",
-    "year": 2026,
-    "description": "Hồ sơ quyết định chi quà, danh sách nhận quà và chứng từ kế toán thuế hợp lý hợp lệ.",
-    "featured": false,
-    "isHot": false,
-    "fileType": "docx",
-    "fileSize": "49.8 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/NS10_Bo_Bieu_Mau_Chi_Tang_Qua_Le_Tet.docx",
-    "tags": [
-      "Quà tặng",
-      "Lễ tết"
-    ]
-  },
-  {
-    "id": "tl_10",
-    "code": "NS08",
-    "title": "Hồ Sơ Đăng Ký NQLD: 01 Quyet Dinh Ban Hanh NQLD",
+    "code": "NS08_01",
+    "title": "Quyet Dinh Ban Hanh NQLD",
     "filename": "NS08_01_Quyet_Dinh_Ban_Hanh_NQLD.docx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Trọn bộ 09 biểu mẫu hành chính (Quyết định, Biên bản lấy ý kiến, Niêm yết...) nộp cơ quan quản lý lao động.",
+    "description": "Bộ hồ sơ 09 biểu mẫu hành chính nộp Sở/Phòng LĐ-TB&XH để đăng ký Nội quy lao động.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "42.0 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/Ho_So_Dang_Ky_NQLD/NS08_01_Quyet_Dinh_Ban_Hanh_NQLD.docx",
     "tags": [
-      "Thủ tục",
-      "Đăng ký NQLĐ"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-26T02:19:54.494Z",
+    "version": "Ver 2026.1",
+    "fileHash": "ab170c209f70dfc501ebc97759a99088"
   },
   {
-    "id": "tl_11",
-    "code": "NS08",
-    "title": "Hồ Sơ Đăng Ký NQLD: 02 Van Ban Lay Y Kien To Chuc Dai Dien NLD",
+    "id": "tl_9",
+    "code": "NS08_02",
+    "title": "Van Ban Lay Y Kien To Chuc Dai Dien NLD",
     "filename": "NS08_02_Van_Ban_Lay_Y_Kien_To_Chuc_Dai_Dien_NLD.docx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Trọn bộ 09 biểu mẫu hành chính (Quyết định, Biên bản lấy ý kiến, Niêm yết...) nộp cơ quan quản lý lao động.",
+    "description": "Bộ hồ sơ 09 biểu mẫu hành chính nộp Sở/Phòng LĐ-TB&XH để đăng ký Nội quy lao động.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "42.8 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/Ho_So_Dang_Ky_NQLD/NS08_02_Van_Ban_Lay_Y_Kien_To_Chuc_Dai_Dien_NLD.docx",
     "tags": [
-      "Thủ tục",
-      "Đăng ký NQLĐ"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.286Z",
+    "version": "Ver 2026.1",
+    "fileHash": "283c5ff4a6aa43bae051b390514520d9"
   },
   {
-    "id": "tl_12",
-    "code": "NS08",
-    "title": "Hồ Sơ Đăng Ký NQLD: 03 Bien Ban Hop Lay Y Kien",
+    "id": "tl_10",
+    "code": "NS08_03",
+    "title": "Bien Ban Hop Lay Y Kien",
     "filename": "NS08_03_Bien_Ban_Hop_Lay_Y_Kien.docx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Trọn bộ 09 biểu mẫu hành chính (Quyết định, Biên bản lấy ý kiến, Niêm yết...) nộp cơ quan quản lý lao động.",
+    "description": "Bộ hồ sơ 09 biểu mẫu hành chính nộp Sở/Phòng LĐ-TB&XH để đăng ký Nội quy lao động.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "42.4 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/Ho_So_Dang_Ky_NQLD/NS08_03_Bien_Ban_Hop_Lay_Y_Kien.docx",
     "tags": [
-      "Thủ tục",
-      "Đăng ký NQLĐ"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.286Z",
+    "version": "Ver 2026.1",
+    "fileHash": "8ad0aa189afaeacfc04dd0e4af76ebd9"
   },
   {
-    "id": "tl_13",
-    "code": "NS08",
-    "title": "Hồ Sơ Đăng Ký NQLD: 04 Van Ban Gop Y Cua To Chuc Dai Dien NLD",
+    "id": "tl_11",
+    "code": "NS08_04",
+    "title": "Van Ban Gop Y Cua To Chuc Dai Dien NLD",
     "filename": "NS08_04_Van_Ban_Gop_Y_Cua_To_Chuc_Dai_Dien_NLD.docx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Trọn bộ 09 biểu mẫu hành chính (Quyết định, Biên bản lấy ý kiến, Niêm yết...) nộp cơ quan quản lý lao động.",
+    "description": "Bộ hồ sơ 09 biểu mẫu hành chính nộp Sở/Phòng LĐ-TB&XH để đăng ký Nội quy lao động.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "41.6 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/Ho_So_Dang_Ky_NQLD/NS08_04_Van_Ban_Gop_Y_Cua_To_Chuc_Dai_Dien_NLD.docx",
     "tags": [
-      "Thủ tục",
-      "Đăng ký NQLĐ"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.287Z",
+    "version": "Ver 2026.1",
+    "fileHash": "5f0c3c0b227775403dbc533c0a6294ba"
   },
   {
-    "id": "tl_14",
-    "code": "NS08",
-    "title": "Hồ Sơ Đăng Ký NQLD: 05 Van Ban De Nghi Dang Ky NQLD",
+    "id": "tl_12",
+    "code": "NS08_05",
+    "title": "Van Ban De Nghi Dang Ky NQLD",
     "filename": "NS08_05_Van_Ban_De_Nghi_Dang_Ky_NQLD.docx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Trọn bộ 09 biểu mẫu hành chính (Quyết định, Biên bản lấy ý kiến, Niêm yết...) nộp cơ quan quản lý lao động.",
+    "description": "Bộ hồ sơ 09 biểu mẫu hành chính nộp Sở/Phòng LĐ-TB&XH để đăng ký Nội quy lao động.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "42.9 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/Ho_So_Dang_Ky_NQLD/NS08_05_Van_Ban_De_Nghi_Dang_Ky_NQLD.docx",
     "tags": [
-      "Thủ tục",
-      "Đăng ký NQLĐ"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.287Z",
+    "version": "Ver 2026.1",
+    "fileHash": "d4886c30e2c60059a03f6777e48081bc"
   },
   {
-    "id": "tl_15",
-    "code": "NS08",
-    "title": "Hồ Sơ Đăng Ký NQLD: 06 Thong Bao Ket Qua Dang Ky NQLD",
+    "id": "tl_13",
+    "code": "NS08_06",
+    "title": "Thong Bao Ket Qua Dang Ky NQLD",
     "filename": "NS08_06_Thong_Bao_Ket_Qua_Dang_Ky_NQLD.docx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Trọn bộ 09 biểu mẫu hành chính (Quyết định, Biên bản lấy ý kiến, Niêm yết...) nộp cơ quan quản lý lao động.",
+    "description": "Bộ hồ sơ 09 biểu mẫu hành chính nộp Sở/Phòng LĐ-TB&XH để đăng ký Nội quy lao động.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "41.6 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/Ho_So_Dang_Ky_NQLD/NS08_06_Thong_Bao_Ket_Qua_Dang_Ky_NQLD.docx",
     "tags": [
-      "Thủ tục",
-      "Đăng ký NQLĐ"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.287Z",
+    "version": "Ver 2026.1",
+    "fileHash": "5a3860e3478bbe592d53576e81bc8f40"
   },
   {
-    "id": "tl_16",
-    "code": "NS08",
-    "title": "Hồ Sơ Đăng Ký NQLD: 07 Thong Bao Noi Bo Ve Hieu Luc NQLD",
+    "id": "tl_14",
+    "code": "NS08_07",
+    "title": "Thong Bao Noi Bo Ve Hieu Luc NQLD",
     "filename": "NS08_07_Thong_Bao_Noi_Bo_Ve_Hieu_Luc_NQLD.docx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Trọn bộ 09 biểu mẫu hành chính (Quyết định, Biên bản lấy ý kiến, Niêm yết...) nộp cơ quan quản lý lao động.",
+    "description": "Bộ hồ sơ 09 biểu mẫu hành chính nộp Sở/Phòng LĐ-TB&XH để đăng ký Nội quy lao động.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "41.9 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/Ho_So_Dang_Ky_NQLD/NS08_07_Thong_Bao_Noi_Bo_Ve_Hieu_Luc_NQLD.docx",
     "tags": [
-      "Thủ tục",
-      "Đăng ký NQLĐ"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.287Z",
+    "version": "Ver 2026.1",
+    "fileHash": "b79088a5bb333a38ef440d5c5462874b"
   },
   {
-    "id": "tl_17",
-    "code": "NS08",
-    "title": "Hồ Sơ Đăng Ký NQLD: 08 Bien Ban Niem Yet Va Pho Bien NQLD",
+    "id": "tl_15",
+    "code": "NS08_08",
+    "title": "Bien Ban Niem Yet Va Pho Bien NQLD",
     "filename": "NS08_08_Bien_Ban_Niem_Yet_Va_Pho_Bien_NQLD.docx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Trọn bộ 09 biểu mẫu hành chính (Quyết định, Biên bản lấy ý kiến, Niêm yết...) nộp cơ quan quản lý lao động.",
+    "description": "Bộ hồ sơ 09 biểu mẫu hành chính nộp Sở/Phòng LĐ-TB&XH để đăng ký Nội quy lao động.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "42.5 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/Ho_So_Dang_Ky_NQLD/NS08_08_Bien_Ban_Niem_Yet_Va_Pho_Bien_NQLD.docx",
     "tags": [
-      "Thủ tục",
-      "Đăng ký NQLĐ"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.287Z",
+    "version": "Ver 2026.1",
+    "fileHash": "bbab5bebeb68bcd6e5e123cd36470011"
   },
   {
-    "id": "tl_18",
-    "code": "NS08",
-    "title": "Hồ Sơ Đăng Ký NQLD: 09 Checklist Ho So Dang Ky NQLD",
+    "id": "tl_16",
+    "code": "NS08_09",
+    "title": "Checklist Ho So Dang Ky NQLD",
     "filename": "NS08_09_Checklist_Ho_So_Dang_Ky_NQLD.docx",
     "category": "nhan_su",
     "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Trọn bộ 09 biểu mẫu hành chính (Quyết định, Biên bản lấy ý kiến, Niêm yết...) nộp cơ quan quản lý lao động.",
+    "description": "Bộ hồ sơ 09 biểu mẫu hành chính nộp Sở/Phòng LĐ-TB&XH để đăng ký Nội quy lao động.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "43.0 KB",
     "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/Ho_So_Dang_Ky_NQLD/NS08_09_Checklist_Ho_So_Dang_Ky_NQLD.docx",
     "tags": [
-      "Thủ tục",
-      "Đăng ký NQLĐ"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.287Z",
+    "version": "Ver 2026.1",
+    "fileHash": "40476033666511a9a60cb836a0769915"
+  },
+  {
+    "id": "tl_18",
+    "code": "NS09",
+    "title": "Quy Che Chi Phuc Loi Nguoi Lao Dong",
+    "filename": "NS09_Quy_Che_Chi_Phuc_Loi_Nguoi_Lao_Dong.docx",
+    "category": "nhan_su",
+    "categoryLabel": "Nhân sự",
+    "year": 2026,
+    "description": "Quy chế chi phúc lợi nội bộ hoàn chỉnh: ốm đau, hiếu hỷ, sinh nhật, du lịch, thưởng con em.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "docx",
+    "fileSize": "19.9 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/NS09_Quy_Che_Chi_Phuc_Loi_Nguoi_Lao_Dong.docx",
+    "tags": [
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.290Z",
+    "version": "Ver 2026.1",
+    "fileHash": "99ed1ae3367bac23c563c9fa6aba3008"
   },
   {
     "id": "tl_19",
-    "code": "KPI01",
-    "title": "Bảng Đánh Giá KPI — Khoi Quan Ly Dieu Hanh 17 Vi Tri",
-    "filename": "KPI01_Khoi_Quan_Ly_Dieu_Hanh_17_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
+    "code": "NS10",
+    "title": "Bo Bieu Mau Chi Tang Qua Le Tet",
+    "filename": "NS10_Bo_Bieu_Mau_Chi_Tang_Qua_Le_Tet.docx",
+    "category": "nhan_su",
+    "categoryLabel": "Nhân sự",
     "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "42.5 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI01_Khoi_Quan_Ly_Dieu_Hanh_17_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_20",
-    "code": "KPI02",
-    "title": "Bảng Đánh Giá KPI — Phong Nhan Su 13 Vi Tri",
-    "filename": "KPI02_Phong_Nhan_Su_13_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
-    "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "81.1 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI02_Phong_Nhan_Su_13_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_21",
-    "code": "KPI03",
-    "title": "Bảng Đánh Giá KPI — Phong Tai Chinh Ke Toan 06 Vi Tri",
-    "filename": "KPI03_Phong_Tai_Chinh_Ke_Toan_06_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
-    "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "47.8 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI03_Phong_Tai_Chinh_Ke_Toan_06_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_22",
-    "code": "KPI04",
-    "title": "Bảng Đánh Giá KPI — Phong Hanh Chinh 07 Vi Tri",
-    "filename": "KPI04_Phong_Hanh_Chinh_07_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
-    "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "52.9 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI04_Phong_Hanh_Chinh_07_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_23",
-    "code": "KPI05",
-    "title": "Bảng Đánh Giá KPI — Phong Marketing 08 Vi Tri",
-    "filename": "KPI05_Phong_Marketing_08_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
-    "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "58.6 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI05_Phong_Marketing_08_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_24",
-    "code": "KPI06",
-    "title": "Bảng Đánh Giá KPI — Phong Mua Hang 06 Vi Tri",
-    "filename": "KPI06_Phong_Mua_Hang_06_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
-    "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "48.4 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI06_Phong_Mua_Hang_06_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_25",
-    "code": "KPI07",
-    "title": "Bảng Đánh Giá KPI — Phong Kho Van Logistics 07 Vi Tri",
-    "filename": "KPI07_Phong_Kho_Van_Logistics_07_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
-    "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "53.0 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI07_Phong_Kho_Van_Logistics_07_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_26",
-    "code": "KPI08",
-    "title": "Bảng Đánh Giá KPI — Phong Xuat Nhap Khau 06 Vi Tri",
-    "filename": "KPI08_Phong_Xuat_Nhap_Khau_06_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
-    "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "47.9 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI08_Phong_Xuat_Nhap_Khau_06_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_27",
-    "code": "KPI09",
-    "title": "Bảng Đánh Giá KPI — Phong Ky Thuat RD 06 Vi Tri",
-    "filename": "KPI09_Phong_Ky_Thuat_RD_06_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
-    "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "48.1 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI09_Phong_Ky_Thuat_RD_06_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_28",
-    "code": "KPI10",
-    "title": "Bảng Đánh Giá KPI — Phong Phap Che KSNB 06 Vi Tri",
-    "filename": "KPI10_Phong_Phap_Che_KSNB_06_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
-    "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "47.8 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI10_Phong_Phap_Che_KSNB_06_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_29",
-    "code": "KPI11",
-    "title": "Bảng Đánh Giá KPI — Khoi Du An Xay Dung 12 Vi Tri",
-    "filename": "KPI11_Khoi_Du_An_Xay_Dung_12_Vi_Tri.xlsx",
-    "category": "kpi",
-    "categoryLabel": "Đánh giá KPI",
-    "year": 2026,
-    "description": "Hệ thống chỉ số KPI tiêu chuẩn theo từng phòng ban chức năng, có trọng số và xếp loại tự động.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "78.5 KB",
-    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI11_Khoi_Du_An_Xay_Dung_12_Vi_Tri.xlsx",
-    "tags": [
-      "KPI",
-      "Hiệu suất"
-    ]
-  },
-  {
-    "id": "tl_30",
-    "code": "KT01",
-    "title": "Phần Mềm Kế Toán Excel Chuẩn Thông Tư 99/2025",
-    "filename": "KT01_Phan_Mem_Ke_Toan_Excel_TT99.xlsx",
-    "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
-    "year": 2026,
-    "description": "Hệ thống sổ kế toán Excel đầy đủ Nhật ký chung, Sổ cái, Bảng cân đối tài khoản và BCTC theo TT 99.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "799.2 KB",
-    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/01_So_Sach_Va_Phan_Mem_Ke_Toan/KT01_Phan_Mem_Ke_Toan_Excel_TT99.xlsx",
-    "tags": [
-      "TT 99/2025",
-      "Phần mềm Excel",
-      "Hot"
-    ]
-  },
-  {
-    "id": "tl_31",
-    "code": "KT02",
-    "title": "Bộ Báo Cáo Tài Chính Thông Tư 133/2016",
-    "filename": "KT02_Bo_Bao_Cao_Tai_Chinh_TT133.xlsx",
-    "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
-    "year": 2026,
-    "description": "Bộ mẫu Báo cáo tài chính doanh nghiệp nhỏ và vừa theo TT 133: B01a, B02, B03 và Thuyết minh BCTC.",
-    "featured": false,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "55.8 KB",
-    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/02_Bao_Cao_Tai_Chinh/KT02_Bo_Bao_Cao_Tai_Chinh_TT133.xlsx",
-    "tags": [
-      "BCTC",
-      "TT 133"
-    ]
-  },
-  {
-    "id": "tl_32",
-    "code": "KT03",
-    "title": "Bảng Theo Dõi & Trích Khấu Hao TSCĐ Tự Động",
-    "filename": "KT03_Bang_Tinh_Khau_Hao_Tai_San_Co_Dinh.xlsx",
-    "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
-    "year": 2026,
-    "description": "Bảng tính khấu hao tài sản cố định phương pháp đường thẳng chuẩn Thông tư 45/2013/TT-BTC.",
-    "featured": false,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "142.2 KB",
-    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/03_Tai_San_Co_Dinh_Va_Chi_Phi_Tra_Truoc/KT03_Bang_Tinh_Khau_Hao_Tai_San_Co_Dinh.xlsx",
-    "tags": [
-      "TSCĐ",
-      "Khấu hao"
-    ]
-  },
-  {
-    "id": "tl_33",
-    "code": "KT04",
-    "title": "Sổ Theo Dõi & Phân Bổ Chi Phí Trả Trước (TK 242)",
-    "filename": "KT04_So_Theo_Doi_Phan_Bo_Chi_Phi_Tra_Truoc_242.xlsx",
-    "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
-    "year": 2026,
-    "description": "Sổ quản lý phân bổ công cụ dụng cụ, tiền thuê nhà, bảo hiểm trả trước vào chi phí từng kỳ.",
+    "description": "Trọn bộ hồ sơ căn cứ và bảng kê chi tặng quà lễ tết cho cán bộ nhân viên đủ điều kiện chi phí hợp lý.",
     "featured": false,
     "isHot": false,
-    "fileType": "xlsx",
-    "fileSize": "143.3 KB",
-    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/03_Tai_San_Co_Dinh_Va_Chi_Phi_Tra_Truoc/KT04_So_Theo_Doi_Phan_Bo_Chi_Phi_Tra_Truoc_242.xlsx",
-    "tags": [
-      "TK 242",
-      "Phân bổ"
-    ]
-  },
-  {
-    "id": "tl_34",
-    "code": "KT05",
-    "title": "Trọn Bộ Hồ Sơ Pháp Lý Thanh Lý TSCĐ 2026",
-    "filename": "KT05_Bo_Ho_So_Thanh_Ly_Tai_San_Co_Dinh_2026.docx",
-    "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
-    "year": 2026,
-    "description": "Hồ sơ thanh lý tài sản: Quyết định thành lập hội đồng, biên bản thẩm định, biên bản thanh lý và hóa đơn.",
-    "featured": true,
-    "isHot": true,
     "fileType": "docx",
-    "fileSize": "54.1 KB",
-    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/03_Tai_San_Co_Dinh_Va_Chi_Phi_Tra_Truoc/KT05_Bo_Ho_So_Thanh_Ly_Tai_San_Co_Dinh_2026.docx",
+    "fileSize": "49.8 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/03_Noi_Quy_Quy_Che_Phuc_Loi/NS10_Bo_Bieu_Mau_Chi_Tang_Qua_Le_Tet.docx",
     "tags": [
-      "Thanh lý TSCĐ",
-      "Hồ sơ thuế"
-    ]
+      "Nhân sự",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.290Z",
+    "version": "Ver 2026.1",
+    "fileHash": "5c49bc8abcae83e85bc594243165ea7f"
   },
   {
-    "id": "tl_35",
-    "code": "KT06",
-    "title": "Công Cụ Tính Giá Thành Sản Xuất & Đối Chiếu TK 154",
-    "filename": "KT06_Cong_Cu_Tinh_Gia_Thanh_San_Xuat.xlsx",
-    "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
-    "year": 2026,
-    "description": "Công cụ tính giá thành sản xuất, tập hợp chi phí 621, 622, 627 và kiểm soát dở dang cuối kỳ.",
-    "featured": false,
-    "isHot": false,
-    "fileType": "xlsx",
-    "fileSize": "158.5 KB",
-    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/04_Ke_Toan_Gia_Thanh_San_Xuat/KT06_Cong_Cu_Tinh_Gia_Thanh_San_Xuat.xlsx",
-    "tags": [
-      "Giá thành",
-      "TK 154"
-    ]
-  },
-  {
-    "id": "tl_36",
-    "code": "KT07",
-    "title": "Hệ Thống Quản Lý Công Nợ & Phân Tích Tuổi Nợ",
-    "filename": "KT07_He_Thong_Quan_Ly_Cong_No_Va_Tuoi_No.xlsx",
-    "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
-    "year": 2026,
-    "description": "Bảng theo dõi công nợ phải thu, phải trả và biểu đồ cảnh báo tuổi nợ quá hạn chi tiết.",
-    "featured": false,
-    "isHot": true,
-    "fileType": "xlsx",
-    "fileSize": "158.6 KB",
-    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/05_Quan_Ly_Cong_No_Hop_Dong_Kinh_Te/KT07_He_Thong_Quan_Ly_Cong_No_Va_Tuoi_No.xlsx",
-    "tags": [
-      "Công nợ",
-      "Tuổi nợ"
-    ]
-  },
-  {
-    "id": "tl_37",
+    "id": "tl_38",
     "code": "KT08",
-    "title": "Sổ Theo Dõi & Quản Trị Hợp Đồng Kinh Tế",
+    "title": "So Theo Doi Quan Tri Hop Dong Kinh Te",
     "filename": "KT08_So_Theo_Doi_Quan_Tri_Hop_Dong_Kinh_Te.xlsx",
-    "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
+    "category": "hop_dong",
+    "categoryLabel": "Hợp đồng",
     "year": 2026,
-    "description": "Sổ quản lý hợp đồng kinh tế, theo dõi tiến độ nghiệm thu và lịch trình thanh toán nhà cung cấp/khách hàng.",
+    "description": "Sổ theo dõi tiến độ thực hiện, nghiệm thu và thanh toán các Hợp đồng kinh tế.",
     "featured": false,
     "isHot": false,
     "fileType": "xlsx",
     "fileSize": "141.1 KB",
     "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/05_Quan_Ly_Cong_No_Hop_Dong_Kinh_Te/KT08_So_Theo_Doi_Quan_Tri_Hop_Dong_Kinh_Te.xlsx",
     "tags": [
-      "HĐ kinh tế",
-      "Sổ theo dõi"
-    ]
+      "Hợp đồng",
+      "Excel",
+      "Hợp đồng"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.308Z",
+    "version": "Ver 2026.1",
+    "fileHash": "21ad8ce8df60136966a2bcdc95db954f"
   },
   {
-    "id": "tl_38",
+    "id": "tl_39",
     "code": "KT09",
-    "title": "Hợp Đồng Vay Vốn Giữa Các Doanh Nghiệp",
+    "title": "Hop Dong Vay Von Doanh Nghiep",
     "filename": "KT09_Hop_Dong_Vay_Von_Doanh_Nghiep.docx",
     "category": "hop_dong",
     "categoryLabel": "Hợp đồng",
@@ -745,14 +409,19 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "fileSize": "49.1 KB",
     "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/05_Quan_Ly_Cong_No_Hop_Dong_Kinh_Te/KT09_Hop_Dong_Vay_Von_Doanh_Nghiep.docx",
     "tags": [
-      "Vay vốn",
+      "Hợp đồng",
+      "Word",
       "Hợp đồng"
-    ]
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.308Z",
+    "version": "Ver 2026.1",
+    "fileHash": "26af28a0ac3a19e311ecc43cb0a9c096"
   },
   {
-    "id": "tl_39",
+    "id": "tl_40",
     "code": "KT10",
-    "title": "Hợp Đồng Thuê Văn Phòng / Mặt Bằng Nhà Xưởng",
+    "title": "Hop Dong Thue Van Phong Nha Xuong",
     "filename": "KT10_Hop_Dong_Thue_Van_Phong_Nha_Xuong.docx",
     "category": "hop_dong",
     "categoryLabel": "Hợp đồng",
@@ -764,14 +433,19 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "fileSize": "51.8 KB",
     "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/05_Quan_Ly_Cong_No_Hop_Dong_Kinh_Te/KT10_Hop_Dong_Thue_Van_Phong_Nha_Xuong.docx",
     "tags": [
-      "Thuê nhà",
-      "Văn phòng"
-    ]
+      "Hợp đồng",
+      "Word",
+      "Hợp đồng"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.308Z",
+    "version": "Ver 2026.1",
+    "fileHash": "50bf8551cc7d7091ea24c0bc7fedbded"
   },
   {
-    "id": "tl_40",
+    "id": "tl_41",
     "code": "KT11",
-    "title": "Hợp Đồng Thuê Máy Móc, Thiết Bị, Xe Ô Tô",
+    "title": "Hop Dong Thue May Moc Thiet Bi Xe",
     "filename": "KT11_Hop_Dong_Thue_May_Moc_Thiet_Bi_Xe.docx",
     "category": "hop_dong",
     "categoryLabel": "Hợp đồng",
@@ -783,247 +457,795 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "fileSize": "50.7 KB",
     "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/05_Quan_Ly_Cong_No_Hop_Dong_Kinh_Te/KT11_Hop_Dong_Thue_May_Moc_Thiet_Bi_Xe.docx",
     "tags": [
-      "Thuê tài sản",
-      "Xe ô tô"
-    ]
+      "Hợp đồng",
+      "Word",
+      "Hợp đồng"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.308Z",
+    "version": "Ver 2026.1",
+    "fileHash": "380cd5eaa0ba62d57e0ef7f2c7e4c736"
   },
   {
-    "id": "tl_41",
+    "id": "tl_2",
+    "code": "NS02",
+    "title": "He Thong Tao Hop Dong Lao Dong Tu Dong",
+    "filename": "NS02_He_Thong_Tao_Hop_Dong_Lao_Dong_Tu_Dong.xlsx",
+    "category": "hop_dong",
+    "categoryLabel": "Hợp đồng",
+    "year": 2026,
+    "description": "Hệ thống tự động sinh Hợp đồng lao động, Phụ lục HĐLĐ, Cam kết bảo mật thông tin & Hợp đồng đào tạo.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "270.3 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/01_Ho_So_Lao_Dong_Va_Hop_Dong/NS02_He_Thong_Tao_Hop_Dong_Lao_Dong_Tu_Dong.xlsx",
+    "tags": [
+      "Hợp đồng",
+      "Excel",
+      "Hợp đồng"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T16:33:57.845Z",
+    "version": "Ver 2026.1",
+    "fileHash": "f730a295ede8f549a4ea570e105b61ad"
+  },
+  {
+    "id": "tl_3",
+    "code": "NS03",
+    "title": "Hop Dong Giao Khoan Cong Viec",
+    "filename": "NS03_Hop_Dong_Giao_Khoan_Cong_Viec.docx",
+    "category": "hop_dong",
+    "categoryLabel": "Hợp đồng",
+    "year": 2026,
+    "description": "Mẫu hợp đồng giao khoán công việc theo thời vụ, công nhật hoặc khối lượng bàn giao độc lập.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "docx",
+    "fileSize": "165.8 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/01_Ho_So_Lao_Dong_Va_Hop_Dong/NS03_Hop_Dong_Giao_Khoan_Cong_Viec.docx",
+    "tags": [
+      "Hợp đồng",
+      "Word",
+      "Hợp đồng"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.279Z",
+    "version": "Ver 2026.1",
+    "fileHash": "d076b33a8304d5fde33927779dd1b57f"
+  },
+  {
+    "id": "tl_4",
+    "code": "NS04",
+    "title": "Hop Dong Dich Vu Chuyen Gia Ca Nhan",
+    "filename": "NS04_Hop_Dong_Dich_Vu_Chuyen_Gia_Ca_Nhan.docx",
+    "category": "hop_dong",
+    "categoryLabel": "Hợp đồng",
+    "year": 2026,
+    "description": "Mẫu hợp đồng dịch vụ tư vấn với cá nhân (thuộc đối tượng khấu trừ 10% thuế TNCN).",
+    "featured": false,
+    "isHot": false,
+    "fileType": "docx",
+    "fileSize": "113.3 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/01_Ho_So_Lao_Dong_Va_Hop_Dong/NS04_Hop_Dong_Dich_Vu_Chuyen_Gia_Ca_Nhan.docx",
+    "tags": [
+      "Hợp đồng",
+      "Word",
+      "Hợp đồng"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.280Z",
+    "version": "Ver 2026.1",
+    "fileHash": "dfcf4c4d3196b068b7e4b8e762ba700c"
+  },
+  {
+    "id": "tl_20",
+    "code": "KPI01",
+    "title": "Khoi Quan Ly Dieu Hanh 17 Vi Tri",
+    "filename": "KPI01_Khoi_Quan_Ly_Dieu_Hanh_17_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "42.5 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI01_Khoi_Quan_Ly_Dieu_Hanh_17_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.290Z",
+    "version": "Ver 2026.1",
+    "fileHash": "5ecb0d262e6555007e029380ec83dd2f"
+  },
+  {
+    "id": "tl_21",
+    "code": "KPI02",
+    "title": "Phong Nhan Su 13 Vi Tri",
+    "filename": "KPI02_Phong_Nhan_Su_13_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "81.1 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI02_Phong_Nhan_Su_13_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.290Z",
+    "version": "Ver 2026.1",
+    "fileHash": "e3dfef6c07cdbea27f0b7db86fc795ad"
+  },
+  {
+    "id": "tl_22",
+    "code": "KPI03",
+    "title": "Phong Tai Chinh Ke Toan 06 Vi Tri",
+    "filename": "KPI03_Phong_Tai_Chinh_Ke_Toan_06_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "47.8 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI03_Phong_Tai_Chinh_Ke_Toan_06_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.290Z",
+    "version": "Ver 2026.1",
+    "fileHash": "fdcc59549693e34cbb25a2b53909b755"
+  },
+  {
+    "id": "tl_23",
+    "code": "KPI04",
+    "title": "Phong Hanh Chinh 07 Vi Tri",
+    "filename": "KPI04_Phong_Hanh_Chinh_07_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "52.9 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI04_Phong_Hanh_Chinh_07_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.290Z",
+    "version": "Ver 2026.1",
+    "fileHash": "e93633a047889f12a553e76c8219cddf"
+  },
+  {
+    "id": "tl_24",
+    "code": "KPI05",
+    "title": "Phong Marketing 08 Vi Tri",
+    "filename": "KPI05_Phong_Marketing_08_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "58.6 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI05_Phong_Marketing_08_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.290Z",
+    "version": "Ver 2026.1",
+    "fileHash": "aae2724a053b6f66529ac14c60e973c0"
+  },
+  {
+    "id": "tl_25",
+    "code": "KPI06",
+    "title": "Phong Mua Hang 06 Vi Tri",
+    "filename": "KPI06_Phong_Mua_Hang_06_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "48.4 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI06_Phong_Mua_Hang_06_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.295Z",
+    "version": "Ver 2026.1",
+    "fileHash": "cdb1eb6ac94c4e2a2b976e24ed295eca"
+  },
+  {
+    "id": "tl_26",
+    "code": "KPI07",
+    "title": "Phong Kho Van Logistics 07 Vi Tri",
+    "filename": "KPI07_Phong_Kho_Van_Logistics_07_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "53.0 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI07_Phong_Kho_Van_Logistics_07_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.296Z",
+    "version": "Ver 2026.1",
+    "fileHash": "2524910a046facab378516943e165060"
+  },
+  {
+    "id": "tl_27",
+    "code": "KPI08",
+    "title": "Phong Xuat Nhap Khau 06 Vi Tri",
+    "filename": "KPI08_Phong_Xuat_Nhap_Khau_06_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "47.9 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI08_Phong_Xuat_Nhap_Khau_06_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.296Z",
+    "version": "Ver 2026.1",
+    "fileHash": "19550933970a435826a12201769311a4"
+  },
+  {
+    "id": "tl_28",
+    "code": "KPI09",
+    "title": "Phong Ky Thuat RD 06 Vi Tri",
+    "filename": "KPI09_Phong_Ky_Thuat_RD_06_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "48.1 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI09_Phong_Ky_Thuat_RD_06_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.297Z",
+    "version": "Ver 2026.1",
+    "fileHash": "dd34655df20c65b7a9af7213b57dc121"
+  },
+  {
+    "id": "tl_29",
+    "code": "KPI10",
+    "title": "Phong Phap Che KSNB 06 Vi Tri",
+    "filename": "KPI10_Phong_Phap_Che_KSNB_06_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "47.8 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI10_Phong_Phap_Che_KSNB_06_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.297Z",
+    "version": "Ver 2026.1",
+    "fileHash": "6154fdb6208c88e4fc7a2a5345b238f5"
+  },
+  {
+    "id": "tl_30",
+    "code": "KPI11",
+    "title": "Khoi Du An Xay Dung 12 Vi Tri",
+    "filename": "KPI11_Khoi_Du_An_Xay_Dung_12_Vi_Tri.xlsx",
+    "category": "kpi",
+    "categoryLabel": "KPI",
+    "year": 2026,
+    "description": "Bảng chỉ số đánh giá hiệu quả công việc (KPI) chi tiết cho từng vị trí chức danh với trọng số tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "78.5 KB",
+    "downloadUrl": "/tai-lieu/01_NHAN_SU_VA_TIEN_LUONG/04_He_Thong_Danh_Gia_KPI_Cac_Phong_Ban/KPI11_Khoi_Du_An_Xay_Dung_12_Vi_Tri.xlsx",
+    "tags": [
+      "KPI",
+      "Excel",
+      "KPI"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.297Z",
+    "version": "Ver 2026.1",
+    "fileHash": "accbc7de4a0edf43c14789dc2565ff26"
+  },
+  {
+    "id": "tl_31",
+    "code": "KT01",
+    "title": "Phan Mem Ke Toan Excel TT99",
+    "filename": "KT01_Phan_Mem_Ke_Toan_Excel_TT99.xlsx",
+    "category": "ke_toan",
+    "categoryLabel": "Kế toán",
+    "year": 2026,
+    "description": "Hệ thống sổ kế toán Excel theo Thông tư 99/2025/TT-BTC hoàn chỉnh Nhật ký chung, Sổ cái, BCTC.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "799.2 KB",
+    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/01_So_Sach_Va_Phan_Mem_Ke_Toan/KT01_Phan_Mem_Ke_Toan_Excel_TT99.xlsx",
+    "tags": [
+      "Kế toán",
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.297Z",
+    "version": "Ver 2026.1",
+    "fileHash": "fd9ddc7a7927e56a6935e188726d75c9"
+  },
+  {
+    "id": "tl_32",
+    "code": "KT02",
+    "title": "Bo Bao Cao Tai Chinh TT133",
+    "filename": "KT02_Bo_Bao_Cao_Tai_Chinh_TT133.xlsx",
+    "category": "ke_toan",
+    "categoryLabel": "Kế toán",
+    "year": 2026,
+    "description": "Bộ Báo cáo tài chính chuẩn Thông tư 133/2016/TT-BTC tích hợp thuyết minh BCTC tự động.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "55.8 KB",
+    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/02_Bao_Cao_Tai_Chinh/KT02_Bo_Bao_Cao_Tai_Chinh_TT133.xlsx",
+    "tags": [
+      "Kế toán",
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.297Z",
+    "version": "Ver 2026.1",
+    "fileHash": "68cd586184a332dbbf9fa45cf4093d7c"
+  },
+  {
+    "id": "tl_33",
+    "code": "KT03",
+    "title": "Bang Tinh Khau Hao Tai San Co Dinh",
+    "filename": "KT03_Bang_Tinh_Khau_Hao_Tai_San_Co_Dinh.xlsx",
+    "category": "ke_toan",
+    "categoryLabel": "Kế toán",
+    "year": 2026,
+    "description": "Bảng tính và phân bổ khấu hao TSCĐ tự động theo chuẩn mực kế toán và quy định thuế TNDN hiện hành.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "142.2 KB",
+    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/03_Tai_San_Co_Dinh_Va_Chi_Phi_Tra_Truoc/KT03_Bang_Tinh_Khau_Hao_Tai_San_Co_Dinh.xlsx",
+    "tags": [
+      "Kế toán",
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.297Z",
+    "version": "Ver 2026.1",
+    "fileHash": "ba2001007aaa72467a9786458c464888"
+  },
+  {
+    "id": "tl_34",
+    "code": "KT04",
+    "title": "So Theo Doi Phan Bo Chi Phi Tra Truoc 242",
+    "filename": "KT04_So_Theo_Doi_Phan_Bo_Chi_Phi_Tra_Truoc_242.xlsx",
+    "category": "ke_toan",
+    "categoryLabel": "Kế toán",
+    "year": 2026,
+    "description": "Sổ chi tiết theo dõi và tự động phân bổ chi phí trả trước dài hạn / ngắn hạn tài khoản 242.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "143.3 KB",
+    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/03_Tai_San_Co_Dinh_Va_Chi_Phi_Tra_Truoc/KT04_So_Theo_Doi_Phan_Bo_Chi_Phi_Tra_Truoc_242.xlsx",
+    "tags": [
+      "Kế toán",
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.297Z",
+    "version": "Ver 2026.1",
+    "fileHash": "1a8420b00e8dbbf7867a9ae6d7b0e016"
+  },
+  {
+    "id": "tl_35",
+    "code": "KT05",
+    "title": "Bo Ho So Thanh Ly Tai San Co Dinh 2026",
+    "filename": "KT05_Bo_Ho_So_Thanh_Ly_Tai_San_Co_Dinh_2026.docx",
+    "category": "ke_toan",
+    "categoryLabel": "Kế toán",
+    "year": 2026,
+    "description": "Trọn bộ hồ sơ pháp lý thanh lý TSCĐ: Quyết định, Biên bản họp hội đồng, Biên bản đánh giá và thanh lý.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "docx",
+    "fileSize": "54.1 KB",
+    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/03_Tai_San_Co_Dinh_Va_Chi_Phi_Tra_Truoc/KT05_Bo_Ho_So_Thanh_Ly_Tai_San_Co_Dinh_2026.docx",
+    "tags": [
+      "Kế toán",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.297Z",
+    "version": "Ver 2026.1",
+    "fileHash": "238cc164cb5ed2e8a28b3168cc4dcb1b"
+  },
+  {
+    "id": "tl_36",
+    "code": "KT06",
+    "title": "Cong Cu Tinh Gia Thanh San Xuat",
+    "filename": "KT06_Cong_Cu_Tinh_Gia_Thanh_San_Xuat.xlsx",
+    "category": "ke_toan",
+    "categoryLabel": "Kế toán",
+    "year": 2026,
+    "description": "File tính giá thành sản xuất, tập hợp chi phí 621, 622, 627 và phân bổ chi phí dở dang cuối kỳ TK 154.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "158.5 KB",
+    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/04_Ke_Toan_Gia_Thanh_San_Xuat/KT06_Cong_Cu_Tinh_Gia_Thanh_San_Xuat.xlsx",
+    "tags": [
+      "Kế toán",
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.297Z",
+    "version": "Ver 2026.1",
+    "fileHash": "808e777c30a521bdacd3b2fa6a92d456"
+  },
+  {
+    "id": "tl_37",
+    "code": "KT07",
+    "title": "He Thong Quan Ly Cong No Va Tuoi No",
+    "filename": "KT07_He_Thong_Quan_Ly_Cong_No_Va_Tuoi_No.xlsx",
+    "category": "ke_toan",
+    "categoryLabel": "Kế toán",
+    "year": 2026,
+    "description": "Hệ thống quản lý công nợ khách hàng, nhà cung cấp và phân tích tuổi nợ quá hạn.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "158.6 KB",
+    "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/05_Quan_Ly_Cong_No_Hop_Dong_Kinh_Te/KT07_He_Thong_Quan_Ly_Cong_No_Va_Tuoi_No.xlsx",
+    "tags": [
+      "Kế toán",
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.307Z",
+    "version": "Ver 2026.1",
+    "fileHash": "dfb6dcefc11df27f2e9411d625e68bf9"
+  },
+  {
+    "id": "tl_42",
     "code": "KT12",
-    "title": "Quy Chế Chi Tiêu Nội Bộ Doanh Nghiệp 2026",
+    "title": "Quy Che Chi Tieu Noi Bo Doanh Nghiep",
     "filename": "KT12_Quy_Che_Chi_Tieu_Noi_Bo_Doanh_Nghiep.docx",
     "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
+    "categoryLabel": "Kế toán",
     "year": 2026,
-    "description": "Quy chế phân quyền duyệt chi, định mức công tác phí, tiếp khách, điện thoại chuẩn chi phí được trừ.",
-    "featured": true,
-    "isHot": true,
+    "description": "Quy chế chi tiêu nội bộ: phân quyền duyệt chi, định mức công tác phí, tiếp khách, điện thoại.",
+    "featured": false,
+    "isHot": false,
     "fileType": "docx",
     "fileSize": "54.2 KB",
     "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/06_Quy_Trinh_Quy_Che_Van_Hanh/KT12_Quy_Che_Chi_Tieu_Noi_Bo_Doanh_Nghiep.docx",
     "tags": [
-      "Chi tiêu nội bộ",
-      "Quy chế"
-    ]
+      "Kế toán",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.308Z",
+    "version": "Ver 2026.1",
+    "fileHash": "c57d6305f0762e27b61fe03196d40a7e"
   },
   {
-    "id": "tl_42",
+    "id": "tl_43",
     "code": "KT13",
-    "title": "Quy Chế Quản Lý Hàng Tồn Kho 2026",
+    "title": "Quy Che Quan Ly Hang Ton Kho 2026",
     "filename": "KT13_Quy_Che_Quan_Ly_Hang_Ton_Kho_2026.docx",
     "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
+    "categoryLabel": "Kế toán",
     "year": 2026,
-    "description": "Quy chế kiểm soát nhập - xuất - tồn, quy trình kiểm kê định kỳ và xử lý hao hụt dự phòng giảm giá.",
+    "description": "Quy chế quản lý hàng tồn kho: thủ tục nhập - xuất, kiểm kê kho và trích lập dự phòng.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "21.9 KB",
     "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/06_Quy_Trinh_Quy_Che_Van_Hanh/KT13_Quy_Che_Quan_Ly_Hang_Ton_Kho_2026.docx",
     "tags": [
-      "Tồn kho",
-      "Kho vận"
-    ]
+      "Kế toán",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.308Z",
+    "version": "Ver 2026.1",
+    "fileHash": "160da7ef983f940be9f4a7781e0d578f"
   },
   {
-    "id": "tl_43",
+    "id": "tl_44",
     "code": "KT14",
-    "title": "Quy Trình Mua Hàng & Thanh Toán Nhà Cung Cấp",
+    "title": "Quy Trinh Mua Hang Va Thanh Toan NCC",
     "filename": "KT14_Quy_Trinh_Mua_Hang_Va_Thanh_Toan_NCC.docx",
     "category": "ke_toan",
-    "categoryLabel": "Kế toán - Thuế",
+    "categoryLabel": "Kế toán",
     "year": 2026,
-    "description": "Quy trình kiểm soát đề nghị mua sắm, thẩm định báo giá và đối chiếu 3 bên trước khi thanh toán.",
+    "description": "Quy trình mua hàng và thanh toán: đối chiếu 3 bên Đề nghị - Phiếu nhập - Hóa đơn GTGT.",
     "featured": false,
     "isHot": false,
     "fileType": "docx",
     "fileSize": "24.0 KB",
     "downloadUrl": "/tai-lieu/02_KE_TOAN_VA_TAI_CHINH/06_Quy_Trinh_Quy_Che_Van_Hanh/KT14_Quy_Trinh_Mua_Hang_Va_Thanh_Toan_NCC.docx",
     "tags": [
-      "Mua hàng",
-      "Thanh toán"
-    ]
-  },
-  {
-    "id": "tl_44",
-    "code": "TH01",
-    "title": "Ma Trận Kiểm Soát 57 Khoản Chi Tiền Lương, Thuế & BHXH",
-    "filename": "TH01_Ma_Tran_Kiem_Soat_3_Nghia_Vu_Thue_Va_BHXH.pdf",
-    "category": "thue",
-    "categoryLabel": "Kế toán - Thuế",
-    "year": 2026,
-    "description": "Công cụ ma trận kiểm soát đồng thời 3 nghĩa vụ: Thuế TNCN, BHXH bắt buộc và Chi phí được trừ Thuế TNDN.",
-    "featured": true,
-    "isHot": true,
-    "fileType": "pdf",
-    "fileSize": "178.7 KB",
-    "downloadUrl": "/tai-lieu/03_THUE_VA_PHAP_LY_DOANH_NGHIEP/01_Chinh_Sach_Thue_TNDN_TNCN_GTGT/TH01_Ma_Tran_Kiem_Soat_3_Nghia_Vu_Thue_Va_BHXH.pdf",
-    "tags": [
-      "Ma trận 57 khoản",
-      "Hot",
-      "Cập nhật 2026"
-    ]
+      "Kế toán",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.311Z",
+    "version": "Ver 2026.1",
+    "fileHash": "08fc7966435ffe7a86c31839d4e2dae3"
   },
   {
     "id": "tl_45",
     "code": "TH01",
-    "title": "Ma Trận Kiểm Soát 57 Khoản Chi Tiền Lương, Thuế & BHXH",
+    "title": "Ma Tran Kiem Soat 3 Nghia Vu Thue Va BHXH",
+    "filename": "TH01_Ma_Tran_Kiem_Soat_3_Nghia_Vu_Thue_Va_BHXH.pdf",
+    "category": "thue",
+    "categoryLabel": "Thuế & Pháp lý",
+    "year": 2026,
+    "description": "Ma trận 57 khoản mục lương, phụ cấp, thưởng, phúc lợi đối chiếu đồng thời 3 nghĩa vụ Thuế & BHXH.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "pdf",
+    "fileSize": "178.7 KB",
+    "downloadUrl": "/tai-lieu/03_THUE_VA_PHAP_LY_DOANH_NGHIEP/01_Chinh_Sach_Thue_TNDN_TNCN_GTGT/TH01_Ma_Tran_Kiem_Soat_3_Nghia_Vu_Thue_Va_BHXH.pdf",
+    "tags": [
+      "Thuế & Pháp lý",
+      "PDF"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.311Z",
+    "version": "Ver 2026.1",
+    "fileHash": "c3efe00050afd013436317f923a193e6"
+  },
+  {
+    "id": "tl_46",
+    "code": "TH01",
+    "title": "Ma Tran Kiem Soat 57 Khoan Chi Luong BHXH Thue KK HOME",
     "filename": "TH01_Ma_Tran_Kiem_Soat_57_Khoan_Chi_Luong_BHXH_Thue_KK_HOME.xlsx",
     "category": "thue",
-    "categoryLabel": "Kế toán - Thuế",
+    "categoryLabel": "Thuế & Pháp lý",
     "year": 2026,
-    "description": "Công cụ ma trận kiểm soát đồng thời 3 nghĩa vụ: Thuế TNCN, BHXH bắt buộc và Chi phí được trừ Thuế TNDN.",
-    "featured": true,
-    "isHot": true,
+    "description": "Ma trận 57 khoản mục lương, phụ cấp, thưởng, phúc lợi đối chiếu đồng thời 3 nghĩa vụ Thuế & BHXH.",
+    "featured": false,
+    "isHot": false,
     "fileType": "xlsx",
     "fileSize": "9.7 KB",
     "downloadUrl": "/tai-lieu/03_THUE_VA_PHAP_LY_DOANH_NGHIEP/01_Chinh_Sach_Thue_TNDN_TNCN_GTGT/TH01_Ma_Tran_Kiem_Soat_57_Khoan_Chi_Luong_BHXH_Thue_KK_HOME.xlsx",
     "tags": [
-      "Ma trận 57 khoản",
-      "Hot",
-      "Cập nhật 2026"
-    ]
+      "Thuế & Pháp lý",
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.311Z",
+    "version": "Ver 2026.1",
+    "fileHash": "4b4fd0b7c21bb9514557b449059a07fe"
   },
   {
-    "id": "tl_46",
+    "id": "tl_47",
     "code": "TH02",
-    "title": "Công Văn 6436/CT-PC: Hướng Dẫn Những Điểm Cốt Lõi NNT Cần Biết",
+    "title": "CV6436 CT Nhung Dieu NNT Can Biet Luat Moi",
     "filename": "TH02_CV6436_CT_Nhung_Dieu_NNT_Can_Biet_Luat_Moi.pdf",
     "category": "thue",
     "categoryLabel": "Thuế & Pháp lý",
     "year": 2026,
-    "description": "Cẩm nang tuyên truyền phổ biến những điểm mới cơ bản nhất người nộp thuế cần nắm theo Luật Quản lý thuế mới.",
+    "description": "Công văn 6436/CT-PC hướng dẫn những quy định cốt lõi người nộp thuế cần biết theo luật mới.",
     "featured": false,
     "isHot": false,
     "fileType": "pdf",
-    "fileSize": "4040.6 KB",
+    "fileSize": "3.9 MB",
     "downloadUrl": "/tai-lieu/03_THUE_VA_PHAP_LY_DOANH_NGHIEP/01_Chinh_Sach_Thue_TNDN_TNCN_GTGT/TH02_CV6436_CT_Nhung_Dieu_NNT_Can_Biet_Luat_Moi.pdf",
     "tags": [
-      "CV 6436",
-      "Cục Thuế"
-    ]
+      "Thuế & Pháp lý",
+      "PDF"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.340Z",
+    "version": "Ver 2026.1",
+    "fileHash": "e1248f01c71a0792f1adf745d6815228"
   },
   {
-    "id": "tl_47",
+    "id": "tl_48",
     "code": "TH03",
-    "title": "Công Văn 10311/CTNBI: Chính Sách Thuế TNCN Với Chi Phí Lao Động",
+    "title": "CV10311 CTNBI Chinh Sach Thue TNCN",
     "filename": "TH03_CV10311_CTNBI_Chinh_Sach_Thue_TNCN.pdf",
     "category": "thue",
     "categoryLabel": "Thuế & Pháp lý",
     "year": 2026,
-    "description": "Công văn hướng dẫn về tính thuế TNCN đối với các khoản chi trả phúc lợi và phụ cấp người lao động.",
+    "description": "Công văn 10311/CTNBI hướng dẫn chính sách thuế TNCN đối với các khoản chi trả nhân viên.",
     "featured": false,
     "isHot": false,
     "fileType": "pdf",
-    "fileSize": "1985.6 KB",
+    "fileSize": "1.9 MB",
     "downloadUrl": "/tai-lieu/03_THUE_VA_PHAP_LY_DOANH_NGHIEP/01_Chinh_Sach_Thue_TNDN_TNCN_GTGT/TH03_CV10311_CTNBI_Chinh_Sach_Thue_TNCN.pdf",
     "tags": [
-      "CV 10311",
-      "Thuế TNCN"
-    ]
+      "Thuế & Pháp lý",
+      "PDF"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.350Z",
+    "version": "Ver 2026.1",
+    "fileHash": "c66ad3b0a8669bbde2e0001862441f68"
   },
   {
-    "id": "tl_48",
+    "id": "tl_49",
     "code": "TH04",
-    "title": "Công Văn 2590/BTC: Thuế GTGT Dịch Vụ Xuất Khẩu Doanh Nghiệp EPE",
+    "title": "CV2590 BTC Thue GTGT Dich Vu Xuat Khau EPE",
     "filename": "TH04_CV2590_BTC_Thue_GTGT_Dich_Vu_Xuat_Khau_EPE.pdf",
     "category": "thue",
     "categoryLabel": "Thuế & Pháp lý",
     "year": 2026,
-    "description": "Văn bản của Bộ Tài chính hướng dẫn chính sách thuế GTGT dịch vụ xuất khẩu cho doanh nghiệp chế xuất.",
+    "description": "Công văn 2590/BTC hướng dẫn chính sách thuế GTGT dịch vụ xuất khẩu cho Doanh nghiệp Chế xuất.",
     "featured": false,
     "isHot": false,
     "fileType": "pdf",
-    "fileSize": "3847.6 KB",
+    "fileSize": "3.8 MB",
     "downloadUrl": "/tai-lieu/03_THUE_VA_PHAP_LY_DOANH_NGHIEP/01_Chinh_Sach_Thue_TNDN_TNCN_GTGT/TH04_CV2590_BTC_Thue_GTGT_Dich_Vu_Xuat_Khau_EPE.pdf",
     "tags": [
-      "CV 2590",
-      "Thuế GTGT"
-    ]
+      "Thuế & Pháp lý",
+      "PDF"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.375Z",
+    "version": "Ver 2026.1",
+    "fileHash": "cda751895e37227e173bbb1e0261e601"
   },
   {
-    "id": "tl_49",
+    "id": "tl_50",
     "code": "TH05",
-    "title": "Cẩm Nang Hướng Dẫn Giải Thể & Khôi Phục Mã Số Thuế",
+    "title": "Tai Lieu Huong Dan Giai The Khoi Phuc MST",
     "filename": "TH05_Tai_Lieu_Huong_Dan_Giai_The_Khoi_Phuc_MST.pdf",
     "category": "thue",
     "categoryLabel": "Thuế & Pháp lý",
     "year": 2026,
-    "description": "Tài liệu chi tiết các bước và hồ sơ thực hiện khi giải thể, tạm ngừng hoặc khôi phục hiệu lực MST.",
+    "description": "Tài liệu hướng dẫn thủ tục giải thể, tạm ngừng, chấm dứt và khôi phục hiệu lực Mã số thuế.",
     "featured": false,
     "isHot": false,
     "fileType": "pdf",
     "fileSize": "786.7 KB",
     "downloadUrl": "/tai-lieu/03_THUE_VA_PHAP_LY_DOANH_NGHIEP/02_Thu_Tuc_Ma_So_Thue_Va_Dang_Ky_Kinh_Doanh/TH05_Tai_Lieu_Huong_Dan_Giai_The_Khoi_Phuc_MST.pdf",
     "tags": [
-      "Mã số thuế",
-      "Giải thể"
-    ]
+      "Thuế & Pháp lý",
+      "PDF"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.382Z",
+    "version": "Ver 2026.1",
+    "fileHash": "d99d95646f45e70df66681949cdc2f3e"
   },
   {
-    "id": "tl_50",
+    "id": "tl_51",
     "code": "TH06",
-    "title": "Tài Liệu Tập Huấn Đăng Ký Hộ Kinh Doanh Điện Tử Qua Mạng",
+    "title": "Tai Lieu Tap Huan Dang Ky Ho Kinh Doanh Qua Mang",
     "filename": "TH06_Tai_Lieu_Tap_Huan_Dang_Ky_Ho_Kinh_Doanh_Qua_Mang.pdf",
     "category": "thue",
     "categoryLabel": "Thuế & Pháp lý",
     "year": 2026,
-    "description": "Tài liệu tập huấn quy trình đăng ký HKD điện tử qua cổng thông tin quốc gia của Cục Phát triển DN.",
+    "description": "Tài liệu tập huấn quy trình đăng ký Hộ kinh doanh điện tử qua mạng của Bộ Kế hoạch Đầu tư.",
     "featured": false,
     "isHot": false,
     "fileType": "pdf",
-    "fileSize": "1633.8 KB",
+    "fileSize": "1.6 MB",
     "downloadUrl": "/tai-lieu/03_THUE_VA_PHAP_LY_DOANH_NGHIEP/02_Thu_Tuc_Ma_So_Thue_Va_Dang_Ky_Kinh_Doanh/TH06_Tai_Lieu_Tap_Huan_Dang_Ky_Ho_Kinh_Doanh_Qua_Mang.pdf",
     "tags": [
-      "Hộ kinh doanh",
-      "ĐKKD"
-    ]
+      "Thuế & Pháp lý",
+      "PDF"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.390Z",
+    "version": "Ver 2026.1",
+    "fileHash": "3ac32db89149f657f6aac64b3dadff63"
   },
   {
-    "id": "tl_51",
+    "id": "tl_52",
     "code": "BH01",
-    "title": "Bảng Tra Cứu Căn Cứ Đóng & Miễn Đóng BHXH Bắt Buộc Mới",
+    "title": "Ma Tran Kiem Soat 57 Khoan Chi Luong BHXH Thue KK HOME",
     "filename": "BH01_Ma_Tran_Kiem_Soat_57_Khoan_Chi_Luong_BHXH_Thue_KK_HOME.xlsx",
     "category": "bhxh",
-    "categoryLabel": "Bảo hiểm Xã hội",
+    "categoryLabel": "Bảo hiểm XH",
     "year": 2026,
     "description": "Bảng phân định chi tiết các khoản thu nhập tính đóng và miễn đóng BHXH bắt buộc theo Luật BHXH mới nhất.",
-    "featured": true,
-    "isHot": true,
+    "featured": false,
+    "isHot": false,
     "fileType": "xlsx",
     "fileSize": "9.7 KB",
     "downloadUrl": "/tai-lieu/04_BAO_HIEM_XA_HOI/01_Chinh_Sach_Va_Can_Cu_Trich_Dong_BHXH/BH01_Ma_Tran_Kiem_Soat_57_Khoan_Chi_Luong_BHXH_Thue_KK_HOME.xlsx",
     "tags": [
-      "Căn cứ đóng BHXH",
-      "Luật mới"
-    ]
+      "Bảo hiểm XH",
+      "Excel"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.391Z",
+    "version": "Ver 2026.1",
+    "fileHash": "4b4fd0b7c21bb9514557b449059a07fe"
   },
   {
-    "id": "tl_52",
+    "id": "tl_53",
     "code": "BH02",
-    "title": "Hợp Đồng Lao Động Người Đang Hưởng Lương Hưu",
+    "title": "Hop Dong Lao Dong Nguoi Huong Luong Huu",
     "filename": "BH02_Hop_Dong_Lao_Dong_Nguoi_Huong_Luong_Huu.docx",
     "category": "bhxh",
-    "categoryLabel": "Bảo hiểm Xã hội",
+    "categoryLabel": "Bảo hiểm XH",
     "year": 2026,
     "description": "Hợp đồng lao động với người cao tuổi/nghỉ hưu: không đóng BHXH, chi trả phụ cấp BHXH trực tiếp vào lương.",
     "featured": false,
-    "isHot": true,
+    "isHot": false,
     "fileType": "docx",
     "fileSize": "20.2 KB",
     "downloadUrl": "/tai-lieu/04_BAO_HIEM_XA_HOI/02_Che_Do_Lao_Dong_Dac_Thu/BH02_Hop_Dong_Lao_Dong_Nguoi_Huong_Luong_Huu.docx",
     "tags": [
-      "Hưu trí",
-      "HĐLĐ"
-    ]
+      "Bảo hiểm XH",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.392Z",
+    "version": "Ver 2026.1",
+    "fileHash": "30106b08c801265fef92f7cbdf46f526"
   },
   {
-    "id": "tl_53",
+    "id": "tl_54",
     "code": "BH03",
-    "title": "Hợp Đồng Dịch Vụ Kế Toán, Thuế & Thủ Tục BHXH",
+    "title": "Hop Dong Dich Vu Ke Toan BHXH Thue TNCN",
     "filename": "BH03_Hop_Dong_Dich_Vu_Ke_Toan_BHXH_Thue_TNCN.docx",
     "category": "bhxh",
-    "categoryLabel": "Bảo hiểm Xã hội",
+    "categoryLabel": "Bảo hiểm XH",
     "year": 2026,
     "description": "Hợp đồng mẫu thuê dịch vụ kế toán thuế và đại lý thực hiện thủ tục bảo hiểm xã hội.",
     "featured": false,
@@ -1032,8 +1254,12 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "fileSize": "117.7 KB",
     "downloadUrl": "/tai-lieu/04_BAO_HIEM_XA_HOI/02_Che_Do_Lao_Dong_Dac_Thu/BH03_Hop_Dong_Dich_Vu_Ke_Toan_BHXH_Thue_TNCN.docx",
     "tags": [
-      "Thuê dịch vụ",
-      "HĐ đại lý"
-    ]
+      "Bảo hiểm XH",
+      "Word"
+    ],
+    "hasPreviewPdf": true,
+    "lastModified": "2026-10-25T11:01:54.392Z",
+    "version": "Ver 2026.1",
+    "fileHash": "b40b8462950a493a656fd7a92f0186d5"
   }
 ];

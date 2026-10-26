@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { TaiLieuExplorer } from '@/components/tai-lieu/tai-lieu-explorer'
+import { scanTaiLieuDirectory } from '@/lib/tai-lieu-scanner'
 import { hasLegalAccess } from '@/lib/legal/has-legal-access'
 import { hasTaxAccess } from '@/lib/tax/has-tax-access'
 
@@ -28,6 +29,9 @@ export default async function TaiLieuPage() {
     redirect('/')
   }
 
+  // Tự động quét và lấy danh sách biểu mẫu trực tiếp từ thư mục
+  const initialItems = scanTaiLieuDirectory()
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50/50 dark:bg-gray-950">
       <Navbar 
@@ -38,7 +42,7 @@ export default async function TaiLieuPage() {
       />
 
       <main className="flex-1">
-        <TaiLieuExplorer user={user} isAdmin={profile?.is_admin} />
+        <TaiLieuExplorer user={user} isAdmin={profile?.is_admin} initialItems={initialItems} />
       </main>
 
       <SiteFooter />

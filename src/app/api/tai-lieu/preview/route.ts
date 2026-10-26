@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import path from 'path'
 import fs from 'fs'
 import { TAI_LIEU_ITEMS } from '@/lib/tai-lieu-data'
+import { scanTaiLieuDirectory } from '@/lib/tai-lieu-scanner'
 import * as XLSX from 'xlsx'
 import mammoth from 'mammoth'
 
@@ -15,7 +16,12 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Thiếu mã tài liệu' }, { status: 400 })
   }
 
-  const item = TAI_LIEU_ITEMS.find((t) => t.id === id)
+  let item = TAI_LIEU_ITEMS.find((t) => t.id === id)
+  if (!item) {
+    const liveItems = scanTaiLieuDirectory()
+    item = liveItems.find((t) => t.id === id)
+  }
+
   if (!item) {
     return NextResponse.json({ error: 'Không tìm thấy tài liệu' }, { status: 404 })
   }

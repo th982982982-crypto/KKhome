@@ -27,7 +27,8 @@ import {
   GitBranch,
   History,
   Clock,
-  Plus
+  Plus,
+  RefreshCw
 } from 'lucide-react'
 
 const CATEGORIES = [
@@ -43,9 +44,12 @@ const CATEGORIES = [
 interface TaiLieuExplorerProps {
   user?: { email?: string | null; id?: string; user_metadata?: { full_name?: string } | null } | null
   isAdmin?: boolean
+  initialItems?: TaiLieuItem[]
 }
 
-export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps = {}) {
+export function TaiLieuExplorer({ user, isAdmin = false, initialItems }: TaiLieuExplorerProps = {}) {
+  const [items, setItems] = useState<TaiLieuItem[]>(initialItems && initialItems.length > 0 ? initialItems : TAI_LIEU_ITEMS)
+  const [isSyncing, setIsSyncing] = useState(false)
   const [selectedCat, setSelectedCat] = useState('all')
   const [selectedYear, setSelectedYear] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
@@ -86,29 +90,70 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
       .catch(() => {})
   }, [])
 
+  function formatVersion(ver?: string) {
+    if (!ver) return 'Ver 2026.1'
+    ver = ver.trim()
+    if (/^v\d/i.test(ver)) {
+      return 'Ver ' + ver.slice(1)
+    }
+    if (!ver.toLowerCase().startsWith('ver')) {
+      return 'Ver ' + ver
+    }
+    return ver.replace(/^ver\s*/i, 'Ver ')
+  }
+
+  function getNextVersionNum(currentVer: string) {
+    const normalized = formatVersion(currentVer)
+    const matchYear = normalized.match(/Ver\s+(\d{4})\.(\d+)/i)
+    if (matchYear) {
+      const year = matchYear[1]
+      const num = parseInt(matchYear[2], 10) + 1
+      return `Ver ${year}.${num}`
+    }
+    const matchGeneral = normalized.match(/Ver\s+(\d+)\.(\d+)/i)
+    if (matchGeneral) {
+      const major = matchGeneral[1]
+      const minor = parseInt(matchGeneral[2], 10) + 1
+      return `Ver ${major}.${minor}`
+    }
+    const matchSingle = normalized.match(/Ver\s+(\d+)/i)
+    if (matchSingle) {
+      return `Ver ${matchSingle[1]}.1`
+    }
+    return `${normalized}.1`
+  }
+
   function getVersionsForItem(item: TaiLieuItem) {
     if (allVersions[item.id] && allVersions[item.id].length > 0) {
-      return allVersions[item.id]
+      return allVersions[item.id].map(v => ({
+        ...v,
+        version: formatVersion(v.version)
+      }))
     }
+    const defaultVer = item.version ? formatVersion(item.version) : `Ver ${item.year || 2026}.1`
     return [
       {
-        version: 'v2026.1',
-        releaseDate: `${item.year}-01-15`,
-        changelog: `Phiên bản biểu mẫu chuẩn hóa năm ${item.year}, áp dụng hệ thống căn cứ pháp lý hiện hành.`,
+        version: defaultVer,
+        releaseDate: `${item.year || 2026}-01-15`,
+        changelog: `Phiên bản biểu mẫu chuẩn hóa năm ${item.year || 2026}, áp dụng hệ thống căn cứ pháp lý hiện hành tại KK HOME.`,
         updatedBy: 'Hệ thống KK HOME',
       },
     ]
   }
 
   function getCurrentVersion(item: TaiLieuItem) {
-    return getVersionsForItem(item)[0]?.version || 'v2026.1'
+    if (allVersions[item.id] && allVersions[item.id].length > 0) {
+      return formatVersion(allVersions[item.id][0]?.version)
+    }
+    if (item.version) {
+      return formatVersion(item.version)
+    }
+    return `Ver ${item.year || 2026}.1`
   }
 
   function openVersionForm(item: TaiLieuItem) {
-    const vers = getVersionsForItem(item)
-    const current = vers[0]?.version || 'v2026.1'
-    const match = current.match(/v(\d{4})\.(\d+)/)
-    const nextVer = match ? `v${match[1]}.${parseInt(match[2]) + 1}` : `${current}.1`
+    const current = getCurrentVersion(item)
+    const nextVer = getNextVersionNum(current)
     setNewVersionNum(nextVer)
     setNewReleaseDate(new Date().toISOString().split('T')[0])
     setNewChangelog('')
@@ -155,7 +200,8 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
       return
     }
 
-    setPreviewTab('pdf')
+    const hasPdf = activeModalItem.fileType === 'pdf' || activeModalItem.hasPreviewPdf !== false
+    setPreviewTab(hasPdf ? 'pdf' : 'raw')
     setActiveSheetIndex(0)
     setPreviewError(null)
 
@@ -163,7 +209,7 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
     const directPdfUrl = getPreviewPdfUrl(activeModalItem)
     setPreviewData({
       fileType: activeModalItem.fileType,
-      url: directPdfUrl,
+      url: hasPdf ? directPdfUrl : undefined,
     })
     setPreviewLoading(false)
 
@@ -237,9 +283,26 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
     })
   }
 
+  async function handleSyncFolder() {
+    setIsSyncing(true)
+    try {
+      const res = await fetch('/api/admin/tai-lieu/sync', { method: 'POST' })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Lỗi khi đồng bộ')
+      if (data.items) {
+        setItems(data.items)
+      }
+      toast.success(data.message || `Đã tự động cập nhật ${data.count} biểu mẫu từ thư mục!`)
+    } catch (err: any) {
+      toast.error(err.message || 'Lỗi khi đồng bộ thư mục')
+    } finally {
+      setIsSyncing(false)
+    }
+  }
+
   // Filter items
   const filteredItems = useMemo(() => {
-    return TAI_LIEU_ITEMS.filter(item => {
+    return items.filter(item => {
       // Category
       if (selectedCat !== 'all') {
         if (selectedCat === 'nhan_su' && item.category !== 'nhan_su') return false
@@ -272,7 +335,7 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
 
       return true
     })
-  }, [selectedCat, selectedYear, searchQuery, onlyBookmarks, bookmarks])
+  }, [selectedCat, selectedYear, searchQuery, onlyBookmarks, bookmarks, items])
 
   const visibleItems = showAllLimit ? filteredItems : filteredItems.slice(0, 18)
 
@@ -319,7 +382,17 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
             </div>
 
             {/* Quick Action Buttons */}
-            <div className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-2.5 shrink-0">
+              <button
+                onClick={handleSyncFolder}
+                disabled={isSyncing}
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-md hover:shadow-lg transition-all disabled:opacity-50"
+                title="Quét và tự động đồng bộ lại biểu mẫu từ thư mục"
+              >
+                <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
+                <span>{isSyncing ? 'Đang quét...' : 'Đồng bộ thư mục'}</span>
+              </button>
+
               <button
                 onClick={() => setOnlyBookmarks(!onlyBookmarks)}
                 className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-full text-xs font-medium border transition-all ${
@@ -389,6 +462,15 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={handleSyncFolder}
+              disabled={isSyncing}
+              className="inline-flex items-center gap-1.5 bg-emerald-50 dark:bg-emerald-950/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 font-bold text-xs px-3.5 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-800 transition-all disabled:opacity-50 shadow-xs"
+              title="Quét và cập nhật biểu mẫu từ thư mục"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? 'animate-spin' : ''}`} />
+              <span>{isSyncing ? 'Đang quét...' : 'Đồng bộ thư mục'}</span>
+            </button>
             <span className="bg-blue-50 dark:bg-blue-950/50 text-[#1e3a8a] dark:text-blue-300 font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full border border-blue-100 dark:border-blue-900/50">
               {filteredItems.length} tài liệu
             </span>
@@ -546,6 +628,10 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
                 </span>
                 <span className="bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">
                   {activeModalItem.categoryLabel}
+                </span>
+                <span className="inline-flex items-center gap-1 bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold px-2.5 py-0.5 rounded-full border border-blue-200/80 dark:border-blue-800/80">
+                  <GitBranch className="w-3 h-3 text-blue-500" />
+                  {getCurrentVersion(activeModalItem)}
                 </span>
                 <span className="text-xs text-gray-400 font-medium">
                   Định dạng .{activeModalItem.fileType.toUpperCase()} • {activeModalItem.fileSize}
@@ -799,7 +885,7 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
                         className="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm transition-all flex items-center gap-2"
                       >
                         <Plus className="w-4 h-4" />
-                        <span>Cập nhật version mới</span>
+                        <span>Phát hành Ver mới</span>
                       </button>
                     )}
                   </div>
@@ -824,14 +910,14 @@ export function TaiLieuExplorer({ user, isAdmin = false }: TaiLieuExplorerProps 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">
-                            Mã phiên bản (Version) *
+                            Mã phiên bản (Ver) *
                           </label>
                           <input
                             type="text"
                             required
                             value={newVersionNum}
                             onChange={(e) => setNewVersionNum(e.target.value)}
-                            placeholder="Ví dụ: v2026.2 hoặc v2.0"
+                            placeholder="Ví dụ: Ver 2026.2 hoặc Ver 2.0"
                             className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl px-3 py-2 text-sm text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 font-semibold"
                           />
                         </div>

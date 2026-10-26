@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import path from 'path'
 import fs from 'fs'
 import { createClient } from '@/lib/supabase/server'
+import { formatVersionString, scanTaiLieuDirectory, writeTaiLieuDataFile } from '@/lib/tai-lieu-scanner'
 
 export const dynamic = 'force-dynamic'
 
@@ -14,7 +15,16 @@ function readVersionsData(): Record<string, any[]> {
     const p = getFilePath()
     if (fs.existsSync(p)) {
       const raw = fs.readFileSync(p, 'utf-8')
-      return JSON.parse(raw)
+      const data = JSON.parse(raw)
+      for (const k of Object.keys(data)) {
+        if (Array.isArray(data[k])) {
+          data[k] = data[k].map((v: any) => ({
+            ...v,
+            version: formatVersionString(v.version),
+          }))
+        }
+      }
+      return data
     }
   } catch (err) {
     console.error('Error reading versions json:', err)
@@ -42,7 +52,7 @@ export async function GET(request: NextRequest) {
   if (id) {
     const list = allData[id] || [
       {
-        version: 'v2026.1',
+        version: 'Ver 2026.1',
         releaseDate: '2026-01-15',
         changelog: 'Phiên bản chuẩn hóa năm 2026.',
         updatedBy: 'Hệ thống KK HOME',
@@ -76,10 +86,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Vui lòng điền đầy đủ mã tài liệu, số version và nội dung thay đổi' }, { status: 400 })
     }
 
+    const formattedVer = formatVersionString(version)
     const allData = readVersionsData()
     const currentList = allData[id] ? [...allData[id]] : [
       {
-        version: 'v2026.1',
+        version: 'Ver 2026.1',
         releaseDate: '2026-01-15',
         changelog: 'Phiên bản chuẩn hóa ban đầu năm 2026.',
         updatedBy: 'Hệ thống KK HOME',
@@ -87,7 +98,7 @@ export async function POST(request: NextRequest) {
     ]
 
     const newVersionRecord = {
-      version: version.trim(),
+      version: formattedVer,
       releaseDate: releaseDate || new Date().toISOString().split('T')[0],
       changelog: changelog.trim(),
       updatedBy: user.email || 'Admin KK HOME',
@@ -106,6 +117,12 @@ export async function POST(request: NextRequest) {
 
     allData[id] = currentList
     writeVersionsData(allData)
+
+    // Also update tai-lieu-data.ts with new version
+    try {
+      const items = scanTaiLieuDirectory()
+      writeTaiLieuDataFile(items)
+    } catch {}
 
     return NextResponse.json({
       success: true,

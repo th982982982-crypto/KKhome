@@ -18,7 +18,7 @@
 
 param(
     [Parameter(Position=0)]
-    [ValidateSet("pull", "push", "setup", "clean-remote", "status", "help")]
+    [ValidateSet("pull", "push", "setup", "clean-remote", "status", "sync-templates", "help")]
     [string]$Action = "help",
 
     [Parameter(Position=1)]
@@ -103,6 +103,13 @@ switch ($Action) {
             Write-Host "Vi du: .\sync-git.ps1 push `"Cap nhat giao dien`"" -ForegroundColor Yellow
             exit 1
         }
+        Write-Host "Dang kiem tra va tu dong cap nhat bieu mau tu thu muc..." -ForegroundColor Cyan
+        try {
+            node scripts/update-templates.mjs
+        } catch {
+            Write-Host "Luu y: Bo qua buoc tu dong cap nhat mau do loi: $_" -ForegroundColor Yellow
+        }
+
         Write-Host "Dang them file va tao commit..." -ForegroundColor Cyan
         git add .
         $status = git status --porcelain
@@ -114,6 +121,11 @@ switch ($Action) {
         Write-Host "Dang day code len origin/main..." -ForegroundColor Cyan
         git push $authUrl main
         Write-Host "Push code thanh cong! (Trang thai Vercel se tu dong build & deploy)" -ForegroundColor Green
+    }
+
+    "sync-templates" {
+        Write-Host "Dang quet va tu dong cap nhat bieu mau tu thu muc..." -ForegroundColor Cyan
+        node scripts/update-templates.mjs
     }
 
     "setup" {
