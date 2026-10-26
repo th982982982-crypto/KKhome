@@ -7,6 +7,7 @@ import { scanTaiLieuDirectoryAsync, isTaiLieuPublicAsync } from '@/lib/tai-lieu-
 import { hasLegalAccess } from '@/lib/legal/has-legal-access'
 import { hasTaxAccess } from '@/lib/tax/has-tax-access'
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
 export const metadata = {

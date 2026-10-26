@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { scanTaiLieuDirectory, syncTaiLieuDirectories } from '@/lib/tai-lieu-scanner'
+import { scanTaiLieuDirectoryAsync, syncTaiLieuDirectories, isTaiLieuPublicAsync } from '@/lib/tai-lieu-scanner'
 import { createClient } from '@/lib/supabase/server'
 
 export const dynamic = 'force-dynamic'
@@ -10,22 +10,47 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get('category')
     const query = searchParams.get('q')?.toLowerCase().trim()
     const refresh = searchParams.get('refresh') === '1'
+    const visibility = searchParams.get('visibility')
 
-    // If refresh requested, check if user is admin or allow lightweight directory sync
-    if (refresh) {
-      try {
-        const supabase = await createClient()
-        const { data: { user } } = await supabase.auth.getUser()
-        if (user) {
-          const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single()
-          if (profile?.is_admin) {
-            syncTaiLieuDirectories()
-          }
+    let isAdmin = false
+    try {
+      const supabase = await createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single()
+        isAdmin = Boolean(profile?.is_admin || (user.email ? user.email.toLowerCase().includes('admin') : false))
+        if (isAdmin && refresh) {
+          syncTaiLieuDirectories()
         }
-      } catch {}
+      }
+    } catch {}
+
+    const isPublic = await isTaiLieuPublicAsync(true)
+
+    // 1. Khi kho Tạm ẩn: sẽ ẩn toàn bộ với người dùng thông thường
+    if (!isPublic && !isAdmin) {
+      return NextResponse.json({
+        success: true,
+        count: 0,
+        isPublicKho: false,
+        message: 'Kho tài liệu đang tạm ẩn',
+        stats: { total: 0, nhanSu: 0, hopDong: 0, kpi: 0, keToan: 0, thue: 0, bhxh: 0 },
+        items: [],
+      })
     }
 
-    let items = scanTaiLieuDirectory()
+    let items = await scanTaiLieuDirectoryAsync(refresh)
+
+    // 2. Khi kho Công khai: chỉ hiển thị những mẫu hiển thị, mẫu bị ẩn không hiển thị
+    if (!isAdmin) {
+      items = items.filter((item) => !item.isHidden)
+    } else {
+      if (visibility === 'visible') {
+        items = items.filter((item) => !item.isHidden)
+      } else if (visibility === 'hidden') {
+        items = items.filter((item) => item.isHidden)
+      }
+    }
 
     if (category && category !== 'all') {
       items = items.filter((item) => item.category === category)
@@ -54,6 +79,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: true,
       count: items.length,
+      isPublicKho: isPublic,
       stats,
       items,
     })

@@ -23,9 +23,6 @@ function getAdminSupabaseSafe() {
     if (!url || !serviceKey) return null
     return createSupabaseClient(url, serviceKey, {
       auth: { autoRefreshToken: false, persistSession: false },
-      global: {
-        fetch: (input, init) => fetch(input, { ...init, cache: 'no-store' }),
-      },
     })
   } catch {
     return null
@@ -179,7 +176,7 @@ export async function writeMetadataOverridesAsync(data: Record<string, TaiLieuMe
     if (supabase) {
       const jsonStr = JSON.stringify(data, null, 2)
       const buffer = Buffer.from(jsonStr, 'utf-8')
-      const { error } = await supabase.storage
+      let { error } = await supabase.storage
         .from('legal-forms')
         .upload('tai-lieu-config/metadata-overrides.json', buffer, {
           contentType: 'application/json',
@@ -187,7 +184,15 @@ export async function writeMetadataOverridesAsync(data: Record<string, TaiLieuMe
         })
 
       if (error) {
-        console.error('Failed to upload metadata to Supabase Storage:', error.message)
+        const updateRes = await supabase.storage
+          .from('legal-forms')
+          .update('tai-lieu-config/metadata-overrides.json', buffer, {
+            contentType: 'application/json',
+            upsert: true,
+          })
+        if (updateRes.error) {
+          console.error('Failed to upload/update metadata to Supabase Storage:', error.message, updateRes.error.message)
+        }
       }
     }
   } catch (err) {
@@ -244,7 +249,7 @@ export async function scanTaiLieuDirectoryAsync(forceRefresh = false): Promise<T
   try {
     const overrides = await readMetadataOverridesAsync(forceRefresh)
     return TAI_LIEU_ITEMS.map((item) => {
-      const meta = overrides[item.id]
+      const meta = overrides[item.id] || overrides[item.filename] || overrides[item.downloadUrl] || overrides[item.code]
       if (!meta) return item
 
       return {

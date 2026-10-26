@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import path from 'path'
 import fs from 'fs'
 import { TAI_LIEU_ITEMS } from '@/lib/tai-lieu-data'
-import { scanTaiLieuDirectory } from '@/lib/tai-lieu-scanner'
+import { scanTaiLieuDirectoryAsync, isTaiLieuPublicAsync } from '@/lib/tai-lieu-scanner'
+import { createClient } from '@/lib/supabase/server'
 import * as XLSX from 'xlsx'
 import mammoth from 'mammoth'
 
@@ -16,14 +17,31 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Thiếu mã tài liệu' }, { status: 400 })
   }
 
-  let item = TAI_LIEU_ITEMS.find((t) => t.id === id)
-  if (!item) {
-    const liveItems = scanTaiLieuDirectory()
-    item = liveItems.find((t) => t.id === id)
+  // Check admin
+  let isAdmin = false
+  try {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    if (user) {
+      const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single()
+      isAdmin = Boolean(profile?.is_admin || (user.email ? user.email.toLowerCase().includes('admin') : false))
+    }
+  } catch {}
+
+  const isPublic = await isTaiLieuPublicAsync()
+  if (!isPublic && !isAdmin) {
+    return NextResponse.json({ error: 'Kho tài liệu đang tạm ẩn' }, { status: 403 })
   }
+
+  const liveItems = await scanTaiLieuDirectoryAsync()
+  let item = liveItems.find((t) => t.id === id) || TAI_LIEU_ITEMS.find((t) => t.id === id)
 
   if (!item) {
     return NextResponse.json({ error: 'Không tìm thấy tài liệu' }, { status: 404 })
+  }
+
+  if (item.isHidden && !isAdmin) {
+    return NextResponse.json({ error: 'Biểu mẫu này đang ở trạng thái tạm ẩn' }, { status: 403 })
   }
 
   // Ensure path is safe (prevent path traversal)

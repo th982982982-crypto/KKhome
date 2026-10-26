@@ -81,10 +81,16 @@ export async function POST(request: NextRequest) {
       isHidden: newHiddenState,
     }
 
-    await writeMetadataOverridesAsync(allMetadata)
-
     const updatedItems = await scanTaiLieuDirectoryAsync(true)
-    const updatedItem = updatedItems.find((it) => it.id === id)
+    const updatedItem = updatedItems.find((it) => it.id === id) || updatedItems.find((it) => it.filename === id)
+    if (updatedItem?.filename && updatedItem.filename !== id) {
+      allMetadata[updatedItem.filename] = {
+        ...(allMetadata[updatedItem.filename] || {}),
+        isHidden: newHiddenState,
+      }
+    }
+
+    await writeMetadataOverridesAsync(allMetadata)
 
     return NextResponse.json({
       success: true,
