@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
-import { TAI_LIEU_ITEMS, getPreviewPdfUrl, getGoogleOnlineUrl, type TaiLieuItem } from '@/lib/tai-lieu-data'
+import { TAI_LIEU_ITEMS, getPreviewPdfUrl, getGoogleOnlineUrl, toGoogleViewOnlyUrl, type TaiLieuItem } from '@/lib/tai-lieu-data'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from 'sonner'
 import { 
@@ -274,6 +274,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
     setIsSavingGoogleModal(true)
     try {
       const cleanUrl = googleModalUrl.trim()
+      const viewOnlyUrl = cleanUrl ? toGoogleViewOnlyUrl(cleanUrl) : ''
       const isXlsx = googleModalItem.fileType === 'xlsx'
       const isDocx = googleModalItem.fileType === 'docx'
 
@@ -282,9 +283,9 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           id: googleModalItem.id,
-          googleSheetUrl: isXlsx ? cleanUrl : undefined,
-          googleDocUrl: isDocx ? cleanUrl : undefined,
-          googleDriveUrl: cleanUrl || undefined,
+          googleSheetUrl: isXlsx ? viewOnlyUrl : undefined,
+          googleDocUrl: isDocx ? viewOnlyUrl : undefined,
+          googleDriveUrl: viewOnlyUrl || undefined,
         }),
       })
 
@@ -299,9 +300,9 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
       }
 
       toast.success(
-        cleanUrl
-          ? `Đã gắn liên kết ${isDocx ? 'Google Docs' : 'Google Sheets'} thành công!`
-          : 'Đã xóa liên kết Google riêng (Chuyển về Google Viewer mặc định)!'
+        viewOnlyUrl
+          ? `Đã gắn liên kết ${isDocx ? 'Google Docs' : 'Google Sheets'} (Chế độ Chỉ Xem) thành công!`
+          : 'Đã xóa liên kết Google riêng!'
       )
       setGoogleModalItem(null)
     } catch (err: any) {
@@ -402,6 +403,11 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Lỗi khi cập nhật trạng thái hiển thị')
+      if (data.item) {
+        setItems((prev) =>
+          prev.map((it) => (it.id === item.id ? { ...it, ...data.item, isHidden: nextHidden } : it))
+        )
+      }
       toast.success(
         data.message || (nextHidden ? 'Đã tạm ẩn biểu mẫu' : 'Đã hiển thị biểu mẫu cho người khác')
       )
@@ -500,6 +506,18 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
   }, [user, isAdmin])
 
   useEffect(() => {
+    if (initialItems && initialItems.length > 0) {
+      setItems(initialItems)
+    }
+  }, [initialItems])
+
+  useEffect(() => {
+    if (isPublicKho !== undefined) {
+      setIsPublic(isPublicKho)
+    }
+  }, [isPublicKho])
+
+  useEffect(() => {
     const supabase = createClient()
 
     async function verifyAdminRole(userId: string) {
@@ -525,11 +543,11 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
     return () => subscription.unsubscribe()
   }, [])
 
-  // Merge locally cached hidden status from localStorage immediately on mount
+  // Merge locally cached hidden status from localStorage if initialItems not loaded
   useEffect(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('kkhome_tailieu_hidden') || '{}')
-      if (Object.keys(saved).length > 0) {
+      if (Object.keys(saved).length > 0 && (!initialItems || initialItems.length === 0)) {
         setItems((prev) =>
           prev.map((it) => {
             if (saved[it.id] !== undefined) {
@@ -543,7 +561,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
         )
       }
     } catch {}
-  }, [])
+  }, [initialItems])
 
   // Sync fresh visibility state from API
   useEffect(() => {
@@ -564,8 +582,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
             Object.entries(data.metadata).forEach(([k, v]: [string, any]) => {
               if (v?.isHidden !== undefined) localHidden[k] = Boolean(v.isHidden)
             })
-            const currentSaved = JSON.parse(localStorage.getItem('kkhome_tailieu_hidden') || '{}')
-            localStorage.setItem('kkhome_tailieu_hidden', JSON.stringify({ ...currentSaved, ...localHidden }))
+            localStorage.setItem('kkhome_tailieu_hidden', JSON.stringify(localHidden))
           } catch {}
 
           setItems(prev => {
@@ -574,7 +591,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
               if (!meta) return item
               return {
                 ...item,
-                isHidden: meta.isHidden !== undefined ? meta.isHidden : item.isHidden,
+                isHidden: meta.isHidden !== undefined ? Boolean(meta.isHidden) : item.isHidden,
                 googleSheetUrl: meta.googleSheetUrl !== undefined ? meta.googleSheetUrl : item.googleSheetUrl,
                 googleDocUrl: meta.googleDocUrl !== undefined ? meta.googleDocUrl : item.googleDocUrl,
                 googleDriveUrl: meta.googleDriveUrl !== undefined ? meta.googleDriveUrl : item.googleDriveUrl,
@@ -647,23 +664,19 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
   // Filter items
   const filteredItems = useMemo(() => {
     return items.filter(item => {
-      // 1. Kiểm tra trạng thái Kho: Khi kho Tạm ẩn sẽ ẩn toàn bộ
-      if (!isPublic) {
-        if (!effectiveAdmin) return false
-        // Với Quản trị viên: khi kho Tạm ẩn, mặc định (selectedVisibility === 'visible') sẽ ẩn toàn bộ
-        // Chỉ hiển thị khi Admin chủ động chọn 'all' hoặc 'hidden' trong bộ lọc Quản trị
-        if (selectedVisibility === 'visible') return false
+      // 1. Kiểm tra trạng thái Kho: Khi kho Tạm ẩn, người dùng thông thường không xem được
+      if (!isPublic && !effectiveAdmin) {
+        return false
       }
 
-      // 2. Kiểm tra trạng thái hiển thị từng mẫu: "Kho - Công Khai" chỉ hiển thị những mẫu hiển thị, mẫu bị ẩn không hiển thị
-      if (isPublic) {
-        if (!effectiveAdmin) {
-          if (item.isHidden) return false
-        } else {
-          // Admin: ở chế độ mặc định ('visible'), chỉ hiển thị những mẫu không bị ẩn; mẫu bị ẩn không hiển thị
-          if (selectedVisibility === 'visible' && item.isHidden) return false
-          if (selectedVisibility === 'hidden' && !item.isHidden) return false
-        }
+      // 2. Lọc theo trạng thái hiển thị của từng biểu mẫu
+      if (effectiveAdmin) {
+        // Admin: lọc chính xác theo lựa chọn hiển thị
+        if (selectedVisibility === 'visible' && item.isHidden) return false
+        if (selectedVisibility === 'hidden' && !item.isHidden) return false
+      } else {
+        // Người dùng thông thường: chỉ hiển thị những mẫu không bị ẩn
+        if (item.isHidden) return false
       }
 
       // Category
@@ -858,9 +871,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                   className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-3 py-1.5 text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="visible">
-                    {isPublic
-                      ? `Đang hiển thị công khai (${items.filter((i) => !i.isHidden).length})`
-                      : `Kho tạm ẩn (Đang ẩn toàn bộ)`}
+                    Đang hiển thị ({items.filter((i) => !i.isHidden).length})
                   </option>
                   <option value="hidden">Mẫu đang bị ẩn ({items.filter((i) => i.isHidden).length})</option>
                   <option value="all">Tất cả mẫu ({items.length}) [Chế độ quản trị]</option>
@@ -906,20 +917,20 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
               <span>{isSyncing ? 'Đang quét...' : 'Đồng bộ thư mục'}</span>
             </button>
             <span className="bg-blue-50 dark:bg-blue-950/50 text-[#1e3a8a] dark:text-blue-300 font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full border border-blue-100 dark:border-blue-900/50">
-              {!isPublic && selectedVisibility === 'visible'
-                ? 'Kho đang tạm ẩn (Ẩn toàn bộ)'
+              {!isPublic && !effectiveAdmin
+                ? 'Kho đang tạm ẩn'
                 : `${filteredItems.length} tài liệu`}
             </span>
           </div>
         </div>
 
         {/* Admin notice when viewing templates while kho is hidden */}
-        {effectiveAdmin && !isPublic && selectedVisibility !== 'visible' && (
+        {effectiveAdmin && !isPublic && (
           <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 rounded-2xl p-4 mb-6 text-xs text-amber-900 dark:text-amber-200 flex flex-wrap items-center justify-between gap-3 shadow-xs">
             <div className="flex items-center gap-2.5">
               <Lock className="w-4 h-4 text-amber-600 shrink-0" />
               <div>
-                <span className="font-bold">Lưu ý Quản trị viên:</span> Kho tài liệu hiện đang ở trạng thái <strong>Tạm ẩn toàn bộ</strong> với người dùng. Bạn đang xem danh sách mẫu ở chế độ Quản trị viên.
+                <span className="font-bold">Lưu ý Quản trị viên:</span> Kho tài liệu hiện đang ở trạng thái <strong>Tạm ẩn toàn bộ</strong> với người dùng thông thường. Bạn đang xem và quản lý danh sách biểu mẫu ở chế độ Quản trị viên.
               </div>
             </div>
             <button
@@ -934,7 +945,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
         )}
 
         {/* 4. DOCUMENT CARDS GRID */}
-        {!isPublic && selectedVisibility === 'visible' ? (
+        {!isPublic && !effectiveAdmin ? (
           <div className="bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/80 rounded-3xl p-8 sm:p-14 text-center my-6 shadow-sm max-w-3xl mx-auto">
             <div className="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-900/60 text-amber-600 dark:text-amber-400 flex items-center justify-center mx-auto mb-4 shadow-inner">
               <Lock className="w-8 h-8" />
@@ -948,31 +959,16 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
             <p className="text-sm text-gray-600 dark:text-gray-400 max-w-lg mx-auto leading-relaxed mb-6">
               Kho tài liệu đã được chuyển sang chế độ tạm ẩn. Toàn bộ biểu mẫu hiện không hiển thị với người dùng.
             </p>
-            {effectiveAdmin && (
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                <button
-                  onClick={handleToggleKhoVisibility}
-                  disabled={isTogglingKho}
-                  className="px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg transition-all flex items-center gap-2"
-                >
-                  {isTogglingKho ? <Loader2 className="w-4 h-4 animate-spin" /> : <Globe className="w-4 h-4" />}
-                  <span>Mở hiển thị công khai kho</span>
-                </button>
-                <button
-                  onClick={() => setSelectedVisibility('all')}
-                  className="px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-50 transition-all flex items-center gap-1.5"
-                >
-                  <Eye className="w-4 h-4 text-gray-500" />
-                  <span>Xem & Quản lý mẫu (Admin)</span>
-                </button>
-              </div>
-            )}
           </div>
         ) : visibleItems.length === 0 ? (
           <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-12 text-center my-6">
             <FileText className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-3" />
             <h3 className="text-base font-bold text-gray-800 dark:text-gray-200">Không tìm thấy tài liệu phù hợp</h3>
-            <p className="text-sm text-gray-500 mt-1">Vui lòng thử tìm với từ khóa khác hoặc bỏ chọn bộ lọc.</p>
+            <p className="text-sm text-gray-500 mt-1">
+              {selectedVisibility === 'hidden'
+                ? 'Hiện tại không có biểu mẫu nào đang bị ẩn.'
+                : 'Vui lòng thử tìm với từ khóa khác hoặc bỏ chọn bộ lọc.'}
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
@@ -1172,25 +1168,43 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                             ? 'bg-blue-50/70 hover:bg-blue-100 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border-blue-200/80 dark:border-blue-900/60'
                             : 'bg-emerald-50/70 hover:bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 border-emerald-200/80 dark:border-emerald-900/60'
                         }`}
-                        title={`Mở trực tiếp trên ${item.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'}`}
+                        title={
+                          item.googleSheetUrl || item.googleDocUrl || item.googleDriveUrl
+                            ? `Mở xem trực tuyến trên ${item.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'} (Chế độ chỉ xem)`
+                            : `Xem trước tài liệu chuẩn của ${item.title}`
+                        }
                       >
                         {item.fileType === 'docx' ? (
                           <FileText className="w-3.5 h-3.5 text-blue-600" />
                         ) : (
                           <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
                         )}
-                        <span>Mở trên {item.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'}</span>
+                        <span>
+                          {item.googleSheetUrl || item.googleDocUrl || item.googleDriveUrl
+                            ? (item.fileType === 'docx' ? 'Google Docs (Chỉ xem)' : 'Google Sheets (Chỉ xem)')
+                            : (item.fileType === 'docx' ? 'Mở xem Google Docs' : 'Mở xem Google Sheets')}
+                        </span>
                         <ExternalLink className="w-3 h-3 opacity-60" />
                       </a>
 
                       {effectiveAdmin && (
                         <button
                           onClick={(e) => openGoogleModal(item, e)}
-                          className="px-2.5 py-1.5 rounded-xl border border-dashed border-emerald-400 bg-emerald-50/60 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200 text-xs font-bold transition-all shrink-0 flex items-center gap-1"
-                          title="Cài đặt / Thay đổi link Google Sheets / Google Docs (Modal)"
+                          className={`px-2.5 py-1.5 rounded-xl border border-dashed text-xs font-bold transition-all shrink-0 flex items-center gap-1 ${
+                            item.googleSheetUrl || item.googleDocUrl || item.googleDriveUrl
+                              ? 'border-emerald-400 bg-emerald-50/60 hover:bg-emerald-100 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-200'
+                              : 'border-amber-400 bg-amber-50/60 hover:bg-amber-100 text-amber-800 dark:bg-amber-950/50 dark:text-amber-200'
+                          }`}
+                          title={
+                            item.googleSheetUrl || item.googleDocUrl || item.googleDriveUrl
+                              ? 'Đã có link Google (Bấm để đổi link)'
+                              : 'Chưa cài link Google Sheets/Docs trực tuyến (Bấm để cài link)'
+                          }
                         >
                           <Pencil className="w-3 h-3 text-emerald-600" />
-                          <span className="hidden sm:inline">Cài link</span>
+                          <span className="hidden sm:inline">
+                            {item.googleSheetUrl || item.googleDocUrl || item.googleDriveUrl ? 'Đổi link' : 'Cài link'}
+                          </span>
                         </button>
                       )}
                     </div>
@@ -1364,7 +1378,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                   ) : (
                     <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
                   )}
-                  <span>Mở {activeModalItem.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'}</span>
+                  <span>Mở {activeModalItem.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'} (Chỉ xem)</span>
                   <ExternalLink className="w-3 h-3 opacity-60" />
                 </a>
 
@@ -2235,7 +2249,7 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                     <FileSpreadsheet className="w-4 h-4" />
                   )}
                   <span>
-                    Mở {activeModalItem.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'}
+                    Mở {activeModalItem.fileType === 'docx' ? 'Google Docs' : 'Google Sheets'} (Chỉ xem)
                   </span>
                   <ExternalLink className="w-3.5 h-3.5 opacity-80" />
                 </a>
@@ -2360,16 +2374,16 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                 </div>
               </div>
 
-              {/* Hướng dẫn tạo link Google Drive /copy */}
-              <div className="bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/50 rounded-2xl p-3.5 text-xs text-blue-900 dark:text-blue-200 space-y-1.5 leading-relaxed">
-                <div className="font-bold flex items-center gap-1.5 text-blue-800 dark:text-blue-300">
-                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                  <span>Cách tạo link nhân bản tự động (Copy):</span>
+              {/* Hướng dẫn cài đặt quyền CHỈ CHO XEM (View-Only) */}
+              <div className="bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900/50 rounded-2xl p-3.5 text-xs text-emerald-900 dark:text-emerald-200 space-y-1.5 leading-relaxed">
+                <div className="font-bold flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300">
+                  <Lock className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>Quyền truy cập CHỈ CHO XEM (Chống chỉnh sửa mẫu gốc):</span>
                 </div>
                 <ol className="list-decimal pl-4 space-y-1 text-gray-600 dark:text-gray-300 text-[11px]">
-                  <li>Tải file mẫu lên Google Drive của bạn và mở bằng {googleModalItem.fileType === 'docx' ? 'Google Tài liệu (Docs)' : 'Google Trang tính (Sheets)'}.</li>
-                  <li>Bấm nút <strong>Chia sẻ</strong> → chuyển quyền thành <strong>Bất kỳ ai có liên kết</strong> (Người xem).</li>
-                  <li>Đổi phần đuôi liên kết từ <code>/edit...</code> thành <code>/copy</code> để người dùng khi nhấn vào sẽ tự động có nút <em>"Tạo bản sao"</em> lưu trực tiếp vào Drive của họ.</li>
+                  <li>Mở file trên Google Drive → Bấm nút <strong>Chia sẻ (Share)</strong> ở góc trên bên phải.</li>
+                  <li>Tại mục <em>Quyền truy cập chung</em>, chọn <strong>Bất kỳ ai có đường liên kết</strong> và chọn vai trò là <strong>Người xem (Viewer)</strong> (TUYỆT ĐỐI không chọn Người chỉnh sửa).</li>
+                  <li>Dán đường link vào ô bên dưới. Hệ thống sẽ <strong>tự động tối ưu sang chế độ Chỉ Xem (/preview)</strong> để người dùng chỉ xem được, không thể sửa hay xóa dữ liệu trong file của bạn.</li>
                 </ol>
               </div>
 
@@ -2394,29 +2408,35 @@ export function TaiLieuExplorer({ user, isAdmin = false, initialItems, isPublicK
                   onChange={(e) => setGoogleModalUrl(e.target.value)}
                   placeholder={
                     googleModalItem.fileType === 'docx'
-                      ? 'https://docs.google.com/document/d/.../copy'
-                      : 'https://docs.google.com/spreadsheets/d/.../copy'
+                      ? 'https://docs.google.com/document/d/.../preview'
+                      : 'https://docs.google.com/spreadsheets/d/.../preview'
                   }
                   className="w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl px-3.5 py-2.5 text-xs font-mono text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
                 <p className="text-[11px] text-gray-400 mt-1">
-                  * Nếu để trống, hệ thống sẽ tự động dùng Google Docs Viewer mặc định để mở xem tệp.
+                  * Hệ thống tự động chuyển đổi mọi link Google Docs/Sheets sang chế độ Chỉ Xem (View-Only /preview).
                 </p>
               </div>
 
               {googleModalUrl.trim() && (
-                <div className="flex items-center justify-between p-2.5 bg-gray-50 dark:bg-gray-800/60 rounded-xl text-xs">
-                  <span className="text-gray-500 truncate max-w-[260px] font-mono text-[11px]">
-                    {googleModalUrl}
-                  </span>
-                  <a
-                    href={googleModalUrl.trim()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-700 font-bold flex items-center gap-1 shrink-0 ml-2"
-                  >
-                    <span>Mở kiểm tra thử ↗</span>
-                  </a>
+                <div className="p-3 bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/60 rounded-xl text-xs space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold text-emerald-800 dark:text-emerald-300 text-[11px] flex items-center gap-1">
+                      <Lock className="w-3 h-3 text-emerald-600" />
+                      Link Chế Độ Chỉ Xem tự động tạo:
+                    </span>
+                    <a
+                      href={toGoogleViewOnlyUrl(googleModalUrl.trim())}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-600 hover:text-emerald-700 font-bold flex items-center gap-1 shrink-0 ml-2"
+                    >
+                      <span>Mở thử ↗</span>
+                    </a>
+                  </div>
+                  <p className="text-gray-500 font-mono text-[11px] truncate">
+                    {toGoogleViewOnlyUrl(googleModalUrl.trim())}
+                  </p>
                 </div>
               )}
 

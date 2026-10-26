@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createAdminClient } from '@/lib/supabase/server'
+import { TAI_LIEU_ITEMS, toGoogleViewOnlyUrl } from '@/lib/tai-lieu-data'
 import {
   readMetadataOverridesAsync,
   writeMetadataOverridesAsync,
@@ -47,7 +48,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Chưa đăng nhập' }, { status: 401 })
     }
 
-    const { data: profile } = await supabase
+    const adminClient = createAdminClient()
+    const { data: profile } = await adminClient
       .from('profiles')
       .select('is_admin')
       .eq('id', user.id)
@@ -130,16 +132,28 @@ export async function POST(request: NextRequest) {
       isHot: isHot !== undefined ? Boolean(isHot) : existing.isHot,
       highlights: processedHighlights !== undefined ? processedHighlights : existing.highlights,
       isHidden: isHidden !== undefined ? Boolean(isHidden) : existing.isHidden,
-      googleSheetUrl: googleSheetUrl !== undefined ? String(googleSheetUrl).trim() || undefined : existing.googleSheetUrl,
-      googleDocUrl: googleDocUrl !== undefined ? String(googleDocUrl).trim() || undefined : existing.googleDocUrl,
-      googleDriveUrl: googleDriveUrl !== undefined ? String(googleDriveUrl).trim() || undefined : existing.googleDriveUrl,
+      googleSheetUrl: googleSheetUrl !== undefined ? (toGoogleViewOnlyUrl(String(googleSheetUrl)) || undefined) : existing.googleSheetUrl,
+      googleDocUrl: googleDocUrl !== undefined ? (toGoogleViewOnlyUrl(String(googleDocUrl)) || undefined) : existing.googleDocUrl,
+      googleDriveUrl: googleDriveUrl !== undefined ? (toGoogleViewOnlyUrl(String(googleDriveUrl)) || undefined) : existing.googleDriveUrl,
     }
 
-    allMetadata[id] = newOverride
+    const targetItem = TAI_LIEU_ITEMS.find((it) => it.id === id || it.filename === id || it.code === id)
+    const idKey = targetItem?.id || id
+    const filenameKey = targetItem?.filename
+    const codeKey = targetItem?.code
+
+    allMetadata[idKey] = newOverride
+    if (filenameKey && filenameKey !== idKey) {
+      allMetadata[filenameKey] = newOverride
+    }
+    if (codeKey && codeKey !== idKey) {
+      allMetadata[codeKey] = newOverride
+    }
+
     await writeMetadataOverridesAsync(allMetadata)
 
     const updatedItems = await scanTaiLieuDirectoryAsync(true)
-    const updatedItem = updatedItems.find((it) => it.id === id)
+    const updatedItem = updatedItems.find((it) => it.id === idKey) || updatedItems.find((it) => it.filename === filenameKey)
 
     return NextResponse.json({
       success: true,

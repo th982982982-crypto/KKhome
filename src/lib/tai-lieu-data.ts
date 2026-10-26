@@ -29,13 +29,56 @@ export function getPreviewPdfUrl(item: TaiLieuItem): string {
   return item.downloadUrl.replace(/\.(docx|xlsx)$/i, '.pdf')
 }
 
-export function getGoogleOnlineUrl(item: TaiLieuItem): string {
-  if (item.fileType === 'xlsx' && item.googleSheetUrl) return item.googleSheetUrl
-  if (item.fileType === 'docx' && item.googleDocUrl) return item.googleDocUrl
-  if (item.googleDriveUrl) return item.googleDriveUrl
+export function toGoogleViewOnlyUrl(url?: string): string {
+  if (!url) return ''
+  const clean = url.trim()
 
-  const baseUrl = 'https://hkdkkhome.com'
-  return `https://docs.google.com/viewer?url=${encodeURIComponent(baseUrl + item.downloadUrl)}&embedded=false`
+  // Google Sheets: https://docs.google.com/spreadsheets/d/{id}/...
+  const sheetsMatch = clean.match(/^https:\/\/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9_-]+)/i)
+  if (sheetsMatch) {
+    const id = sheetsMatch[1]
+    const gidMatch = clean.match(/[?&#]gid=([0-9]+)/i)
+    const gidParam = gidMatch ? `?gid=${gidMatch[1]}` : ''
+    return `https://docs.google.com/spreadsheets/d/${id}/preview${gidParam}`
+  }
+
+  // Google Docs: https://docs.google.com/document/d/{id}/...
+  const docsMatch = clean.match(/^https:\/\/docs\.google\.com\/document\/d\/([a-zA-Z0-9_-]+)/i)
+  if (docsMatch) {
+    const id = docsMatch[1]
+    return `https://docs.google.com/document/d/${id}/preview`
+  }
+
+  // Google Drive file: https://drive.google.com/file/d/{id}/...
+  const driveFileMatch = clean.match(/^https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/i)
+  if (driveFileMatch) {
+    const id = driveFileMatch[1]
+    return `https://drive.google.com/file/d/${id}/preview`
+  }
+
+  // Google Drive open?id={id}
+  const driveOpenMatch = clean.match(/^https:\/\/drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/i)
+  if (driveOpenMatch) {
+    const id = driveOpenMatch[1]
+    return `https://drive.google.com/file/d/${id}/preview`
+  }
+
+  return clean
+}
+
+export function getGoogleOnlineUrl(item: TaiLieuItem): string {
+  if (item.fileType === 'xlsx' && item.googleSheetUrl) {
+    return toGoogleViewOnlyUrl(item.googleSheetUrl)
+  }
+  if (item.fileType === 'docx' && item.googleDocUrl) {
+    return toGoogleViewOnlyUrl(item.googleDocUrl)
+  }
+  if (item.googleDriveUrl) {
+    return toGoogleViewOnlyUrl(item.googleDriveUrl)
+  }
+
+  // Khi chưa có link Google Sheets/Docs riêng, mở trực tiếp bản PDF chuẩn 100% không bị lỗi kết nối
+  return getPreviewPdfUrl(item)
 }
 
 export const TAI_LIEU_ITEMS: TaiLieuItem[] = [

@@ -7,14 +7,23 @@ function getConfig() {
   const url = rawUrl.replace(/\/(rest|auth|storage)\/v\d.*$/, '').replace(/\/$/, '')
   return {
     url,
-    anonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    anonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
+    serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
   }
 }
 
 export async function createClient() {
   const cookieStore = await cookies()
   const { url, anonKey } = getConfig()
+
+  if (!url || !anonKey) {
+    return createServerClient('https://placeholder.supabase.co', 'placeholder-anon-key', {
+      cookies: {
+        getAll() { return [] },
+        setAll() {},
+      },
+    })
+  }
 
   return createServerClient(url, anonKey, {
     cookies: {
@@ -30,6 +39,11 @@ export async function createClient() {
 
 export function createAdminClient() {
   const { url, serviceKey } = getConfig()
+  if (!url || !serviceKey) {
+    return createSupabaseClient('https://placeholder.supabase.co', 'placeholder-service-key', {
+      auth: { autoRefreshToken: false, persistSession: false },
+    })
+  }
   return createSupabaseClient(url, serviceKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   })

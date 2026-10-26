@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createAdminClient } from '@/lib/supabase/server'
 import { Navbar } from '@/components/layout/navbar'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { TaiLieuExplorer } from '@/components/tai-lieu/tai-lieu-explorer'
@@ -21,7 +21,8 @@ export default async function TaiLieuPage() {
 
   let profile = null
   if (user) {
-    const { data } = await supabase.from('profiles').select('*').eq('id', user.id).single()
+    const admin = createAdminClient()
+    const { data } = await admin.from('profiles').select('*').eq('id', user.id).single()
     profile = data
   }
 

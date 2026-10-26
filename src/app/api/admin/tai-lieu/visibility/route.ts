@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createAdminClient } from '@/lib/supabase/server'
+import { TAI_LIEU_ITEMS } from '@/lib/tai-lieu-data'
 import {
   readMetadataOverridesAsync,
   writeMetadataOverridesAsync,
@@ -36,7 +37,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Chưa đăng nhập' }, { status: 401 })
     }
 
-    const { data: profile } = await supabase
+    const adminClient = createAdminClient()
+    const { data: profile } = await adminClient
       .from('profiles')
       .select('is_admin')
       .eq('id', user.id)
@@ -76,25 +78,36 @@ export async function POST(request: NextRequest) {
 
     const newHiddenState = isHidden !== undefined ? Boolean(isHidden) : !Boolean(existing.isHidden)
 
-    allMetadata[id] = {
-      ...existing,
+    const targetItem = TAI_LIEU_ITEMS.find((it) => it.id === id || it.filename === id || it.code === id)
+    const idKey = targetItem?.id || id
+    const filenameKey = targetItem?.filename
+    const codeKey = targetItem?.code
+
+    allMetadata[idKey] = {
+      ...(allMetadata[idKey] || existing),
       isHidden: newHiddenState,
     }
-
-    const updatedItems = await scanTaiLieuDirectoryAsync(true)
-    const updatedItem = updatedItems.find((it) => it.id === id) || updatedItems.find((it) => it.filename === id)
-    if (updatedItem?.filename && updatedItem.filename !== id) {
-      allMetadata[updatedItem.filename] = {
-        ...(allMetadata[updatedItem.filename] || {}),
+    if (filenameKey && filenameKey !== idKey) {
+      allMetadata[filenameKey] = {
+        ...(allMetadata[filenameKey] || {}),
+        isHidden: newHiddenState,
+      }
+    }
+    if (codeKey && codeKey !== idKey) {
+      allMetadata[codeKey] = {
+        ...(allMetadata[codeKey] || {}),
         isHidden: newHiddenState,
       }
     }
 
     await writeMetadataOverridesAsync(allMetadata)
 
+    const updatedItems = await scanTaiLieuDirectoryAsync(true)
+    const updatedItem = updatedItems.find((it) => it.id === idKey) || updatedItems.find((it) => it.filename === filenameKey)
+
     return NextResponse.json({
       success: true,
-      id,
+      id: idKey,
       isHidden: newHiddenState,
       item: updatedItem,
       message: newHiddenState

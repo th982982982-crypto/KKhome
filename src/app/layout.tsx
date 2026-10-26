@@ -28,8 +28,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const supabase = createAdminClient();
-  const { data: settings } = await supabase.from("site_settings").select("zalo_url").limit(1).single();
+  let settings = null;
+  try {
+    const supabase = createAdminClient();
+    const { data } = await supabase.from("site_settings").select("zalo_url").limit(1).single();
+    settings = data;
+  } catch {}
 
   return (
     <html

@@ -6,6 +6,38 @@
       "Nhân sự",
       "Excel",
       "Quản lý lao động"
-    ]
+    ],
+    "category": "nhan_su",
+    "categoryLabel": "Nhân sự",
+    "year": 2026,
+    "googleSheetUrl": "https://docs.google.com/spreadsheets/d/1m2ZwhRtV8PINf9AJpCjYCFgE3Y7YGV5P/preview",
+    "googleDriveUrl": "https://docs.google.com/spreadsheets/d/1m2ZwhRtV8PINf9AJpCjYCFgE3Y7YGV5P/preview"
+  },
+  "__settings": {
+    "isPublic": false
+  },
+  "tl_38": {
+    "isHidden": true
+  },
+  "tl_50": {
+    "isHidden": true
+  },
+  "tl_51": {
+    "isHidden": true
+  },
+  "tl_52": {
+    "isHidden": true
+  },
+  "tl_53": {
+    "isHidden": true
+  },
+  "tl_54": {
+    "isHidden": true
+  },
+  "tl_9": {
+    "isHidden": true
+  },
+  "NS08_02_Van_Ban_Lay_Y_Kien_To_Chuc_Dai_Dien_NLD.docx": {
+    "isHidden": true
   }
 }
