@@ -149,6 +149,8 @@ DOCS = {
               'Công văn 2927/CT-CS — Thuế GTGT đối với sản phẩm xuất khẩu là tài nguyên, khoáng sản'),
  'tt89'    : ('Thông tư 89-2026.docx', 'TT 89/2026', 'Hướng dẫn Luật Quản lý thuế & NĐ 252/2026 (thay TT80, TT103, TT92)',
               'Thông tư 89/2026/TT-BTC — Quy định chi tiết một số điều của Luật Quản lý thuế và Nghị định số 252/2026/NĐ-CP'),
+ 'tt88'    : ('Thông-tư-88-2021-TT-BTC.docx', 'TT 88/2021', 'Chế độ kế toán hộ kinh doanh, cá nhân kinh doanh',
+              'Thông tư 88/2021/TT-BTC — Hướng dẫn chế độ kế toán cho các hộ kinh doanh, cá nhân kinh doanh'),
 }
 
 # Ngày hiệu lực chuẩn (override khi parser không bắt được)
@@ -175,6 +177,7 @@ EFF = {
  'tt74':'10/08/2026','tt85':'15/09/2026','tt86':'01/07/2026','tt91':'01/07/2026',
  'tt94':'01/07/2026','tt96':'02/07/2026','tt97':'06/07/2026','cv2927':'11/05/2026',
  'tt89':'01/07/2026',
+ 'tt88':'01/01/2022',
 }
 
 # Cache .docx convert từ .doc (textutil, macOS)

@@ -361,9 +361,10 @@
     "tt152_8": [
       {
         "kind": "replaces",
-        "targetSlug": null,
+        "targetSlug": "tt88",
+        "targetAnchor": "tt88_1",
         "label": "Thay thế Thông tư 88/2021/TT-BTC",
-        "note": "(chưa nạp)"
+        "note": "(áp dụng từ 01/01/2026)"
       }
     ]
   },
@@ -1094,6 +1095,57 @@
         "targetSlug": "luat-109",
         "targetAnchor": "luat-109_1",
         "label": "Luật 109/2025 — Luật Thuế TNCN (căn cứ)"
+      }
+    ]
+  },
+  "tt88": {
+    "tt88_1": [
+      {
+        "kind": "related",
+        "targetSlug": "tt152",
+        "targetAnchor": "tt152_1",
+        "label": "TT 152/2025/TT-BTC — Chế độ kế toán HKD mới (thay thế TT 88 từ 01/01/2026)"
+      },
+      {
+        "kind": "related",
+        "targetSlug": "luat-38",
+        "targetAnchor": "luat-38_1",
+        "label": "Luật Quản lý thuế 38/2019/QH14 — Căn cứ pháp lý"
+      }
+    ],
+    "tt88_4": [
+      {
+        "kind": "related",
+        "targetSlug": null,
+        "label": "Phụ lục 1 — 05 biểu mẫu chứng từ kế toán kèm phương pháp lập",
+        "note": "(Phiếu thu, Phiếu chi, Phiếu nhập kho, Phiếu xuất kho, Bảng thanh toán lương)"
+      }
+    ],
+    "tt88_5": [
+      {
+        "kind": "related",
+        "targetSlug": null,
+        "label": "Phụ lục 2 — 07 biểu mẫu sổ kế toán kèm phương pháp ghi sổ",
+        "note": "(Mẫu S1-HKD đến S7-HKD)"
+      },
+      {
+        "kind": "related",
+        "targetSlug": "tt152",
+        "targetAnchor": "tt152_3",
+        "label": "TT 152/2025 — Điều 3: Sổ kế toán HKD áp dụng từ 01/01/2026"
+      }
+    ],
+    "tt88_7": [
+      {
+        "kind": "replaces",
+        "targetSlug": "tt152",
+        "targetAnchor": "tt152_8",
+        "label": "Được thay thế bởi Thông tư 152/2025/TT-BTC từ ngày 01/01/2026"
+      },
+      {
+        "kind": "replaces",
+        "targetSlug": null,
+        "label": "Bãi bỏ Quyết định số 169/2000/QĐ-BTC và Quyết định số 131/2002/QĐ-BTC"
       }
     ]
   }

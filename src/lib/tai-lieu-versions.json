@@ -557,6 +557,15 @@
   ],
   "tl_53": [
     {
+      "version": "Ver 2026.2",
+      "releaseDate": "2026-11-09",
+      "changelog": "Cập nhật nội dung tệp biểu mẫu từ thư mục (Dung lượng: 19.8 KB).",
+      "updatedBy": "Hệ thống KK HOME (Tự động cập nhật)",
+      "fileHash": "e3d1e78b71855a968ebe5e4e47dba4f0",
+      "fileSize": "19.8 KB",
+      "createdAt": "2026-11-09T12:54:11.966Z"
+    },
+    {
       "version": "Ver 2026.1",
       "releaseDate": "2026-01-15",
       "changelog": "Phiên bản biểu mẫu chuẩn hóa năm 2026 áp dụng tại KK HOME.",
@@ -568,6 +577,15 @@
   ],
   "tl_54": [
     {
+      "version": "Ver 2026.2",
+      "releaseDate": "2026-11-09",
+      "changelog": "Cập nhật nội dung tệp biểu mẫu từ thư mục (Dung lượng: 28.2 KB).",
+      "updatedBy": "Hệ thống KK HOME (Tự động cập nhật)",
+      "fileHash": "82f222ff5ed580d4fb8740a206d0bc69",
+      "fileSize": "28.2 KB",
+      "createdAt": "2026-11-09T12:54:11.966Z"
+    },
+    {
       "version": "Ver 2026.1",
       "releaseDate": "2026-01-15",
       "changelog": "Phiên bản biểu mẫu chuẩn hóa năm 2026 áp dụng tại KK HOME.",
@@ -575,6 +593,17 @@
       "fileHash": "b40b8462950a493a656fd7a92f0186d5",
       "fileSize": "117.7 KB",
       "createdAt": "2026-10-26T02:19:26.874Z"
+    }
+  ],
+  "tl_55": [
+    {
+      "version": "Ver 2026.1",
+      "releaseDate": "2026-01-15",
+      "changelog": "Phiên bản biểu mẫu chuẩn hóa năm 2026 áp dụng tại KK HOME.",
+      "updatedBy": "Hệ thống KK HOME",
+      "fileHash": "c6a047f4328f81a07c7c34fa9fe32223",
+      "fileSize": "32.5 KB",
+      "createdAt": "2026-11-09T12:54:11.966Z"
     }
   ]
 }

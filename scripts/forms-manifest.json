@@ -2702,5 +2702,79 @@
       "pl": "",
       "note": ""
     }
+  ],
+  "tt88": [
+    {
+      "code": "01-TT",
+      "title": "PHIẾU THU",
+      "pl": "Phụ lục 1",
+      "note": ""
+    },
+    {
+      "code": "02-TT",
+      "title": "PHIẾU CHI",
+      "pl": "Phụ lục 1",
+      "note": ""
+    },
+    {
+      "code": "03-VT",
+      "title": "PHIẾU NHẬP KHO",
+      "pl": "Phụ lục 1",
+      "note": ""
+    },
+    {
+      "code": "04-VT",
+      "title": "PHIẾU XUẤT KHO",
+      "pl": "Phụ lục 1",
+      "note": ""
+    },
+    {
+      "code": "05-LDTL",
+      "title": "BẢNG THANH TOÁN TIỀN LƯƠNG VÀ CÁC KHOẢN THU NHẬP CỦA NGƯỜI LAO ĐỘNG",
+      "pl": "Phụ lục 1",
+      "note": ""
+    },
+    {
+      "code": "S1-HKD",
+      "title": "SỔ CHI TIẾT DOANH THU BÁN HÀNG HÓA, DỊCH VỤ",
+      "pl": "Phụ lục 2",
+      "note": ""
+    },
+    {
+      "code": "S2-HKD",
+      "title": "SỔ CHI TIẾT VẬT LIỆU, DỤNG CỤ, SẢN PHẨM, HÀNG HÓA",
+      "pl": "Phụ lục 2",
+      "note": ""
+    },
+    {
+      "code": "S3-HKD",
+      "title": "SỔ CHI PHÍ SẢN XUẤT, KINH DOANH",
+      "pl": "Phụ lục 2",
+      "note": ""
+    },
+    {
+      "code": "S4-HKD",
+      "title": "SỔ THEO DÕI TÌNH HÌNH THỰC HIỆN NGHĨA VỤ THUẾ VỚI NSNN",
+      "pl": "Phụ lục 2",
+      "note": ""
+    },
+    {
+      "code": "S5-HKD",
+      "title": "SỔ THEO DÕI TÌNH HÌNH THANH TOÁN TIỀN LƯƠNG VÀ CÁC KHOẢN NỘP THEO LƯƠNG CỦA NGƯỜI LAO ĐỘNG",
+      "pl": "Phụ lục 2",
+      "note": ""
+    },
+    {
+      "code": "S6-HKD",
+      "title": "SỔ QUỸ TIỀN MẶT",
+      "pl": "Phụ lục 2",
+      "note": ""
+    },
+    {
+      "code": "S7-HKD",
+      "title": "SỔ TIỀN GỬI NGÂN HÀNG",
+      "pl": "Phụ lục 2",
+      "note": ""
+    }
   ]
 }

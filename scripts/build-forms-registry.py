@@ -48,6 +48,7 @@ FOLDER_TO_SLUG = {
     "Biểu mẫu TT91": "tt91",
     "Biểu mẫu TT94": "tt94",
     "Biểu mẫu TT96": "tt96",
+    "Biểu mẫu TT88": "tt88",
 }
 
 SKIP_PREFIXES = (
@@ -109,7 +110,7 @@ def main():
         sys.exit(1)
 
     manifest_titles = load_manifest_titles()
-    out = {}
+    out = json.load(open(OUT, "r", encoding="utf-8")) if os.path.exists(OUT) else {}
     total = 0
 
     for folder, slug in FOLDER_TO_SLUG.items():

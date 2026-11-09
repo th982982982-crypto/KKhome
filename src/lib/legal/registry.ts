@@ -958,6 +958,19 @@ export const LEGAL_DOCS: LegalDoc[] = [
       { targetSlug: 'tt103', label: 'Bãi bỏ → Thông tư 103/2014 (Thuế Nhà thầu)', description: 'Điều 99.3 bãi bỏ toàn bộ TT 103/2014 về thuế nhà thầu nước ngoài', targetAnchor: 'tt103_1' },
     ],
   },
+  {
+    slug: 'tt88',
+    title: 'TT 88/2021/TT-BTC — Chế độ kế toán cho Hộ kinh doanh, Cá nhân kinh doanh',
+    shortTitle: 'TT 88/2021',
+    description: 'Hướng dẫn chế độ kế toán cho hộ kinh doanh, cá nhân kinh doanh (chứng từ kế toán, sổ kế toán, xác định doanh thu, chi phí, nghĩa vụ thuế). Kèm 12 biểu mẫu chứng từ và sổ kế toán tại Phụ lục 1 & 2. Hiệu lực 01/01/2022. Được thay thế bởi TT 152/2025 kể từ 01/01/2026.',
+    effectiveDate: '2022-01-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/tt88/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'tt152', label: 'Được thay thế bởi → Thông tư 152/2025/TT-BTC', description: 'TT 152/2025/TT-BTC thay thế TT 88/2021 áp dụng cho hộ kinh doanh từ 01/01/2026', targetAnchor: 'tt152_1' },
+      { targetSlug: 'luat-38', label: 'Căn cứ → Luật Quản lý thuế 38/2019/QH14', description: 'TT 88 căn cứ Luật Quản lý thuế số 38/2019/QH14', targetAnchor: 'luat-38_1' },
+    ],
+  },
   // Thêm văn bản mới: bổ sung object và đặt file HTML vào src/legal-docs/[slug]/index.html
 ]
 

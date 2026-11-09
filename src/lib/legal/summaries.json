@@ -14825,5 +14825,59 @@
       "tldr": "Quy định trách nhiệm thi hành Nghị định thuộc về các Bộ trưởng, Thủ trưởng cơ quan ngang bộ, Chủ tịch UBND cấp tỉnh và các tổ chức, cá nhân có liên quan.",
       "points": []
     }
+  },
+  "tt88": {
+    "tt88_1": {
+      "tldr": "Quy định phạm vi điều chỉnh về lập chứng từ kế toán và ghi sổ kế toán của các hộ kinh doanh, cá nhân kinh doanh.",
+      "points": [
+        "Áp dụng cho việc lập chứng từ kế toán và ghi sổ kế toán của hộ kinh doanh, cá nhân kinh doanh."
+      ]
+    },
+    "tt88_2": {
+      "tldr": "Xác định đối tượng áp dụng là các hộ kinh doanh, cá nhân kinh doanh nộp thuế theo phương pháp kê khai hoặc các phương pháp khác có nhu cầu thực hiện.",
+      "points": [
+        "Hộ kinh doanh, cá nhân kinh doanh nộp thuế theo phương pháp kê khai theo quy định của pháp luật về thuế.",
+        "Hộ kinh doanh, cá nhân kinh doanh nộp thuế theo phương pháp khác có nhu cầu thực hiện chế độ kế toán theo Thông tư này khuyến khích áp dụng."
+      ]
+    },
+    "tt88_3": {
+      "tldr": "Quy định về việc tổ chức công tác kế toán của hộ kinh doanh, cá nhân kinh doanh.",
+      "points": [
+        "Người đại diện hộ kinh doanh, cá nhân kinh doanh bố trí người làm kế toán hoặc thuê dịch vụ làm kế toán.",
+        "Được bố trí người thân (cha, mẹ, vợ, chồng, con, anh chị em ruột) hoặc người kiêm nhiệm làm quản lý, thủ kho, thủ quỹ làm kế toán.",
+        "Bảo quản, lưu trữ tài liệu kế toán theo quy định của Luật Kế toán."
+      ]
+    },
+    "tt88_4": {
+      "tldr": "Quy định nội dung, biểu mẫu và phương pháp lập chứng từ kế toán cho hộ kinh doanh.",
+      "points": [
+        "Nội dung chứng từ kế toán phải tuân thủ Điều 16 Luật Kế toán.",
+        "Áp dụng 05 biểu mẫu chứng từ tại Phụ lục 1: Phiếu thu (01-TT), Phiếu chi (02-TT), Phiếu nhập kho (03-VT), Phiếu xuất kho (04-VT), Bảng thanh toán tiền lương và thu nhập người lao động (05-LĐTL).",
+        "Chứng từ kế toán có thể lập dưới dạng điện tử hoặc trên giấy, đảm bảo tính hợp pháp, chính xác, kịp thời."
+      ]
+    },
+    "tt88_5": {
+      "tldr": "Quy định nội dung, hình thức và hệ thống 07 sổ kế toán của hộ kinh doanh tại Phụ lục 2.",
+      "points": [
+        "Áp dụng 07 biểu mẫu sổ kế toán: S1-HKD (Doanh thu), S2-HKD (Vật liệu, dụng cụ, sản phẩm, hàng hóa), S3-HKD (Chi phí SXKD), S4-HKD (Nghĩa vụ thuế với NSNN), S5-HKD (Thanh toán tiền lương và các khoản nộp theo lương), S6-HKD (Quỹ tiền mặt), S7-HKD (Tiền gửi ngân hàng).",
+        "Sổ kế toán phải mở vào đầu kỳ kế toán năm hoặc ngày bắt đầu hoạt động, ghi chép liên tục, khóa sổ cuối kỳ.",
+        "Được phép ghi sổ trên phương tiện điện tử nhưng phải in ra giấy khi kết thúc kỳ kế toán năm hoặc khi có yêu cầu kiểm tra."
+      ]
+    },
+    "tt88_6": {
+      "tldr": "Quy định về việc xác định doanh thu, chi phí và nghĩa vụ thuế của hộ kinh doanh, cá nhân kinh doanh.",
+      "points": [
+        "Doanh thu, chi phí và nghĩa vụ thuế được xác định theo quy định của pháp luật về thuế quản lý đối với hộ kinh doanh, cá nhân kinh doanh.",
+        "Căn cứ số liệu trên chứng từ và sổ kế toán để kê khai, tính và nộp các loại thuế (GTGT, TNCN,...) theo quy định."
+      ]
+    },
+    "tt88_7": {
+      "tldr": "Quy định hiệu lực thi hành từ ngày 01/01/2022 và bãi bỏ các quy định cũ trước đây.",
+      "points": [
+        "Có hiệu lực thi hành kể từ ngày 01/01/2022.",
+        "Bãi bỏ Quyết định số 169/2000/QĐ-BTC ngày 25/10/2000 và Quyết định số 131/2002/QĐ-BTC ngày 18/10/2002 của Bộ Tài chính.",
+        "Ủy ban nhân dân, Sở Tài chính, Cục Thuế các tỉnh thành phố có trách nhiệm triển khai hướng dẫn."
+      ]
+    }
   }
 }

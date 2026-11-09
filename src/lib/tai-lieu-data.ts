@@ -29,56 +29,13 @@ export function getPreviewPdfUrl(item: TaiLieuItem): string {
   return item.downloadUrl.replace(/\.(docx|xlsx)$/i, '.pdf')
 }
 
-export function toGoogleViewOnlyUrl(url?: string): string {
-  if (!url) return ''
-  const clean = url.trim()
-
-  // Google Sheets: https://docs.google.com/spreadsheets/d/{id}/...
-  const sheetsMatch = clean.match(/^https:\/\/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9_-]+)/i)
-  if (sheetsMatch) {
-    const id = sheetsMatch[1]
-    const gidMatch = clean.match(/[?&#]gid=([0-9]+)/i)
-    const gidParam = gidMatch ? `?gid=${gidMatch[1]}` : ''
-    return `https://docs.google.com/spreadsheets/d/${id}/preview${gidParam}`
-  }
-
-  // Google Docs: https://docs.google.com/document/d/{id}/...
-  const docsMatch = clean.match(/^https:\/\/docs\.google\.com\/document\/d\/([a-zA-Z0-9_-]+)/i)
-  if (docsMatch) {
-    const id = docsMatch[1]
-    return `https://docs.google.com/document/d/${id}/preview`
-  }
-
-  // Google Drive file: https://drive.google.com/file/d/{id}/...
-  const driveFileMatch = clean.match(/^https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/i)
-  if (driveFileMatch) {
-    const id = driveFileMatch[1]
-    return `https://drive.google.com/file/d/${id}/preview`
-  }
-
-  // Google Drive open?id={id}
-  const driveOpenMatch = clean.match(/^https:\/\/drive\.google\.com\/open\?id=([a-zA-Z0-9_-]+)/i)
-  if (driveOpenMatch) {
-    const id = driveOpenMatch[1]
-    return `https://drive.google.com/file/d/${id}/preview`
-  }
-
-  return clean
-}
-
 export function getGoogleOnlineUrl(item: TaiLieuItem): string {
-  if (item.fileType === 'xlsx' && item.googleSheetUrl) {
-    return toGoogleViewOnlyUrl(item.googleSheetUrl)
-  }
-  if (item.fileType === 'docx' && item.googleDocUrl) {
-    return toGoogleViewOnlyUrl(item.googleDocUrl)
-  }
-  if (item.googleDriveUrl) {
-    return toGoogleViewOnlyUrl(item.googleDriveUrl)
-  }
+  if (item.fileType === 'xlsx' && item.googleSheetUrl) return item.googleSheetUrl
+  if (item.fileType === 'docx' && item.googleDocUrl) return item.googleDocUrl
+  if (item.googleDriveUrl) return item.googleDriveUrl
 
-  // Khi chưa có link Google Sheets/Docs riêng, mở trực tiếp bản PDF chuẩn 100% không bị lỗi kết nối
-  return getPreviewPdfUrl(item)
+  const baseUrl = 'https://hkdkkhome.com'
+  return `https://docs.google.com/viewer?url=${encodeURIComponent(baseUrl + item.downloadUrl)}&embedded=false`
 }
 
 export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
@@ -104,7 +61,9 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "hasPreviewPdf": true,
     "lastModified": "2026-10-25T16:13:40.877Z",
     "version": "Ver 2026.1",
-    "fileHash": "c83ec57681b4bf99d46c545c42a90c2e"
+    "fileHash": "c83ec57681b4bf99d46c545c42a90c2e",
+    "googleSheetUrl": "https://docs.google.com/spreadsheets/d/1m2ZwhRtV8PINf9AJpCjYCFgE3Y7YGV5P/preview",
+    "googleDriveUrl": "https://docs.google.com/spreadsheets/d/1m2ZwhRtV8PINf9AJpCjYCFgE3Y7YGV5P/preview"
   },
   {
     "id": "tl_6",
@@ -219,7 +178,8 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "hasPreviewPdf": true,
     "lastModified": "2026-10-25T11:01:54.286Z",
     "version": "Ver 2026.1",
-    "fileHash": "283c5ff4a6aa43bae051b390514520d9"
+    "fileHash": "283c5ff4a6aa43bae051b390514520d9",
+    "isHidden": true
   },
   {
     "id": "tl_10",
@@ -450,7 +410,8 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "hasPreviewPdf": true,
     "lastModified": "2026-10-25T11:01:54.308Z",
     "version": "Ver 2026.1",
-    "fileHash": "21ad8ce8df60136966a2bcdc95db954f"
+    "fileHash": "21ad8ce8df60136966a2bcdc95db954f",
+    "isHidden": true
   },
   {
     "id": "tl_39",
@@ -1226,7 +1187,8 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "hasPreviewPdf": true,
     "lastModified": "2026-10-25T11:01:54.382Z",
     "version": "Ver 2026.1",
-    "fileHash": "d99d95646f45e70df66681949cdc2f3e"
+    "fileHash": "d99d95646f45e70df66681949cdc2f3e",
+    "isHidden": true
   },
   {
     "id": "tl_51",
@@ -1249,7 +1211,31 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "hasPreviewPdf": true,
     "lastModified": "2026-10-25T11:01:54.390Z",
     "version": "Ver 2026.1",
-    "fileHash": "3ac32db89149f657f6aac64b3dadff63"
+    "fileHash": "3ac32db89149f657f6aac64b3dadff63",
+    "isHidden": true
+  },
+  {
+    "id": "tl_55",
+    "code": "B",
+    "title": "o Hop Dong Che Do Lao Dong Dac Thu BH02 BH03",
+    "filename": "Bo_Hop_Dong_Che_Do_Lao_Dong_Dac_Thu_BH02_BH03.xlsx",
+    "category": "bhxh",
+    "categoryLabel": "Bảo hiểm XH",
+    "year": 2026,
+    "description": "Biểu mẫu chuẩn hóa dành cho Bảo hiểm XH — KK HOME.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "xlsx",
+    "fileSize": "32.5 KB",
+    "downloadUrl": "/tai-lieu/04_BAO_HIEM_XA_HOI/02_Che_Do_Lao_Dong_Dac_Thu/Bo_Hop_Dong_Che_Do_Lao_Dong_Dac_Thu_BH02_BH03.xlsx",
+    "tags": [
+      "Bảo hiểm XH",
+      "Excel"
+    ],
+    "hasPreviewPdf": false,
+    "version": "Ver 2026.1",
+    "fileHash": "c6a047f4328f81a07c7c34fa9fe32223",
+    "lastModified": "2026-10-29T09:32:07.936Z"
   },
   {
     "id": "tl_52",
@@ -1272,7 +1258,8 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "hasPreviewPdf": true,
     "lastModified": "2026-10-25T11:01:54.391Z",
     "version": "Ver 2026.1",
-    "fileHash": "4b4fd0b7c21bb9514557b449059a07fe"
+    "fileHash": "4b4fd0b7c21bb9514557b449059a07fe",
+    "isHidden": true
   },
   {
     "id": "tl_53",
@@ -1286,16 +1273,17 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "featured": false,
     "isHot": false,
     "fileType": "docx",
-    "fileSize": "20.2 KB",
+    "fileSize": "19.8 KB",
     "downloadUrl": "/tai-lieu/04_BAO_HIEM_XA_HOI/02_Che_Do_Lao_Dong_Dac_Thu/BH02_Hop_Dong_Lao_Dong_Nguoi_Huong_Luong_Huu.docx",
     "tags": [
       "Bảo hiểm XH",
       "Word"
     ],
     "hasPreviewPdf": true,
-    "lastModified": "2026-10-25T11:01:54.392Z",
-    "version": "Ver 2026.1",
-    "fileHash": "30106b08c801265fef92f7cbdf46f526"
+    "lastModified": "2026-10-29T09:29:37.819Z",
+    "version": "Ver 2026.2",
+    "fileHash": "e3d1e78b71855a968ebe5e4e47dba4f0",
+    "isHidden": true
   },
   {
     "id": "tl_54",
@@ -1309,15 +1297,16 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "featured": false,
     "isHot": false,
     "fileType": "docx",
-    "fileSize": "117.7 KB",
+    "fileSize": "28.2 KB",
     "downloadUrl": "/tai-lieu/04_BAO_HIEM_XA_HOI/02_Che_Do_Lao_Dong_Dac_Thu/BH03_Hop_Dong_Dich_Vu_Ke_Toan_BHXH_Thue_TNCN.docx",
     "tags": [
       "Bảo hiểm XH",
       "Word"
     ],
     "hasPreviewPdf": true,
-    "lastModified": "2026-10-25T11:01:54.392Z",
-    "version": "Ver 2026.1",
-    "fileHash": "b40b8462950a493a656fd7a92f0186d5"
+    "lastModified": "2026-10-29T09:30:25.371Z",
+    "version": "Ver 2026.2",
+    "fileHash": "82f222ff5ed580d4fb8740a206d0bc69",
+    "isHidden": true
   }
 ];
