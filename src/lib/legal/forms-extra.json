@@ -871,6 +871,58 @@
   ],
   "tt80": [
     {
+      "code": "01-CNKD",
+      "title": "TỜ KHAI THUẾ ĐỐI VỚI HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-1-BK-CNKD",
+      "title": "BẢNG KÊ HOẠT ĐỘNG KINH DOANH TRONG KỲ CỦA HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-2-BK-HDKD",
+      "title": "BẢNG KÊ CHI TIẾT HỢP ĐỒNG KINH DOANH"
+    },
+    {
+      "code": "01-TTS",
+      "title": "TỜ KHAI THUẾ ĐỐI VỚI HOẠT ĐỘNG CHO THUÊ TÀI SẢN"
+    },
+    {
+      "code": "01-1-BK-TTS",
+      "title": "BẢNG KÊ CHI TIẾT HỢP ĐỒNG CHO THUÊ TÀI SẢN"
+    },
+    {
+      "code": "01-TKN-CNKD",
+      "title": "THÔNG BÁO DOANH THU / TỜ KHAI THUẾ NĂM"
+    },
+    {
+      "code": "02-CNKD-TNCN-QTT",
+      "title": "TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN"
+    },
+    {
+      "code": "01-TCKT",
+      "title": "TỜ KHAI THUẾ CỦA TỔ CHỨC KHAI THAY, NỘP THUẾ THAY CHO CÁ NHÂN"
+    },
+    {
+      "code": "01-BK-KTHTKD",
+      "title": "BẢNG KÊ CHI TIẾT HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-XSBHDC",
+      "title": "TỜ KHAI THUẾ THU NHẬP CÁ NHÂN DOANH NGHIỆP XỔ SỐ, BẢO HIỂM, ĐA CẤP"
+    },
+    {
+      "code": "01-BK-XSBHDC",
+      "title": "BẢNG KÊ CHI TIẾT CÁ NHÂN KINH DOANH ĐẠI LÝ XỔ SỐ, BẢO HIỂM, ĐA CẤP"
+    },
+    {
+      "code": "01-BK-HTK",
+      "title": "BẢNG KÊ HÀNG TỒN KHO, MÁY MÓC, THIẾT BỊ CỦA HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-BK-STK",
+      "title": "THÔNG BÁO SỐ TÀI KHOẢN/SỐ HIỆU VÍ ĐIỆN TỬ"
+    },
+    {
       "code": "01-1-HKNN",
       "title": "BẢNG KÊ THU NHẬP VẬN TẢI QUỐC TẾ"
     },
@@ -1963,6 +2015,60 @@
     {
       "code": "S7-HKD",
       "title": "SỔ TIỀN GỬI NGÂN HÀNG"
+    }
+  ],
+  "tt89": [
+    {
+      "code": "01-CNKD",
+      "title": "TỜ KHAI THUẾ ĐỐI VỚI HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-1-BK-CNKD",
+      "title": "BẢNG KÊ HOẠT ĐỘNG KINH DOANH TRONG KỲ CỦA HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-2-BK-HDKD",
+      "title": "BẢNG KÊ CHI TIẾT HỢP ĐỒNG KINH DOANH"
+    },
+    {
+      "code": "01-TTS",
+      "title": "TỜ KHAI THUẾ ĐỐI VỚI HOẠT ĐỘNG CHO THUÊ TÀI SẢN"
+    },
+    {
+      "code": "01-1-BK-TTS",
+      "title": "BẢNG KÊ CHI TIẾT HỢP ĐỒNG CHO THUÊ TÀI SẢN"
+    },
+    {
+      "code": "01-TKN-CNKD",
+      "title": "THÔNG BÁO DOANH THU / TỜ KHAI THUẾ NĂM"
+    },
+    {
+      "code": "02-CNKD-TNCN-QTT",
+      "title": "TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN"
+    },
+    {
+      "code": "01-TCKT",
+      "title": "TỜ KHAI THUẾ CỦA TỔ CHỨC KHAI THAY, NỘP THUẾ THAY CHO CÁ NHÂN"
+    },
+    {
+      "code": "01-BK-KTHTKD",
+      "title": "BẢNG KÊ CHI TIẾT HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-XSBHDC",
+      "title": "TỜ KHAI THUẾ THU NHẬP CÁ NHÂN DOANH NGHIỆP XỔ SỐ, BẢO HIỂM, ĐA CẤP"
+    },
+    {
+      "code": "01-BK-XSBHDC",
+      "title": "BẢNG KÊ CHI TIẾT CÁ NHÂN KINH DOANH ĐẠI LÝ XỔ SỐ, BẢO HIỂM, ĐA CẤP"
+    },
+    {
+      "code": "01-BK-HTK",
+      "title": "BẢNG KÊ HÀNG TỒN KHO, MÁY MÓC, THIẾT BỊ CỦA HỘ KINH DOANH, CÁ NHÂN KINH DOANH"
+    },
+    {
+      "code": "01-BK-STK",
+      "title": "THÔNG BÁO SỐ TÀI KHOẢN/SỐ HIỆU VÍ ĐIỆN TỬ"
     }
   ]
 }

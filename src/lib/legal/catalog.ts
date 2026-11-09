@@ -122,7 +122,7 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   // Quản lý thuế / TNDN / TNCN / TTĐB / Nhà thầu / XNK — bổ sung 2026-07
   nd126: { docType: 'Nghị định', categories: ['Thuế TNDN', 'Quản lý thuế'], hasForms: true },
   nd91: { docType: 'Nghị định', categories: ['Thuế TNDN'] },
-  tt80: { docType: 'Thông tư', categories: ['Thuế TNCN', 'Quản lý thuế', 'Thuế TTĐB', 'Thuế Nhà thầu (FCT)'], hasForms: true },
+  tt80: { docType: 'Thông tư', categories: ['HKD, CNKD', 'Thuế TNCN', 'Thuế GTGT', 'Quản lý thuế', 'Thuế TNDN', 'Thuế TTĐB', 'Thuế Nhà thầu (FCT)'], hasForms: true },
   tt103: { docType: 'Thông tư', categories: ['Thuế Nhà thầu (FCT)'] },
   luat03: { docType: 'Luật', categories: ['Thuế TTĐB'] },
   'luat-107': { docType: 'Luật', categories: ['Thuế XNK'] },
@@ -154,7 +154,7 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   tt96: { docType: 'Thông tư', categories: ['Khác'], hasForms: true },
   tt97: { docType: 'Thông tư', categories: ['Thuế GTGT', 'Thuế TNDN'] },
   cv2927: { docType: 'Công văn', categories: ['Thuế GTGT', 'Quản lý thuế'] },
-  tt89: { docType: 'Thông tư', categories: ['Quản lý thuế', 'Thuế Nhà thầu (FCT)', 'HKD, CNKD', 'Thuế GTGT', 'Thuế TNCN', 'Thuế TNDN'] },
+  tt89: { docType: 'Thông tư', categories: ['Quản lý thuế', 'Thuế Nhà thầu (FCT)', 'HKD, CNKD', 'Thuế GTGT', 'Thuế TNCN', 'Thuế TNDN'], hasForms: true },
   tt88: { docType: 'Thông tư', categories: ['Chế độ kế toán', 'HKD, CNKD'], hasForms: true },
 }
 

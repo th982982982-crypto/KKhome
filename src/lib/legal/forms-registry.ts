@@ -32,11 +32,13 @@ const DOC_META: Record<string, { label: string; full: string }> = {
   tt69: { label: 'TT 69/2025', full: 'Hướng dẫn Luật Thuế GTGT' },
   tt158: { label: 'TT 158/2025', full: 'Hướng dẫn Luật Thuế TTĐB' },
   tt18: { label: 'TT 18/2026', full: 'Hồ sơ, thủ tục quản lý thuế' },
+  tt80: { label: 'TT 80/2021', full: 'Hướng dẫn Luật Quản lý thuế & NĐ 126/2020' },
+  tt89: { label: 'TT 89/2026', full: 'Quy định chi tiết Luật Quản lý thuế & NĐ 252/2026' },
   tt06: { label: 'TT 06/2021', full: 'Quản lý thuế hàng hóa XNK' },
 }
 
 // Thứ tự hiển thị trong trang admin
-export const FORMS_DOC_ORDER = ['tt99', 'tt133', 'tt58', 'tt152', 'tt88', 'tt20', 'nd181', 'nd144', 'tt69', 'tt158', 'tt18', 'tt06']
+export const FORMS_DOC_ORDER = ['tt99', 'tt133', 'tt58', 'tt152', 'tt88', 'tt80', 'tt89', 'tt20', 'nd181', 'nd144', 'tt69', 'tt158', 'tt18', 'tt06']
 
 const extraMap = extra as Record<string, { code: string; title: string }[]>
 

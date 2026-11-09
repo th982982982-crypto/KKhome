@@ -1145,6 +1145,84 @@
   ],
   "tt80": [
     {
+      "code": "01-CNKD",
+      "title": "TỜ KHAI THUẾ ĐỐI VỚI HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Áp dụng đối với hộ kinh doanh, cá nhân kinh doanh nộp thuế theo phương pháp kê khai hoặc từng lần phát sinh)"
+    },
+    {
+      "code": "01-1-BK-CNKD",
+      "title": "BẢNG KÊ HOẠT ĐỘNG KINH DOANH TRONG KỲ CỦA HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Kèm theo Tờ khai thuế đối với hộ kinh doanh, cá nhân kinh doanh mẫu số 01/CNKD)"
+    },
+    {
+      "code": "01-2-BK-HDKD",
+      "title": "BẢNG KÊ CHI TIẾT HỢP ĐỒNG KINH DOANH",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Kèm theo Tờ khai mẫu số 01/CNKD)"
+    },
+    {
+      "code": "01-TTS",
+      "title": "TỜ KHAI THUẾ ĐỐI VỚI HOẠT ĐỘNG CHO THUÊ TÀI SẢN",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Áp dụng đối với cá nhân, hộ kinh doanh có hoạt động cho thuê tài sản như nhà, đất, xe, máy móc)"
+    },
+    {
+      "code": "01-1-BK-TTS",
+      "title": "BẢNG KÊ CHI TIẾT HỢP ĐỒNG CHO THUÊ TÀI SẢN",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Kèm theo Tờ khai thuế cho thuê tài sản mẫu số 01/TTS)"
+    },
+    {
+      "code": "01-TKN-CNKD",
+      "title": "THÔNG BÁO DOANH THU / TỜ KHAI THUẾ NĂM",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Dành cho hộ kinh doanh, cá nhân kinh doanh nộp thuế theo phương pháp khoán)"
+    },
+    {
+      "code": "02-CNKD-TNCN-QTT",
+      "title": "TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Áp dụng đối với cá nhân kinh doanh trực tiếp quyết toán thuế với cơ quan thuế)"
+    },
+    {
+      "code": "01-TCKT",
+      "title": "TỜ KHAI THUẾ CỦA TỔ CHỨC KHAI THAY, NỘP THUẾ THAY CHO CÁ NHÂN",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Dành cho doanh nghiệp, tổ chức, sàn TMĐT khai thay, nộp thuế thay cho hộ kinh doanh, cá nhân kinh doanh)"
+    },
+    {
+      "code": "01-BK-KTHTKD",
+      "title": "BẢNG KÊ CHI TIẾT HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Kèm theo Tờ khai thuế khấu trừ, nộp thay mẫu số 01/TCKT)"
+    },
+    {
+      "code": "01-XSBHDC",
+      "title": "TỜ KHAI THUẾ THU NHẬP CÁ NHÂN DOANH NGHIỆP XỔ SỐ, BẢO HIỂM, ĐA CẤP",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Doanh nghiệp trả hoa hồng cho đại lý xổ số, đại lý bảo hiểm, người tham gia bán hàng đa cấp)"
+    },
+    {
+      "code": "01-BK-XSBHDC",
+      "title": "BẢNG KÊ CHI TIẾT CÁ NHÂN KINH DOANH ĐẠI LÝ XỔ SỐ, BẢO HIỂM, ĐA CẤP",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Kèm theo Tờ khai mẫu số 01/XSBHĐC)"
+    },
+    {
+      "code": "01-BK-HTK",
+      "title": "BẢNG KÊ HÀNG TỒN KHO, MÁY MÓC, THIẾT BỊ CỦA HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Áp dụng khi hộ kinh doanh đăng ký thuế, chuyển đổi phương pháp kê khai hoặc giải thể)"
+    },
+    {
+      "code": "01-BK-STK",
+      "title": "THÔNG BÁO SỐ TÀI KHOẢN/SỐ HIỆU VÍ ĐIỆN TỬ",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Đăng ký tài khoản ngân hàng và ví điện tử dùng cho hoạt động kinh doanh)"
+    },
+    {
       "code": "01-NDAN",
       "title": "TÊN NGƯỜI NỘP THUẾ",
       "pl": "",
@@ -2775,6 +2853,86 @@
       "title": "SỔ TIỀN GỬI NGÂN HÀNG",
       "pl": "Phụ lục 2",
       "note": ""
+    }
+  ],
+  "tt89": [
+    {
+      "code": "01-CNKD",
+      "title": "TỜ KHAI THUẾ ĐỐI VỚI HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Áp dụng đối với hộ kinh doanh, cá nhân kinh doanh nộp thuế theo phương pháp kê khai hoặc từng lần phát sinh)"
+    },
+    {
+      "code": "01-1-BK-CNKD",
+      "title": "BẢNG KÊ HOẠT ĐỘNG KINH DOANH TRONG KỲ CỦA HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Kèm theo Tờ khai thuế đối với hộ kinh doanh, cá nhân kinh doanh mẫu số 01/CNKD)"
+    },
+    {
+      "code": "01-2-BK-HDKD",
+      "title": "BẢNG KÊ CHI TIẾT HỢP ĐỒNG KINH DOANH",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Kèm theo Tờ khai mẫu số 01/CNKD)"
+    },
+    {
+      "code": "01-TTS",
+      "title": "TỜ KHAI THUẾ ĐỐI VỚI HOẠT ĐỘNG CHO THUÊ TÀI SẢN",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Áp dụng đối với cá nhân, hộ kinh doanh có hoạt động cho thuê tài sản như nhà, đất, xe, máy móc)"
+    },
+    {
+      "code": "01-1-BK-TTS",
+      "title": "BẢNG KÊ CHI TIẾT HỢP ĐỒNG CHO THUÊ TÀI SẢN",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Kèm theo Tờ khai thuế cho thuê tài sản mẫu số 01/TTS)"
+    },
+    {
+      "code": "01-TKN-CNKD",
+      "title": "THÔNG BÁO DOANH THU / TỜ KHAI THUẾ NĂM",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Dành cho hộ kinh doanh, cá nhân kinh doanh nộp thuế theo phương pháp khoán)"
+    },
+    {
+      "code": "02-CNKD-TNCN-QTT",
+      "title": "TỜ KHAI QUYẾT TOÁN THUẾ THU NHẬP CÁ NHÂN",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Áp dụng đối với cá nhân kinh doanh trực tiếp quyết toán thuế với cơ quan thuế)"
+    },
+    {
+      "code": "01-TCKT",
+      "title": "TỜ KHAI THUẾ CỦA TỔ CHỨC KHAI THAY, NỘP THUẾ THAY CHO CÁ NHÂN",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Dành cho doanh nghiệp, tổ chức, sàn TMĐT khai thay, nộp thuế thay cho hộ kinh doanh, cá nhân kinh doanh)"
+    },
+    {
+      "code": "01-BK-KTHTKD",
+      "title": "BẢNG KÊ CHI TIẾT HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Kèm theo Tờ khai thuế khấu trừ, nộp thay mẫu số 01/TCKT)"
+    },
+    {
+      "code": "01-XSBHDC",
+      "title": "TỜ KHAI THUẾ THU NHẬP CÁ NHÂN DOANH NGHIỆP XỔ SỐ, BẢO HIỂM, ĐA CẤP",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Doanh nghiệp trả hoa hồng cho đại lý xổ số, đại lý bảo hiểm, người tham gia bán hàng đa cấp)"
+    },
+    {
+      "code": "01-BK-XSBHDC",
+      "title": "BẢNG KÊ CHI TIẾT CÁ NHÂN KINH DOANH ĐẠI LÝ XỔ SỐ, BẢO HIỂM, ĐA CẤP",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Kèm theo Tờ khai mẫu số 01/XSBHĐC)"
+    },
+    {
+      "code": "01-BK-HTK",
+      "title": "BẢNG KÊ HÀNG TỒN KHO, MÁY MÓC, THIẾT BỊ CỦA HỘ KINH DOANH, CÁ NHÂN KINH DOANH",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Áp dụng khi hộ kinh doanh đăng ký thuế, chuyển đổi phương pháp kê khai hoặc giải thể)"
+    },
+    {
+      "code": "01-BK-STK",
+      "title": "THÔNG BÁO SỐ TÀI KHOẢN/SỐ HIỆU VÍ ĐIỆN TỬ",
+      "pl": "Hộ kinh doanh, cá nhân kinh doanh",
+      "note": "(Đăng ký tài khoản ngân hàng và ví điện tử dùng cho hoạt động kinh doanh)"
     }
   ]
 }

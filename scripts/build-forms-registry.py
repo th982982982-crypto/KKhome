@@ -49,6 +49,7 @@ FOLDER_TO_SLUG = {
     "Biểu mẫu TT94": "tt94",
     "Biểu mẫu TT96": "tt96",
     "Biểu mẫu TT88": "tt88",
+    "Biểu mẫu TT89": "tt89",
 }
 
 SKIP_PREFIXES = (
