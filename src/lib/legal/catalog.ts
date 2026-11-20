@@ -12,6 +12,7 @@ export type DocType =
   | 'Thông tư'
   | 'Văn bản hợp nhất'
   | 'Công văn'
+  | 'Sổ tay'
   | 'Mẫu biểu'
   | 'Khác'
 
@@ -22,6 +23,7 @@ export const DOCTYPE_ORDER: DocType[] = [
   'Thông tư',
   'Văn bản hợp nhất',
   'Công văn',
+  'Sổ tay',
   'Mẫu biểu',
   'Khác',
 ]
@@ -67,6 +69,7 @@ export const DOCTYPE_BADGE: Record<DocType, string> = {
   'Thông tư': 'bg-violet-100 text-violet-700 dark:bg-violet-950/50 dark:text-violet-300',
   'Văn bản hợp nhất': 'bg-amber-100 text-amber-700 dark:bg-amber-950/50 dark:text-amber-300',
   'Công văn': 'bg-cyan-100 text-cyan-700 dark:bg-cyan-950/50 dark:text-cyan-300',
+  'Sổ tay': 'bg-indigo-100 text-indigo-700 dark:bg-indigo-950/50 dark:text-indigo-300',
   'Mẫu biểu': 'bg-pink-100 text-pink-700 dark:bg-pink-950/50 dark:text-pink-300',
   'Khác': 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300',
 }
@@ -156,6 +159,7 @@ export const DOC_TAXONOMY: Record<string, Taxon> = {
   cv2927: { docType: 'Công văn', categories: ['Thuế GTGT', 'Quản lý thuế'] },
   tt89: { docType: 'Thông tư', categories: ['Quản lý thuế', 'Thuế Nhà thầu (FCT)', 'HKD, CNKD', 'Thuế GTGT', 'Thuế TNCN', 'Thuế TNDN'], hasForms: true },
   tt88: { docType: 'Thông tư', categories: ['Chế độ kế toán', 'HKD, CNKD'], hasForms: true },
+  'so-tay-tndn-2026': { docType: 'Sổ tay', categories: ['Thuế TNDN', 'Quản lý thuế'] },
 }
 
 // Hình dạng nhẹ, serializable để truyền từ Server Component → Client Component

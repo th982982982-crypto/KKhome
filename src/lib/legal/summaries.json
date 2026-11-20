@@ -14879,5 +14879,804 @@
         "Ủy ban nhân dân, Sở Tài chính, Cục Thuế các tỉnh thành phố có trách nhiệm triển khai hướng dẫn."
       ]
     }
+  },
+  "so-tay-tndn-2026": {
+    "cd_1": {
+      "tldr": "Chính sách miễn thuế TNDN đối với doanh nghiệp có doanh thu từ 1 tỷ đồng trở xuống là một quyết sách mang tính nhân văn sâu sắc của Đảng và Nhà nước nhằm bồi đắp nguồn lực cho phân khúc doanh nghiệp siêu nhỏ, tạo động lực mạnh mẽ để thúc đẩy tiến trì",
+      "points": [
+        "Nắm vững căn cứ pháp lý để bảo vệ chi phí được trừ khi thanh tra, kiểm tra thuế.",
+        "Thiết lập hồ sơ chứng từ chuẩn chỉ ngay từ thời điểm giao dịch phát sinh trong kỳ.",
+        "Chủ động áp dụng chính sách ưu đãi thuế, tối ưu hóa dòng tiền hoạt động của doanh nghiệp. NGHIỆP Trang 04 / 45"
+      ]
+    },
+    "st_1": {
+      "tldr": "• ĐƯỢC MIỄN THUẾ. Doanh nghiệp được miễn thuế TNDN hoàn toàn nếu tổng doanh thu năm từ 01 tỷ đồng trở xuống.",
+      "points": [
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_2": {
+      "tldr": "• BAO GỒM TOÀN BỘ DOANH THU. Doanh thu làm căn cứ xác định miễn thuế bao gồm doanh thu bán hàng, cung cấp dịch vụ (đã loại bỏ các khoản giảm trừ doanh thu như chiết khấu thương mại, giảm giá hàng bán, hàng bán bị trả lại",
+      "points": [
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_3": {
+      "tldr": "• KHÔNG ĐƯỢC MIỄN THUẾ. Quy định miễn thuế này tuyệt đối không áp dụng đối với công ty con hoặc doanh nghiệp có quan hệ liên kết với doanh nghiệp không đáp ứng điều kiện miễn thuế nhằm tránh việc chuyển dịch lợi nhuận bấ",
+      "points": [
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_4": {
+      "tldr": "• KHÔNG CẦN TẠM NỘP. Nếu dự kiến tổng doanh thu trong kỳ tính thuế cả năm không quá 01 tỷ đồng thì doanh nghiệp không phải thực hiện nghĩa vụ tạm nộp thuế TNDN theo quý.",
+      "points": [
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_5": {
+      "tldr": "• KHÔNG BỊ PHẠT CHẬM NỘP. Doanh nghiệp chỉ cần thực hiện kê khai, quyết toán thuế theo đúng quy định thực tế khi kết thúc năm và không bị cơ quan thuế tính tiền chậm nộp đối với số thuế chưa tạm nộp trong năm.",
+      "points": [
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_6": {
+      "tldr": "• ĐƯỢC BÙ TRỪ HOẶC HOÀN TRẢ. Số thuế nộp thừa này sẽ được tự động bù trừ vào số thuế phải nộp của các quý tiếp theo hoặc được hoàn trả trực tiếp theo quy định của pháp luật về quản lý thuế.",
+      "points": [
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_7": {
+      "tldr": "• ĐƯỢC MIỄN THUẾ CHO PHẦN THỜI GIAN THUỘC NĂM 2026. Doanh nghiệp được miễn thuế TNDN cho phần thời gian tính từ ngày 01/01/2026 đến hết kỳ tính thuế đó nếu đáp ứng điều kiện tổng doanh thu quy đổi cả năm không vượt quá 1",
+      "points": [
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_8": {
+      "tldr": "• ÁP DỤNG CÔNG THỨC PHÂN BỔ THEO THÁNG. Thuế TNDN được miễn = (Thuế TNDN năm 2025 ÷ 12) × Số tháng thuộc năm 2026 * DN thành lập mới: thay 12 bằng số tháng hoạt động thực tế.",
+      "points": [
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "cd_2": {
+      "tldr": "Nghị định số 320/2025/NĐ-CP thiết lập biểu thuế suất theo quy mô doanh thu nhằm hỗ trợ doanh nghiệp nhỏ và vừa. Mức 15% áp dụng khi tổng doanh thu năm không quá 03 tỷ đồng; mức 17% áp dụng khi doanh thu trên 03 tỷ đến không quá 50 tỷ đồng.",
+      "points": [
+        "Nắm vững căn cứ pháp lý để bảo vệ chi phí được trừ khi thanh tra, kiểm tra thuế.",
+        "Thiết lập hồ sơ chứng từ chuẩn chỉ ngay từ thời điểm giao dịch phát sinh trong kỳ.",
+        "Chủ động áp dụng chính sách ưu đãi thuế, tối ưu hóa dòng tiền hoạt động của doanh nghiệp. NGHIỆP Trang 08 / 45"
+      ]
+    },
+    "st_9": {
+      "tldr": "• THUẾ SUẤT 15%. Doanh nghiệp có tổng doanh thu năm từ 03 tỷ đồng trở xuống được áp dụng mức thuế suất ưu đãi là 15%.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 2 Điều 11 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_10": {
+      "tldr": "• THUẾ SUẤT 17%. Doanh nghiệp có tổng doanh thu năm từ trên 03 tỷ đồng đến không quá 50 tỷ đồng được áp dụng mức thuế suất ưu đãi là 17%.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 3 Điều 11 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_11": {
+      "tldr": "• NĂM TRƯỚC LIỀN KỀ. Căn cứ xác định là tổng doanh thu của kỳ tính thuế năm trước liền kề được thể hiện trên hồ sơ quyết toán thuế TNDN.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 4 Điều 11 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_12": {
+      "tldr": "• QUY ĐỔI DOANH THU THEO NĂM. Doanh thu quy đổi = Doanh thu thực tế ÷ Số tháng hoạt động × 12",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm a khoản 4 Điều 11 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "cd_3": {
+      "tldr": "Xác định đúng thời điểm ghi nhận doanh thu quyết định tính trung thực của báo cáo tài chính và nghĩa vụ thuế TNDN. Thời điểm với hàng hóa là lúc chuyển giao quyền sở hữu/sử dụng; với dịch vụ là lúc hoàn thành cung ứng hoặc hoàn thành từng phần.",
+      "points": [
+        "Nắm vững căn cứ pháp lý để bảo vệ chi phí được trừ khi thanh tra, kiểm tra thuế.",
+        "Thiết lập hồ sơ chứng từ chuẩn chỉ ngay từ thời điểm giao dịch phát sinh trong kỳ.",
+        "Chủ động áp dụng chính sách ưu đãi thuế, tối ưu hóa dòng tiền hoạt động của doanh nghiệp. NGHIỆP Trang 11 / 45"
+      ]
+    },
+    "st_13": {
+      "tldr": "• THỜI ĐIỂM CHUYỂN GIAO QUYỀN. Là thời điểm chuyển giao quyền sở hữu hoặc quyền sử dụng hàng hóa cho người mua, không phân biệt đã thu được tiền hay chưa.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm a khoản 2 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_14": {
+      "tldr": "• THỜI ĐIỂM HOÀN THÀNH CUNG ỨNG. Là thời điểm hoàn thành việc cung ứng dịch vụ hoặc hoàn thành từng phần việc cung ứng dịch vụ cho người mua, không phân biệt đã thu được tiền hay chưa.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm b khoản 2 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_15": {
+      "tldr": "• BAO GỒM CẢ THUẾ GTGT. Đối với doanh nghiệp nộp thuế GTGT theo phương pháp trực tiếp, doanh thu tính thuế TNDN là doanh thu đã bao gồm cả thuế GTGT.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm b khoản 1 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_16": {
+      "tldr": "• KHÔNG BAO GỒM THUẾ GTGT. Đối với doanh nghiệp nộp thuế GTGT theo phương pháp khấu trừ, doanh thu tính thuế TNDN là doanh thu chưa bao gồm thuế GTGT.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm a khoản 1 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_17": {
+      "tldr": "• TÍNH THEO GIÁ BÁN TRẢ MỘT LẦN. Doanh thu được xác định theo giá bán hàng hóa trả một lần tại thời điểm chuyển giao hàng, hoàn toàn không bao gồm phần lãi trả chậm, trả góp.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm b khoản 3 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_18": {
+      "tldr": "• TOÀN BỘ DOANH THU BÁN HÀNG. Doanh thu tính thuế TNDN của doanh nghiệp giao hàng cho đại lý là tổng số tiền bán hàng hóa thực tế phát sinh, chưa trừ đi các khoản chi phí hoa hồng.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết c1 khoản 3 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_19": {
+      "tldr": "• TIỀN HOA HỒNG ĐƯỢC HƯỞNG. Doanh thu của bên nhận làm đại lý chỉ bao gồm phần tiền hoa hồng thực tế được hưởng theo thỏa thuận trong hợp đồng đại lý.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết c2 khoản 3 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_20": {
+      "tldr": "• ĐƯỢC LỰA CHỌN PHƯƠNG PHÁP. Doanh nghiệp được chọn phân bổ doanh thu đều cho số năm trả tiền trước hoặc tính gộp toàn bộ vào doanh thu của năm thực tế thu tiền.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm đ khoản 3 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_21": {
+      "tldr": "• TOÀN BỘ DOANH THU VẬN CHUYỂN. Là toàn bộ doanh thu phát sinh từ việc vận chuyển hành khách, hàng hóa từ cảng Việt Nam đi nước ngoài trong kỳ tính thuế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm i khoản 3 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_22": {
+      "tldr": "• KHÔNG GỒM GIÁ TRỊ NGUYÊN VẬT LIỆU. Doanh thu tính thuế chỉ tính trên giá trị phần xây dựng, lắp đặt thực tế thực hiện, hoàn toàn loại trừ giá trị nguyên vật liệu, máy móc thiết bị do chủ đầu tư cung cấp.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết k2 khoản 3 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_23": {
+      "tldr": "• DOANH THU THUẦN SAU TRẢ THƯỞNG. Được xác định bằng tổng số tiền thu được từ hoạt động này (đã bao gồm cả thuế tiêu thụ đặc biệt) trừ đi tổng số tiền thực tế đã trả thưởng cho khách chơi.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm n khoản 3 Điều 8 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "cd_4": {
+      "tldr": "Chi phí được trừ phải đáp ứng điều kiện phát sinh thực tế, liên quan đến hoạt động sản xuất kinh doanh, có hóa đơn chứng từ hợp pháp. Ngưỡng thanh toán không dùng tiền mặt đã được hạ xuống 5 triệu đồng.",
+      "points": [
+        "Nắm vững căn cứ pháp lý để bảo vệ chi phí được trừ khi thanh tra, kiểm tra thuế.",
+        "Thiết lập hồ sơ chứng từ chuẩn chỉ ngay từ thời điểm giao dịch phát sinh trong kỳ.",
+        "Chủ động áp dụng chính sách ưu đãi thuế, tối ưu hóa dòng tiền hoạt động của doanh nghiệp. NGHIỆP Trang 15 / 45"
+      ]
+    },
+    "st_24": {
+      "tldr": "• KHÔNG ĐƯỢC TRỪ. Khoản chi có giá trị từ 05 triệu đồng trở lên bắt buộc phải thực hiện bằng hình thức thanh toán không dùng tiền mặt mới được tính là chi phí hợp lý được trừ.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm c khoản 1 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_25": {
+      "tldr": "• KHÔNG ĐƯỢC TRỪ TIỀN MẶT. Nếu tổng giá trị mua hàng của một nhà cung cấp trong cùng một ngày từ 05 triệu đồng trở lên thì bắt buộc phải thực hiện chuyển khoản để bảo vệ quyền lợi khấu trừ chi phí.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết c1 khoản 1 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "cd_5": {
+      "tldr": "Chính sách thuế khuyến khích đầu tư vào nghiên cứu khoa học, đổi mới sáng tạo và phát triển cộng đồng. Chi phí R&D được khấu trừ bổ sung tối đa 200%; nhiều khoản tài trợ, phúc lợi và chi phục hồi môi trường được trừ khi có hồ sơ đầy đủ.",
+      "points": [
+        "Nắm vững căn cứ pháp lý để bảo vệ chi phí được trừ khi thanh tra, kiểm tra thuế.",
+        "Thiết lập hồ sơ chứng từ chuẩn chỉ ngay từ thời điểm giao dịch phát sinh trong kỳ.",
+        "Chủ động áp dụng chính sách ưu đãi thuế, tối ưu hóa dòng tiền hoạt động của doanh nghiệp. NGHIỆP Trang 18 / 45 CHỦ ĐỀ 05 / CHI PHÍ ĐƯỢC TRỪ — KHUYẾN KHÍCH ĐẦU TƯ, NGHIÊN CỨU KHOA HỌC VÀ PHÁT TRIỂN CỘNGĐỒNG PHẦNV"
+      ]
+    },
+    "st_26": {
+      "tldr": "• TỐI ĐA 200% CHI PHÍ THỰC TẾ. Doanh nghiệp được tính vào chi phí được trừ tối đa không quá 200% chi phí thực tế phát sinh hợp pháp cho hoạt động R&D.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết a1 khoản 1 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_27": {
+      "tldr": "• DOANH NGHIỆP KHÔNG BỊ LỖ. Việc áp dụng phần chi bổ sung khuyến khích chỉ được thực hiện khi đảm bảo sau khi trừ, kết quả kinh doanh cuối cùng của doanh nghiệp không bị lỗ.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết a2 khoản 1 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_28": {
+      "tldr": "• PHẢI ĐÁP ỨNG ĐỒNG THỜI HOẶC RIÊNG LẺ CÁC ĐIỀU KIỆN: (1) Vốn đầu tư tăng thêm tối thiểu từ 40 tỷ đồng (ngành ưu đãi) hoặc từ 20 tỷ đồng (địa bàn khó khăn). (2) Tỷ trọng nguyên giá TSCĐ tăng thêm đạt tối thiểu 20% so với",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 6 Điều 20 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_29": {
+      "tldr": "• Căn cứ vào hợp đồng và chứng từ trả tiền hợp pháp khi nhận quyền sử dụng đất. Trường hợp không có hợp đồng và chứng từ trả tiền hợp pháp thì giá vốn được tính theo giá đất tại bảng giá đất do UBND cấp tỉnh quy định (tr",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm a2 khoản 2 Điều 17 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_30": {
+      "tldr": "• TỐI ĐA 20% THU NHẬP TÍNH THUẾ. Doanh nghiệp được phép chủ động trích lập tối đa không quá 20% thu nhập tính thuế hàng năm để đưa vào Quỹ phát triển khoa học và công nghệ của đơn vị.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 1 Điều 22 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_31": {
+      "tldr": "• ĐƯỢC TRỪ. Khoản chi phí phát sinh hợp lý liên quan đến hồ sơ, thủ tục đấu thầu dù không đạt kết quả trúng thầu vẫn được tính vào chi phí hợp lý.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết i1 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_32": {
+      "tldr": "• ĐƯỢC TÍNH VÀO CHI PHÍ ĐƯỢC TRỪ. Doanh nghiệp được tính vào chi phí được trừ khi có báo cáo nghiên cứu lưu trữ đầy đủ tại doanh nghiệp hoặc gửi cơ quan quản lý chuyên ngành (nếu luật chuyên ngành yêu cầu).",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết i2 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_33": {
+      "tldr": "• ĐƯỢC TRỪ. Được tính vào chi phí được trừ nếu diện tích đất thuê đó chính là địa điểm quy hoạch đặt trụ sở hoặc cơ sở sản xuất kinh doanh hợp pháp của doanh nghiệp.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết i3 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_34": {
+      "tldr": "• ĐƯỢC TRỪ KHẤU HAO. Được chấp nhận tính vào chi phí được trừ nếu tài sản đó thuộc quyền sở hữu hoặc sử dụng hợp pháp của doanh nghiệp và phục vụ mục đích kinh doanh lâu dài.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết i4 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_35": {
+      "tldr": "• ĐƯỢC PHÂN BỔ VÀO CHI PHÍ ĐƯỢC TRỪ. Các chi phí khởi tạo ban đầu được tính thẳng vào chi phí được trừ hoặc phân bổ dần vào chi phí hoạt động khi xác định thu nhập chịu thuế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết i5 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_36": {
+      "tldr": "• ĐƯỢC TRỪ. Các khoản chi liên quan đến cải tạo, khôi phục mặt bằng, hiện trạng nhà xưởng sau giai đoạn tạm dừng hoạt động được chấp nhận là chi phí hợp lý.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết i5 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_37": {
+      "tldr": "• ĐƯỢC TRỪ. Khoản chi này được chấp nhận nếu doanh nghiệp có báo cáo về chủ trương đầu tư sản xuất thử nghiệm hoặc sản xuất thương mại sản phẩm đó.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết i6 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_38": {
+      "tldr": "• ĐƯỢC TRỪ. Khoản chi phí được trừ bao gồm cả giá vốn của lượng hàng hóa bị hủy bỏ và các chi phí phát sinh phục vụ trực tiếp cho quá trình tiêu hủy.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết i7 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_39": {
+      "tldr": "• ĐƯỢC TRỪ. Các khoản chi tiêu hủy phế phẩm phát sinh tự nhiên, không mong muốn trong quá trình sản xuất chế biến được tính vào chi phí được trừ.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết i9 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_40": {
+      "tldr": "• ĐƯỢC TRỪ. Các khoản tài trợ cơ sở vật chất, trang thiết bị giảng dạy, học bổng cho học sinh sinh viên thuộc hệ thống quốc dân được tính vào chi phí hợp lý.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết đ1 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_41": {
+      "tldr": "• ĐƯỢC TRỪ. Chi phí tài trợ các giải đấu tri thức, cuộc thi học thuật cho đối tượng học sinh sinh viên được khấu trừ hoàn toàn.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết đ1 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_42": {
+      "tldr": "• ĐƯỢC TRỪ. Doanh nghiệp được tính vào chi phí được trừ nếu chuẩn bị đầy đủ bộ hồ sơ chứng minh tài trợ, biên bản bàn giao thiết bị y tế theo quy định.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết đ2 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_43": {
+      "tldr": "• ĐƯỢC TRỪ. Các khoản đóng góp trực tiếp cho quỹ bảo tồn di sản được Nhà nước khuyến khích bằng cách cho trừ vào thu nhập chịu thuế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết đ3 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_44": {
+      "tldr": "• ĐƯỢC TRỪ. Chương trình an sinh xã hội xây dựng nhà tình nghĩa, nhà đại đoàn kết cho người nghèo, đối tượng chính sách được tính là chi phí hợp lệ.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết đ5 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_45": {
+      "tldr": "• ĐƯỢC TRỪ VÀO CHI PHÍ. Toàn bộ giá trị tài trợ hạ tầng giao thông, điện đường trường trạm tại vùng kinh tế đặc biệt khó khăn được ghi nhận thẳng vào chi phí được trừ.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết đ6 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_46": {
+      "tldr": "• ĐƯỢC TRỪ VÀO CHI PHÍ. Khoản tài trợ khắc phục hậu quả bão lũ, thiên tai chuyển qua các tổ chức hợp pháp (Mặt trận Tổ quốc, Hội Chữ thập đỏ…) được chấp nhận là chi phí hợp lý.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết đ4 khoản 2 Điều 9 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "cd_6": {
+      "tldr": "Bên cạnh chi phí được trừ, pháp luật khống chế một số khoản chi nhân sự và tài chính: phúc lợi, trang phục, lãi vay liên kết, chi không có hóa đơn. Vượt trần sẽ bị loại phần vượt khi tính thuế.",
+      "points": [
+        "Nắm vững căn cứ pháp lý để bảo vệ chi phí được trừ khi thanh tra, kiểm tra thuế.",
+        "Thiết lập hồ sơ chứng từ chuẩn chỉ ngay từ thời điểm giao dịch phát sinh trong kỳ.",
+        "Chủ động áp dụng chính sách ưu đãi thuế, tối ưu hóa dòng tiền hoạt động của doanh nghiệp. NGHIỆP Trang 24 / 45"
+      ]
+    },
+    "st_47": {
+      "tldr": "• TỐI ĐA 01 THÁNG LƯƠNG BÌNH QUÂN. Tổng các khoản chi có tính chất phúc lợi trực tiếp cho người lao động không được vượt quá 01 tháng lương bình quân thực tế thực hiện trong năm tính thuế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm d khoản 4 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_48": {
+      "tldr": "• CHIA THEO QUỸ LƯƠNG THỰC TẾ. Lương bình quân tháng = Quỹ lương thực tế năm ÷ 12 * DN hoạt động dưới 12 tháng: chia cho số tháng thực tế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết d1 khoản 4 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_49": {
+      "tldr": "• CÓ, NHƯNG BỊ KHỐNG CHẾ. Khoản chi hiếu hỷ này được chấp nhận là chi phúc lợi trực tiếp, nhưng phải gộp chung vào tổng chi phúc lợi để khống chế dưới mức trần 01 tháng lương bình quân.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm d khoản 4 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_50": {
+      "tldr": "• ĐƯỢC TRỪ TỐI ĐA 05 TRIỆU. Phần chi vượt mức (01 triệu đồng/tháng/người) sẽ bị loại ra khỏi chi phí được trừ, chỉ chấp nhận tối đa 05 triệu đồng/tháng/người.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm đ khoản 4 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_51": {
+      "tldr": "• PHẢI ĐÁP ỨNG ĐỒNG THỜI 2 ĐIỀU KIỆN: (1) Nội dung, mức hưởng được ghi cụ thể trong hợp đồng lao động hoặc quy chế tài chính của doanh nghiệp. (2) Doanh nghiệp đã hoàn thành đóng đủ các loại bảo hiểm bắt buộc cho người l",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết đ1, đ2 khoản 4 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_52": {
+      "tldr": "• TỐI ĐA 05 TRIỆU/NGƯỜI/NĂM. Phần chi bằng tiền vượt quá mức 05 triệu đồng/người/năm cho mục đích trang phục sẽ không được chấp nhận.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm đ khoản 8 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_53": {
+      "tldr": "• KHÔNG BỊ KHỐNG CHẾ MỨC TRẦN. Giao dịch cấp phát trang phục bằng hiện vật không bị giới hạn 5 triệu đồng, nhưng doanh nghiệp phải xuất trình đầy đủ hóa đơn, chứng từ mua hàng hợp pháp.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm đ khoản 8 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_54": {
+      "tldr": "• TUYỆT ĐỐI KHÔNG ĐƯỢC TRỪ. Pháp luật thuế xem khoản thu nhập này là lợi nhuận của chủ sở hữu đơn vị, không phải chi phí nhân công hợp lý của doanh nghiệp.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm d khoản 8 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_55": {
+      "tldr": "• KHÔNG ĐƯỢC TÍNH VÀO CHI PHÍ. Chỉ có thù lao trả cho các thành viên trực tiếp tham gia xử lý, điều hành hoạt động sản xuất kinh doanh hàng ngày mới được tính trừ.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm d khoản 8 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_56": {
+      "tldr": "• KHÔNG ĐƯỢC TRỪ. Các khoản phạt vi phạm hành chính, phạt chậm nộp tiền thuế là chế tài xử phạt, không phục vụ mục đích sinh lời của doanh nghiệp nên không được khấu trừ.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 2 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_57": {
+      "tldr": "• KHÔNG ĐƯỢC TRỪ, TRỪ 3 TRƯỜNG HỢP NGOẠI LỆ: (1) GTGT đầu ra của hàng biếu, tặng không thu tiền phục vụ SXKD. (2) GTGT phải nộp của hàng hóa, dịch vụ dùng để tài trợ theo điểm đ khoản 2 Điều 9. (3) GTGT đầu vào liên quan",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 12 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_58": {
+      "tldr": "• KHỐNG CHẾ THEO TỶ LỆ EBITDA. Thực hiện theo các quy định về quản lý thuế đối với doanh nghiệp phát sinh giao dịch liên kết nhằm tránh xói mòn cơ sở tính thuế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm c khoản 4 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_59": {
+      "tldr": "• KHÔNG ĐƯỢC TRỪ. Doanh nghiệp phải ưu tiên góp đủ vốn điều lệ theo cam kết pháp lý trước khi tính toán chi phí lãi vay hợp lý.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 9 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_60": {
+      "tldr": "• ÁP DỤNG CÔNG THỨC PHÂN BỔ LÃI VAY. Lãi vay không được trừ = (Vốn điều lệ thiếu ÷ Tổng tiền vay) × Tổng lãi vay",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Tiết b2 khoản 9 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_61": {
+      "tldr": "• KHÔNG VƯỢT QUÁ TRẦN DÂN SỰ. Mức lãi suất chi trả không được phép vượt quá giới hạn tỷ lệ trần quy định tại Bộ luật Dân sự hiện hành.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 10 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_62": {
+      "tldr": "• ĐƯỢC TRỪ NẾU THỎA THUẬN NET. Được chấp nhận là chi phí hợp lý nếu hợp đồng nhà thầu quy định rõ doanh thu nhà thầu nước ngoài nhận được là doanh thu thuần (không bao gồm thuế TNDN).",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 12 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_63": {
+      "tldr": "• ĐƯỢC TRỪ NẾU THỎA THUẬN NET. Được chấp nhận tính trừ nếu hợp đồng lao động quy định cụ thể mức tiền lương trả cho nhân viên là lương sau thuế (Net), không bao gồm thuế TNCN.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 12 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_64": {
+      "tldr": "• ĐƯỢC TRỪ NẾU CÓ ĐỦ CHỨNG TỪ. Doanh nghiệp được tính trừ nếu có hóa đơn thanh toán thực tế đi kèm hợp đồng thuê địa điểm thể hiện rõ doanh nghiệp trực tiếp thanh toán hoặc hoàn trả tiền điện nước phù hợp mức tiêu thụ th",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 14 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_65": {
+      "tldr": "• TỐI ĐA KHÔNG QUÁ 03 NĂM. Áp dụng trong trường hợp hợp đồng thuê tài sản quy định rõ bên đi thuê chịu hoàn toàn trách nhiệm và chi phí sửa chữa tài sản đó.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm a khoản 15 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_66": {
+      "tldr": "• KHÔNG ĐƯỢC TÍNH CHI PHÍ KHẤU HAO. Giá trị quyền sử dụng thương hiệu mang đi góp vốn pháp lý không được phép tính khấu hao vào chi phí được trừ của doanh nghiệp nhận vốn.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm c khoản 15 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_67": {
+      "tldr": "• KHÔNG ĐƯỢC TÍNH VÀO CHI PHÍ ĐƯỢC TRỪ. Các khoản đánh giá lại số dư tiền mặt, tiền gửi cuối năm không trực tiếp tạo ra dòng lỗ thực tế nên không được khấu trừ thuế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 16 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_68": {
+      "tldr": "• KHÔNG ĐƯỢC TRỪ. Ngoại trừ loại cổ phiếu được phân loại là nợ phải trả, các khoản chi phí phục vụ hoạt động phát hành cổ phiếu tăng vốn chủ sở hữu hoàn toàn không được khấu trừ.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 19 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_69": {
+      "tldr": "• KHÔNG ĐƯỢC TRỪ. Phần giá trị cấp quyền khai thác khoáng sản nộp vượt mức tính toán phân bổ hàng năm sẽ bị cơ quan thuế loại bỏ hoàn toàn.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 20 Điều 10 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "cd_7": {
+      "tldr": "Thu nhập chịu thuế không chỉ gồm doanh thu bán hàng. Nợ khó đòi đã xóa nay đòi được, chênh lệch đánh giá lại, thu nhập từ chuyển nhượng đều phải tính. Lỗ được chuyển tối đa 05 năm liên tục.",
+      "points": [
+        "Nắm vững căn cứ pháp lý để bảo vệ chi phí được trừ khi thanh tra, kiểm tra thuế.",
+        "Thiết lập hồ sơ chứng từ chuẩn chỉ ngay từ thời điểm giao dịch phát sinh trong kỳ.",
+        "Chủ động áp dụng chính sách ưu đãi thuế, tối ưu hóa dòng tiền hoạt động của doanh nghiệp. NGHIỆP Trang 30 / 45"
+      ]
+    },
+    "st_70": {
+      "tldr": "• TÍNH VÀO THU NHẬP KHÁC. Khoản tiền thu hồi được từ khoản nợ phải thu khó đòi đã hoàn tất thủ tục xóa sổ trước đó bắt buộc phải kê khai vào thu nhập khác chịu thuế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm k khoản 3 Điều 3 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_71": {
+      "tldr": "• ĐƯỢC BÙ TRỪ LINH HOẠT. Doanh nghiệp được phép bù trừ số lỗ từ hoạt động chuyển nhượng BĐS vào thu nhập của các hoạt động SXKD thông thường khác (nhưng không được bù trừ vào các thu nhập đang hưởng ưu đãi thuế).",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 2, khoản 3 Điều 6 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_72": {
+      "tldr": "• TỐI ĐA 05 NĂM LIÊN TỤC. Thời hạn chuyển toàn bộ số lỗ phát sinh sau quyết toán được thực hiện liên tục không quá 05 năm kể từ năm tiếp theo năm phát sinh lỗ.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 2 Điều 7 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_73": {
+      "tldr": "• ĐƯỢC THỪA KẾ LỖ. Doanh nghiệp mới được tiếp tục theo dõi và chuyển tiếp số lỗ của doanh nghiệp cũ sáp nhập vào nếu số lỗ đó vẫn nằm trong thời hạn chuyển lỗ 05 năm.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 4 Điều 7 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_74": {
+      "tldr": "• THU NHẬP KHÁC. Toàn bộ khoản thu nhập từ chuyển nhượng chứng khoán được phân loại vào danh mục thu nhập khác chịu thuế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm d khoản 1 Điều 14 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_75": {
+      "tldr": "• THU NHẬP KHÁC. Khoản tiền lãi phát sinh từ các tài khoản tiền gửi thanh toán, tiền gửi kỳ hạn của doanh nghiệp được tính vào thu nhập khác.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm g1 khoản 3 Điều 3 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "cd_8": {
+      "tldr": "Thu nhập từ lĩnh vực xanh và an sinh xã hội được miễn thuế TNDN trong nhiều trường hợp: tín chỉ carbon, nông nghiệp, thủy lợi, trái phiếu xanh, hoạt động vì người khuyết tật.",
+      "points": [
+        "Nắm vững căn cứ pháp lý để bảo vệ chi phí được trừ khi thanh tra, kiểm tra thuế.",
+        "Thiết lập hồ sơ chứng từ chuẩn chỉ ngay từ thời điểm giao dịch phát sinh trong kỳ.",
+        "Chủ động áp dụng chính sách ưu đãi thuế, tối ưu hóa dòng tiền hoạt động của doanh nghiệp. NGHIỆP Trang 33 / 45"
+      ]
+    },
+    "st_76": {
+      "tldr": "• MIỄN THUẾ TNDN HOÀN TOÀN. Nhằm thúc đẩy thị trường tín chỉ carbon nội địa, khoản thu nhập từ hoạt động chuyển nhượng lần đầu được miễn thuế hoàn toàn.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 10 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_77": {
+      "tldr": "• ĐƯỢC MIỄN THUẾ. Miễn thuế TNDN đối với các khoản thu nhập phát sinh từ hoạt động thực hiện nhiệm vụ chính trị, nhiệm vụ nhà nước giao của một số Quỹ tài chính đặc thù được quy định trong Nghị định.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 11 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_78": {
+      "tldr": "• TRUY THU THUẾ VÀ XỬ PHẠT. Doanh nghiệp sử dụng sai mục đích khoản nhận tài trợ sẽ bị truy thu hoàn toàn số thuế đã được miễn và áp dụng các chế tài xử phạt theo quy định.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm e khoản 8 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_79": {
+      "tldr": "• MIỄN THUẾ HOÀN TOÀN. Các dự án đầu tư hoạt động trong lĩnh vực chế biến nông, lâm, thủy sản đặt tại vùng kinh tế đặc biệt khó khăn được miễn thuế TNDN.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 1 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_80": {
+      "tldr": "• MIỄN THUẾ HOÀN TOÀN. Hoạt động sản xuất muối của các hợp tác xã được bảo hộ bằng chính sách miễn hoàn toàn thuế TNDN.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 1 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_81": {
+      "tldr": "• MIỄN THUẾ TNDN. Các hoạt động dịch vụ tưới tiêu, cày bừa trực tiếp phục vụ nông nghiệp được miễn hoàn toàn nghĩa vụ thuế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 3 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_82": {
+      "tldr": "• MIỄN THUẾ TNDN. Được áp dụng miễn thuế nếu quy mô nhân sự đạt từ 20 lao động trở lên (ngoại trừ các đơn vị hoạt động trong lĩnh vực tài chính và bất động sản).",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 5 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_83": {
+      "tldr": "• MIỄN THUẾ TNDN. Khoản thu nhập từ hoạt động dạy nghề chuyên biệt cho trẻ em mồ côi, cơ nhỡ, khuyết tật được miễn thuế hoàn toàn.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 6 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_84": {
+      "tldr": "• KHÔNG NỘP LẠI. Khoản lợi nhuận chia từ hoạt động liên doanh, liên kết trong nước đã thực hiện nghĩa vụ thuế TNDN tại nguồn được miễn thuế khi chuyển về doanh nghiệp nhằm tránh đánh thuế trùng.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 7 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_85": {
+      "tldr": "• MIỄN THUẾ TNDN. Các khoản thu nhập từ tiền lãi khi đầu tư vào công cụ nợ trái phiếu xanh được miễn hoàn toàn thuế để kích thích dòng vốn xanh.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 10 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_86": {
+      "tldr": "• MIỄN THUẾ TNDN. Thu nhập từ việc cung ứng dịch vụ công tại vùng kinh tế đặc biệt khó khăn của đơn vị sự nghiệp công lập được miễn thuế hoàn toàn.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 14 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_87": {
+      "tldr": "• MIỄN THUẾ 03 NĂM. Doanh nghiệp được miễn thuế TNDN liên tục trong 03 năm tính từ năm đầu tiên phát sinh thu nhập chịu thuế từ việc bán sản phẩm này.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm b khoản 4 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_88": {
+      "tldr": "• MIỄN THUẾ 03 NĂM. Áp dụng đối với sản phẩm sản xuất thử nghiệm trong giai đoạn nghiên cứu có văn bản xác nhận chính thức từ cơ quan nhà nước có thẩm quyền.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm c khoản 4 Điều 4 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "cd_9": {
+      "tldr": "Hệ thống ưu đãi thuế suất 10%, 17% và thời gian miễn, giảm thuế gắn với địa bàn, ngành nghề, dự án công nghệ cao, khu kinh tế. Thời gian tính ưu đãi được xác định từ năm đầu tiên có thu nhập chịu thuế hoặc năm đầu có doanh thu tùy trường hợp.",
+      "points": [
+        "Nắm vững căn cứ pháp lý để bảo vệ chi phí được trừ khi thanh tra, kiểm tra thuế.",
+        "Thiết lập hồ sơ chứng từ chuẩn chỉ ngay từ thời điểm giao dịch phát sinh trong kỳ.",
+        "Chủ động áp dụng chính sách ưu đãi thuế, tối ưu hóa dòng tiền hoạt động của doanh nghiệp. NGHIỆP Trang 37 / 45"
+      ]
+    },
+    "st_89": {
+      "tldr": "• TUYỆT ĐỐI KHÔNG. Thu nhập phát sinh từ chuyển nhượng vốn, chuyển nhượng dự án đầu tư bắt buộc phải nộp theo thuế suất phổ thông là 20%, không được áp dụng các thuế suất ưu đãi.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm a khoản 9 Điều 23 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_90": {
+      "tldr": "• ĐƯỢC TRỪ CÓ GIỚI HẠN. Số thuế đã nộp thực tế tại nước ngoài được trừ vào số thuế phải nộp tại Việt Nam, nhưng mức khấu trừ tối đa không được vượt quá số thuế thu nhập tính theo Luật Thuế TNDN của Việt Nam.",
+      "points": [
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_91": {
+      "tldr": "• THUẾ SUẤT 10% TRONG 15 NĂM. Dự án đầu tư mới đáp ứng đầy đủ tiêu chuẩn công nghệ cao được áp dụng mức thuế suất ưu đãi 10% trong vòng 15 năm.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm d khoản 1 Điều 19 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_92": {
+      "tldr": "• THUẾ SUẤT 17% TRONG 10 NĂM. Áp dụng đối với dự án mới thực hiện tại địa bàn khó khăn thuộc danh mục quy định (trừ một số trường hợp ngoại lệ).",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm b khoản 4 Điều 19 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_93": {
+      "tldr": "• THUẾ SUẤT 10% TRONG 15 NĂM. Áp dụng đối với dự án đầu tư mới tại khu kinh tế nằm trên địa bàn ưu đãi thuế hoặc dự án có trên 50% diện tích nằm trên địa bàn ưu đãi thuế.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm d khoản 1 Điều 19 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_94": {
+      "tldr": "• MIỄN 4 NĂM, GIẢM 50% TRONG 9 NĂM TIẾP THEO. Lộ trình miễn giảm dài hạn nhằm tạo điều kiện cho các doanh nghiệp KH&CN thương mại hóa thành công kết quả nghiên cứu.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 1 Điều 20 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_95": {
+      "tldr": "• TÍNH LIÊN TỤC TỪ KHI CÓ THU NHẬP CHỊU THUẾ. Tính liên tục từ năm đầu tiên phát sinh thu nhập chịu thuế; nếu trong 03 năm đầu kể từ năm đầu tiên có doanh thu mà dự án chưa có thu nhập chịu thuế thì thời gian miễn giảm b",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 4 Điều 20 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_96": {
+      "tldr": "• TÍNH TỪ NĂM THỨ TƯ CÓ DOANH THU. Việc tính ưu đãi từ năm thứ 4 kể từ khi phát sinh doanh thu giúp bảo vệ quyền lợi ưu đãi tối đa cho doanh nghiệp trong giai đoạn đầu xây dựng thị trường.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 4 Điều 20 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_97": {
+      "tldr": "• ĐƯỢC CHỌN MỨC CÓ LỢI NHẤT. Doanh nghiệp được quyền tự quyết định áp dụng mức ưu đãi thuế tối ưu và có lợi nhất cho hoạt động kinh doanh của mình.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Khoản 2 Điều 23 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_98": {
+      "tldr": "• ĐƯỢC HƯỞNG ƯU ĐÃI. Toàn bộ thu nhập phát sinh từ hoạt động sản xuất thực tế tại nhà xưởng đặt trong địa bàn ưu đãi vẫn được hưởng ưu đãi đầy đủ khi phân phối hàng hóa ra toàn quốc.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm a khoản 3 Điều 23 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_99": {
+      "tldr": "• CHỈ ƯU ĐÃI THU NHẬP TẠI ĐỊA BÀN. Khác với sản xuất, dự án dịch vụ chỉ được áp dụng ưu đãi thuế đối với phần thu nhập thực tế phát sinh từ các dịch vụ thực hiện tại chính địa bàn ưu đãi đó.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm b khoản 3 Điều 23 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "st_100": {
+      "tldr": "• THUẾ SUẤT 10% SUỐT QUÁ TRÌNH. Áp dụng mức thuế suất ưu đãi cố định 10% trong suốt thời gian hoạt động của dự án xây dựng nhà ở xã hội để bán hoặc cho thuê.",
+      "points": [
+        "CĂN CỨ PHÁP LÝ: ⚖ Điểm b khoản 2 Điều 19 Nghị định số 320/2025/NĐ-CP.",
+        "Áp dụng cho doanh nghiệp xử lý thuế TNDN năm 2026."
+      ]
+    },
+    "loi_ket": {
+      "tldr": "Tổng kết các nguyên tắc thượng tôn pháp luật, số hóa bộ lọc hóa đơn từ 5 triệu và checklist 3 nhóm giải pháp quản trị cấp bách cho doanh nghiệp.",
+      "points": [
+        "Hạ ngưỡng thanh toán không dùng tiền mặt xuống 5 triệu đồng.",
+        "Khấu trừ bổ sung chi phí R&D tối đa 200% và Quỹ KH&CN.",
+        "Định vị chính xác địa bàn ưu đãi và quản trị dòng tiền."
+      ]
+    },
+    "pl_1": {
+      "tldr": "Danh mục 07 văn bản Luật và 08 Nghị định điều chỉnh toàn diện chính sách thuế TNDN và quản lý thuế.",
+      "points": [
+        "Luật Thuế TNDN số 14/2008 và 67/2025.",
+        "Nghị định 320/2025/NĐ-CP & Nghị định 141/2026/NĐ-CP.",
+        "Luật Quản lý thuế số 108/2025 và 38/2019."
+      ]
+    },
+    "pl_2": {
+      "tldr": "Ma trận đối chiếu liên kết trực tiếp giữa các điều khoản của NĐ 320/2025 và NĐ 141/2026 với từng câu hỏi trong 100 tình huống.",
+      "points": [
+        "Đối chiếu điều 2, 4 (Miễn thuế DN siêu nhỏ).",
+        "Đối chiếu điều 8 (Doanh thu tính thuế).",
+        "Đối chiếu điều 9, 10 (Chi phí được trừ và không được trừ).",
+        "Đối chiếu điều 11, 14-20 (Thuế suất và ưu đãi thuế)."
+      ]
+    },
+    "luoc_do": {
+      "tldr": "Quy trình 4 bước kiểm soát rủi ro thuế TNDN trước kỳ quyết toán và các kênh tra cứu thuế điện tử chính thức.",
+      "points": [
+        "Bước 1: Rà soát thanh toán không dùng tiền mặt (5 triệu).",
+        "Bước 2: Kiểm soát các khoản chi khống chế.",
+        "Bước 3: Chuẩn hóa hồ sơ ưu đãi & chi phí R&D 200%.",
+        "Bước 4: Quyết toán và chuyển lỗ đúng quy định."
+      ]
+    }
   }
 }

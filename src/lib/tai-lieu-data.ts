@@ -1257,6 +1257,29 @@ export const TAI_LIEU_ITEMS: TaiLieuItem[] = [
     "isHidden": true
   },
   {
+    "id": "tl_56",
+    "code": "TH07",
+    "title": "Cuc Thue So Tay Thue Dien Tu TNDN 2026",
+    "filename": "TH07_Cuc_Thue_So_Tay_Thue_Dien_Tu_TNDN_2026.pdf",
+    "category": "thue",
+    "categoryLabel": "Thuế & Pháp lý",
+    "year": 2026,
+    "description": "Sổ tay thuế điện tử TNDN 2026: Cẩm nang tra cứu toàn diện 100 tình huống thuế TNDN theo NĐ 320/2025 và NĐ 141/2026 do Cục Thuế ban hành.",
+    "featured": false,
+    "isHot": false,
+    "fileType": "pdf",
+    "fileSize": "3.9 MB",
+    "downloadUrl": "/tai-lieu/03_THUE_VA_PHAP_LY_DOANH_NGHIEP/01_Chinh_Sach_Thue_TNDN_TNCN_GTGT/TH07_Cuc_Thue_So_Tay_Thue_Dien_Tu_TNDN_2026.pdf",
+    "tags": [
+      "Thuế & Pháp lý",
+      "PDF"
+    ],
+    "hasPreviewPdf": true,
+    "version": "Ver 2026.1",
+    "fileHash": "08227ae13e93f80f1e61efc3327a745d",
+    "lastModified": "2026-11-20T08:04:22.175Z"
+  },
+  {
     "id": "tl_55",
     "code": "B",
     "title": "o Hop Dong Che Do Lao Dong Dac Thu BH02 BH03",

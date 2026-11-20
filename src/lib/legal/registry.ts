@@ -971,6 +971,21 @@ export const LEGAL_DOCS: LegalDoc[] = [
       { targetSlug: 'luat-38', label: 'Căn cứ → Luật Quản lý thuế 38/2019/QH14', description: 'TT 88 căn cứ Luật Quản lý thuế số 38/2019/QH14', targetAnchor: 'luat-38_1' },
     ],
   },
+  {
+    slug: 'so-tay-tndn-2026',
+    title: 'Sổ tay Thuế điện tử TNDN 2026 — 100 tình huống theo NĐ 320/2025 & NĐ 141/2026',
+    shortTitle: 'Sổ tay TNDN 2026',
+    description: 'Sổ tay tra cứu toàn diện 100 tình huống nghiệp vụ thuế TNDN theo Nghị định 320/2025/NĐ-CP và Nghị định 141/2026/NĐ-CP do Cục Thuế / Ban Pháp chế biên soạn. Hướng dẫn chi tiết chính sách miễn thuế DN siêu nhỏ (doanh thu ≤1 tỷ), thuế suất 15%-17%, thời điểm ghi nhận doanh thu, hạ ngưỡng thanh toán tiền mặt xuống 5 triệu, khấu trừ R&D bổ sung 200%, khống chế phúc lợi, trần lãi vay và ưu đãi thuế suất địa bàn.',
+    effectiveDate: '2026-01-01',
+    filePath: path.join(process.cwd(), 'src/legal-docs/so-tay-tndn-2026/index.html'),
+    theme: 'light',
+    crossRefs: [
+      { targetSlug: 'nd320', label: 'Căn cứ cốt lõi → Nghị định 320/2025/NĐ-CP', description: 'Nghị định 320/2025/NĐ-CP hướng dẫn chi tiết thi hành Luật Thuế TNDN', targetAnchor: 'nd320_1' },
+      { targetSlug: 'luat-67', label: 'Căn cứ cấp luật → Luật Thuế TNDN 67/2025/QH15', description: 'Luật Thuế Thu nhập doanh nghiệp số 67/2025/QH15', targetAnchor: 'luat-67_1' },
+      { targetSlug: 'luat-108', label: 'Liên quan → Luật Quản lý thuế 108/2025/QH15', description: 'Quy định thanh toán không dùng tiền mặt và hóa đơn điện tử tự động', targetAnchor: 'luat-108_1' },
+      { targetSlug: 'nd132', label: 'Liên quan → Nghị định 132/2020 (Giao dịch liên kết)', description: 'Khống chế trần chi phí lãi vay không vượt quá 30% EBITDA', targetAnchor: 'nd132_1' },
+    ],
+  },
   // Thêm văn bản mới: bổ sung object và đặt file HTML vào src/legal-docs/[slug]/index.html
 ]
 

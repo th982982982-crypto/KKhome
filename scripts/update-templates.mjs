@@ -52,6 +52,7 @@ const TEMPLATE_DESCRIPTIONS = {
   'TH04': 'Công văn 2590/BTC hướng dẫn chính sách thuế GTGT dịch vụ xuất khẩu cho Doanh nghiệp Chế xuất.',
   'TH05': 'Tài liệu hướng dẫn thủ tục giải thể, tạm ngừng, chấm dứt và khôi phục hiệu lực Mã số thuế.',
   'TH06': 'Tài liệu tập huấn quy trình đăng ký Hộ kinh doanh điện tử qua mạng của Bộ Kế hoạch Đầu tư.',
+  'TH07': 'Sổ tay thuế điện tử TNDN 2026: Cẩm nang tra cứu toàn diện 100 tình huống thuế TNDN theo NĐ 320/2025 và NĐ 141/2026 do Cục Thuế ban hành.',
   'BH01': 'Bảng phân định chi tiết các khoản thu nhập tính đóng và miễn đóng BHXH bắt buộc theo Luật BHXH mới nhất.',
   'BH02': 'Hợp đồng lao động với người cao tuổi/nghỉ hưu: không đóng BHXH, chi trả phụ cấp BHXH trực tiếp vào lương.',
   'BH03': 'Hợp đồng mẫu thuê dịch vụ kế toán thuế và đại lý thực hiện thủ tục bảo hiểm xã hội.'

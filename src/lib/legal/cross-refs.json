@@ -1148,5 +1148,855 @@
         "label": "Bãi bỏ Quyết định số 169/2000/QĐ-BTC và Quyết định số 131/2002/QĐ-BTC"
       }
     ]
+  },
+  "so-tay-tndn-2026": {
+    "st_1": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4 (bổ sung bởi NĐ 141)",
+        "description": "Quy định miễn thuế DN siêu nhỏ doanh thu ≤ 1 tỷ đồng"
+      },
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_2",
+        "label": "Căn cứ → NĐ 320 Điều 2",
+        "description": "Tiêu chuẩn người nộp thuế và doanh nghiệp siêu nhỏ"
+      }
+    ],
+    "st_2": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4 (bổ sung bởi NĐ 141)",
+        "description": "Quy định miễn thuế DN siêu nhỏ doanh thu ≤ 1 tỷ đồng"
+      },
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_2",
+        "label": "Căn cứ → NĐ 320 Điều 2",
+        "description": "Tiêu chuẩn người nộp thuế và doanh nghiệp siêu nhỏ"
+      }
+    ],
+    "st_3": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4 (bổ sung bởi NĐ 141)",
+        "description": "Quy định miễn thuế DN siêu nhỏ doanh thu ≤ 1 tỷ đồng"
+      },
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_2",
+        "label": "Căn cứ → NĐ 320 Điều 2",
+        "description": "Tiêu chuẩn người nộp thuế và doanh nghiệp siêu nhỏ"
+      }
+    ],
+    "st_4": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4 (bổ sung bởi NĐ 141)",
+        "description": "Quy định miễn thuế DN siêu nhỏ doanh thu ≤ 1 tỷ đồng"
+      },
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_2",
+        "label": "Căn cứ → NĐ 320 Điều 2",
+        "description": "Tiêu chuẩn người nộp thuế và doanh nghiệp siêu nhỏ"
+      }
+    ],
+    "st_5": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4 (bổ sung bởi NĐ 141)",
+        "description": "Quy định miễn thuế DN siêu nhỏ doanh thu ≤ 1 tỷ đồng"
+      },
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_2",
+        "label": "Căn cứ → NĐ 320 Điều 2",
+        "description": "Tiêu chuẩn người nộp thuế và doanh nghiệp siêu nhỏ"
+      }
+    ],
+    "st_6": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4 (bổ sung bởi NĐ 141)",
+        "description": "Quy định miễn thuế DN siêu nhỏ doanh thu ≤ 1 tỷ đồng"
+      },
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_2",
+        "label": "Căn cứ → NĐ 320 Điều 2",
+        "description": "Tiêu chuẩn người nộp thuế và doanh nghiệp siêu nhỏ"
+      }
+    ],
+    "st_7": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4 (bổ sung bởi NĐ 141)",
+        "description": "Quy định miễn thuế DN siêu nhỏ doanh thu ≤ 1 tỷ đồng"
+      },
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_2",
+        "label": "Căn cứ → NĐ 320 Điều 2",
+        "description": "Tiêu chuẩn người nộp thuế và doanh nghiệp siêu nhỏ"
+      }
+    ],
+    "st_8": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4 (bổ sung bởi NĐ 141)",
+        "description": "Quy định miễn thuế DN siêu nhỏ doanh thu ≤ 1 tỷ đồng"
+      },
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_2",
+        "label": "Căn cứ → NĐ 320 Điều 2",
+        "description": "Tiêu chuẩn người nộp thuế và doanh nghiệp siêu nhỏ"
+      }
+    ],
+    "st_9": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_11",
+        "label": "Căn cứ → NĐ 320 Điều 11",
+        "description": "Biểu thuế suất thuế TNDN theo quy mô doanh thu 15% và 17%"
+      }
+    ],
+    "st_10": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_11",
+        "label": "Căn cứ → NĐ 320 Điều 11",
+        "description": "Biểu thuế suất thuế TNDN theo quy mô doanh thu 15% và 17%"
+      }
+    ],
+    "st_11": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_11",
+        "label": "Căn cứ → NĐ 320 Điều 11",
+        "description": "Biểu thuế suất thuế TNDN theo quy mô doanh thu 15% và 17%"
+      }
+    ],
+    "st_12": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_11",
+        "label": "Căn cứ → NĐ 320 Điều 11",
+        "description": "Biểu thuế suất thuế TNDN theo quy mô doanh thu 15% và 17%"
+      }
+    ],
+    "st_13": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_14": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_15": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_16": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_17": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_18": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_19": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_20": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_21": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_22": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_23": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_8",
+        "label": "Căn cứ → NĐ 320 Điều 8",
+        "description": "Thời điểm và phương pháp xác định doanh thu tính thuế TNDN"
+      }
+    ],
+    "st_24": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_25": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_26": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_27": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_28": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_29": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_30": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_31": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_32": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_33": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_34": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_35": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_36": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_37": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_38": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_39": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_40": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_41": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_42": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_43": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_44": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_45": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_46": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_9",
+        "label": "Căn cứ → NĐ 320 Điều 9",
+        "description": "Các khoản chi phí được trừ khi xác định thu nhập chịu thuế TNDN & ưu đãi R&D 200%"
+      }
+    ],
+    "st_47": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_48": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_49": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_50": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_51": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_52": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_53": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_54": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_55": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_56": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_57": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_58": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_59": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_60": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_61": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_62": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_63": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_64": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_65": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_66": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_67": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_68": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_69": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_10",
+        "label": "Căn cứ → NĐ 320 Điều 10",
+        "description": "Các khoản chi phí không được trừ & giới hạn khống chế nhân sự, tài chính"
+      }
+    ],
+    "st_70": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_7",
+        "label": "Căn cứ → NĐ 320 Điều 7",
+        "description": "Nguyên tắc xác định lỗ và chuyển lỗ liên tục tối đa 5 năm"
+      }
+    ],
+    "st_71": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_7",
+        "label": "Căn cứ → NĐ 320 Điều 7",
+        "description": "Nguyên tắc xác định lỗ và chuyển lỗ liên tục tối đa 5 năm"
+      }
+    ],
+    "st_72": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_7",
+        "label": "Căn cứ → NĐ 320 Điều 7",
+        "description": "Nguyên tắc xác định lỗ và chuyển lỗ liên tục tối đa 5 năm"
+      }
+    ],
+    "st_73": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_7",
+        "label": "Căn cứ → NĐ 320 Điều 7",
+        "description": "Nguyên tắc xác định lỗ và chuyển lỗ liên tục tối đa 5 năm"
+      }
+    ],
+    "st_74": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_7",
+        "label": "Căn cứ → NĐ 320 Điều 7",
+        "description": "Nguyên tắc xác định lỗ và chuyển lỗ liên tục tối đa 5 năm"
+      }
+    ],
+    "st_75": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_7",
+        "label": "Căn cứ → NĐ 320 Điều 7",
+        "description": "Nguyên tắc xác định lỗ và chuyển lỗ liên tục tối đa 5 năm"
+      }
+    ],
+    "st_76": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_77": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_78": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_79": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_80": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_81": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_82": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_83": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_84": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_85": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_86": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_87": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_88": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_4",
+        "label": "Căn cứ → NĐ 320 Điều 4",
+        "description": "Thu nhập được miễn thuế TNDN lĩnh vực xanh, an sinh xã hội"
+      }
+    ],
+    "st_89": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_90": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_91": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_92": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_93": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_94": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_95": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_96": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_97": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_98": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_99": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ],
+    "st_100": [
+      {
+        "targetSlug": "nd320",
+        "targetAnchor": "nd320_19",
+        "label": "Căn cứ → NĐ 320 Điều 14–20",
+        "description": "Thuế suất ưu đãi 10%, 17%, địa bàn ưu đãi và thời gian miễn giảm thuế"
+      }
+    ]
   }
 }
