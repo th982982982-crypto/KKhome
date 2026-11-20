@@ -403,11 +403,11 @@ summaries_map['luoc_do'] = {
 print(f"Built outline with {len(outline)} items (9 chapters overviews + 100 questions + 4 appendices).")
 
 # 4. Read Template and Generate HTML
-with open(os.path.join(ROOT, 'scripts', 'docx-to-legal.py'), encoding='utf-8') as f:
-    text_dtl = f.read()
-
-m_tpl = re.search(r'TEMPLATE\s*=\s*r?([\'"]{3}.*?[\'"]{3})', text_dtl, re.DOTALL)
-TEMPLATE = eval(m_tpl.group(1))
+import importlib.util
+spec = importlib.util.spec_from_file_location('dtl', os.path.join(ROOT, 'scripts', 'docx-to-legal.py'))
+dtl = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(dtl)
+TEMPLATE = dtl.TEMPLATE
 
 meta = {
     'title': 'Sổ tay Thuế điện tử TNDN 2026 — 100 tình huống theo NĐ 320/2025 & NĐ 141/2026',

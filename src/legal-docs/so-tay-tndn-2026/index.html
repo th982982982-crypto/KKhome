@@ -118,8 +118,7 @@ var D=JSON.parse(document.getElementById('LD').textContent);
 var cur=null;
 function e(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function fmtPara(t){
-  var x=e(t).replace(/
-/g,'<br>');
+  var x=e(t).replace(/\n/g,'<br>');
   // đậm tiền tố "1." / "a)" / "Điều N."
   x=x.replace(/^(\d+\.|[a-zđ]\)|Điều\s+\d+\.)/,'<strong>$1</strong>');
   return x;
@@ -131,8 +130,7 @@ function renderContent(content,q){
       h+='<table class="ct">';
       (b.rows||[]).forEach(function(r,ri){
         h+='<tr>';
-        r.forEach(function(c){var tag=ri===0?'th':'td';h+='<'+tag+'>'+e(c).replace(/
-/g,'<br>')+'</'+tag+'>';});
+        r.forEach(function(c){var tag=ri===0?'th':'td';h+='<'+tag+'>'+e(c).replace(/\n/g,'<br>')+'</'+tag+'>';});
         h+='</tr>';
       });
       h+='</table>';
@@ -152,7 +150,7 @@ function buildSb(filter){
     }
     if((a.chuong||'')!==lastC){lastC=a.chuong||'';lastM='';if(lastC)h+='<div class="ns">'+e(lastC)+'</div>';}
     if((a.muc||'')!==lastM){lastM=a.muc||'';if(lastM)h+='<div class="nm">'+e(lastM)+'</div>';}
-    h+='<div class="ni'+(a.id===cur?' on':'')+'" data-id="'+a.id+'" onclick="show(''+a.id+'')"><span class="dot"></span><span>'+e(a.code)+(a.shortTitle?'. '+e(a.shortTitle):'')+'</span></div>';
+    h+='<div class="ni'+(a.id===cur?' on':'')+'" data-id="'+a.id+'" onclick="show(\''+a.id+'\')"><span class="dot"></span><span>'+e(a.code)+(a.shortTitle?'. '+e(a.shortTitle):'')+'</span></div>';
   });
   sb.innerHTML=h||'<div class="hint" style="padding:14px">Không có kết quả.</div>';
 }
