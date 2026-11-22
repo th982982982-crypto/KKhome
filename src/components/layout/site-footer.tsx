@@ -31,7 +31,7 @@ export async function SiteFooter() {
 
   return (
     <footer className="bg-white dark:bg-gray-950 border-t border-gray-100 dark:border-gray-800 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-5 gap-8">
+      <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-12 grid grid-cols-2 md:grid-cols-5 gap-8">
         <div className="col-span-2 md:col-span-1">
           <div className="flex items-center gap-2 font-bold text-gray-900 dark:text-gray-50 mb-3">
             <Image src="/logo.png" alt={brandName} width={36} height={36} className="w-9 h-9 object-contain" />

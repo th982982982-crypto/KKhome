@@ -46,7 +46,7 @@ export default async function NewsListPage({
       <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)} />
 
       <main className="flex-1">
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <section className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10 sm:py-14">
           <div className="mb-8">
             <div className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">Blog KKhome</div>
             <h1 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-gray-50 tracking-tight">Tin tức & Ưu đãi</h1>

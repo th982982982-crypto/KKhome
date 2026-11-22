@@ -130,7 +130,7 @@ export default async function HomePage() {
       {/* Featured Templates */}
       {featuredTemplates.length > 0 && (
         <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900/40">
-          <div className="max-w-7xl mx-auto">
+          <div className="w-full max-w-[1800px] mx-auto sm:px-4 lg:px-8 xl:px-12">
             <div className="flex items-end justify-between mb-8 gap-4">
               <div>
                 <div className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">Templates nổi bật</div>
@@ -155,7 +155,7 @@ export default async function HomePage() {
       {/* Latest News */}
       {latestNews.length > 0 && (
         <section className="py-16 px-4">
-          <div className="max-w-7xl mx-auto">
+          <div className="w-full max-w-[1800px] mx-auto sm:px-4 lg:px-8 xl:px-12">
             <div className="flex items-end justify-between mb-8 gap-4">
               <div>
                 <div className="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1">Blog KKhome</div>
