@@ -64,59 +64,62 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax, isTaiLieuPubli
     <header className="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur-lg border-b border-gray-100 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
-          <Link href="/" className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900 dark:text-gray-50 shrink-0">
-            <Image src="/logo.png" alt="KKhome" width={36} height={36} className="w-9 h-9 object-contain" priority />
-            <span className="whitespace-nowrap">KKhome</span>
-          </Link>
+          {/* Cụm bên trái: Logo + Menu */}
+          <div className="flex items-center gap-6 lg:gap-8 min-w-0">
+            <Link href="/" className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900 dark:text-gray-50 shrink-0">
+              <Image src="/logo.png" alt="KKhome" width={36} height={36} className="w-9 h-9 object-contain" priority />
+              <span className="whitespace-nowrap">KKhome</span>
+            </Link>
 
-          <nav className="hidden md:flex items-center gap-1.5 text-sm font-medium">
-            <Link
-              href="/templates"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 font-semibold transition-colors"
-            >
-              <FileSpreadsheet className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              <span>Templates</span>
-            </Link>
-            <Link
-              href="/packages"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-950/40 font-semibold transition-colors"
-            >
-              <Package className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-              <span>Gói mua</span>
-            </Link>
-            {(isAdmin || isTaiLieuPublic) && (
+            <nav className="hidden md:flex items-center gap-1.5 text-sm font-medium">
               <Link
-                href="/tai-lieu"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950/40 font-semibold transition-colors"
+                href="/templates"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 font-semibold transition-colors"
               >
-                <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span>Tài liệu</span>
+                <FileSpreadsheet className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span>Templates</span>
               </Link>
-            )}
-            <Link
-              href="/legal"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-950/40 font-semibold transition-colors"
-            >
-              <Scale className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-              <span>Pháp luật</span>
-            </Link>
-            <Link
-              href="/tax"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-teal-700 dark:text-teal-300 hover:bg-teal-50 dark:hover:bg-teal-950/40 font-semibold transition-colors"
-            >
-              <Receipt className="w-4 h-4 text-teal-600 dark:text-teal-400" />
-              <span>Tờ Khai</span>
-            </Link>
-            <Link
-              href="/tin-tuc"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/40 font-semibold transition-colors"
-            >
-              <Newspaper className="w-4 h-4 text-rose-600 dark:text-rose-400" />
-              <span>Tin tức</span>
-            </Link>
-          </nav>
+              <Link
+                href="/packages"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-950/40 font-semibold transition-colors"
+              >
+                <Package className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                <span>Gói mua</span>
+              </Link>
+              {(isAdmin || isTaiLieuPublic) && (
+                <Link
+                  href="/tai-lieu"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950/40 font-semibold transition-colors"
+                >
+                  <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                  <span>Tài liệu</span>
+                </Link>
+              )}
+              <Link
+                href="/legal"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-950/40 font-semibold transition-colors"
+              >
+                <Scale className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                <span>Pháp luật</span>
+              </Link>
+              <Link
+                href="/tax"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-teal-700 dark:text-teal-300 hover:bg-teal-50 dark:hover:bg-teal-950/40 font-semibold transition-colors"
+              >
+                <Receipt className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                <span>Tờ Khai</span>
+              </Link>
+              <Link
+                href="/tin-tuc"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/40 font-semibold transition-colors"
+              >
+                <Newspaper className="w-4 h-4 text-rose-600 dark:text-rose-400" />
+                <span>Tin tức</span>
+              </Link>
+            </nav>
+          </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <ThemeToggle />
 
             {/* Mini-cart popover */}

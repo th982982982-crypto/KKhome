@@ -15,9 +15,10 @@ import { toast } from 'sonner'
 import {
   Bold, Italic, UnderlineIcon, Strikethrough, AlignLeft, AlignCenter, AlignRight,
   List, ListOrdered, Quote, Link2, ImageIcon, Undo2, Redo2, Eraser, Loader2,
-  Smile, Palette, Highlighter, Type, X, Search
+  Smile, Palette, Highlighter, Type, X, Search, Video, Film
 } from 'lucide-react'
 import { uploadToCloudinary } from '@/lib/cloudinary'
+import { getYouTubeEmbedUrl } from '@/lib/format'
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -172,6 +173,7 @@ export function RichTextEditor({
   minHeight = 'min-h-[320px]',
 }: RichTextEditorProps) {
   const imageInputRef = useRef<HTMLInputElement>(null)
+  const videoInputRef = useRef<HTMLInputElement>(null)
   const iconPickerRef = useRef<HTMLDivElement>(null)
   const [showIconPicker, setShowIconPicker] = useState(false)
   const [iconTab, setIconTab] = useState(0)
@@ -195,7 +197,7 @@ export function RichTextEditor({
     content,
     editorProps: {
       attributes: {
-        class: `prose prose-sm sm:prose-base dark:prose-invert max-w-none ${minHeight} px-4 py-3 focus:outline-none leading-relaxed [&_p]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_blockquote]:border-l-4 [&_blockquote]:border-indigo-500 [&_blockquote]:pl-3 [&_blockquote]:italic`,
+        class: `prose prose-sm sm:prose-base dark:prose-invert max-w-none ${minHeight} px-4 py-3 focus:outline-none leading-relaxed [&_p]:mb-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_blockquote]:border-l-4 [&_blockquote]:border-indigo-500 [&_blockquote]:pl-3 [&_blockquote]:italic [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-xl [&_iframe]:my-3 [&_video]:w-full [&_video]:aspect-video [&_video]:rounded-xl [&_video]:my-3`,
       },
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
@@ -225,6 +227,49 @@ export function RichTextEditor({
       editor.chain().focus().setImage({ src: url }).run()
     } catch {
       toast.error('Tải ảnh thất bại, thử lại')
+    }
+  }
+
+  function handleInsertVideo() {
+    if (!editor) return
+    const input = window.prompt('Nhập link Video / Clip (YouTube, Vimeo hoặc link video trực tiếp):')
+    if (!input || !input.trim()) return
+    const url = input.trim()
+    const ytEmbed = getYouTubeEmbedUrl(url)
+    if (ytEmbed) {
+      editor.chain().focus().insertContent(`
+        <div class="my-4 aspect-video rounded-xl overflow-hidden bg-black shadow-md">
+          <iframe src="${ytEmbed}" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p></p>
+      `).run()
+    } else {
+      editor.chain().focus().insertContent(`
+        <div class="my-4 rounded-xl overflow-hidden bg-black shadow-md">
+          <video src="${url}" controls class="w-full aspect-video rounded-xl" preload="metadata"></video>
+        </div>
+        <p></p>
+      `).run()
+    }
+    toast.success('Đã chèn video vào mô tả')
+  }
+
+  async function handleVideoFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file || !editor) return
+    const toastId = toast.loading('Đang tải video lên Cloud...')
+    try {
+      const url = await uploadToCloudinary(file)
+      editor.chain().focus().insertContent(`
+        <div class="my-4 rounded-xl overflow-hidden bg-black shadow-md">
+          <video src="${url}" controls class="w-full aspect-video rounded-xl" preload="metadata"></video>
+        </div>
+        <p></p>
+      `).run()
+      toast.success('Đã tải và chèn video thành công', { id: toastId })
+    } catch {
+      toast.error('Tải video thất bại, vui lòng thử lại', { id: toastId })
     }
   }
 
@@ -537,7 +582,7 @@ export function RichTextEditor({
 
         <Divider />
 
-        {/* Chèn liên kết & hình ảnh */}
+        {/* Chèn liên kết, hình ảnh & video */}
         <ToolbarButton label="Chèn liên kết" active={editor.isActive('link')} onClick={handleSetLink}>
           <Link2 className="w-4 h-4" />
         </ToolbarButton>
@@ -545,6 +590,13 @@ export function RichTextEditor({
           <ImageIcon className="w-4 h-4" />
         </ToolbarButton>
         <input ref={imageInputRef} type="file" accept="image/*" className="hidden" onChange={handleImageFile} />
+        <ToolbarButton label="Chèn video / clip (YouTube hoặc link trực tiếp)" onClick={handleInsertVideo}>
+          <Video className="w-4 h-4 text-red-500" />
+        </ToolbarButton>
+        <ToolbarButton label="Tải file video / clip từ máy" onClick={() => videoInputRef.current?.click()}>
+          <Film className="w-4 h-4 text-purple-500" />
+        </ToolbarButton>
+        <input ref={videoInputRef} type="file" accept="video/*" className="hidden" onChange={handleVideoFile} />
 
         <Divider />
 
