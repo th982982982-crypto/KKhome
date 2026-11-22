@@ -69,22 +69,50 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax, isTaiLieuPubli
             <span className="whitespace-nowrap">KKhome</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-300">
-            <Link href="/templates" className="px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">Templates</Link>
-            <Link href="/packages" className="px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">Gói mua</Link>
+          <nav className="hidden md:flex items-center gap-1.5 text-sm font-medium">
+            <Link
+              href="/templates"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 font-semibold transition-colors"
+            >
+              <FileSpreadsheet className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              <span>Templates</span>
+            </Link>
+            <Link
+              href="/packages"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-950/40 font-semibold transition-colors"
+            >
+              <Package className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+              <span>Gói mua</span>
+            </Link>
             {(isAdmin || isTaiLieuPublic) && (
-              <Link href="/tai-lieu" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-950/40 text-blue-900 dark:text-blue-300 font-semibold transition-colors">
-                <FileText className="w-3.5 h-3.5 text-blue-600" />Tài liệu
+              <Link
+                href="/tai-lieu"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950/40 font-semibold transition-colors"
+              >
+                <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <span>Tài liệu</span>
               </Link>
             )}
-            <Link href="/legal" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">
-              <Scale className="w-3.5 h-3.5" />Pháp luật
+            <Link
+              href="/legal"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-950/40 font-semibold transition-colors"
+            >
+              <Scale className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              <span>Pháp luật</span>
             </Link>
-            <Link href="/tax" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">
-              <Receipt className="w-3.5 h-3.5" />Tờ Khai
+            <Link
+              href="/tax"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-teal-700 dark:text-teal-300 hover:bg-teal-50 dark:hover:bg-teal-950/40 font-semibold transition-colors"
+            >
+              <Receipt className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+              <span>Tờ Khai</span>
             </Link>
-            <Link href="/tin-tuc" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-gray-50 transition-colors">
-              <Newspaper className="w-3.5 h-3.5" />Tin tức
+            <Link
+              href="/tin-tuc"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/40 font-semibold transition-colors"
+            >
+              <Newspaper className="w-4 h-4 text-rose-600 dark:text-rose-400" />
+              <span>Tin tức</span>
             </Link>
           </nav>
 
@@ -243,34 +271,34 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax, isTaiLieuPubli
               </button>
             </div>
             <nav className="flex-1 p-3 space-y-1">
-              <Link href="/templates" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                <FileSpreadsheet className="w-4 h-4 text-gray-400" /> Templates
+              <Link href="/templates" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/40">
+                <FileSpreadsheet className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> Templates
               </Link>
-              <Link href="/packages" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                <Package className="w-4 h-4 text-gray-400" /> Gói mua
+              <Link href="/packages" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-950/40">
+                <Package className="w-4 h-4 text-amber-600 dark:text-amber-400" /> Gói mua
               </Link>
               {(isAdmin || isTaiLieuPublic) && (
-                <Link href="/tai-lieu" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                  <FileText className="w-4 h-4 text-blue-500" /> Kho Tài liệu
+                <Link href="/tai-lieu" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-950/40">
+                  <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" /> Kho Tài liệu
                 </Link>
               )}
-              <Link href="/tin-tuc" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                <Newspaper className="w-4 h-4 text-gray-400" /> Tin tức
+              <Link href="/legal" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-purple-700 dark:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-950/40">
+                <Scale className="w-4 h-4 text-purple-600 dark:text-purple-400" /> Pháp luật
+              </Link>
+              <Link href="/tax" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-teal-700 dark:text-teal-300 hover:bg-teal-50 dark:hover:bg-teal-950/40">
+                <Receipt className="w-4 h-4 text-teal-600 dark:text-teal-400" /> Tờ Khai Thuế
+              </Link>
+              <Link href="/tin-tuc" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-rose-700 dark:text-rose-300 hover:bg-rose-50 dark:hover:bg-rose-950/40">
+                <Newspaper className="w-4 h-4 text-rose-600 dark:text-rose-400" /> Tin tức
               </Link>
               {user && (
-                <Link href="/dashboard" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                  <LayoutDashboard className="w-4 h-4 text-gray-400" /> Dashboard
+                <Link href="/dashboard" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-50 dark:hover:bg-indigo-950/40">
+                  <LayoutDashboard className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> Dashboard
                 </Link>
               )}
-              <Link href="/legal" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                <Scale className="w-4 h-4 text-gray-400" /> Pháp luật
-              </Link>
-              <Link href="/tax" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                <Receipt className="w-4 h-4 text-gray-400" /> Tờ Khai Thuế
-              </Link>
               {isAdmin && (
-                <Link href="/admin" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-                  <Settings className="w-4 h-4 text-gray-400" /> Quản trị
+                <Link href="/admin" onClick={() => setMobileOpen(false)} className="flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                  <Settings className="w-4 h-4 text-slate-600 dark:text-slate-400" /> Quản trị
                 </Link>
               )}
             </nav>
