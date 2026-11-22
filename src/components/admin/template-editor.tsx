@@ -18,6 +18,7 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog'
 import { formatCurrency } from '@/lib/format'
+import { RichTextEditor } from '@/components/admin/rich-text-editor'
 
 type Mode = 'closed' | 'create' | 'view' | 'edit'
 
@@ -232,7 +233,7 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
 
       {/* Modal xem chi tiết */}
       <Dialog open={mode === 'view'} onOpenChange={(open) => !open && closeModal()}>
-        <DialogContent className="sm:max-w-lg max-h-[85vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-3xl max-h-[90vh] overflow-y-auto">
           {selected && (
             <>
               <DialogHeader>
@@ -250,7 +251,7 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
                   <Field label="Giá bán" value={selected.sale_price ? formatCurrency(selected.sale_price) : null} />
                   <Field label="Giá gốc" value={selected.original_price ? formatCurrency(selected.original_price) : null} />
                 </div>
-                <Field label="Mô tả" value={selected.description} />
+                <Field label="Mô tả & Giới thiệu sản phẩm" value={selected.description} />
                 <Field label="Link embed" value={selected.google_sheet_embed_url} link />
                 <Field label="Link copy" value={selected.google_sheet_copy_url} link />
                 <Field label="Link video" value={selected.tutorial_video_url} link />
@@ -281,7 +282,7 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
 
       {/* Modal thêm / sửa */}
       <Dialog open={mode === 'create' || mode === 'edit'} onOpenChange={(open) => !open && closeModal()}>
-        <DialogContent className="sm:max-w-2xl max-h-[85vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-4xl lg:max-w-5xl max-h-[92vh] overflow-y-auto w-[96vw]">
           <DialogHeader>
             <DialogTitle>{mode === 'edit' ? 'Chỉnh sửa template' : 'Thêm template mới'}</DialogTitle>
           </DialogHeader>
@@ -306,13 +307,21 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
               <Label>Giá gốc</Label>
               <Input type="number" value={form.original_price} onChange={(e) => setForm(f => ({ ...f, original_price: e.target.value === '' ? '' : Number(e.target.value) }))} />
             </div>
-            <div className="sm:col-span-2 space-y-1.5">
-              <Label>Mô tả</Label>
-              <textarea
-                rows={3}
-                className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 resize-none focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"
-                value={form.description}
-                onChange={(e) => setForm(f => ({ ...f, description: e.target.value }))}
+            <div className="sm:col-span-2 space-y-2">
+              <div className="flex items-center justify-between">
+                <Label className="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                  Mô tả & Giới thiệu chi tiết sản phẩm
+                </Label>
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  Hỗ trợ phông chữ, màu chữ, màu nền, highlight chữ, chèn icon, danh sách, tiêu đề...
+                </span>
+              </div>
+              <RichTextEditor
+                key={selected?.id ?? (mode === 'edit' ? 'edit' : 'create')}
+                content={form.description}
+                onChange={(html) => setForm(f => ({ ...f, description: html }))}
+                placeholder="Nhập mô tả sản phẩm, tính năng nổi bật, cam kết, quyền lợi người mua..."
+                minHeight="min-h-[280px]"
               />
             </div>
             <div className="sm:col-span-2 space-y-1.5">
@@ -371,11 +380,16 @@ function Field({ label, value, link }: { label: string; value?: string | null; l
   if (!value) return null
   return (
     <div>
-      <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-0.5">{label}</p>
+      <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1">{label}</p>
       {link ? (
         <a href={value} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-sm break-all inline-flex items-center gap-1">
           {value} <ExternalLink className="w-3 h-3 shrink-0" />
         </a>
+      ) : /<[a-z][\s\S]*>/i.test(value) ? (
+        <div
+          className="text-gray-700 dark:text-gray-200 text-sm prose prose-sm dark:prose-invert max-w-none break-words bg-gray-50 dark:bg-gray-800/40 p-3 rounded-lg border border-gray-100 dark:border-gray-800 [&_p]:mb-2 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5"
+          dangerouslySetInnerHTML={{ __html: value }}
+        />
       ) : (
         <p className="text-gray-700 dark:text-gray-200 text-sm whitespace-pre-wrap">{value}</p>
       )}

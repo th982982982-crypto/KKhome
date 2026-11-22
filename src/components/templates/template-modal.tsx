@@ -269,7 +269,14 @@ export function TemplateModal({ template, open, onClose, isPurchased = false, ac
             {template.description && (
               <div className="px-6 pb-4">
                 <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Mô tả sản phẩm</p>
-                <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">{template.description}</p>
+                {/<[a-z][\s\S]*>/i.test(template.description) ? (
+                  <div
+                    className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed prose prose-sm dark:prose-invert max-w-none break-words [&_p]:mb-2.5 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:my-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:my-2 [&_blockquote]:border-l-4 [&_blockquote]:border-indigo-500 [&_blockquote]:pl-3 [&_blockquote]:italic [&_blockquote]:my-2"
+                    dangerouslySetInnerHTML={{ __html: template.description }}
+                  />
+                ) : (
+                  <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">{template.description}</p>
+                )}
               </div>
             )}
 

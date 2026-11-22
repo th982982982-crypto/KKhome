@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
-import { formatCurrency } from '@/lib/format'
+import { formatCurrency, stripHtml } from '@/lib/format'
 import { getEffectivePrice, type PromotionWithTemplates } from '@/lib/supabase/types'
 import type { Template } from '@/lib/supabase/types'
 import { ShoppingCart, Eye, CheckCircle2 } from 'lucide-react'
@@ -106,7 +106,7 @@ export function TemplateCard({ template, onViewDetail, isPurchased, activePromot
 
         {template.description && (
           <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mb-2 leading-relaxed">
-            {template.description}
+            {stripHtml(template.description)}
           </p>
         )}
 
