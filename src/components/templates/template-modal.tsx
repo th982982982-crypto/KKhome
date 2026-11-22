@@ -34,6 +34,44 @@ interface TemplateModalProps {
   activePromotions?: PromotionWithTemplates[]
 }
 
+function renderDescription(text: string | null): string {
+  if (!text) return '<p class="text-sm text-gray-400 italic">Chưa có thông tin mô tả chi tiết cho sản phẩm này.</p>'
+
+  // If already standard HTML without markdown headings
+  if (/<[a-z][\s\S]*>/i.test(text) && !text.includes('##') && !text.includes('**')) {
+    return text
+  }
+
+  // Parse markdown headings, bold, code, lists
+  let html = text
+    .replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg overflow-x-auto text-xs my-3"><code>$1</code></pre>')
+    .replace(/`([^`]+)`/g, '<code class="bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 px-1.5 py-0.5 rounded text-xs font-mono border border-indigo-200 dark:border-indigo-800">$1</code>')
+    .replace(/^#### (.*$)/gim, '<h5 class="text-sm font-bold text-gray-900 dark:text-gray-100 mt-4 mb-2">$1</h5>')
+    .replace(/^### (.*$)/gim, '<h4 class="text-base font-bold text-indigo-700 dark:text-indigo-300 mt-5 mb-2">$1</h4>')
+    .replace(/^## (.*$)/gim, '<h3 class="text-lg font-black text-gray-900 dark:text-gray-50 mt-6 mb-3 pb-1 border-b border-gray-100 dark:border-gray-800">$1</h3>')
+    .replace(/^# (.*$)/gim, '<h2 class="text-xl font-black text-gray-900 dark:text-gray-50 mt-6 mb-3">$1</h2>')
+    .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-gray-900 dark:text-gray-100">$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
+    .replace(/^> (.*$)/gim, '<blockquote class="border-l-4 border-indigo-500 pl-4 py-1 italic my-3 text-gray-700 dark:text-gray-300 bg-indigo-50/50 dark:bg-indigo-950/20 rounded-r-lg">$1</blockquote>')
+    .replace(/^\s*[-*]\s+(.*)$/gim, '<li class="flex items-start gap-2 my-1.5 text-gray-700 dark:text-gray-300"><span class="inline-block w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 shrink-0"></span><span>$1</span></li>')
+    .replace(/^\s*(\d+)\.\s+(.*)$/gim, '<li class="flex items-start gap-2 my-1.5 text-gray-700 dark:text-gray-300"><span class="font-bold text-indigo-600 dark:text-indigo-400 shrink-0">$1.</span><span>$2</span></li>')
+
+  html = html.replace(/(<li[\s\S]*?<\/li>\n?)+/g, '<ul class="my-3 space-y-1 pl-1">$0</ul>')
+
+  const blocks = html.split('\n\n')
+  return blocks
+    .map((block) => {
+      const trimmed = block.trim()
+      if (!trimmed) return ''
+      if (/^<(h[1-6]|ul|ol|pre|blockquote|div|p)/i.test(trimmed)) {
+        return trimmed
+      }
+      return `<p class="my-2.5 text-gray-700 dark:text-gray-300 leading-relaxed">${trimmed.replace(/\n/g, '<br/>')}</p>`
+    })
+    .join('\n')
+}
+
 export function TemplateModal({
   template,
   open,
@@ -121,6 +159,12 @@ export function TemplateModal({
       <DialogContent
         showCloseButton={false}
         className="w-[98vw] sm:max-w-[98vw] max-w-[1850px] h-[95vh] max-h-[96vh] p-0 overflow-hidden rounded-2xl gap-0 border-0 shadow-2xl bg-white dark:bg-gray-900 flex flex-col"
+        style={{
+          width: '98vw',
+          maxWidth: '1850px',
+          height: '95vh',
+          maxHeight: '96vh',
+        }}
       >
         {/* Top Header Bar */}
         <div className="shrink-0 flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 backdrop-blur z-20">
@@ -414,7 +458,7 @@ export function TemplateModal({
           <div className="p-6 sm:p-8 bg-white dark:bg-gray-900 pb-28 lg:pb-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* CỘT TRÁI: GIÁ & MUA HÀNG & LỢI ÍCH */}
-              <div className="lg:col-span-5 xl:col-span-4 space-y-5">
+              <div className="lg:col-span-4 xl:col-span-3 space-y-5 min-w-[300px]">
                 {/* Khối giá và nút mua hàng */}
                 <div className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
                   <div>
@@ -496,7 +540,7 @@ export function TemplateModal({
               </div>
 
               {/* CỘT PHẢI: MÔ TẢ CHI TIẾT SẢN PHẨM */}
-              <div className="lg:col-span-7 xl:col-span-8 space-y-4">
+              <div className="lg:col-span-8 xl:col-span-9 space-y-5 flex-1 min-w-0">
                 <div className="flex items-center gap-2 pb-3 border-b border-gray-100 dark:border-gray-800">
                   <FileSpreadsheet className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                   <h3 className="text-sm sm:text-base font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
@@ -528,20 +572,10 @@ export function TemplateModal({
                   </div>
                 )}
 
-                {template.description ? (
-                  /<[a-z][\s\S]*>/i.test(template.description) ? (
-                    <div
-                      className="text-base text-gray-700 dark:text-gray-300 leading-relaxed prose prose-base dark:prose-invert max-w-none break-words [&_p]:mb-3 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:my-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:my-3 [&_blockquote]:border-l-4 [&_blockquote]:border-indigo-500 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-3 [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-xl [&_iframe]:my-3 [&_video]:w-full [&_video]:aspect-video [&_video]:rounded-xl [&_video]:my-3"
-                      dangerouslySetInnerHTML={{ __html: template.description }}
-                    />
-                  ) : (
-                    <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
-                      {template.description}
-                    </p>
-                  )
-                ) : (
-                  <p className="text-sm text-gray-400 italic">Chưa có thông tin mô tả chi tiết cho sản phẩm này.</p>
-                )}
+                <div
+                  className="text-base text-gray-700 dark:text-gray-300 leading-relaxed prose prose-base sm:prose-lg dark:prose-invert max-w-none break-words [&_p]:mb-3 [&_p:last-child]:mb-0 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:my-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:my-3 [&_blockquote]:border-l-4 [&_blockquote]:border-indigo-500 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:my-3 [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-xl [&_iframe]:my-3 [&_video]:w-full [&_video]:aspect-video [&_video]:rounded-xl [&_video]:my-3"
+                  dangerouslySetInnerHTML={{ __html: renderDescription(template.description) }}
+                />
               </div>
             </div>
           </div>
