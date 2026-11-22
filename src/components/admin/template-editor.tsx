@@ -17,7 +17,7 @@ import {
   DialogTitle,
   DialogFooter,
 } from '@/components/ui/dialog'
-import { formatCurrency } from '@/lib/format'
+import { formatCurrency, markdownToHtml } from '@/lib/format'
 import { RichTextEditor } from '@/components/admin/rich-text-editor'
 
 type Mode = 'closed' | 'create' | 'view' | 'edit'
@@ -45,7 +45,7 @@ function toForm(t: Template): FormState {
     name: t.name,
     sku: t.sku ?? '',
     category: t.category ?? '',
-    description: t.description ?? '',
+    description: t.description ? markdownToHtml(t.description) : '',
     sale_price: t.sale_price ?? '',
     original_price: t.original_price ?? '',
     thumbnail_url: t.thumbnail_url,

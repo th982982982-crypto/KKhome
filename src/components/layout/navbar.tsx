@@ -62,10 +62,10 @@ export function Navbar({ user, isAdmin, canViewLegal, canViewTax, isTaiLieuPubli
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur-lg border-b border-gray-100 dark:border-gray-800">
-      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Cụm bên trái: Logo + Menu */}
-          <div className="flex items-center gap-6 lg:gap-8 min-w-0">
+          <div className="flex items-center gap-5 lg:gap-7 min-w-0">
             <Link href="/" className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900 dark:text-gray-50 shrink-0">
               <Image src="/logo.png" alt="KKhome" width={36} height={36} className="w-9 h-9 object-contain" priority />
               <span className="whitespace-nowrap">KKhome</span>

@@ -50,7 +50,7 @@ export default async function TemplatesPage() {
 
       <main className="flex-1">
         <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900/40 border-b border-gray-100 dark:border-gray-800">
-          <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10 sm:py-14">
+          <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
               <div>
                 <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 text-xs text-gray-500 dark:text-gray-400 mb-3">
@@ -71,7 +71,7 @@ export default async function TemplatesPage() {
           </div>
         </div>
 
-        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
           <TemplateExplorer
             templates={allTemplates}
             categories={categories}
