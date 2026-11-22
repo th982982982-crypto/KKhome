@@ -87,7 +87,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
       <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)} />
 
       <main className="flex-1">
-        <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <article className="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <nav className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500 mb-6">
             <Link href="/" className="hover:text-gray-600 dark:hover:text-gray-300">Trang chủ</Link>
             <ChevronRight className="w-3 h-3" />
@@ -138,7 +138,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
         </article>
 
         {related.length > 0 && (
-          <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+          <section className="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
             <h2 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-5">Bài viết liên quan</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {related.map((p) => (

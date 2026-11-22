@@ -222,48 +222,65 @@ export function NewsManager({ initialPosts }: { initialPosts: NewsPost[] }) {
 
       {/* Modal xem chi tiết */}
       <Dialog open={mode === 'view'} onOpenChange={(open) => !open && closeModal()}>
-        <DialogContent className="sm:max-w-2xl max-h-[85vh] overflow-y-auto">
+        <DialogContent className="w-[94vw] max-w-6xl xl:max-w-7xl 2xl:max-w-[1600px] max-h-[92vh] overflow-y-auto p-6 sm:p-8 rounded-2xl">
           {selected && (
             <>
-              <DialogHeader>
-                <DialogTitle>{selected.title}</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-3">
-                {selected.cover_image_url && (
-                  <div className="relative w-full h-48 rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
-                    <Image src={selected.cover_image_url} alt={selected.title} fill className="object-cover" />
-                  </div>
-                )}
+              <DialogHeader className="space-y-2">
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant={selected.post_type === 'quang_cao' ? 'secondary' : 'outline'}>{TYPE_LABEL[selected.post_type]}</Badge>
+                  <Badge variant={selected.post_type === 'quang_cao' ? 'secondary' : 'outline'}>
+                    {TYPE_LABEL[selected.post_type]}
+                  </Badge>
                   {selected.category && <Badge variant="outline">{selected.category}</Badge>}
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${selected.is_published ? 'bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300' : 'bg-gray-100 dark:bg-gray-800 text-gray-400'}`}>
+                  <span className={`text-xs px-2.5 py-0.5 rounded-full font-semibold ${selected.is_published ? 'bg-emerald-100 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300' : 'bg-gray-100 dark:bg-gray-800 text-gray-400'}`}>
                     {selected.is_published ? 'Đang hiển thị' : 'Đang ẩn'}
                   </span>
+                  {selected.is_published && (
+                    <a
+                      href={`/tin-tuc/${selected.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-auto text-xs text-indigo-600 dark:text-indigo-400 flex items-center gap-1 hover:underline font-medium"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" /> Xem trên web (/tin-tuc/{selected.slug})
+                    </a>
+                  )}
                 </div>
-                {selected.excerpt && <p className="text-sm text-gray-600 dark:text-gray-300">{selected.excerpt}</p>}
-                {selected.is_published && (
-                  <a
-                    href={`/tin-tuc/${selected.slug}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-indigo-600 dark:text-indigo-400 flex items-center gap-1 hover:underline"
-                  >
-                    <ExternalLink className="w-3 h-3" /> /tin-tuc/{selected.slug}
-                  </a>
+                <DialogTitle className="text-xl sm:text-3xl font-black text-gray-900 dark:text-gray-50 leading-tight tracking-tight">
+                  {selected.title}
+                </DialogTitle>
+                {selected.author_name && (
+                  <p className="text-xs text-gray-500 dark:text-gray-400">Tác giả: <span className="font-semibold text-gray-700 dark:text-gray-300">{selected.author_name}</span></p>
                 )}
+              </DialogHeader>
+
+              <div className="space-y-5 mt-3">
+                {selected.cover_image_url && (
+                  <div className="relative w-full aspect-[21/9] sm:aspect-[2.4/1] max-h-[460px] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-800">
+                    <Image src={selected.cover_image_url} alt={selected.title} fill className="object-contain sm:object-cover" priority />
+                  </div>
+                )}
+
+                {selected.excerpt && (
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border-l-4 border-indigo-500">
+                    <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 italic leading-relaxed">
+                      {selected.excerpt}
+                    </p>
+                  </div>
+                )}
+
                 <div
-                  className="prose prose-sm dark:prose-invert max-w-none border-t border-gray-100 dark:border-gray-800 pt-3"
+                  className="prose prose-base sm:prose-lg dark:prose-invert max-w-none border-t border-gray-100 dark:border-gray-800 pt-6 leading-relaxed [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-xl [&_video]:w-full [&_video]:aspect-video [&_video]:rounded-xl"
                   dangerouslySetInnerHTML={{ __html: selected.content }}
                 />
               </div>
-              <DialogFooter>
+
+              <DialogFooter className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800">
                 <Button variant="destructive" onClick={handleDelete} className="sm:mr-auto gap-1.5">
                   <Trash2 className="w-4 h-4" /> Xóa
                 </Button>
                 <Button variant="outline" onClick={closeModal}>Đóng</Button>
                 <Button onClick={openEdit} className="gap-1.5">
-                  <Pencil className="w-4 h-4" /> Sửa
+                  <Pencil className="w-4 h-4" /> Sửa bài
                 </Button>
               </DialogFooter>
             </>
@@ -273,7 +290,7 @@ export function NewsManager({ initialPosts }: { initialPosts: NewsPost[] }) {
 
       {/* Modal thêm / sửa */}
       <Dialog open={mode === 'create' || mode === 'edit'} onOpenChange={(open) => !open && closeModal()}>
-        <DialogContent className="sm:max-w-5xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="w-[95vw] max-w-6xl xl:max-w-7xl 2xl:max-w-[1600px] max-h-[92vh] overflow-y-auto p-6 sm:p-8 rounded-2xl">
           <DialogHeader>
             <DialogTitle>{mode === 'edit' ? 'Chỉnh sửa bài viết' : 'Viết bài mới'}</DialogTitle>
           </DialogHeader>

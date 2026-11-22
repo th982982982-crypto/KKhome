@@ -120,7 +120,7 @@ export function TemplateModal({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent
         showCloseButton={false}
-        className="w-[96vw] max-w-6xl xl:max-w-7xl max-h-[92vh] p-0 overflow-hidden rounded-2xl gap-0 border-0 shadow-2xl bg-white dark:bg-gray-900 flex flex-col"
+        className="w-[96vw] max-w-[1700px] max-h-[94vh] p-0 overflow-hidden rounded-2xl gap-0 border-0 shadow-2xl bg-white dark:bg-gray-900 flex flex-col"
       >
         {/* Top Header Bar */}
         <div className="shrink-0 flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 backdrop-blur z-20">

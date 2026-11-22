@@ -233,7 +233,7 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
 
       {/* Modal xem chi tiết */}
       <Dialog open={mode === 'view'} onOpenChange={(open) => !open && closeModal()}>
-        <DialogContent className="sm:max-w-3xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="w-[94vw] max-w-6xl xl:max-w-7xl 2xl:max-w-[1600px] max-h-[92vh] overflow-y-auto p-6 sm:p-8 rounded-2xl">
           {selected && (
             <>
               <DialogHeader>
@@ -282,7 +282,7 @@ export function TemplateEditor({ initialTemplates }: { initialTemplates: Templat
 
       {/* Modal thêm / sửa */}
       <Dialog open={mode === 'create' || mode === 'edit'} onOpenChange={(open) => !open && closeModal()}>
-        <DialogContent className="sm:max-w-4xl lg:max-w-5xl max-h-[92vh] overflow-y-auto w-[96vw]">
+        <DialogContent className="w-[95vw] max-w-6xl xl:max-w-7xl 2xl:max-w-[1600px] max-h-[92vh] overflow-y-auto p-6 sm:p-8 rounded-2xl">
           <DialogHeader>
             <DialogTitle>{mode === 'edit' ? 'Chỉnh sửa template' : 'Thêm template mới'}</DialogTitle>
           </DialogHeader>
