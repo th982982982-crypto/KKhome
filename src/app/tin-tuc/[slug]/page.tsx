@@ -83,9 +83,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
   const readingMinutes = estimateReadingMinutes(post.content)
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)} />
-
+    <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)}>
       <main className="flex-1">
         <article className="max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <nav className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500 mb-6">
@@ -150,6 +148,6 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
       </main>
 
       <SiteFooter />
-    </div>
+    </Navbar>
   )
 }

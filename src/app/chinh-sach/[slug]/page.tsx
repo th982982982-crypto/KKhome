@@ -43,8 +43,7 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
   const p = policy as Policy
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950">
-      <Navbar />
+    <Navbar>
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500 mb-6">
@@ -95,6 +94,6 @@ export default async function PolicyPage({ params }: { params: Promise<{ slug: s
         </div>
       </main>
       <SiteFooter />
-    </div>
+    </Navbar>
   )
 }

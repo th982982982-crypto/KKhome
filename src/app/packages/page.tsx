@@ -56,9 +56,7 @@ export default async function PackagesPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={legalAccess} canViewTax={hasTaxAccess(profile)} />
-
+    <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={legalAccess} canViewTax={hasTaxAccess(profile)}>
       <main className="flex-1">
         {/* Hero */}
         <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900/40 border-b border-gray-100 dark:border-gray-800">
@@ -189,6 +187,6 @@ export default async function PackagesPage() {
       </main>
 
       <SiteFooter />
-    </div>
+    </Navbar>
   )
 }

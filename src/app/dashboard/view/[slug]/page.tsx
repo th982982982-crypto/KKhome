@@ -36,9 +36,7 @@ export default async function ViewTemplatePage({ params }: { params: Promise<{ s
   const videoUrl = template.tutorial_video_url ? getYouTubeEmbedUrl(template.tutorial_video_url) : null
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)} />
-
+    <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)}>
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-6">
         <div className="flex items-center gap-3 mb-6">
           <Link href="/dashboard" className="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900">
@@ -97,6 +95,6 @@ export default async function ViewTemplatePage({ params }: { params: Promise<{ s
         )}
       </main>
       <SiteFooter />
-    </div>
+    </Navbar>
   )
 }

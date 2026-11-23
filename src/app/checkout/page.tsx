@@ -21,12 +21,11 @@ export default async function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950">
-      <Navbar user={user} isAdmin={isAdmin} canViewLegal={canViewLegal} canViewTax={canViewTax} />
+    <Navbar user={user} isAdmin={isAdmin} canViewLegal={canViewLegal} canViewTax={canViewTax}>
       <main className="flex-1">
         <CheckoutContent />
       </main>
       <SiteFooter />
-    </div>
+    </Navbar>
   )
 }

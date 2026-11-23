@@ -52,15 +52,14 @@ export default async function LegalLayout({ children }: { children: React.ReactN
   const hasAccess = hasLegalAccess(profile)
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar
-        user={user ?? undefined}
-        isAdmin={!!profile?.is_admin}
-        canViewLegal={true}
-        canViewTax={hasTaxAccess(profile)}
-      />
+    <Navbar
+      user={user ?? undefined}
+      isAdmin={!!profile?.is_admin}
+      canViewLegal={true}
+      canViewTax={hasTaxAccess(profile)}
+    >
       {!hasAccess && <FreemiumBanner loggedIn={!!user} />}
       <main className="flex-1 flex flex-col min-h-0">{children}</main>
-    </div>
+    </Navbar>
   )
 }

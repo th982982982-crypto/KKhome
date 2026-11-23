@@ -52,9 +52,7 @@ export default async function HomePage() {
   }))
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)} />
-
+    <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)}>
       <main className="flex-1">
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white">
@@ -203,6 +201,6 @@ export default async function HomePage() {
       </main>
 
       <SiteFooter />
-    </div>
+    </Navbar>
   )
 }

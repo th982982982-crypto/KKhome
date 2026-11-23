@@ -42,9 +42,7 @@ export default async function NewsListPage({
   const [hero, ...rest] = filtered
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)} />
-
+    <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)}>
       <main className="flex-1">
         <section className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="mb-8">
@@ -85,6 +83,6 @@ export default async function NewsListPage({
       </main>
 
       <SiteFooter />
-    </div>
+    </Navbar>
   )
 }

@@ -41,15 +41,13 @@ export default async function TaiLieuPage() {
   const initialItems = isAdmin ? allItems : allItems.filter((item) => !item.isHidden)
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50/50 dark:bg-gray-950">
-      <Navbar 
-        user={user} 
-        isAdmin={isAdmin} 
-        canViewLegal={hasLegalAccess(profile)} 
-        canViewTax={hasTaxAccess(profile)} 
-        isTaiLieuPublic={isPublic}
-      />
-
+    <Navbar 
+      user={user} 
+      isAdmin={isAdmin} 
+      canViewLegal={hasLegalAccess(profile)} 
+      canViewTax={hasTaxAccess(profile)} 
+      isTaiLieuPublic={isPublic}
+    >
       <main className="flex-1">
         <TaiLieuExplorer 
           user={user} 
@@ -60,6 +58,6 @@ export default async function TaiLieuPage() {
       </main>
 
       <SiteFooter />
-    </div>
+    </Navbar>
   )
 }

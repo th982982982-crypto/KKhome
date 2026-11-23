@@ -48,9 +48,7 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)} />
-
+    <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)}>
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 py-10">
         <div className="mb-8">
           <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 text-xs text-gray-500 dark:text-gray-400 mb-3">
@@ -71,6 +69,6 @@ export default async function DashboardPage() {
         />
       </main>
       <SiteFooter />
-    </div>
+    </Navbar>
   )
 }

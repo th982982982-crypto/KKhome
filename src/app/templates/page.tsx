@@ -45,10 +45,8 @@ export default async function TemplatesPage() {
   }))
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950">
-      <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)} />
-
-      <main className="flex-1">
+    <Navbar user={user} isAdmin={profile?.is_admin} canViewLegal={hasLegalAccess(profile)} canViewTax={hasTaxAccess(profile)}>
+      <main className="flex-1 bg-gray-50 dark:bg-gray-950">
         <div className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900/40 border-b border-gray-100 dark:border-gray-800">
           <div className="w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
             <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
@@ -82,6 +80,6 @@ export default async function TemplatesPage() {
       </main>
 
       <SiteFooter />
-    </div>
+    </Navbar>
   )
 }
