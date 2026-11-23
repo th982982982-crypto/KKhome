@@ -140,7 +140,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
             <h2 className="text-xl font-bold text-gray-900 dark:text-gray-50 mb-5">Bài viết liên quan</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {related.map((p) => (
-                <PostCard key={p.id} post={p} />
+                <PostCard key={p.id} post={p} variant="grid" />
               ))}
             </div>
           </section>
